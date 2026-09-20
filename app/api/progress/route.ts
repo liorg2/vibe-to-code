@@ -13,7 +13,12 @@ export async function PUT(req: Request) {
   if (!uid) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
   const body = (await req.json()) as { done?: unknown; ticked?: unknown };
-  const strings = (v: unknown) => (Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : []);
+  // ponytail: the course has a few hundred keys — cap it so one account can't fill the 0.5GB tier
+  const MAX = 5000;
+  const strings = (v: unknown) =>
+    Array.isArray(v)
+      ? v.filter((x): x is string => typeof x === "string" && x.length <= 200).slice(0, MAX)
+      : [];
   await saveProgress(uid, { done: strings(body.done), ticked: strings(body.ticked) });
   return NextResponse.json({ ok: true });
 }

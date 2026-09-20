@@ -99,22 +99,35 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     document.body.dir = lang === "he" ? "rtl" : "ltr";
   }, [lang, theme]);
 
-  /** Pull server progress, union it with local, push the result back. */
+  /**
+   * Pull server progress, union it with local, push the result back.
+   * ponytail: merges against localStorage, not the `done`/`ticked` closure — this runs from a
+   * mount-time callback, so the closure still holds the empty sets from the first render and
+   * would silently drop progress made while signed out.
+   */
   const syncCloud = useCallback(async () => {
     const res = await fetch("/api/progress").catch(() => null);
     if (!res?.ok) return; // ponytail: 401 when signed out — nothing to merge
     const cloud = (await res.json()) as Progress;
-    const mergedDone = new Set([...(cloud.done || []), ...done]);
-    const mergedTicked = new Set([...(cloud.ticked || []), ...ticked]);
+    const local = (suffix: string): string[] => {
+      try {
+        return JSON.parse(lsGet(KEY + suffix) || "[]");
+      } catch {
+        return [];
+      }
+    };
+    const mergedDone = new Set([...(cloud.done || []), ...local(".done")]);
+    const mergedTicked = new Set([...(cloud.ticked || []), ...local(".check")]);
     setDone(mergedDone);
     setTicked(mergedTicked);
-    persist(mergedDone, mergedTicked);
+    lsSet(KEY + ".done", JSON.stringify([...mergedDone]));
+    lsSet(KEY + ".check", JSON.stringify([...mergedTicked]));
     await fetch("/api/progress", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ done: [...mergedDone], ticked: [...mergedTicked] }),
     }).catch(() => {});
-  }, [done, ticked, persist]);
+  }, []);
 
   useEffect(() => {
     if (!firebaseReady) return;
