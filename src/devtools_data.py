@@ -1,0 +1,34 @@
+# -*- coding: utf-8 -*-
+"""DevTools intro — appended to module 2 (The Two Sides)."""
+
+DEVTOOLS_TERMS = [
+ ({"t": {"en": "DevTools", "he": "כלי הפיתוח"},
+   "d": {"en": "The panel built into every browser: F12, or Ctrl+Shift+I (Cmd+Option+I on Mac). It shows you the client half of your app as it really is.",
+         "he": "הפאנל שמובנה בכל דפדפן: F12, או Ctrl+Shift+I (ובמק Cmd+Option+I). הוא מראה לך את חצי הלקוח של האפליקציה כפי שהוא באמת."},
+   "w": {"en": "Most questions you would ask an AI about frontend behaviour are answered faster by opening this and looking.",
+         "he": "רוב השאלות שהיית שואל AI על התנהגות בפרונט נענות מהר יותר בפתיחת הכלי והסתכלות."}},
+  {"en": "DevTools is the difference between guessing and knowing. It turns the browser from a black box that either works or does not into something you can inspect, pause and interrogate.\n\nFive panels cover almost everything. Elements is the live page structure and styles. Console shows errors and lets you run code. Network shows every request and its real headers and timing. Application shows cookies and storage. Sources lets you pause execution and look at variables mid-flight. Learning where those five live is an afternoon; not knowing them costs you years of guessing.",
+   "he": "כלי הפיתוח הם ההבדל בין לנחש לבין לדעת. הם הופכים את הדפדפן מקופסה שחורה שעובדת או לא, למשהו שאפשר לבדוק, לעצור ולחקור.\n\nחמישה פאנלים מכסים כמעט הכל. Elements הוא מבנה הדף והסגנונות החיים. Console מציג שגיאות ומאפשר להריץ קוד. Network מציג כל בקשה עם הכותרות והתזמונים האמיתיים שלה. Application מציג עוגיות ואחסון. Sources מאפשר לעצור את הריצה ולהסתכל על משתנים באמצע. ללמוד איפה חמשת אלה יושבים זה צהריים אחד; לא להכיר אותם עולה לך שנים של ניחושים."},
+  {"cap": {"en": "Where each answer lives", "he": "איפה כל תשובה נמצאת"},
+   "code": "F12  /  Ctrl+Shift+I  /  Cmd+Option+I\n\nElements     why does this look wrong?      live HTML + computed CSS\nConsole      what broke?                    errors, and a REPL on the page\nNetwork      what did it actually send?     status, headers, payload, timing\nApplication  am I logged in?                cookies, localStorage, cache\nSources      what is the value right now?   breakpoints, step, watch\nLighthouse   why is it slow / inaccessible? an audit with a score"}),
+
+ ({"t": {"en": "The Network tab", "he": "לשונית Network"},
+   "d": {"en": "Every request the page made, with its status code, headers, payload and how long each stage took.",
+         "he": "כל בקשה שהדף שלח, עם קוד הסטטוס, הכותרות, הגוף וכמה זמן לקח כל שלב."},
+   "w": {"en": "This one panel resolves most client-server arguments in about ten seconds.",
+         "he": "הפאנל הזה לבדו מסיים רוב הוויכוחים בין לקוח לשרת בעשר שניות."}},
+  {"en": "When a page misbehaves, the first question is always the same: did the request go out, and what came back. Network answers both, and it answers them with the truth rather than with what your code believes it sent.\n\nIt is also where a surprising amount of the rest of this course becomes visible at once. You can see the status code, the Authorization header that is or is not attached, the Cache-Control that explains why your change did nothing, the CORS failure, the payload that is empty because you sent it on a GET, and the 900ms that is all waiting rather than downloading.",
+   "he": "כשדף מתנהג לא כשורה, השאלה הראשונה תמיד זהה: האם הבקשה יצאה, ומה חזר. Network עונה על שתיהן, והוא עונה עם האמת ולא עם מה שהקוד שלך מאמין ששלח.\n\nזה גם המקום שבו כמות מפתיעה משאר הקורס הופכת לנראית בבת אחת. אפשר לראות את קוד הסטטוס, את כותרת ה-Authorization שמצורפת או לא, את ה-Cache-Control שמסביר למה השינוי שלך לא עשה כלום, את כשל ה-CORS, את הגוף שריק כי שלחת אותו ב-GET, ואת 900 המילישניות שהן כולן המתנה ולא הורדה."},
+  {"cap": {"en": "How to read one request", "he": "איך קוראים בקשה אחת"},
+   "code": "Filter: Fetch/XHR      [x] Disable cache      [x] Preserve log\n\nName            Status  Type   Size    Time\ncheckout        500     xhr    412 B   1.24 s   <- click it\n\n  Headers   -> Request URL, method, status\n               Request Headers:  Authorization present? Content-Type right?\n               Response Headers: Cache-Control, Set-Cookie, CORS headers\n  Payload   -> exactly what you sent\n  Response  -> exactly what came back (the real error message)\n  Timing    -> Waiting (TTFB) 1.19s  <- the server is slow, not the network\n                Content Download 0.05s\n\nRight-click -> Copy as cURL   # now you can replay it outside the browser"}),
+
+ ({"t": {"en": "Console & breakpoints", "he": "Console ונקודות עצירה"},
+   "d": {"en": "The console shows errors and runs code against the live page. A breakpoint pauses execution so you can look at the actual values.",
+         "he": "הקונסול מציג שגיאות ומריץ קוד מול הדף החי. נקודת עצירה עוצרת את הריצה כדי שתוכל להסתכל על הערכים האמיתיים."},
+   "w": {"en": "Pausing and reading a real value beats adding twenty log lines and guessing between them.",
+         "he": "לעצור ולקרוא ערך אמיתי עדיף על להוסיף עשרים שורות לוג ולנחש ביניהן."}},
+  {"en": "The console is the fastest feedback loop that exists in web development: you can reach into the running page, call a function, inspect an object and try a fix without editing a file or reloading.\n\nBreakpoints are the step up from logging. Instead of deciding in advance which values you want printed, you stop time and look at all of them — including the call stack that shows you how execution arrived there. The one worth knowing beyond the basics is the conditional breakpoint: pause only when the id equals the one customer whose order is broken, rather than on all ten thousand.",
+   "he": "הקונסול הוא לולאת המשוב המהירה ביותר שקיימת בפיתוח ווב: אפשר להושיט יד לדף הרץ, לקרוא לפונקציה, לבדוק אובייקט ולנסות תיקון בלי לערוך קובץ או לרענן.\n\nנקודות עצירה הן המדרגה מעל תיעוד. במקום להחליט מראש אילו ערכים אתה רוצה להדפיס, אתה עוצר את הזמן ומסתכל על כולם — כולל מחסנית הקריאות שמראה לך איך הריצה הגיעה לשם. זו ששווה להכיר מעבר לבסיס היא נקודת עצירה מותנית: לעצור רק כשהמזהה שווה ללקוח היחיד שההזמנה שלו שבורה, ולא בכל עשרת אלפים."},
+  {"cap": {"en": "Beyond console.log", "he": "מעבר ל-console.log"},
+   "code": "// in the Console, against the live page:\n$0                      // the element you selected in Elements\n$$('a')                 // querySelectorAll, as a real array\ncopy(someObject)        // puts it on your clipboard\nconsole.table(rows)     // readable rows instead of a wall\nconsole.dir(el)         // the object, not the rendered HTML\n\n// Sources panel:\n//   click a line number      -> breakpoint\n//   right-click it -> Edit   -> conditional: order.id === '7c3f'\n//   Watch: order.qty * order.price\n//   Call Stack: how did we even get here\n//\n// XHR/fetch breakpoint: pause the moment a URL containing\n// \"/checkout\" is requested - before it is even sent."}),
+]
