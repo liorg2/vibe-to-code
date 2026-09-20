@@ -86,7 +86,7 @@ QUIZ["testing"] = TESTING_QUIZ
 
 # new modules + their content, written by the widening pass
 WIDE = [
-    ("wide_a", ("APIS_MODULE", "FRONTEND_MODULE"), "DETAIL_A", "EXAMPLES_A", "QUIZ_A"),
+    ("wide_a", ("API_MODULE", "APIS_MODULE", "FRONTEND_MODULE"), "DETAIL_A", "EXAMPLES_A", "QUIZ_A"),
     ("wide_b", ("ASYNC_MODULE", "SECURITY_MODULE"), "DETAIL_B", "EXAMPLES_B", "QUIZ_B"),
     ("wide_c", ("NET_MODULE", "DEVOPS_MODULE"), "DETAIL_C", "EXAMPLES_C", "QUIZ_C"),
     ("wide_d", ("OBSERVE_MODULE", "TEAM_MODULE"), "DETAIL_D", "EXAMPLES_D", "QUIZ_D"),

@@ -68,6 +68,19 @@ const promptBox = (id, text, label) => `
     <pre class="code" id="p${id}">${esc(text)}</pre>
   </div>`;
 
+const httpFlowHtml = () => `
+  <div class="http-flow" aria-hidden="true">
+    <div class="hf-cap">${esc(t("hfCap"))}</div>
+    <div class="hf-row">
+      <div class="hf-node hf-client">${esc(t("hfClient"))}</div>
+      <div class="hf-track">
+        <div class="hf-packet hf-req">${esc(t("hfReq"))}</div>
+        <div class="hf-packet hf-res">${esc(t("hfRes"))}</div>
+      </div>
+      <div class="hf-node hf-server">${esc(t("hfServer"))}</div>
+    </div>
+  </div>`;
+
 function quizHtml(modId) {
   const qs = QUIZ[modId]; if (!qs) return "";
   const got = qs.filter((_, i) => answers[i] === qs[i].c).length;
@@ -164,6 +177,7 @@ function slidePage(m, mi, i) {
     <div class="kicker">${String(mi + 1).padStart(2, "0")} ${esc(m.title[lang])} &middot; ${i + 1}/${m.terms.length}</div>
     <h2>${esc(tm.t[lang])}</h2>
     <div class="lede">${esc(tm.d[lang])}</div>
+    ${tm.t.en === "Request / Response" ? httpFlowHtml() : ""}
     ${det ? `<div class="body">${para(det[lang])}</div>` : ""}
     ${ex ? `<div class="ex"><div class="cap">${esc(ex.cap[lang])}</div>
             <pre class="code">${esc(ex.code)}</pre></div>` : ""}

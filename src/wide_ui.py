@@ -2,7 +2,7 @@
 """Widening pass: module order, learning paths, and UI strings for the new pages."""
 
 # final module order; new modules slot in next to the ones they extend
-ORDER = ["ground", "sides", "http", "api", "apis", "data", "frontend", "langs", "testing",
+ORDER = ["ground", "sides", "http", "apis", "data", "frontend", "langs", "testing",
          "memory", "cache", "async", "auth", "security", "net", "cloud", "devops",
          "observe", "scale", "team", "ai"]
 
