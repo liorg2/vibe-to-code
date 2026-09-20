@@ -236,3 +236,73 @@ main > #content{min-width:0}
 pre.code{max-width:100%}
 
 #who{font-size:13px;opacity:.7;max-width:14ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---- learning paths (home) ---- */
+.paths{margin-bottom:26px}
+.phead h3{font-size:20px;font-weight:800;letter-spacing:-.01em}
+.phead p{color:var(--tx2);font-size:14px;margin-bottom:14px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.path{display:block;text-decoration:none;color:inherit;background:var(--card2);
+  border:1px solid var(--line);border-radius:var(--r);padding:18px;transition:.18s;min-width:0}
+.path:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--acc) 50%,var(--line))}
+.path .row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.path .ic{font-size:20px}
+.path h4{font-size:16px;font-weight:700}
+.path p{color:var(--tx2);font-size:14px}
+.path .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 10px}
+.path .chips span{font-size:11px;padding:3px 8px;border-radius:99px;background:var(--card);
+  border:1px solid var(--line);color:var(--tx3)}
+.path .mini{height:5px;border-radius:99px;background:var(--line);overflow:hidden}
+.path .mini i{display:block;height:100%;background:var(--grad)}
+
+/* ---- ask-the-AI disclosure on a slide ---- */
+.ask{margin-top:22px;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px}
+.ask summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--acc2)}
+.ask .sub{color:var(--tx3);font-size:13px;margin:6px 0 4px}
+.ask .promptbox{margin-top:10px}
+
+/* ---- architectures ---- */
+.mini-dia{font-size:9.5px;line-height:1.35;max-height:170px;overflow:hidden;opacity:.75;
+  background:var(--code);padding:10px;border-radius:10px;margin-top:10px}
+.dia{font-size:12.5px;line-height:1.5;overflow-x:auto}
+.arch h3{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--tx3);margin:26px 0 10px}
+.parts{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.part{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.part b{font-size:14px}
+.part p{color:var(--tx2);font-size:13.5px;margin-top:4px}
+.aboxes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:22px}
+.abox{background:var(--card2);border:1px solid var(--line);border-inline-start:3px solid var(--tx3);
+  border-radius:12px;padding:12px 14px;min-width:0}
+.abox.ok{border-inline-start-color:var(--good)}
+.abox.no{border-inline-start-color:var(--bad)}
+.abox b{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--tx3)}
+.abox p{font-size:14px;margin-top:5px}
+
+/* ---- glossary ---- */
+.gloss{columns:3 240px;column-gap:20px}
+.gl{break-inside:avoid;margin-bottom:18px}
+.gl h4{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--acc2);
+  border-bottom:1px solid var(--line);padding-bottom:5px;margin-bottom:6px}
+.gl a{display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+  padding:5px 6px;border-radius:8px;text-decoration:none;color:var(--tx2);font-size:14px}
+.gl a:hover{background:var(--card2);color:var(--tx)}
+.gl a.done{color:var(--tx3)}
+.gl a.done span{text-decoration:line-through;text-decoration-color:var(--acc2)}
+.gl a i{font-size:11px;color:var(--tx3);font-style:normal;white-space:nowrap}
+
+/* ---- flashcards ---- */
+.flash{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:44px 28px;text-align:center;cursor:pointer;min-height:260px;
+  display:flex;flex-direction:column;justify-content:center;gap:12px;box-shadow:var(--shadow)}
+.flash:hover{border-color:color-mix(in srgb,var(--acc) 50%,var(--line))}
+.flash .fk{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--tx3);
+  text-transform:uppercase;letter-spacing:.1em}
+.flash h2{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.flash .fhint{color:var(--tx3);font-size:13px}
+.flash .fb{max-width:620px;margin:0 auto;color:var(--tx2);font-size:15.5px}
+.flash .fb .w{margin-top:12px;color:var(--acc2);font-size:14px}
+.fbar{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.fbar .grow{flex:1}
+
+@media (max-width:900px){ .gloss{columns:1} .flash{padding:32px 18px} .flash h2{font-size:24px} }

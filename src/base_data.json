@@ -1,0 +1,1370 @@
+{
+ "UI": {
+  "brand": {
+   "en": "Vibe → Code",
+   "he": "Vibe → Code"
+  },
+  "tagline": {
+   "en": "The words developers use, explained for people who ship with AI.",
+   "he": "המילים שמפתחים משתמשים בהן, מוסברות למי שבונה עם AI."
+  },
+  "start": {
+   "en": "Start learning",
+   "he": "להתחיל ללמוד"
+  },
+  "modules": {
+   "en": "Modules",
+   "he": "מודולים"
+  },
+  "progress": {
+   "en": "Progress",
+   "he": "התקדמות"
+  },
+  "terms": {
+   "en": "terms",
+   "he": "מונחים"
+  },
+  "got": {
+   "en": "Got it",
+   "he": "הבנתי"
+  },
+  "why": {
+   "en": "Why you care",
+   "he": "למה זה חשוב לך"
+  },
+  "next": {
+   "en": "Next module",
+   "he": "המודול הבא"
+  },
+  "prev": {
+   "en": "Previous",
+   "he": "הקודם"
+  },
+  "reset": {
+   "en": "Reset progress",
+   "he": "איפוס התקדמות"
+  },
+  "search": {
+   "en": "Search a term…",
+   "he": "חיפוש מונח…"
+  },
+  "done": {
+   "en": "Course complete. You now speak developer.",
+   "he": "סיימת את הקורס. אתה מדבר עכשיו שפת מפתחים."
+  },
+  "noResults": {
+   "en": "Nothing matched.",
+   "he": "לא נמצאו תוצאות."
+  },
+  "allMods": {
+   "en": "All modules",
+   "he": "כל המודולים"
+  },
+  "lesson": {
+   "en": "Module",
+   "he": "מודול"
+  },
+  "backHome": {
+   "en": "← All modules",
+   "he": "כל המודולים →"
+  },
+  "intro": {
+   "en": "10 modules · 82 terms · no code required",
+   "he": "10 מודולים · 82 מונחים · בלי לכתוב קוד"
+  },
+  "heroNote": {
+   "en": "You already build things. This gives you the vocabulary to build them right — and to understand what the AI just wrote for you.",
+   "he": "אתה כבר בונה דברים. כאן תקבל את אוצר המילים לבנות אותם נכון — ולהבין מה ה-AI בדיוק כתב לך."
+  }
+ },
+ "MODULES": [
+  {
+   "id": "ground",
+   "icon": "◆",
+   "title": {
+    "en": "Ground Floor",
+    "he": "קומת הקרקע"
+   },
+   "blurb": {
+    "en": "What code actually is and where it lives.",
+    "he": "מה זה קוד בפועל ואיפה הוא חי."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Source code",
+      "he": "קוד מקור"
+     },
+     "d": {
+      "en": "Text files with instructions written in a programming language. That's it — plain text.",
+      "he": "קבצי טקסט עם הוראות בשפת תכנות. זהו — טקסט רגיל."
+     },
+     "w": {
+      "en": "The AI writes text files. Understanding that removes the magic and lets you read them.",
+      "he": "ה-AI כותב קבצי טקסט. ברגע שמבינים את זה, הקסם נעלם ואפשר פשוט לקרוא אותם."
+     }
+    },
+    {
+     "t": {
+      "en": "Compiler / Interpreter",
+      "he": "מהדר / מפרש"
+     },
+     "d": {
+      "en": "A compiler translates your whole file into machine code before running. An interpreter reads and runs it line by line.",
+      "he": "מהדר מתרגם את כל הקובץ לשפת מכונה לפני ההרצה. מפרש קורא ומריץ שורה-שורה."
+     },
+     "w": {
+      "en": "Explains why some errors appear before you run anything, and others only when a user clicks the button.",
+      "he": "מסביר למה חלק מהשגיאות מופיעות לפני ההרצה, ואחרות רק כשמשתמש לוחץ על הכפתור."
+     }
+    },
+    {
+     "t": {
+      "en": "Runtime",
+      "he": "סביבת ריצה"
+     },
+     "d": {
+      "en": "The engine that actually executes your code — Node.js for JS on a server, the browser for JS on a page.",
+      "he": "המנוע שמריץ את הקוד בפועל — Node.js לג'אווהסקריפט בשרת, הדפדפן לג'אווהסקריפט בדף."
+     },
+     "w": {
+      "en": "\"Works on my machine\" is almost always a runtime version difference.",
+      "he": "\"אצלי זה עובד\" הוא כמעט תמיד הבדל בגרסת סביבת הריצה."
+     }
+    },
+    {
+     "t": {
+      "en": "Terminal / CLI",
+      "he": "טרמינל / שורת פקודה"
+     },
+     "d": {
+      "en": "A text window where you type commands to your computer instead of clicking. CLI = Command Line Interface.",
+      "he": "חלון טקסט שבו מקלידים פקודות למחשב במקום ללחוץ. CLI = ממשק שורת פקודה."
+     },
+     "w": {
+      "en": "Every real dev tool is CLI-first. The GUI is the afterthought, not the other way around.",
+      "he": "כל כלי פיתוח אמיתי הוא קודם כל CLI. הממשק הגרפי הוא התוספת, לא ההפך."
+     }
+    },
+    {
+     "t": {
+      "en": "Repository (repo)",
+      "he": "ריפוזיטורי (repo)"
+     },
+     "d": {
+      "en": "A folder whose entire history is tracked by Git. Every change, who made it, when, and why.",
+      "he": "תיקייה שכל ההיסטוריה שלה נשמרת ב-Git. כל שינוי, מי עשה אותו, מתי ולמה."
+     },
+     "w": {
+      "en": "It's your undo button that spans months and survives a laptop dying.",
+      "he": "זה כפתור ה-undo שמחזיק חודשים אחורה ושורד מחשב שנשרף."
+     }
+    },
+    {
+     "t": {
+      "en": "Commit / Branch / Merge",
+      "he": "קומיט / ענף / מיזוג"
+     },
+     "d": {
+      "en": "A commit is a saved snapshot with a message. A branch is a parallel line of work. Merging brings it back.",
+      "he": "קומיט הוא תצלום שמור עם הודעה. ענף הוא קו עבודה מקביל. מיזוג מחזיר אותו לקו הראשי."
+     },
+     "w": {
+      "en": "Branch before you let an AI refactor half your app. Then throwing it away costs nothing.",
+      "he": "פתח ענף לפני שאתה נותן ל-AI לשכתב חצי אפליקציה. ככה לזרוק את זה לא עולה כלום."
+     }
+    },
+    {
+     "t": {
+      "en": "Environment",
+      "he": "סביבה"
+     },
+     "d": {
+      "en": "A place your code runs with its own config and data: local, staging, production.",
+      "he": "מקום שבו הקוד רץ עם קונפיגורציה ונתונים משלו: מקומי, סטייג'ינג, פרודקשן."
+     },
+     "w": {
+      "en": "Production is where real users live. Never test there. Everyone has, once.",
+      "he": "פרודקשן זה המקום שבו יושבים משתמשים אמיתיים. לא בודקים שם. כולם עשו את זה פעם אחת."
+     }
+    },
+    {
+     "t": {
+      "en": "Bug / Stack trace",
+      "he": "באג / סטאק טרייס"
+     },
+     "d": {
+      "en": "A bug is behaviour you didn't intend. A stack trace is the list of function calls that led to the crash.",
+      "he": "באג הוא התנהגות שלא התכוונת אליה. סטאק טרייס היא רשימת הפונקציות שהובילו לקריסה."
+     },
+     "w": {
+      "en": "Read the stack trace top-down and you usually find the culprit in line 1-3. Most people paste it without reading it.",
+      "he": "קוראים סטאק טרייס מלמעלה, והאשם בדרך כלל בשורות 1-3. רוב האנשים מדביקים אותו בלי לקרוא."
+     }
+    }
+   ]
+  },
+  {
+   "id": "sides",
+   "icon": "⇄",
+   "title": {
+    "en": "The Two Sides",
+    "he": "שני הצדדים"
+   },
+   "blurb": {
+    "en": "Client, server, and the line between them.",
+    "he": "לקוח, שרת, והגבול ביניהם."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Client",
+      "he": "לקוח (Client)"
+     },
+     "d": {
+      "en": "Whatever the user holds: a browser tab, a mobile app. It asks for things.",
+      "he": "מה שהמשתמש מחזיק: טאב בדפדפן, אפליקציה בנייד. הוא זה שמבקש."
+     },
+     "w": {
+      "en": "Anything on the client can be seen and edited by the user. Nothing there is secret. Ever.",
+      "he": "כל מה שנמצא אצל הלקוח נראה וניתן לעריכה על ידי המשתמש. שום דבר שם אינו סודי. אף פעם."
+     }
+    },
+    {
+     "t": {
+      "en": "Server",
+      "he": "שרת"
+     },
+     "d": {
+      "en": "A computer that sits somewhere, always on, waiting to answer requests.",
+      "he": "מחשב שיושב איפשהו, תמיד דולק, ומחכה לענות לבקשות."
+     },
+     "w": {
+      "en": "It's just a computer you don't have physical access to. Not a magic cloud thing.",
+      "he": "זה פשוט מחשב שאין לך גישה פיזית אליו. לא איזה קסם ענן."
+     }
+    },
+    {
+     "t": {
+      "en": "Frontend",
+      "he": "פרונטאנד"
+     },
+     "d": {
+      "en": "The part the user sees and touches: layout, buttons, animation, what shows when.",
+      "he": "החלק שהמשתמש רואה ונוגע בו: פריסה, כפתורים, אנימציה, מה מוצג ומתי."
+     },
+     "w": {
+      "en": "Fast frontend, wrong data = broken product. Design isn't the hard part here.",
+      "he": "פרונט מהיר עם דאטה שגוי = מוצר שבור. העיצוב הוא לא החלק הקשה."
+     }
+    },
+    {
+     "t": {
+      "en": "Backend",
+      "he": "בקאנד"
+     },
+     "d": {
+      "en": "The part that stores data, enforces rules, talks to the database, and decides who may do what.",
+      "he": "החלק ששומר נתונים, אוכף חוקים, מדבר עם בסיס הנתונים, ומחליט למי מותר מה."
+     },
+     "w": {
+      "en": "Every rule that matters — pricing, permissions, limits — must live here, not in the UI.",
+      "he": "כל חוק שבאמת חשוב — תמחור, הרשאות, מגבלות — חייב לשבת כאן, לא בממשק."
+     }
+    },
+    {
+     "t": {
+      "en": "API",
+      "he": "API"
+     },
+     "d": {
+      "en": "A defined set of requests one program can make to another. A contract, not a technology.",
+      "he": "אוסף מוגדר של בקשות שתוכנה אחת יכולה לשלוח לאחרת. חוזה, לא טכנולוגיה."
+     },
+     "w": {
+      "en": "\"Integrate with X\" almost always means \"call X's API and handle its errors\".",
+      "he": "\"להתחבר ל-X\" כמעט תמיד אומר \"לקרוא ל-API של X ולטפל בשגיאות שלו\"."
+     }
+    },
+    {
+     "t": {
+      "en": "localhost & port",
+      "he": "localhost ופורט"
+     },
+     "d": {
+      "en": "localhost = this computer. A port (like :3000) is a numbered door on it so several programs can listen at once.",
+      "he": "localhost = המחשב הזה. פורט (כמו 3000:) הוא דלת ממוספרת בו, כדי שכמה תוכנות יוכלו להאזין במקביל."
+     },
+     "w": {
+      "en": "\"Port already in use\" means yesterday's server is still running. Kill it.",
+      "he": "\"הפורט תפוס\" אומר שהשרת מאתמול עדיין רץ. סגור אותו."
+     }
+    },
+    {
+     "t": {
+      "en": "DNS",
+      "he": "DNS"
+     },
+     "d": {
+      "en": "The phone book of the internet: turns a name like example.com into an IP address.",
+      "he": "ספר הטלפונים של האינטרנט: הופך שם כמו example.com לכתובת IP."
+     },
+     "w": {
+      "en": "Site down right after a domain change? Give DNS a few hours. It's cached worldwide.",
+      "he": "האתר נפל מיד אחרי שינוי דומיין? תן ל-DNS כמה שעות. הוא מאוחסן בקאש בכל העולם."
+     }
+    },
+    {
+     "t": {
+      "en": "Full stack",
+      "he": "פול סטאק"
+     },
+     "d": {
+      "en": "Working on both sides — plus the database and the deployment. Stack = the set of technologies chosen.",
+      "he": "עבודה בשני הצדדים — ובנוסף בסיס הנתונים וההעלאה לאוויר. Stack = אוסף הטכנולוגיות שנבחרו."
+     },
+     "w": {
+      "en": "You're already full stack. You just didn't have names for the parts.",
+      "he": "אתה כבר פול סטאק. פשוט לא היו לך שמות לחלקים."
+     }
+    }
+   ]
+  },
+  {
+   "id": "http",
+   "icon": "↗",
+   "title": {
+    "en": "HTTP: How Things Talk",
+    "he": "HTTP: איך דברים מדברים"
+   },
+   "blurb": {
+    "en": "Requests, verbs, headers, payloads, status codes.",
+    "he": "בקשות, פעלים, כותרות, גוף הבקשה, קודי סטטוס."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Request / Response",
+      "he": "בקשה / תגובה"
+     },
+     "d": {
+      "en": "The client sends a request; the server sends exactly one response back. Always that order, always paired.",
+      "he": "הלקוח שולח בקשה; השרת מחזיר תגובה אחת בדיוק. תמיד בסדר הזה, תמיד בזוגות."
+     },
+     "w": {
+      "en": "The server cannot start a conversation. That's why you need polling or websockets for live updates.",
+      "he": "השרת לא יכול לפתוח שיחה. בגלל זה צריך polling או websockets לעדכונים חיים."
+     }
+    },
+    {
+     "t": {
+      "en": "GET",
+      "he": "GET"
+     },
+     "d": {
+      "en": "Read something. Should change nothing on the server. Safe to repeat.",
+      "he": "קריאת משהו. לא אמור לשנות כלום בשרת. בטוח לחזור עליו."
+     },
+     "w": {
+      "en": "If a GET deletes something, browsers and crawlers will eventually delete it for you.",
+      "he": "אם GET מוחק משהו, דפדפנים וזחלנים ימחקו לך את זה בסוף בעצמם."
+     }
+    },
+    {
+     "t": {
+      "en": "POST / PUT / PATCH / DELETE",
+      "he": "POST / PUT / PATCH / DELETE"
+     },
+     "d": {
+      "en": "POST creates. PUT replaces the whole thing. PATCH changes some fields. DELETE removes.",
+      "he": "POST יוצר. PUT מחליף את הכל. PATCH משנה חלק מהשדות. DELETE מוחק."
+     },
+     "w": {
+      "en": "Picking the right verb is free documentation for every future reader, including the AI.",
+      "he": "בחירת הפועל הנכון היא תיעוד חינם לכל מי שיקרא בעתיד, כולל ה-AI."
+     }
+    },
+    {
+     "t": {
+      "en": "Headers",
+      "he": "כותרות (Headers)"
+     },
+     "d": {
+      "en": "Metadata sent alongside the request: who you are, what format you're sending, what you'll accept.",
+      "he": "מטא-דאטה שנשלח יחד עם הבקשה: מי אתה, באיזה פורמט אתה שולח, מה אתה מוכן לקבל."
+     },
+     "w": {
+      "en": "Most \"why is it 401\" bugs are a missing or misspelled Authorization header.",
+      "he": "רוב הבאגים של \"למה זה 401\" הם כותרת Authorization חסרה או עם שגיאת כתיב."
+     }
+    },
+    {
+     "t": {
+      "en": "Payload / Body",
+      "he": "גוף הבקשה (Payload)"
+     },
+     "d": {
+      "en": "The actual data you're sending — usually JSON. Headers describe it, the body is it.",
+      "he": "הנתונים עצמם שאתה שולח — בדרך כלל JSON. הכותרות מתארות אותו, הגוף הוא הוא."
+     },
+     "w": {
+      "en": "GET requests have no body. If you need to send data to read data, use query params.",
+      "he": "לבקשות GET אין גוף. אם צריך לשלוח נתונים כדי לקרוא נתונים, משתמשים בפרמטרים ב-URL."
+     }
+    },
+    {
+     "t": {
+      "en": "Status codes",
+      "he": "קודי סטטוס"
+     },
+     "d": {
+      "en": "2xx worked. 3xx moved. 4xx you messed up. 5xx the server messed up.",
+      "he": "2xx הצליח. 3xx עבר מקום. 4xx אתה טעית. 5xx השרת טעה."
+     },
+     "w": {
+      "en": "404 not found, 401 not logged in, 403 logged in but not allowed, 429 too many requests, 500 server crashed.",
+      "he": "404 לא נמצא, 401 לא מחובר, 403 מחובר אבל אסור, 429 יותר מדי בקשות, 500 השרת קרס."
+     }
+    },
+    {
+     "t": {
+      "en": "JSON",
+      "he": "JSON"
+     },
+     "d": {
+      "en": "A text format for structured data — objects, lists, strings, numbers. Readable by humans and machines.",
+      "he": "פורמט טקסט לנתונים מובנים — אובייקטים, רשימות, מחרוזות, מספרים. קריא לאדם ולמכונה."
+     },
+     "w": {
+      "en": "It's the default language of APIs. If you can read JSON, you can debug most integrations.",
+      "he": "זו שפת ברירת המחדל של APIs. מי שיודע לקרוא JSON יכול לדבג את רוב האינטגרציות."
+     }
+    },
+    {
+     "t": {
+      "en": "REST",
+      "he": "REST"
+     },
+     "d": {
+      "en": "A convention: resources have URLs, verbs act on them, each request stands alone.",
+      "he": "מוסכמה: לכל משאב יש כתובת, הפעלים פועלים עליו, וכל בקשה עומדת בפני עצמה."
+     },
+     "w": {
+      "en": "Not a law. A shared style so other devs can guess your endpoints correctly.",
+      "he": "לא חוק. סגנון משותף שמאפשר למפתחים אחרים לנחש נכון את הנתיבים שלך."
+     }
+    },
+    {
+     "t": {
+      "en": "Endpoint",
+      "he": "Endpoint"
+     },
+     "d": {
+      "en": "One specific URL + verb combination the server answers, e.g. POST /orders.",
+      "he": "שילוב ספציפי של כתובת ופועל שהשרת עונה עליו, למשל POST /orders."
+     },
+     "w": {
+      "en": "When someone says \"the endpoint is slow\", they mean one route, not the whole app.",
+      "he": "כשמישהו אומר \"ה-endpoint איטי\", הוא מתכוון לנתיב אחד, לא לכל האפליקציה."
+     }
+    }
+   ]
+  },
+  {
+   "id": "data",
+   "icon": "▤",
+   "title": {
+    "en": "Data & Databases",
+    "he": "נתונים ובסיסי נתונים"
+   },
+   "blurb": {
+    "en": "Where state lives and how you ask it questions.",
+    "he": "איפה המידע חי ואיך שואלים אותו שאלות."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Database",
+      "he": "בסיס נתונים"
+     },
+     "d": {
+      "en": "A program built for storing data safely and finding it fast, even under crashes and concurrent users.",
+      "he": "תוכנה שנבנתה לאחסן נתונים בבטחה ולמצוא אותם מהר, גם בקריסות וגם עם משתמשים מקבילים."
+     },
+     "w": {
+      "en": "A JSON file works until two users write at once. Then it silently loses data.",
+      "he": "קובץ JSON עובד עד שני משתמשים כותבים במקביל. אז הוא מאבד נתונים בשקט."
+     }
+    },
+    {
+     "t": {
+      "en": "SQL vs NoSQL",
+      "he": "SQL מול NoSQL"
+     },
+     "d": {
+      "en": "SQL: rows in tables with a fixed shape and real relationships. NoSQL: flexible documents, fewer guarantees.",
+      "he": "SQL: שורות בטבלאות עם מבנה קבוע ויחסים אמיתיים. NoSQL: מסמכים גמישים, פחות הבטחות."
+     },
+     "w": {
+      "en": "Default to SQL (Postgres). You'll want the constraints back the moment data gets messy.",
+      "he": "ברירת מחדל: SQL (Postgres). תרצה את האילוצים בחזרה ברגע שהנתונים יתבלגנו."
+     }
+    },
+    {
+     "t": {
+      "en": "Schema",
+      "he": "סכמה"
+     },
+     "d": {
+      "en": "The declared structure: which tables exist, which columns, which types, what may be empty.",
+      "he": "המבנה המוצהר: אילו טבלאות קיימות, אילו עמודות, אילו טיפוסים, ומה מותר שיהיה ריק."
+     },
+     "w": {
+      "en": "The schema is your data's contract. It rejects garbage before it becomes a support ticket.",
+      "he": "הסכמה היא החוזה של הנתונים. היא דוחה זבל לפני שהוא הופך לפנייה לתמיכה."
+     }
+    },
+    {
+     "t": {
+      "en": "Query",
+      "he": "שאילתה"
+     },
+     "d": {
+      "en": "A question you ask the database, usually in SQL: SELECT … FROM … WHERE …",
+      "he": "שאלה שאתה שואל את בסיס הנתונים, בדרך כלל ב-SQL: SELECT … FROM … WHERE …"
+     },
+     "w": {
+      "en": "One badly written query can take a whole site down. It's the most common outage cause.",
+      "he": "שאילתה אחת כתובה רע יכולה להפיל אתר שלם. זו סיבת התקלה הנפוצה ביותר."
+     }
+    },
+    {
+     "t": {
+      "en": "Index",
+      "he": "אינדקס"
+     },
+     "d": {
+      "en": "A pre-sorted lookup structure on a column, like a book's index. Turns a full scan into a jump.",
+      "he": "מבנה חיפוש ממוין מראש על עמודה, כמו אינדקס בסוף ספר. הופך סריקה מלאה לקפיצה ישירה."
+     },
+     "w": {
+      "en": "Fast on 100 rows, dead on 100,000 = missing index. The single highest-value fix you'll learn.",
+      "he": "מהיר ב-100 שורות, מת ב-100,000 = חסר אינדקס. התיקון הכי משתלם שתלמד."
+     }
+    },
+    {
+     "t": {
+      "en": "Migration",
+      "he": "מיגרציה"
+     },
+     "d": {
+      "en": "A versioned script that changes the schema — add a column, create a table — applied in order everywhere.",
+      "he": "סקריפט ממוספר שמשנה את הסכמה — מוסיף עמודה, יוצר טבלה — ומורץ באותו סדר בכל סביבה."
+     },
+     "w": {
+      "en": "Editing the production DB by hand is how environments drift apart and nobody can reproduce a bug.",
+      "he": "עריכה ידנית של מסד הנתונים בפרודקשן היא הדרך שבה סביבות מתפצלות ואף אחד לא מצליח לשחזר באג."
+     }
+    },
+    {
+     "t": {
+      "en": "Transaction",
+      "he": "טרנזקציה"
+     },
+     "d": {
+      "en": "A group of writes that all succeed or all get undone. Nothing in between is ever visible.",
+      "he": "קבוצת כתיבות שכולן מצליחות או כולן מתבטלות. מצב ביניים לעולם לא נראה."
+     },
+     "w": {
+      "en": "Money moving between accounts is the classic case: never debit without the matching credit.",
+      "he": "העברת כסף בין חשבונות היא המקרה הקלאסי: אף פעם לא לחייב בלי הזיכוי המקביל."
+     }
+    },
+    {
+     "t": {
+      "en": "ORM",
+      "he": "ORM"
+     },
+     "d": {
+      "en": "A library that maps database rows to objects in your language so you write less raw SQL.",
+      "he": "ספרייה שממפה שורות במסד נתונים לאובייקטים בשפה שלך, כדי לכתוב פחות SQL גולמי."
+     },
+     "w": {
+      "en": "Convenient until it quietly fires 1,000 queries in a loop. Learn to look at the SQL it generates.",
+      "he": "נוח עד שהוא יורה בשקט 1,000 שאילתות בלולאה. תלמד להסתכל על ה-SQL שהוא מייצר."
+     }
+    }
+   ]
+  },
+  {
+   "id": "langs",
+   "icon": "{ }",
+   "title": {
+    "en": "Languages & Their Trade-offs",
+    "he": "שפות והתמורות שלהן"
+   },
+   "blurb": {
+    "en": "Why there are so many and how they differ.",
+    "he": "למה יש כל כך הרבה ובמה הן שונות."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Typed vs untyped",
+      "he": "טיפוסית מול לא-טיפוסית"
+     },
+     "d": {
+      "en": "Typed languages check that a number isn't used as text before running. Untyped find out at runtime.",
+      "he": "שפות טיפוסיות בודקות שמספר לא משמש כטקסט לפני ההרצה. לא-טיפוסיות מגלות בזמן ריצה."
+     },
+     "w": {
+      "en": "TypeScript over JavaScript catches a whole class of AI-generated mistakes before a user does.",
+      "he": "TypeScript במקום JavaScript תופס משפחה שלמה של טעויות שה-AI ייצר — לפני שמשתמש יתפוס אותן."
+     }
+    },
+    {
+     "t": {
+      "en": "Compiled vs interpreted",
+      "he": "מהודרת מול מפורשת"
+     },
+     "d": {
+      "en": "Compiled (Go, Rust, C#) builds a binary first — fast to run. Interpreted (Python, JS) runs source directly — fast to change.",
+      "he": "מהודרת (Go, Rust, C#) בונה קובץ הרצה — מהיר להרצה. מפורשת (Python, JS) מריצה קוד ישירות — מהיר לשינוי."
+     },
+     "w": {
+      "en": "It's a speed-of-machine vs speed-of-you trade. Both are valid; neither is \"better\".",
+      "he": "זה מאזן בין מהירות המכונה למהירות שלך. שתיהן לגיטימיות; אף אחת לא \"טובה יותר\"."
+     }
+    },
+    {
+     "t": {
+      "en": "JavaScript / TypeScript",
+      "he": "JavaScript / TypeScript"
+     },
+     "d": {
+      "en": "The only language browsers run. TypeScript is JavaScript plus type checking, erased before it ships.",
+      "he": "השפה היחידה שדפדפנים מריצים. TypeScript היא JavaScript בתוספת בדיקת טיפוסים, שנמחקת לפני העלייה לאוויר."
+     },
+     "w": {
+      "en": "One language front to back via Node.js. That's why most AI-built apps land here.",
+      "he": "שפה אחת מהפרונט ועד הבק דרך Node.js. בגלל זה רוב האפליקציות שנבנות עם AI נוחתות כאן."
+     }
+    },
+    {
+     "t": {
+      "en": "Python",
+      "he": "Python"
+     },
+     "d": {
+      "en": "Readable, huge library ecosystem, dominant in data, scripting and ML. Slower at raw number crunching.",
+      "he": "קריאה, אקוסיסטם ספריות ענק, שולטת בדאטה, סקריפטים ולמידת מכונה. איטית בחישובים גולמיים."
+     },
+     "w": {
+      "en": "If your task is \"process this file / call this model\", Python is usually the shortest path.",
+      "he": "אם המשימה היא \"לעבד את הקובץ הזה / לקרוא למודל הזה\", Python בדרך כלל הדרך הקצרה."
+     }
+    },
+    {
+     "t": {
+      "en": "Go / Rust / Java / C#",
+      "he": "Go / Rust / Java / C#"
+     },
+     "d": {
+      "en": "Go: simple and fast services. Rust: maximum speed and memory safety, steep curve. Java/C#: big, mature enterprise systems.",
+      "he": "Go: שירותים פשוטים ומהירים. Rust: מהירות מקסימלית ובטיחות זיכרון, עקומת למידה תלולה. Java/C#: מערכות ארגוניות גדולות ובשלות."
+     },
+     "w": {
+      "en": "Recognising them in a job post or a repo tells you what kind of team you're looking at.",
+      "he": "זיהוי שלהן במשרה או ברפו מספר לך באיזה סוג צוות מדובר."
+     }
+    },
+    {
+     "t": {
+      "en": "Package manager",
+      "he": "מנהל חבילות"
+     },
+     "d": {
+      "en": "The tool that downloads and pins other people's code: npm, pip, cargo, go mod.",
+      "he": "הכלי שמוריד ומקבע קוד של אחרים: npm, pip, cargo, go mod."
+     },
+     "w": {
+      "en": "The lock file is the thing that makes your build reproducible. Commit it. Always.",
+      "he": "קובץ ה-lock הוא מה שהופך את הבילד לניתן לשחזור. תמיד לקמט אותו ל-Git."
+     }
+    },
+    {
+     "t": {
+      "en": "Dependency",
+      "he": "תלות (Dependency)"
+     },
+     "d": {
+      "en": "External code your project needs to run. Each one is code you didn't write but now own.",
+      "he": "קוד חיצוני שהפרויקט צריך כדי לרוץ. כל אחת כזו היא קוד שלא כתבת אבל הוא באחריותך."
+     },
+     "w": {
+      "en": "Every added dependency is a future security update and a possible breakage. Fewer is cheaper.",
+      "he": "כל תלות נוספת היא עדכון אבטחה עתידי ושבירה אפשרית. פחות = זול יותר."
+     }
+    },
+    {
+     "t": {
+      "en": "Framework vs library",
+      "he": "פריימוורק מול ספרייה"
+     },
+     "d": {
+      "en": "You call a library. A framework calls you — it owns the structure and you fill in the blanks.",
+      "he": "אתה קורא לספרייה. פריימוורק קורא לך — הוא מחזיק את המבנה ואתה ממלא את החללים."
+     },
+     "w": {
+      "en": "Frameworks give speed on day one and constraints on day one hundred. Know which you're buying.",
+      "he": "פריימוורקים נותנים מהירות ביום הראשון ומגבלות ביום המאה. תדע מה אתה קונה."
+     }
+    }
+   ]
+  },
+  {
+   "id": "memory",
+   "icon": "▦",
+   "title": {
+    "en": "Memory & Speed",
+    "he": "זיכרון ומהירות"
+   },
+   "blurb": {
+    "en": "Why things are fast, slow, or suddenly dead.",
+    "he": "למה דברים מהירים, איטיים, או מתים פתאום."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "RAM vs disk",
+      "he": "RAM מול דיסק"
+     },
+     "d": {
+      "en": "RAM is fast and forgets everything on restart. Disk is ~1000× slower and remembers.",
+      "he": "RAM מהיר ושוכח הכל בהפעלה מחדש. דיסק איטי פי ~1000 וזוכר."
+     },
+     "w": {
+      "en": "Anything you hold \"in a variable\" vanishes on deploy. State that matters goes to a DB.",
+      "he": "כל מה שאתה מחזיק \"במשתנה\" נעלם בכל העלאת גרסה. מידע שחשוב הולך לבסיס נתונים."
+     }
+    },
+    {
+     "t": {
+      "en": "Stack & heap",
+      "he": "מחסנית וערימה"
+     },
+     "d": {
+      "en": "Stack: small, ordered, automatic — local variables and the call chain. Heap: large, flexible, manually managed area for objects.",
+      "he": "מחסנית: קטנה, מסודרת, אוטומטית — משתנים מקומיים ושרשרת הקריאות. ערימה: גדולה, גמישה, אזור מנוהל לאובייקטים."
+     },
+     "w": {
+      "en": "\"Stack overflow\" = a function called itself forever. \"Out of memory\" = the heap filled up.",
+      "he": "\"Stack overflow\" = פונקציה קראה לעצמה לנצח. \"Out of memory\" = הערימה התמלאה."
+     }
+    },
+    {
+     "t": {
+      "en": "Garbage collection",
+      "he": "איסוף זבל (GC)"
+     },
+     "d": {
+      "en": "The runtime automatically frees memory nothing refers to anymore. Free, but it pauses your program briefly.",
+      "he": "סביבת הריצה משחררת אוטומטית זיכרון שאף אחד כבר לא מצביע אליו. חינם, אבל עוצר את התוכנית לרגע."
+     },
+     "w": {
+      "en": "Explains random latency spikes in an otherwise idle service.",
+      "he": "מסביר קפיצות זמן תגובה אקראיות בשירות שאחרת נראה רגוע."
+     }
+    },
+    {
+     "t": {
+      "en": "Memory leak",
+      "he": "דליפת זיכרון"
+     },
+     "d": {
+      "en": "You keep references to things you no longer need, so GC can't free them. Usage only grows.",
+      "he": "שומרים הפניות לדברים שכבר לא צריך, אז ה-GC לא יכול לשחרר אותם. השימוש רק עולה."
+     },
+     "w": {
+      "en": "The classic symptom: fine for 6 hours, then crashes every night at the same time.",
+      "he": "הסימפטום הקלאסי: תקין 6 שעות, ואז קורס כל לילה באותה שעה."
+     }
+    },
+    {
+     "t": {
+      "en": "Latency vs throughput",
+      "he": "זמן תגובה מול תפוקה"
+     },
+     "d": {
+      "en": "Latency: how long one request takes. Throughput: how many you handle per second.",
+      "he": "זמן תגובה: כמה זמן לוקחת בקשה אחת. תפוקה: כמה בקשות מטפלים בשנייה."
+     },
+     "w": {
+      "en": "They trade off. Batching raises throughput and hurts latency. Pick which one your users feel.",
+      "he": "יש ביניהם מתח. אצוות מעלות תפוקה ופוגעות בזמן תגובה. תבחר מה המשתמשים שלך מרגישים."
+     }
+    },
+    {
+     "t": {
+      "en": "Big-O",
+      "he": "Big-O"
+     },
+     "d": {
+      "en": "Shorthand for how work grows with input size. O(1) constant, O(n) linear, O(n²) quadratic.",
+      "he": "קיצור לתיאור איך העבודה גדלה עם גודל הקלט. O(1) קבוע, O(n) לינארי, O(n²) ריבועי."
+     },
+     "w": {
+      "en": "A loop inside a loop over the same list is O(n²) — invisible in testing, fatal in production.",
+      "he": "לולאה בתוך לולאה על אותה רשימה היא O(n²) — בלתי נראית בבדיקות, קטלנית בפרודקשן."
+     }
+    },
+    {
+     "t": {
+      "en": "Blocking vs async",
+      "he": "חוסם מול אסינכרוני"
+     },
+     "d": {
+      "en": "Blocking waits and holds the thread. Async starts the work and handles the result later, serving others meanwhile.",
+      "he": "חוסם ממתין ותופס את הת'רד. אסינכרוני מתחיל את העבודה ומטפל בתוצאה אחר כך, ובינתיים משרת אחרים."
+     },
+     "w": {
+      "en": "One blocking call in a Node server freezes every user, not just the one waiting.",
+      "he": "קריאה חוסמת אחת בשרת Node מקפיאה את כל המשתמשים, לא רק את זה שממתין."
+     }
+    },
+    {
+     "t": {
+      "en": "Race condition",
+      "he": "מצב מירוץ"
+     },
+     "d": {
+      "en": "Two operations touch the same data at the same time and the result depends on who won.",
+      "he": "שתי פעולות נוגעות באותם נתונים בו-זמנית והתוצאה תלויה במי שהקדים."
+     },
+     "w": {
+      "en": "Reproduces once a week, never on your laptop. Fix with a transaction or a lock, not with a retry.",
+      "he": "משחזר פעם בשבוע, אף פעם לא אצלך. פותרים עם טרנזקציה או נעילה, לא עם ניסיון חוזר."
+     }
+    }
+   ]
+  },
+  {
+   "id": "cache",
+   "icon": "⚡",
+   "title": {
+    "en": "Cache",
+    "he": "מטמון (Cache)"
+   },
+   "blurb": {
+    "en": "The cheapest speed-up and the sneakiest bug source.",
+    "he": "שיפור המהירות הזול ביותר ומקור הבאגים הערמומי ביותר."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Cache",
+      "he": "מטמון (Cache)"
+     },
+     "d": {
+      "en": "A copy of an expensive result kept somewhere fast, so the next request skips the work.",
+      "he": "עותק של תוצאה יקרה שנשמר במקום מהיר, כדי שהבקשה הבאה תדלג על העבודה."
+     },
+     "w": {
+      "en": "Fastest performance win that exists. Also the reason your change \"didn't do anything\".",
+      "he": "שיפור הביצועים המהיר ביותר שקיים. וגם הסיבה שהשינוי שלך \"לא עשה כלום\"."
+     }
+    },
+    {
+     "t": {
+      "en": "Hit / Miss",
+      "he": "פגיעה / החטאה"
+     },
+     "d": {
+      "en": "A hit means the copy was there. A miss means you paid the full cost and stored the result.",
+      "he": "פגיעה = העותק היה שם. החטאה = שילמת את המחיר המלא ושמרת את התוצאה."
+     },
+     "w": {
+      "en": "Hit rate is the number to watch. A 20% hit rate cache is mostly overhead.",
+      "he": "אחוז הפגיעות הוא המספר שחשוב. מטמון עם 20% פגיעות הוא בעיקר תקורה."
+     }
+    },
+    {
+     "t": {
+      "en": "TTL",
+      "he": "TTL"
+     },
+     "d": {
+      "en": "Time To Live — how long a cached copy is allowed to be trusted before it's dropped.",
+      "he": "Time To Live — כמה זמן מותר לסמוך על העותק השמור לפני שהוא נזרק."
+     },
+     "w": {
+      "en": "Short TTL = fresher and slower. Long TTL = faster and staler. That's the whole dial.",
+      "he": "TTL קצר = טרי ואיטי. TTL ארוך = מהיר ומיושן. זה כל הכפתור."
+     }
+    },
+    {
+     "t": {
+      "en": "Invalidation",
+      "he": "ביטול תוקף (Invalidation)"
+     },
+     "d": {
+      "en": "Deliberately throwing away a cached copy because the underlying data changed.",
+      "he": "זריקה מכוונת של עותק שמור כי הנתונים שמאחוריו השתנו."
+     },
+     "w": {
+      "en": "Famously one of the two hard problems in computing. Prefer a short TTL over clever invalidation.",
+      "he": "אחת משתי הבעיות הקשות במדעי המחשב. עדיף TTL קצר על פני ביטול תוקף חכם."
+     }
+    },
+    {
+     "t": {
+      "en": "Browser cache",
+      "he": "מטמון הדפדפן"
+     },
+     "d": {
+      "en": "The browser keeps files it already downloaded — JS, CSS, images — and reuses them.",
+      "he": "הדפדפן שומר קבצים שכבר הוריד — JS, CSS, תמונות — ומשתמש בהם מחדש."
+     },
+     "w": {
+      "en": "Before debugging for an hour: hard refresh. Ctrl+Shift+R. It's that, more often than you'd like.",
+      "he": "לפני שעה של דיבוג: רענון קשיח. Ctrl+Shift+R. זה זה, יותר פעמים ממה שהיית רוצה."
+     }
+    },
+    {
+     "t": {
+      "en": "CDN",
+      "he": "CDN"
+     },
+     "d": {
+      "en": "Servers spread worldwide that hold copies of your static files close to each user.",
+      "he": "שרתים פרוסים בעולם שמחזיקים עותקים של הקבצים הסטטיים שלך קרוב לכל משתמש."
+     },
+     "w": {
+      "en": "Turns a 300ms transatlantic load into 20ms, and absorbs traffic spikes for free.",
+      "he": "הופך טעינה של 300ms מעבר לאוקיינוס ל-20ms, וסופג קפיצות תעבורה בחינם."
+     }
+    },
+    {
+     "t": {
+      "en": "Redis / in-memory store",
+      "he": "Redis / אחסון בזיכרון"
+     },
+     "d": {
+      "en": "A separate, very fast key-value database kept in RAM. Shared by all your servers.",
+      "he": "בסיס נתונים נפרד מסוג מפתח-ערך, מהיר מאוד, שיושב ב-RAM. משותף לכל השרתים."
+     },
+     "w": {
+      "en": "Caching in a local variable breaks the moment you run two servers. Redis is the shared version.",
+      "he": "מטמון במשתנה מקומי נשבר ברגע שרצים שני שרתים. Redis הוא הגרסה המשותפת."
+     }
+    }
+   ]
+  },
+  {
+   "id": "auth",
+   "icon": "🔒",
+   "title": {
+    "en": "Auth & Security",
+    "he": "הזדהות ואבטחה"
+   },
+   "blurb": {
+    "en": "Who are you, and what are you allowed to do.",
+    "he": "מי אתה, ומה מותר לך לעשות."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Authentication vs Authorization",
+      "he": "אימות מול הרשאה"
+     },
+     "d": {
+      "en": "Authentication proves who you are. Authorization decides what that identity may do.",
+      "he": "אימות מוכיח מי אתה. הרשאה קובעת מה מותר לזהות הזאת לעשות."
+     },
+     "w": {
+      "en": "401 = we don't know you. 403 = we know you and the answer is still no.",
+      "he": "401 = לא מכירים אותך. 403 = מכירים אותך והתשובה עדיין לא."
+     }
+    },
+    {
+     "t": {
+      "en": "Session & cookie",
+      "he": "סשן ועוגייה"
+     },
+     "d": {
+      "en": "The server remembers a logged-in session and hands the browser a cookie that points to it.",
+      "he": "השרת זוכר סשן מחובר ונותן לדפדפן עוגייה שמצביעה אליו."
+     },
+     "w": {
+      "en": "Cookies are sent automatically on every request — convenient, and exactly why CSRF exists.",
+      "he": "עוגיות נשלחות אוטומטית בכל בקשה — נוח, ובדיוק בגלל זה קיים CSRF."
+     }
+    },
+    {
+     "t": {
+      "en": "Token / JWT",
+      "he": "טוקן / JWT"
+     },
+     "d": {
+      "en": "A signed string carrying your identity. The server verifies the signature instead of looking anything up.",
+      "he": "מחרוזת חתומה שנושאת את הזהות שלך. השרת מאמת את החתימה במקום לחפש במסד נתונים."
+     },
+     "w": {
+      "en": "A JWT is signed, not encrypted — anyone can read its contents. Never put secrets inside one.",
+      "he": "JWT חתום, לא מוצפן — כל אחד יכול לקרוא את התוכן. אף פעם לא לשים בו סודות."
+     }
+    },
+    {
+     "t": {
+      "en": "OAuth",
+      "he": "OAuth"
+     },
+     "d": {
+      "en": "The \"Sign in with Google\" flow: another service vouches for the user without sharing their password.",
+      "he": "התהליך של \"התחבר עם גוגל\": שירות אחר מאשר את המשתמש בלי לחשוף את הסיסמה שלו."
+     },
+     "w": {
+      "en": "You never store their password, so you can never leak it. Outsource this if you can.",
+      "he": "אתה אף פעם לא שומר את הסיסמה, אז אתה לא יכול לדלוף אותה. כדאי להוציא את זה החוצה."
+     }
+    },
+    {
+     "t": {
+      "en": "Hashing vs encryption",
+      "he": "גיבוב מול הצפנה"
+     },
+     "d": {
+      "en": "Hashing is one-way and can't be reversed. Encryption is two-way with a key.",
+      "he": "גיבוב הוא חד-כיווני ולא ניתן להיפוך. הצפנה היא דו-כיוונית עם מפתח."
+     },
+     "w": {
+      "en": "Passwords get hashed (bcrypt/argon2), never encrypted. If a site can email you your password, run.",
+      "he": "סיסמאות מגובבות (bcrypt/argon2), אף פעם לא מוצפנות. אם אתר יכול לשלוח לך את הסיסמה במייל — תברח."
+     }
+    },
+    {
+     "t": {
+      "en": "HTTPS / TLS",
+      "he": "HTTPS / TLS"
+     },
+     "d": {
+      "en": "Encrypted transport, so nobody between you and the server can read or change the traffic.",
+      "he": "תעבורה מוצפנת, כך שאף אחד בדרך לא יכול לקרוא או לשנות את התוכן."
+     },
+     "w": {
+      "en": "Free via Let's Encrypt. Anything over plain HTTP is readable on café wifi.",
+      "he": "חינם דרך Let's Encrypt. כל מה שעובר ב-HTTP רגיל ניתן לקריאה בוויפי של בית קפה."
+     }
+    },
+    {
+     "t": {
+      "en": "Environment variables / secrets",
+      "he": "משתני סביבה / סודות"
+     },
+     "d": {
+      "en": "Config and keys injected at runtime instead of written in the code.",
+      "he": "קונפיגורציה ומפתחות שמוזרקים בזמן ריצה במקום להיכתב בקוד."
+     },
+     "w": {
+      "en": "An API key committed to Git is compromised forever, even after you delete the line. Rotate it.",
+      "he": "מפתח API שנשמר ב-Git נחשף לתמיד, גם אחרי מחיקת השורה. צריך להחליף אותו."
+     }
+    },
+    {
+     "t": {
+      "en": "CORS",
+      "he": "CORS"
+     },
+     "d": {
+      "en": "A browser rule: a page on one domain can't read responses from another domain unless that server allows it.",
+      "he": "חוק של הדפדפן: דף בדומיין אחד לא יכול לקרוא תגובות מדומיין אחר אלא אם השרת ההוא מרשה."
+     },
+     "w": {
+      "en": "A CORS error is the browser blocking you, not the server failing. Fix it on the server's headers.",
+      "he": "שגיאת CORS היא הדפדפן שחוסם אותך, לא כשל בשרת. מתקנים בכותרות של השרת."
+     }
+    },
+    {
+     "t": {
+      "en": "Injection & validation",
+      "he": "הזרקה ואימות קלט"
+     },
+     "d": {
+      "en": "Never mix user input into a query or command string. Use parameters and validate on the server.",
+      "he": "אף פעם לא לשרשר קלט משתמש לתוך שאילתה או פקודה. להשתמש בפרמטרים ולאמת בשרת."
+     },
+     "w": {
+      "en": "Client-side validation is UX. Server-side validation is security. You need both, and only one is optional.",
+      "he": "אימות בצד הלקוח הוא חוויית משתמש. אימות בשרת הוא אבטחה. צריך את שניהם, ורק אחד מהם אופציונלי."
+     }
+    }
+   ]
+  },
+  {
+   "id": "cloud",
+   "icon": "☁",
+   "title": {
+    "en": "Cloud & Shipping",
+    "he": "ענן והעלאה לאוויר"
+   },
+   "blurb": {
+    "en": "Getting your code onto someone else's computer.",
+    "he": "איך הקוד שלך מגיע למחשב של מישהו אחר."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "The cloud",
+      "he": "הענן"
+     },
+     "d": {
+      "en": "Renting computers, storage and networking by the minute instead of buying servers.",
+      "he": "השכרת מחשבים, אחסון ורשת לפי דקות במקום לקנות שרתים."
+     },
+     "w": {
+      "en": "You pay for what's running. Forgotten resources are the #1 surprise bill.",
+      "he": "משלמים על מה שרץ. משאבים ששכחת הם הסיבה מספר 1 לחשבון מפתיע."
+     }
+    },
+    {
+     "t": {
+      "en": "AWS / Azure / GCP",
+      "he": "AWS / Azure / GCP"
+     },
+     "d": {
+      "en": "The three big cloud providers. Same primitives, different names and pricing.",
+      "he": "שלושת ספקי הענן הגדולים. אותם רכיבי בסיס, שמות ותמחור שונים."
+     },
+     "w": {
+      "en": "For a small app, a simpler host (Vercel, Railway, Fly) does in one command what AWS does in thirty.",
+      "he": "לאפליקציה קטנה, פלטפורמה פשוטה (Vercel, Railway, Fly) עושה בפקודה אחת מה ש-AWS עושה בשלושים."
+     }
+    },
+    {
+     "t": {
+      "en": "S3 / object storage",
+      "he": "S3 / אחסון אובייקטים"
+     },
+     "d": {
+      "en": "A bucket for files — images, uploads, backups — reachable by URL. Not a database, not a disk.",
+      "he": "דלי לקבצים — תמונות, העלאות, גיבויים — נגיש דרך כתובת. לא בסיס נתונים ולא דיסק."
+     },
+     "w": {
+      "en": "Never store uploads on the server's disk. It disappears on the next deploy or scale-up.",
+      "he": "אף פעם לא לשמור העלאות על הדיסק של השרת. זה נעלם בפריסה הבאה או בהרחבה."
+     }
+    },
+    {
+     "t": {
+      "en": "EC2 / VM vs Lambda / serverless",
+      "he": "EC2 / מכונה וירטואלית מול Lambda / סרברלס"
+     },
+     "d": {
+      "en": "A VM is a rented computer running all the time. Serverless runs your function per request and sleeps otherwise.",
+      "he": "מכונה וירטואלית היא מחשב מושכר שרץ כל הזמן. סרברלס מריץ את הפונקציה לכל בקשה וישן בשאר הזמן."
+     },
+     "w": {
+      "en": "Serverless is cheap when idle and has cold starts. A VM is predictable and always billing.",
+      "he": "סרברלס זול כשאין עומס וסובל מ-cold start. מכונה וירטואלית צפויה ומחויבת תמיד."
+     }
+    },
+    {
+     "t": {
+      "en": "Container / Docker",
+      "he": "קונטיינר / Docker"
+     },
+     "d": {
+      "en": "Your app packaged with its exact dependencies and OS libraries, so it runs identically anywhere.",
+      "he": "האפליקציה שלך ארוזה עם התלויות וספריות מערכת ההפעלה המדויקות, כך שהיא רצה זהה בכל מקום."
+     },
+     "w": {
+      "en": "This is the literal cure for \"works on my machine\".",
+      "he": "זו התרופה המילולית ל\"אצלי זה עובד\"."
+     }
+    },
+    {
+     "t": {
+      "en": "Deploy",
+      "he": "פריסה (Deploy)"
+     },
+     "d": {
+      "en": "Taking the new version and making it the one users hit.",
+      "he": "לקחת את הגרסה החדשה ולהפוך אותה לזו שהמשתמשים מגיעים אליה."
+     },
+     "w": {
+      "en": "Small frequent deploys are safer than big rare ones. Less changed = less to bisect when it breaks.",
+      "he": "פריסות קטנות ותכופות בטוחות יותר מגדולות ונדירות. פחות שינויים = פחות לחפש כשמשהו נשבר."
+     }
+    },
+    {
+     "t": {
+      "en": "CI/CD",
+      "he": "CI/CD"
+     },
+     "d": {
+      "en": "Automation that runs on every push: install, test, build, and if green — deploy.",
+      "he": "אוטומציה שרצה בכל דחיפה: התקנה, בדיקות, בנייה, ואם הכל ירוק — פריסה."
+     },
+     "w": {
+      "en": "It's the guardrail that stops a confident AI commit from reaching production untested.",
+      "he": "זה המעקה שמונע מקומיט בטוח בעצמו של AI להגיע לפרודקשן בלי בדיקות."
+     }
+    },
+    {
+     "t": {
+      "en": "Logs & monitoring",
+      "he": "לוגים וניטור"
+     },
+     "d": {
+      "en": "Logs are what happened. Metrics are how much and how fast. Alerts tell you before users do.",
+      "he": "לוגים הם מה קרה. מטריקות הן כמה ובאיזו מהירות. התראות מספרות לך לפני שהמשתמשים מספרים."
+     },
+     "w": {
+      "en": "Without logs, a production bug is unfixable. Log the inputs to anything you can't reproduce locally.",
+      "he": "בלי לוגים, באג בפרודקשן אינו ניתן לתיקון. תרשום את הקלט לכל מה שאי אפשר לשחזר מקומית."
+     }
+    }
+   ]
+  },
+  {
+   "id": "scale",
+   "icon": "⌗",
+   "title": {
+    "en": "Scale & Architecture",
+    "he": "סקייל וארכיטקטורה"
+   },
+   "blurb": {
+    "en": "What changes when there's more than one of everything.",
+    "he": "מה משתנה כשיש יותר מאחד מכל דבר."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Scaling up vs out",
+      "he": "סקייל אנכי מול אופקי"
+     },
+     "d": {
+      "en": "Up (vertical): a bigger machine. Out (horizontal): more machines side by side.",
+      "he": "אנכי: מכונה גדולה יותר. אופקי: עוד מכונות זו לצד זו."
+     },
+     "w": {
+      "en": "Up is a one-click fix with a ceiling. Out is unlimited but forces you to be stateless.",
+      "he": "אנכי הוא תיקון בלחיצה עם תקרה. אופקי הוא בלתי מוגבל אבל מחייב אותך להיות חסר מצב."
+     }
+    },
+    {
+     "t": {
+      "en": "Load balancer",
+      "he": "מאזן עומסים"
+     },
+     "d": {
+      "en": "The traffic cop in front of your servers, spreading requests and skipping unhealthy ones.",
+      "he": "השוטר שעומד לפני השרתים, מפזר בקשות ומדלג על שרתים לא תקינים."
+     },
+     "w": {
+      "en": "Same user, different server each request. Anything stored in one server's memory is now a bug.",
+      "he": "אותו משתמש, שרת אחר בכל בקשה. כל מה ששמור בזיכרון של שרת אחד הוא עכשיו באג."
+     }
+    },
+    {
+     "t": {
+      "en": "Stateless",
+      "he": "חסר מצב (Stateless)"
+     },
+     "d": {
+      "en": "Each request carries everything needed to serve it; the server remembers nothing between calls.",
+      "he": "כל בקשה נושאת את כל מה שצריך כדי לשרת אותה; השרת לא זוכר כלום בין קריאות."
+     },
+     "w": {
+      "en": "The one property that makes horizontal scaling possible. Push state to the DB or Redis.",
+      "he": "התכונה היחידה שמאפשרת סקייל אופקי. דוחפים את המצב לבסיס הנתונים או ל-Redis."
+     }
+    },
+    {
+     "t": {
+      "en": "Queue / worker",
+      "he": "תור / עובד"
+     },
+     "d": {
+      "en": "Instead of doing slow work in the request, you drop a job on a queue and a worker handles it later.",
+      "he": "במקום לעשות עבודה איטית בתוך הבקשה, מניחים משימה בתור ועובד מטפל בה אחר כך."
+     },
+     "w": {
+      "en": "Emails, video processing, report generation. The user gets an instant response and the work still happens.",
+      "he": "מיילים, עיבוד וידאו, הפקת דוחות. המשתמש מקבל תגובה מיידית והעבודה עדיין קורית."
+     }
+    },
+    {
+     "t": {
+      "en": "Idempotency",
+      "he": "אידמפוטנטיות"
+     },
+     "d": {
+      "en": "Running the same operation twice has the same effect as running it once.",
+      "he": "הרצה של אותה פעולה פעמיים נותנת את אותה תוצאה כמו הרצה אחת."
+     },
+     "w": {
+      "en": "Networks retry. Without idempotency, a retry charges the customer twice.",
+      "he": "רשתות מנסות שוב. בלי אידמפוטנטיות, ניסיון חוזר מחייב את הלקוח פעמיים."
+     }
+    },
+    {
+     "t": {
+      "en": "Monolith vs microservices",
+      "he": "מונוליט מול מיקרו-שירותים"
+     },
+     "d": {
+      "en": "One deployable app vs many small services talking over the network.",
+      "he": "אפליקציה אחת לפריסה מול הרבה שירותים קטנים שמדברים דרך הרשת."
+     },
+     "w": {
+      "en": "Microservices trade code complexity for network complexity. Start as a monolith. Almost always.",
+      "he": "מיקרו-שירותים ממירים מורכבות קוד במורכבות רשת. תתחיל כמונוליט. כמעט תמיד."
+     }
+    },
+    {
+     "t": {
+      "en": "Rate limiting",
+      "he": "הגבלת קצב"
+     },
+     "d": {
+      "en": "Capping how many requests a client may make in a window. Excess gets a 429.",
+      "he": "הגבלת מספר הבקשות שלקוח יכול לשלוח בחלון זמן. העודף מקבל 429."
+     },
+     "w": {
+      "en": "Protects you from a runaway script — including your own — and from a surprise bill.",
+      "he": "מגן עליך מסקריפט משתולל — כולל שלך — ומחשבון מפתיע."
+     }
+    },
+    {
+     "t": {
+      "en": "Single point of failure",
+      "he": "נקודת כשל יחידה"
+     },
+     "d": {
+      "en": "Any one component whose death takes the whole system down.",
+      "he": "כל רכיב יחיד שהמוות שלו מפיל את כל המערכת."
+     },
+     "w": {
+      "en": "Usually the database. Usually nobody notices until the first real outage.",
+      "he": "בדרך כלל בסיס הנתונים. בדרך כלל אף אחד לא שם לב עד התקלה האמיתית הראשונה."
+     }
+    },
+    {
+     "t": {
+      "en": "Technical debt",
+      "he": "חוב טכני"
+     },
+     "d": {
+      "en": "Shortcuts taken now that make every future change slower. Not always bad — but it accrues interest.",
+      "he": "קיצורי דרך שנלקחים עכשיו וגורמים לכל שינוי עתידי להיות איטי יותר. לא תמיד רע — אבל צובר ריבית."
+     },
+     "w": {
+      "en": "AI makes taking on debt effortless. Deleting code is still the only way to pay it back.",
+      "he": "AI הופך צבירת חוב לקלה. מחיקת קוד היא עדיין הדרך היחידה להחזיר אותו."
+     }
+    }
+   ]
+  }
+ ]
+}

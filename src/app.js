@@ -1,22 +1,3 @@
-/* ---- merge the added content into MODULES ---- */
-(function () {
-  const byId = id => MODULES.find(m => m.id === id);
-  EXTRA_TERMS.forEach(([modId, term, detail]) => {
-    const m = byId(modId); if (!m) return;
-    m.terms.push(term);
-    DETAIL[term.t.en] = detail;
-  });
-  DEVTOOLS_TERMS.forEach(([term, detail, example]) => {
-    byId("sides").terms.push(term);
-    DETAIL[term.t.en] = detail;
-    EXAMPLES[term.t.en] = example;
-  });
-  MODULES.splice(5, 0, TESTING_MODULE);          // after Languages
-  MODULES.push(AI_MODULE);
-  Object.assign(DETAIL, TESTING_DETAIL, AI_DETAIL);
-  QUIZ.testing = TESTING_QUIZ;
-})();
-
 /* ---- state ---- */
 const KEY = "vibe2code.v2";
 const LS = { get: k => { try { return localStorage.getItem(k) } catch { return null } },
@@ -27,6 +8,7 @@ let done   = new Set(JSON.parse(LS.get(KEY + ".done")  || "[]"));
 let ticked = new Set(JSON.parse(LS.get(KEY + ".check") || "[]"));
 let filter = "";
 let answers = {};                                 // quiz answers for the open module
+let card = 0, flipped = false;                    // flashcard review state
 
 const $    = s => document.querySelector(s);
 const tid  = (m, i) => m.id + ":" + i;
@@ -35,6 +17,7 @@ const t    = k => UI[k][lang];
 const total = () => MODULES.reduce((n, m) => n + m.terms.length, 0);
 const mins  = m => Math.max(3, Math.round(m.terms.length * 1.6));
 const para  = s => s.split("\n\n").map(p => `<p>${esc(p)}</p>`).join("");
+const byId  = id => MODULES.find(m => m.id === id);
 
 function save() {
   LS.set(KEY + ".done", JSON.stringify([...done]));
@@ -50,11 +33,14 @@ window.vibeState = {
   write: s => { done = new Set(s.done || []); ticked = new Set(s.ticked || []); save(); render(); }
 };
 
-/* ---- routing: #/  #/<mod>  #/<mod>/<termIndex>  #/project  #/checklist ---- */
+/* ---- routing: #/  #/<mod>  #/<mod>/<termIndex>  #/project  #/checklist
+                 #/glossary  #/review  #/architectures  #/architectures/<id> ---- */
 const route = () => {
   const p = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return { id: p[0] || "", n: p[1] !== undefined ? parseInt(p[1], 10) : null };
+  return { id: p[0] || "", sub: p[1], n: p[1] !== undefined ? parseInt(p[1], 10) : null };
 };
+
+const PAGES = { project: PROJECT, checklist: CHECKLIST, architectures: ARCHITECTURES };
 
 /* ---- pieces ---- */
 const termCard = (m, i, tm) => `
@@ -74,6 +60,13 @@ const modHead = (m, mi) => {
   </div>
   <p class="mblurb">${esc(m.blurb[lang])}</p>`;
 };
+
+const promptBox = (id, text, label) => `
+  <div class="promptbox">
+    <div class="lbl">${esc(label)}</div>
+    <button class="btn copy" data-copy="${id}">${esc(t("copy"))}</button>
+    <pre class="code" id="p${id}">${esc(text)}</pre>
+  </div>`;
 
 function quizHtml(modId) {
   const qs = QUIZ[modId]; if (!qs) return "";
@@ -109,10 +102,28 @@ function quizHtml(modId) {
 /* ---- pages ---- */
 function homePage() {
   const extra = [
-    { m: PROJECT,   sub: t("capstone") },
-    { m: CHECKLIST, sub: t("beforeShip") },
-  ];
-  return `<div class="cards">${MODULES.map((m, i) => {
+    { m: PROJECT,       sub: t("capstone") },
+    { m: ARCHITECTURES, sub: t("more") },
+    { m: CHECKLIST,     sub: t("beforeShip") },
+  ].filter(x => x.m && x.m.id);
+
+  const paths = `<section class="paths">
+    <div class="phead"><h3>${esc(t("paths"))}</h3><p>${esc(t("pathsSub"))}</p></div>
+    <div class="pgrid">${PATHS.map(p => {
+      const mods = p.mods.map(id => byId(id) || PAGES[id]).filter(Boolean);
+      const terms = mods.reduce((n, m) => n + (m.terms ? m.terms.length : 0), 0);
+      const d = mods.reduce((n, m) => n + (m.terms
+        ? m.terms.filter((_, i) => done.has(tid(m, i))).length : 0), 0);
+      return `<a class="path" href="#/${p.mods[0]}">
+        <div class="row"><span class="ic">${p.icon}</span><h4>${esc(p.title[lang])}</h4></div>
+        <p>${esc(p.blurb[lang])}</p>
+        <div class="chips">${mods.map(m => `<span>${esc(m.title[lang])}</span>`).join("")}</div>
+        <div class="mini"><i style="width:${terms ? d / terms * 100 : 0}%"></i></div>
+      </a>`;
+    }).join("")}</div>
+  </section>`;
+
+  return paths + `<div class="cards">${MODULES.map((m, i) => {
     const d = m.terms.filter((_, j) => done.has(tid(m, j))).length;
     return `<a class="mcard" href="#/${m.id}">
       <div class="row"><div class="ic">${m.icon}</div>
@@ -132,8 +143,8 @@ function homePage() {
 
 function modulePage(m, mi) {
   const prev = MODULES[mi - 1], next = MODULES[mi + 1];
-  const nextLink = next ? `#/${next.id}` : `#/project`;
-  const nextName = next ? next.title[lang] : PROJECT.title[lang];
+  const nextLink = next ? `#/${next.id}` : `#/architectures`;
+  const nextName = next ? next.title[lang] : ARCHITECTURES.title[lang];
   return `<a class="crumb" href="#/">${esc(t("backHome"))}</a>
     <section class="mod">${modHead(m, mi)}
       <div class="grid">${m.terms.map((tm, i) => termCard(m, i, tm)).join("")}</div>
@@ -157,6 +168,11 @@ function slidePage(m, mi, i) {
     ${ex ? `<div class="ex"><div class="cap">${esc(ex.cap[lang])}</div>
             <pre class="code">${esc(ex.code)}</pre></div>` : ""}
     <div class="cal"><b>${esc(t("why"))}</b><p>${esc(tm.w[lang])}</p></div>
+    <details class="ask">
+      <summary>${esc(t("askAI"))}</summary>
+      <p class="sub">${esc(t("askSub"))}</p>
+      ${promptBox("ask", ASK_PROMPT.replace("{term}", tm.t.en), esc(t("prompt")))}
+    </details>
     <div class="slidebar">
       <button class="btn ${isDone ? "" : "prim"}" id="gotBtn" data-k="${tid(m, i)}">
         ${isDone ? "&#10003; " + esc(t("gotYes")) : esc(t("got"))}</button>
@@ -164,7 +180,7 @@ function slidePage(m, mi, i) {
       <span class="kbd">&larr; &rarr;</span>
       ${i > 0 ? `<a class="btn" href="#/${m.id}/${i - 1}">${esc(t("prevTerm"))}</a>` : ""}
       ${i < m.terms.length - 1
-        ? `<a class="btn" href="#/${m.id}/${i + 1}">${esc(t("nextTerm"))}</a>`
+        ? `<a class="btn prim" href="#/${m.id}/${i + 1}">${esc(t("nextTerm"))}</a>`
         : `<a class="btn prim" href="#/${m.id}">${esc(t("toTest"))}</a>`}
     </div>
   </article>`;
@@ -188,13 +204,111 @@ function projectPage() {
           const loc = findTerm(u);
           return loc ? `<a href="#/${loc.m.id}/${loc.i}">${esc(loc.m.terms[loc.i].t[lang])}</a>` : "";
         }).join("")}</div>
-        <div class="promptbox">
-          <div class="lbl">${esc(t("prompt"))}</div>
-          <button class="btn copy" data-copy="${s.n}">${esc(t("copy"))}</button>
-          <pre class="code" id="p${s.n}">${esc(s.prompt)}</pre>
-        </div>
+        ${promptBox(s.n, s.prompt, t("prompt"))}
       </div>`).join("")}
-    <div class="pager"><a href="#/checklist"><b>${esc(t("next"))}</b><span>${esc(CHECKLIST.title[lang])}</span></a></div>`;
+    <div class="pager"><a class="nx" href="#/checklist"><b>${esc(t("next"))}</b><span>${esc(CHECKLIST.title[lang])}</span></a></div>`;
+}
+
+function archPage(id) {
+  const A = ARCHITECTURES;
+  if (!A || !A.items) return "";
+  if (id) {
+    const a = A.items.find(x => x.id === id);
+    if (a) return archDetail(a, A.items.indexOf(a));
+  }
+  return `<a class="crumb" href="#/">${esc(t("backHome"))}</a>
+    <section class="mod">
+      <div class="mhead"><div class="ic">${A.icon}</div><div><h2>${esc(A.title[lang])}</h2></div>
+        <div class="n">${A.items.length}</div></div>
+      <p class="mblurb">${esc(A.blurb[lang])}</p>
+    </section>
+    <div class="cards">${A.items.map((a, i) => `
+      <a class="mcard" href="#/architectures/${a.id}">
+        <div class="row"><div class="ic">${i + 1}</div>
+          <div><div class="num">${esc(a.tag[lang])}</div><h3>${esc(a.title[lang])}</h3></div></div>
+        <pre class="code mini-dia">${esc(a.diagram)}</pre>
+      </a>`).join("")}</div>`;
+}
+
+function archDetail(a, i) {
+  const A = ARCHITECTURES, next = A.items[i + 1];
+  const box = (k, cls) => `<div class="abox ${cls}"><b>${esc(t(k[0]))}</b><p>${esc(a[k[1]][lang])}</p></div>`;
+  return `<a class="crumb" href="#/architectures">&larr; ${esc(A.title[lang])}</a>
+  <article class="slide arch">
+    <div class="kicker">${String(i + 1).padStart(2, "0")} ${esc(A.title[lang])} &middot; ${esc(a.tag[lang])}</div>
+    <h2>${esc(a.title[lang])}</h2>
+    <pre class="code dia">${esc(a.diagram)}</pre>
+    <h3>${esc(t("archFlow"))}</h3>
+    <div class="body"><p>${esc(a.flow[lang])}</p></div>
+    <h3>${esc(t("archParts"))}</h3>
+    <div class="parts">${a.parts.map(p => `
+      <div class="part"><b>${esc(p.n[lang])}</b><p>${esc(p.d[lang])}</p></div>`).join("")}</div>
+    <div class="aboxes">
+      ${box(["archGood", "good"], "ok")}
+      ${box(["archBad", "bad"], "no")}
+      ${box(["archCost", "cost"], "")}
+      ${box(["archScale", "scale"], "")}
+    </div>
+    <div class="tags">${a.uses.map(u => {
+      const loc = findTerm(u);
+      return loc ? `<a href="#/${loc.m.id}/${loc.i}">${esc(loc.m.terms[loc.i].t[lang])}</a>` : "";
+    }).join("")}</div>
+    ${promptBox("arch", a.prompt, t("archPrompt"))}
+    <div class="pager">
+      ${next ? `<a class="nx" href="#/architectures/${next.id}"><b>${esc(t("next"))}</b><span>${esc(next.title[lang])}</span></a>` : ""}
+    </div>
+  </article>`;
+}
+
+function glossaryPage() {
+  const all = [];
+  MODULES.forEach(m => m.terms.forEach((tm, i) => all.push({ m, i, tm })));
+  all.sort((a, b) => a.tm.t[lang].localeCompare(b.tm.t[lang], lang === "he" ? "he" : "en"));
+  const groups = {};
+  all.forEach(x => { const k = x.tm.t[lang][0].toUpperCase(); (groups[k] ||= []).push(x); });
+  return `<a class="crumb" href="#/">${esc(t("backHome"))}</a>
+    <section class="mod">
+      <div class="mhead"><div class="ic">&#9776;</div><div><h2>${esc(t("glossary"))}</h2></div>
+        <div class="n">${all.length} ${esc(t("terms"))}</div></div>
+      <p class="mblurb">${esc(t("glossarySub"))}</p>
+    </section>
+    <div class="gloss">${Object.keys(groups).map(k => `
+      <div class="gl"><h4>${esc(k)}</h4>
+        ${groups[k].map(({ m, i, tm }) => `
+          <a href="#/${m.id}/${i}" class="${done.has(tid(m, i)) ? "done" : ""}">
+            <span>${esc(tm.t[lang])}</span><i>${esc(m.title[lang])}</i></a>`).join("")}
+      </div>`).join("")}</div>`;
+}
+
+function reviewPage() {
+  const pool = [];
+  MODULES.forEach(m => m.terms.forEach((tm, i) => {
+    if (!done.has(tid(m, i))) pool.push({ m, i, tm });
+  }));
+  const all = pool.length ? pool : (() => {
+    const a = []; MODULES.forEach(m => m.terms.forEach((tm, i) => a.push({ m, i, tm }))); return a;
+  })();
+  if (card >= all.length) card = 0;
+  const { m, i, tm } = all[card];
+  return `<a class="crumb" href="#/">${esc(t("backHome"))}</a>
+    <section class="mod">
+      <div class="mhead"><div class="ic">&#9850;</div><div><h2>${esc(t("review"))}</h2></div>
+        <div class="n">${all.length - card} ${esc(t("left"))}</div></div>
+      <p class="mblurb">${esc(pool.length ? t("reviewSub") : t("reviewAll"))}</p>
+    </section>
+    <div class="flash ${flipped ? "on" : ""}" id="flash">
+      <div class="fk">${esc(m.title[lang])}</div>
+      <h2>${esc(tm.t[lang])}</h2>
+      ${flipped
+        ? `<div class="fb"><p>${esc(tm.d[lang])}</p><p class="w">${esc(tm.w[lang])}</p></div>`
+        : `<div class="fhint">${esc(t("tapToFlip"))}</div>`}
+    </div>
+    <div class="fbar">
+      <button class="btn" id="fSkip">${esc(t("skip"))} &rarr;</button>
+      <span class="grow"></span>
+      <a class="btn" href="#/${m.id}/${i}">${esc(t("openSlide"))}</a>
+      <button class="btn prim" id="fGot" data-k="${tid(m, i)}">&#10003; ${esc(t("got"))}</button>
+    </div>`;
 }
 
 function checklistPage() {
@@ -248,23 +362,29 @@ function render() {
     b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
 
   const q = filter.trim().toLowerCase();
-  const { id, n } = route();
+  const { id, sub, n } = route();
   const mi = MODULES.findIndex(m => m.id === id);
-  const home = mi < 0 && !q && id !== "project" && id !== "checklist";
+  const special = ["project", "checklist", "architectures", "glossary", "review"];
+  const home = mi < 0 && !q && !special.includes(id);
 
   document.querySelector(".hero").style.display = home ? "" : "none";
 
+  const navLink = (p, icon, label, cnt) =>
+    `<a href="#/${p}" class="${p === id && !q ? "on" : ""}"><span class="ic">${icon}</span>
+      <span>${esc(label)}</span>${cnt ? `<span class="cnt">${cnt}</span>` : ""}</a>`;
+
   $("#nav").innerHTML =
-    `<a href="#/" class="${home ? "on" : ""}"><span class="ic">&#9635;</span>
-       <span>${esc(t("allMods"))}</span><span class="cnt">${done.size}/${total()}</span></a>` +
+    navLink("", "&#9635;", t("allMods"), `${done.size}/${total()}`) +
     MODULES.map(m => {
       const d = m.terms.filter((_, i) => done.has(tid(m, i))).length;
       return `<a href="#/${m.id}" class="${m.id === id && !q ? "on" : ""}"><span class="ic">${m.icon}</span>
         <span>${esc(m.title[lang])}</span><span class="cnt">${d}/${m.terms.length}</span></a>`;
     }).join("") +
-    `<hr>` + [PROJECT, CHECKLIST].map(p =>
-      `<a href="#/${p.id}" class="${p.id === id && !q ? "on" : ""}"><span class="ic">${p.icon}</span>
-        <span>${esc(p.title[lang])}</span></a>`).join("");
+    `<hr>` +
+    [PROJECT, ARCHITECTURES, CHECKLIST].filter(p => p && p.id)
+      .map(p => navLink(p.id, p.icon, p.title[lang])).join("") +
+    navLink("glossary", "&#9776;", t("glossary")) +
+    navLink("review", "&#9850;", t("review"));
 
   if (q) {
     const hit = tm => (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(q);
@@ -275,12 +395,16 @@ function render() {
             hits.map(({ tm, j }) => termCard(m, j, tm)).join("")}</div></section>` : "";
     }).join("");
     $("#content").innerHTML = secs || `<div class="empty">${esc(t("noResults"))}</div>`;
-  } else if (id === "project")   { $("#content").innerHTML = projectPage(); }
-  else if (id === "checklist")   { $("#content").innerHTML = checklistPage(); }
-  else if (home)                 { $("#content").innerHTML = homePage(); }
+  }
+  else if (id === "project")       { $("#content").innerHTML = projectPage(); }
+  else if (id === "checklist")     { $("#content").innerHTML = checklistPage(); }
+  else if (id === "architectures") { $("#content").innerHTML = archPage(sub); }
+  else if (id === "glossary")      { $("#content").innerHTML = glossaryPage(); }
+  else if (id === "review")        { $("#content").innerHTML = reviewPage(); }
+  else if (home)                   { $("#content").innerHTML = homePage(); }
   else if (n !== null && !isNaN(n) && MODULES[mi].terms[n]) {
-                                   $("#content").innerHTML = slidePage(MODULES[mi], mi, n); }
-  else                           { $("#content").innerHTML = modulePage(MODULES[mi], mi); }
+                                     $("#content").innerHTML = slidePage(MODULES[mi], mi, n); }
+  else                             { $("#content").innerHTML = modulePage(MODULES[mi], mi); }
 
   $("#pbar").style.width = (done.size / total() * 100) + "%";
 }
@@ -300,6 +424,15 @@ $("#content").addEventListener("click", e => {
     done.has(k) ? done.delete(k) : done.add(k);
     save(); render(); return;
   }
+  const flash = e.target.closest("#flash");
+  if (flash) { flipped = !flipped; render(); return; }
+
+  const fGot = e.target.closest("#fGot");
+  if (fGot) { done.add(fGot.dataset.k); flipped = false; save(); render(); return; }
+
+  const fSkip = e.target.closest("#fSkip");
+  if (fSkip) { card++; flipped = false; render(); return; }
+
   const opt = e.target.closest(".opt");
   if (opt) { answers[+opt.dataset.q] = +opt.dataset.a; render(); return; }
 
@@ -327,11 +460,17 @@ $("#startBtn").onclick = () => { location.hash = "#/" + MODULES[0].id; };
 $("#resetBtn").onclick = () => { done.clear(); ticked.clear(); answers = {}; save(); render(); };
 $("#search").oninput   = e => { filter = e.target.value; render(); };
 
-// arrow keys move between slides
+// arrow keys move between slides; space flips a flashcard
 addEventListener("keydown", e => {
   if (e.target.matches("input,textarea")) return;
-  const { id, n } = route(); if (n === null || isNaN(n)) return;
-  const m = MODULES.find(x => x.id === id); if (!m) return;
+  const { id, n } = route();
+  if (id === "review") {
+    if (e.key === " ")     { e.preventDefault(); flipped = !flipped; render(); }
+    if (e.key === "ArrowRight") { card++; flipped = false; render(); }
+    return;
+  }
+  if (n === null || isNaN(n)) return;
+  const m = byId(id); if (!m) return;
   const fwd = lang === "he" ? "ArrowLeft" : "ArrowRight";
   const bwd = lang === "he" ? "ArrowRight" : "ArrowLeft";
   if (e.key === fwd && n < m.terms.length - 1) location.hash = `#/${id}/${n + 1}`;
