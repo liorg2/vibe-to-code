@@ -33,11 +33,14 @@ window.vibeState = {
   write: s => { done = new Set(s.done || []); ticked = new Set(s.ticked || []); save(); render(); }
 };
 
-/* ---- routing: #/  #/<mod>  #/<mod>/<termIndex>  #/project  #/checklist
-                 #/glossary  #/review  #/architectures  #/architectures/<id> ---- */
+/* ---- routing: #/  #/<lesson>  #/<lesson>/<termIndex>  #/<lesson>/quiz
+                 #/project  #/checklist  #/glossary  #/review  #/architectures/<id> ---- */
 const route = () => {
   const p = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
-  return { id: p[0] || "", sub: p[1], n: p[1] !== undefined ? parseInt(p[1], 10) : null };
+  const sub = p[1];
+  const quiz = sub === "quiz";
+  const n = sub !== undefined && !quiz ? parseInt(sub, 10) : null;
+  return { id: p[0] || "", sub, n, quiz };
 };
 
 const PAGES = { project: PROJECT, checklist: CHECKLIST, architectures: ARCHITECTURES };
@@ -127,7 +130,7 @@ function homePage() {
       const terms = mods.reduce((n, m) => n + (m.terms ? m.terms.length : 0), 0);
       const d = mods.reduce((n, m) => n + (m.terms
         ? m.terms.filter((_, i) => done.has(tid(m, i))).length : 0), 0);
-      return `<a class="path" href="#/${p.mods[0]}">
+      return `<a class="path" href="#/${p.mods[0]}/0">
         <div class="row"><span class="ic">${p.icon}</span><h4>${esc(p.title[lang])}</h4></div>
         <p>${esc(p.blurb[lang])}</p>
         <div class="chips">${mods.map(m => `<span>${esc(m.title[lang])}</span>`).join("")}</div>
@@ -138,7 +141,7 @@ function homePage() {
 
   return paths + `<div class="cards">${MODULES.map((m, i) => {
     const d = m.terms.filter((_, j) => done.has(tid(m, j))).length;
-    return `<a class="mcard" href="#/${m.id}">
+    return `<a class="mcard" href="#/${m.id}/0">
       <div class="row"><div class="ic">${m.icon}</div>
         <div><div class="num">${esc(t("lesson"))} ${String(i + 1).padStart(2, "0")} &middot; ~${mins(m)} ${esc(t("min"))}</div>
         <h3>${esc(m.title[lang])}</h3></div></div>
@@ -154,17 +157,26 @@ function homePage() {
     </a>`).join("")}</div>`;
 }
 
-function modulePage(m, mi) {
+function lessonSubNav(m, mi, i, quiz) {
+  return `<nav class="subnav" aria-label="${esc(m.title[lang])}">
+    ${m.terms.map((tm, j) => `
+      <a href="#/${m.id}/${j}" class="${!quiz && j === i ? "on" : ""}${done.has(tid(m, j)) ? " done" : ""}">
+        <span class="sn">${j + 1}</span>${esc(tm.t[lang])}</a>`).join("")}
+    ${QUIZ[m.id] ? `<a href="#/${m.id}/quiz" class="${quiz ? "on" : ""}">${esc(t("test"))}</a>` : ""}
+  </nav>`;
+}
+
+function quizPage(m, mi) {
   const prev = MODULES[mi - 1], next = MODULES[mi + 1];
-  const nextLink = next ? `#/${next.id}` : `#/architectures`;
+  const nextLink = next ? `#/${next.id}/0` : `#/architectures`;
   const nextName = next ? next.title[lang] : ARCHITECTURES.title[lang];
-  return `<a class="crumb" href="#/">${esc(t("backHome"))}</a>
-    <section class="mod">${modHead(m, mi)}
-      <div class="grid">${m.terms.map((tm, i) => termCard(m, i, tm)).join("")}</div>
-    </section>
+  const last = m.terms.length - 1;
+  return `<a class="crumb" href="#/${m.id}/${last}">&larr; ${esc(m.title[lang])}</a>
+    ${lessonSubNav(m, mi, last, true)}
+    <section class="mod">${modHead(m, mi)}</section>
     ${quizHtml(m.id)}
     <div class="pager">
-      ${prev ? `<a href="#/${prev.id}"><b>${esc(t("prev"))}</b><span>${esc(prev.title[lang])}</span></a>` : ""}
+      ${prev ? `<a href="#/${prev.id}/quiz"><b>${esc(t("prev"))}</b><span>${esc(prev.title[lang])}</span></a>` : ""}
       <a class="nx" href="${nextLink}"><b>${esc(t("next"))}</b><span>${esc(nextName)}</span></a>
     </div>`;
 }
@@ -172,7 +184,19 @@ function modulePage(m, mi) {
 function slidePage(m, mi, i) {
   const tm = m.terms[i], det = DETAIL[tm.t.en], ex = EXAMPLES[tm.t.en];
   const isDone = done.has(tid(m, i));
-  return `<a class="crumb" href="#/${m.id}">&larr; ${esc(m.title[lang])}</a>
+  const prevM = MODULES[mi - 1], nextM = MODULES[mi + 1];
+  const prevHref = i > 0 ? `#/${m.id}/${i - 1}`
+    : prevM ? `#/${prevM.id}/${prevM.terms.length - 1}` : "";
+  const nextHref = i < m.terms.length - 1 ? `#/${m.id}/${i + 1}`
+    : QUIZ[m.id] ? `#/${m.id}/quiz`
+    : nextM ? `#/${nextM.id}/0` : `#/`;
+  const nextLabel = i < m.terms.length - 1 ? t("nextTerm")
+    : QUIZ[m.id] ? t("toTest")
+    : nextM ? nextM.title[lang] : t("toTest");
+  const prevLabel = i > 0 ? t("prevTerm")
+    : prevM ? prevM.title[lang] : t("prevTerm");
+  return `<a class="crumb" href="#/">${esc(t("backHome"))}</a>
+  ${lessonSubNav(m, mi, i, false)}
   <article class="slide">
     <div class="kicker">${String(mi + 1).padStart(2, "0")} ${esc(m.title[lang])} &middot; ${i + 1}/${m.terms.length}</div>
     <h2>${esc(tm.t[lang])}</h2>
@@ -192,10 +216,8 @@ function slidePage(m, mi, i) {
         ${isDone ? "&#10003; " + esc(t("gotYes")) : esc(t("got"))}</button>
       <span class="grow"></span>
       <span class="kbd">&larr; &rarr;</span>
-      ${i > 0 ? `<a class="btn" href="#/${m.id}/${i - 1}">${esc(t("prevTerm"))}</a>` : ""}
-      ${i < m.terms.length - 1
-        ? `<a class="btn prim" href="#/${m.id}/${i + 1}">${esc(t("nextTerm"))}</a>`
-        : `<a class="btn prim" href="#/${m.id}">${esc(t("toTest"))}</a>`}
+      ${prevHref ? `<a class="btn" href="${prevHref}">${esc(prevLabel)}</a>` : ""}
+      <a class="btn prim" href="${nextHref}">${esc(nextLabel)}</a>
     </div>
   </article>`;
 }
@@ -364,35 +386,48 @@ function render() {
   document.documentElement.dataset.theme = theme;
 
   $("#brand").textContent = t("brand");
-  $("#intro").textContent = `${MODULES.length} ${t("modules")} · ${total()} ${t("terms")} · ${t("noCode")}`;
+  $("#intro").textContent = `${MODULES.length} ${t("lessons")} · ${total()} ${t("terms")} · ${t("noCode")}`;
   $("#h1").innerHTML = rtl ? "מ<span>Vibe</span> למפתח" : "From <span>vibe</span> to developer";
   $("#tagline").textContent  = t("tagline");
   $("#heroNote").textContent = t("heroNote");
   $("#startBtn").textContent = t("start");
   $("#resetBtn").textContent = t("reset");
-  $("#navTitle").textContent = t("modules");
+  $("#navTitle").textContent = t("lessons");
   $("#search").placeholder   = t("search");
   document.querySelectorAll(".seg button").forEach(b =>
     b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
 
   const q = filter.trim().toLowerCase();
-  const { id, sub, n } = route();
+  const { id, sub, n, quiz } = route();
   const mi = MODULES.findIndex(m => m.id === id);
   const special = ["project", "checklist", "architectures", "glossary", "review"];
+  const inLesson = mi >= 0 && !q;
   const home = mi < 0 && !q && !special.includes(id);
 
   document.querySelector(".hero").style.display = home ? "" : "none";
 
   const navLink = (p, icon, label, cnt) =>
-    `<a href="#/${p}" class="${p === id && !q ? "on" : ""}"><span class="ic">${icon}</span>
+    `<a href="#/${p}" class="${p === id && !q && !inLesson ? "on" : ""}"><span class="ic">${icon}</span>
       <span>${esc(label)}</span>${cnt ? `<span class="cnt">${cnt}</span>` : ""}</a>`;
 
   $("#nav").innerHTML =
-    navLink("", "&#9635;", t("allMods"), `${done.size}/${total()}`) +
+    navLink("", "&#9635;", t("allLessons"), `${done.size}/${total()}`) +
     MODULES.map(m => {
       const d = m.terms.filter((_, i) => done.has(tid(m, i))).length;
-      return `<a href="#/${m.id}" class="${m.id === id && !q ? "on" : ""}"><span class="ic">${m.icon}</span>
-        <span>${esc(m.title[lang])}</span><span class="cnt">${d}/${m.terms.length}</span></a>`;
+      const open = inLesson && m.id === id;
+      return `<div class="nav-lesson${open ? " open" : ""}">
+        <a href="#/${m.id}/0" class="nav-lesson-h${open ? " on" : ""}">
+          <span class="ic">${m.icon}</span>
+          <span>${esc(m.title[lang])}</span>
+          <span class="cnt">${d}/${m.terms.length}</span>
+        </a>
+        <div class="nav-subs">
+          ${m.terms.map((tm, i) => `
+            <a href="#/${m.id}/${i}" class="${open && n === i && !quiz ? "on" : ""}${done.has(tid(m, i)) ? " done" : ""}">
+              ${esc(tm.t[lang])}</a>`).join("")}
+          ${QUIZ[m.id] ? `<a href="#/${m.id}/quiz" class="${open && quiz ? "on" : ""}">${esc(t("test"))}</a>` : ""}
+        </div>
+      </div>`;
     }).join("") +
     `<hr>` +
     [PROJECT, ARCHITECTURES, CHECKLIST].filter(p => p && p.id)
@@ -416,9 +451,10 @@ function render() {
   else if (id === "glossary")      { $("#content").innerHTML = glossaryPage(); }
   else if (id === "review")        { $("#content").innerHTML = reviewPage(); }
   else if (home)                   { $("#content").innerHTML = homePage(); }
-  else if (n !== null && !isNaN(n) && MODULES[mi].terms[n]) {
+  else if (inLesson && quiz)       { $("#content").innerHTML = quizPage(MODULES[mi], mi); }
+  else if (inLesson && n !== null && !isNaN(n) && MODULES[mi].terms[n]) {
                                      $("#content").innerHTML = slidePage(MODULES[mi], mi, n); }
-  else                             { $("#content").innerHTML = modulePage(MODULES[mi], mi); }
+  else if (inLesson)               { location.replace(`#/${id}/0`); return; }
 
   $("#pbar").style.width = (done.size / total() * 100) + "%";
 }
@@ -470,25 +506,37 @@ document.querySelectorAll(".seg button").forEach(b =>
   b.onclick = () => { lang = b.dataset.lang; save(); render(); });
 
 $("#theme").onclick    = () => { theme = theme === "dark" ? "light" : "dark"; save(); render(); };
-$("#startBtn").onclick = () => { location.hash = "#/" + MODULES[0].id; };
+$("#startBtn").onclick = () => { location.hash = "#/" + MODULES[0].id + "/0"; };
 $("#resetBtn").onclick = () => { done.clear(); ticked.clear(); answers = {}; save(); render(); };
 $("#search").oninput   = e => { filter = e.target.value; render(); };
 
 // arrow keys move between slides; space flips a flashcard
 addEventListener("keydown", e => {
   if (e.target.matches("input,textarea")) return;
-  const { id, n } = route();
+  const { id, n, quiz } = route();
   if (id === "review") {
     if (e.key === " ")     { e.preventDefault(); flipped = !flipped; render(); }
     if (e.key === "ArrowRight") { card++; flipped = false; render(); }
     return;
   }
-  if (n === null || isNaN(n)) return;
+  if (quiz) return;
   const m = byId(id); if (!m) return;
+  const mi = MODULES.findIndex(x => x.id === id);
   const fwd = lang === "he" ? "ArrowLeft" : "ArrowRight";
   const bwd = lang === "he" ? "ArrowRight" : "ArrowLeft";
-  if (e.key === fwd && n < m.terms.length - 1) location.hash = `#/${id}/${n + 1}`;
-  if (e.key === bwd && n > 0)                  location.hash = `#/${id}/${n - 1}`;
+  if (n === null || isNaN(n)) return;
+  if (e.key === fwd) {
+    if (n < m.terms.length - 1) location.hash = `#/${id}/${n + 1}`;
+    else if (QUIZ[id]) location.hash = `#/${id}/quiz`;
+    else if (MODULES[mi + 1]) location.hash = `#/${MODULES[mi + 1].id}/0`;
+  }
+  if (e.key === bwd) {
+    if (n > 0) location.hash = `#/${id}/${n - 1}`;
+    else if (MODULES[mi - 1]) {
+      const p = MODULES[mi - 1];
+      location.hash = `#/${p.id}/${p.terms.length - 1}`;
+    }
+  }
 });
 
 addEventListener("hashchange", () => {

@@ -26,8 +26,8 @@ PATHS = [
 
 UI_WIDE = {
  "paths":       {"en": "Pick a path",            "he": "בחר מסלול"},
- "pathsSub":    {"en": "Or just start at the top — every module stands on its own.",
-                 "he": "או פשוט להתחיל מלמעלה — כל מודול עומד בפני עצמו."},
+ "pathsSub":    {"en": "Or just start at the top — every lesson stands on its own.",
+                 "he": "או פשוט להתחיל מלמעלה — כל שיעור עומד בפני עצמו."},
  "glossary":    {"en": "Glossary",               "he": "מילון מונחים"},
  "glossarySub": {"en": "Every term in the course, A to Z. Click one to open its slide.",
                  "he": "כל מונח בקורס, מא׳ עד ת׳. לחיצה פותחת את השקף שלו."},

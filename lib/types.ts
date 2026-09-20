@@ -1,0 +1,97 @@
+export type Lang = "en" | "he";
+export type L10n = Record<Lang, string>;
+
+export type Term = {
+  t: L10n;
+  d: L10n;
+  w: L10n;
+};
+
+export type Module = {
+  id: string;
+  icon: string;
+  title: L10n;
+  blurb: L10n;
+  terms: Term[];
+};
+
+export type QuizQ = {
+  q: L10n;
+  a: L10n[];
+  c: number;
+  why: L10n;
+};
+
+export type Example = {
+  cap: L10n;
+  code: string;
+};
+
+export type ProjectStep = {
+  n: number;
+  title: L10n;
+  goal: L10n;
+  why: L10n;
+  uses: string[];
+  prompt: string;
+};
+
+export type CheckItem = { t: L10n; d: L10n };
+
+export type ArchPart = { n: L10n; d: L10n };
+
+export type Architecture = {
+  id: string;
+  tag: L10n;
+  title: L10n;
+  diagram: string;
+  flow: L10n;
+  parts: ArchPart[];
+  good: L10n;
+  bad: L10n;
+  cost: L10n;
+  scale: L10n;
+  uses: string[];
+  prompt: string;
+};
+
+export type Path = {
+  id: string;
+  icon: string;
+  title: L10n;
+  blurb: L10n;
+  mods: string[];
+};
+
+export type Course = {
+  UI: Record<string, L10n>;
+  MODULES: Module[];
+  DETAIL: Record<string, L10n>;
+  EXAMPLES: Record<string, Example>;
+  QUIZ: Record<string, QuizQ[]>;
+  PROJECT: {
+    id: string;
+    icon: string;
+    title: L10n;
+    blurb: L10n;
+    warn: L10n;
+    steps: ProjectStep[];
+  };
+  CHECKLIST: {
+    id: string;
+    icon: string;
+    title: L10n;
+    blurb: L10n;
+    do: CheckItem[];
+    dont: CheckItem[];
+  };
+  ARCHITECTURES: {
+    id: string;
+    icon: string;
+    title: L10n;
+    blurb: L10n;
+    items: Architecture[];
+  };
+  PATHS: Path[];
+  ASK_PROMPT: string;
+};

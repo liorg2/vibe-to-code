@@ -12,9 +12,9 @@
    "en": "Start learning",
    "he": "להתחיל ללמוד"
   },
-  "modules": {
-   "en": "Modules",
-   "he": "מודולים"
+  "lessons": {
+   "en": "Lessons",
+   "he": "שיעורים"
   },
   "progress": {
    "en": "Progress",
@@ -33,8 +33,8 @@
    "he": "למה זה חשוב לך"
   },
   "next": {
-   "en": "Next module",
-   "he": "המודול הבא"
+   "en": "Next lesson",
+   "he": "השיעור הבא"
   },
   "prev": {
    "en": "Previous",
@@ -56,21 +56,17 @@
    "en": "Nothing matched.",
    "he": "לא נמצאו תוצאות."
   },
-  "allMods": {
-   "en": "All modules",
-   "he": "כל המודולים"
+  "allLessons": {
+   "en": "All lessons",
+   "he": "כל השיעורים"
   },
   "lesson": {
-   "en": "Module",
-   "he": "מודול"
+   "en": "Lesson",
+   "he": "שיעור"
   },
   "backHome": {
-   "en": "← All modules",
-   "he": "כל המודולים →"
-  },
-  "intro": {
-   "en": "10 modules · 82 terms · no code required",
-   "he": "10 מודולים · 82 מונחים · בלי לכתוב קוד"
+   "en": "← All lessons",
+   "he": "כל השיעורים →"
   },
   "heroNote": {
    "en": "You already build things. This gives you the vocabulary to build them right — and to understand what the AI just wrote for you.",
