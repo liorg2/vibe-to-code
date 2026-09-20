@@ -274,20 +274,6 @@
     },
     {
      "t": {
-      "en": "API",
-      "he": "API"
-     },
-     "d": {
-      "en": "A defined set of requests one program can make to another. A contract, not a technology.",
-      "he": "אוסף מוגדר של בקשות שתוכנה אחת יכולה לשלוח לאחרת. חוזה, לא טכנולוגיה."
-     },
-     "w": {
-      "en": "\"Integrate with X\" almost always means \"call X's API and handle its errors\".",
-      "he": "\"להתחבר ל-X\" כמעט תמיד אומר \"לקרוא ל-API של X ולטפל בשגיאות שלו\"."
-     }
-    },
-    {
-     "t": {
       "en": "localhost & port",
       "he": "localhost ופורט"
      },

@@ -2,7 +2,7 @@
 """Widening pass: module order, learning paths, and UI strings for the new pages."""
 
 # final module order; new modules slot in next to the ones they extend
-ORDER = ["ground", "sides", "http", "apis", "data", "frontend", "langs", "testing",
+ORDER = ["ground", "sides", "http", "api", "apis", "data", "frontend", "langs", "testing",
          "memory", "cache", "async", "auth", "security", "net", "cloud", "devops",
          "observe", "scale", "team", "ai"]
 
@@ -52,6 +52,12 @@ UI_WIDE = {
  "archScale":   {"en": "How far it goes",        "he": "עד כמה זה מגיע"},
  "archPrompt":  {"en": "Prompt to scaffold it",  "he": "פרומפט להקמה"},
  "more":        {"en": "More",                   "he": "עוד"},
+ "hfCap":       {"en": "One exchange — request first, response second, always paired",
+                 "he": "חילופים אחד — ריקווסט קודם, רספונס אחר כך, תמיד בזוגות"},
+ "hfClient":    {"en": "Client",                 "he": "קליינט"},
+ "hfServer":    {"en": "Server",                 "he": "שרת"},
+ "hfReq":       {"en": "Request",                "he": "ריקווסט"},
+ "hfRes":       {"en": "Response",               "he": "רספונס"},
 }
 
 # the English prompt every slide offers; {term} is substituted at render time

@@ -1,5 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Widening pass, part A: APIs & Integrations, The Browser Side."""
+"""Widening pass, part A: API basics, APIs & Integrations, The Browser Side."""
+
+API_MODULE = {
+ "id": "api", "icon": "⬡",
+ "title": {"en": "API: The Contract", "he": "API: החוזה"},
+ "blurb": {"en": "What \"integrate with X\" actually means — before keys, OAuth, and versioning.",
+           "he": "מה \"להתחבר ל-X\" באמת אומר — לפני מפתחות, OAuth וגרסאות."},
+ "terms": [
+  {"t": {"en": "API", "he": "API"},
+   "d": {"en": "A defined set of requests one program can make to another. A contract, not a technology.",
+         "he": "אוסף מוגדר של בקשות שתוכנה אחת יכולה לשלוח לאחרת. חוזה, לא טכנולוגיה."},
+   "w": {"en": "\"Integrate with X\" almost always means \"call X's API and handle its errors\".",
+         "he": "\"להתחבר ל-X\" כמעט תמיד אומר \"לקרוא ל-API של X ולטפל בשגיאות שלו\"."}},
+ ]}
 
 APIS_MODULE = {
  "id": "apis", "icon": "⇆",
@@ -216,6 +229,35 @@ EXAMPLES_A = {
 }
 
 QUIZ_A = {
+ "api": [
+  {"q": {"en": "\"Integrate with Stripe\" in a job ticket most likely means what?",
+         "he": "״לחבר Stripe״ בטיקט עבודה כנראה אומר מה?"},
+   "a": [{"en": "Install Stripe's desktop app", "he": "להתקין את אפליקציית Stripe"},
+         {"en": "Call Stripe's API and handle its errors", "he": "לקרוא ל-API של Stripe ולטפל בשגיאות שלו"},
+         {"en": "Copy Stripe's source code", "he": "להעתיק את קוד המקור של Stripe"},
+         {"en": "Use Stripe only through a browser", "he": "להשתמש ב-Stripe רק דרך דפדפן"}],
+   "c": 1,
+   "why": {"en": "An API is a contract of requests and responses between programs. Integration work is calling it correctly when things go wrong.",
+           "he": "API הוא חוזה של בקשות ותשובות בין תוכנות. עבודת אינטגרציה היא לקרוא לו נכון כשדברים משתבשים."}},
+  {"q": {"en": "You rename a field in your public API without a new version. What breaks?",
+         "he": "שינית שם שדה ב-API הציבורי שלך בלי גרסה חדשה. מה נשבר?"},
+   "a": [{"en": "Nothing — clients adapt automatically", "he": "כלום — לקוחות מסתגלים אוטומטית"},
+         {"en": "Every client that relied on the old name", "he": "כל לקוח שהסתמך על השם הישן"},
+         {"en": "Only mobile apps", "he": "רק אפליקציות מובייל"},
+         {"en": "Only your own frontend", "he": "רק הפרונט שלך"}],
+   "c": 1,
+   "why": {"en": "An API is a contract. Someone else built against it — changing it without versioning is breaking a promise.",
+           "he": "API הוא חוזה. מישהו אחר בנה מולו — שינוי בלי גרסה הוא שבירת הבטחה."}},
+  {"q": {"en": "Where should a secret API key live?",
+         "he": "איפה צריך לשבת מפתח API סודי?"},
+   "a": [{"en": "In frontend JavaScript", "he": "בג׳אווהסקריפט של הפרונט"},
+         {"en": "In a public GitHub repo", "he": "בריפו ציבורי ב-GitHub"},
+         {"en": "On the server, injected at runtime", "he": "בשרת, מוזרק בזמן ריצה"},
+         {"en": "In a URL query parameter", "he": "בפרמטר query בכתובת"}],
+   "c": 2,
+   "why": {"en": "Anything on the client or in a URL is public. Server-side config is the only place a key stays secret.",
+           "he": "כל מה שבקליינט או בכתובת הוא פומבי. קונפיגורציה בשרת היא המקום היחיד שבו מפתח נשאר סודי."}},
+ ],
  "apis": [
   {"q": {"en": "Your app lets users import their Google Contacts. What do you need from Google?",
          "he": "האפליקציה שלך מאפשרת למשתמשים לייבא את אנשי הקשר שלהם מגוגל. מה אתה צריך מגוגל?"},

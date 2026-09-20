@@ -103,7 +103,7 @@ for mod, mod_names, d, e, q in WIDE:
 
 # deeper rewrites of the original 82 terms + Hebrew corrections
 he_fixes = 0
-for mod in ["deep_%d" % i for i in range(1, 10)]:
+for mod in ["deep_%d" % i for i in range(1, 11)]:
     detail, example, he = opt(mod, "DETAIL_FIX", "EXAMPLES_FIX", "HE_FIX")
     if detail: DETAIL.update(detail)
     if example: EXAMPLES.update(example)
