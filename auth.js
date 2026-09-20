@@ -2,10 +2,10 @@
    Paste your web app config from Firebase console -> Project settings -> Your apps.
    Leave it as-is and the site stays exactly as it was: local-only progress. */
 const CONFIG = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  appId: ""
+  apiKey: "AIzaSyDT_w7z28Oz6OEHN0v04GARVVPGkYmo-l0",
+  authDomain: "vibe-to-code-4206d.firebaseapp.com",
+  projectId: "vibe-to-code-4206d",
+  appId: "1:15142697538:web:35166d0e4b0867c4638bdb"
 };
 
 if (CONFIG.apiKey) {
