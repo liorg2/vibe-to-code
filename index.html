@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Vibe → Code</title>
 <meta name="description" content="The vocabulary and mental models of professional software development, for people who build with AI. English and Hebrew.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -246,6 +247,8 @@ main > #content{min-width:0}
 .slide,.step,.quiz,.col,.promptbox,.mod,.cards,.grid,.cols{min-width:0}
 pre.code{max-width:100%}
 
+#who{font-size:13px;opacity:.7;max-width:14ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
 </style>
 </head>
 <body dir="ltr">
@@ -260,6 +263,8 @@ pre.code{max-width:100%}
       <button data-lang="en" aria-pressed="true">EN</button>
       <button data-lang="he" aria-pressed="false">עב</button>
     </div>
+    <span id="who"></span>
+    <button class="btn" id="auth" hidden>Sign in</button>
     <button class="btn" id="theme" title="Theme">◐</button>
   </div>
   <div class="progbar"><i id="pbar"></i></div>
@@ -3802,7 +3807,14 @@ function save() {
   LS.set(KEY + ".check", JSON.stringify([...ticked]));
   LS.set(KEY + ".lang", lang);
   LS.set(KEY + ".theme", theme);
+  if (window.cloudSave) window.cloudSave(window.vibeState.read());
 }
+
+// read/write hooks for auth.js; absent config, nothing ever calls them
+window.vibeState = {
+  read: () => ({ done: [...done], ticked: [...ticked] }),
+  write: s => { done = new Set(s.done || []); ticked = new Set(s.ticked || []); save(); render(); }
+};
 
 /* ---- routing: #/  #/<mod>  #/<mod>/<termIndex>  #/project  #/checklist ---- */
 const route = () => {
@@ -4103,5 +4115,6 @@ let hashMod = route().id;
 render();
 
 </script>
+<script type="module" src="auth.js"></script>
 </body>
 </html>

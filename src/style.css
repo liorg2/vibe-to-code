@@ -234,3 +234,5 @@ body[dir="rtl"] .ans{border-radius:11px 0 0 11px}
 main > #content{min-width:0}
 .slide,.step,.quiz,.col,.promptbox,.mod,.cards,.grid,.cols{min-width:0}
 pre.code{max-width:100%}
+
+#who{font-size:13px;opacity:.7;max-width:14ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

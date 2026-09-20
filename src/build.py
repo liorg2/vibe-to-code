@@ -89,6 +89,7 @@ html = u"""<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Vibe \u2192 Code</title>
 <meta name="description" content="The vocabulary and mental models of professional software development, for people who build with AI. English and Hebrew.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,6 +111,8 @@ html = u"""<!DOCTYPE html>
       <button data-lang="en" aria-pressed="true">EN</button>
       <button data-lang="he" aria-pressed="false">\u05e2\u05d1</button>
     </div>
+    <span id="who"></span>
+    <button class="btn" id="auth" hidden>Sign in</button>
     <button class="btn" id="theme" title="Theme">\u25d0</button>
   </div>
   <div class="progbar"><i id="pbar"></i></div>
@@ -143,6 +146,7 @@ html = u"""<!DOCTYPE html>
 <script>
 %s
 </script>
+<script type="module" src="auth.js"></script>
 </body>
 </html>
 """ % (css, base, data, app)

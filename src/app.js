@@ -41,7 +41,14 @@ function save() {
   LS.set(KEY + ".check", JSON.stringify([...ticked]));
   LS.set(KEY + ".lang", lang);
   LS.set(KEY + ".theme", theme);
+  if (window.cloudSave) window.cloudSave(window.vibeState.read());
 }
+
+// read/write hooks for auth.js; absent config, nothing ever calls them
+window.vibeState = {
+  read: () => ({ done: [...done], ticked: [...ticked] }),
+  write: s => { done = new Set(s.done || []); ticked = new Set(s.ticked || []); save(); render(); }
+};
 
 /* ---- routing: #/  #/<mod>  #/<mod>/<termIndex>  #/project  #/checklist ---- */
 const route = () => {

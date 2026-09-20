@@ -51,3 +51,26 @@ python src/build.py
 ```
 
 No dependencies, no build toolchain — the script only uses the Python standard library.
+
+## Hosting on Firebase, with sign-in
+
+Progress works with no account at all — it lives in `localStorage`. Sign-in only
+adds carrying it between devices.
+
+1. Create a project at https://console.firebase.google.com
+2. Authentication → Sign-in method → enable **Google**
+3. Firestore Database → create, production mode
+4. Project settings → Your apps → Web app → copy the config into the top of `auth.js`
+5. Put the project id in `.firebaserc`
+
+```bash
+npm i -g firebase-tools
+firebase login
+firebase deploy
+```
+
+That deploys the site and the Firestore rules in `firestore.rules`, which let each
+signed-in user read and write only their own `progress/{uid}` document.
+
+`robots.txt` disallows everything and Hosting sends `X-Robots-Tag: noindex`, so the
+site stays out of search results.
