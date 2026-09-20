@@ -4,6 +4,7 @@ import { signInWithPopup } from "firebase/auth";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { MODULES } from "@/lib/course";
+import { AppShell } from "@/components/AppShell";
 import { firebaseReady, getClientAuth, googleProvider } from "@/lib/firebase/client";
 
 export default function LoginPage() {
@@ -33,9 +34,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="wrap">
-      <main className="login-wrap">
-        <section className="slide login-card">
+    <AppShell showNav={false}>
+      <section className="slide login-card">
           <div className="kicker">Vibe → Code</div>
           <h2>Sign in to open lessons</h2>
           <p className="lede">
@@ -45,8 +45,7 @@ export default function LoginPage() {
             <button className="btn prim big" type="button" onClick={signIn}>Sign in with Google</button>
             <Link className="btn big" href="/">Back home</Link>
           </div>
-        </section>
-      </main>
-    </div>
+      </section>
+    </AppShell>
   );
 }

@@ -31,6 +31,7 @@ export function SideNav() {
       <h3 id="navTitle">{t("lessons")}</h3>
       <div id="nav">
         {navLink("/", "◫", t("allLessons"), `${done.size}/${totalTerms()}`)}
+        {navLink("/courses", "◇", t("paths"))}
         {MODULES.map((m) => {
           const d = m.terms.filter((_, i) => done.has(termKey(m, i))).length;
           const open = activeLesson === m.id;
