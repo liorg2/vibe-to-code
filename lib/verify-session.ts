@@ -4,18 +4,31 @@ import { SESSION_COOKIE } from "./protected";
 
 const DEV_UID = "dev-user";
 
-/** The signed-in uid, or null. Single place the session cookie is trusted. */
-export async function sessionUid(): Promise<string | null> {
+type Session = { uid: string; email?: string };
+
+/** ponytail: unset ALLOWED_EMAILS means open to any Google account — the current behaviour. */
+export function isAllowed(email?: string): boolean {
+  const list = (process.env.ALLOWED_EMAILS ?? "")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+  if (!list.length) return true;
+  return Boolean(email && list.includes(email.toLowerCase()));
+}
+
+/** Verifies the session cookie. The single place it is trusted; says nothing about access. */
+export async function sessionClaims(): Promise<Session | null> {
   const session = (await cookies()).get(SESSION_COOKIE)?.value;
   if (!session) return null;
 
   if (process.env.NODE_ENV === "development" && process.env.DEV_AUTH_BYPASS === "1" && session === "dev-session") {
-    return DEV_UID;
+    return { uid: DEV_UID, email: process.env.ALLOWED_EMAILS?.split(",")[0]?.trim() };
   }
 
   try {
     const { getAdminAuth } = await import("@/lib/firebase/admin");
-    return (await getAdminAuth().verifySessionCookie(session, true)).uid;
+    const { uid, email } = await getAdminAuth().verifySessionCookie(session, true);
+    return { uid, email };
   } catch (err) {
     // ponytail: an expired cookie is routine, a misconfigured service account is not — log both,
     // it is the only signal that reaches Vercel's runtime logs
@@ -24,7 +37,16 @@ export async function sessionUid(): Promise<string | null> {
   }
 }
 
+/** The uid of a signed-in *and* allowed user, or null. Use from API routes. */
+export async function sessionUid(): Promise<string | null> {
+  const claims = await sessionClaims();
+  return claims && isAllowed(claims.email) ? claims.uid : null;
+}
+
 /** Call from server components under protected routes (Node runtime). */
 export async function requireSession() {
-  if (!(await sessionUid())) redirect("/login");
+  const claims = await sessionClaims();
+  if (!claims) redirect("/login");
+  // ponytail: a distinct page, not /login — bouncing an allowed-cookie user back to sign-in loops
+  if (!isAllowed(claims.email)) redirect("/no-access");
 }

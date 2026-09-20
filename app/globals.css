@@ -361,6 +361,13 @@ pre.code{max-width:100%}
 
 @media (max-width:900px){ .gloss{columns:1} .flash{padding:32px 18px} .flash h2{font-size:24px} }
 
-.login-wrap{max-width:640px;margin:80px auto;padding:24px}
+.login-wrap{max-width:560px;margin:clamp(32px,9vh,80px) auto;padding:24px}
 .login-card{text-align:center}
+/* .slide styles a wide left-aligned lesson slide — undo the parts that fight a narrow centred card */
+.login-card h2{font-size:clamp(22px,5.5vw,32px)}
+.login-card .lede{border-inline-start:0;padding-inline-start:0;margin-top:14px;
+  font-size:16.5px;color:var(--tx2);max-width:42ch;margin-inline:auto;text-wrap:pretty}
 .login-card .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* AuthButton renders a plain .btn — size every button in the card alike */
+.login-card .cta .btn{white-space:nowrap;padding:13px 26px;font-size:15px;border-radius:12px}
+.login-card #who{display:none}
