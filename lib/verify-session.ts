@@ -16,7 +16,10 @@ export async function sessionUid(): Promise<string | null> {
   try {
     const { getAdminAuth } = await import("@/lib/firebase/admin");
     return (await getAdminAuth().verifySessionCookie(session, true)).uid;
-  } catch {
+  } catch (err) {
+    // ponytail: an expired cookie is routine, a misconfigured service account is not — log both,
+    // it is the only signal that reaches Vercel's runtime logs
+    console.warn("session cookie rejected:", err instanceof Error ? err.message : err);
     return null;
   }
 }
