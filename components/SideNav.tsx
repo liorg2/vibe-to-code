@@ -30,7 +30,7 @@ export function SideNav() {
     <nav className="side">
       <h3 id="navTitle">{t("lessons")}</h3>
       <div id="nav">
-        {navLink("/", "&#9635;", t("allLessons"), `${done.size}/${totalTerms()}`)}
+        {navLink("/", "◫", t("allLessons"), `${done.size}/${totalTerms()}`)}
         {MODULES.map((m) => {
           const d = m.terms.filter((_, i) => done.has(termKey(m, i))).length;
           const open = activeLesson === m.id;
@@ -64,8 +64,8 @@ export function SideNav() {
         {PROJECT?.id && navLink("/project", PROJECT.icon, PROJECT.title[lang])}
         {ARCHITECTURES?.id && navLink("/architectures", ARCHITECTURES.icon, ARCHITECTURES.title[lang])}
         {CHECKLIST?.id && navLink("/checklist", CHECKLIST.icon, CHECKLIST.title[lang])}
-        {navLink("/glossary", "&#9776;", t("glossary"))}
-        {navLink("/review", "&#9850;", t("review"))}
+        {navLink("/glossary", "☰", t("glossary"))}
+        {navLink("/review", "🗐", t("review"))}
       </div>
     </nav>
   );

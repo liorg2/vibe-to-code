@@ -1,13 +1,28 @@
 {
   "hosting": {
     "source": ".",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "src/**", "index.html", "auth.js", "README.md"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "src/**",
+      "index.html",
+      "auth.js",
+      "README.md"
+    ],
     "headers": [
-      { "source": "**", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          }
+        ]
+      }
     ],
     "frameworksBackend": {
       "region": "us-central1"
     }
-  },
-  "firestore": { "rules": "firestore.rules" }
+  }
 }

@@ -1,4 +1,4 @@
-import { cert, getApps, initializeApp, type App } from "firebase-admin/app";
+import { applicationDefault, cert, getApps, initializeApp, type App } from "firebase-admin/app";
 import { getAuth, type Auth } from "firebase-admin/auth";
 
 let app: App | undefined;
@@ -11,9 +11,10 @@ function initAdmin(): App {
   }
 
   const raw = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
-  if (!raw) throw new Error("FIREBASE_SERVICE_ACCOUNT_JSON is not set");
-
-  app = initializeApp({ credential: cert(JSON.parse(raw)) });
+  app = initializeApp({
+    credential: raw ? cert(JSON.parse(raw)) : applicationDefault(),
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ?? process.env.GCLOUD_PROJECT,
+  });
   return app;
 }
 

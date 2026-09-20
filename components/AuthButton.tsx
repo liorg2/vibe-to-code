@@ -6,7 +6,7 @@ import { useApp } from "./Providers";
 import { firebaseReady, getClientAuth, googleProvider } from "@/lib/firebase/client";
 
 export function AuthButton() {
-  const { user, t } = useApp();
+  const { user, t, syncCloud } = useApp();
   const router = useRouter();
 
   if (!firebaseReady) return null;
@@ -20,6 +20,7 @@ export function AuthButton() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ idToken }),
     });
+    await syncCloud(); // ponytail: onAuthStateChanged fired before the cookie existed
     router.refresh();
   };
 
@@ -34,7 +35,7 @@ export function AuthButton() {
     <>
       <span id="who">{user ? user.displayName || user.email || "" : ""}</span>
       <button className="btn" type="button" onClick={() => (user ? signOutAll() : signIn())}>
-        {user ? "Sign out" : t("signIn") || "Sign in"}
+        {user ? "Sign out" : "Sign in"}
       </button>
     </>
   );

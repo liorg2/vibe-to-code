@@ -10,10 +10,9 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import type { Lang } from "@/lib/types";
-import { firebaseReady, getClientApp, getClientAuth } from "@/lib/firebase/client";
+import { firebaseReady, getClientAuth } from "@/lib/firebase/client";
 import { totalTerms } from "@/lib/course";
 
 const KEY = "vibe2code.v2";
@@ -26,6 +25,7 @@ type Ctx = {
   done: Set<string>;
   ticked: Set<string>;
   user: User | null;
+  syncCloud: () => Promise<void>;
   setLang: (l: Lang) => void;
   toggleTheme: () => void;
   toggleDone: (k: string) => void;
@@ -70,13 +70,16 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
       lsSet(KEY + ".lang", nextLang);
       lsSet(KEY + ".theme", nextTheme);
 
-      const uid = uidRef.current;
-      if (!uid || !firebaseReady) return;
-      const db = getFirestore(getClientApp());
-      const ref = doc(db, "progress", uid);
-      const payload = { done: [...nextDone], ticked: [...nextTicked], updated: Date.now() };
+      if (!uidRef.current) return;
+      const payload = JSON.stringify({ done: [...nextDone], ticked: [...nextTicked] });
       if (cloudTimer.current) clearTimeout(cloudTimer.current);
-      cloudTimer.current = setTimeout(() => setDoc(ref, payload).catch(() => {}), 800);
+      cloudTimer.current = setTimeout(() => {
+        fetch("/api/progress", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: payload,
+        }).catch(() => {});
+      }, 800);
     },
     [lang, theme],
   );
@@ -96,24 +99,30 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     document.body.dir = lang === "he" ? "rtl" : "ltr";
   }, [lang, theme]);
 
+  /** Pull server progress, union it with local, push the result back. */
+  const syncCloud = useCallback(async () => {
+    const res = await fetch("/api/progress").catch(() => null);
+    if (!res?.ok) return; // ponytail: 401 when signed out — nothing to merge
+    const cloud = (await res.json()) as Progress;
+    const mergedDone = new Set([...(cloud.done || []), ...done]);
+    const mergedTicked = new Set([...(cloud.ticked || []), ...ticked]);
+    setDone(mergedDone);
+    setTicked(mergedTicked);
+    persist(mergedDone, mergedTicked);
+    await fetch("/api/progress", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ done: [...mergedDone], ticked: [...mergedTicked] }),
+    }).catch(() => {});
+  }, [done, ticked, persist]);
+
   useEffect(() => {
     if (!firebaseReady) return;
     const auth = getClientAuth();
-    return onAuthStateChanged(auth, async (u) => {
+    return onAuthStateChanged(auth, (u) => {
       setUser(u);
       uidRef.current = u?.uid ?? null;
-      if (!u) return;
-
-      const db = getFirestore(getClientApp());
-      const ref = doc(db, "progress", u.uid);
-      const snap = await getDoc(ref);
-      const cloud = snap.exists() ? (snap.data() as Progress) : { done: [], ticked: [] };
-      const mergedDone = new Set([...(cloud.done || []), ...done]);
-      const mergedTicked = new Set([...(cloud.ticked || []), ...ticked]);
-      setDone(mergedDone);
-      setTicked(mergedTicked);
-      persist(mergedDone, mergedTicked);
-      await setDoc(ref, { done: [...mergedDone], ticked: [...mergedTicked], updated: Date.now() });
+      if (u) void syncCloud();
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -160,6 +169,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
       done,
       ticked,
       user,
+      syncCloud,
       setLang,
       toggleTheme,
       toggleDone,
@@ -169,7 +179,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
       UI,
       progressPct,
     }),
-    [lang, theme, done, ticked, user, UI, progressPct],
+    [lang, theme, done, ticked, user, syncCloud, UI, progressPct],
   );
 
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;
