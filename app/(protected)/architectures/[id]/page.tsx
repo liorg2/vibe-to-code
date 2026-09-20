@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { PromptBox } from "@/components/PromptBox";
 import { ARCHITECTURES, findTerm } from "@/lib/course";
 import { serverLang } from "@/lib/lang-server";
@@ -20,7 +21,13 @@ export default async function ArchitectureDetailPage({ params }: { params: Promi
 
   return (
     <AppShell>
-      <Link className="crumb" href="/architectures">&larr; {A.title[lang]}</Link>
+      <Breadcrumb
+        items={[
+          { label: "All lessons", href: "/" },
+          { label: A.title[lang], href: "/architectures" },
+          { label: a.title[lang] },
+        ]}
+      />
       <article className="slide arch">
         <div className="kicker">{String(i + 1).padStart(2, "0")} {A.title[lang]} · {a.tag[lang]}</div>
         <h2>{a.title[lang]}</h2>

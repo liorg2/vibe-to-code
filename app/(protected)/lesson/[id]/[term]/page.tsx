@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { LessonSubNav } from "@/components/LessonSubNav";
 import { PromptBox } from "@/components/PromptBox";
 import { SlideActions } from "@/components/SlideActions";
@@ -13,6 +13,7 @@ import {
   UI,
   getModule,
   moduleIndex,
+  pathForModule,
 } from "@/lib/course";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
@@ -33,6 +34,7 @@ export default async function SlidePage({
   const tm = m.terms[i];
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
+  const coursePath = pathForModule(m.id);
   const prevM = MODULES[mi - 1];
   const nextM = MODULES[mi + 1];
 
@@ -52,7 +54,14 @@ export default async function SlidePage({
 
   return (
     <AppShell>
-      <Link className="crumb" href="/">{t("backHome")}</Link>
+      <Breadcrumb
+        items={[
+          { label: t("allLessons"), href: "/" },
+          ...(coursePath ? [{ label: coursePath.title[lang], href: "/courses" }] : []),
+          { label: m.title[lang], href: `/lesson/${m.id}/0` },
+          { label: tm.t[lang] },
+        ]}
+      />
       <LessonSubNav m={m} active={i} />
       <article className="slide">
         <div className="kicker">

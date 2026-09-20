@@ -236,6 +236,13 @@ body[dir="rtl"] .ans{border-radius:11px 0 0 11px}
 .crumb{display:inline-block;margin-bottom:16px;color:var(--tx2);text-decoration:none;
   font-size:14px;font-weight:600}
 .crumb:hover{color:var(--acc)}
+/* breadcrumb trail on the deep pages (term, quiz, architecture detail) */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:16px;font-size:13px}
+.crumbs-item{display:inline-flex;align-items:center;gap:6px;min-width:0}
+.crumbs a{color:var(--tx2);text-decoration:none}
+.crumbs a:hover{color:var(--acc)}
+.crumbs [aria-current="page"]{color:var(--tx);font-weight:600}
+.crumbs .sep{color:var(--tx3);opacity:.7}
 .finish{text-align:center;padding:30px;border:1px dashed var(--line);border-radius:var(--r);color:var(--tx2)}
 .finish.win{border-color:var(--acc2);color:var(--tx)}
 .empty{padding:40px;text-align:center;color:var(--tx3)}

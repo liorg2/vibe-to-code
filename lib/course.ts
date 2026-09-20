@@ -1,4 +1,4 @@
-import type { Course, Lang, Module, Term } from "./types";
+import type { Course, Lang, Module, Path, Term } from "./types";
 import raw from "@/data/course.json";
 
 const course = raw as Course;
@@ -29,6 +29,11 @@ export function totalTerms(): number {
 
 export function mins(m: Module): number {
   return Math.max(3, Math.round(m.terms.length * 1.6));
+}
+
+/** The course (PATHS entry) a module belongs to, for breadcrumbs. */
+export function pathForModule(id: string): Path | undefined {
+  return course.PATHS.find((p) => p.mods.includes(id));
 }
 
 export function findTerm(nameEn: string): { m: Module; i: number; tm: Term } | null {
