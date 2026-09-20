@@ -317,6 +317,15 @@ pre.code{max-width:100%}
 .path .mini{height:5px;border-radius:99px;background:var(--line);overflow:hidden}
 .path .mini i{display:block;height:100%;background:var(--grad)}
 
+/* ---- plain-words layer + go-deeper disclosure on a slide ---- */
+.slide .plain{margin-top:26px;max-width:72ch}
+.slide .plain h3{font-size:clamp(18px,2.4vw,23px);line-height:1.3;font-weight:800;color:var(--acc2);margin-bottom:12px}
+.slide .plain p{color:var(--tx);font-size:17px;line-height:1.65;margin-bottom:14px}
+.deeper{margin-top:26px;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;background:var(--card2)}
+.deeper summary{cursor:pointer;font-weight:800;font-size:15px}
+.deeper summary .sub{display:block;font-weight:400;color:var(--tx3);font-size:13px;margin-top:3px}
+.deeper .body{margin-top:18px}
+
 /* ---- ask-the-AI disclosure on a slide ---- */
 .ask{margin-top:22px;border:1px dashed var(--line);border-radius:var(--r);padding:14px 16px}
 .ask summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--acc2)}

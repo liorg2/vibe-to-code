@@ -44,5 +44,5 @@ export function findTerm(nameEn: string): { m: Module; i: number; tm: Term } | n
   return null;
 }
 
-export const { UI, MODULES, DETAIL, EXAMPLES, QUIZ, PROJECT, CHECKLIST, ARCHITECTURES, PATHS, ASK_PROMPT } =
+export const { UI, MODULES, SIMPLE, DETAIL, EXAMPLES, QUIZ, PROJECT, CHECKLIST, ARCHITECTURES, PATHS, ASK_PROMPT } =
   course;

@@ -63,9 +63,12 @@ export type Path = {
   mods: string[];
 };
 
+export type Simple = { q: L10n; s: L10n };
+
 export type Course = {
   UI: Record<string, L10n>;
   MODULES: Module[];
+  SIMPLE: Record<string, Simple>;
   DETAIL: Record<string, L10n>;
   EXAMPLES: Record<string, Example>;
   QUIZ: Record<string, QuizQ[]>;

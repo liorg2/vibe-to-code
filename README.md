@@ -3,7 +3,7 @@
 A bilingual (English / עברית) course that teaches the vocabulary and mental models of
 professional software development to people who build with AI assistants.
 
-**20 modules · ~190 terms · a worked example on every slide · five reference
+**20 modules · ~190 terms · a plain-words explanation (no code) plus an optional deep dive with a worked example on every slide · five reference
 architectures · a 13-step capstone · a pre-ship checklist.**
 
 Live at https://vibe-to-code-4206d.web.app (unindexed on purpose).
@@ -13,7 +13,8 @@ Live at https://vibe-to-code-4206d.web.app (unindexed on purpose).
 - **Next.js 15** (React + TypeScript) — lessons are **server-rendered**
 - **Firebase Auth** — Google sign-in; lessons are blocked until you have a verified session cookie
 - **Firestore** — optional progress sync between devices
-- Course content in `data/course.json` (assembled from the legacy `src/*.py` sources)
+- Course content in `data/course.json` (assembled from the legacy `src/*.py` sources). Per term: `SIMPLE` holds the
+  non-coder layer (a question + everyday-analogy answer, EN/HE); `DETAIL` and `EXAMPLES` are the optional deep dive.
 
 ## Run locally
 

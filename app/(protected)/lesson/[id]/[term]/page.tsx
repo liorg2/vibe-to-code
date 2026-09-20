@@ -10,6 +10,7 @@ import {
   EXAMPLES,
   MODULES,
   QUIZ,
+  SIMPLE,
   UI,
   getModule,
   moduleIndex,
@@ -32,6 +33,7 @@ export default async function SlidePage({
   if (!m || mi < 0 || !Number.isInteger(i) || i < 0 || i >= m.terms.length) notFound();
 
   const tm = m.terms[i];
+  const simple = SIMPLE[tm.t.en];
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
   const coursePath = pathForModule(m.id);
@@ -82,18 +84,29 @@ export default async function SlidePage({
             </div>
           </div>
         ) : null}
-        {det ? (
-          <div className="body">
-            {para(det[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
-          </div>
-        ) : null}
-        {ex ? (
-          <div className="ex">
-            <div className="cap">{ex.cap[lang]}</div>
-            <pre className="code">{ex.code}</pre>
+        {simple ? (
+          <div className="plain">
+            <h3>{simple.q[lang]}</h3>
+            {para(simple.s[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
           </div>
         ) : null}
         <div className="cal"><b>{t("why")}</b><p>{tm.w[lang]}</p></div>
+        {det || ex ? (
+          <details className="deeper" open={!simple}>
+            <summary>{t("deeper")}<span className="sub">{t("deeperSub")}</span></summary>
+            {det ? (
+              <div className="body">
+                {para(det[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
+              </div>
+            ) : null}
+            {ex ? (
+              <div className="ex">
+                <div className="cap">{ex.cap[lang]}</div>
+                <pre className="code">{ex.code}</pre>
+              </div>
+            ) : null}
+          </details>
+        ) : null}
         <details className="ask">
           <summary>{t("askAI")}</summary>
           <p className="sub">{t("askSub")}</p>
