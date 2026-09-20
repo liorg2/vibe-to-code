@@ -19,8 +19,8 @@ def opt(mod, *names):
     """Import names from a module that may not exist yet (agents still writing)."""
     try:
         m = __import__(mod)
-    except ImportError:
-        print("  .. skipping %s (not written yet)" % mod)
+    except (ImportError, SyntaxError) as e:
+        print("  .. skipping %s (%s)" % (mod, type(e).__name__))
         return [None] * len(names)
     return [getattr(m, n, None) for n in names]
 
@@ -103,7 +103,7 @@ for mod, mod_names, d, e, q in WIDE:
 
 # deeper rewrites of the original 82 terms + Hebrew corrections
 he_fixes = 0
-for mod in ("deep_1", "deep_2", "deep_3", "deep_4"):
+for mod in ["deep_%d" % i for i in range(1, 10)]:
     detail, example, he = opt(mod, "DETAIL_FIX", "EXAMPLES_FIX", "HE_FIX")
     if detail: DETAIL.update(detail)
     if example: EXAMPLES.update(example)
@@ -129,11 +129,16 @@ for d in (DETAIL,):
 
 ARCHITECTURES, = opt("arch_data", "ARCHITECTURES")
 
+EXAMPLES_LAST, = opt("examples_last", "EXAMPLES_LAST")
+if EXAMPLES_LAST: EXAMPLES.update(EXAMPLES_LAST)
+
 # ---------- Hebrew house style ----------
 # several passes wrote these differently; one spelling each, everywhere
 HE_STYLE = [
-    ("בסיס נתונים", "מסד נתונים"), ("בסיס הנתונים", "מסד הנתונים"),
-    ("בסיסי נתונים", "מסדי נתונים"), ("בסיסי הנתונים", "מסדי הנתונים"),
+    ("בסיסי הנתונים", "מסדי הנתונים"), ("בסיסי נתונים", "מסדי נתונים"),
+    ("בסיס הנתונים", "מסד הנתונים"), ("בסיס נתונים", "מסד נתונים"),
+    # deploy: the noun is a loanword in speech; the verb stays Hebrew
+    ("הפריסה", "הדיפלוי"), ("פריסה", "דיפלוי"), ("פריסות", "דיפלויים"),
 ]
 
 def he_style(node):
