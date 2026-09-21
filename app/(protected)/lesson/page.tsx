@@ -3,6 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import { ModuleHead } from "@/components/ModuleHead";
 import { TermCard } from "@/components/TermCard";
 import { MODULES } from "@/lib/course";
+import { allowedLevels } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
 export default async function LessonSearchPage({
@@ -16,8 +17,13 @@ export default async function LessonSearchPage({
   const hit = (tm: { t: { en: string; he: string }; d: Record<string, string>; w: Record<string, string> }) =>
     (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(query);
 
+  // search reads d and w — without this a non-buyer could read a locked term straight out of ?q=
+  const allowed = await allowedLevels();
+
   const secs = MODULES.map((m, i) => {
-    const hits = m.terms.map((tm, j) => ({ tm, j })).filter(({ tm }) => hit(tm));
+    const hits = m.terms
+      .map((tm, j) => ({ tm, j }))
+      .filter(({ tm }) => allowed.has(tm.lvl) && hit(tm));
     if (!hits.length) return null;
     const doneCount = 0;
     return (

@@ -7,6 +7,7 @@ import { LevelTag } from "@/components/LevelTag";
 import { PracticeLoop } from "@/components/PracticeLoop";
 import { PromptBox } from "@/components/PromptBox";
 import { SlideActions } from "@/components/SlideActions";
+import { Upsell } from "@/components/Upsell";
 import {
   ASK_PROMPT,
   DETAIL,
@@ -20,6 +21,7 @@ import {
   pathForModule,
 } from "@/lib/course";
 import { LIFECYCLE } from "@/lib/diagrams";
+import { allowedLevels } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
 
@@ -37,6 +39,15 @@ export default async function SlidePage({
   if (!m || mi < 0 || !Number.isInteger(i) || i < 0 || i >= m.terms.length) notFound();
 
   const tm = m.terms[i];
+  // the URL is the whole attack surface here — the client filter is decoration, this is the gate
+  if (!(await allowedLevels()).has(tm.lvl)) {
+    return (
+      <AppShell>
+        <Upsell title={tm.t[lang]} lvl={tm.lvl} />
+      </AppShell>
+    );
+  }
+
   const simple = SIMPLE[tm.t.en];
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];

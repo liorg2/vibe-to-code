@@ -2,11 +2,16 @@ import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { GlossaryList } from "@/components/GlossaryList";
 import { MODULES } from "@/lib/course";
+import { allowedLevels } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
 export default async function GlossaryPage() {
   const lang = await serverLang();
-  const all = MODULES.flatMap((m) => m.terms.map((tm, i) => ({ m, i, tm })));
+  // filtered here, not in GlossaryList — a locked term's definition must not reach the browser
+  const allowed = await allowedLevels();
+  const all = MODULES.flatMap((m) =>
+    m.terms.map((tm, i) => ({ m, i, tm })).filter(({ tm }) => allowed.has(tm.lvl)),
+  );
   all.sort((a, b) => a.tm.t[lang].localeCompare(b.tm.t[lang], lang === "he" ? "he" : "en"));
 
   return (

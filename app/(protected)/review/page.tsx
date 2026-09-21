@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { ReviewClient } from "@/components/ReviewClient";
+import { allowedLevels, requireEntitlement } from "@/lib/entitlement";
 
-export default function ReviewPage() {
+export default async function ReviewPage() {
+  await requireEntitlement(); // a deck with nothing in it is not a page — show the offer instead
+  const allowed = [...(await allowedLevels())];
+
   return (
     <AppShell>
       <Link className="crumb" href="/">← All lessons</Link>
-      <ReviewClient />
+      <ReviewClient allowed={allowed} />
     </AppShell>
   );
 }

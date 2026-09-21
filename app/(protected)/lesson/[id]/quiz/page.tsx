@@ -5,7 +5,9 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { LessonSubNav } from "@/components/LessonSubNav";
 import { ModuleHead } from "@/components/ModuleHead";
 import { QuizBlock } from "@/components/QuizBlock";
+import { Upsell } from "@/components/Upsell";
 import { ARCHITECTURES, MODULES, QUIZ, UI, getModule, moduleIndex, pathForModule } from "@/lib/course";
+import { allowedLevels } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
 export default async function QuizPage({ params }: { params: Promise<{ id: string }> }) {
@@ -15,6 +17,16 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
   const mi = moduleIndex(id);
   const qs = QUIZ[id];
   if (!m || mi < 0 || !qs) notFound();
+
+  // a quiz mixes the module's levels — entitled to any term in it is enough to sit it
+  const allowed = await allowedLevels();
+  if (!m.terms.some((tm) => allowed.has(tm.lvl))) {
+    return (
+      <AppShell>
+        <Upsell title={m.title[lang]} lvl={m.terms[0].lvl} />
+      </AppShell>
+    );
+  }
 
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const coursePath = pathForModule(m.id);

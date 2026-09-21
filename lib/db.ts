@@ -6,10 +6,11 @@ function db() {
   return (client ??= neon(process.env.DATABASE_URL ?? process.env.POSTGRES_URL ?? ""));
 }
 
-/** ponytail: one CREATE IF NOT EXISTS per lambda instance beats a migration runner for one table */
+/** ponytail: one CREATE IF NOT EXISTS per lambda instance beats a migration runner for two tables */
 let ready: Promise<unknown> | undefined;
 function ensure() {
-  ready ??= db()`
+  ready ??= Promise.all([
+    db()`
     create table if not exists progress_topic (
       uid     text        not null,
       lesson  text        not null,
@@ -17,7 +18,16 @@ function ensure() {
       pct     smallint    not null,
       updated timestamptz not null default now(),
       primary key (uid, lesson, topic)
-    )`;
+    )`,
+    db()`
+    create table if not exists entitlement (
+      uid     text        primary key,
+      tier    text        not null,
+      txn     text        not null,
+      paid_at timestamptz not null default now(),
+      updated timestamptz not null default now()
+    )`,
+  ]);
   return ready;
 }
 
@@ -53,4 +63,29 @@ export async function saveRows(uid: string, rows: Row[]): Promise<void> {
       on conflict (uid, lesson, topic)
         do update set pct = excluded.pct, updated = now()`,
   ]);
+}
+
+/** One paid tier per account, forever — one-time purchases, so there is nothing to expire. */
+export type Tier = "basic" | "advanced";
+
+export async function getEntitlement(uid: string): Promise<Tier | null> {
+  await ensure();
+  const rows = (await db()`select tier from entitlement where uid = ${uid}`) as { tier: Tier }[];
+  return rows[0]?.tier ?? null;
+}
+
+/**
+ * Idempotent: the webhook and the return-URL re-check can both land the same transaction.
+ * ponytail: "never downgrade advanced" lives in the SQL, so every caller gets it for free —
+ * a late basic webhook after an upgrade cannot take level B away again.
+ */
+export async function upsertEntitlement(uid: string, tier: Tier, txn: string): Promise<void> {
+  await ensure();
+  await db()`
+    insert into entitlement (uid, tier, txn, paid_at, updated)
+    values (${uid}, ${tier}, ${txn}, now(), now())
+    on conflict (uid) do update
+      set tier    = case when entitlement.tier = 'advanced' then 'advanced' else excluded.tier end,
+          txn     = excluded.txn,
+          updated = now()`;
 }
