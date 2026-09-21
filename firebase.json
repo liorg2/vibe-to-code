@@ -8,17 +8,6 @@
       "src/**",
       "README.md"
     ],
-    "headers": [
-      {
-        "source": "**",
-        "headers": [
-          {
-            "key": "X-Robots-Tag",
-            "value": "noindex, nofollow"
-          }
-        ]
-      }
-    ],
     "frameworksBackend": {
       "region": "us-central1"
     }
