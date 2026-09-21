@@ -3,7 +3,7 @@
 import { useApp } from "./Providers";
 import type { Level, Module } from "@/lib/types";
 
-const LEVELS: Level[] = ["A", "B", "C"];
+const LEVELS: Level[] = ["A", "B"];
 
 /** The letter is the whole badge; the colour repeats it so a scan of a list reads at a glance. */
 export function LevelTag({ lvl, full = false }: { lvl: Level; full?: boolean }) {

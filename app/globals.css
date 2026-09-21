@@ -417,8 +417,6 @@ nav.side .lvl-key button{flex:1;justify-content:center;padding:4px 0}
   background:color-mix(in srgb,#12b886 12%,transparent)}
 .lvl-B{color:#4c8dff;border-color:color-mix(in srgb,#4c8dff 40%,transparent);
   background:color-mix(in srgb,#4c8dff 12%,transparent)}
-.lvl-C{color:#b07cff;border-color:color-mix(in srgb,#b07cff 40%,transparent);
-  background:color-mix(in srgb,#b07cff 12%,transparent)}
 /* in the nav there is no room for the word — the letter carries it */
 nav.side .nav-subs a .lvl{padding:2px 4px;font-size:9.5px;flex:none}
 .subnav a .lvl{padding:2px 4px;font-size:9.5px}

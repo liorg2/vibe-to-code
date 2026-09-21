@@ -289,24 +289,16 @@
    "he": "יסודות"
   },
   "lvlB": {
-   "en": "Building",
-   "he": "בנייה"
-  },
-  "lvlC": {
-   "en": "Running it for real",
-   "he": "להריץ באמת"
+   "en": "Advanced",
+   "he": "מתקדם"
   },
   "lvlAd": {
    "en": "No prior knowledge. The words everything else is built from.",
    "he": "בלי ידע מוקדם. המילים שכל השאר בנוי מהן."
   },
   "lvlBd": {
-   "en": "You are building something. How the parts fit and where they leak.",
-   "he": "אתה בונה משהו. איך החלקים מתחברים ואיפה הם דולפים."
-  },
-  "lvlCd": {
-   "en": "Strangers depend on it. Failure, load, security and the bill.",
-   "he": "זרים תלויים בזה. תקלות, עומס, אבטחה והחשבון."
+   "en": "Building it, shipping it, and running it once strangers depend on it.",
+   "he": "לבנות את זה, לשחרר ולהריץ כשזרים כבר תלויים בזה."
   },
   "practice": {
    "en": "Practice the loop",
@@ -996,7 +988,7 @@
     },
     {
      "k": "the-main-thread",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "The main thread",
       "he": "התהליכון הראשי"
@@ -1376,7 +1368,7 @@
     },
     {
      "k": "api-versioning",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "API versioning",
       "he": "גרסאות API"
@@ -1392,7 +1384,7 @@
     },
     {
      "k": "timeouts-and-retries",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Timeouts & retries",
       "he": "טיים-אאוט וניסיונות חוזרים"
@@ -1440,7 +1432,7 @@
     },
     {
      "k": "polling-vs-push",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Polling vs push",
       "he": "פולינג מול דחיפה"
@@ -1644,7 +1636,7 @@
     },
     {
      "k": "stack-and-heap",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Stack & heap",
       "he": "סטאק והיפ (Stack & heap)"
@@ -1660,7 +1652,7 @@
     },
     {
      "k": "garbage-collection",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Garbage collection",
       "he": "גרבג׳ קולקשן (GC)"
@@ -1676,7 +1668,7 @@
     },
     {
      "k": "memory-leak",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Memory leak",
       "he": "ליק זיכרון (Memory leak)"
@@ -1740,7 +1732,7 @@
     },
     {
      "k": "race-condition",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Race condition",
       "he": "רייס קונדישן (Race condition)"
@@ -1882,7 +1874,7 @@
     },
     {
      "k": "redis-in-memory-store",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Redis / in-memory store",
       "he": "Redis / אחסון בזיכרון"
@@ -1960,7 +1952,7 @@
     },
     {
      "k": "mock-fixture",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Mock / Fixture",
       "he": "מוק / פיקסצ׳ר"
@@ -2008,7 +2000,7 @@
     },
     {
      "k": "flaky-test",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Flaky test",
       "he": "בדיקה הפכפכה"
@@ -2024,7 +2016,7 @@
     },
     {
      "k": "test-first-tdd",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Test-first (TDD)",
       "he": "בדיקה קודם (TDD)"
@@ -2102,7 +2094,7 @@
     },
     {
      "k": "event-and-pub-sub",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Event & pub/sub",
       "he": "אירוע ו-pub/sub"
@@ -2118,7 +2110,7 @@
     },
     {
      "k": "retry-and-backoff",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Retry & backoff",
       "he": "ניסיון חוזר ו-backoff"
@@ -2134,7 +2126,7 @@
     },
     {
      "k": "dead-letter-queue",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Dead-letter queue",
       "he": "תור אותיות מתות (DLQ)"
@@ -2150,7 +2142,7 @@
     },
     {
      "k": "eventual-consistency",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Eventual consistency",
       "he": "עקביות בסופו של דבר"
@@ -2166,7 +2158,7 @@
     },
     {
      "k": "real-time-websocket-sse",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Real-time (WebSocket / SSE)",
       "he": "זמן אמת (WebSocket / SSE)"
@@ -2356,7 +2348,7 @@
     },
     {
      "k": "xss-and-csrf",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "XSS & CSRF",
       "he": "XSS ו-CSRF"
@@ -2402,7 +2394,7 @@
     },
     {
      "k": "owasp-top-10",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "OWASP Top 10",
       "he": "OWASP Top 10"
@@ -2450,7 +2442,7 @@
     },
     {
      "k": "supply-chain-dependencies",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Supply chain (dependencies)",
       "he": "שרשרת אספקה (תלויות)"
@@ -2466,7 +2458,7 @@
     },
     {
      "k": "cve-and-patching",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "CVE & patching",
       "he": "CVE ועדכוני אבטחה"
@@ -2482,7 +2474,7 @@
     },
     {
      "k": "security-headers-and-csp",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Security headers & CSP",
       "he": "כותרות אבטחה ו-CSP"
@@ -2498,7 +2490,7 @@
     },
     {
      "k": "encryption-at-rest-in-transit",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Encryption at rest / in transit",
       "he": "הצפנה במנוחה / בתעבורה"
@@ -2530,7 +2522,7 @@
     },
     {
      "k": "audit-log",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Audit log",
       "he": "יומן ביקורת"
@@ -2624,7 +2616,7 @@
     },
     {
      "k": "reverse-proxy",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Reverse proxy",
       "he": "Reverse proxy"
@@ -2640,7 +2632,7 @@
     },
     {
      "k": "firewall-security-group",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Firewall / security group",
       "he": "חומת אש / security group"
@@ -2656,7 +2648,7 @@
     },
     {
      "k": "vpc-private-network",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "VPC / private network",
       "he": "VPC / רשת פרטית"
@@ -2876,7 +2868,7 @@
     },
     {
      "k": "secrets-manager",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Secrets manager",
       "he": "מנהל סודות (secrets manager)"
@@ -2892,7 +2884,7 @@
     },
     {
      "k": "build-artifact-and-image-tag",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Build artifact & image tag",
       "he": "ארטיפקט בנייה ותג אימג׳"
@@ -2924,7 +2916,7 @@
     },
     {
      "k": "zero-downtime-deploy",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Zero-downtime deploy",
       "he": "דיפלוי בלי השבתה (zero-downtime)"
@@ -2972,7 +2964,7 @@
     },
     {
      "k": "infrastructure-as-code",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Infrastructure as Code",
       "he": "תשתית כקוד (IaC)"
@@ -2988,7 +2980,7 @@
     },
     {
      "k": "expand-contract-migration",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Expand / contract migration",
       "he": "מיגרציית expand / contract"
@@ -3050,7 +3042,7 @@
     },
     {
      "k": "tracing-and-correlation-id",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Tracing & correlation id",
       "he": "טרייסינג ומזהה קורלציה"
@@ -3114,7 +3106,7 @@
     },
     {
      "k": "slo-and-error-budget",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "SLO & error budget",
       "he": "SLO ותקציב שגיאות"
@@ -3146,7 +3138,7 @@
     },
     {
      "k": "postmortem",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Postmortem",
       "he": "פוסטמורטם"
@@ -3224,7 +3216,7 @@
     },
     {
      "k": "queue-worker",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Queue / worker",
       "he": "תור / וורקר (worker)"
@@ -3240,7 +3232,7 @@
     },
     {
      "k": "idempotency",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Idempotency",
       "he": "אידמפוטנטיות"
@@ -3430,7 +3422,7 @@
     },
     {
      "k": "decision-record-adr",
-     "lvl": "C",
+     "lvl": "B",
      "t": {
       "en": "Decision record (ADR)",
       "he": "תיעוד החלטה (ADR)"

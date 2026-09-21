@@ -19,7 +19,7 @@ const KEY = "vibe2code.v2";
 
 type Progress = { done: string[]; ticked: string[] };
 
-const ALL_LEVELS: Level[] = ["A", "B", "C"];
+const ALL_LEVELS: Level[] = ["A", "B"];
 
 type Ctx = {
   lang: Lang;

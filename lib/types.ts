@@ -1,12 +1,12 @@
 export type Lang = "en" | "he";
 export type L10n = Record<Lang, string>;
 
-export type Level = "A" | "B" | "C";
+export type Level = "A" | "B";
 
 export type Term = {
   /** stable slug — progress is stored against this, so the title stays editable */
   k: string;
-  /** how much you need to already know: A foundations, B building, C running it for real */
+  /** A foundations, B everything past them — this is also what each tier unlocks */
   lvl: Level;
   t: L10n;
   d: L10n;
