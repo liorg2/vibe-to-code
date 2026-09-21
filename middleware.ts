@@ -25,6 +25,8 @@ export function middleware(req: NextRequest) {
   const rest = stripLang(pathname);
   const headers = new Headers(req.headers);
   headers.set("x-vibe-lang", lang);
+  // the rewrite hides the locale from the app; metadata needs it back for canonical + hreflang
+  headers.set("x-vibe-path", rest);
 
   if (isProtectedPath(rest) && !req.cookies.get(SESSION_COOKIE)?.value) {
     const login = new URL(`/${lang}/login`, req.url);
