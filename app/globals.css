@@ -57,7 +57,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:var(--font-sans),system-ui,sans-serif;
   line-height:1.6;-webkit-font-smoothing:antialiased}
-body[dir="rtl"]{font-family:var(--font-rtl),system-ui,sans-serif}
+body[dir="rtl"]{font-family:var(--font-rtl),var(--font-sans),system-ui,sans-serif}
 .wrap{position:relative;z-index:1}
 code,pre,.mono{font-family:var(--font-mono),ui-monospace,monospace}
 
@@ -145,7 +145,9 @@ section.mod{scroll-margin-top:90px;margin-bottom:40px}
 .mhead .n{margin-inline-start:auto;font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-xs);
   color:var(--tx3);text-align:end;flex:none}
 .mblurb{color:var(--tx2);margin:0 0 20px;font-size:var(--fs-md);text-wrap:pretty}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+/* ponytail: NOT .grid — that name collides with Tailwind's `grid` utility and hijacks
+   grid-template-columns on every element that only wanted display:grid */
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
 .term{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   padding:18px;transition:.18s;position:relative;overflow:hidden;cursor:pointer;
   display:block;text-decoration:none;color:inherit}
@@ -348,7 +350,7 @@ body.nav-toggled nav.side{display:none}
 /* grid/flex children default to min-width:auto, so a wide <pre> stretches
    the whole column instead of scrolling inside it */
 main > #content{min-width:0}
-.slide,.step,.quiz,.col,.promptbox,.mod,.cards,.grid,.cols{min-width:0}
+.slide,.step,.quiz,.col,.promptbox,.mod,.cards,.cardgrid,.cols{min-width:0}
 pre.code{max-width:100%}
 
 #who{font-size:var(--fs-sm);opacity:.7;max-width:14ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

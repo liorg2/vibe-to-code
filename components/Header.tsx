@@ -98,7 +98,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
           </div>
           <h1 id="h1">
             {lang === "he" ? (
-              <>מ<span>Vibe</span> למפתח</>
+              <>מ-<span>Vibe</span> למפתח</>
             ) : (
               <>From <span>vibe</span> to developer</>
             )}
