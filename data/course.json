@@ -9865,8 +9865,8 @@
    "he": "פרויקט מסכם — CRM אמיתי"
   },
   "blurb": {
-   "en": "One project, decided in advance: a small CRM — companies, contacts, notes, deal stage — with a real Postgres database, running live on Vercel at your own domain. Twelve steps, and every prompt is already written. You paste it, you read what comes back, you ship.",
-   "he": "פרויקט אחד, שהוגדר מראש: CRM קטן — חברות, אנשי קשר, הערות ושלב בעסקה — עם מסד נתונים Postgres אמיתי, שרץ חי ב-Vercel על דומיין משלך. שנים-עשר שלבים, וכל פרומפט כבר כתוב. מדביקים, קוראים מה חזר, ומעלים לאוויר."
+   "en": "One project, decided in advance: a small CRM — companies, contacts, notes, deal stage — with a real Postgres database, running live on Vercel at your own domain. Thirteen steps, and every prompt is already written. You paste it, you read what comes back, you ship.",
+   "he": "פרויקט אחד, שהוגדר מראש: CRM קטן — חברות, אנשי קשר, הערות ושלב בעסקה — עם מסד נתונים Postgres אמיתי, שרץ חי ב-Vercel על דומיין משלך. שלושה-עשר שלבים, וכל פרומפט כבר כתוב. מדביקים, קוראים מה חזר, ומעלים לאוויר."
   },
   "warn": {
    "en": "This one is built to cost nothing: Vercel's Hobby plan and Neon's free Postgres both fit this app. The only real money is a domain, about $10-15 a year, and only if you want one — step 11 is optional. Never put real customer data in it: this is a learning project, not a system of record.",
@@ -10358,6 +10358,50 @@
      {
       "en": "I checked cost/usage so nothing forgotten is burning money",
       "he": "בדקתי עלות/שימוש כדי ששום דבר שנשכח לא שורף כסף"
+     }
+    ]
+   },
+   {
+    "n": 13,
+    "title": {
+     "en": "Analytics: page loads and the actions that matter",
+     "he": "אנליטיקס: טעינות עמוד והפעולות שחשובות"
+    },
+    "goal": {
+     "en": "Every page load counted, four product actions tracked as named events, one funnel you can read — and no personal data leaving the app.",
+     "he": "כל טעינת עמוד נספרת, ארבע פעולות מוצר נרשמות כאירועים בעלי שם, משפך אחד שאפשר לקרוא — ובלי שנתונים אישיים יוצאים מהאפליקציה."
+    },
+    "why": {
+     "en": "Step 12 tells you the app is healthy. This tells you whether anyone is using it, and where they give up. Logs answer 'did it break'; analytics answers 'did it work'.",
+     "he": "שלב 12 אומר לך שהאפליקציה בריאה. זה אומר לך אם מישהו בכלל משתמש בה, ואיפה הוא מוותר. לוגים עונים על 'האם זה נשבר'; אנליטיקס עונה על 'האם זה עבד'."
+    },
+    "uses": [
+     "Metrics",
+     "Dashboard",
+     "SPA vs SSR vs static",
+     "Structured logs"
+    ],
+    "prompt": "Add product analytics to my Vercel + Neon CRM: page loads and user actions.\n\n1. Page loads: a client-side pageview on first load and on every client-side route change (Next.js App Router does not re-run a layout on navigation — show me exactly where the hook goes so I do not double-count or miss navigations). Use a free tier: Vercel Web Analytics or a self-hostable one — recommend one in two sentences and say what I give up.\n\n2. Actions, as exactly four named events, not a call scattered at every click: contact_created, contact_edited, note_added, search_performed. Wrap them in one track(name, props) module so no component imports the vendor SDK directly. Keep props to non-identifying values: result_count, stage, has_company — never name, email, phone, note text or a raw query string.\n\n3. One funnel I can read: landed -> searched -> opened a contact -> added a note. Tell me which number would tell me the search is useless.\n\n4. Privacy and honesty: no analytics before consent if I ever have EU users, respect Do Not Track, and the app must work normally with the analytics script blocked — failures there must never break a page or a save.\n\nFinish with the one event my CRM should have that a generic setup would miss, and the three vanity metrics I should refuse to put on the dashboard.",
+    "acceptance": {
+     "en": "Done when: pageviews count on navigation too, the four events fire with clean props, and blocking the script changes nothing in the app.",
+     "he": "Done when: טעינות נספרות גם בניווט פנימי, ארבעת האירועים נשלחים עם מאפיינים נקיים, וחסימת הסקריפט לא משנה כלום באפליקציה."
+    },
+    "verify": [
+     {
+      "en": "I navigated between pages and saw a pageview per navigation, not one per session",
+      "he": "ניווטתי בין עמודים וראיתי pageview לכל ניווט, לא אחד לכל סשן"
+     },
+     {
+      "en": "I performed all four actions and each event arrived with the props I expected",
+      "he": "ביצעתי את כל ארבע הפעולות וכל אירוע הגיע עם המאפיינים שציפיתי להם"
+     },
+     {
+      "en": "No name, email, phone, note text or raw query appears in any event payload",
+      "he": "אין שם, אימייל, טלפון, טקסט הערה או שאילתה גולמית באף אירוע"
+     },
+     {
+      "en": "With the analytics script blocked, pages still render and saves still work",
+      "he": "כשהסקריפט חסום, העמודים עדיין נטענים והשמירות עדיין עובדות"
      }
     ]
    }
