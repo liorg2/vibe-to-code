@@ -3,6 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
 import { LessonSubNav } from "@/components/LessonSubNav";
+import { PracticeLoop } from "@/components/PracticeLoop";
 import { PromptBox } from "@/components/PromptBox";
 import { SlideActions } from "@/components/SlideActions";
 import {
@@ -112,6 +113,7 @@ export default async function SlidePage({
             ) : null}
           </details>
         ) : null}
+        <PracticeLoop />
         <details className="ask">
           <summary>{t("askAI")}</summary>
           <p className="sub">{t("askSub")}</p>

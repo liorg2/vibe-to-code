@@ -307,6 +307,70 @@
   "lvlCd": {
    "en": "Strangers depend on it. Failure, load, security and the bill.",
    "he": "זרים תלויים בזה. תקלות, עומס, אבטחה והחשבון."
+  },
+  "practice": {
+   "en": "Practice the loop",
+   "he": "לתרגל את הלולאה"
+  },
+  "practiceSub": {
+   "en": "Plan → ask AI → check the result. Skip this and the word stays trivia.",
+   "he": "תוכנית → לשאול AI → לבדוק תוצאה. מדלגים — והמילה נשארת טריוויה."
+  },
+  "practicePlan": {
+   "en": "1. Your one-line plan",
+   "he": "1. תוכנית במשפט אחד"
+  },
+  "practicePlanPh": {
+   "en": "In one sentence, what should the AI do that needs this concept?",
+   "he": "במשפט אחד: מה ה-AI צריך לעשות שדורש את המושג הזה?"
+  },
+  "practiceGo": {
+   "en": "2. Ask AI (open Ask AI below and paste the prompt)",
+   "he": "2. לשאול AI (לפתוח Ask AI למטה ולהדביק את הפרומפט)"
+  },
+  "practiceVerifyTitle": {
+   "en": "3. After the AI replies, check",
+   "he": "3. אחרי תשובת ה-AI, לסמן"
+  },
+  "practiceV1": {
+   "en": "I can explain the change in one plain sentence",
+   "he": "אני יכול להסביר את השינוי במשפט פשוט אחד"
+  },
+  "practiceV2": {
+   "en": "I know what 'wrong' would look like (error, bad data, or missing check)",
+   "he": "אני יודע איך נראה 'לא נכון' (שגיאה, דאטה רע, או בדיקה חסרה)"
+  },
+  "practiceV3": {
+   "en": "I looked at the diff (or the exact output), not only the AI's summary",
+   "he": "הסתכלתי על ה-diff (או על הפלט המדויק), לא רק על סיכום ה-AI"
+  },
+  "planGate": {
+   "en": "Done when…",
+   "he": "Done when…"
+  },
+  "planGateSub": {
+   "en": "Write your acceptance line before the paste prompt unlocks.",
+   "he": "כותבים שורת קבלה לפני שפרומפט ההדבקה נפתח."
+  },
+  "planGatePh": {
+   "en": "This step is done when…",
+   "he": "השלב הזה הסתיים כאשר…"
+  },
+  "planGateUnlock": {
+   "en": "Unlock prompt",
+   "he": "לפתוח פרומפט"
+  },
+  "planGateLocked": {
+   "en": "Write at least one clear sentence above to unlock the prompt.",
+   "he": "כותבים לפחות משפט ברור אחד למעלה כדי לפתוח את הפרומפט."
+  },
+  "verifyGate": {
+   "en": "Verify before next step",
+   "he": "לוודא לפני השלב הבא"
+  },
+  "verifyGateSub": {
+   "en": "Tick what you actually checked.",
+   "he": "מסמנים מה שבאמת בדקתם."
   }
  },
  "MODULES": [
@@ -3282,6 +3346,62 @@
       "en": "It is the highest-leverage prompt you will ever write, because you write it once and every session starts with it.",
       "he": "זה הפרומפט בעל המנוף הגבוה ביותר שתכתוב, כי כותבים אותו פעם אחת וכל שיחה מתחילה איתו."
      }
+    },
+    {
+     "t": {
+      "en": "Endless fix loop",
+      "he": "לולאת תיקון אינסופית"
+     },
+     "d": {
+      "en": "The AI keeps patching the same bug; each fix adds code and the failure remains.",
+      "he": "ה-AI ממשיך לתקן את אותו באג; כל תיקון מוסיף קוד והכשל נשאר."
+     },
+     "w": {
+      "en": "More patches are not progress. Stop, revert, and restate the problem with evidence.",
+      "he": "עוד פאטצ'ים אינם התקדמות. עוצרים, חוזרים אחורה, ומנסחים מחדש עם ראיות."
+     }
+    },
+    {
+     "t": {
+      "en": "Kill the thread",
+      "he": "להרוג את ה-thread"
+     },
+     "d": {
+      "en": "When the chat is confused, start a fresh conversation with a clean summary of state.",
+      "he": "כשהשיחה מבולבלת, פותחים שיחה חדשה עם סיכום נקי של המצב."
+     },
+     "w": {
+      "en": "Context rot makes the model defend bad paths. Fresh thread beats arguing with a lost session.",
+      "he": "רקבון הקשר גורם למודל להגן על נתיבים גרועים. thread חדש מנצח ויכוח עם session אבוד."
+     }
+    },
+    {
+     "t": {
+      "en": "Package hallucination",
+      "he": "הזיית חבילה"
+     },
+     "d": {
+      "en": "The AI invents a library name or version that does not exist (or is not what you think).",
+      "he": "ה-AI ממציא שם או גרסת ספרייה שלא קיימים (או שאינם מה שחשבתם)."
+     },
+     "w": {
+      "en": "Never install a name you did not verify — same rule as the ship checklist.",
+      "he": "לא מתקינים שם שלא אומת — אותו כלל כמו בצ'קליסט לפני שיגור."
+     }
+    },
+    {
+     "t": {
+      "en": "Demo vs production",
+      "he": "דמו מול פרודקשן"
+     },
+     "d": {
+      "en": "It works in the happy-path demo but fails under real users, data, auth, or load.",
+      "he": "זה עובד בדמו של הנתיב השמח אבל נכשל תחת משתמשים, נתונים, auth או עומס אמיתיים."
+     },
+     "w": {
+      "en": "Demo success is not production readiness. Verify ownership, secrets, and failure paths.",
+      "he": "הצלחת דמו אינה מוכנות לפרודקשן. בודקים בעלות, סודות ונתיבי כשל."
+     }
     }
    ]
   }
@@ -4050,6 +4170,22 @@
   "Merge conflict": {
    "en": "A conflict is the merge algorithm admitting it has no rule. Git merges by comparing both sides against their common ancestor; when the two sides changed different regions it takes both silently, and when they changed the same region it writes both versions into the file between markers and stops. The markers are not corruption — they are a form with two filled-in options and a blank for the answer.\n\nThe expensive failure mode is resolution by volume. A team merged a long-lived branch and hit conflicts in 60 files. Under deadline, they resolved them by taking their own side everywhere, which compiled, passed the tests that existed, and quietly reverted a security fix another engineer had shipped two weeks earlier because it lived in one of the conflicted regions. Nobody noticed for a month. “It builds” is not evidence that a conflict was resolved correctly; the only evidence is having read both sides and understood what each intended.\n\nPrevention is structural, not skill. Short branches, merged within a day or two, produce small conflicts you can resolve with confidence. Long branches produce merges nobody can review. When an agent is involved, keep its work on its own branch and merge it early and often — a forty-file AI refactor held back for a week will conflict with everything, and at that point you are reviewing a merge instead of reviewing a change, which is strictly harder.",
    "he": "קונפליקט הוא אלגוריתם המיזוג שמודה שאין לו כלל. Git ממזג על ידי השוואת שני הצדדים לאב הקדמון המשותף שלהם; כששני הצדדים שינו אזורים שונים הוא לוקח את שניהם בשקט, וכששניהם שינו את אותו אזור הוא כותב את שתי הגרסאות לקובץ בין סימנים ועוצר. הסימנים אינם שחיתות — הם טופס עם שתי אפשרויות ממולאות ומקום ריק לתשובה.\n\nמצב הכשל היקר הוא פתרון לפי כמות. צוות מיזג ענף שחי זמן רב ונתקל בקונפליקטים ב-60 קבצים. תחת לחץ זמן הם פתרו אותם על ידי לקיחת הצד שלהם בכל מקום, מה שהתקמפל, עבר את הבדיקות שהיו קיימות, וביטל בשקט תיקון אבטחה שמהנדס אחר שחרר שבועיים קודם, כי הוא ישב באחד האזורים המתנגשים. אף אחד לא שם לב במשך חודש. ״זה נבנה״ אינה ראיה שקונפליקט נפתר נכון; הראיה היחידה היא שקראת את שני הצדדים והבנת מה כל אחד התכוון.\n\nהמניעה מבנית, לא עניין של מיומנות. ענפים קצרים, שממוזגים תוך יום-יומיים, מייצרים קונפליקטים קטנים שאפשר לפתור בביטחון. ענפים ארוכים מייצרים מיזוגים שאיש אינו יכול לסקור. כשסוכן מעורב, תחזיק את העבודה שלו בענף משלו ותמזג מוקדם ולעיתים קרובות — ריפקטור AI על ארבעים קבצים שמעוכב שבוע יתנגש בכל דבר, ואז אתה סוקר מיזוג במקום לסקור שינוי, וזה קשה יותר באופן מובהק."
+  },
+  "Endless fix loop": {
+   "en": "An endless fix loop is when each AI patch fails to address the real failure mode and adds complexity. Symptoms: growing diffs, shifting explanations, same error after 'fixes'. Recovery: revert to last known good, write the observed failure in your own words (expected vs actual + logs), start a fresh thread, and ask for one small change.",
+   "he": "לולאת תיקון אינסופית היא כשכל פאטץ' של AI לא מטפל בכשל האמיתי ומוסיף מורכבות. תסמינים: diffs גדלים, הסברים מתחלפים, אותה שגיאה אחרי 'תיקונים'. התאוששות: חזרה ל-commit טוב אחרון, ניסוח הכשל במילים שלכם, thread חדש, ושינוי קטן אחד."
+  },
+  "Kill the thread": {
+   "en": "Long threads accumulate wrong assumptions. The model will defend earlier mistakes because they are now 'context'. Killing the thread means: summarize current files/errors, drop the chat, paste a clean brief. Pair with reading the diff — do not carry forward invisible wrong state.",
+   "he": "שיחות ארוכות צוברות הנחות שגויות. המודל יגן על טעויות קודמות כי הן כבר 'הקשר'. להרוג thread: לסכם קבצים/שגיאות, לסגור שיחה, להדביק בריף נקי. משלבים עם קריאת diff — לא סוחבים מצב שגוי סמוי."
+  },
+  "Package hallucination": {
+   "en": "Models invent plausible package names. Installing them can fail, or worse, hit a typosquat. Rule from the ship checklist: never trust a library name or version you did not verify on the registry and in your lockfile. Prefer well-known libs you already use.",
+   "he": "מודלים ממציאים שמות חבילה סבירים. התקנה עלולה להיכשל, או גרוע יותר — typosquat. כלל מהצ'קליסט: לא סומכים על שם/גרסה שלא אומתו ב-registry וב-lockfile. מעדיפים ספריות מוכרות שכבר בשימוש."
+  },
+  "Demo vs production": {
+   "en": "Demos hide auth holes, empty-data paths, concurrency, and cost. Production readiness means: ownership checks on the server, secrets off the client, migrations forward-only, alerts on real failures, and no forgotten cloud resources. Treat applause as a milestone, not a ship gate.",
+   "he": "דמו מסתיר חורי auth, נתיבי דאטה ריק, מקביליות ועלות. מוכנות לפרוד: בדיקות בעלות בשרת, סודות מחוץ ללקוח, migrations קדימה, התראות על כשלים אמיתיים, בלי משאבי ענן שנשכחו. מחיאות כפיים הן אבן דרך, לא שער שיגור."
   }
  },
  "EXAMPLES": {
@@ -5382,6 +5518,34 @@
     "he": "מה הסימנים באמת אומרים"
    },
    "code": "<<<<<<< HEAD              # your side (the branch you are on)\nconst MAX_ITEMS = 50\n=======                   # -- the fence --\nconst MAX_ITEMS = 20      # their side (the branch coming in)\n>>>>>>> main\n\n# delete all three marker lines, leave the line that should be true.\ngit add src/limits.ts\ngit commit                # finishes the merge"
+  },
+  "Endless fix loop": {
+   "cap": {
+    "en": "Stop the loop",
+    "he": "לעצור את הלולאה"
+   },
+   "code": "# bad: \"fix again\" ×5\n# better:\n# 1) git checkout -- .\n# 2) New chat:\n# \"Auth still 401 on POST /notes after login.\n# Expected 201. Actual body: {...}.\n# Diff so far reverted. Propose ONE change.\"\n"
+  },
+  "Kill the thread": {
+   "cap": {
+    "en": "Fresh brief",
+    "he": "בריף חדש"
+   },
+   "code": "New thread paste:\n- App: Next.js CRM, Neon Postgres\n- Broken: preview deploy 500 on /contacts\n- Log snippet: (paste)\n- Do NOT refactor unrelated files\n"
+  },
+  "Package hallucination": {
+   "cap": {
+    "en": "Verify before install",
+    "he": "לאמת לפני התקנה"
+   },
+   "code": "# AI suggested: npm i stripe-helper-v4\n# You: open npmjs.com → search exact name\n# If missing / unknown publisher → reject\n# Use official 'stripe' instead\n"
+  },
+  "Demo vs production": {
+   "cap": {
+    "en": "Demo checklist ≠ ship",
+    "he": "צ'קליסט דמו ≠ שיגור"
+   },
+   "code": "# Demo passed: happy path create contact\n# Still open:\n# [ ] other user cannot read my contacts (API)\n# [ ] no secrets in client bundle\n# [ ] alert on 5xx\n"
   }
  },
  "QUIZ": {
@@ -5530,6 +5694,35 @@
      "en": "Slow is a symptom, not a location. Most wasted hours go into optimising code when hosting, the database or the network was the cause.",
      "he": "איטיות היא סימפטום, לא מיקום. רוב השעות המבוזבזות הולכות לייעול קוד כשהאשם היה האחסון, בסיס הנתונים או הרשת."
     }
+   },
+   {
+    "q": {
+     "en": "The AI says your crash on the server is 'probably a hardware issue' and rewrites half the app. What should you do first?",
+     "he": "ה-AI אומר שהקריסה בשרת היא 'כנראה בעיית חומרה' ומתחיל לשכתב חצי אפליקציה. מה לעשות קודם?"
+    },
+    "a": [
+     {
+      "en": "Accept the rewrite — hardware issues need big changes",
+      "he": "לקבל את השכתוב — בעיות חומרה דורשות שינוי גדול"
+     },
+     {
+      "en": "Compare runtime, env vars, and config between laptop and server before changing code",
+      "he": "להשוות runtime, משתני סביבה וקונפיג בין המחשב לשרת לפני שינוי קוד"
+     },
+     {
+      "en": "Delete the server and redeploy from scratch",
+      "he": "למחוק את השרת ולהעלות מחדש מאפס"
+     },
+     {
+      "en": "Ask the AI to optimize GPU usage",
+      "he": "לבקש מה-AI לייעל שימוש ב-GPU"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Same code, different environment is almost never 'hardware'. Force the AI to inspect env/runtime first — blast radius stays small.",
+     "he": "אותו קוד, סביבה שונה כמעט אף פעם לא 'חומרה'. מכריחים את ה-AI לבדוק env/runtime קודם — רדיוס הנזק נשאר קטן."
+    }
    }
   ],
   "sides": [
@@ -5676,6 +5869,35 @@
     "why": {
      "en": "Frontend code is a file you handed them. Any check that matters must be repeated on the server, where they cannot reach it.",
      "he": "קוד פרונטאנד הוא קובץ שמסרת להם. כל בדיקה שחשובה חייבת לחזור גם בשרת, במקום שאליו הם לא מגיעים."
+    }
+   },
+   {
+    "q": {
+     "en": "AI hid the Delete button for non-admins in React and says 'auth is done'. Is it?",
+     "he": "ה-AI הסתיר את כפתור המחיקה למי שאינו אדמין ב-React ואומר ש'האימות הושלם'. האם זה נכון?"
+    },
+    "a": [
+     {
+      "en": "Yes — if they can't click it, they're safe",
+      "he": "כן — אם אי אפשר ללחוץ, זה בטוח"
+     },
+     {
+      "en": "No — the API must reject unauthorized deletes on the server",
+      "he": "לא — ה-API חייב לדחות מחיקות לא מורשות בשרת"
+     },
+     {
+      "en": "Yes, if the button is also grayed out",
+      "he": "כן, אם הכפתור גם אפור"
+     },
+     {
+      "en": "Only HTTPS matters for auth",
+      "he": "רק HTTPS קובע לאימות"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "UI is not a security boundary. Anyone can call the endpoint directly.",
+     "he": "הממשק אינו גבול אבטחה. כל אחד יכול לקרוא ל-endpoint ישירות."
     }
    }
   ],
@@ -5824,6 +6046,35 @@
      "en": "Polling burns both sides' capacity and still arrives late. A webhook is push: the event happens, you make one call.",
      "he": "Polling שורף משאבים בשני הצדדים ועדיין מגיע באיחור. Webhook הוא דחיפה: האירוע קורה, אתה עושה קריאה אחת."
     }
+   },
+   {
+    "q": {
+     "en": "AI changes a GET /orders/:id endpoint to also cancel the order 'to save a round trip'. What's the flaw?",
+     "he": "ה-AI משנה GET /orders/:id כך שיבטל גם את ההזמנה 'כדי לחסוך round trip'. מה הפגם?"
+    },
+    "a": [
+     {
+      "en": "Great optimization",
+      "he": "אופטימיזציה מעולה"
+     },
+     {
+      "en": "GET must not change state — prefetch, crawlers, and retries will cancel orders",
+      "he": "GET לא משנה מצב — prefetch, crawlers וניסיונות חוזרים יבטלו הזמנות"
+     },
+     {
+      "en": "Only POST can read data",
+      "he": "רק POST יכול לקרוא נתונים"
+     },
+     {
+      "en": "IDs in URLs are illegal",
+      "he": "מזהים ב-URL אסורים"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Safe methods stay safe. Side effects belong on POST/PATCH/DELETE.",
+     "he": "מתודות בטוחות נשארות בטוחות. תופעות לוואי שייכות ל-POST/PATCH/DELETE."
+    }
    }
   ],
   "data": [
@@ -5970,6 +6221,35 @@
     "why": {
      "en": "0.1 + 0.2 is famously not 0.3 in floating point. Store whole cents, format on the way out, and the books add up.",
      "he": "0.1 + 0.2 אינו 0.3 בנקודה צפה. תשמור סנטים שלמים, תעצב בפלט, והספרים יסתדרו."
+    }
+   },
+   {
+    "q": {
+     "en": "AI builds SQL with `WHERE name = '${userInput}'` and says it's fine because the UI validates input. Critique?",
+     "he": "ה-AI בונה SQL עם `WHERE name = '${userInput}'` ואומר שזה בסדר כי ה-UI מבצע ולידציה. ביקורת?"
+    },
+    "a": [
+     {
+      "en": "UI validation is enough",
+      "he": "ולידציית UI מספיקה"
+     },
+     {
+      "en": "String-built SQL is injection risk — use parameterized queries; UI is not a boundary",
+      "he": "SQL מבניות מחרוזת = הזרקה — פרמטרים בלבד; UI אינו גבול"
+     },
+     {
+      "en": "Switch to Mongo and ignore SQL",
+      "he": "לעבור ל-Mongo ולהתעלם מ-SQL"
+     },
+     {
+      "en": "Escape by uppercasing the string",
+      "he": "לברוח ע\"י אותיות גדולות"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Never concatenate user input into SQL. Parameters + server checks.",
+     "he": "לא מחברים קלט משתמש ל-SQL. פרמטרים + בדיקות בשרת."
     }
    }
   ],
@@ -6118,6 +6398,35 @@
      "en": "The test is not “could I write this” but “do I want to own this code or this relationship”. For time zones, own the relationship.",
      "he": "המבחן אינו ״האם יכולתי לכתוב את זה״ אלא ״מה אני מעדיף להחזיק: את הקוד או את מערכת היחסים״. לאזורי זמן — תחזיק את מערכת היחסים."
     }
+   },
+   {
+    "q": {
+     "en": "AI 'fixes' a TypeScript error by adding `as any` on a payment amount. What do you check?",
+     "he": "ה-AI 'מתקן' שגיאת TypeScript עם `as any` על סכום תשלום. מה בודקים?"
+    },
+    "a": [
+     {
+      "en": "Ship it — types were blocking progress",
+      "he": "לשלוח — הטיפוסים חסמו התקדמות"
+     },
+     {
+      "en": "Whether the cast hides a real mismatch that could corrupt money math",
+      "he": "האם ה-cast מסתיר אי-התאמה אמיתית שעלולה לשבש חישובי כסף"
+     },
+     {
+      "en": "Replace TypeScript with Python",
+      "he": "להחליף TypeScript ב-Python"
+     },
+     {
+      "en": "Disable the typechecker in CI",
+      "he": "לכבות את בודק הטיפוסים ב-CI"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "`as any` silences the compiler; it does not fix the bug. On money paths, that silence is the bug.",
+     "he": "`as any` משתיק את הקומפיילר; הוא לא מתקן את הבאג. בנתיבי כסף, ההשתקה היא הבאג."
+    }
    }
   ],
   "memory": [
@@ -6264,6 +6573,35 @@
     "why": {
      "en": "They are different measurements and you can be good at one while being terrible at the other. Users feel latency; your bill feels throughput.",
      "he": "אלה שתי מדידות שונות ואפשר להיות טוב באחת וגרוע בשנייה. משתמשים מרגישים השהיה; החשבון מרגיש תפוקה."
+    }
+   },
+   {
+    "q": {
+     "en": "AI 'speeds up' a list by loading the entire customers table into an array on every request. What's wrong?",
+     "he": "ה-AI 'מאיץ' רשימה ע\"י טעינת כל טבלת הלקוחות למערך בכל בקשה. מה לא בסדר?"
+    },
+    "a": [
+     {
+      "en": "Arrays are always faster than SQL",
+      "he": "מערכים תמיד מהירים יותר מ-SQL"
+     },
+     {
+      "en": "You're trading memory and latency for a fake speedup — page/filter in the database",
+      "he": "מחליפים זיכרון ולטנסי בזירוז מדומה — דפדוף/סינון במסד"
+     },
+     {
+      "en": "Do it in the browser instead",
+      "he": "לעשות את זה בדפדפן"
+     },
+     {
+      "en": "Disable garbage collection",
+      "he": "לכבות garbage collection"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Pulling everything into process memory does not scale. Push filtering to the DB.",
+     "he": "למשוך הכול לזיכרון התהליך לא סקייל. דוחפים סינון למסד."
     }
    }
   ],
@@ -6412,6 +6750,35 @@
      "en": "A shared cache does not know who asked. One mis-set header and user A's account page is handed to user B — a real and frequent breach.",
      "he": "מטמון משותף לא יודע מי שאל. כותרת אחת שגויה ודף החשבון של משתמש א׳ מוגש למשתמש ב׳ — פרצה אמיתית ונפוצה."
     }
+   },
+   {
+    "q": {
+     "en": "AI caches user permissions forever in Redis after login 'for performance'. Risk?",
+     "he": "ה-AI שומר הרשאות משתמש ב-Redis לנצח אחרי login 'לביצועים'. סיכון?"
+    },
+    "a": [
+     {
+      "en": "None — cache is always correct",
+      "he": "אין — cache תמיד נכון"
+     },
+     {
+      "en": "Stale grants: revoked access may keep working until TTL/invalidation exists",
+      "he": "הרשאות מיושנות: גישה שבוטלה עלולה להמשיך עד TTL/ביטול מטמון"
+     },
+     {
+      "en": "Redis cannot store booleans",
+      "he": "Redis לא יכול לשמור boolean"
+     },
+     {
+      "en": "You must cache passwords too",
+      "he": "חובה לשמור גם סיסמאות במטמון"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Cached auth without invalidation is a security bug wearing a performance costume.",
+     "he": "מטמון הרשאות בלי ביטול הוא באג אבטחה בתחפושת ביצועים."
+    }
    }
   ],
   "auth": [
@@ -6558,6 +6925,35 @@
     "why": {
      "en": "Being logged in is not permission. Every query that returns a record must be scoped to the owner — the single most common hole in AI-written CRUD.",
      "he": "להיות מחובר זו לא הרשאה. כל שאילתה שמחזירה רשומה חייבת להיות מוגבלת לבעלים — החור הנפוץ ביותר ב-CRUD שנכתב ב-AI."
+    }
+   },
+   {
+    "q": {
+     "en": "AI adds `if (user.role === 'admin')` only in the React page and leaves the API open. What's missing?",
+     "he": "ה-AI מוסיף `if (user.role === 'admin')` רק בעמוד React ומשאיר את ה-API פתוח. מה חסר?"
+    },
+    "a": [
+     {
+      "en": "A nicer CSS badge",
+      "he": "תג CSS יפה יותר"
+     },
+     {
+      "en": "Server-side authorization on every sensitive action",
+      "he": "הרשאה בצד שרת על כל פעולה רגישה"
+     },
+     {
+      "en": "More client-side ifs",
+      "he": "עוד if בצד לקוח"
+     },
+     {
+      "en": "Storing the admin password in localStorage",
+      "he": "שמירת סיסמת אדמין ב-localStorage"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Authorization lives on the server. Client checks are UX only.",
+     "he": "הרשאות חיות בשרת. בדיקות לקוח הן רק UX."
     }
    }
   ],
@@ -6706,6 +7102,35 @@
      "en": "Containers and serverless machines are disposable by design. Files belong in object storage, which survives the machine that wrote them.",
      "he": "קונטיינרים ומכונות serverless הם חד-פעמיים בתכנון. קבצים שייכים לאחסון אובייקטים, ששורד את המכונה שכתבה אותם."
     }
+   },
+   {
+    "q": {
+     "en": "AI leaves a debug VM + open SSH on 0.0.0.0 after 'quick deploy' and says you're done. What's wrong?",
+     "he": "ה-AI משאיר VM לדיבאג עם SSH פתוח על 0.0.0.0 אחרי 'דיפלוי מהיר' ואומר שסיימת. מה לא בסדר?"
+    },
+    "a": [
+     {
+      "en": "Open SSH is best practice",
+      "he": "SSH פתוח הוא best practice"
+     },
+     {
+      "en": "Forgotten cloud resources and open admin ports burn money and invite attackers",
+      "he": "משאבי ענן שנשכחו ופורטי ניהול פתוחים שורפים כסף ומזמינים תוקפים"
+     },
+     {
+      "en": "VMs cannot be deleted",
+      "he": "אי אפשר למחוק VMs"
+     },
+     {
+      "en": "Bill only starts after a year",
+      "he": "החיוב מתחיל רק אחרי שנה"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Tear down what you don't need. Open admin ports are an incident waiting.",
+     "he": "מפרקים מה שלא צריך. פורטי ניהול פתוחים הם תקלה שמחכה."
+    }
    }
   ],
   "scale": [
@@ -6852,6 +7277,35 @@
     "why": {
      "en": "Capacity you add without a limit is capacity one client can take. A limit turns their bug into their 429 instead of your outage.",
      "he": "תפוקה שאתה מוסיף בלי מגבלה היא תפוקה שלקוח אחד יכול לקחת. מגבלה הופכת את הבאג שלהם ל-429 שלהם, במקום להשבתה שלך."
+    }
+   },
+   {
+    "q": {
+     "en": "AI copies the user session into the local disk of one container so 'sticky sessions aren't needed'. Flaw?",
+     "he": "ה-AI מעתיק את ה-session לדיסק מקומי של קונטיינר אחד כדי ש'לא צריך sticky sessions'. פגם?"
+    },
+    "a": [
+     {
+      "en": "Disk is the best session store",
+      "he": "דיסק הוא מאגר ה-session הטוב ביותר"
+     },
+     {
+      "en": "Next request may hit another instance — state on local disk vanishes; use shared store",
+      "he": "הבקשה הבאה עלולה לפגוע ב-instance אחר — מצב בדיסק המקומי נעלם; מאגר משותף"
+     },
+     {
+      "en": "Containers never restart",
+      "he": "קונטיינרים אף פעם לא עולים מחדש"
+     },
+     {
+      "en": "Scale means one giant machine",
+      "he": "סקייל אומר מכונה אחת ענקית"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Local disk/process state does not survive scale-out. Shared session/store required.",
+     "he": "מצב בדיסק/תהליך מקומי לא שורד scale-out. צריך מאגר משותף."
     }
    }
   ],
@@ -7000,6 +7454,35 @@
      "en": "Agents delete failing tests, widen permissions and change unrelated files while reporting success. None of that shows up in the summary.",
      "he": "סוכנים מוחקים בדיקות נכשלות, מרחיבים הרשאות ומשנים קבצים לא קשורים תוך שהם מדווחים על הצלחה. שום דבר מזה לא מופיע בסיכום."
     }
+   },
+   {
+    "q": {
+     "en": "The AI has 'fixed' the same auth bug five times; each patch adds more code and the bug remains. Best move?",
+     "he": "ה-AI 'תיקן' את אותו באג auth חמש פעמים; כל תיקון מוסיף קוד והבאג נשאר. הצעד הכי טוב?"
+    },
+    "a": [
+     {
+      "en": "Ask for a sixth, bigger patch",
+      "he": "לבקש תיקון שישי גדול יותר"
+     },
+     {
+      "en": "Stop — revert to last good commit, kill the thread, restate the failure with evidence",
+      "he": "לעצור — לחזור ל-commit טוב אחרון, להרוג את ה-thread, לנסח מחדש את הכשל עם ראיות"
+     },
+     {
+      "en": "Disable auth entirely",
+      "he": "לכבות auth לגמרי"
+     },
+     {
+      "en": "Accept all five patches at once",
+      "he": "לקבל את כל חמשת התיקונים יחד"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Endless fix loops mean the model is lost. Fresh thread + clearer evidence beats more patches.",
+     "he": "לולאות תיקון אינסופיות אומרות שהמודל אבוד. thread חדש + ראיות ברורות מנצחים עוד פאטצ'ים."
+    }
    }
   ],
   "testing": [
@@ -7146,6 +7629,35 @@
     "why": {
      "en": "Coverage counts execution, not judgement. Lines can run with no assertion at all, which is how a green 92% ships a broken checkout.",
      "he": "כיסוי סופר הרצה, לא שיפוט. שורות יכולות לרוץ בלי שום assertion, וכך 92% ירוקים משחררים צ׳קאאוט שבור."
+    }
+   },
+   {
+    "q": {
+     "en": "AI marks a failing test as `.skip` and says 'green CI'. What do you do?",
+     "he": "ה-AI מסמן בדיקה כושלת כ-`.skip` ואומר 'CI ירוק'. מה עושים?"
+    },
+    "a": [
+     {
+      "en": "Merge — green is green",
+      "he": "למזג — ירוק זה ירוק"
+     },
+     {
+      "en": "Reject — a skipped red test hides a real bug; fix or quarantine with a tracked issue",
+      "he": "לדחות — בדיקה אדומה שדולגה מסתירה באג; לתקן או להסגר עם טיקט"
+     },
+     {
+      "en": "Delete the test file",
+      "he": "למחוק את קובץ הבדיקות"
+     },
+     {
+      "en": "Lower the coverage threshold to 0",
+      "he": "להוריד סף כיסוי ל-0"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Never let a red test stay quietly red. Skip without a ticket is lying to yourself.",
+     "he": "לא משאירים בדיקה אדומה בשקט. skip בלי טיקט הוא שקר לעצמך."
     }
    }
   ],
@@ -7294,6 +7806,35 @@
      "en": "Without a timeout their bad day becomes your outage. Timeout, then retry with backoff — and only for requests that are safe to repeat.",
      "he": "בלי timeout היום הרע שלהם הופך להשבתה שלך. Timeout, ואז ניסיון חוזר עם השהיה — ורק לבקשות שבטוח לחזור עליהן."
     }
+   },
+   {
+    "q": {
+     "en": "AI adds `import { charge } from 'stripe-helper-v4'` which isn't in package.json and isn't a real package. Next step?",
+     "he": "ה-AI מוסיף `import { charge } from 'stripe-helper-v4'` שלא ב-package.json ואינו חבילה אמיתית. הצעד הבא?"
+    },
+    "a": [
+     {
+      "en": "npm install stripe-helper-v4 immediately",
+      "he": "npm install stripe-helper-v4 מיד"
+     },
+     {
+      "en": "Reject — verify the library name/version yourself; this is package hallucination",
+      "he": "לדחות — לאמת שם/גרסת ספרייה בעצמך; זו הזיית חבילה"
+     },
+     {
+      "en": "Trust AI; it knows the ecosystem",
+      "he": "לסמוך על ה-AI; הוא מכיר את האקוסיסטם"
+     },
+     {
+      "en": "Copy the import into five more files",
+      "he": "להעתיק את ה-import לעוד חמישה קבצים"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Never install a name you did not verify. Hallucinated packages are a supply-chain footgun.",
+     "he": "לא מתקינים שם שלא אומת. חבילות מומצאות הן מלכודת שרשרת אספקה."
+    }
    }
   ],
   "frontend": [
@@ -7440,6 +7981,35 @@
     "why": {
      "en": "A real button gives you focus, Enter and Space, and a screen-reader announcement for free. A div gives you none of it.",
      "he": "כפתור אמיתי נותן לך פוקוס, Enter ורווח, והקראה בקורא מסך — בחינם. div לא נותן כלום מזה."
+    }
+   },
+   {
+    "q": {
+     "en": "AI stores the user's session token in localStorage and logs it to the console 'for debugging'. Critique?",
+     "he": "ה-AI שומר את ה-token ב-localStorage ומדפיס אותו לקונסול 'לדיבאג'. מה הביקורת?"
+    },
+    "a": [
+     {
+      "en": "Fine for MVP",
+      "he": "בסדר ל-MVP"
+     },
+     {
+      "en": "Tokens in localStorage + console are easy XSS/leak targets; keep secrets out of the client log",
+      "he": "טוקנים ב-localStorage ובקונסול חשופים ל-XSS/דליפה; סודות לא נכנסים ללוג בצד לקוח"
+     },
+     {
+      "en": "Console logs are encrypted",
+      "he": "לוגי קונסול מוצפנים"
+     },
+     {
+      "en": "localStorage is safer than httpOnly cookies",
+      "he": "localStorage בטוח יותר מ-cookies עם httpOnly"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Client storage and console are hostile. Prefer httpOnly cookies; never log secrets.",
+     "he": "אחסון לקוח וקונסול הם שטח עוין. מעדיפים cookies עם httpOnly; לא מדפיסים סודות."
     }
    }
   ],
@@ -7588,6 +8158,35 @@
      "en": "Browsers, proxies and load balancers all cut long requests, and a retry restarts the whole thing. Hand back an id and let them ask about it.",
      "he": "דפדפנים, פרוקסי ומאזני עומס כולם קוטעים בקשות ארוכות, וניסיון חוזר מתחיל הכול מחדש. תחזיר מזהה ותן להם לשאול עליו."
     }
+   },
+   {
+    "q": {
+     "en": "AI processes payment webhooks with `fire-and-forget` and no idempotency key. Critique?",
+     "he": "ה-AI מעבד webhooks של תשלום ב-fire-and-forget בלי מפתח idempotency. ביקורת?"
+    },
+    "a": [
+     {
+      "en": "Faster is better for payments",
+      "he": "מהיר יותר זה טוב יותר לתשלומים"
+     },
+     {
+      "en": "Retries will double-charge — need idempotent handling and durable queue/status",
+      "he": "ניסיונות חוזרים יחייבו פעמיים — צריך טיפול idempotent ותור/סטטוס עמיד"
+     },
+     {
+      "en": "Webhooks never retry",
+      "he": "Webhooks אף פעם לא מנסים שוב"
+     },
+     {
+      "en": "Put the webhook secret in the URL",
+      "he": "לשים את סוד ה-webhook ב-URL"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "At-least-once delivery is the default. Idempotency is mandatory for money events.",
+     "he": "משלוח לפחות פעם אחת הוא ברירת המחדל. Idempotency חובה לאירועי כסף."
+    }
    }
   ],
   "security": [
@@ -7734,6 +8333,35 @@
     "why": {
      "en": "Instructions in a prompt are advice; permissions are enforcement. If the agent cannot reach the customer table, the injection is a sentence that does nothing.",
      "he": "הוראות בפרומפט הן עצה; הרשאות הן אכיפה. אם הסוכן לא יכול להגיע לטבלת הלקוחות, ההזרקה היא משפט שלא עושה כלום."
+    }
+   },
+   {
+    "q": {
+     "en": "AI puts `STRIPE_SECRET_KEY` in a Next.js file marked `'use client'` so 'the browser can charge cards'. Stop — why?",
+     "he": "ה-AI שם `STRIPE_SECRET_KEY` בקובץ Next עם `'use client'` כדי ש'הדפדפן יחייב כרטיסים'. עצור — למה?"
+    },
+    "a": [
+     {
+      "en": "Client bundles are fine for secrets",
+      "he": "באנדל לקוח בסדר לסודות"
+     },
+     {
+      "en": "Secrets in client code are public — charge only from the server",
+      "he": "סודות בקוד לקוח הם ציבוריים — חיוב רק מהשרת"
+     },
+     {
+      "en": "Rename the variable to hide it",
+      "he": "לשנות שם משתנה כדי להסתיר"
+     },
+     {
+      "en": "Use HTTP instead of HTTPS",
+      "he": "להשתמש ב-HTTP במקום HTTPS"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Anything shipped to the browser is public. Secrets stay server-side.",
+     "he": "כל מה שנשלח לדפדפן הוא ציבורי. סודות נשארים בשרת."
     }
    }
   ],
@@ -7882,6 +8510,35 @@
      "en": "A password is one layer; not being reachable is a better one. Only the app should be able to open a connection, and only from inside.",
      "he": "סיסמה היא שכבה אחת; לא להיות נגיש בכלל היא שכבה טובה יותר. רק האפליקציה צריכה לפתוח חיבור, ורק מבפנים."
     }
+   },
+   {
+    "q": {
+     "en": "AI 'fixes' HTTPS by setting `rejectUnauthorized: false` because the cert failed. Critique?",
+     "he": "ה-AI 'מתקן' HTTPS עם `rejectUnauthorized: false` כי התעודה נכשלה. ביקורת?"
+    },
+    "a": [
+     {
+      "en": "Correct — certificates are optional",
+      "he": "נכון — תעודות אופציונליות"
+     },
+     {
+      "en": "You disabled TLS verification — fix the cert/DNS instead of accepting MitM",
+      "he": "כיביתם אימות TLS — לתקן תעודה/DNS במקום לקבל MitM"
+     },
+     {
+      "en": "Always disable TLS in production",
+      "he": "תמיד מכבים TLS בפרודקשן"
+     },
+     {
+      "en": "HTTP/2 requires this flag",
+      "he": "HTTP/2 דורש את הדגל הזה"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Turning off cert checks is not a fix; it is an attack surface.",
+     "he": "כיבוי בדיקת תעודות אינו תיקון; זה משטח תקיפה."
+    }
    }
   ],
   "devops": [
@@ -8028,6 +8685,35 @@
     "why": {
      "en": "It is not if but when. The expensive version of this lesson is a test suite that sent 4,000 real password-reset emails.",
      "he": "זה לא אם אלא מתי. הגרסה היקרה של השיעור הזה היא סוויטת בדיקות ששלחה 4,000 מיילים אמיתיים לאיפוס סיסמה."
+    }
+   },
+   {
+    "q": {
+     "en": "AI edits an already-applied migration file to 'fix a column' instead of adding a new migration. Risk?",
+     "he": "ה-AI עורך קובץ migration שכבר רץ כדי 'לתקן עמודה' במקום migration חדש. סיכון?"
+    },
+    "a": [
+     {
+      "en": "Fine if you force it",
+      "he": "בסדר אם כופים"
+     },
+     {
+      "en": "Environments diverge — history lies; add a new migration forward",
+      "he": "סביבות מתפצלות — ההיסטוריה משקרת; מוסיפים migration חדש קדימה"
+     },
+     {
+      "en": "Delete the database nightly",
+      "he": "מוחקים את המסד כל לילה"
+     },
+     {
+      "en": "Migrations are only for local use",
+      "he": "Migrations רק לשימוש מקומי"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Never edit a migration that already ran. Forward-only fixes keep envs honest.",
+     "he": "לא עורכים migration שכבר רץ. תיקונים רק קדימה שומרים על כנות הסביבות."
     }
    }
   ],
@@ -8176,6 +8862,35 @@
      "en": "An alert nobody acts on trains everyone to ignore alerts, including the real one. Page on symptoms users feel; graph everything else.",
      "he": "התראה שאיש לא פועל לפיה מאמנת את כולם להתעלם מהתראות, כולל האמיתית. תעיר על סימפטומים שמשתמשים מרגישים; את כל השאר תשים בגרף."
     }
+   },
+   {
+    "q": {
+     "en": "AI logs full request bodies including passwords and card numbers 'for debugging prod'. Critique?",
+     "he": "ה-AI כותב ללוג גופי בקשה מלאים כולל סיסמאות ומספרי כרטיס 'לדיבאג בפרוד'. ביקורת?"
+    },
+    "a": [
+     {
+      "en": "More logs are always better",
+      "he": "יותר לוגים תמיד טוב יותר"
+     },
+     {
+      "en": "PII/secrets in logs are a breach waiting — redact and sample",
+      "he": "PII/סודות בלוגים הם דליפה שמחכה — redact ודגימה"
+     },
+     {
+      "en": "Logs are private by physics",
+      "he": "לוגים פרטיים לפי חוקי הפיזיקה"
+     },
+     {
+      "en": "Only log in the browser",
+      "he": "רק לוג בדפדפן"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Observability without redaction leaks the customer. Scrub secrets and PII.",
+     "he": "Observability בלי redaction דולף את הלקוח. מנקים סודות ו-PII."
+    }
    }
   ],
   "team": [
@@ -8322,6 +9037,35 @@
     "why": {
      "en": "The fix is boring and cheap: a README, a decision record, and a second person who has actually touched it once.",
      "he": "התיקון משעמם וזול: README, תיעוד החלטה, ואדם שני שבאמת נגע בזה פעם אחת."
+    }
+   },
+   {
+    "q": {
+     "en": "AI opens a 2,000-line PR titled 'stuff' with no description and asks you to merge before lunch. Critique?",
+     "he": "ה-AI פותח PR של 2,000 שורות בשם 'stuff' בלי תיאור ומבקש למזג לפני הצהריים. ביקורת?"
+    },
+    "a": [
+     {
+      "en": "Large PRs are impressive",
+      "he": "PR גדולים מרשימים"
+     },
+     {
+      "en": "Unreviewable blast radius — split, describe intent, and keep diffs readable",
+      "he": "רדיוס נזק שאי אפשר לסקור — לפצל, לתאר כוונה, לשמור diffs קריאים"
+     },
+     {
+      "en": "Skip review for AI PRs",
+      "he": "מדלגים על סקירה ל-PR של AI"
+     },
+     {
+      "en": "Merge to main from the laptop only",
+      "he": "ממזגים ל-main רק מהלפטופ"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "If you cannot read it, you cannot own it. Small PRs with intent beat 'stuff'.",
+     "he": "אם אי אפשר לקרוא, אי אפשר לקחת בעלות. PR קטנים עם כוונה מנצחים את 'stuff'."
     }
    }
   ],
@@ -8470,6 +9214,35 @@
      "en": "Force-push replaces the shared history instead of adding to it. It is the one everyday command that can genuinely destroy someone else's work.",
      "he": "Force-push מחליף את ההיסטוריה המשותפת במקום להוסיף לה. זו הפקודה היומיומית היחידה שיכולה באמת להשמיד עבודה של מישהו אחר."
     }
+   },
+   {
+    "q": {
+     "en": "The AI commits a 'quick fix' with message 'updates' that also rewrites .env.example and deletes a migration. What's wrong?",
+     "he": "ה-AI עושה commit עם ההודעה 'updates' שגם משכתב .env.example ומוחק migration. מה הבעיה?"
+    },
+    "a": [
+     {
+      "en": "Nothing — short commit messages are fine",
+      "he": "כלום — הודעות קצרות בסדר"
+     },
+     {
+      "en": "The diff mixes unrelated, high-risk changes; reject and split/revert",
+      "he": "ה-diff מערבב שינויים לא קשורים ומסוכנים; לדחות, לפצל או לבטל"
+     },
+     {
+      "en": "You should force-push to clean history",
+      "he": "צריך force-push כדי לנקות היסטוריה"
+     },
+     {
+      "en": "Migrations should always be deleted after apply",
+      "he": "תמיד מוחקים migrations אחרי הרצה"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "Read the whole diff. Unrelated high-risk files in one 'quick fix' is how secrets and schema history die.",
+     "he": "קוראים את כל ה-diff. קבצים מסוכנים לא קשורים ב-'תיקון מהיר' אחד הם איך סודות והיסטוריית סכמה מתים."
+    }
    }
   ]
  },
@@ -8509,7 +9282,25 @@
      "Ask for the trade-off first",
      "Specificity beats politeness"
     ],
-    "prompt": "I am building a small CRM as a learning project. The scope is fixed and I do not want it widened.\n\nIt has exactly four things: companies (name, website, notes), contacts (name, email, phone, job title, belonging to one company), notes (free text, timestamped, attached to a contact), and a deal stage on each contact — one of: new, contacted, meeting, won, lost. One user account owns everything. There are no teams, no permissions, no file uploads, no email sending, no reports.\n\nWrite me a one-page spec of this: the single core action the product exists for, the screens needed to support it, the data as plain nouns and relationships, and an explicit NON-goals list. Then name the two decisions in this scope that will hurt most later, and what the cheap version of fixing each one looks like. Do not write code."
+    "prompt": "I am building a small CRM as a learning project. The scope is fixed and I do not want it widened.\n\nIt has exactly four things: companies (name, website, notes), contacts (name, email, phone, job title, belonging to one company), notes (free text, timestamped, attached to a contact), and a deal stage on each contact — one of: new, contacted, meeting, won, lost. One user account owns everything. There are no teams, no permissions, no file uploads, no email sending, no reports.\n\nWrite me a one-page spec of this: the single core action the product exists for, the screens needed to support it, the data as plain nouns and relationships, and an explicit NON-goals list. Then name the two decisions in this scope that will hurt most later, and what the cheap version of fixing each one looks like. Do not write code.",
+    "acceptance": {
+     "en": "Write your done-when: what exactly is in scope for this CRM, and what is explicitly out?",
+     "he": "כתבו done-when: מה בדיוק בתוך הסקופ של ה-CRM, ומה במפורש בחוץ?"
+    },
+    "verify": [
+     {
+      "en": "I wrote a one-page scope that a stranger could follow",
+      "he": "כתבתי עמוד סקופ שאדם זר יכול לעקוב אחריו"
+     },
+     {
+      "en": "Out-of-scope items are listed, not vague",
+      "he": "פריטים מחוץ לסקופ רשומים, לא מעורפלים"
+     },
+     {
+      "en": "I resisted adding 'just one more feature'",
+      "he": "התנגדתי להוסיף 'עוד פיצ'ר אחד'"
+     }
+    ]
    },
    {
     "n": 2,
@@ -8532,7 +9323,25 @@
      "Package manager",
      "Runtime"
     ],
-    "prompt": "Walk me through creating a new Next.js project (App Router, TypeScript) for a small CRM and getting it deployed to Vercel today, with nothing in it but a homepage that shows the app's name.\n\nGive me the exact commands in order: create the app, initialise git, what belongs in .gitignore, the first commit, pushing to a new GitHub repo, and importing that repo into Vercel. Then tell me what Vercel does on every push after that, and what the difference is between the preview URL and the production URL.\n\nWhere a step needs a choice — package manager, project name, region — pick a sensible default and say why in one line. Stop when I have a live URL. No features yet."
+    "prompt": "Walk me through creating a new Next.js project (App Router, TypeScript) for a small CRM and getting it deployed to Vercel today, with nothing in it but a homepage that shows the app's name.\n\nGive me the exact commands in order: create the app, initialise git, what belongs in .gitignore, the first commit, pushing to a new GitHub repo, and importing that repo into Vercel. Then tell me what Vercel does on every push after that, and what the difference is between the preview URL and the production URL.\n\nWhere a step needs a choice — package manager, project name, region — pick a sensible default and say why in one line. Stop when I have a live URL. No features yet.",
+    "acceptance": {
+     "en": "Done when: repo exists, Next.js app runs locally, and a live URL is reachable.",
+     "he": "Done when: יש ריפו, Next.js רץ מקומית, ויש URL חי שנגיש."
+    },
+    "verify": [
+     {
+      "en": "I opened the live URL myself",
+      "he": "פתחתי את ה-URL החי בעצמי"
+     },
+     {
+      "en": "I checked the git remote and first commit",
+      "he": "בדקתי remote ו-commit ראשון"
+     },
+     {
+      "en": "I know which env the deploy uses",
+      "he": "אני יודע באיזו סביבה הדיפלוי רץ"
+     }
+    ]
    },
    {
     "n": 3,
@@ -8555,7 +9364,25 @@
      "Index",
      "Time, text & money"
     ],
-    "prompt": "My CRM needs Postgres. I want Neon's free tier, connected to my Vercel project.\n\nFirst: the exact steps to create a Neon project, get the connection string, and put it into Vercel as an environment variable plus a local .env.local that is gitignored.\n\nThen write the first migration as plain SQL for four tables: companies, contacts, notes, users. A contact belongs to one company and carries a stage column limited to new / contacted / meeting / won / lost. A note belongs to one contact. Use uuid primary keys, timestamptz for every time column, and a foreign key with an explicit ON DELETE rule that you justify in one line each.\n\nAdd the indexes this app will actually need and name the query each one serves. Explain why you chose text over varchar, and timestamptz over timestamp."
+    "prompt": "My CRM needs Postgres. I want Neon's free tier, connected to my Vercel project.\n\nFirst: the exact steps to create a Neon project, get the connection string, and put it into Vercel as an environment variable plus a local .env.local that is gitignored.\n\nThen write the first migration as plain SQL for four tables: companies, contacts, notes, users. A contact belongs to one company and carries a stage column limited to new / contacted / meeting / won / lost. A note belongs to one contact. Use uuid primary keys, timestamptz for every time column, and a foreign key with an explicit ON DELETE rule that you justify in one line each.\n\nAdd the indexes this app will actually need and name the query each one serves. Explain why you chose text over varchar, and timestamptz over timestamp.",
+    "acceptance": {
+     "en": "Done when: Postgres is connected and the contact schema matches what you intended.",
+     "he": "Done when: Postgres מחובר וסכמת אנשי הקשר תואמת למה שתכננתם."
+    },
+    "verify": [
+     {
+      "en": "I inspected the tables/columns (not only the AI summary)",
+      "he": "בדקתי טבלאות/עמודות (לא רק סיכום AI)"
+     },
+     {
+      "en": "Migrations are forward-only; I did not edit applied history",
+      "he": "Migrations רק קדימה; לא ערכתי היסטוריה שכבר רצה"
+     },
+     {
+      "en": "Connection string is not in the client bundle",
+      "he": "מחרוזת החיבור לא בבאנדל הלקוח"
+     }
+    ]
    },
    {
     "n": 4,
@@ -8577,7 +9404,25 @@
      "SPA vs SSR vs static",
      "Environment variables / secrets"
     ],
-    "prompt": "Add a /contacts page to my Next.js CRM that lists every contact with name, company name, email and stage, newest first.\n\nRequirements: the query runs on the server, never in the browser; the database URL is never exposed to the client; one SQL query with a join, not a query per row; the SQL is parameterised. Use @neondatabase/serverless.\n\nShow me the data-access file, the page component, and what the empty state looks like when there are no contacts yet. Then give me a one-off SQL script that inserts five rows of realistic fake data. Finally, explain how I could tell from the browser alone whether this page was rendered on the server or in the browser."
+    "prompt": "Add a /contacts page to my Next.js CRM that lists every contact with name, company name, email and stage, newest first.\n\nRequirements: the query runs on the server, never in the browser; the database URL is never exposed to the client; one SQL query with a join, not a query per row; the SQL is parameterised. Use @neondatabase/serverless.\n\nShow me the data-access file, the page component, and what the empty state looks like when there are no contacts yet. Then give me a one-off SQL script that inserts five rows of realistic fake data. Finally, explain how I could tell from the browser alone whether this page was rendered on the server or in the browser.",
+    "acceptance": {
+     "en": "Done when: the contacts list page loads real rows from the database.",
+     "he": "Done when: עמוד רשימת אנשי הקשר טוען שורות אמיתיות מהמסד."
+    },
+    "verify": [
+     {
+      "en": "I loaded the list in the browser with real data",
+      "he": "טענתי את הרשימה בדפדפן עם נתונים אמיתיים"
+     },
+     {
+      "en": "I skimmed the query/API diff for surprises",
+      "he": "עברתי על diff של query/API להפתעות"
+     },
+     {
+      "en": "Empty state does not look like an error crash",
+      "he": "מצב ריק לא נראה כמו קריסת שגיאה"
+     }
+    ]
    },
    {
     "n": 5,
@@ -8599,7 +9444,25 @@
      "Query",
      "Latency vs throughput"
     ],
-    "prompt": "Add search and pagination to my CRM's /contacts page. Search matches contact name, email, or company name, case-insensitively. Page size 25, with the page and query in the URL so a result can be linked and shared.\n\nThen: show me the EXPLAIN ANALYZE output I should expect before and after the right index, tell me exactly which index to create for a case-insensitive prefix search in Postgres, and explain in plain words when this approach stops being enough and real full-text search takes over.\n\nKeep the SQL parameterised, and show me what the naive string-concatenated version would let an attacker do."
+    "prompt": "Add search and pagination to my CRM's /contacts page. Search matches contact name, email, or company name, case-insensitively. Page size 25, with the page and query in the URL so a result can be linked and shared.\n\nThen: show me the EXPLAIN ANALYZE output I should expect before and after the right index, tell me exactly which index to create for a case-insensitive prefix search in Postgres, and explain in plain words when this approach stops being enough and real full-text search takes over.\n\nKeep the SQL parameterised, and show me what the naive string-concatenated version would let an attacker do.",
+    "acceptance": {
+     "en": "Done when: search returns expected matches and you know which index supports it.",
+     "he": "Done when: חיפוש מחזיר התאמות צפויות ואתם יודעים איזה אינדקס תומך בזה."
+    },
+    "verify": [
+     {
+      "en": "I tried a search that should hit and one that should miss",
+      "he": "ניסיתי חיפוש שצריך לפגוע ואחד שצריך להחטיא"
+     },
+     {
+      "en": "I confirmed an index exists for the filter path",
+      "he": "אישרתי שקיים אינדקס לנתיב הסינון"
+     },
+     {
+      "en": "I did not load the whole table into memory to 'search'",
+      "he": "לא טענתי את כל הטבלה לזיכרון כדי 'לחפש'"
+     }
+    ]
    },
    {
     "n": 6,
@@ -8622,7 +9485,25 @@
      "Injection & validation",
      "Idempotency"
     ],
-    "prompt": "Add create and edit for contacts in my Next.js CRM, using Server Actions.\n\nRules: validation runs on the server even though the form also validates in the browser, and both share one schema definition; creating a contact for a company that does not exist yet creates the company and the contact in a single transaction that rolls back as a unit; email is optional but must be valid when present; stage must be one of the five allowed values, enforced in the database as well as the code.\n\nShow me the schema, the action, the form, and how errors get back to the user field by field. Then tell me what happens today if I double-click Save, and the smallest change that makes that harmless."
+    "prompt": "Add create and edit for contacts in my Next.js CRM, using Server Actions.\n\nRules: validation runs on the server even though the form also validates in the browser, and both share one schema definition; creating a contact for a company that does not exist yet creates the company and the contact in a single transaction that rolls back as a unit; email is optional but must be valid when present; stage must be one of the five allowed values, enforced in the database as well as the code.\n\nShow me the schema, the action, the form, and how errors get back to the user field by field. Then tell me what happens today if I double-click Save, and the smallest change that makes that harmless.",
+    "acceptance": {
+     "en": "Done when: create and edit persist correctly and validation errors are visible.",
+     "he": "Done when: יצירה ועריכה נשמרות נכון ושגיאות ולידציה גלויות."
+    },
+    "verify": [
+     {
+      "en": "I created and edited a contact end-to-end",
+      "he": "יצרתי וערכתי איש קשר מקצה לקצה"
+     },
+     {
+      "en": "Server rejects bad input (not only the UI)",
+      "he": "השרת דוחה קלט רע (לא רק ה-UI)"
+     },
+     {
+      "en": "I read the mutation/API diff",
+      "he": "קראתי את ה-diff של ה-mutation/API"
+     }
+    ]
    },
    {
     "n": 7,
@@ -8645,7 +9526,25 @@
      "Client state",
      "Time, text & money"
     ],
-    "prompt": "Add a /contacts/[id] page to my CRM: the contact's details, their company, and all their notes newest first, plus a box to add a note.\n\nRequirements: the page loads the contact and its notes in at most two queries, never one per note; adding a note does not reload the whole page and the new note appears immediately; timestamps are stored in UTC and shown in the viewer's local time, with the absolute time available on hover.\n\nShow me the queries, the page and the note form. Then explain what an N+1 query is, show me the version of this page that accidentally has one, and how I would spot it in a log before a user complains."
+    "prompt": "Add a /contacts/[id] page to my CRM: the contact's details, their company, and all their notes newest first, plus a box to add a note.\n\nRequirements: the page loads the contact and its notes in at most two queries, never one per note; adding a note does not reload the whole page and the new note appears immediately; timestamps are stored in UTC and shown in the viewer's local time, with the absolute time available on hover.\n\nShow me the queries, the page and the note form. Then explain what an N+1 query is, show me the version of this page that accidentally has one, and how I would spot it in a log before a user complains.",
+    "acceptance": {
+     "en": "Done when: notes appear on a contact timeline in order and survive refresh.",
+     "he": "Done when: הערות מופיעות בטיימליין של איש קשר בסדר ושורדות רענון."
+    },
+    "verify": [
+     {
+      "en": "I added two notes and refreshed",
+      "he": "הוספתי שתי הערות ורעננתי"
+     },
+     {
+      "en": "Ordering matches what I expect",
+      "he": "הסדר תואם למה שציפיתי"
+     },
+     {
+      "en": "Notes are scoped to the contact (no bleed)",
+      "he": "הערות שייכות לאיש הקשר (בלי דליפה)"
+     }
+    ]
    },
    {
     "n": 8,
@@ -8668,7 +9567,25 @@
      "Environment variables / secrets",
      "Least privilege"
     ],
-    "prompt": "Add authentication to my Next.js CRM: sign up and log in with email and password, a session cookie, and a logout.\n\nRequirements: passwords hashed with a modern algorithm and never logged; the session cookie is httpOnly, Secure and SameSite=Lax; the session secret comes from an environment variable; every company, contact and note row belongs to a user, and every query filters by the logged-in user — show me how to make that hard to forget rather than something I must remember; unauthenticated requests to any CRM route redirect to /login.\n\nShow the schema change, the auth code, the middleware, and one test proving user A cannot fetch user B's contact by guessing its id. Then say plainly what this setup does not protect against."
+    "prompt": "Add authentication to my Next.js CRM: sign up and log in with email and password, a session cookie, and a logout.\n\nRequirements: passwords hashed with a modern algorithm and never logged; the session cookie is httpOnly, Secure and SameSite=Lax; the session secret comes from an environment variable; every company, contact and note row belongs to a user, and every query filters by the logged-in user — show me how to make that hard to forget rather than something I must remember; unauthenticated requests to any CRM route redirect to /login.\n\nShow the schema change, the auth code, the middleware, and one test proving user A cannot fetch user B's contact by guessing its id. Then say plainly what this setup does not protect against.",
+    "acceptance": {
+     "en": "Done when: login works and a user cannot read/write another user's contacts.",
+     "he": "Done when: login עובד ומשתמש לא יכול לקרוא/לכתוב אנשי קשר של אחר."
+    },
+    "verify": [
+     {
+      "en": "I tested with two users (or two sessions)",
+      "he": "בדקתי עם שני משתמשים (או שני sessions)"
+     },
+     {
+      "en": "API enforces ownership — not only hidden buttons",
+      "he": "ה-API אוכף בעלות — לא רק כפתורים מוסתרים"
+     },
+     {
+      "en": "No secrets landed in the client bundle",
+      "he": "שום סוד לא נחת בבאנדל הלקוח"
+     }
+    ]
    },
    {
     "n": 9,
@@ -8690,7 +9607,25 @@
      "Config per environment",
      "Pull request & code review"
     ],
-    "prompt": "Set up environment separation for my Vercel + Neon CRM.\n\nI want: a production database and a separate database for preview deployments using Neon's branching, wired so a Vercel preview automatically points at the preview branch while production points at production; environment variables set per environment in Vercel, with the ones that must differ listed explicitly; a local .env.local pointing at a third, throwaway branch.\n\nShow me the exact configuration. Then walk the workflow: I open a pull request — what URL do I get, which database does it read, how do migrations reach each environment, and what happens to the preview database when the PR is merged or closed. Finish with the one mistake in this setup that would let a preview write to production data."
+    "prompt": "Set up environment separation for my Vercel + Neon CRM.\n\nI want: a production database and a separate database for preview deployments using Neon's branching, wired so a Vercel preview automatically points at the preview branch while production points at production; environment variables set per environment in Vercel, with the ones that must differ listed explicitly; a local .env.local pointing at a third, throwaway branch.\n\nShow me the exact configuration. Then walk the workflow: I open a pull request — what URL do I get, which database does it read, how do migrations reach each environment, and what happens to the preview database when the PR is merged or closed. Finish with the one mistake in this setup that would let a preview write to production data.",
+    "acceptance": {
+     "en": "Done when: preview deploy works and preview DB is not production.",
+     "he": "Done when: preview deploy עובד ומסד ה-preview אינו פרודקשן."
+    },
+    "verify": [
+     {
+      "en": "I opened a preview URL from a branch/PR",
+      "he": "פתחתי URL של preview מענף/PR"
+     },
+     {
+      "en": "Preview env vars / DB are separate from prod",
+      "he": "משתני/מסד preview מופרדים מפרוד"
+     },
+     {
+      "en": "I know how to tear the preview down",
+      "he": "אני יודע איך לפרק את ה-preview"
+     }
+    ]
    },
    {
     "n": 10,
@@ -8713,7 +9648,25 @@
      "Make it verify itself",
      "Flaky test"
     ],
-    "prompt": "Add a test suite to my Next.js CRM covering exactly the things that would really break it: the ownership rule (user A cannot read user B's rows), stage validation rejecting a bad value, the create-company-and-contact transaction rolling back as a unit, and one end-to-end path — log in, create a contact, add a note, see it on the page.\n\nPick the tools and justify each in one line. Show me how the tests get a database, and why that choice will not make them flaky.\n\nThen give me the GitHub Actions workflow that runs typecheck, lint, tests and build on every push, and tell me how to make a failing check actually block the merge instead of just showing a red mark."
+    "prompt": "Add a test suite to my Next.js CRM covering exactly the things that would really break it: the ownership rule (user A cannot read user B's rows), stage validation rejecting a bad value, the create-company-and-contact transaction rolling back as a unit, and one end-to-end path — log in, create a contact, add a note, see it on the page.\n\nPick the tools and justify each in one line. Show me how the tests get a database, and why that choice will not make them flaky.\n\nThen give me the GitHub Actions workflow that runs typecheck, lint, tests and build on every push, and tell me how to make a failing check actually block the merge instead of just showing a red mark.",
+    "acceptance": {
+     "en": "Done when: meaningful tests run in CI and a red test blocks merge.",
+     "he": "Done when: בדיקות משמעותיות רצות ב-CI ובדיקה אדומה חוסמת מיזוג."
+    },
+    "verify": [
+     {
+      "en": "I saw CI run on a push/PR",
+      "he": "ראיתי CI רץ על push/PR"
+     },
+     {
+      "en": "At least one test would catch a real break",
+      "he": "לפחות בדיקה אחת תתפוס שבירה אמיתית"
+     },
+     {
+      "en": "I did not skip failing tests to go green",
+      "he": "לא דילגתי על בדיקות כושלות כדי להיות ירוק"
+     }
+    ]
    },
    {
     "n": 11,
@@ -8736,7 +9689,25 @@
      "HTTPS / TLS",
      "Is it me or them?"
     ],
-    "prompt": "I want my CRM on my own domain. Walk me through it end to end.\n\nCover: buying a domain from a registrar and what the price actually includes; adding it to my Vercel project; exactly which DNS records to create and what each one means; choosing whether the canonical address is example.com or www.example.com and redirecting the other; how the HTTPS certificate is issued and renewed without me doing anything.\n\nThen give me the commands to check propagation myself — dig or nslookup — and how to read the answer. Finish with the three most common reasons a freshly pointed domain shows the wrong site, and how to tell which one is happening to me."
+    "prompt": "I want my CRM on my own domain. Walk me through it end to end.\n\nCover: buying a domain from a registrar and what the price actually includes; adding it to my Vercel project; exactly which DNS records to create and what each one means; choosing whether the canonical address is example.com or www.example.com and redirecting the other; how the HTTPS certificate is issued and renewed without me doing anything.\n\nThen give me the commands to check propagation myself — dig or nslookup — and how to read the answer. Finish with the three most common reasons a freshly pointed domain shows the wrong site, and how to tell which one is happening to me.",
+    "acceptance": {
+     "en": "Done when: custom domain resolves and HTTPS padlock works.",
+     "he": "Done when: דומיין מותאם נפתר והמנעול של HTTPS עובד."
+    },
+    "verify": [
+     {
+      "en": "I opened the site on the custom domain",
+      "he": "פתחתי את האתר על הדומיין המותאם"
+     },
+     {
+      "en": "Certificate is valid (no click-through warnings)",
+      "he": "התעודה תקפה (בלי אזהרות)"
+     },
+     {
+      "en": "I did not disable TLS verification to 'make it work'",
+      "he": "לא כיביתי אימות TLS כדי 'שיעבוד'"
+     }
+    ]
    },
    {
     "n": 12,
@@ -8759,7 +9730,25 @@
      "Health check & uptime monitor",
      "The cloud"
     ],
-    "prompt": "Close out my Vercel + Neon CRM with the operations layer.\n\nGive me: structured JSON logging with a request id that ties a browser request to its server log lines, plus a list of what must never be logged; an error tracker on a free tier wired into both server and browser errors, with source maps so stack traces are readable; an /api/health endpoint and a free uptime monitor hitting it; and exactly one alert, with your argument for why that one and not four.\n\nThen the numbers: what this app costs per month on the free tiers, which limit I hit first as usage grows, what the first paid bill looks like, and the earliest signal I would see before it arrives. Finish with a five-line runbook to keep for when the site is down."
+    "prompt": "Close out my Vercel + Neon CRM with the operations layer.\n\nGive me: structured JSON logging with a request id that ties a browser request to its server log lines, plus a list of what must never be logged; an error tracker on a free tier wired into both server and browser errors, with source maps so stack traces are readable; an /api/health endpoint and a free uptime monitor hitting it; and exactly one alert, with your argument for why that one and not four.\n\nThen the numbers: what this app costs per month on the free tiers, which limit I hit first as usage grows, what the first paid bill looks like, and the earliest signal I would see before it arrives. Finish with a five-line runbook to keep for when the site is down.",
+    "acceptance": {
+     "en": "Done when: errors are visible, one alert fires on a real failure, and you know the bill drivers.",
+     "he": "Done when: שגיאות גלויות, התראה אחת עובדת על כשל אמיתי, ואתם יודעים מה מניע את החשבון."
+    },
+    "verify": [
+     {
+      "en": "I triggered a safe error and saw it in logs/alerts",
+      "he": "יצרתי שגיאה בטוחה וראיתי אותה בלוגים/התראות"
+     },
+     {
+      "en": "PII/secrets are not dumped raw into logs",
+      "he": "PII/סודות לא נשפכים גולמיים ללוגים"
+     },
+     {
+      "en": "I checked cost/usage so nothing forgotten is burning money",
+      "he": "בדקתי עלות/שימוש כדי ששום דבר שנשכח לא שורף כסף"
+     }
+    ]
    }
   ]
  },
@@ -11519,6 +12508,46 @@
    "s": {
     "en": "No. It is asking you a question it refuses to answer for you.\n\nTwo changes edited the same lines. Git can merge everything else automatically; for those lines it puts both versions into the file, separated by markers: yours above, theirs below. Your job is to delete the markers and leave the text that should actually be there — sometimes one side, sometimes both, sometimes something new.\n\nThe damage in conflicts is almost never the conflict. It is the reaction: deleting the folder, re-cloning, or accepting one whole side without reading it, which silently throws away someone's real work. Read both. Ask what each was trying to do. If you cannot tell, the person who wrote the other side is one message away.\n\nThe way to have fewer of them is smaller changes merged sooner. A branch that lives for three weeks is a conflict with a calendar entry. This is doubly true with an agent: a sweeping AI refactor across forty files, merged after a week, conflicts with everything anyone else touched — and reviewing that merge is far harder than reviewing the change was.",
     "he": "לא. הוא שואל אותך שאלה שהוא מסרב לענות עליה במקומך.\n\nשני שינויים ערכו את אותן שורות. את כל השאר Git ממזג לבד; לשורות האלה הוא מכניס את שתי הגרסאות לקובץ, מופרדות בסימנים: שלך למעלה, שלהם למטה. התפקיד שלך הוא למחוק את הסימנים ולהשאיר את הטקסט שבאמת צריך להיות שם — לפעמים צד אחד, לפעמים שניהם, לפעמים משהו חדש.\n\nהנזק בקונפליקטים הוא כמעט אף פעם לא הקונפליקט. הוא התגובה: למחוק את התיקייה, לשכפל מחדש, או לקבל צד שלם בלי לקרוא — וכך לזרוק בשקט עבודה אמיתית של מישהו. תקרא את שניהם. תשאל מה כל צד ניסה לעשות. אם אינך יודע, מי שכתב את הצד השני נמצא במרחק הודעה.\n\nהדרך לקבל פחות מהם היא שינויים קטנים שממוזגים מוקדם. ענף שחי שלושה שבועות הוא קונפליקט עם תאריך ביומן. זה נכון פי שניים עם סוכן: ריפקטור AI גורף על ארבעים קבצים, שממוזג אחרי שבוע, מתנגש בכל מה שמישהו אחר נגע בו — וביקורת של המיזוג הזה קשה בהרבה מביקורת של השינוי."
+   }
+  },
+  "Endless fix loop": {
+   "q": {
+    "en": "Why is 'one more AI patch' sometimes the wrong move?",
+    "he": "למה 'עוד פאטץ' אחד מה-AI' לפעמים הצעד הלא נכון?"
+   },
+   "s": {
+    "en": "You are lost in a mall. Asking the same confused stranger for five more turns rarely helps. Step outside, look at a map, then ask again with clearer landmarks.",
+    "he": "אתם אבודים בקניון. לבקש מאותו זר מבולבל עוד חמישה כיוונים לעיתים רחוקות עוזר. יוצאים החוצה, מסתכלים על מפה, ואז שואלים שוב עם ציוני דרך ברורים."
+   }
+  },
+  "Kill the thread": {
+   "q": {
+    "en": "The chat remembers the wrong diagnosis. Why start over?",
+    "he": "השיחה זוכרת אבחנה שגויה. למה להתחיל מחדש?"
+   },
+   "s": {
+    "en": "A meeting went off the rails. Restarting with a one-page agenda beats arguing inside the old digression.",
+    "he": "ישיבה יצאה מהמסלול. להתחיל מחדש עם אג'נדה בעמוד אחד מנצח ויכוח בתוך הסטייה הישנה."
+   }
+  },
+  "Package hallucination": {
+   "q": {
+    "en": "The AI named a package confidently. Why not install it immediately?",
+    "he": "ה-AI נקב בשם חבילה בביטחון. למה לא להתקין מיד?"
+   },
+   "s": {
+    "en": "A stranger recommends a pharmacy that isn't on the map. You check the address before walking in — same for npm install.",
+    "he": "זר ממליץ על בית מרקחת שלא על המפה. בודקים כתובת לפני שנכנסים — אותו דבר ל-npm install."
+   }
+  },
+  "Demo vs production": {
+   "q": {
+    "en": "The demo clapped. Why aren't you done?",
+    "he": "הדמו קיבל מחיאות כפיים. למה עדיין לא סיימתם?"
+   },
+   "s": {
+    "en": "A dress rehearsal with friendly actors is not opening night with a paying crowd. Production is opening night.",
+    "he": "חזרה גנרלית עם שחקנים ידידותיים אינה ערב בכורה עם קהל משלם. פרודקשן הוא ערב הבכורה."
    }
   }
  }

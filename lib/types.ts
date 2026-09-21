@@ -38,6 +38,10 @@ export type ProjectStep = {
   why: L10n;
   uses: string[];
   prompt: string;
+  /** Learner writes this before the paste prompt unlocks. */
+  acceptance: L10n;
+  /** Post-step checks (run / diff / security-or-data). */
+  verify: L10n[];
 };
 
 export type CheckItem = { t: L10n; d: L10n };

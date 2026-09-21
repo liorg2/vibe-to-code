@@ -342,6 +342,24 @@ pre.code{max-width:100%}
 .ask .sub{color:var(--tx3);font-size:13px;margin:6px 0 4px}
 .ask .promptbox{margin-top:10px}
 
+/* ---- practice loop + project plan/verify gates ---- */
+.practice{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;background:var(--card2)}
+.practice summary{cursor:pointer;font-weight:800;font-size:15px}
+.practice summary .sub{display:block;font-weight:400;color:var(--tx3);font-size:13px;margin-top:3px}
+.practice-plan{display:flex;flex-direction:column;gap:6px;margin-top:14px;font-size:14px;font-weight:600}
+.practice-plan textarea,.plan-gate textarea{width:100%;resize:vertical;min-height:56px;padding:10px 12px;
+  border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--tx);font:inherit}
+.practice-go{margin:14px 0 6px;font-size:14px;font-weight:600}
+.practice-verify,.verify-gate,.plan-gate{margin-top:14px}
+.practice-verify .lbl,.verify-gate .lbl,.plan-gate .lbl{font-size:11px;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--acc2);font-weight:700;margin-bottom:6px}
+.practice-verify .sub,.verify-gate .sub,.plan-gate .sub{color:var(--tx3);font-size:13px;margin-bottom:10px}
+.practice-check{display:flex;gap:10px;align-items:flex-start;margin:8px 0;font-size:14px;cursor:pointer}
+.practice-check input{margin-top:3px;accent-color:var(--acc);flex:none}
+.plan-gate .btn{margin-top:10px}
+.plan-gate .hint{color:var(--tx3);font-size:13px;margin-top:8px}
+.plan-gate textarea:disabled{opacity:.75}
+
 /* ---- architectures ---- */
 .chart{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);
   padding:18px 14px;margin:20px 0;overflow-x:auto}
