@@ -1,19 +1,21 @@
 export type Lang = "en" | "he";
 export type L10n = Record<Lang, string>;
 
+export type Level = "A" | "B" | "C";
+
 export type Term = {
+  /** stable slug — progress is stored against this, so the title stays editable */
+  k: string;
+  /** how much you need to already know: A foundations, B building, C running it for real */
+  lvl: Level;
   t: L10n;
   d: L10n;
   w: L10n;
 };
 
-export type Level = "A" | "B" | "C";
-
 export type Module = {
   id: string;
   icon: string;
-  /** how much you need to already know: A foundations, B building, C running it for real */
-  lvl: Level;
   title: L10n;
   blurb: L10n;
   terms: Term[];
@@ -44,7 +46,7 @@ export type ProjectStep = {
   verify: L10n[];
 };
 
-export type CheckItem = { t: L10n; d: L10n };
+export type CheckItem = { k: string; t: L10n; d: L10n };
 
 export type ArchPart = { n: L10n; d: L10n };
 

@@ -26,7 +26,7 @@ export function ChecklistClient() {
     </div>
   );
 
-  const okDone = C.do.filter((_, i) => ticked.has(`do:${i}`)).length;
+  const okDone = C.do.filter((x) => ticked.has(`do:${x.k}`)).length;
 
   return (
     <>
@@ -42,12 +42,12 @@ export function ChecklistClient() {
         <div className="col ok">
           <h3>✓ {t("doThis")}</h3>
           <p className="sub">{t("doSub")}</p>
-          {C.do.map((x, i) => item(x, `do:${i}`, false))}
+          {C.do.map((x) => item(x, `do:${x.k}`, false))}
         </div>
         <div className="col no">
           <h3>× {t("neverThis")}</h3>
           <p className="sub">{t("neverSub")}</p>
-          {C.dont.map((x, i) => item(x, `no:${i}`, true))}
+          {C.dont.map((x) => item(x, `no:${x.k}`, true))}
         </div>
       </div>
     </>

@@ -27,7 +27,7 @@ export function CoursesContent() {
               <p>{p.blurb[lang]}</p>
               <div className="chips">
                 {mods.map((m) => (
-                  <span key={m.id} className={`chip-${m.lvl}`}>{m.title?.[lang] ?? m.id}</span>
+                  <span key={m.id}>{m.title?.[lang] ?? m.id}</span>
                 ))}
               </div>
               <div className="mini"><i style={{ width: terms ? `${(d / terms) * 100}%` : "0%" }} /></div>

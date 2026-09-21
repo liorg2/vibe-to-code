@@ -9,21 +9,17 @@ import type { Module, Term } from "@/lib/types";
 type Card = { m: Module; i: number; tm: Term };
 
 export function ReviewClient() {
-  const { lang, done, toggleDone, t } = useApp();
+  const { lang, done, levels, toggleDone, t } = useApp();
   const [card, setCard] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
-  const pool: Card[] = [];
+  // the level filter picks the deck; unlearnt cards first, the whole deck once they are gone
+  const deck: Card[] = [];
   MODULES.forEach((m) => m.terms.forEach((tm, i) => {
-    if (!done.has(termKey(m, i))) pool.push({ m, i, tm });
+    if (levels.has(tm.lvl)) deck.push({ m, i, tm });
   }));
-  const all = pool.length
-    ? pool
-    : (() => {
-        const a: Card[] = [];
-        MODULES.forEach((m) => m.terms.forEach((tm, i) => a.push({ m, i, tm })));
-        return a;
-      })();
+  const pool = deck.filter(({ m, i }) => !done.has(termKey(m, i)));
+  const all = pool.length ? pool : deck;
 
   const idx = card >= all.length ? 0 : card;
   const { m, i, tm } = all[idx];

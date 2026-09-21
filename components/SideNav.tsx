@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useApp } from "./Providers";
-import { LevelTag } from "./LevelTag";
+import { LevelFilter, LevelTag } from "./LevelTag";
 import { ARCHITECTURES, CHECKLIST, MODULES, PROJECT, QUIZ, termKey, totalTerms } from "@/lib/course";
 
 export function SideNav() {
-  const { lang, done, t } = useApp();
+  const { lang, done, levels, t } = useApp();
   const pathname = usePathname();
 
   const lessonMatch = pathname.match(/^\/lesson\/([^/]+)/);
@@ -65,11 +65,14 @@ export function SideNav() {
       }}
     >
       <h3 id="navTitle">{t("lessons")}</h3>
+      <LevelFilter />
       <div id="nav">
         {navLink("/", "◫", t("allLessons"), `${done.size}/${totalTerms()}`)}
         {navLink("/courses", "◇", t("paths"))}
         {MODULES.map((m) => {
-          const d = m.terms.filter((_, i) => done.has(termKey(m, i))).length;
+          const shown = m.terms.map((tm, i) => ({ tm, i })).filter(({ tm }) => levels.has(tm.lvl));
+          if (!shown.length) return null;
+          const d = shown.filter(({ i }) => done.has(termKey(m, i))).length;
           const open = openId === m.id;
           return (
             <div key={m.id} className={`nav-lesson${open ? " open" : ""}`}>
@@ -81,16 +84,16 @@ export function SideNav() {
               >
                 <span className="ic">{m.icon}</span>
                 <span>{m.title[lang]}</span>
-                <LevelTag lvl={m.lvl} />
-                <span className="cnt">{d}/{m.terms.length}</span>
+                <span className="cnt">{d}/{shown.length}</span>
               </Link>
               <div className="nav-subs">
-                {m.terms.map((tm, i) => (
+                {shown.map(({ tm, i }) => (
                   <Link
                     key={i}
                     href={`/lesson/${m.id}/${i}`}
                     className={`${open && activeTerm === i && !quizOpen ? "on" : ""}${done.has(termKey(m, i)) ? " done" : ""}`}
                   >
+                    <LevelTag lvl={tm.lvl} />
                     {tm.t[lang]}
                   </Link>
                 ))}

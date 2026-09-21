@@ -393,18 +393,19 @@ pre.code{max-width:100%}
 .abox b{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--tx3)}
 .abox p{font-size:14px;margin-top:5px}
 
-/* the course chips carry the level as a left edge, no room for a badge */
-.chips .chip-A{box-shadow:inset 2px 0 0 #12b886}
-.chips .chip-B{box-shadow:inset 2px 0 0 #4c8dff}
-.chips .chip-C{box-shadow:inset 2px 0 0 #b07cff}
-body[dir="rtl"] .chips .chip-A{box-shadow:inset -2px 0 0 #12b886}
-body[dir="rtl"] .chips .chip-B{box-shadow:inset -2px 0 0 #4c8dff}
-body[dir="rtl"] .chips .chip-C{box-shadow:inset -2px 0 0 #b07cff}
 
-/* what the letters mean, once, above the lesson grid */
-.lvl-key{display:flex;flex-wrap:wrap;gap:10px 22px;margin-bottom:20px;
-  color:var(--tx3);font-size:13px}
-.lvl-key>span{display:inline-flex;align-items:center;gap:8px;min-width:0}
+/* the three levels as switches: letters only in the nav, with the sentence on a page */
+.lvl-key{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.lvl-key button{display:inline-flex;align-items:center;gap:8px;min-width:0;padding:4px 8px;
+  border:1px solid var(--line);border-radius:10px;background:var(--card2);cursor:pointer;
+  color:var(--tx3);font:inherit;font-size:13px;text-align:start;opacity:.45;transition:.13s}
+.lvl-key button.on{opacity:1;border-color:color-mix(in srgb,var(--acc) 35%,var(--line))}
+.lvl-key button:hover{color:var(--tx)}
+.lvl-key.full{gap:8px 18px;margin-bottom:20px}
+.lvl-key.full button{flex:1 1 260px}
+/* in the nav it is three letters in a row, nothing else */
+nav.side .lvl-key{gap:5px;margin:0 0 10px;padding:0 2px}
+nav.side .lvl-key button{flex:1;justify-content:center;padding:4px 0}
 
 /* ---- level tag: A foundations, B building, C running it for real ---- */
 .lvl{display:inline-flex;align-items:center;gap:6px;flex:none;
@@ -419,11 +420,11 @@ body[dir="rtl"] .chips .chip-C{box-shadow:inset -2px 0 0 #b07cff}
 .lvl-C{color:#b07cff;border-color:color-mix(in srgb,#b07cff 40%,transparent);
   background:color-mix(in srgb,#b07cff 12%,transparent)}
 /* in the nav there is no room for the word — the letter carries it */
-nav.side a .lvl{margin-inline-start:auto;padding:3px 5px}
-nav.side a .cnt{margin-inline-start:8px}
-.mcard .num{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.mcard .num .lvl{margin-inline-start:auto}
-.mhead .lvl{margin-inline-start:10px}
+nav.side .nav-subs a .lvl{padding:2px 4px;font-size:9.5px;flex:none}
+.subnav a .lvl{padding:2px 4px;font-size:9.5px}
+.term h4 .lvl,.slide h2 .lvl{margin-inline-start:10px;vertical-align:middle}
+.gl a .lvl{padding:2px 4px;font-size:9.5px;margin-inline-end:7px}
+.gl a>span{display:inline-flex;align-items:baseline;gap:0;min-width:0}
 @media (max-width:480px){ .lvl b{display:none} }
 
 /* ---- glossary ---- */

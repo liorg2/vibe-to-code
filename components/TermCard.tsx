@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useApp } from "./Providers";
+import { LevelTag } from "./LevelTag";
 import { termKey } from "@/lib/course";
 import type { Module, Term } from "@/lib/types";
 
@@ -22,7 +23,7 @@ export function TermCard({ m, i, tm }: { m: Module; i: number; tm: Term }) {
       >
         &#10003;
       </button>
-      <h4>{tm.t[lang]}</h4>
+      <h4>{tm.t[lang]}<LevelTag lvl={tm.lvl} /></h4>
       <p>{tm.d[lang]}</p>
       <div className="more">{t("open")} &rarr;</div>
     </Link>

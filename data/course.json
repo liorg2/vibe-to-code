@@ -371,13 +371,20 @@
   "verifyGateSub": {
    "en": "Tick what you actually checked.",
    "he": "מסמנים מה שבאמת בדקתם."
+  },
+  "filterLvl": {
+   "en": "Show",
+   "he": "הצג"
+  },
+  "noLvl": {
+   "en": "Nothing at this level. Turn one back on.",
+   "he": "אין כלום ברמה הזאת. תדליק אחת בחזרה."
   }
  },
  "MODULES": [
   {
    "id": "ground",
    "icon": "◆",
-   "lvl": "A",
    "title": {
     "en": "Ground Floor",
     "he": "קומת הקרקע"
@@ -388,6 +395,8 @@
    },
    "terms": [
     {
+     "k": "source-code",
+     "lvl": "A",
      "t": {
       "en": "Source code",
       "he": "קוד מקור"
@@ -402,6 +411,8 @@
      }
     },
     {
+     "k": "compiler-interpreter",
+     "lvl": "A",
      "t": {
       "en": "Compiler / Interpreter",
       "he": "קומפיילר / אינטרפרטר"
@@ -416,6 +427,8 @@
      }
     },
     {
+     "k": "runtime",
+     "lvl": "A",
      "t": {
       "en": "Runtime",
       "he": "סביבת ריצה"
@@ -430,6 +443,8 @@
      }
     },
     {
+     "k": "terminal-cli",
+     "lvl": "A",
      "t": {
       "en": "Terminal / CLI",
       "he": "טרמינל / שורת פקודה"
@@ -444,6 +459,8 @@
      }
     },
     {
+     "k": "environment",
+     "lvl": "A",
      "t": {
       "en": "Environment",
       "he": "סביבה"
@@ -458,6 +475,8 @@
      }
     },
     {
+     "k": "bug-stack-trace",
+     "lvl": "A",
      "t": {
       "en": "Bug / Stack trace",
       "he": "באג / סטאק טרייס"
@@ -472,6 +491,8 @@
      }
     },
     {
+     "k": "app-lifecycle",
+     "lvl": "A",
      "t": {
       "en": "App lifecycle",
       "he": "מחזור חיי אפליקציה"
@@ -490,7 +511,6 @@
   {
    "id": "vcs",
    "icon": "⎇",
-   "lvl": "A",
    "title": {
     "en": "Source Control",
     "he": "ניהול גרסאות"
@@ -501,6 +521,8 @@
    },
    "terms": [
     {
+     "k": "source-control",
+     "lvl": "A",
      "t": {
       "en": "Source control",
       "he": "ניהול גרסאות"
@@ -515,6 +537,8 @@
      }
     },
     {
+     "k": "repository-repo",
+     "lvl": "A",
      "t": {
       "en": "Repository (repo)",
       "he": "ריפו (repository)"
@@ -529,6 +553,8 @@
      }
     },
     {
+     "k": "clone-push-pull",
+     "lvl": "A",
      "t": {
       "en": "Clone / push / pull",
       "he": "Clone / push / pull"
@@ -543,6 +569,8 @@
      }
     },
     {
+     "k": "commit-branch-merge",
+     "lvl": "A",
      "t": {
       "en": "Commit / Branch / Merge",
       "he": "קומיט / ברנץ׳ / מרג׳"
@@ -557,6 +585,8 @@
      }
     },
     {
+     "k": "merge-conflict",
+     "lvl": "B",
      "t": {
       "en": "Merge conflict",
       "he": "קונפליקט מיזוג"
@@ -571,6 +601,8 @@
      }
     },
     {
+     "k": "pull-request-and-code-review",
+     "lvl": "B",
      "t": {
       "en": "Pull request & code review",
       "he": "Pull request וסקירת קוד"
@@ -589,7 +621,6 @@
   {
    "id": "sides",
    "icon": "⇄",
-   "lvl": "A",
    "title": {
     "en": "The Two Sides",
     "he": "שני הצדדים"
@@ -600,6 +631,8 @@
    },
    "terms": [
     {
+     "k": "client",
+     "lvl": "A",
      "t": {
       "en": "Client",
       "he": "קליינט (client)"
@@ -614,6 +647,8 @@
      }
     },
     {
+     "k": "server",
+     "lvl": "A",
      "t": {
       "en": "Server",
       "he": "שרת"
@@ -628,6 +663,8 @@
      }
     },
     {
+     "k": "frontend",
+     "lvl": "A",
      "t": {
       "en": "Frontend",
       "he": "פרונט-אנד"
@@ -642,6 +679,8 @@
      }
     },
     {
+     "k": "backend",
+     "lvl": "A",
      "t": {
       "en": "Backend",
       "he": "בק-אנד"
@@ -656,6 +695,8 @@
      }
     },
     {
+     "k": "localhost-and-port",
+     "lvl": "A",
      "t": {
       "en": "localhost & port",
       "he": "localhost ופורט"
@@ -670,6 +711,8 @@
      }
     },
     {
+     "k": "dns",
+     "lvl": "B",
      "t": {
       "en": "DNS",
       "he": "DNS"
@@ -684,6 +727,8 @@
      }
     },
     {
+     "k": "full-stack",
+     "lvl": "A",
      "t": {
       "en": "Full stack",
       "he": "פול סטאק"
@@ -698,6 +743,8 @@
      }
     },
     {
+     "k": "devtools",
+     "lvl": "A",
      "t": {
       "en": "DevTools",
       "he": "כלי הפיתוח"
@@ -712,6 +759,8 @@
      }
     },
     {
+     "k": "the-network-tab",
+     "lvl": "B",
      "t": {
       "en": "The Network tab",
       "he": "לשונית Network"
@@ -726,6 +775,8 @@
      }
     },
     {
+     "k": "console-and-breakpoints",
+     "lvl": "B",
      "t": {
       "en": "Console & breakpoints",
       "he": "Console ונקודות עצירה"
@@ -744,7 +795,6 @@
   {
    "id": "langs",
    "icon": "{ }",
-   "lvl": "A",
    "title": {
     "en": "Languages & Their Trade-offs",
     "he": "שפות והתמורות שלהן"
@@ -755,6 +805,8 @@
    },
    "terms": [
     {
+     "k": "typed-vs-untyped",
+     "lvl": "B",
      "t": {
       "en": "Typed vs untyped",
       "he": "עם טיפוסים מול בלי טיפוסים"
@@ -769,6 +821,8 @@
      }
     },
     {
+     "k": "compiled-vs-interpreted",
+     "lvl": "B",
      "t": {
       "en": "Compiled vs interpreted",
       "he": "קומפילציה מול אינטרפרטציה"
@@ -783,6 +837,8 @@
      }
     },
     {
+     "k": "javascript-typescript",
+     "lvl": "A",
      "t": {
       "en": "JavaScript / TypeScript",
       "he": "JavaScript / TypeScript"
@@ -797,6 +853,8 @@
      }
     },
     {
+     "k": "python",
+     "lvl": "A",
      "t": {
       "en": "Python",
       "he": "Python"
@@ -811,6 +869,8 @@
      }
     },
     {
+     "k": "go-rust-java-c",
+     "lvl": "B",
      "t": {
       "en": "Go / Rust / Java / C#",
       "he": "Go / Rust / Java / C#"
@@ -825,6 +885,8 @@
      }
     },
     {
+     "k": "package-manager",
+     "lvl": "A",
      "t": {
       "en": "Package manager",
       "he": "מנהל חבילות"
@@ -839,6 +901,8 @@
      }
     },
     {
+     "k": "dependency",
+     "lvl": "A",
      "t": {
       "en": "Dependency",
       "he": "תלות (Dependency)"
@@ -853,6 +917,8 @@
      }
     },
     {
+     "k": "framework-vs-library",
+     "lvl": "B",
      "t": {
       "en": "Framework vs library",
       "he": "פריימוורק מול ספרייה"
@@ -867,6 +933,8 @@
      }
     },
     {
+     "k": "semantic-versioning",
+     "lvl": "B",
      "t": {
       "en": "Semantic versioning",
       "he": "ניהול גרסאות סמנטי"
@@ -885,7 +953,6 @@
   {
    "id": "frontend",
    "icon": "▣",
-   "lvl": "B",
    "title": {
     "en": "The Browser Side",
     "he": "צד הדפדפן"
@@ -896,6 +963,8 @@
    },
    "terms": [
     {
+     "k": "dom",
+     "lvl": "A",
      "t": {
       "en": "DOM",
       "he": "DOM"
@@ -910,6 +979,8 @@
      }
     },
     {
+     "k": "css-and-responsive-layout",
+     "lvl": "A",
      "t": {
       "en": "CSS & responsive layout",
       "he": "CSS ודיפלוי רספונסיבית"
@@ -924,6 +995,8 @@
      }
     },
     {
+     "k": "the-main-thread",
+     "lvl": "C",
      "t": {
       "en": "The main thread",
       "he": "התהליכון הראשי"
@@ -938,6 +1011,8 @@
      }
     },
     {
+     "k": "component",
+     "lvl": "A",
      "t": {
       "en": "Component",
       "he": "קומפוננטה"
@@ -952,6 +1027,8 @@
      }
     },
     {
+     "k": "framework-react-vue-svelte",
+     "lvl": "A",
      "t": {
       "en": "Framework (React, Vue, Svelte)",
       "he": "פריימוורק (React, Vue, Svelte)"
@@ -966,6 +1043,8 @@
      }
     },
     {
+     "k": "client-state",
+     "lvl": "B",
      "t": {
       "en": "Client state",
       "he": "מצב בצד הלקוח"
@@ -980,6 +1059,8 @@
      }
     },
     {
+     "k": "spa-vs-ssr-vs-static",
+     "lvl": "B",
      "t": {
       "en": "SPA vs SSR vs static",
       "he": "SPA מול SSR מול סטטי"
@@ -994,6 +1075,8 @@
      }
     },
     {
+     "k": "bundler-and-build-step",
+     "lvl": "B",
      "t": {
       "en": "Bundler & build step",
       "he": "באנדלר ושלב הבנייה"
@@ -1008,6 +1091,8 @@
      }
     },
     {
+     "k": "accessibility-a11y",
+     "lvl": "B",
      "t": {
       "en": "Accessibility (a11y)",
       "he": "נגישות (a11y)"
@@ -1022,6 +1107,8 @@
      }
     },
     {
+     "k": "forms-and-validation",
+     "lvl": "A",
      "t": {
       "en": "Forms & validation",
       "he": "טפסים ואימות"
@@ -1040,7 +1127,6 @@
   {
    "id": "http",
    "icon": "↗",
-   "lvl": "B",
    "title": {
     "en": "HTTP: How Things Talk",
     "he": "HTTP: איך דברים מדברים"
@@ -1051,6 +1137,8 @@
    },
    "terms": [
     {
+     "k": "request-response",
+     "lvl": "A",
      "t": {
       "en": "Request / Response",
       "he": "ריקווסט / רספונס"
@@ -1065,6 +1153,8 @@
      }
     },
     {
+     "k": "get",
+     "lvl": "A",
      "t": {
       "en": "GET",
       "he": "GET"
@@ -1079,6 +1169,8 @@
      }
     },
     {
+     "k": "post-put-patch-delete",
+     "lvl": "A",
      "t": {
       "en": "POST / PUT / PATCH / DELETE",
       "he": "POST / PUT / PATCH / DELETE"
@@ -1093,6 +1185,8 @@
      }
     },
     {
+     "k": "headers",
+     "lvl": "B",
      "t": {
       "en": "Headers",
       "he": "הדרים (headers)"
@@ -1107,6 +1201,8 @@
      }
     },
     {
+     "k": "payload-body",
+     "lvl": "A",
      "t": {
       "en": "Payload / Body",
       "he": "גוף הבקשה (Payload)"
@@ -1121,6 +1217,8 @@
      }
     },
     {
+     "k": "status-codes",
+     "lvl": "A",
      "t": {
       "en": "Status codes",
       "he": "קודי סטטוס"
@@ -1135,6 +1233,8 @@
      }
     },
     {
+     "k": "json",
+     "lvl": "A",
      "t": {
       "en": "JSON",
       "he": "JSON"
@@ -1149,6 +1249,8 @@
      }
     },
     {
+     "k": "rest",
+     "lvl": "B",
      "t": {
       "en": "REST",
       "he": "REST"
@@ -1163,6 +1265,8 @@
      }
     },
     {
+     "k": "endpoint",
+     "lvl": "A",
      "t": {
       "en": "Endpoint",
       "he": "Endpoint"
@@ -1177,6 +1281,8 @@
      }
     },
     {
+     "k": "webhook",
+     "lvl": "B",
      "t": {
       "en": "Webhook",
       "he": "Webhook"
@@ -1195,7 +1301,6 @@
   {
    "id": "apis",
    "icon": "⇆",
-   "lvl": "B",
    "title": {
     "en": "APIs & Integrations",
     "he": "APIs ואינטגרציות"
@@ -1206,6 +1311,8 @@
    },
    "terms": [
     {
+     "k": "rest-vs-graphql",
+     "lvl": "B",
      "t": {
       "en": "REST vs GraphQL",
       "he": "REST מול GraphQL"
@@ -1220,6 +1327,8 @@
      }
     },
     {
+     "k": "api-spec-openapi",
+     "lvl": "B",
      "t": {
       "en": "API spec (OpenAPI)",
       "he": "מפרט API (OpenAPI)"
@@ -1234,6 +1343,8 @@
      }
     },
     {
+     "k": "api-key-vs-oauth-app",
+     "lvl": "B",
      "t": {
       "en": "API key vs OAuth app",
       "he": "מפתח API מול אפליקציית OAuth"
@@ -1248,6 +1359,8 @@
      }
     },
     {
+     "k": "pagination",
+     "lvl": "B",
      "t": {
       "en": "Pagination",
       "he": "עימוד (Pagination)"
@@ -1262,6 +1375,8 @@
      }
     },
     {
+     "k": "api-versioning",
+     "lvl": "C",
      "t": {
       "en": "API versioning",
       "he": "גרסאות API"
@@ -1276,6 +1391,8 @@
      }
     },
     {
+     "k": "timeouts-and-retries",
+     "lvl": "C",
      "t": {
       "en": "Timeouts & retries",
       "he": "טיים-אאוט וניסיונות חוזרים"
@@ -1290,6 +1407,8 @@
      }
     },
     {
+     "k": "sdk-vs-raw-http",
+     "lvl": "B",
      "t": {
       "en": "SDK vs raw HTTP",
       "he": "SDK מול HTTP גולמי"
@@ -1304,6 +1423,8 @@
      }
     },
     {
+     "k": "sandbox-vs-live-keys",
+     "lvl": "B",
      "t": {
       "en": "Sandbox vs live keys",
       "he": "מפתחות סנדבוקס מול חיים"
@@ -1318,6 +1439,8 @@
      }
     },
     {
+     "k": "polling-vs-push",
+     "lvl": "C",
      "t": {
       "en": "Polling vs push",
       "he": "פולינג מול דחיפה"
@@ -1336,7 +1459,6 @@
   {
    "id": "data",
    "icon": "▤",
-   "lvl": "B",
    "title": {
     "en": "Data & Databases",
     "he": "נתונים ומסדי נתונים"
@@ -1347,6 +1469,8 @@
    },
    "terms": [
     {
+     "k": "database",
+     "lvl": "A",
      "t": {
       "en": "Database",
       "he": "דאטהבייס (Database)"
@@ -1361,6 +1485,8 @@
      }
     },
     {
+     "k": "sql-vs-nosql",
+     "lvl": "B",
      "t": {
       "en": "SQL vs NoSQL",
       "he": "SQL מול NoSQL"
@@ -1375,6 +1501,8 @@
      }
     },
     {
+     "k": "schema",
+     "lvl": "A",
      "t": {
       "en": "Schema",
       "he": "סכמה"
@@ -1389,6 +1517,8 @@
      }
     },
     {
+     "k": "query",
+     "lvl": "A",
      "t": {
       "en": "Query",
       "he": "קווירי (Query)"
@@ -1403,6 +1533,8 @@
      }
     },
     {
+     "k": "index",
+     "lvl": "B",
      "t": {
       "en": "Index",
       "he": "אינדקס"
@@ -1417,6 +1549,8 @@
      }
     },
     {
+     "k": "migration",
+     "lvl": "B",
      "t": {
       "en": "Migration",
       "he": "מיגרציה"
@@ -1431,6 +1565,8 @@
      }
     },
     {
+     "k": "transaction",
+     "lvl": "B",
      "t": {
       "en": "Transaction",
       "he": "טרנזקציה"
@@ -1445,6 +1581,8 @@
      }
     },
     {
+     "k": "orm",
+     "lvl": "B",
      "t": {
       "en": "ORM",
       "he": "ORM"
@@ -1459,6 +1597,8 @@
      }
     },
     {
+     "k": "time-text-and-money",
+     "lvl": "B",
      "t": {
       "en": "Time, text & money",
       "he": "זמן, טקסט וכסף"
@@ -1477,7 +1617,6 @@
   {
    "id": "memory",
    "icon": "▦",
-   "lvl": "B",
    "title": {
     "en": "Memory & Speed",
     "he": "זיכרון ומהירות"
@@ -1488,6 +1627,8 @@
    },
    "terms": [
     {
+     "k": "ram-vs-disk",
+     "lvl": "A",
      "t": {
       "en": "RAM vs disk",
       "he": "RAM מול דיסק"
@@ -1502,6 +1643,8 @@
      }
     },
     {
+     "k": "stack-and-heap",
+     "lvl": "C",
      "t": {
       "en": "Stack & heap",
       "he": "סטאק והיפ (Stack & heap)"
@@ -1516,6 +1659,8 @@
      }
     },
     {
+     "k": "garbage-collection",
+     "lvl": "C",
      "t": {
       "en": "Garbage collection",
       "he": "גרבג׳ קולקשן (GC)"
@@ -1530,6 +1675,8 @@
      }
     },
     {
+     "k": "memory-leak",
+     "lvl": "C",
      "t": {
       "en": "Memory leak",
       "he": "ליק זיכרון (Memory leak)"
@@ -1544,6 +1691,8 @@
      }
     },
     {
+     "k": "latency-vs-throughput",
+     "lvl": "B",
      "t": {
       "en": "Latency vs throughput",
       "he": "לייטנסי מול תפוקה (Throughput)"
@@ -1558,6 +1707,8 @@
      }
     },
     {
+     "k": "big-o",
+     "lvl": "B",
      "t": {
       "en": "Big-O",
       "he": "Big-O"
@@ -1572,6 +1723,8 @@
      }
     },
     {
+     "k": "blocking-vs-async",
+     "lvl": "B",
      "t": {
       "en": "Blocking vs async",
       "he": "בלוקינג מול אסינכרוני"
@@ -1586,6 +1739,8 @@
      }
     },
     {
+     "k": "race-condition",
+     "lvl": "C",
      "t": {
       "en": "Race condition",
       "he": "רייס קונדישן (Race condition)"
@@ -1600,6 +1755,8 @@
      }
     },
     {
+     "k": "data-structures",
+     "lvl": "B",
      "t": {
       "en": "Data structures",
       "he": "מבני נתונים"
@@ -1618,7 +1775,6 @@
   {
    "id": "cache",
    "icon": "⚡",
-   "lvl": "B",
    "title": {
     "en": "Cache",
     "he": "מטמון (Cache)"
@@ -1629,6 +1785,8 @@
    },
    "terms": [
     {
+     "k": "cache",
+     "lvl": "A",
      "t": {
       "en": "Cache",
       "he": "קאש / מטמון (Cache)"
@@ -1643,6 +1801,8 @@
      }
     },
     {
+     "k": "hit-miss",
+     "lvl": "B",
      "t": {
       "en": "Hit / Miss",
       "he": "פגיעה / פספוס (Hit / Miss)"
@@ -1657,6 +1817,8 @@
      }
     },
     {
+     "k": "ttl",
+     "lvl": "B",
      "t": {
       "en": "TTL",
       "he": "TTL"
@@ -1671,6 +1833,8 @@
      }
     },
     {
+     "k": "invalidation",
+     "lvl": "B",
      "t": {
       "en": "Invalidation",
       "he": "ביטול תוקף (Invalidation)"
@@ -1685,6 +1849,8 @@
      }
     },
     {
+     "k": "browser-cache",
+     "lvl": "A",
      "t": {
       "en": "Browser cache",
       "he": "קאש הדפדפן"
@@ -1699,6 +1865,8 @@
      }
     },
     {
+     "k": "cdn",
+     "lvl": "B",
      "t": {
       "en": "CDN",
       "he": "CDN"
@@ -1713,6 +1881,8 @@
      }
     },
     {
+     "k": "redis-in-memory-store",
+     "lvl": "C",
      "t": {
       "en": "Redis / in-memory store",
       "he": "Redis / אחסון בזיכרון"
@@ -1731,7 +1901,6 @@
   {
    "id": "testing",
    "icon": "✓",
-   "lvl": "B",
    "title": {
     "en": "Testing & Confidence",
     "he": "בדיקות וביטחון"
@@ -1742,6 +1911,8 @@
    },
    "terms": [
     {
+     "k": "test",
+     "lvl": "A",
      "t": {
       "en": "Test",
       "he": "בדיקה"
@@ -1756,6 +1927,8 @@
      }
     },
     {
+     "k": "assertion",
+     "lvl": "B",
      "t": {
       "en": "Assertion",
       "he": "טענה (Assertion)"
@@ -1770,6 +1943,8 @@
      }
     },
     {
+     "k": "unit-integration-e2e",
+     "lvl": "B",
      "t": {
       "en": "Unit / Integration / E2E",
       "he": "יחידה / אינטגרציה / קצה לקצה"
@@ -1784,6 +1959,8 @@
      }
     },
     {
+     "k": "mock-fixture",
+     "lvl": "C",
      "t": {
       "en": "Mock / Fixture",
       "he": "מוק / פיקסצ׳ר"
@@ -1798,6 +1975,8 @@
      }
     },
     {
+     "k": "regression",
+     "lvl": "B",
      "t": {
       "en": "Regression",
       "he": "רגרסיה"
@@ -1812,6 +1991,8 @@
      }
     },
     {
+     "k": "coverage",
+     "lvl": "B",
      "t": {
       "en": "Coverage",
       "he": "כיסוי"
@@ -1826,6 +2007,8 @@
      }
     },
     {
+     "k": "flaky-test",
+     "lvl": "C",
      "t": {
       "en": "Flaky test",
       "he": "בדיקה הפכפכה"
@@ -1840,6 +2023,8 @@
      }
     },
     {
+     "k": "test-first-tdd",
+     "lvl": "C",
      "t": {
       "en": "Test-first (TDD)",
       "he": "בדיקה קודם (TDD)"
@@ -1858,7 +2043,6 @@
   {
    "id": "async",
    "icon": "↻",
-   "lvl": "C",
    "title": {
     "en": "Background Work & Events",
     "he": "עבודת רקע ואירועים"
@@ -1869,6 +2053,8 @@
    },
    "terms": [
     {
+     "k": "sync-vs-async-work",
+     "lvl": "B",
      "t": {
       "en": "Sync vs async work",
       "he": "עבודה סינכרונית מול אסינכרונית"
@@ -1883,6 +2069,8 @@
      }
     },
     {
+     "k": "background-job",
+     "lvl": "B",
      "t": {
       "en": "Background job",
       "he": "עבודת רקע (Job)"
@@ -1897,6 +2085,8 @@
      }
     },
     {
+     "k": "scheduled-job-cron",
+     "lvl": "B",
      "t": {
       "en": "Scheduled job (cron)",
       "he": "עבודה מתוזמנת (cron)"
@@ -1911,6 +2101,8 @@
      }
     },
     {
+     "k": "event-and-pub-sub",
+     "lvl": "C",
      "t": {
       "en": "Event & pub/sub",
       "he": "אירוע ו-pub/sub"
@@ -1925,6 +2117,8 @@
      }
     },
     {
+     "k": "retry-and-backoff",
+     "lvl": "C",
      "t": {
       "en": "Retry & backoff",
       "he": "ניסיון חוזר ו-backoff"
@@ -1939,6 +2133,8 @@
      }
     },
     {
+     "k": "dead-letter-queue",
+     "lvl": "C",
      "t": {
       "en": "Dead-letter queue",
       "he": "תור אותיות מתות (DLQ)"
@@ -1953,6 +2149,8 @@
      }
     },
     {
+     "k": "eventual-consistency",
+     "lvl": "C",
      "t": {
       "en": "Eventual consistency",
       "he": "עקביות בסופו של דבר"
@@ -1967,6 +2165,8 @@
      }
     },
     {
+     "k": "real-time-websocket-sse",
+     "lvl": "C",
      "t": {
       "en": "Real-time (WebSocket / SSE)",
       "he": "זמן אמת (WebSocket / SSE)"
@@ -1981,6 +2181,8 @@
      }
     },
     {
+     "k": "long-running-task-and-progress",
+     "lvl": "B",
      "t": {
       "en": "Long-running task & progress",
       "he": "משימה ארוכה והתקדמות"
@@ -1999,7 +2201,6 @@
   {
    "id": "auth",
    "icon": "🔒",
-   "lvl": "B",
    "title": {
     "en": "Auth & Security",
     "he": "הזדהות ואבטחה"
@@ -2010,6 +2211,8 @@
    },
    "terms": [
     {
+     "k": "authentication-vs-authorization",
+     "lvl": "A",
      "t": {
       "en": "Authentication vs Authorization",
       "he": "אותנטיקציה מול הרשאות"
@@ -2024,6 +2227,8 @@
      }
     },
     {
+     "k": "session-and-cookie",
+     "lvl": "B",
      "t": {
       "en": "Session & cookie",
       "he": "סשן וקוקי"
@@ -2038,6 +2243,8 @@
      }
     },
     {
+     "k": "token-jwt",
+     "lvl": "B",
      "t": {
       "en": "Token / JWT",
       "he": "טוקן / JWT"
@@ -2052,6 +2259,8 @@
      }
     },
     {
+     "k": "oauth",
+     "lvl": "B",
      "t": {
       "en": "OAuth",
       "he": "OAuth"
@@ -2066,6 +2275,8 @@
      }
     },
     {
+     "k": "hashing-vs-encryption",
+     "lvl": "B",
      "t": {
       "en": "Hashing vs encryption",
       "he": "האשינג מול הצפנה"
@@ -2080,6 +2291,8 @@
      }
     },
     {
+     "k": "https-tls",
+     "lvl": "A",
      "t": {
       "en": "HTTPS / TLS",
       "he": "HTTPS / TLS"
@@ -2094,6 +2307,8 @@
      }
     },
     {
+     "k": "environment-variables-secrets",
+     "lvl": "A",
      "t": {
       "en": "Environment variables / secrets",
       "he": "משתני סביבה / סודות"
@@ -2108,6 +2323,8 @@
      }
     },
     {
+     "k": "cors",
+     "lvl": "B",
      "t": {
       "en": "CORS",
       "he": "CORS"
@@ -2122,6 +2339,8 @@
      }
     },
     {
+     "k": "injection-and-validation",
+     "lvl": "B",
      "t": {
       "en": "Injection & validation",
       "he": "הזרקה ואימות קלט"
@@ -2136,6 +2355,8 @@
      }
     },
     {
+     "k": "xss-and-csrf",
+     "lvl": "C",
      "t": {
       "en": "XSS & CSRF",
       "he": "XSS ו-CSRF"
@@ -2154,7 +2375,6 @@
   {
    "id": "security",
    "icon": "🛡",
-   "lvl": "C",
    "title": {
     "en": "Security Beyond Login",
     "he": "אבטחה מעבר להתחברות"
@@ -2165,6 +2385,8 @@
    },
    "terms": [
     {
+     "k": "threat-model",
+     "lvl": "B",
      "t": {
       "en": "Threat model",
       "he": "מודל איומים"
@@ -2179,6 +2401,8 @@
      }
     },
     {
+     "k": "owasp-top-10",
+     "lvl": "C",
      "t": {
       "en": "OWASP Top 10",
       "he": "OWASP Top 10"
@@ -2193,6 +2417,8 @@
      }
     },
     {
+     "k": "least-privilege",
+     "lvl": "B",
      "t": {
       "en": "Least privilege",
       "he": "הרשאה מינימלית"
@@ -2207,6 +2433,8 @@
      }
     },
     {
+     "k": "secrets-in-git-history",
+     "lvl": "A",
      "t": {
       "en": "Secrets in git history",
       "he": "סודות בהיסטוריית git"
@@ -2221,6 +2449,8 @@
      }
     },
     {
+     "k": "supply-chain-dependencies",
+     "lvl": "C",
      "t": {
       "en": "Supply chain (dependencies)",
       "he": "שרשרת אספקה (תלויות)"
@@ -2235,6 +2465,8 @@
      }
     },
     {
+     "k": "cve-and-patching",
+     "lvl": "C",
      "t": {
       "en": "CVE & patching",
       "he": "CVE ועדכוני אבטחה"
@@ -2249,6 +2481,8 @@
      }
     },
     {
+     "k": "security-headers-and-csp",
+     "lvl": "C",
      "t": {
       "en": "Security headers & CSP",
       "he": "כותרות אבטחה ו-CSP"
@@ -2263,6 +2497,8 @@
      }
     },
     {
+     "k": "encryption-at-rest-in-transit",
+     "lvl": "C",
      "t": {
       "en": "Encryption at rest / in transit",
       "he": "הצפנה במנוחה / בתעבורה"
@@ -2277,6 +2513,8 @@
      }
     },
     {
+     "k": "backups-and-recovery",
+     "lvl": "B",
      "t": {
       "en": "Backups & recovery",
       "he": "גיבויים ושחזור"
@@ -2291,6 +2529,8 @@
      }
     },
     {
+     "k": "audit-log",
+     "lvl": "C",
      "t": {
       "en": "Audit log",
       "he": "יומן ביקורת"
@@ -2309,7 +2549,6 @@
   {
    "id": "net",
    "icon": "⌾",
-   "lvl": "B",
    "title": {
     "en": "Domains & Networks",
     "he": "דומיינים ורשתות"
@@ -2320,6 +2559,8 @@
    },
    "terms": [
     {
+     "k": "domain-and-registrar",
+     "lvl": "A",
      "t": {
       "en": "Domain & registrar",
       "he": "דומיין ורשם (registrar)"
@@ -2334,6 +2575,8 @@
      }
     },
     {
+     "k": "dns-records-a-cname-txt",
+     "lvl": "B",
      "t": {
       "en": "DNS records (A, CNAME, TXT)",
       "he": "רשומות DNS (A, CNAME, TXT)"
@@ -2348,6 +2591,8 @@
      }
     },
     {
+     "k": "public-vs-private-ip",
+     "lvl": "B",
      "t": {
       "en": "Public vs private IP",
       "he": "IP ציבורי מול פרטי"
@@ -2362,6 +2607,8 @@
      }
     },
     {
+     "k": "tls-certificate",
+     "lvl": "B",
      "t": {
       "en": "TLS certificate",
       "he": "תעודת TLS"
@@ -2376,6 +2623,8 @@
      }
     },
     {
+     "k": "reverse-proxy",
+     "lvl": "C",
      "t": {
       "en": "Reverse proxy",
       "he": "Reverse proxy"
@@ -2390,6 +2639,8 @@
      }
     },
     {
+     "k": "firewall-security-group",
+     "lvl": "C",
      "t": {
       "en": "Firewall / security group",
       "he": "חומת אש / security group"
@@ -2404,6 +2655,8 @@
      }
     },
     {
+     "k": "vpc-private-network",
+     "lvl": "C",
      "t": {
       "en": "VPC / private network",
       "he": "VPC / רשת פרטית"
@@ -2418,6 +2671,8 @@
      }
     },
     {
+     "k": "is-it-me-or-them",
+     "lvl": "B",
      "t": {
       "en": "Is it me or them?",
       "he": "זה אני או הם?"
@@ -2436,7 +2691,6 @@
   {
    "id": "cloud",
    "icon": "☁",
-   "lvl": "B",
    "title": {
     "en": "Cloud & Shipping",
     "he": "ענן והעלאה לאוויר"
@@ -2447,6 +2701,8 @@
    },
    "terms": [
     {
+     "k": "the-cloud",
+     "lvl": "A",
      "t": {
       "en": "The cloud",
       "he": "הענן"
@@ -2461,6 +2717,8 @@
      }
     },
     {
+     "k": "aws-azure-gcp",
+     "lvl": "A",
      "t": {
       "en": "AWS / Azure / GCP",
       "he": "AWS / Azure / GCP"
@@ -2475,6 +2733,8 @@
      }
     },
     {
+     "k": "s3-object-storage",
+     "lvl": "B",
      "t": {
       "en": "S3 / object storage",
       "he": "S3 / אחסון אובייקטים"
@@ -2489,6 +2749,8 @@
      }
     },
     {
+     "k": "ec2-vm-vs-lambda-serverless",
+     "lvl": "B",
      "t": {
       "en": "EC2 / VM vs Lambda / serverless",
       "he": "EC2 / מכונה וירטואלית מול Lambda / סרברלס"
@@ -2503,6 +2765,8 @@
      }
     },
     {
+     "k": "container-docker",
+     "lvl": "B",
      "t": {
       "en": "Container / Docker",
       "he": "קונטיינר / Docker"
@@ -2517,6 +2781,8 @@
      }
     },
     {
+     "k": "deploy",
+     "lvl": "A",
      "t": {
       "en": "Deploy",
       "he": "דיפלוי (Deploy)"
@@ -2531,6 +2797,8 @@
      }
     },
     {
+     "k": "ci-cd",
+     "lvl": "B",
      "t": {
       "en": "CI/CD",
       "he": "CI/CD"
@@ -2545,6 +2813,8 @@
      }
     },
     {
+     "k": "logs-and-monitoring",
+     "lvl": "B",
      "t": {
       "en": "Logs & monitoring",
       "he": "לוגים וניטור"
@@ -2563,7 +2833,6 @@
   {
    "id": "devops",
    "icon": "⇪",
-   "lvl": "C",
    "title": {
     "en": "Shipping Safely",
     "he": "לשחרר בבטחה"
@@ -2574,6 +2843,8 @@
    },
    "terms": [
     {
+     "k": "environments-dev-staging-prod",
+     "lvl": "A",
      "t": {
       "en": "Environments (dev / staging / prod)",
       "he": "סביבות (dev / staging / prod)"
@@ -2588,6 +2859,8 @@
      }
     },
     {
+     "k": "config-per-environment",
+     "lvl": "B",
      "t": {
       "en": "Config per environment",
       "he": "קונפיגורציה לכל סביבה"
@@ -2602,6 +2875,8 @@
      }
     },
     {
+     "k": "secrets-manager",
+     "lvl": "C",
      "t": {
       "en": "Secrets manager",
       "he": "מנהל סודות (secrets manager)"
@@ -2616,6 +2891,8 @@
      }
     },
     {
+     "k": "build-artifact-and-image-tag",
+     "lvl": "C",
      "t": {
       "en": "Build artifact & image tag",
       "he": "ארטיפקט בנייה ותג אימג׳"
@@ -2630,6 +2907,8 @@
      }
     },
     {
+     "k": "preview-deployment",
+     "lvl": "B",
      "t": {
       "en": "Preview deployment",
       "he": "פריסת preview"
@@ -2644,6 +2923,8 @@
      }
     },
     {
+     "k": "zero-downtime-deploy",
+     "lvl": "C",
      "t": {
       "en": "Zero-downtime deploy",
       "he": "דיפלוי בלי השבתה (zero-downtime)"
@@ -2658,6 +2939,8 @@
      }
     },
     {
+     "k": "rollback",
+     "lvl": "B",
      "t": {
       "en": "Rollback",
       "he": "Rollback"
@@ -2672,6 +2955,8 @@
      }
     },
     {
+     "k": "feature-flag",
+     "lvl": "B",
      "t": {
       "en": "Feature flag",
       "he": "Feature flag"
@@ -2686,6 +2971,8 @@
      }
     },
     {
+     "k": "infrastructure-as-code",
+     "lvl": "C",
      "t": {
       "en": "Infrastructure as Code",
       "he": "תשתית כקוד (IaC)"
@@ -2700,6 +2987,8 @@
      }
     },
     {
+     "k": "expand-contract-migration",
+     "lvl": "C",
      "t": {
       "en": "Expand / contract migration",
       "he": "מיגרציית expand / contract"
@@ -2718,7 +3007,6 @@
   {
    "id": "observe",
    "icon": "◉",
-   "lvl": "C",
    "title": {
     "en": "Seeing Production",
     "he": "לראות את הפרודקשן"
@@ -2729,6 +3017,8 @@
    },
    "terms": [
     {
+     "k": "structured-logs",
+     "lvl": "B",
      "t": {
       "en": "Structured logs",
       "he": "לוגים מובנים"
@@ -2743,6 +3033,8 @@
      }
     },
     {
+     "k": "metrics",
+     "lvl": "B",
      "t": {
       "en": "Metrics",
       "he": "מטריקות"
@@ -2757,6 +3049,8 @@
      }
     },
     {
+     "k": "tracing-and-correlation-id",
+     "lvl": "C",
      "t": {
       "en": "Tracing & correlation id",
       "he": "טרייסינג ומזהה קורלציה"
@@ -2771,6 +3065,8 @@
      }
     },
     {
+     "k": "alert",
+     "lvl": "B",
      "t": {
       "en": "Alert",
       "he": "התראה"
@@ -2785,6 +3081,8 @@
      }
     },
     {
+     "k": "error-tracking",
+     "lvl": "B",
      "t": {
       "en": "Error tracking",
       "he": "מעקב שגיאות"
@@ -2799,6 +3097,8 @@
      }
     },
     {
+     "k": "dashboard",
+     "lvl": "B",
      "t": {
       "en": "Dashboard",
       "he": "דשבורד"
@@ -2813,6 +3113,8 @@
      }
     },
     {
+     "k": "slo-and-error-budget",
+     "lvl": "C",
      "t": {
       "en": "SLO & error budget",
       "he": "SLO ותקציב שגיאות"
@@ -2827,6 +3129,8 @@
      }
     },
     {
+     "k": "health-check-and-uptime-monitor",
+     "lvl": "B",
      "t": {
       "en": "Health check & uptime monitor",
       "he": "בדיקת תקינות ומוניטור זמינות"
@@ -2841,6 +3145,8 @@
      }
     },
     {
+     "k": "postmortem",
+     "lvl": "C",
      "t": {
       "en": "Postmortem",
       "he": "פוסטמורטם"
@@ -2859,7 +3165,6 @@
   {
    "id": "scale",
    "icon": "⌗",
-   "lvl": "C",
    "title": {
     "en": "Scale & Architecture",
     "he": "סקייל וארכיטקטורה"
@@ -2870,6 +3175,8 @@
    },
    "terms": [
     {
+     "k": "scaling-up-vs-out",
+     "lvl": "B",
      "t": {
       "en": "Scaling up vs out",
       "he": "סקייל אנכי מול אופקי"
@@ -2884,6 +3191,8 @@
      }
     },
     {
+     "k": "load-balancer",
+     "lvl": "B",
      "t": {
       "en": "Load balancer",
       "he": "מאזן עומסים"
@@ -2898,6 +3207,8 @@
      }
     },
     {
+     "k": "stateless",
+     "lvl": "B",
      "t": {
       "en": "Stateless",
       "he": "סטייטלס (Stateless)"
@@ -2912,6 +3223,8 @@
      }
     },
     {
+     "k": "queue-worker",
+     "lvl": "C",
      "t": {
       "en": "Queue / worker",
       "he": "תור / וורקר (worker)"
@@ -2926,6 +3239,8 @@
      }
     },
     {
+     "k": "idempotency",
+     "lvl": "C",
      "t": {
       "en": "Idempotency",
       "he": "אידמפוטנטיות"
@@ -2940,6 +3255,8 @@
      }
     },
     {
+     "k": "monolith-vs-microservices",
+     "lvl": "B",
      "t": {
       "en": "Monolith vs microservices",
       "he": "מונוליט מול מיקרו-סרוויסים"
@@ -2954,6 +3271,8 @@
      }
     },
     {
+     "k": "rate-limiting",
+     "lvl": "B",
      "t": {
       "en": "Rate limiting",
       "he": "הגבלת קצב"
@@ -2968,6 +3287,8 @@
      }
     },
     {
+     "k": "single-point-of-failure",
+     "lvl": "B",
      "t": {
       "en": "Single point of failure",
       "he": "נקודת כשל יחידה"
@@ -2982,6 +3303,8 @@
      }
     },
     {
+     "k": "technical-debt",
+     "lvl": "A",
      "t": {
       "en": "Technical debt",
       "he": "חוב טכני"
@@ -3000,7 +3323,6 @@
   {
    "id": "team",
    "icon": "☷",
-   "lvl": "B",
    "title": {
     "en": "Working Like a Team",
     "he": "לעבוד כמו צוות"
@@ -3011,6 +3333,8 @@
    },
    "terms": [
     {
+     "k": "ticket-issue",
+     "lvl": "A",
      "t": {
       "en": "Ticket / issue",
       "he": "טיקט / issue"
@@ -3025,6 +3349,8 @@
      }
     },
     {
+     "k": "backlog-and-sprint",
+     "lvl": "A",
      "t": {
       "en": "Backlog & sprint",
       "he": "בקלוג וספרינט"
@@ -3039,6 +3365,8 @@
      }
     },
     {
+     "k": "mvp-and-scope",
+     "lvl": "A",
      "t": {
       "en": "MVP & scope",
       "he": "MVP והיקף (scope)"
@@ -3053,6 +3381,8 @@
      }
     },
     {
+     "k": "definition-of-done",
+     "lvl": "B",
      "t": {
       "en": "Definition of done",
       "he": "הגדרת ״גמור״ (Definition of Done)"
@@ -3067,6 +3397,8 @@
      }
     },
     {
+     "k": "refactoring",
+     "lvl": "A",
      "t": {
       "en": "Refactoring",
       "he": "ריפקטורינג"
@@ -3081,6 +3413,8 @@
      }
     },
     {
+     "k": "readme-and-docs",
+     "lvl": "A",
      "t": {
       "en": "README & docs",
       "he": "README ותיעוד"
@@ -3095,6 +3429,8 @@
      }
     },
     {
+     "k": "decision-record-adr",
+     "lvl": "C",
      "t": {
       "en": "Decision record (ADR)",
       "he": "תיעוד החלטה (ADR)"
@@ -3109,6 +3445,8 @@
      }
     },
     {
+     "k": "estimates",
+     "lvl": "B",
      "t": {
       "en": "Estimates",
       "he": "הערכות זמן"
@@ -3123,6 +3461,8 @@
      }
     },
     {
+     "k": "trunk-based-vs-long-branches",
+     "lvl": "B",
      "t": {
       "en": "Trunk-based vs long branches",
       "he": "Trunk-based מול ענפים ארוכים"
@@ -3137,6 +3477,8 @@
      }
     },
     {
+     "k": "changelog-and-release-notes",
+     "lvl": "B",
      "t": {
       "en": "Changelog & release notes",
       "he": "Changelog והערות שחרור"
@@ -3151,6 +3493,8 @@
      }
     },
     {
+     "k": "bus-factor",
+     "lvl": "B",
      "t": {
       "en": "Bus factor",
       "he": "Bus factor"
@@ -3169,7 +3513,6 @@
   {
    "id": "ai",
    "icon": "✦",
-   "lvl": "A",
    "title": {
     "en": "Talking to AI",
     "he": "לדבר עם AI"
@@ -3180,6 +3523,8 @@
    },
    "terms": [
     {
+     "k": "context-window",
+     "lvl": "A",
      "t": {
       "en": "Context window",
       "he": "חלון הקשר"
@@ -3194,6 +3539,8 @@
      }
     },
     {
+     "k": "specificity-beats-politeness",
+     "lvl": "A",
      "t": {
       "en": "Specificity beats politeness",
       "he": "דיוק מנצח נימוס"
@@ -3208,6 +3555,8 @@
      }
     },
     {
+     "k": "state-the-shape-of-the-answer",
+     "lvl": "A",
      "t": {
       "en": "State the shape of the answer",
       "he": "תגדיר את צורת התשובה"
@@ -3222,6 +3571,8 @@
      }
     },
     {
+     "k": "constrain-the-blast-radius",
+     "lvl": "A",
      "t": {
       "en": "Constrain the blast radius",
       "he": "תגביל את רדיוס הפגיעה"
@@ -3236,6 +3587,8 @@
      }
     },
     {
+     "k": "ask-for-the-trade-off-first",
+     "lvl": "B",
      "t": {
       "en": "Ask for the trade-off first",
       "he": "תבקש קודם את ההתלבטות"
@@ -3250,6 +3603,8 @@
      }
     },
     {
+     "k": "hallucination",
+     "lvl": "A",
      "t": {
       "en": "Hallucination",
       "he": "הזיה"
@@ -3264,6 +3619,8 @@
      }
     },
     {
+     "k": "make-it-verify-itself",
+     "lvl": "B",
      "t": {
       "en": "Make it verify itself",
       "he": "תגרום לו לאמת את עצמו"
@@ -3278,6 +3635,8 @@
      }
     },
     {
+     "k": "small-steps-over-one-big-ask",
+     "lvl": "A",
      "t": {
       "en": "Small steps over one big ask",
       "he": "צעדים קטנים במקום בקשה אחת גדולה"
@@ -3292,6 +3651,8 @@
      }
     },
     {
+     "k": "read-the-diff",
+     "lvl": "A",
      "t": {
       "en": "Read the diff",
       "he": "תקרא את ה-diff"
@@ -3306,6 +3667,8 @@
      }
     },
     {
+     "k": "prompt-injection",
+     "lvl": "B",
      "t": {
       "en": "Prompt injection",
       "he": "הזרקת פרומפט"
@@ -3320,6 +3683,8 @@
      }
     },
     {
+     "k": "vibe-coding-vs-vibe-engineering",
+     "lvl": "B",
      "t": {
       "en": "Vibe coding vs vibe engineering",
       "he": "Vibe coding מול Vibe engineering"
@@ -3334,6 +3699,8 @@
      }
     },
     {
+     "k": "agents-md",
+     "lvl": "B",
      "t": {
       "en": "AGENTS.md",
       "he": "AGENTS.md"
@@ -3348,6 +3715,8 @@
      }
     },
     {
+     "k": "endless-fix-loop",
+     "lvl": "A",
      "t": {
       "en": "Endless fix loop",
       "he": "לולאת תיקון אינסופית"
@@ -3362,6 +3731,8 @@
      }
     },
     {
+     "k": "kill-the-thread",
+     "lvl": "A",
      "t": {
       "en": "Kill the thread",
       "he": "להרוג את ה-thread"
@@ -3376,6 +3747,8 @@
      }
     },
     {
+     "k": "package-hallucination",
+     "lvl": "B",
      "t": {
       "en": "Package hallucination",
       "he": "הזיית חבילה"
@@ -3390,6 +3763,8 @@
      }
     },
     {
+     "k": "demo-vs-production",
+     "lvl": "B",
      "t": {
       "en": "Demo vs production",
       "he": "דמו מול פרודקשן"
@@ -9765,6 +10140,7 @@
   },
   "do": [
    {
+    "k": "secrets-live-in-a-secret-store-never-in-code",
     "t": {
      "en": "Secrets live in a secret store, never in code",
      "he": "סודות חיים במאגר סודות, אף פעם לא בקוד"
@@ -9775,6 +10151,7 @@
     }
    },
    {
+    "k": "every-permission-is-checked-on-the-server",
     "t": {
      "en": "Every permission is checked on the server",
      "he": "כל הרשאה נבדקת בשרת"
@@ -9785,6 +10162,7 @@
     }
    },
    {
+    "k": "all-user-input-is-parameterised-and-validated",
     "t": {
      "en": "All user input is parameterised and validated",
      "he": "כל קלט משתמש עובר בפרמטרים ומאומת"
@@ -9795,6 +10173,7 @@
     }
    },
    {
+    "k": "output-is-escaped-and-the-security-headers-are-set",
     "t": {
      "en": "Output is escaped and the security headers are set",
      "he": "הפלט בורח וכותרות האבטחה מוגדרות"
@@ -9805,6 +10184,7 @@
     }
    },
    {
+    "k": "cookies-are-httponly-secure-and-samesite",
     "t": {
      "en": "Cookies are HttpOnly, Secure and SameSite",
      "he": "עוגיות הן HttpOnly, Secure ו-SameSite"
@@ -9815,6 +10195,7 @@
     }
    },
    {
+    "k": "passwords-use-argon2-or-bcrypt",
     "t": {
      "en": "Passwords use argon2 or bcrypt",
      "he": "סיסמאות משתמשות ב-argon2 או bcrypt"
@@ -9825,6 +10206,7 @@
     }
    },
    {
+    "k": "there-is-a-test-for-the-three-things-that-would-hurt-most",
     "t": {
      "en": "There is a test for the three things that would hurt most",
      "he": "יש בדיקה לשלושת הדברים שיכאבו הכי הרבה"
@@ -9835,6 +10217,7 @@
     }
    },
    {
+    "k": "ci-runs-those-tests-on-every-push",
     "t": {
      "en": "CI runs those tests on every push",
      "he": "CI מריץ את הבדיקות האלה בכל דחיפה"
@@ -9845,6 +10228,7 @@
     }
    },
    {
+    "k": "you-read-the-diff-before-accepting-it",
     "t": {
      "en": "You read the diff before accepting it",
      "he": "אתה קורא את ה-diff לפני שאתה מקבל אותו"
@@ -9855,6 +10239,7 @@
     }
    },
    {
+    "k": "dependency-versions-are-current-and-audited",
     "t": {
      "en": "Dependency versions are current and audited",
      "he": "גרסאות התלויות עדכניות ונבדקו"
@@ -9865,6 +10250,7 @@
     }
    },
    {
+    "k": "the-app-survives-its-dependencies-being-down",
     "t": {
      "en": "The app survives its dependencies being down",
      "he": "האפליקציה שורדת נפילה של התלויות שלה"
@@ -9875,6 +10261,7 @@
     }
    },
    {
+    "k": "you-have-an-agents-md-and-a-readme",
     "t": {
      "en": "You have an AGENTS.md and a README",
      "he": "יש לך AGENTS.md ו-README"
@@ -9885,6 +10272,7 @@
     }
    },
    {
+    "k": "you-know-what-it-costs-and-how-to-delete-it",
     "t": {
      "en": "You know what it costs and how to delete it",
      "he": "אתה יודע כמה זה עולה ואיך למחוק את זה"
@@ -9897,6 +10285,7 @@
   ],
   "dont": [
    {
+    "k": "never-accept-a-change-you-have-not-read",
     "t": {
      "en": "Never accept a change you have not read",
      "he": "אף פעם לא לקבל שינוי שלא קראת"
@@ -9907,6 +10296,7 @@
     }
    },
    {
+    "k": "never-put-a-secret-in-the-repository-a-log-or-a-prompt",
     "t": {
      "en": "Never put a secret in the repository, a log, or a prompt",
      "he": "אף פעם לא לשים סוד בריפו, בלוג או בפרומפט"
@@ -9917,6 +10307,7 @@
     }
    },
    {
+    "k": "never-enforce-a-rule-only-in-the-ui",
     "t": {
      "en": "Never enforce a rule only in the UI",
      "he": "אף פעם לא לאכוף חוק רק בממשק"
@@ -9927,6 +10318,7 @@
     }
    },
    {
+    "k": "never-build-a-query-by-joining-strings",
     "t": {
      "en": "Never build a query by joining strings",
      "he": "אף פעם לא לבנות שאילתה משרשור מחרוזות"
@@ -9937,6 +10329,7 @@
     }
    },
    {
+    "k": "never-store-state-in-a-process-or-on-the-container-s-disk",
     "t": {
      "en": "Never store state in a process or on the container's disk",
      "he": "אף פעם לא לשמור מצב בתהליך או על הדיסק של הקונטיינר"
@@ -9947,6 +10340,7 @@
     }
    },
    {
+    "k": "never-let-a-get-change-anything",
     "t": {
      "en": "Never let a GET change anything",
      "he": "אף פעם לא לתת ל-GET לשנות משהו"
@@ -9957,6 +10351,7 @@
     }
    },
    {
+    "k": "never-edit-a-migration-that-has-already-run",
     "t": {
      "en": "Never edit a migration that has already run",
      "he": "אף פעם לא לערוך מיגרציה שכבר רצה"
@@ -9967,6 +10362,7 @@
     }
    },
    {
+    "k": "never-test-against-the-production-database",
     "t": {
      "en": "Never test against the production database",
      "he": "אף פעם לא לבדוק מול מסד הנתונים בפרודקשן"
@@ -9977,6 +10373,7 @@
     }
    },
    {
+    "k": "never-treat-anything-an-ai-reads-as-an-instruction",
     "t": {
      "en": "Never treat anything an AI reads as an instruction",
      "he": "אף פעם לא להתייחס למה שה-AI קורא כהוראה"
@@ -9987,6 +10384,7 @@
     }
    },
    {
+    "k": "never-trust-a-library-name-or-version-you-did-not-verify",
     "t": {
      "en": "Never trust a library name or version you did not verify",
      "he": "אף פעם לא לסמוך על שם ספרייה או גרסה שלא אימתת"
@@ -9997,6 +10395,7 @@
     }
    },
    {
+    "k": "never-let-a-red-test-stay-red",
     "t": {
      "en": "Never let a red test stay red",
      "he": "אף פעם לא להשאיר בדיקה אדומה אדומה"
@@ -10007,6 +10406,7 @@
     }
    },
    {
+    "k": "never-leave-cloud-resources-running-you-forgot-about",
     "t": {
      "en": "Never leave cloud resources running you forgot about",
      "he": "אף פעם לא להשאיר משאבי ענן רצים ששכחת מהם"

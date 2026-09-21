@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useApp } from "./Providers";
-import { LevelTag } from "./LevelTag";
+import { LevelFilter } from "./LevelTag";
 import { ARCHITECTURES, CHECKLIST, MODULES, PROJECT, termKey, mins } from "@/lib/course";
 
 export function HomeContent() {
-  const { lang, done, t } = useApp();
+  const { lang, done, levels, t } = useApp();
 
   const extra = [
     { m: PROJECT, sub: t("capstone") },
@@ -16,17 +16,12 @@ export function HomeContent() {
 
   return (
     <>
-      <div className="lvl-key">
-        {(["A", "B", "C"] as const).map((l) => (
-          <span key={l}>
-            <LevelTag lvl={l} full />
-            {t(`lvl${l}d`)}
-          </span>
-        ))}
-      </div>
+      <LevelFilter full />
       <div className="cards">
         {MODULES.map((m, i) => {
-          const d = m.terms.filter((_, j) => done.has(termKey(m, j))).length;
+          const shown = m.terms.map((tm, j) => ({ tm, j })).filter(({ tm }) => levels.has(tm.lvl));
+          if (!shown.length) return null;
+          const d = shown.filter(({ j }) => done.has(termKey(m, j))).length;
           return (
             <Link key={m.id} className="mcard" href={`/lesson/${m.id}/0`}>
               <div className="row">
@@ -34,14 +29,13 @@ export function HomeContent() {
                 <div>
                   <div className="num">
                     {t("lesson")} {String(i + 1).padStart(2, "0")} · ~{mins(m)} {t("min")}
-                    <LevelTag lvl={m.lvl} full />
                   </div>
                   <h3>{m.title[lang]}</h3>
                 </div>
               </div>
               <p>{m.blurb[lang]}</p>
-              <div className="mini"><i style={{ width: `${(d / m.terms.length) * 100}%` }} /></div>
-              <span className="cnt">{d}/{m.terms.length} {t("terms")}</span>
+              <div className="mini"><i style={{ width: `${(d / shown.length) * 100}%` }} /></div>
+              <span className="cnt">{d}/{shown.length} {t("terms")}</span>
             </Link>
           );
         })}

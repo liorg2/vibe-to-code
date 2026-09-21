@@ -3,6 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
 import { LessonSubNav } from "@/components/LessonSubNav";
+import { LevelTag } from "@/components/LevelTag";
 import { PracticeLoop } from "@/components/PracticeLoop";
 import { PromptBox } from "@/components/PromptBox";
 import { SlideActions } from "@/components/SlideActions";
@@ -72,7 +73,7 @@ export default async function SlidePage({
         <div className="kicker">
           {String(mi + 1).padStart(2, "0")} {m.title[lang]} · {i + 1}/{m.terms.length}
         </div>
-        <h2>{tm.t[lang]}</h2>
+        <h2>{tm.t[lang]}<LevelTag lvl={tm.lvl} full /></h2>
         <div className="lede">{tm.d[lang]}</div>
         {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />

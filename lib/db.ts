@@ -2,37 +2,69 @@ import { neon } from "@neondatabase/serverless";
 
 /** ponytail: lazy so `next build` can collect page data without DATABASE_URL set */
 let client: ReturnType<typeof neon> | undefined;
-function sql(...args: Parameters<ReturnType<typeof neon>>) {
-  client ??= neon(process.env.DATABASE_URL ?? process.env.POSTGRES_URL ?? "");
-  return client(...args);
+function db() {
+  return (client ??= neon(process.env.DATABASE_URL ?? process.env.POSTGRES_URL ?? ""));
 }
 
-/** ponytail: one CREATE IF NOT EXISTS per lambda instance beats a migration runner for one table */
+/** ponytail: one CREATE IF NOT EXISTS per lambda instance beats a migration runner for two tables */
 let ready: Promise<unknown> | undefined;
 function ensure() {
-  ready ??= sql`
-    create table if not exists progress (
-      uid     text primary key,
-      done    jsonb       not null default '[]'::jsonb,
-      ticked  jsonb       not null default '[]'::jsonb,
-      updated timestamptz not null default now()
+  ready ??= db()`
+    create table if not exists progress_topic (
+      uid     text        not null,
+      lesson  text        not null,
+      topic   text        not null,
+      pct     smallint    not null,
+      updated timestamptz not null default now(),
+      primary key (uid, lesson, topic)
     )`;
   return ready;
 }
 
-export type Progress = { done: string[]; ticked: string[] };
+/**
+ * One row per topic, plus one roll-up row per lesson (topic = '').
+ * `lesson` and `topic` are the stable slugs from the course, never positions — a term can be
+ * retitled or reordered and the row still points at it.
+ */
+export type Row = { lesson: string; topic: string; pct: number };
 
-export async function getProgress(uid: string): Promise<Progress> {
+export async function getRows(uid: string): Promise<Row[]> {
   await ensure();
-  const [row] = (await sql`select done, ticked from progress where uid = ${uid}`) as Progress[];
-  return { done: row?.done ?? [], ticked: row?.ticked ?? [] };
+  return (await db()`
+    select lesson, topic, pct from progress_topic where uid = ${uid}`) as Row[];
 }
 
-export async function saveProgress(uid: string, p: Progress): Promise<void> {
+/** Replaces everything stored for this user: what is not in `rows` is no longer true. */
+export async function saveRows(uid: string, rows: Row[]): Promise<void> {
   await ensure();
-  await sql`
-    insert into progress (uid, done, ticked, updated)
-    values (${uid}, ${JSON.stringify(p.done)}::jsonb, ${JSON.stringify(p.ticked)}::jsonb, now())
-    on conflict (uid) do update
-      set done = excluded.done, ticked = excluded.ticked, updated = now()`;
+  const json = JSON.stringify(rows);
+  const sql = db();
+  await sql.transaction([
+    sql`
+      delete from progress_topic p
+       where p.uid = ${uid}
+         and not exists (
+           select 1 from jsonb_array_elements(${json}::jsonb) r
+            where r->>'lesson' = p.lesson and r->>'topic' = p.topic)`,
+    sql`
+      insert into progress_topic (uid, lesson, topic, pct, updated)
+      select ${uid}, r->>'lesson', r->>'topic', (r->>'pct')::smallint, now()
+        from jsonb_array_elements(${json}::jsonb) r
+      on conflict (uid, lesson, topic)
+        do update set pct = excluded.pct, updated = now()`,
+  ]);
+}
+
+/**
+ * The old single-row store, keyed by position (`ground:3`). Read once so nobody loses progress;
+ * the first save writes name-keyed rows and this is never consulted again.
+ */
+export async function getLegacy(uid: string): Promise<{ done: string[]; ticked: string[] } | null> {
+  try {
+    const [row] = (await db()`
+      select done, ticked from progress where uid = ${uid}`) as { done: string[]; ticked: string[] }[];
+    return row ?? null;
+  } catch {
+    return null; // the table may simply not exist any more
+  }
 }

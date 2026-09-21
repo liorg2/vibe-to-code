@@ -19,8 +19,9 @@ export function moduleIndex(id: string): number {
   return course.MODULES.findIndex((m) => m.id === id);
 }
 
+/** `lesson:topic`, both stable slugs — never positions, so terms can be added or retitled. */
 export function termKey(mod: Module, i: number): string {
-  return `${mod.id}:${i}`;
+  return `${mod.id}:${mod.terms[i].k}`;
 }
 
 export function totalTerms(): number {
