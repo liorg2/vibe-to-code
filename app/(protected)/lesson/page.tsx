@@ -29,7 +29,7 @@ export default async function LessonSearchPage({
     return (
       <section key={m.id} className="mod">
         <ModuleHead m={m} mi={i} lang={lang} doneCount={doneCount} />
-        <div className="grid">
+        <div className="cardgrid">
           {hits.map(({ tm, j }) => <TermCard key={j} m={m} i={j} tm={tm} />)}
         </div>
       </section>
