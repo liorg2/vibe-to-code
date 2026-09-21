@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Inter, Heebo, JetBrains_Mono, Geist } from "next/font/google";
 import { getCourse } from "@/lib/course";
+import { LANGS, parseLang } from "@/lib/lang";
+import { serverLang } from "@/lib/lang-server";
+import { SITE_URL, abs } from "@/lib/site";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -21,22 +25,49 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Vibe → Code",
-  description:
-    "The vocabulary and mental models of professional software development, for people who build with AI. English and Hebrew.",
-  robots: { index: false, follow: false },
-};
+const DESCRIPTION =
+  "The vocabulary and mental models of professional software development, for people who build with AI. English and Hebrew.";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export async function generateMetadata(): Promise<Metadata> {
+  const h = await headers();
+  const lang = parseLang(h.get("x-vibe-lang"));
+  // middleware strips the locale before the rewrite, so it hands the bare path back on a header
+  const path = h.get("x-vibe-path") ?? "/";
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: "Vibe → Code",
+    description: DESCRIPTION,
+    alternates: {
+      canonical: abs(lang, path),
+      languages: {
+        ...Object.fromEntries(LANGS.map((l) => [l, abs(l, path)])),
+        "x-default": abs("en", path),
+      },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "Vibe → Code",
+      title: "Vibe → Code",
+      description: DESCRIPTION,
+      url: abs(lang, path),
+      locale: lang === "he" ? "he_IL" : "en_US",
+    },
+  };
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const lang = await serverLang();
+  const dir = lang === "he" ? "rtl" : "ltr";
+
   return (
     <html
-      lang="en"
-      dir="ltr"
+      lang={lang}
+      dir={dir}
       data-theme="dark"
       className={cn(heebo.variable, jetbrainsMono.variable, "font-sans", geist.variable)}
     >
-      <body dir="ltr" suppressHydrationWarning>
+      <body dir={dir} suppressHydrationWarning>
         {/* restore the nav toggle before paint, so a refresh doesn't flash the wrong state */}
         <script
           dangerouslySetInnerHTML={{
