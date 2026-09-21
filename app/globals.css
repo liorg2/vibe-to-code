@@ -73,7 +73,7 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
 .btn{border:1px solid var(--line);background:var(--card);color:var(--tx);text-decoration:none;padding:8px 14px;
   border-radius:var(--r-md);font:inherit;font-size:var(--fs-sm);font-weight:600;cursor:pointer;transition:.15s}
 .btn:hover{border-color:var(--acc)}
-.btn.prim{background:var(--grad);border:none;color:#fff}
+.btn.prim{background:var(--acc);border:none;color:#fff}
 .seg{display:flex;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--card)}
 .seg button{border:0;background:transparent;color:var(--tx2);padding:8px 13px;font:inherit;
   font-size:var(--fs-sm);font-weight:600;cursor:pointer}
@@ -515,8 +515,8 @@ nav.side .nav-subs a .lvl{padding:2px 4px;font-size:var(--fs-2xs);flex:none}
 
 /* ---- course cards (home + /courses) ---- */
 .course{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;
-  display:flex;flex-direction:column;gap:12px;min-width:0}
-.course.adv{border-color:color-mix(in srgb,var(--acc) 55%,var(--line));box-shadow:var(--shadow)}
+  display:flex;flex-direction:column;gap:12px;min-width:0;overflow:visible;box-shadow:none}
+.course.adv{border-color:color-mix(in srgb,var(--acc) 40%,var(--line))}
 .course .row{display:flex;align-items:center;gap:12px}
 .course .ic{width:44px;height:44px;border-radius:var(--r-md);background:var(--acc);display:grid;
   place-items:center;font-size:var(--fs-lg);flex:none}
@@ -532,9 +532,9 @@ nav.side .nav-subs a .lvl{padding:2px 4px;font-size:var(--fs-2xs);flex:none}
 .course .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:auto;
   padding-top:12px;border-top:1px solid var(--line)}
 .course .price b{font-size:var(--fs-2xl);font-weight:700;letter-spacing:-.02em}
-.course .price span{font-size:var(--fs-xs);color:var(--tx3)}
-.course .cta{display:flex;gap:10px;flex-wrap:wrap}
-.course .cta .btn{text-decoration:none;display:inline-flex;align-items:center}
+.course .price span{font-size:var(--fs-xs);color:var(--tx3);line-height:1.4}
+.course .cta{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-top:4px}
+.course .cta > a,.course .cta > button{width:100%;justify-content:center}
 
 /* ---- nav: lessons live under their course ---- */
 .nav-course{margin:2px 0}

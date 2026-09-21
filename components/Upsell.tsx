@@ -9,7 +9,7 @@ export function Upsell({ title, lvl }: { title: string; lvl: Level }) {
       <div className="kicker">Locked · Level {lvl}</div>
       <h2>{title}</h2>
       <p className="lede">
-        This term is part of {lvl === "A" ? "Basic" : "Advanced"}. Buy once and it stays yours —
+        This topic is part of {lvl === "A" ? "Start here" : "Go further"}. Pay once and it stays yours —
         no subscription, no renewal.
       </p>
       <div className="cta" style={{ marginTop: 24 }}>

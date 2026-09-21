@@ -1,7 +1,7 @@
 import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { GlossaryList } from "@/components/GlossaryList";
-import { MODULES } from "@/lib/course";
+import { MODULES, UI } from "@/lib/course";
 import { allowedLevels } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
@@ -23,7 +23,7 @@ export default async function GlossaryPage() {
           <div><h2>Glossary</h2></div>
           <div className="n">{all.length}</div>
         </div>
-        <p className="mblurb">Every term in the course, A to Z.</p>
+        <p className="mblurb">{UI.glossaryAll?.[lang] ?? "Every topic in the course, A to Z."}</p>
       </section>
       <GlossaryList items={all} />
     </AppShell>

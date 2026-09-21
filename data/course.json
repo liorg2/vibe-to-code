@@ -21,8 +21,8 @@
    "he": "התקדמות"
   },
   "terms": {
-   "en": "terms",
-   "he": "מונחים"
+   "en": "topics",
+   "he": "נושאים"
   },
   "got": {
    "en": "Got it",
@@ -45,8 +45,8 @@
    "he": "איפוס התקדמות"
   },
   "search": {
-   "en": "Search a term…",
-   "he": "חיפוש מונח…"
+   "en": "Search a topic…",
+   "he": "חיפוש נושא…"
   },
   "done": {
    "en": "Course complete. You now speak developer.",
@@ -165,24 +165,24 @@
    "he": "קורסים"
   },
   "pathsSub": {
-   "en": "Two levels. Start at basic; move up when it clicks.",
-   "he": "שתי רמות. להתחיל בבסיסי, לעלות כשזה מתחבר."
+   "en": "Start here, then go further when it clicks.",
+   "he": "מתחילים כאן, וממשיכים כשזה מתחבר."
   },
   "glossary": {
    "en": "Glossary",
    "he": "מילון מונחים"
   },
   "glossarySub": {
-   "en": "Every term in the course, A to Z. Click one to open its slide.",
-   "he": "כל מונח בקורס, מא׳ עד ת׳. לחיצה פותחת את השקף שלו."
+   "en": "Every topic in the course, A to Z. Click one to open its slide.",
+   "he": "כל נושא בקורס, מא׳ עד ת׳. לחיצה פותחת את השקף שלו."
   },
   "review": {
    "en": "Review",
    "he": "חזרה"
   },
   "reviewSub": {
-   "en": "Flashcards for the terms you have not marked as learned. Guess, flip, decide.",
-   "he": "כרטיסיות למונחים שעוד לא סימנת כנלמדו. לנחש, להפוך, להחליט."
+   "en": "Flashcards for the topics you have not marked as learned. Guess, flip, decide.",
+   "he": "כרטיסיות לנושאים שעוד לא סימנת כנלמדו. לנחש, להפוך, להחליט."
   },
   "reviewAll": {
    "en": "You have learned everything. Reviewing the whole course instead.",
@@ -285,12 +285,12 @@
    "he": "רמה"
   },
   "lvlA": {
-   "en": "Basic",
-   "he": "בסיסי"
+   "en": "Start here",
+   "he": "התחלה כאן"
   },
   "lvlB": {
-   "en": "Advanced",
-   "he": "מתקדם"
+   "en": "Go further",
+   "he": "הצעד הבא"
   },
   "lvlAd": {
    "en": "No prior knowledge. The words everything else is built from.",
@@ -405,28 +405,28 @@
    "he": "להתחבר כדי לקנות"
   },
   "payOnce": {
-   "en": "One-time payment · VAT included · lifetime access",
-   "he": "תשלום חד-פעמי · כולל מע״מ · גישה לתמיד"
+   "en": "Pay once · VAT included",
+   "he": "תשלום חד-פעמי · כולל מע״מ"
   },
   "lessonsN": {
    "en": "lessons",
    "he": "שיעורים"
   },
   "viewLessons": {
-   "en": "View lessons",
-   "he": "לצפייה בשיעורים"
+   "en": "See topics",
+   "he": "לראות נושאים"
   },
   "continue": {
    "en": "Continue",
    "he": "להמשיך"
   },
   "upgrade": {
-   "en": "Upgrade to Advanced",
-   "he": "לשדרג למתקדם"
+   "en": "Add Go further",
+   "he": "להוסיף את הצעד הבא"
   },
   "upgradeSub": {
-   "en": "Already on Basic? Pay the difference once and every level B lesson opens up.",
-   "he": "כבר בבסיסי? משלמים פעם אחת את ההפרש וכל שיעורי רמה B נפתחים."
+   "en": "Already on Start here? Pay the difference once and the rest of the topics open up.",
+   "he": "כבר בהתחלה כאן? משלמים פעם אחת את ההפרש ושאר הנושאים נפתחים."
   },
   "paidOk": {
    "en": "Payment received — your access is active.",
@@ -441,8 +441,20 @@
    "he": "כרגע הכל פתוח לכל חשבון מחובר."
   },
   "coursesSub": {
-   "en": "Two courses, paid once. Basic is the foundations; Advanced adds everything it takes to ship and run it for real.",
-   "he": "שני קורסים, תשלום אחד. הבסיסי הוא היסודות; המתקדם מוסיף כל מה שצריך כדי לשחרר ולהריץ באמת."
+   "en": "Two small courses. Pay once, keep them. Start here is the foundations; Go further is what it takes to ship.",
+   "he": "שני קורסים קצרים. משלמים פעם אחת, והם נשארים שלכם. התחלה כאן זה היסודות; הצעד הבא זה מה שצריך כדי לשחרר."
+  },
+  "glossaryAll": {
+   "en": "Every topic in the course, A to Z.",
+   "he": "כל נושא בקורס, מא׳ עד ת׳."
+  },
+  "filterTopics": {
+   "en": "Filter topics…",
+   "he": "סינון נושאים…"
+  },
+  "findTopic": {
+   "en": "Type in the search box to find a topic.",
+   "he": "כתבו בתיבת החיפוש כדי למצוא נושא."
   },
   "locked": {
    "en": "Locked",
@@ -11379,12 +11391,12 @@
    "id": "basic",
    "icon": "🌱",
    "title": {
-    "en": "Programming concepts for vibe coders",
-    "he": "מושגי תכנות ל-Vibe Coders"
+    "en": "Start here",
+    "he": "התחלה כאן"
    },
    "blurb": {
-    "en": "How software actually works — from an empty folder to a page talking to a database.",
-    "he": "איך תוכנה באמת עובדת — מתיקייה ריקה לדף שמדבר עם בסיס נתונים."
+    "en": "How software actually works — from an empty folder to a page talking to a database. No prior knowledge.",
+    "he": "איך תוכנה באמת עובדת — מתיקייה ריקה לדף שמדבר עם בסיס נתונים. בלי ידע מוקדם."
    },
    "mods": [
     "ground",
@@ -11405,12 +11417,12 @@
    "id": "advanced",
    "icon": "⚡",
    "title": {
-    "en": "Shipping and running it for real",
-    "he": "לשחרר ולהריץ באמת"
+    "en": "Go further",
+    "he": "הצעד הבא"
    },
    "blurb": {
-    "en": "Running it for real: auth, security, deploys, scale and the habits of a team.",
-    "he": "להריץ את זה באמת: הרשאות, אבטחה, פריסות, סקייל והרגלים של צוות."
+    "en": "When you are ready to ship: auth, security, deploys, scale, and how a team actually works.",
+    "he": "כשאתם מוכנים לשחרר: הרשאות, אבטחה, פריסות, סקייל, ואיך צוות באמת עובד."
    },
    "mods": [
     "async",

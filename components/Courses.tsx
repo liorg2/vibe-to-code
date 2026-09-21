@@ -46,7 +46,7 @@ export async function Courses({ paid }: { paid?: boolean }) {
       </Link>
     );
     return (
-      <Card key={p.id} className={cn("course", which === "advanced" && "adv")}>
+      <Card key={p.id} className={cn("course overflow-visible ring-0 py-0 shadow-none", which === "advanced" && "adv")}>
         <CardContent className="flex flex-col gap-3 p-0">
           <div className="row">
             <span className="ic">{p.icon}</span>
@@ -69,7 +69,7 @@ export async function Courses({ paid }: { paid?: boolean }) {
             <span>{t("payOnce")}</span>
           </div>
         </CardContent>
-        <CardFooter className="cta border-0 bg-transparent p-0 pt-0">
+        <CardFooter className="cta mt-auto flex-col items-stretch gap-2 border-0 bg-transparent p-0">
           {owned ? (
             <>
               {view}

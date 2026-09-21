@@ -41,7 +41,7 @@ export default async function LessonSearchPage({
       {query ? (
         secs.length ? secs : <div className="empty">Nothing matched.</div>
       ) : (
-        <div className="empty">Type in the search box to find a term.</div>
+        <div className="empty">Type in the search box to find a topic.</div>
       )}
       <p><Link className="crumb" href="/">← All lessons</Link></p>
     </AppShell>

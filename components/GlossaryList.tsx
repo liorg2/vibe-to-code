@@ -53,8 +53,8 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
           type="search"
           value={raw}
           onChange={(e) => setRaw(e.target.value)}
-          placeholder="Filter terms…"
-          aria-label="Filter terms"
+          placeholder={t("filterTopics")}
+          aria-label={t("filterTopics")}
           autoComplete="off"
         />
         <span>{hits.length}/{items.length}</span>
