@@ -1,3 +1,5 @@
+import type { L10n } from "@/lib/types";
+
 /**
  * Mermaid definitions. English-only on purpose: these are the words that appear in
  * every real console and doc, and translating "Load balancer" helps nobody.
@@ -143,4 +145,62 @@ export const ARCH_MINI: Record<string, string> = {
   GW --> S2["orders"]
   S1 --> BUS["Event bus"]
   S2 --> BUS`,
+};
+
+/**
+ * The two-packet animation from "Request / Response", generalised: anything that is
+ * one thing going out and one thing coming back reads the same way. Keyed by term title (en).
+ */
+export type Flow = { cap: L10n; left: L10n; right: L10n; out: L10n; back: L10n };
+
+export const FLOWS: Record<string, Flow> = {
+  "Request / Response": {
+    cap: { en: "One exchange — request first, response second, always paired", he: "חילופים אחד — ריקווסט קודם, רספונס אחר כך, תמיד בזוגות" },
+    left: { en: "Client", he: "קליינט" },
+    right: { en: "Server", he: "שרת" },
+    out: { en: "Request", he: "ריקווסט" },
+    back: { en: "Response", he: "רספונס" },
+  },
+  "Clone / push / pull": {
+    cap: { en: "Two copies of the same history — push sends yours up, pull brings theirs down", he: "שני עותקים של אותה היסטוריה — push שולח את שלך למעלה, pull מוריד את שלהם" },
+    left: { en: "Your clone", he: "העותק שלך" },
+    right: { en: "Remote", he: "רימוט" },
+    out: { en: "git push", he: "git push" },
+    back: { en: "git pull", he: "git pull" },
+  },
+  DNS: {
+    cap: { en: "A name is not an address — something has to look it up first", he: "שם הוא לא כתובת — מישהו צריך לתרגם אותו קודם" },
+    left: { en: "Browser", he: "דפדפן" },
+    right: { en: "DNS", he: "DNS" },
+    out: { en: "example.com?", he: "example.com?" },
+    back: { en: "93.184.x.x", he: "93.184.x.x" },
+  },
+  "Hit / Miss": {
+    cap: { en: "Ask the cache first — a hit never reaches the database", he: "שואלים קודם את הקאש — hit לא מגיע בכלל לדאטהבייס" },
+    left: { en: "App", he: "אפליקציה" },
+    right: { en: "Cache", he: "קאש" },
+    out: { en: "GET user:42", he: "GET user:42" },
+    back: { en: "HIT · 0.2ms", he: "HIT · 0.2ms" },
+  },
+  "Token / JWT": {
+    cap: { en: "The token rides on every call — no token, no answer", he: "הטוקן נוסע עם כל קריאה — בלי טוקן, אין תשובה" },
+    left: { en: "Client", he: "קליינט" },
+    right: { en: "API", he: "API" },
+    out: { en: "Bearer eyJ…", he: "Bearer eyJ…" },
+    back: { en: "200 OK", he: "200 OK" },
+  },
+  Webhook: {
+    cap: { en: "Backwards: they call you, and your endpoint has to answer fast", he: "הפוך: הם קוראים לך, והאנדפוינט שלך חייב לענות מהר" },
+    left: { en: "Their app", he: "האפליקציה שלהם" },
+    right: { en: "Your app", he: "האפליקציה שלך" },
+    out: { en: "POST /hooks", he: "POST /hooks" },
+    back: { en: "200 OK", he: "200 OK" },
+  },
+  "Health check & uptime monitor": {
+    cap: { en: "A tiny call on a timer — the answer is the whole signal", he: "קריאה זעירה בלולאה — התשובה היא כל הסיגנל" },
+    left: { en: "Monitor", he: "מוניטור" },
+    right: { en: "Your app", he: "האפליקציה" },
+    out: { en: "GET /healthz", he: "GET /healthz" },
+    back: { en: "200 · ok", he: "200 · ok" },
+  },
 };

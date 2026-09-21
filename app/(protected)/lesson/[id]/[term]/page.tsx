@@ -20,7 +20,7 @@ import {
   moduleIndex,
   pathForModule,
 } from "@/lib/course";
-import { LIFECYCLE } from "@/lib/diagrams";
+import { FLOWS, LIFECYCLE } from "@/lib/diagrams";
 import { allowedLevels } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
@@ -51,6 +51,7 @@ export default async function SlidePage({
   const simple = SIMPLE[tm.t.en];
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
+  const flow = FLOWS[tm.t.en];
   const coursePath = pathForModule(m.id);
   const prevM = MODULES[mi - 1];
   const nextM = MODULES[mi + 1];
@@ -89,16 +90,16 @@ export default async function SlidePage({
         {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />
         ) : null}
-        {tm.t.en === "Request / Response" ? (
+        {flow ? (
           <div className="http-flow" aria-hidden="true">
-            <div className="hf-cap">{t("hfCap")}</div>
+            <div className="hf-cap">{flow.cap[lang]}</div>
             <div className="hf-row">
-              <div className="hf-node hf-client">{t("hfClient")}</div>
+              <div className="hf-node hf-client">{flow.left[lang]}</div>
               <div className="hf-track">
-                <div className="hf-packet hf-req">{t("hfReq")}</div>
-                <div className="hf-packet hf-res">{t("hfRes")}</div>
+                <div className="hf-packet hf-req">{flow.out[lang]}</div>
+                <div className="hf-packet hf-res">{flow.back[lang]}</div>
               </div>
-              <div className="hf-node hf-server">{t("hfServer")}</div>
+              <div className="hf-node hf-server">{flow.right[lang]}</div>
             </div>
           </div>
         ) : null}

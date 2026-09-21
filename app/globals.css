@@ -170,10 +170,10 @@ section.mod{scroll-margin-top:90px;margin-bottom:40px}
 @keyframes hf-req{
   0%,100%{inset-inline-start:0;opacity:0}
   6%{opacity:1}
-  44%{inset-inline-start:calc(100% - 4.5rem);opacity:1}
+  44%{inset-inline-start:calc(100% - 6.5rem);opacity:1}
   50%,100%{opacity:0}}
 @keyframes hf-res{
-  0%,49%{inset-inline-start:calc(100% - 5rem);opacity:0}
+  0%,49%{inset-inline-start:calc(100% - 6.5rem);opacity:0}
   56%{opacity:1}
   94%{inset-inline-start:0;opacity:1}
   100%{opacity:0}}
@@ -404,8 +404,8 @@ pre.code{max-width:100%}
 .lvl-key.full{gap:8px 18px;margin-bottom:20px}
 .lvl-key.full button{flex:1 1 260px}
 /* in the nav it is three letters in a row, nothing else */
-nav.side .lvl-key{gap:5px;margin:0 0 10px;padding:0 2px}
-nav.side .lvl-key button{flex:1;justify-content:center;padding:4px 0}
+nav.side .lvl-key{flex-direction:column;gap:5px;margin:0 0 10px;padding:0 2px}
+nav.side .lvl-key button{width:100%;justify-content:flex-start;padding:4px 6px}
 
 /* ---- level tag: A foundations, B building, C running it for real ---- */
 .lvl{display:inline-flex;align-items:center;gap:6px;flex:none;

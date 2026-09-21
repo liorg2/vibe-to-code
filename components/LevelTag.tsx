@@ -29,7 +29,14 @@ export function LevelFilter({ full = false }: { full?: boolean }) {
           aria-pressed={levels.has(l)}
           onClick={() => toggleLevel(l)}
         >
-          <LevelTag lvl={l} full={full} />
+          {full ? (
+            <LevelTag lvl={l} full />
+          ) : (
+            <span className={`lvl lvl-${l}`}>
+              {`${t("level")} ${l}`}
+              <b>{t(`lvl${l}`)}</b>
+            </span>
+          )}
           {full ? <span>{t(`lvl${l}d`)}</span> : null}
         </button>
       ))}
