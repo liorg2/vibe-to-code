@@ -275,6 +275,10 @@
   "deeperSub": {
    "en": "The full picture, with a real example. Optional.",
    "he": "התמונה המלאה, עם דוגמה אמיתית. לא חובה."
+  },
+  "lifeCap": {
+   "en": "Every website you have ever used went through this loop. The names change; the order does not.",
+   "he": "כל אתר שהשתמשת בו עבר את הלולאה הזאת. השמות משתנים, הסדר לא."
   }
  },
  "MODULES": [
@@ -7010,302 +7014,289 @@
   "id": "project",
   "icon": "▶",
   "title": {
-   "en": "Final Project",
-   "he": "פרויקט מסכם"
+   "en": "Final Project — a real CRM",
+   "he": "פרויקט מסכם — CRM אמיתי"
   },
   "blurb": {
-   "en": "From an empty folder to a real deployment: Docker, two running instances behind a load balancer, managed Postgres and managed Redis on AWS. Every step has a prompt to paste.",
-   "he": "מתיקייה ריקה לדיפלוי אמיתית: Docker, שני מופעים רצים מאחורי מאזן עומסים, Postgres מנוהל ו-Redis מנוהל ב-AWS. לכל שלב יש פרומפט להדביק."
+   "en": "One project, decided in advance: a small CRM — companies, contacts, notes, deal stage — with a real Postgres database, running live on Vercel at your own domain. Twelve steps, and every prompt is already written. You paste it, you read what comes back, you ship.",
+   "he": "פרויקט אחד, שהוגדר מראש: CRM קטן — חברות, אנשי קשר, הערות ושלב בעסקה — עם מסד נתונים Postgres אמיתי, שרץ חי ב-Vercel על דומיין משלך. שנים-עשר שלבים, וכל פרומפט כבר כתוב. מדביקים, קוראים מה חזר, ומעלים לאוויר."
   },
   "warn": {
-   "en": "This project creates real AWS resources that cost real money — roughly $50-90/month if left running. Step 13 tears it all down. Do that the same day unless you are keeping it.",
-   "he": "הפרויקט הזה יוצר משאבי AWS אמיתיים שעולים כסף אמיתי — בערך 50-90 דולר לחודש אם משאירים אותם. שלב 13 מוחק הכל. תעשה את זה באותו יום, אלא אם אתה שומר את זה."
+   "en": "This one is built to cost nothing: Vercel's Hobby plan and Neon's free Postgres both fit this app. The only real money is a domain, about $10-15 a year, and only if you want one — step 11 is optional. Never put real customer data in it: this is a learning project, not a system of record.",
+   "he": "הפרויקט הזה בנוי לעלות אפס: התוכנית החינמית של Vercel ו-Postgres החינמי של Neon מספיקים לאפליקציה הזאת. הכסף היחיד הוא דומיין, בערך 10-15 דולר לשנה, ורק אם רוצים — שלב 11 הוא רשות. אל תכניסו לשם נתוני לקוחות אמיתיים: זה פרויקט לימוד, לא מערכת אמת."
   },
   "steps": [
    {
     "n": 1,
     "title": {
-     "en": "Decide what you are building",
-     "he": "תחליט מה אתה בונה"
+     "en": "The product, decided for you",
+     "he": "המוצר — כבר הוחלט בשבילך"
     },
     "goal": {
-     "en": "One page of plain text: what it does, who for, what it explicitly will not do. No code yet.",
-     "he": "עמוד אחד של טקסט פשוט: מה זה עושה, למי, ומה זה במפורש לא יעשה. עדיין בלי קוד."
+     "en": "One page that says exactly what this CRM is and what it is not — before a single line of code.",
+     "he": "עמוד אחד שאומר בדיוק מה ה-CRM הזה ומה הוא לא — לפני שורת קוד אחת."
+    },
+    "why": {
+     "en": "Every project that dies of scope dies here. You are handed the scope so you can practise defending it instead of inventing it.",
+     "he": "כל פרויקט שנשבר על גודל נשבר כאן. מוסרים לך את הסקופ כדי שתתאמן להגן עליו במקום להמציא אותו."
     },
     "uses": [
+     "MVP & scope",
+     "Definition of done",
      "Ask for the trade-off first",
-     "Technical debt"
+     "Specificity beats politeness"
     ],
-    "why": {
-     "en": "Every later decision — database shape, caching, scaling — is answerable only if this page exists. Skipping it is why projects get rewritten.",
-     "he": "כל החלטה מאוחרת יותר — מבנה מסד נתונים, מטמון, סקייל — ניתנת למענה רק אם העמוד הזה קיים. דילוג עליו הוא הסיבה שפרויקטים נכתבים מחדש."
-    },
-    "prompt": "I want to build a small web app: <describe it in two sentences>. Before any code, help me write a one-page spec.\n\nGive me: (1) the single core user action the whole product exists to support, (2) the 3-5 smallest features needed for that action to work end to end, (3) an explicit NON-goals list of things I will be tempted to add but should not build now, (4) the data I will need to store, described as plain nouns and their relationships, not as tables.\n\nThen tell me the two riskiest assumptions in this plan. Do not write code. Keep it under 400 words."
+    "prompt": "I am building a small CRM as a learning project. The scope is fixed and I do not want it widened.\n\nIt has exactly four things: companies (name, website, notes), contacts (name, email, phone, job title, belonging to one company), notes (free text, timestamped, attached to a contact), and a deal stage on each contact — one of: new, contacted, meeting, won, lost. One user account owns everything. There are no teams, no permissions, no file uploads, no email sending, no reports.\n\nWrite me a one-page spec of this: the single core action the product exists for, the screens needed to support it, the data as plain nouns and relationships, and an explicit NON-goals list. Then name the two decisions in this scope that will hurt most later, and what the cheap version of fixing each one looks like. Do not write code."
    },
    {
     "n": 2,
     "title": {
-     "en": "Repo, runtime, first commit",
-     "he": "ריפו, סביבת ריצה, קומיט ראשון"
+     "en": "Repo, Next.js, a live URL on day one",
+     "he": "ריפו, Next.js, כתובת חיה ביום הראשון"
     },
     "goal": {
-     "en": "A git repo with a running hello-world server, a .gitignore, and a README that says how to start it.",
-     "he": "ריפו git עם שרת hello-world שרץ, קובץ .gitignore, ו-README שמסביר איך להפעיל אותו."
+     "en": "An empty but deployed app: a git repo, a Next.js skeleton, and a real https:// URL on Vercel before any feature exists.",
+     "he": "אפליקציה ריקה אבל מדופלית: ריפו git, שלד Next.js, וכתובת https:// אמיתית ב-Vercel עוד לפני שיש פיצ'ר אחד."
+    },
+    "why": {
+     "en": "Deploying on day one turns every later step into a small deploy, instead of one terrifying deploy at the end.",
+     "he": "דיפלוי ביום הראשון הופך כל שלב הבא לדיפלוי קטן, במקום אחד מפחיד בסוף."
     },
     "uses": [
      "Repository (repo)",
-     "Runtime",
-     "Terminal / CLI",
-     "Package manager"
+     "Commit / Branch / Merge",
+     "Deploy",
+     "Package manager",
+     "Runtime"
     ],
-    "why": {
-     "en": "The README is not paperwork. If you cannot write down how to start it, you do not yet have a reproducible project.",
-     "he": "ה-README הוא לא ביורוקרטיה. אם אתה לא יכול לכתוב איך מפעילים את זה, עוד אין לך פרויקט שניתן לשחזור."
-    },
-    "prompt": "Set up a minimal TypeScript + Node.js (Express or Fastify) project in the current empty folder.\n\nRequirements: pin the Node version in a .nvmrc and in package.json engines; include a .gitignore that covers node_modules, .env and build output; one GET /health endpoint returning {status:\"ok\"}; an npm script for dev and one for start; a README with exactly the commands needed to clone, install and run.\n\nDo not add a frontend framework, a database, a logger library or Docker yet. Show me the file tree first and wait for my approval before writing files."
+    "prompt": "Walk me through creating a new Next.js project (App Router, TypeScript) for a small CRM and getting it deployed to Vercel today, with nothing in it but a homepage that shows the app's name.\n\nGive me the exact commands in order: create the app, initialise git, what belongs in .gitignore, the first commit, pushing to a new GitHub repo, and importing that repo into Vercel. Then tell me what Vercel does on every push after that, and what the difference is between the preview URL and the production URL.\n\nWhere a step needs a choice — package manager, project name, region — pick a sensible default and say why in one line. Stop when I have a live URL. No features yet."
    },
    {
     "n": 3,
     "title": {
-     "en": "Data model and Postgres",
-     "he": "מודל נתונים ו-Postgres"
+     "en": "The database, and the shape of the data",
+     "he": "מסד הנתונים וצורת הנתונים"
     },
     "goal": {
-     "en": "A local Postgres via Docker Compose, a schema created by a migration, and one endpoint that reads and writes real rows.",
-     "he": "Postgres מקומי דרך Docker Compose, סכמה שנוצרה על ידי מיגרציה, ונקודת קצה אחת שקוראת וכותבת שורות אמיתיות."
+     "en": "A free Neon Postgres database, a schema with four tables, and a migration file that creates them.",
+     "he": "מסד Postgres חינמי ב-Neon, סכמה עם ארבע טבלאות, וקובץ מיגרציה שיוצר אותן."
+    },
+    "why": {
+     "en": "The schema is the one decision that gets expensive to change the moment real rows exist. It is worth an hour now.",
+     "he": "הסכמה היא ההחלטה היחידה שיקר לשנות ברגע שיש שורות אמיתיות. שווה לה שעה עכשיו."
     },
     "uses": [
      "Database",
      "Schema",
      "Migration",
      "Index",
-     "Transaction"
+     "Time, text & money"
     ],
-    "why": {
-     "en": "Starting with migrations from the first table is the difference between a project you can deploy and one you can only run locally.",
-     "he": "התחלה עם מיגרציות כבר מהטבלה הראשונה היא ההבדל בין פרויקט שאפשר לפרוס לבין כזה שרץ רק מקומית."
-    },
-    "prompt": "Add PostgreSQL to my project.\n\n1. A docker-compose.yml running Postgres 16 locally with a named volume, port 5432, credentials read from .env (and add a committed .env.example).\n2. A migration tool (node-pg-migrate or Drizzle — recommend one and justify it in two sentences).\n3. The first migration creating the tables for this data model: <paste the nouns from step 1>. Include primary keys, NOT NULL where the field is genuinely required, foreign keys, created_at/updated_at, and an index on every column I will filter or sort by — tell me which ones those are and why.\n4. One endpoint that writes a row and one that reads it back.\n\nShow me the migration SQL and explain each index before applying anything."
+    "prompt": "My CRM needs Postgres. I want Neon's free tier, connected to my Vercel project.\n\nFirst: the exact steps to create a Neon project, get the connection string, and put it into Vercel as an environment variable plus a local .env.local that is gitignored.\n\nThen write the first migration as plain SQL for four tables: companies, contacts, notes, users. A contact belongs to one company and carries a stage column limited to new / contacted / meeting / won / lost. A note belongs to one contact. Use uuid primary keys, timestamptz for every time column, and a foreign key with an explicit ON DELETE rule that you justify in one line each.\n\nAdd the indexes this app will actually need and name the query each one serves. Explain why you chose text over varchar, and timestamptz over timestamp."
    },
    {
     "n": 4,
     "title": {
-     "en": "Auth",
-     "he": "הזדהות"
+     "en": "Reading: the contacts list",
+     "he": "קריאה: רשימת אנשי הקשר"
     },
     "goal": {
-     "en": "Sign up, log in, and one endpoint that only the owner of a resource can call.",
-     "he": "הרשמה, התחברות, ונקודת קצה אחת שרק הבעלים של המשאב יכול לקרוא לה."
+     "en": "A page that lists contacts with their company and stage, read straight from Postgres on the server.",
+     "he": "עמוד שמציג אנשי קשר עם החברה והשלב שלהם, נקרא ישירות מ-Postgres בשרת."
+    },
+    "why": {
+     "en": "This is the first moment your code, your database and your deployment all have to be right at the same time.",
+     "he": "זה הרגע הראשון שבו הקוד, המסד והדיפלוי צריכים להיות נכונים בו-זמנית."
     },
     "uses": [
-     "Authentication vs Authorization",
-     "Hashing vs encryption",
-     "Token / JWT",
-     "Session & cookie",
+     "Query",
+     "Server",
+     "SPA vs SSR vs static",
      "Environment variables / secrets"
     ],
-    "why": {
-     "en": "Authorization is where real breaches happen. Getting the owner check right on one endpoint teaches the pattern for all of them.",
-     "he": "הרשאה היא המקום שבו קורות פריצות אמיתיות. לעשות נכון את בדיקת הבעלות בנקודת קצה אחת מלמדת את הדפוס לכולן."
-    },
-    "prompt": "Add authentication and authorization.\n\nUse argon2id (or bcrypt) for password hashing — never store or log the plaintext. Use httpOnly, Secure, SameSite=Lax session cookies backed by a server-side session, not a localStorage JWT, and explain that choice in two sentences.\n\nThen add one endpoint that returns a resource ONLY if the logged-in user owns it. Show me explicitly where the ownership check happens and prove it cannot be bypassed by changing the id in the request.\n\nFinally, list every secret this now needs, and add them to .env.example with placeholder values. Never put a real secret in a committed file."
+    "prompt": "Add a /contacts page to my Next.js CRM that lists every contact with name, company name, email and stage, newest first.\n\nRequirements: the query runs on the server, never in the browser; the database URL is never exposed to the client; one SQL query with a join, not a query per row; the SQL is parameterised. Use @neondatabase/serverless.\n\nShow me the data-access file, the page component, and what the empty state looks like when there are no contacts yet. Then give me a one-off SQL script that inserts five rows of realistic fake data. Finally, explain how I could tell from the browser alone whether this page was rendered on the server or in the browser."
    },
    {
     "n": 5,
     "title": {
-     "en": "Add Redis as a cache",
-     "he": "הוספת Redis כמטמון"
+     "en": "Search, and why it needs an index",
+     "he": "חיפוש, ולמה הוא צריך אינדקס"
     },
     "goal": {
-     "en": "Redis running locally in Compose, caching your slowest read with a TTL, and a measurement showing it worked.",
-     "he": "Redis רץ מקומית ב-Compose, שומר במטמון את הקריאה האיטית ביותר עם TTL, ומדידה שמוכיחה שזה עבד."
+     "en": "A search box over name, email and company, with pagination — and proof from the database that the index is actually used.",
+     "he": "תיבת חיפוש על שם, אימייל וחברה, עם עימוד — והוכחה מהמסד שהאינדקס אכן בשימוש."
+    },
+    "why": {
+     "en": "Search is where a demo becomes a product — and where a table scan starts quietly costing you.",
+     "he": "החיפוש הוא המקום שבו דמו הופך למוצר — וגם המקום שבו סריקת טבלה מתחילה לעלות לך בשקט."
     },
     "uses": [
-     "Cache",
-     "TTL",
-     "Hit / Miss",
-     "Redis / in-memory store",
+     "Index",
+     "Pagination",
+     "Query",
      "Latency vs throughput"
     ],
-    "why": {
-     "en": "Caching locally first means that when you swap in managed Redis at step 10, only the connection string changes.",
-     "he": "מטמון מקומי קודם אומר שכשתחליף ל-Redis מנוהל בשלב 10, רק מחרוזת החיבור משתנה."
-    },
-    "prompt": "Add Redis to docker-compose and cache my most expensive read endpoint.\n\nRequirements: a single cache module wrapping get/set/delete so the rest of the code never touches the Redis client directly; an explicit TTL with a comment justifying the number; a cache key that includes every input that changes the result (tell me what those are for my endpoint); and the app must still work correctly with Redis completely down — degrade to hitting the database, do not 500.\n\nThen give me a short script that calls the endpoint 20 times and prints the timing, so I can see the hit rate effect. Tell me what number would mean my cache key is wrong."
+    "prompt": "Add search and pagination to my CRM's /contacts page. Search matches contact name, email, or company name, case-insensitively. Page size 25, with the page and query in the URL so a result can be linked and shared.\n\nThen: show me the EXPLAIN ANALYZE output I should expect before and after the right index, tell me exactly which index to create for a case-insensitive prefix search in Postgres, and explain in plain words when this approach stops being enough and real full-text search takes over.\n\nKeep the SQL parameterised, and show me what the naive string-concatenated version would let an attacker do."
    },
    {
     "n": 6,
     "title": {
-     "en": "Tests that mean something",
-     "he": "בדיקות עם משמעות"
+     "en": "Writing: create and edit a contact",
+     "he": "כתיבה: יצירה ועריכה של איש קשר"
     },
     "goal": {
-     "en": "A handful of tests covering the auth rule, the cache fallback, and one real end-to-end path.",
-     "he": "קומץ בדיקות שמכסות את חוק ההרשאה, את נפילת המטמון, ומסלול אמיתי אחד מקצה לקצה."
+     "en": "A form that creates and edits contacts, validates on the server, and writes company and contact in one transaction.",
+     "he": "טופס שיוצר ועורך אנשי קשר, מוודא קלט בשרת, וכותב חברה ואיש קשר בטרנזקציה אחת."
+    },
+    "why": {
+     "en": "Anything that writes is where bad input, half-finished saves and double-clicks show up.",
+     "he": "כל דבר שכותב הוא המקום שבו קלט רע, שמירות חצי-גמורות ולחיצות כפולות מתגלות."
     },
     "uses": [
-     "Make it verify itself",
-     "Race condition",
+     "Forms & validation",
+     "POST / PUT / PATCH / DELETE",
+     "Transaction",
+     "Injection & validation",
      "Idempotency"
     ],
-    "why": {
-     "en": "You need exactly the tests that would catch a bad AI-generated change. Coverage percentage is not the goal.",
-     "he": "אתה צריך בדיוק את הבדיקות שיתפסו שינוי גרוע שה-AI ייצר. אחוז כיסוי הוא לא המטרה."
-    },
-    "prompt": "Write tests for the three things most likely to break silently in this project:\n\n1. The authorization rule — a user must NOT be able to read another user's resource by changing the id.\n2. The cache — with Redis unavailable the endpoint still returns correct data, and a second call within the TTL does not hit the database.\n3. One end-to-end happy path: sign up, create, read back.\n\nUse Vitest plus Testcontainers (or a compose-based test database) so tests run against real Postgres and Redis, not mocks — explain in two sentences why mocks would make test 2 worthless. Each test name must state the rule it protects."
+    "prompt": "Add create and edit for contacts in my Next.js CRM, using Server Actions.\n\nRules: validation runs on the server even though the form also validates in the browser, and both share one schema definition; creating a contact for a company that does not exist yet creates the company and the contact in a single transaction that rolls back as a unit; email is optional but must be valid when present; stage must be one of the five allowed values, enforced in the database as well as the code.\n\nShow me the schema, the action, the form, and how errors get back to the user field by field. Then tell me what happens today if I double-click Save, and the smallest change that makes that harmless."
    },
    {
     "n": 7,
     "title": {
-     "en": "Dockerize the app",
-     "he": "אריזת האפליקציה ב-Docker"
+     "en": "Notes: the timeline on a contact",
+     "he": "הערות: ציר הזמן של איש קשר"
     },
     "goal": {
-     "en": "A multi-stage Dockerfile producing a small image that runs as a non-root user, plus the whole stack up with one command.",
-     "he": "Dockerfile רב-שלבי שמייצר דמות קטנה שרצה כמשתמש לא-root, ובנוסף כל הסטאק עולה בפקודה אחת."
+     "en": "A contact page with its notes in time order, added without a full page reload, and no N+1 queries.",
+     "he": "עמוד איש קשר עם ההערות לפי זמן, הוספה בלי רענון עמוד מלא, ובלי שאילתות N+1."
+    },
+    "why": {
+     "en": "One list inside another is where most apps accidentally start making one query per row.",
+     "he": "רשימה בתוך רשימה היא המקום שבו רוב האפליקציות מתחילות בטעות לשאול שאילתה לכל שורה."
     },
     "uses": [
-     "Container / Docker",
-     "Environment",
-     "Environment variables / secrets",
-     "Stateless"
+     "Query",
+     "ORM",
+     "Component",
+     "Client state",
+     "Time, text & money"
     ],
-    "why": {
-     "en": "This is the artifact AWS will run. If it works here and fails there, the difference is configuration, not code.",
-     "he": "זו הדמות ש-AWS תריץ. אם היא עובדת כאן ונכשלת שם, ההבדל הוא קונפיגורציה, לא קוד."
-    },
-    "prompt": "Write a production Dockerfile for this app.\n\nRequirements: multi-stage build (deps, build, runtime); the runtime stage contains no dev dependencies and no source, only build output; run as a non-root user; a .dockerignore excluding node_modules, .git and .env; an explicit HEALTHCHECK hitting /health; and config read only from environment variables — no secrets baked into the image.\n\nThen update docker-compose.yml so `docker compose up` runs app + Postgres + Redis together. Tell me the final image size and the three biggest things contributing to it."
+    "prompt": "Add a /contacts/[id] page to my CRM: the contact's details, their company, and all their notes newest first, plus a box to add a note.\n\nRequirements: the page loads the contact and its notes in at most two queries, never one per note; adding a note does not reload the whole page and the new note appears immediately; timestamps are stored in UTC and shown in the viewer's local time, with the absolute time available on hover.\n\nShow me the queries, the page and the note form. Then explain what an N+1 query is, show me the version of this page that accidentally has one, and how I would spot it in a log before a user complains."
    },
    {
     "n": 8,
     "title": {
-     "en": "CI: make the checks unskippable",
-     "he": "CI: להפוך את הבדיקות לבלתי ניתנות לדילוג"
+     "en": "Login, and who owns what",
+     "he": "התחברות, ומי הבעלים של מה"
     },
     "goal": {
-     "en": "On every push: install, typecheck, lint, test, and build the Docker image. Red means it does not ship.",
-     "he": "בכל דחיפה: התקנה, בדיקת טיפוסים, לינט, בדיקות, ובניית דמות Docker. אדום אומר שזה לא יוצא."
+     "en": "Email and password sign-in with a session cookie, and every query scoped so one user can never read another's rows.",
+     "he": "התחברות עם אימייל וסיסמה, עוגיית סשן, וכל שאילתה מסונן כך שמשתמש לא יכול לקרוא שורות של אחר."
+    },
+    "why": {
+     "en": "Authorisation is not a login screen. It is a WHERE clause you cannot afford to forget once.",
+     "he": "הרשאות הן לא מסך התחברות. הן תנאי WHERE שאסור לשכוח אפילו פעם אחת."
     },
     "uses": [
-     "CI/CD",
-     "Deploy",
-     "Read the diff"
+     "Authentication vs Authorization",
+     "Session & cookie",
+     "Hashing vs encryption",
+     "Environment variables / secrets",
+     "Least privilege"
     ],
-    "why": {
-     "en": "This is the guardrail that makes AI-generated changes safe to accept quickly. Without it, review is the only defence and review gets tired.",
-     "he": "זה המעקה שהופך שינויים שה-AI ייצר לבטוחים לקבלה מהירה. בלעדיו, סקירה היא ההגנה היחידה, וסקירה מתעייפת."
-    },
-    "prompt": "Create a GitHub Actions workflow that runs on every push and pull request.\n\nJobs: install with a cached lockfile, typecheck, lint, run the test suite against real Postgres and Redis service containers, then build the Docker image (build only, no push yet). Fail the workflow on any step failing. Pin action versions.\n\nAlso tell me which of these checks would NOT have caught a plausible bad change in my project, so I know what the pipeline does not protect me from."
+    "prompt": "Add authentication to my Next.js CRM: sign up and log in with email and password, a session cookie, and a logout.\n\nRequirements: passwords hashed with a modern algorithm and never logged; the session cookie is httpOnly, Secure and SameSite=Lax; the session secret comes from an environment variable; every company, contact and note row belongs to a user, and every query filters by the logged-in user — show me how to make that hard to forget rather than something I must remember; unauthenticated requests to any CRM route redirect to /login.\n\nShow the schema change, the auth code, the middleware, and one test proving user A cannot fetch user B's contact by guessing its id. Then say plainly what this setup does not protect against."
    },
    {
     "n": 9,
     "title": {
-     "en": "AWS groundwork: account, network, registry",
-     "he": "תשתית AWS: חשבון, רשת, מאגר דמויות"
+     "en": "Preview deploys, and a database per environment",
+     "he": "דיפלוי פרה-וויו ומסד לכל סביבה"
     },
     "goal": {
-     "en": "A VPC with public and private subnets, security groups, and your image pushed to ECR.",
-     "he": "VPC עם תת-רשתות ציבוריות ופרטיות, קבוצות אבטחה, והדמות שלך נדחפה ל-ECR."
+     "en": "Every pull request gets its own URL and its own database branch, so nothing you try can touch production data.",
+     "he": "לכל pull request יש כתובת משלו וענף מסד משלו, כך ששום ניסוי לא נוגע בנתוני הפרודקשן."
+    },
+    "why": {
+     "en": "The habit that separates a hobby project from a real one: production is never where you find out.",
+     "he": "ההרגל שמבדיל פרויקט תחביב ממערכת אמיתית: פרודקשן הוא אף פעם לא המקום שבו מגלים."
     },
     "uses": [
-     "The cloud",
-     "AWS / Azure / GCP",
-     "localhost & port",
-     "Single point of failure"
+     "Preview deployment",
+     "Environments (dev / staging / prod)",
+     "Config per environment",
+     "Pull request & code review"
     ],
-    "why": {
-     "en": "Subnets and security groups are the whole AWS security model. Everything after this depends on getting this layer right.",
-     "he": "תת-רשתות וקבוצות אבטחה הן כל מודל האבטחה של AWS. כל מה שאחרי זה תלוי בכך שהשכבה הזו נכונה."
-    },
-    "prompt": "Walk me through the AWS groundwork for deploying this container. I am a beginner — explain each resource in one sentence before creating it.\n\nI need: a VPC across two availability zones with public subnets (for the load balancer) and private subnets (for the app, the database and Redis); security groups where the load balancer accepts 443 from the internet, the app accepts traffic ONLY from the load balancer, and Postgres and Redis accept traffic ONLY from the app; and an ECR repository with my image pushed to it.\n\nGive me this as Terraform, and before the code, list every resource with its rough monthly cost. Flag anything that costs money while idle — especially NAT gateways."
+    "prompt": "Set up environment separation for my Vercel + Neon CRM.\n\nI want: a production database and a separate database for preview deployments using Neon's branching, wired so a Vercel preview automatically points at the preview branch while production points at production; environment variables set per environment in Vercel, with the ones that must differ listed explicitly; a local .env.local pointing at a third, throwaway branch.\n\nShow me the exact configuration. Then walk the workflow: I open a pull request — what URL do I get, which database does it read, how do migrations reach each environment, and what happens to the preview database when the PR is merged or closed. Finish with the one mistake in this setup that would let a preview write to production data."
    },
    {
     "n": 10,
     "title": {
-     "en": "Managed Postgres and managed Redis",
-     "he": "Postgres מנוהל ו-Redis מנוהל"
+     "en": "Tests worth running, and CI that blocks",
+     "he": "בדיקות ששווה להריץ, ו-CI שחוסם"
     },
     "goal": {
-     "en": "RDS Postgres and ElastiCache Redis in the private subnets, reachable only by the app.",
-     "he": "RDS Postgres ו-ElastiCache Redis בתת-רשתות הפרטיות, נגישים רק לאפליקציה."
+     "en": "A handful of tests covering the rules that matter, running on every push, blocking the merge when they fail.",
+     "he": "קומץ בדיקות שמכסות את הכללים שחשובים, רצות בכל push, וחוסמות מיזוג כשהן נכשלות."
+    },
+    "why": {
+     "en": "Tests you do not trust are worse than none. Pick the few that would have caught a real bug.",
+     "he": "בדיקות שלא סומכים עליהן גרועות מכלום. בוחרים את המעטות שהיו תופסות באג אמיתי."
     },
     "uses": [
-     "Database",
-     "Redis / in-memory store",
-     "Environment variables / secrets",
-     "Single point of failure"
+     "Test",
+     "Unit / Integration / E2E",
+     "CI/CD",
+     "Make it verify itself",
+     "Flaky test"
     ],
-    "why": {
-     "en": "Managed means backups, patching and failover are someone else's job. That is what you are paying for — not the server.",
-     "he": "מנוהל אומר שגיבויים, עדכונים והחלפה בכשל הם העבודה של מישהו אחר. זה מה שאתה משלם עליו — לא על השרת."
-    },
-    "prompt": "Add managed data stores to my Terraform.\n\n1. RDS PostgreSQL in the private subnets: smallest reasonable instance, storage encrypted, automated backups with a 7-day retention, NOT publicly accessible, credentials generated and stored in AWS Secrets Manager — never in the Terraform code or state output.\n2. ElastiCache for Redis in the private subnets, encryption in transit on, reachable only from the app security group.\n\nThen show me exactly which environment variables my container needs and how it reads the database password from Secrets Manager at startup.\n\nBefore applying: tell me the monthly cost of both, and what specifically breaks if the Redis node is replaced while my app is running."
+    "prompt": "Add a test suite to my Next.js CRM covering exactly the things that would really break it: the ownership rule (user A cannot read user B's rows), stage validation rejecting a bad value, the create-company-and-contact transaction rolling back as a unit, and one end-to-end path — log in, create a contact, add a note, see it on the page.\n\nPick the tools and justify each in one line. Show me how the tests get a database, and why that choice will not make them flaky.\n\nThen give me the GitHub Actions workflow that runs typecheck, lint, tests and build on every push, and tell me how to make a failing check actually block the merge instead of just showing a red mark."
    },
    {
     "n": 11,
     "title": {
-     "en": "Two instances behind a load balancer",
-     "he": "שני מופעים מאחורי מאזן עומסים"
+     "en": "A domain, DNS, and the padlock",
+     "he": "דומיין, DNS, והמנעול"
     },
     "goal": {
-     "en": "ECS Fargate running two tasks of your image, an Application Load Balancer in front, HTTPS with a real certificate.",
-     "he": "ECS Fargate שמריץ שני מופעים של הדמות שלך, Application Load Balancer מלפנים, HTTPS עם תעודה אמיתית."
+     "en": "Your own domain pointing at the Vercel deployment, HTTPS working, www sorted out. Optional — and the only step that costs money.",
+     "he": "דומיין משלך שמצביע על הדיפלוי ב-Vercel, HTTPS שעובד, ו-www מסודר. רשות — והשלב היחיד שעולה כסף."
+    },
+    "why": {
+     "en": "Buying a name and pointing it somewhere is the single most demystifying hour in this whole course.",
+     "he": "לקנות שם ולכוון אותו למקום היא אולי השעה הכי מפזרת ערפל בכל הקורס."
     },
     "uses": [
-     "Scaling up vs out",
-     "Load balancer",
-     "Stateless",
+     "Domain & registrar",
+     "DNS records (A, CNAME, TXT)",
+     "TLS certificate",
      "HTTPS / TLS",
-     "Deploy"
+     "Is it me or them?"
     ],
-    "why": {
-     "en": "Two instances is where every assumption about local memory breaks. If anything still lives in the process, you will find out here.",
-     "he": "שני מופעים הם המקום שבו כל הנחה לגבי זיכרון מקומי נשברת. אם משהו עדיין חי בתהליך, תגלה את זה כאן."
-    },
-    "prompt": "Deploy my container to ECS Fargate with exactly 2 tasks running across 2 availability zones.\n\nInclude: an Application Load Balancer in the public subnets with an ACM certificate and HTTP redirecting to HTTPS; a target group whose health check hits /health with sensible thresholds — explain each number; a rolling deployment that never drops below 2 healthy tasks; and the database password injected from Secrets Manager, not as a plain environment variable.\n\nThen give me a checklist of everything in my code that would break with 2 instances instead of 1 — in-memory state, local file writes, scheduled jobs that must run once, websocket assumptions — and tell me which ones my project actually has."
+    "prompt": "I want my CRM on my own domain. Walk me through it end to end.\n\nCover: buying a domain from a registrar and what the price actually includes; adding it to my Vercel project; exactly which DNS records to create and what each one means; choosing whether the canonical address is example.com or www.example.com and redirecting the other; how the HTTPS certificate is issued and renewed without me doing anything.\n\nThen give me the commands to check propagation myself — dig or nslookup — and how to read the answer. Finish with the three most common reasons a freshly pointed domain shows the wrong site, and how to tell which one is happening to me."
    },
    {
     "n": 12,
     "title": {
-     "en": "Logs, metrics, and one alert",
-     "he": "לוגים, מטריקות והתראה אחת"
+     "en": "Errors, one alert, and the bill",
+     "he": "שגיאות, התראה אחת, והחשבון"
     },
     "goal": {
-     "en": "Structured logs in CloudWatch, the four numbers that matter on a dashboard, and one alarm that emails you.",
-     "he": "לוגים מובנים ב-CloudWatch, ארבעת המספרים שחשובים בדשבורד, והתראה אחת ששולחת לך מייל."
+     "en": "Structured logs, an error tracker catching real exceptions, one alert that wakes you for a reason, and a written answer to what this costs.",
+     "he": "לוגים מובנים, מעקב שגיאות שתופס חריגות אמיתיות, התראה אחת שמעירה אותך מסיבה טובה, ותשובה כתובה לשאלה כמה זה עולה."
+    },
+    "why": {
+     "en": "Shipping is not the end. Knowing it is broken before a user tells you is the end.",
+     "he": "העלייה לאוויר היא לא הסוף. לדעת שנשבר לפני שמשתמש מספר לך — זה הסוף."
     },
     "uses": [
-     "Logs & monitoring",
-     "Latency vs throughput",
-     "Status codes",
-     "Rate limiting"
+     "Structured logs",
+     "Error tracking",
+     "Alert",
+     "Health check & uptime monitor",
+     "The cloud"
     ],
-    "why": {
-     "en": "Without this, your first real outage is discovered by a user. One working alert is worth more than a beautiful dashboard nobody opens.",
-     "he": "בלי זה, התקלה האמיתית הראשונה שלך מתגלה על ידי משתמש. התראה אחת שעובדת שווה יותר מדשבורד יפה שאף אחד לא פותח."
-    },
-    "prompt": "Add observability to my ECS service.\n\n1. Structured JSON logging with a request id propagated through every log line for a request, shipped to CloudWatch Logs with a retention period (not forever — tell me the cost difference).\n2. A dashboard with exactly four things: p95 latency, error rate (5xx), request count, and healthy task count. Justify why these four and not others.\n3. One CloudWatch alarm that emails me via SNS when the 5xx rate exceeds a threshold for 5 minutes. Tell me what threshold to start with and why an alarm that fires too often is worse than none.\n\nAlso: what is the single most useful thing to log in MY app that a generic setup would miss?"
-   },
-   {
-    "n": 13,
-    "title": {
-     "en": "Cost check, then tear it down",
-     "he": "בדיקת עלויות, ואז מחיקה"
-    },
-    "goal": {
-     "en": "Know what this costs per month, set a budget alert, then destroy everything you are not keeping.",
-     "he": "לדעת כמה זה עולה לחודש, להגדיר התראת תקציב, ואז למחוק כל מה שאתה לא שומר."
-    },
-    "uses": [
-     "The cloud",
-     "Deploy",
-     "Technical debt"
-    ],
-    "why": {
-     "en": "Knowing how to remove infrastructure is as much a skill as creating it, and it is the one nobody teaches.",
-     "he": "לדעת איך להסיר תשתית היא מיומנות בדיוק כמו ליצור אותה, וזו היחידה שאף אחד לא מלמד."
-    },
-    "prompt": "Two things.\n\nFirst: itemise the monthly cost of everything I created — Fargate tasks, ALB, RDS, ElastiCache, NAT gateway, CloudWatch logs, data transfer. Show which line items cost money even with zero traffic, and set up an AWS Budgets alert that emails me if the month is on track to exceed $X.\n\nSecond: give me the exact command to destroy all of it, tell me what `terraform destroy` will NOT remove (ECR images, CloudWatch log groups, Secrets Manager secrets in their deletion window, S3 buckets with objects), and give me the commands to clean those up too. Then tell me how to verify in the console that nothing is still billing."
+    "prompt": "Close out my Vercel + Neon CRM with the operations layer.\n\nGive me: structured JSON logging with a request id that ties a browser request to its server log lines, plus a list of what must never be logged; an error tracker on a free tier wired into both server and browser errors, with source maps so stack traces are readable; an /api/health endpoint and a free uptime monitor hitting it; and exactly one alert, with your argument for why that one and not four.\n\nThen the numbers: what this app costs per month on the free tiers, which limit I hit first as usage grows, what the first paid bill looks like, and the earliest signal I would see before it arrives. Finish with a five-line runbook to keep for when the site is down."
    }
   ]
  },

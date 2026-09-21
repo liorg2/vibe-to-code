@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
+import { ArchSubNav } from "@/components/ArchSubNav";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Chart } from "@/components/Chart";
 import { PromptBox } from "@/components/PromptBox";
 import { ARCHITECTURES, findTerm } from "@/lib/course";
+import { ARCH_CHARTS } from "@/lib/diagrams";
 import { serverLang } from "@/lib/lang-server";
 
 export default async function ArchitectureDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -28,10 +31,17 @@ export default async function ArchitectureDetailPage({ params }: { params: Promi
           { label: a.title[lang] },
         ]}
       />
+      <ArchSubNav active={a.id} />
       <article className="slide arch">
         <div className="kicker">{String(i + 1).padStart(2, "0")} {A.title[lang]} · {a.tag[lang]}</div>
         <h2>{a.title[lang]}</h2>
-        <pre className="code dia">{a.diagram}</pre>
+        {ARCH_CHARTS[a.id] ? (
+          <Chart def={ARCH_CHARTS[a.id]} caption={a.tag[lang]} />
+        ) : null}
+        <details className="deeper">
+          <summary>The same shape in plain text<span className="sub">every box named, nothing hidden</span></summary>
+          <pre className="code dia">{a.diagram}</pre>
+        </details>
         <h3>One request, start to finish</h3>
         <div className="body"><p>{a.flow[lang]}</p></div>
         <h3>The pieces</h3>

@@ -343,6 +343,16 @@ pre.code{max-width:100%}
 .ask .promptbox{margin-top:10px}
 
 /* ---- architectures ---- */
+.chart{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 14px;margin:20px 0;overflow-x:auto}
+.chart-svg{display:flex;justify-content:center;min-width:0}
+.chart-svg svg{max-width:100%;height:auto}
+.chart figcaption{margin-top:12px;text-align:center;color:var(--tx3);font-size:13px}
+/* mermaid renders async — hold the space so the page doesn't jump */
+.chart-load{height:260px;border-radius:12px;
+  background:linear-gradient(90deg,var(--card),var(--card2),var(--card));
+  background-size:200% 100%;animation:chartshim 1.2s linear infinite}
+@keyframes chartshim{to{background-position:-200% 0}}
 .mini-dia{font-size:9.5px;line-height:1.35;max-height:170px;overflow:hidden;opacity:.75;
   background:var(--code);padding:10px;border-radius:10px;margin-top:10px}
 .dia{font-size:12.5px;line-height:1.5;overflow-x:auto}

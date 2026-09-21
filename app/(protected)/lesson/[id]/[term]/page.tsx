@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Chart } from "@/components/Chart";
 import { LessonSubNav } from "@/components/LessonSubNav";
 import { PromptBox } from "@/components/PromptBox";
 import { SlideActions } from "@/components/SlideActions";
@@ -16,6 +17,7 @@ import {
   moduleIndex,
   pathForModule,
 } from "@/lib/course";
+import { LIFECYCLE } from "@/lib/diagrams";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
 
@@ -71,6 +73,9 @@ export default async function SlidePage({
         </div>
         <h2>{tm.t[lang]}</h2>
         <div className="lede">{tm.d[lang]}</div>
+        {m.id === "ground" && i === 0 ? (
+          <Chart def={LIFECYCLE} caption={t("lifeCap")} />
+        ) : null}
         {tm.t.en === "Request / Response" ? (
           <div className="http-flow" aria-hidden="true">
             <div className="hf-cap">{t("hfCap")}</div>

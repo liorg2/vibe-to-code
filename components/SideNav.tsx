@@ -15,6 +15,7 @@ export function SideNav() {
   const termMatch = pathname.match(/^\/lesson\/[^/]+\/(\d+)/);
   const activeTerm = termMatch ? Number(termMatch[1]) : null;
   const quizOpen = pathname.endsWith("/quiz");
+  const archOpen = pathname.startsWith("/architectures");
 
   // the nav scrolls inside itself — bring the current item into view on load
   const navRef = useRef<HTMLElement>(null);
@@ -77,7 +78,26 @@ export function SideNav() {
         })}
         <hr />
         {PROJECT?.id && navLink("/project", PROJECT.icon, PROJECT.title[lang])}
-        {ARCHITECTURES?.id && navLink("/architectures", ARCHITECTURES.icon, ARCHITECTURES.title[lang])}
+        {ARCHITECTURES?.id ? (
+          <div className={`nav-lesson${archOpen ? " open" : ""}`}>
+            <Link href="/architectures" className={`nav-lesson-h${archOpen ? " on" : ""}`}>
+              <span className="ic">{ARCHITECTURES.icon}</span>
+              <span>{ARCHITECTURES.title[lang]}</span>
+              <span className="cnt">{ARCHITECTURES.items.length}</span>
+            </Link>
+            <div className="nav-subs">
+              {ARCHITECTURES.items.map((a) => (
+                <Link
+                  key={a.id}
+                  href={`/architectures/${a.id}`}
+                  className={pathname === `/architectures/${a.id}` ? "on" : ""}
+                >
+                  {a.title[lang]}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
         {CHECKLIST?.id && navLink("/checklist", CHECKLIST.icon, CHECKLIST.title[lang])}
         {navLink("/glossary", "☰", t("glossary"))}
         {navLink("/review", "🗐", t("review"))}
