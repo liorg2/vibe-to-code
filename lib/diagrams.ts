@@ -107,3 +107,40 @@ export const ARCH_CHARTS: Record<string, string> = {
   classDef note fill:none,stroke:none,color:#9aa1b4
   class T note`,
 };
+
+/**
+ * Card-sized version of each architecture: the same shape with the detail stripped,
+ * so five of them fit on one page without turning into noise.
+ */
+export const ARCH_MINI: Record<string, string> = {
+  "static-site": `flowchart LR
+  B["Browser"] --> E["CDN edge"]
+  E --> O[("Built files")]
+  B --> F["3rd-party form"]`,
+
+  "classic-monolith": `flowchart LR
+  B["Browser"] --> LB["Load balancer"]
+  LB --> A["app × N"]
+  A --> PG[("Postgres")]
+  A --> RD[("Redis")]`,
+
+  serverless: `flowchart LR
+  B["Browser"] --> GW["API gateway"]
+  GW --> FN["Lambda"]
+  FN --> DB[("Managed DB")]
+  FN --> Q["Queue"] --> WK["Worker"]`,
+
+  pipeline: `flowchart LR
+  C["Client"] --> API["API · 202"]
+  API --> Q["Queue"]
+  Q --> W["Worker pool"]
+  W --> OUT[("Output store")]
+  W --> C`,
+
+  microservices: `flowchart LR
+  B["Client"] --> GW["API gateway"]
+  GW --> S1["users"]
+  GW --> S2["orders"]
+  S1 --> BUS["Event bus"]
+  S2 --> BUS`,
+};

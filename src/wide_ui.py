@@ -2,8 +2,10 @@
 """Widening pass: module order, learning paths, and UI strings for the new pages."""
 
 # final module order; new modules slot in next to the ones they extend
-ORDER = ["ground", "sides", "http", "apis", "data", "frontend", "langs", "testing",
-         "memory", "cache", "async", "auth", "security", "net", "cloud", "devops",
+# order follows the way the ideas stack: what software is, what it's written in,
+# the two sides, how they talk, what they store, then how fast it goes.
+ORDER = ["ground", "sides", "langs", "frontend", "http", "apis", "data", "memory",
+         "cache", "testing", "async", "auth", "security", "net", "cloud", "devops",
          "observe", "scale", "team", "ai"]
 
 PATHS = [
@@ -12,8 +14,8 @@ PATHS = [
             "he": "מושגי תכנות ל-Vibe Coders"},
   "blurb": {"en": "How software actually works — from an empty folder to a page talking to a database.",
             "he": "איך תוכנה באמת עובדת — מתיקייה ריקה לדף שמדבר עם בסיס נתונים."},
-  "mods": ["ground", "sides", "http", "apis", "data", "frontend", "langs", "testing",
-           "memory", "cache"]},
+  "mods": ["ground", "sides", "langs", "frontend", "http", "apis", "data", "memory",
+           "cache", "testing"]},
  {"id": "advanced", "icon": "⚡",
   "title": {"en": "Shipping and running it for real",
             "he": "לשחרר ולהריץ באמת"},

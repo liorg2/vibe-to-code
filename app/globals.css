@@ -353,8 +353,13 @@ pre.code{max-width:100%}
   background:linear-gradient(90deg,var(--card),var(--card2),var(--card));
   background-size:200% 100%;animation:chartshim 1.2s linear infinite}
 @keyframes chartshim{to{background-position:-200% 0}}
-.mini-dia{font-size:9.5px;line-height:1.35;max-height:170px;overflow:hidden;opacity:.75;
-  background:var(--code);padding:10px;border-radius:10px;margin-top:10px}
+/* the same chart, card-sized: no frame, no scrollbar, just the shape.
+   wider cards than the default grid — a squeezed diagram is unreadable */
+.arch-cards{grid-template-columns:repeat(auto-fill,minmax(400px,1fr))}
+@media (max-width:520px){ .arch-cards{grid-template-columns:1fr} }
+.arch-card .chart{background:none;border:0;padding:0;margin:12px 0 0;overflow:hidden}
+.arch-card .chart-svg svg{max-height:160px}
+.arch-card .chart-load{height:160px}
 .dia{font-size:12.5px;line-height:1.5;overflow-x:auto}
 .arch h3{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;
   color:var(--tx3);margin:26px 0 10px}
@@ -371,6 +376,12 @@ pre.code{max-width:100%}
 .abox p{font-size:14px;margin-top:5px}
 
 /* ---- glossary ---- */
+.gsearch{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.gsearch input{flex:1;min-width:0;padding:10px 14px;border-radius:12px;font:inherit;font-size:14.5px;
+  background:var(--card2);border:1px solid var(--line);color:var(--tx)}
+.gsearch input:focus{outline:none;border-color:var(--acc)}
+.gsearch span{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--tx3);flex:none}
+.gl mark{background:color-mix(in srgb,var(--acc2) 35%,transparent);color:var(--tx);border-radius:3px}
 .gloss{columns:3 240px;column-gap:20px}
 .gl{break-inside:avoid;margin-bottom:18px}
 .gl h4{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--acc2);

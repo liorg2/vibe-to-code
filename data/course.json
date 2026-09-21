@@ -577,6 +577,300 @@
    ]
   },
   {
+   "id": "langs",
+   "icon": "{ }",
+   "title": {
+    "en": "Languages & Their Trade-offs",
+    "he": "שפות והתמורות שלהן"
+   },
+   "blurb": {
+    "en": "Why there are so many and how they differ.",
+    "he": "למה יש כל כך הרבה ובמה הן שונות."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Typed vs untyped",
+      "he": "עם טיפוסים מול בלי טיפוסים"
+     },
+     "d": {
+      "en": "Typed languages check that a number isn't used as text before running. Untyped find out at runtime.",
+      "he": "שפות עם טיפוסים בודקות שמספר לא משמש כטקסט עוד לפני ההרצה. שפות בלי טיפוסים מגלות את זה בזמן ריצה."
+     },
+     "w": {
+      "en": "TypeScript over JavaScript catches a whole class of AI-generated mistakes before a user does.",
+      "he": "TypeScript במקום JavaScript תופס משפחה שלמה של טעויות שה-AI ייצר — לפני שמשתמש יתפוס אותן."
+     }
+    },
+    {
+     "t": {
+      "en": "Compiled vs interpreted",
+      "he": "קומפילציה מול אינטרפרטציה"
+     },
+     "d": {
+      "en": "Compiled (Go, Rust, C#) builds a binary first — fast to run. Interpreted (Python, JS) runs source directly — fast to change.",
+      "he": "שפה מקומפלת (Go, Rust, C#) בונה בינארי קודם — מהיר להרצה. שפה מפורשת (Python, JS) מריצה את הקוד ישירות — מהיר לשינוי."
+     },
+     "w": {
+      "en": "It's a speed-of-machine vs speed-of-you trade. Both are valid; neither is \"better\".",
+      "he": "זה מאזן בין מהירות המכונה למהירות שלך. שתיהן לגיטימיות; אף אחת לא \"טובה יותר\"."
+     }
+    },
+    {
+     "t": {
+      "en": "JavaScript / TypeScript",
+      "he": "JavaScript / TypeScript"
+     },
+     "d": {
+      "en": "The only language browsers run. TypeScript is JavaScript plus type checking, erased before it ships.",
+      "he": "השפה היחידה שדפדפנים מריצים. TypeScript היא JavaScript בתוספת בדיקת טיפוסים, שנמחקת לפני העלייה לאוויר."
+     },
+     "w": {
+      "en": "One language front to back via Node.js. That's why most AI-built apps land here.",
+      "he": "שפה אחת מהפרונט ועד הבק דרך Node.js. בגלל זה רוב האפליקציות שנבנות עם AI נוחתות כאן."
+     }
+    },
+    {
+     "t": {
+      "en": "Python",
+      "he": "Python"
+     },
+     "d": {
+      "en": "Readable, huge library ecosystem, dominant in data, scripting and ML. Slower at raw number crunching.",
+      "he": "קריאה, אקוסיסטם ספריות ענק, שולטת בדאטה, סקריפטים ולמידת מכונה. איטית בחישובים גולמיים."
+     },
+     "w": {
+      "en": "If your task is \"process this file / call this model\", Python is usually the shortest path.",
+      "he": "אם המשימה היא \"לעבד את הקובץ הזה / לקרוא למודל הזה\", Python בדרך כלל הדרך הקצרה."
+     }
+    },
+    {
+     "t": {
+      "en": "Go / Rust / Java / C#",
+      "he": "Go / Rust / Java / C#"
+     },
+     "d": {
+      "en": "Go: simple and fast services. Rust: maximum speed and memory safety, steep curve. Java/C#: big, mature enterprise systems.",
+      "he": "Go: שירותים פשוטים ומהירים. Rust: מהירות מקסימלית ובטיחות זיכרון, עקומת למידה תלולה. Java/C#: מערכות ארגוניות גדולות ובשלות."
+     },
+     "w": {
+      "en": "Recognising them in a job post or a repo tells you what kind of team you're looking at.",
+      "he": "לזהות אותן במודעת דרושים או ברפו מספר לך באיזה סוג צוות מדובר."
+     }
+    },
+    {
+     "t": {
+      "en": "Package manager",
+      "he": "מנהל חבילות"
+     },
+     "d": {
+      "en": "The tool that downloads and pins other people's code: npm, pip, cargo, go mod.",
+      "he": "הכלי שמוריד ומקבע קוד של אחרים: npm, pip, cargo, go mod."
+     },
+     "w": {
+      "en": "The lock file is the thing that makes your build reproducible. Commit it. Always.",
+      "he": "קובץ ה-lock הוא מה שהופך את הבילד לניתן לשחזור. תמיד לעשות לו קומיט."
+     }
+    },
+    {
+     "t": {
+      "en": "Dependency",
+      "he": "תלות (Dependency)"
+     },
+     "d": {
+      "en": "External code your project needs to run. Each one is code you didn't write but now own.",
+      "he": "קוד חיצוני שהפרויקט צריך כדי לרוץ. כל אחת כזו היא קוד שלא כתבת אבל הוא באחריותך."
+     },
+     "w": {
+      "en": "Every added dependency is a future security update and a possible breakage. Fewer is cheaper.",
+      "he": "כל תלות נוספת היא עדכון אבטחה עתידי ושבירה אפשרית. פחות = זול יותר."
+     }
+    },
+    {
+     "t": {
+      "en": "Framework vs library",
+      "he": "פריימוורק מול ספרייה"
+     },
+     "d": {
+      "en": "You call a library. A framework calls you — it owns the structure and you fill in the blanks.",
+      "he": "אתה קורא לספרייה. פריימוורק קורא לך — הוא מחזיק את המבנה ואתה ממלא את החללים."
+     },
+     "w": {
+      "en": "Frameworks give speed on day one and constraints on day one hundred. Know which you're buying.",
+      "he": "פריימוורקים נותנים מהירות ביום הראשון ומגבלות ביום המאה. תדע מה אתה קונה."
+     }
+    },
+    {
+     "t": {
+      "en": "Semantic versioning",
+      "he": "ניהול גרסאות סמנטי"
+     },
+     "d": {
+      "en": "The 1.4.2 convention: major means it breaks, minor means it adds, patch means it fixes.",
+      "he": "המוסכמה של 1.4.2: major אומר שזה שובר, minor אומר שזה מוסיף, patch אומר שזה מתקן."
+     },
+     "w": {
+      "en": "The caret in ^1.4.2 permits automatic upgrades. It is why a build that worked yesterday can fail today with no change from you.",
+      "he": "הגגון ב-^1.4.2 מתיר שדרוגים אוטומטיים. בגלל זה בילד שעבד אתמול יכול להיכשל היום בלי שום שינוי מצדך."
+     }
+    }
+   ]
+  },
+  {
+   "id": "frontend",
+   "icon": "▣",
+   "title": {
+    "en": "The Browser Side",
+    "he": "צד הדפדפן"
+   },
+   "blurb": {
+    "en": "What actually happens between the HTML arriving and the user seeing a button — and why the AI keeps reaching for React.",
+    "he": "מה באמת קורה בין הרגע שה-HTML מגיע לרגע שהמשתמש רואה כפתור — ולמה ה-AI כל הזמן מושיט יד ל-React."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "DOM",
+      "he": "DOM"
+     },
+     "d": {
+      "en": "The browser's live, in-memory tree of the page. HTML is the recipe; the DOM is the dish. JavaScript changes the dish, not the recipe.",
+      "he": "העץ החי בזיכרון הדפדפן שמייצג את הדף. HTML הוא המתכון; ה-DOM הוא המנה. JavaScript משנה את המנה, לא את המתכון."
+     },
+     "w": {
+      "en": "\"View source\" shows the recipe. The Elements panel shows the dish. When they differ, that is JavaScript at work — and where your bug lives.",
+      "he": "״הצג מקור״ מראה את המתכון. פאנל Elements מראה את המנה. כשהם שונים, זה JavaScript בפעולה — ושם גר הבאג שלך."
+     }
+    },
+    {
+     "t": {
+      "en": "CSS & responsive layout",
+      "he": "CSS ודיפלוי רספונסיבית"
+     },
+     "d": {
+      "en": "CSS decides how the DOM looks. Responsive means the same page rearranges itself for a phone, a tablet and a wide monitor instead of shrinking.",
+      "he": "CSS מחליט איך ה-DOM נראה. רספונסיבי אומר שאותו דף מסדר את עצמו מחדש לטלפון, לטאבלט ולמסך רחב במקום להתכווץ."
+     },
+     "w": {
+      "en": "More than half of your users are on a phone. \"Looks great\" on your 27-inch monitor means nothing until you drag the window narrow.",
+      "he": "יותר ממחצית המשתמשים שלך על טלפון. ״נראה מעולה״ על מסך 27 אינץ׳ לא אומר כלום עד שאתה מצר את החלון."
+     }
+    },
+    {
+     "t": {
+      "en": "The main thread",
+      "he": "התהליכון הראשי"
+     },
+     "d": {
+      "en": "The browser has one thread that runs your JavaScript, handles clicks and paints the screen. Anything slow on it freezes all three.",
+      "he": "לדפדפן יש תהליכון אחד שמריץ את ה-JavaScript שלך, מטפל בלחיצות ומצייר את המסך. כל דבר איטי עליו מקפיא את שלושתם."
+     },
+     "w": {
+      "en": "A page that \"hangs\" after clicking is usually a loop or a big computation on the main thread. Move it to async or a worker.",
+      "he": "דף ש״נתקע״ אחרי לחיצה הוא בדרך כלל לולאה או חישוב גדול על התהליכון הראשי. תעביר אותו ל-async או ל-worker."
+     }
+    },
+    {
+     "t": {
+      "en": "Component",
+      "he": "קומפוננטה"
+     },
+     "d": {
+      "en": "A self-contained piece of UI — markup, style and behaviour together — that you can reuse and compose like a Lego brick.",
+      "he": "חתיכת ממשק עצמאית — מבנה, עיצוב והתנהגות יחד — שאפשר לעשות בה שימוש חוזר ולהרכיב כמו לגו."
+     },
+     "w": {
+      "en": "When the AI produces a 900-line page, ask it to split into components. Small components are the frontend's version of small functions.",
+      "he": "כשה-AI מייצר דף של 900 שורות, תבקש ממנו לפצל לקומפוננטות. קומפוננטות קטנות הן הגרסה של הפרונט לפונקציות קטנות."
+     }
+    },
+    {
+     "t": {
+      "en": "Framework (React, Vue, Svelte)",
+      "he": "פריימוורק (React, Vue, Svelte)"
+     },
+     "d": {
+      "en": "A library that re-renders the DOM for you whenever your data changes, so you describe what the screen should look like instead of mutating it by hand.",
+      "he": "ספרייה שמרנדרת מחדש את ה-DOM בשבילך בכל פעם שהנתונים משתנים, כך שאתה מתאר איך המסך צריך להיראות במקום לשנות אותו ידנית."
+     },
+     "w": {
+      "en": "You do not need one for a landing page. You do need one the moment three parts of the screen must agree about the same data.",
+      "he": "אתה לא צריך אחד לדף נחיתה. אתה כן צריך אחד ברגע ששלושה חלקים במסך צריכים להסכים על אותם נתונים."
+     }
+    },
+    {
+     "t": {
+      "en": "Client state",
+      "he": "מצב בצד הלקוח"
+     },
+     "d": {
+      "en": "Data the page holds in memory: the open tab, the form draft, the cart, the logged-in user. It disappears on refresh unless you store it.",
+      "he": "נתונים שהדף מחזיק בזיכרון: הלשונית הפתוחה, טיוטת הטופס, העגלה, המשתמש המחובר. הם נעלמים ברענון אלא אם שמרת אותם."
+     },
+     "w": {
+      "en": "Half of frontend bugs are two components holding two different copies of the same state. Keep one copy, pass it down.",
+      "he": "מחצית מבאגי הפרונט הם שתי קומפוננטות שמחזיקות שני עותקים שונים של אותו מצב. תחזיק עותק אחד, תעביר אותו למטה."
+     }
+    },
+    {
+     "t": {
+      "en": "SPA vs SSR vs static",
+      "he": "SPA מול SSR מול סטטי"
+     },
+     "d": {
+      "en": "Static: HTML files built once. SPA: an empty shell that JavaScript fills in the browser. SSR: the server renders each page's HTML on request.",
+      "he": "סטטי: קבצי HTML שנבנו פעם אחת. SPA: מעטפת ריקה ש-JavaScript ממלא בדפדפן. SSR: השרת מרנדר את ה-HTML של כל דף בעת הבקשה."
+     },
+     "w": {
+      "en": "Static is cheapest and fastest and covers more than you think. Next.js exists to blur these; know which one each page is.",
+      "he": "סטטי הוא הזול והמהיר ביותר ומכסה יותר ממה שנדמה. Next.js קיים כדי לטשטש ביניהם; תדע איזה מהם כל דף."
+     }
+    },
+    {
+     "t": {
+      "en": "Bundler & build step",
+      "he": "באנדלר ושלב הבנייה"
+     },
+     "d": {
+      "en": "A tool (Vite, webpack, esbuild) that turns your many source files, TypeScript and imports into the few plain JS and CSS files a browser can load.",
+      "he": "כלי (Vite, webpack, esbuild) שהופך את קבצי המקור הרבים שלך, TypeScript ו-imports למספר קטן של קבצי JS ו-CSS פשוטים שדפדפן יכול לטעון."
+     },
+     "w": {
+      "en": "\"Works in dev, blank page in prod\" is nearly always the build: an env var missing at build time, or a path that only existed on your disk.",
+      "he": "״עובד בפיתוח, דף לבן בפרודקשן״ זה כמעט תמיד הבנייה: משתנה סביבה שחסר בזמן הבנייה, או נתיב שהיה קיים רק על הדיסק שלך."
+     }
+    },
+    {
+     "t": {
+      "en": "Accessibility (a11y)",
+      "he": "נגישות (a11y)"
+     },
+     "d": {
+      "en": "Making the page usable by keyboard, screen reader and low vision: real buttons, labelled inputs, sufficient contrast, visible focus.",
+      "he": "להפוך את הדף לשמיש במקלדת, בקורא מסך ובראייה חלשה: כפתורים אמיתיים, שדות עם תוויות, ניגודיות מספקת, פוקוס נראה."
+     },
+     "w": {
+      "en": "A div with an onClick is not a button: it cannot be tabbed to or pressed with Enter. It is also a legal requirement in many places.",
+      "he": "div עם onClick הוא לא כפתור: אי אפשר להגיע אליו ב-Tab או ללחוץ עליו ב-Enter. במקומות רבים זו גם דרישה חוקית."
+     }
+    },
+    {
+     "t": {
+      "en": "Forms & validation",
+      "he": "טפסים ואימות"
+     },
+     "d": {
+      "en": "Client-side validation gives instant feedback. Server-side validation is the one that actually protects your data. You need both, and the server's wins.",
+      "he": "אימות בצד הלקוח נותן משוב מיידי. אימות בצד השרת הוא זה שבאמת מגן על הנתונים שלך. צריך את שניהם, ושל השרת מנצח."
+     },
+     "w": {
+      "en": "Anyone can skip your frontend and POST directly. Client validation is UX; server validation is security.",
+      "he": "כל אחד יכול לדלג על הפרונט שלך ולשלוח POST ישירות. אימות בלקוח הוא חוויית משתמש; אימות בשרת הוא אבטחה."
+     }
+    }
+   ]
+  },
+  {
    "id": "http",
    "icon": "↗",
    "title": {
@@ -1011,426 +1305,6 @@
    ]
   },
   {
-   "id": "frontend",
-   "icon": "▣",
-   "title": {
-    "en": "The Browser Side",
-    "he": "צד הדפדפן"
-   },
-   "blurb": {
-    "en": "What actually happens between the HTML arriving and the user seeing a button — and why the AI keeps reaching for React.",
-    "he": "מה באמת קורה בין הרגע שה-HTML מגיע לרגע שהמשתמש רואה כפתור — ולמה ה-AI כל הזמן מושיט יד ל-React."
-   },
-   "terms": [
-    {
-     "t": {
-      "en": "DOM",
-      "he": "DOM"
-     },
-     "d": {
-      "en": "The browser's live, in-memory tree of the page. HTML is the recipe; the DOM is the dish. JavaScript changes the dish, not the recipe.",
-      "he": "העץ החי בזיכרון הדפדפן שמייצג את הדף. HTML הוא המתכון; ה-DOM הוא המנה. JavaScript משנה את המנה, לא את המתכון."
-     },
-     "w": {
-      "en": "\"View source\" shows the recipe. The Elements panel shows the dish. When they differ, that is JavaScript at work — and where your bug lives.",
-      "he": "״הצג מקור״ מראה את המתכון. פאנל Elements מראה את המנה. כשהם שונים, זה JavaScript בפעולה — ושם גר הבאג שלך."
-     }
-    },
-    {
-     "t": {
-      "en": "CSS & responsive layout",
-      "he": "CSS ודיפלוי רספונסיבית"
-     },
-     "d": {
-      "en": "CSS decides how the DOM looks. Responsive means the same page rearranges itself for a phone, a tablet and a wide monitor instead of shrinking.",
-      "he": "CSS מחליט איך ה-DOM נראה. רספונסיבי אומר שאותו דף מסדר את עצמו מחדש לטלפון, לטאבלט ולמסך רחב במקום להתכווץ."
-     },
-     "w": {
-      "en": "More than half of your users are on a phone. \"Looks great\" on your 27-inch monitor means nothing until you drag the window narrow.",
-      "he": "יותר ממחצית המשתמשים שלך על טלפון. ״נראה מעולה״ על מסך 27 אינץ׳ לא אומר כלום עד שאתה מצר את החלון."
-     }
-    },
-    {
-     "t": {
-      "en": "The main thread",
-      "he": "התהליכון הראשי"
-     },
-     "d": {
-      "en": "The browser has one thread that runs your JavaScript, handles clicks and paints the screen. Anything slow on it freezes all three.",
-      "he": "לדפדפן יש תהליכון אחד שמריץ את ה-JavaScript שלך, מטפל בלחיצות ומצייר את המסך. כל דבר איטי עליו מקפיא את שלושתם."
-     },
-     "w": {
-      "en": "A page that \"hangs\" after clicking is usually a loop or a big computation on the main thread. Move it to async or a worker.",
-      "he": "דף ש״נתקע״ אחרי לחיצה הוא בדרך כלל לולאה או חישוב גדול על התהליכון הראשי. תעביר אותו ל-async או ל-worker."
-     }
-    },
-    {
-     "t": {
-      "en": "Component",
-      "he": "קומפוננטה"
-     },
-     "d": {
-      "en": "A self-contained piece of UI — markup, style and behaviour together — that you can reuse and compose like a Lego brick.",
-      "he": "חתיכת ממשק עצמאית — מבנה, עיצוב והתנהגות יחד — שאפשר לעשות בה שימוש חוזר ולהרכיב כמו לגו."
-     },
-     "w": {
-      "en": "When the AI produces a 900-line page, ask it to split into components. Small components are the frontend's version of small functions.",
-      "he": "כשה-AI מייצר דף של 900 שורות, תבקש ממנו לפצל לקומפוננטות. קומפוננטות קטנות הן הגרסה של הפרונט לפונקציות קטנות."
-     }
-    },
-    {
-     "t": {
-      "en": "Framework (React, Vue, Svelte)",
-      "he": "פריימוורק (React, Vue, Svelte)"
-     },
-     "d": {
-      "en": "A library that re-renders the DOM for you whenever your data changes, so you describe what the screen should look like instead of mutating it by hand.",
-      "he": "ספרייה שמרנדרת מחדש את ה-DOM בשבילך בכל פעם שהנתונים משתנים, כך שאתה מתאר איך המסך צריך להיראות במקום לשנות אותו ידנית."
-     },
-     "w": {
-      "en": "You do not need one for a landing page. You do need one the moment three parts of the screen must agree about the same data.",
-      "he": "אתה לא צריך אחד לדף נחיתה. אתה כן צריך אחד ברגע ששלושה חלקים במסך צריכים להסכים על אותם נתונים."
-     }
-    },
-    {
-     "t": {
-      "en": "Client state",
-      "he": "מצב בצד הלקוח"
-     },
-     "d": {
-      "en": "Data the page holds in memory: the open tab, the form draft, the cart, the logged-in user. It disappears on refresh unless you store it.",
-      "he": "נתונים שהדף מחזיק בזיכרון: הלשונית הפתוחה, טיוטת הטופס, העגלה, המשתמש המחובר. הם נעלמים ברענון אלא אם שמרת אותם."
-     },
-     "w": {
-      "en": "Half of frontend bugs are two components holding two different copies of the same state. Keep one copy, pass it down.",
-      "he": "מחצית מבאגי הפרונט הם שתי קומפוננטות שמחזיקות שני עותקים שונים של אותו מצב. תחזיק עותק אחד, תעביר אותו למטה."
-     }
-    },
-    {
-     "t": {
-      "en": "SPA vs SSR vs static",
-      "he": "SPA מול SSR מול סטטי"
-     },
-     "d": {
-      "en": "Static: HTML files built once. SPA: an empty shell that JavaScript fills in the browser. SSR: the server renders each page's HTML on request.",
-      "he": "סטטי: קבצי HTML שנבנו פעם אחת. SPA: מעטפת ריקה ש-JavaScript ממלא בדפדפן. SSR: השרת מרנדר את ה-HTML של כל דף בעת הבקשה."
-     },
-     "w": {
-      "en": "Static is cheapest and fastest and covers more than you think. Next.js exists to blur these; know which one each page is.",
-      "he": "סטטי הוא הזול והמהיר ביותר ומכסה יותר ממה שנדמה. Next.js קיים כדי לטשטש ביניהם; תדע איזה מהם כל דף."
-     }
-    },
-    {
-     "t": {
-      "en": "Bundler & build step",
-      "he": "באנדלר ושלב הבנייה"
-     },
-     "d": {
-      "en": "A tool (Vite, webpack, esbuild) that turns your many source files, TypeScript and imports into the few plain JS and CSS files a browser can load.",
-      "he": "כלי (Vite, webpack, esbuild) שהופך את קבצי המקור הרבים שלך, TypeScript ו-imports למספר קטן של קבצי JS ו-CSS פשוטים שדפדפן יכול לטעון."
-     },
-     "w": {
-      "en": "\"Works in dev, blank page in prod\" is nearly always the build: an env var missing at build time, or a path that only existed on your disk.",
-      "he": "״עובד בפיתוח, דף לבן בפרודקשן״ זה כמעט תמיד הבנייה: משתנה סביבה שחסר בזמן הבנייה, או נתיב שהיה קיים רק על הדיסק שלך."
-     }
-    },
-    {
-     "t": {
-      "en": "Accessibility (a11y)",
-      "he": "נגישות (a11y)"
-     },
-     "d": {
-      "en": "Making the page usable by keyboard, screen reader and low vision: real buttons, labelled inputs, sufficient contrast, visible focus.",
-      "he": "להפוך את הדף לשמיש במקלדת, בקורא מסך ובראייה חלשה: כפתורים אמיתיים, שדות עם תוויות, ניגודיות מספקת, פוקוס נראה."
-     },
-     "w": {
-      "en": "A div with an onClick is not a button: it cannot be tabbed to or pressed with Enter. It is also a legal requirement in many places.",
-      "he": "div עם onClick הוא לא כפתור: אי אפשר להגיע אליו ב-Tab או ללחוץ עליו ב-Enter. במקומות רבים זו גם דרישה חוקית."
-     }
-    },
-    {
-     "t": {
-      "en": "Forms & validation",
-      "he": "טפסים ואימות"
-     },
-     "d": {
-      "en": "Client-side validation gives instant feedback. Server-side validation is the one that actually protects your data. You need both, and the server's wins.",
-      "he": "אימות בצד הלקוח נותן משוב מיידי. אימות בצד השרת הוא זה שבאמת מגן על הנתונים שלך. צריך את שניהם, ושל השרת מנצח."
-     },
-     "w": {
-      "en": "Anyone can skip your frontend and POST directly. Client validation is UX; server validation is security.",
-      "he": "כל אחד יכול לדלג על הפרונט שלך ולשלוח POST ישירות. אימות בלקוח הוא חוויית משתמש; אימות בשרת הוא אבטחה."
-     }
-    }
-   ]
-  },
-  {
-   "id": "langs",
-   "icon": "{ }",
-   "title": {
-    "en": "Languages & Their Trade-offs",
-    "he": "שפות והתמורות שלהן"
-   },
-   "blurb": {
-    "en": "Why there are so many and how they differ.",
-    "he": "למה יש כל כך הרבה ובמה הן שונות."
-   },
-   "terms": [
-    {
-     "t": {
-      "en": "Typed vs untyped",
-      "he": "עם טיפוסים מול בלי טיפוסים"
-     },
-     "d": {
-      "en": "Typed languages check that a number isn't used as text before running. Untyped find out at runtime.",
-      "he": "שפות עם טיפוסים בודקות שמספר לא משמש כטקסט עוד לפני ההרצה. שפות בלי טיפוסים מגלות את זה בזמן ריצה."
-     },
-     "w": {
-      "en": "TypeScript over JavaScript catches a whole class of AI-generated mistakes before a user does.",
-      "he": "TypeScript במקום JavaScript תופס משפחה שלמה של טעויות שה-AI ייצר — לפני שמשתמש יתפוס אותן."
-     }
-    },
-    {
-     "t": {
-      "en": "Compiled vs interpreted",
-      "he": "קומפילציה מול אינטרפרטציה"
-     },
-     "d": {
-      "en": "Compiled (Go, Rust, C#) builds a binary first — fast to run. Interpreted (Python, JS) runs source directly — fast to change.",
-      "he": "שפה מקומפלת (Go, Rust, C#) בונה בינארי קודם — מהיר להרצה. שפה מפורשת (Python, JS) מריצה את הקוד ישירות — מהיר לשינוי."
-     },
-     "w": {
-      "en": "It's a speed-of-machine vs speed-of-you trade. Both are valid; neither is \"better\".",
-      "he": "זה מאזן בין מהירות המכונה למהירות שלך. שתיהן לגיטימיות; אף אחת לא \"טובה יותר\"."
-     }
-    },
-    {
-     "t": {
-      "en": "JavaScript / TypeScript",
-      "he": "JavaScript / TypeScript"
-     },
-     "d": {
-      "en": "The only language browsers run. TypeScript is JavaScript plus type checking, erased before it ships.",
-      "he": "השפה היחידה שדפדפנים מריצים. TypeScript היא JavaScript בתוספת בדיקת טיפוסים, שנמחקת לפני העלייה לאוויר."
-     },
-     "w": {
-      "en": "One language front to back via Node.js. That's why most AI-built apps land here.",
-      "he": "שפה אחת מהפרונט ועד הבק דרך Node.js. בגלל זה רוב האפליקציות שנבנות עם AI נוחתות כאן."
-     }
-    },
-    {
-     "t": {
-      "en": "Python",
-      "he": "Python"
-     },
-     "d": {
-      "en": "Readable, huge library ecosystem, dominant in data, scripting and ML. Slower at raw number crunching.",
-      "he": "קריאה, אקוסיסטם ספריות ענק, שולטת בדאטה, סקריפטים ולמידת מכונה. איטית בחישובים גולמיים."
-     },
-     "w": {
-      "en": "If your task is \"process this file / call this model\", Python is usually the shortest path.",
-      "he": "אם המשימה היא \"לעבד את הקובץ הזה / לקרוא למודל הזה\", Python בדרך כלל הדרך הקצרה."
-     }
-    },
-    {
-     "t": {
-      "en": "Go / Rust / Java / C#",
-      "he": "Go / Rust / Java / C#"
-     },
-     "d": {
-      "en": "Go: simple and fast services. Rust: maximum speed and memory safety, steep curve. Java/C#: big, mature enterprise systems.",
-      "he": "Go: שירותים פשוטים ומהירים. Rust: מהירות מקסימלית ובטיחות זיכרון, עקומת למידה תלולה. Java/C#: מערכות ארגוניות גדולות ובשלות."
-     },
-     "w": {
-      "en": "Recognising them in a job post or a repo tells you what kind of team you're looking at.",
-      "he": "לזהות אותן במודעת דרושים או ברפו מספר לך באיזה סוג צוות מדובר."
-     }
-    },
-    {
-     "t": {
-      "en": "Package manager",
-      "he": "מנהל חבילות"
-     },
-     "d": {
-      "en": "The tool that downloads and pins other people's code: npm, pip, cargo, go mod.",
-      "he": "הכלי שמוריד ומקבע קוד של אחרים: npm, pip, cargo, go mod."
-     },
-     "w": {
-      "en": "The lock file is the thing that makes your build reproducible. Commit it. Always.",
-      "he": "קובץ ה-lock הוא מה שהופך את הבילד לניתן לשחזור. תמיד לעשות לו קומיט."
-     }
-    },
-    {
-     "t": {
-      "en": "Dependency",
-      "he": "תלות (Dependency)"
-     },
-     "d": {
-      "en": "External code your project needs to run. Each one is code you didn't write but now own.",
-      "he": "קוד חיצוני שהפרויקט צריך כדי לרוץ. כל אחת כזו היא קוד שלא כתבת אבל הוא באחריותך."
-     },
-     "w": {
-      "en": "Every added dependency is a future security update and a possible breakage. Fewer is cheaper.",
-      "he": "כל תלות נוספת היא עדכון אבטחה עתידי ושבירה אפשרית. פחות = זול יותר."
-     }
-    },
-    {
-     "t": {
-      "en": "Framework vs library",
-      "he": "פריימוורק מול ספרייה"
-     },
-     "d": {
-      "en": "You call a library. A framework calls you — it owns the structure and you fill in the blanks.",
-      "he": "אתה קורא לספרייה. פריימוורק קורא לך — הוא מחזיק את המבנה ואתה ממלא את החללים."
-     },
-     "w": {
-      "en": "Frameworks give speed on day one and constraints on day one hundred. Know which you're buying.",
-      "he": "פריימוורקים נותנים מהירות ביום הראשון ומגבלות ביום המאה. תדע מה אתה קונה."
-     }
-    },
-    {
-     "t": {
-      "en": "Semantic versioning",
-      "he": "ניהול גרסאות סמנטי"
-     },
-     "d": {
-      "en": "The 1.4.2 convention: major means it breaks, minor means it adds, patch means it fixes.",
-      "he": "המוסכמה של 1.4.2: major אומר שזה שובר, minor אומר שזה מוסיף, patch אומר שזה מתקן."
-     },
-     "w": {
-      "en": "The caret in ^1.4.2 permits automatic upgrades. It is why a build that worked yesterday can fail today with no change from you.",
-      "he": "הגגון ב-^1.4.2 מתיר שדרוגים אוטומטיים. בגלל זה בילד שעבד אתמול יכול להיכשל היום בלי שום שינוי מצדך."
-     }
-    }
-   ]
-  },
-  {
-   "id": "testing",
-   "icon": "✓",
-   "title": {
-    "en": "Testing & Confidence",
-    "he": "בדיקות וביטחון"
-   },
-   "blurb": {
-    "en": "The only thing standing between you and an agent quietly breaking working code.",
-    "he": "הדבר היחיד שעומד בינך לבין סוכן ששובר בשקט קוד שעבד."
-   },
-   "terms": [
-    {
-     "t": {
-      "en": "Test",
-      "he": "בדיקה"
-     },
-     "d": {
-      "en": "Code that runs your code and fails loudly if the result is not what you said it should be.",
-      "he": "קוד שמריץ את הקוד שלך ונכשל ברעש אם התוצאה אינה מה שאמרת שהיא צריכה להיות."
-     },
-     "w": {
-      "en": "It is the only form of checking that still works at 3am, on someone else's machine, six months from now.",
-      "he": "זו צורת הבדיקה היחידה שעדיין עובדת בשלוש לפנות בוקר, על מכונה של מישהו אחר, בעוד חצי שנה."
-     }
-    },
-    {
-     "t": {
-      "en": "Assertion",
-      "he": "טענה (Assertion)"
-     },
-     "d": {
-      "en": "The single line that states the expectation: this value must equal that one, or the test fails.",
-      "he": "השורה הבודדת שמצהירה על הציפייה: הערך הזה חייב להיות שווה לזה, אחרת הבדיקה נכשלת."
-     },
-     "w": {
-      "en": "A test with no assertion passes forever and proves nothing. It happens more often than you would think.",
-      "he": "בדיקה בלי טענה עוברת לנצח ולא מוכיחה כלום. זה קורה יותר ממה שנדמה."
-     }
-    },
-    {
-     "t": {
-      "en": "Unit / Integration / E2E",
-      "he": "יחידה / אינטגרציה / קצה לקצה"
-     },
-     "d": {
-      "en": "Unit: one function alone. Integration: several parts together, with a real database. E2E: the whole app through a browser, like a user.",
-      "he": "יחידה: פונקציה אחת לבדה. אינטגרציה: כמה חלקים יחד, עם מסד נתונים אמיתי. קצה לקצה: כל האפליקציה דרך דפדפן, כמו משתמש."
-     },
-     "w": {
-      "en": "Each one is slower and more realistic than the last. You want many of the fast ones and a few of the slow ones.",
-      "he": "כל אחת איטית ומציאותית יותר מקודמתה. אתה רוצה הרבה מהמהירות וכמה מהאיטיות."
-     }
-    },
-    {
-     "t": {
-      "en": "Mock / Fixture",
-      "he": "מוק / פיקסצ׳ר"
-     },
-     "d": {
-      "en": "A mock is a fake stand-in for something real. A fixture is the known starting data a test runs against.",
-      "he": "מוק הוא תחליף מזויף למשהו אמיתי. פיקסצ׳ר הוא נתוני הפתיחה הידועים שהבדיקה רצה מולם."
-     },
-     "w": {
-      "en": "Mock the payment provider, not your own database. Mocking the thing you are testing is how a suite passes while the product is broken.",
-      "he": "תזייף את ספק התשלומים, לא את מסד הנתונים שלך. זיוף הדבר שאתה בודק הוא איך שחבילת בדיקות עוברת בזמן שהמוצר שבור."
-     }
-    },
-    {
-     "t": {
-      "en": "Regression",
-      "he": "רגרסיה"
-     },
-     "d": {
-      "en": "Something that used to work and stopped. A regression test is one you add the moment you fix a bug, so it can never come back unnoticed.",
-      "he": "משהו שעבד והפסיק. בדיקת רגרסיה היא כזו שמוסיפים ברגע שמתקנים באג, כדי שהוא לא יוכל לחזור בלי שישימו לב."
-     },
-     "w": {
-      "en": "This is the highest-value test you will ever write, because it is provably about a mistake that has already been made once.",
-      "he": "זו הבדיקה בעלת הערך הגבוה ביותר שתכתוב, כי היא מוכחת מול טעות שכבר נעשתה פעם אחת."
-     }
-    },
-    {
-     "t": {
-      "en": "Coverage",
-      "he": "כיסוי"
-     },
-     "d": {
-      "en": "The percentage of your lines that some test executed. It measures what was run, not what was checked.",
-      "he": "אחוז השורות שאיזושהי בדיקה הריצה. היא מודדת מה רץ, לא מה נבדק."
-     },
-     "w": {
-      "en": "100% coverage with weak assertions proves nothing. Chase the risky paths — auth, money, deletion — not the number.",
-      "he": "כיסוי של 100% עם טענות חלשות לא מוכיח כלום. תרדוף אחרי הנתיבים המסוכנים — הרשאות, כסף, מחיקה — לא אחרי המספר."
-     }
-    },
-    {
-     "t": {
-      "en": "Flaky test",
-      "he": "בדיקה הפכפכה"
-     },
-     "d": {
-      "en": "A test that passes and fails on the same code, usually because of timing, ordering or shared state.",
-      "he": "בדיקה שעוברת ונכשלת על אותו קוד, בדרך כלל בגלל תזמון, סדר או מצב משותף."
-     },
-     "w": {
-      "en": "One flaky test teaches the team to ignore red. That is more damaging than having no test at all — fix it or delete it.",
-      "he": "בדיקה הפכפכה אחת מלמדת את הצוות להתעלם מאדום. זה מזיק יותר מלא לבדוק בכלל — תתקן אותה או תמחק."
-     }
-    },
-    {
-     "t": {
-      "en": "Test-first (TDD)",
-      "he": "בדיקה קודם (TDD)"
-     },
-     "d": {
-      "en": "Write the failing test that describes what you want, then make it pass.",
-      "he": "כותבים את הבדיקה שנכשלת ומתארת את מה שרוצים, ואז גורמים לה לעבור."
-     },
-     "w": {
-      "en": "With AI this stops being a philosophy and becomes a control: the test is the specification you hand the model, and the proof you check it against.",
-      "he": "עם AI זו מפסיקה להיות פילוסופיה והופכת לשליטה: הבדיקה היא המפרט שאתה נותן למודל, וההוכחה שאתה בודק מולה."
-     }
-    }
-   ]
-  },
-  {
    "id": "memory",
    "icon": "▦",
    "title": {
@@ -1678,6 +1552,132 @@
      "w": {
       "en": "Caching in a local variable breaks the moment you run two servers. Redis is the shared version.",
       "he": "מטמון במשתנה מקומי נשבר ברגע שרצים שני שרתים. Redis הוא הגרסה המשותפת."
+     }
+    }
+   ]
+  },
+  {
+   "id": "testing",
+   "icon": "✓",
+   "title": {
+    "en": "Testing & Confidence",
+    "he": "בדיקות וביטחון"
+   },
+   "blurb": {
+    "en": "The only thing standing between you and an agent quietly breaking working code.",
+    "he": "הדבר היחיד שעומד בינך לבין סוכן ששובר בשקט קוד שעבד."
+   },
+   "terms": [
+    {
+     "t": {
+      "en": "Test",
+      "he": "בדיקה"
+     },
+     "d": {
+      "en": "Code that runs your code and fails loudly if the result is not what you said it should be.",
+      "he": "קוד שמריץ את הקוד שלך ונכשל ברעש אם התוצאה אינה מה שאמרת שהיא צריכה להיות."
+     },
+     "w": {
+      "en": "It is the only form of checking that still works at 3am, on someone else's machine, six months from now.",
+      "he": "זו צורת הבדיקה היחידה שעדיין עובדת בשלוש לפנות בוקר, על מכונה של מישהו אחר, בעוד חצי שנה."
+     }
+    },
+    {
+     "t": {
+      "en": "Assertion",
+      "he": "טענה (Assertion)"
+     },
+     "d": {
+      "en": "The single line that states the expectation: this value must equal that one, or the test fails.",
+      "he": "השורה הבודדת שמצהירה על הציפייה: הערך הזה חייב להיות שווה לזה, אחרת הבדיקה נכשלת."
+     },
+     "w": {
+      "en": "A test with no assertion passes forever and proves nothing. It happens more often than you would think.",
+      "he": "בדיקה בלי טענה עוברת לנצח ולא מוכיחה כלום. זה קורה יותר ממה שנדמה."
+     }
+    },
+    {
+     "t": {
+      "en": "Unit / Integration / E2E",
+      "he": "יחידה / אינטגרציה / קצה לקצה"
+     },
+     "d": {
+      "en": "Unit: one function alone. Integration: several parts together, with a real database. E2E: the whole app through a browser, like a user.",
+      "he": "יחידה: פונקציה אחת לבדה. אינטגרציה: כמה חלקים יחד, עם מסד נתונים אמיתי. קצה לקצה: כל האפליקציה דרך דפדפן, כמו משתמש."
+     },
+     "w": {
+      "en": "Each one is slower and more realistic than the last. You want many of the fast ones and a few of the slow ones.",
+      "he": "כל אחת איטית ומציאותית יותר מקודמתה. אתה רוצה הרבה מהמהירות וכמה מהאיטיות."
+     }
+    },
+    {
+     "t": {
+      "en": "Mock / Fixture",
+      "he": "מוק / פיקסצ׳ר"
+     },
+     "d": {
+      "en": "A mock is a fake stand-in for something real. A fixture is the known starting data a test runs against.",
+      "he": "מוק הוא תחליף מזויף למשהו אמיתי. פיקסצ׳ר הוא נתוני הפתיחה הידועים שהבדיקה רצה מולם."
+     },
+     "w": {
+      "en": "Mock the payment provider, not your own database. Mocking the thing you are testing is how a suite passes while the product is broken.",
+      "he": "תזייף את ספק התשלומים, לא את מסד הנתונים שלך. זיוף הדבר שאתה בודק הוא איך שחבילת בדיקות עוברת בזמן שהמוצר שבור."
+     }
+    },
+    {
+     "t": {
+      "en": "Regression",
+      "he": "רגרסיה"
+     },
+     "d": {
+      "en": "Something that used to work and stopped. A regression test is one you add the moment you fix a bug, so it can never come back unnoticed.",
+      "he": "משהו שעבד והפסיק. בדיקת רגרסיה היא כזו שמוסיפים ברגע שמתקנים באג, כדי שהוא לא יוכל לחזור בלי שישימו לב."
+     },
+     "w": {
+      "en": "This is the highest-value test you will ever write, because it is provably about a mistake that has already been made once.",
+      "he": "זו הבדיקה בעלת הערך הגבוה ביותר שתכתוב, כי היא מוכחת מול טעות שכבר נעשתה פעם אחת."
+     }
+    },
+    {
+     "t": {
+      "en": "Coverage",
+      "he": "כיסוי"
+     },
+     "d": {
+      "en": "The percentage of your lines that some test executed. It measures what was run, not what was checked.",
+      "he": "אחוז השורות שאיזושהי בדיקה הריצה. היא מודדת מה רץ, לא מה נבדק."
+     },
+     "w": {
+      "en": "100% coverage with weak assertions proves nothing. Chase the risky paths — auth, money, deletion — not the number.",
+      "he": "כיסוי של 100% עם טענות חלשות לא מוכיח כלום. תרדוף אחרי הנתיבים המסוכנים — הרשאות, כסף, מחיקה — לא אחרי המספר."
+     }
+    },
+    {
+     "t": {
+      "en": "Flaky test",
+      "he": "בדיקה הפכפכה"
+     },
+     "d": {
+      "en": "A test that passes and fails on the same code, usually because of timing, ordering or shared state.",
+      "he": "בדיקה שעוברת ונכשלת על אותו קוד, בדרך כלל בגלל תזמון, סדר או מצב משותף."
+     },
+     "w": {
+      "en": "One flaky test teaches the team to ignore red. That is more damaging than having no test at all — fix it or delete it.",
+      "he": "בדיקה הפכפכה אחת מלמדת את הצוות להתעלם מאדום. זה מזיק יותר מלא לבדוק בכלל — תתקן אותה או תמחק."
+     }
+    },
+    {
+     "t": {
+      "en": "Test-first (TDD)",
+      "he": "בדיקה קודם (TDD)"
+     },
+     "d": {
+      "en": "Write the failing test that describes what you want, then make it pass.",
+      "he": "כותבים את הבדיקה שנכשלת ומתארת את מה שרוצים, ואז גורמים לה לעבור."
+     },
+     "w": {
+      "en": "With AI this stops being a philosophy and becomes a control: the test is the specification you hand the model, and the proof you check it against.",
+      "he": "עם AI זו מפסיקה להיות פילוסופיה והופכת לשליטה: הבדיקה היא המפרט שאתה נותן למודל, וההוכחה שאתה בודק מולה."
      }
     }
    ]
@@ -8120,14 +8120,14 @@
    "mods": [
     "ground",
     "sides",
+    "langs",
+    "frontend",
     "http",
     "apis",
     "data",
-    "frontend",
-    "langs",
-    "testing",
     "memory",
-    "cache"
+    "cache",
+    "testing"
    ]
   },
   {

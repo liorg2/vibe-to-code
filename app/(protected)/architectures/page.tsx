@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { ArchSubNav } from "@/components/ArchSubNav";
+import { Chart } from "@/components/Chart";
 import { ARCHITECTURES } from "@/lib/course";
+import { ARCH_MINI } from "@/lib/diagrams";
 import { serverLang } from "@/lib/lang-server";
 
 export default async function ArchitecturesPage() {
@@ -18,9 +21,10 @@ export default async function ArchitecturesPage() {
         </div>
         <p className="mblurb">{A.blurb[lang]}</p>
       </section>
-      <div className="cards">
+      <ArchSubNav active="" />
+      <div className="cards arch-cards">
         {A.items.map((a, i) => (
-          <Link key={a.id} className="mcard" href={`/architectures/${a.id}`}>
+          <Link key={a.id} className="mcard arch-card" href={`/architectures/${a.id}`}>
             <div className="row">
               <div className="ic">{i + 1}</div>
               <div>
@@ -28,7 +32,7 @@ export default async function ArchitecturesPage() {
                 <h3>{a.title[lang]}</h3>
               </div>
             </div>
-            <pre className="code mini-dia">{a.diagram}</pre>
+            {ARCH_MINI[a.id] ? <Chart def={ARCH_MINI[a.id]} /> : null}
           </Link>
         ))}
       </div>
