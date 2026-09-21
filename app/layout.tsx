@@ -23,7 +23,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body dir="ltr">
+      <body dir="ltr" suppressHydrationWarning>
+        {/* restore the nav toggle before paint, so a refresh doesn't flash the wrong state */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('v2c.nav')==='1')document.body.classList.add('nav-toggled')}catch(e){}`,
+          }}
+        />
         <Providers UI={UI}>{children}</Providers>
       </body>
     </html>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { useApp } from "./Providers";
 import { ARCHITECTURES, CHECKLIST, MODULES, PROJECT, QUIZ, termKey, totalTerms } from "@/lib/course";
 
@@ -15,6 +16,12 @@ export function SideNav() {
   const activeTerm = termMatch ? Number(termMatch[1]) : null;
   const quizOpen = pathname.endsWith("/quiz");
 
+  // the nav scrolls inside itself — bring the current item into view on load
+  const navRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    navRef.current?.querySelector(".on")?.scrollIntoView({ block: "nearest" });
+  }, [pathname]);
+
   const navLink = (href: string, icon: string, label: string, cnt?: string) => {
     const on = pathname === href || (href !== "/" && pathname.startsWith(href));
     return (
@@ -27,7 +34,14 @@ export function SideNav() {
   };
 
   return (
-    <nav className="side">
+    <nav
+      ref={navRef}
+      className="side"
+      onClick={() => {
+        // on a phone the nav is an overlay — a link tap should close it
+        if (window.matchMedia("(max-width:900px)").matches) document.body.classList.remove("nav-toggled");
+      }}
+    >
       <h3 id="navTitle">{t("lessons")}</h3>
       <div id="nav">
         {navLink("/", "◫", t("allLessons"), `${done.size}/${totalTerms()}`)}

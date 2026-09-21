@@ -8,7 +8,7 @@ import { AuthButton } from "./AuthButton";
 import { MODULES, totalTerms } from "@/lib/course";
 import type { Lang } from "@/lib/types";
 
-export function Header({ showHero }: { showHero: boolean }) {
+export function Header({ showHero, showNav }: { showHero: boolean; showNav: boolean }) {
   const { lang, setLang, toggleTheme, t, progressPct } = useApp();
   const [q, setQ] = useState("");
   const router = useRouter();
@@ -22,6 +22,23 @@ export function Header({ showHero }: { showHero: boolean }) {
     <>
       <header>
         <div className="bar">
+          {showNav && (
+            <button
+              className="btn"
+              id="navtoggle"
+              type="button"
+              title={t("lessons")}
+              aria-label={t("lessons")}
+              onClick={() => {
+                const on = document.body.classList.toggle("nav-toggled");
+                try {
+                  localStorage.setItem("v2c.nav", on ? "1" : "0");
+                } catch {}
+              }}
+            >
+              ☰
+            </button>
+          )}
           <Link className="logo" href="/">
             <span className="dot">◆</span>
             <span id="brand">{t("brand")}</span>

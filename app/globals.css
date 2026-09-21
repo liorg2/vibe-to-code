@@ -283,9 +283,19 @@ body[dir="rtl"] .ans{border-radius:11px 0 0 11px}
 .col.no .ci label{cursor:default}
 .col.no .ci .x{color:var(--bad);font-weight:800;flex:none}
 
+/* nav toggle: body.nav-toggled flips the nav from this breakpoint's default —
+   ponytail: one class, no state to keep in sync between header and nav */
+body.nav-toggled main{grid-template-columns:1fr}
+body.nav-toggled nav.side{display:none}
+#navtoggle{display:inline-block;padding:8px 12px}
+
 @media(max-width:900px){
   main{grid-template-columns:1fr}
-  nav.side{position:static;max-height:none}
+  nav.side{display:none;position:static;max-height:none}
+  /* a bottom sheet: overlays the content instead of pushing it down, and never has to
+     know how tall the header wrapped to */
+  body.nav-toggled nav.side{display:block;position:fixed;z-index:45;
+    inset-block:auto 12px;inset-inline:12px;max-height:72vh;overflow:auto}
   #search{width:130px}
   .bar{flex-wrap:wrap;gap:10px}
   .copy{position:static;margin-bottom:8px}

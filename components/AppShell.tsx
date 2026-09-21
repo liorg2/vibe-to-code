@@ -14,7 +14,7 @@ export function AppShell({
 }) {
   return (
     <div className="wrap">
-      <Header showHero={showHero} />
+      <Header showHero={showHero} showNav={showNav} />
       <main className={showNav ? undefined : "nonav"}>
         {showNav && <SideNav />}
         <div id="content">{children}</div>
