@@ -285,12 +285,12 @@
    "he": "רמה"
   },
   "lvlA": {
-   "en": "Start here",
-   "he": "התחלה כאן"
+   "en": "Dev Concepts for Vibe Coders: Basic",
+   "he": "מושגי פיתוח ל-Vibe Coders: בסיסי"
   },
   "lvlB": {
-   "en": "Go further",
-   "he": "הצעד הבא"
+   "en": "Dev Concepts for Vibe Coders: Advanced",
+   "he": "מושגי פיתוח ל-Vibe Coders: מתקדם"
   },
   "lvlAd": {
    "en": "No prior knowledge. The words everything else is built from.",
@@ -11391,8 +11391,8 @@
    "id": "basic",
    "icon": "🌱",
    "title": {
-    "en": "Start here",
-    "he": "התחלה כאן"
+    "en": "Dev Concepts for Vibe Coders: Basic",
+    "he": "מושגי פיתוח ל-Vibe Coders: בסיסי"
    },
    "blurb": {
     "en": "How software actually works — from an empty folder to a page talking to a database. No prior knowledge.",
@@ -11417,8 +11417,8 @@
    "id": "advanced",
    "icon": "⚡",
    "title": {
-    "en": "Go further",
-    "he": "הצעד הבא"
+    "en": "Dev Concepts for Vibe Coders: Advanced",
+    "he": "מושגי פיתוח ל-Vibe Coders: מתקדם"
    },
    "blurb": {
     "en": "When you are ready to ship: auth, security, deploys, scale, and how a team actually works.",
