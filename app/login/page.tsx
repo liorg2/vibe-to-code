@@ -1,8 +1,9 @@
 "use client";
 
 import { signInWithPopup } from "firebase/auth";
-import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Link from "@/components/Link";
+import { parseLangFromPath, withLang } from "@/lib/lang";
 import { MODULES } from "@/lib/course";
 import { AppShell } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,8 @@ import { cn } from "@/lib/utils";
 export default function LoginPage() {
   const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") || `/lesson/${MODULES[0].id}/overview`;
+  const lang = parseLangFromPath(usePathname());
+  const next = withLang(lang, params.get("next") || `/lesson/${MODULES[0].id}/overview`);
 
   const signIn = async () => {
     if (!firebaseReady) {

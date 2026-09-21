@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { LevelTag } from "./LevelTag";
 import { LessonSubNav } from "./LessonSubNav";
 import { Breadcrumb } from "./Breadcrumb";

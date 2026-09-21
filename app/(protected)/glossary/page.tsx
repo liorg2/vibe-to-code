@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { GlossaryList } from "@/components/GlossaryList";
 import { MODULES } from "@/lib/course";

@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { stripLang } from "@/lib/lang";
 import { useApp } from "./Providers";
 import { LevelFilter, LevelTag } from "./LevelTag";
 import {
@@ -22,7 +23,7 @@ import type { Module } from "@/lib/types";
 
 export function SideNav() {
   const { lang, done, levels, t } = useApp();
-  const pathname = usePathname();
+  const pathname = stripLang(usePathname());
 
   const lessonMatch = pathname.match(/^\/lesson\/([^/]+)/);
   const activeLesson = lessonMatch?.[1] ?? "";

@@ -1,5 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { withLang } from "./lang";
+import { serverLang } from "./lang-server";
 import { SESSION_COOKIE } from "./protected";
 
 const DEV_UID = "dev-user";
@@ -46,7 +48,8 @@ export async function sessionUid(): Promise<string | null> {
 /** Call from server components under protected routes (Node runtime). */
 export async function requireSession() {
   const claims = await sessionClaims();
-  if (!claims) redirect("/login");
+  const lang = await serverLang();
+  if (!claims) redirect(withLang(lang, "/login"));
   // ponytail: a distinct page, not /login — bouncing an allowed-cookie user back to sign-in loops
-  if (!isAllowed(claims.email)) redirect("/no-access");
+  if (!isAllowed(claims.email)) redirect(withLang(lang, "/no-access"));
 }

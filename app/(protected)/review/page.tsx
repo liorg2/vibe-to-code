@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { ReviewClient } from "@/components/ReviewClient";
 import { allowedLevels, requireEntitlement } from "@/lib/entitlement";

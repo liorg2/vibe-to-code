@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { ArchSubNav } from "@/components/ArchSubNav";
 import { Chart } from "@/components/Chart";

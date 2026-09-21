@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { BuyButton } from "./BuyButton";
 import { CourseProgress } from "./CourseProgress";
 import { LevelTag } from "./LevelTag";

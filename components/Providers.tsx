@@ -10,7 +10,9 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { onAuthStateChanged, type User } from "firebase/auth";
+import { parseLangFromPath, stripLang, withLang } from "@/lib/lang";
 import type { Lang, Level } from "@/lib/types";
 import { firebaseReady, getClientAuth } from "@/lib/firebase/client";
 import { totalTerms } from "@/lib/course";
@@ -59,7 +61,9 @@ function lsSet(k: string, v: string) {
 }
 
 export function Providers({ UI, children }: { UI: Record<string, Record<Lang, string>>; children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  const pathname = usePathname();
+  const router = useRouter();
+  const lang = parseLangFromPath(pathname);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [levels, setLevels] = useState<Set<Level>>(new Set(ALL_LEVELS));
   const [done, setDone] = useState<Set<string>>(new Set());
@@ -90,9 +94,6 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
   );
 
   useEffect(() => {
-    const saved = (lsGet(KEY + ".lang") as Lang) || "en";
-    setLangState(saved);
-    document.cookie = `vibe.lang=${saved};path=/;max-age=31536000;SameSite=Lax`;
     setTheme((lsGet(KEY + ".theme") as "dark" | "light") || "dark");
     const savedLevels = (lsGet(KEY + ".levels") || "").split(",").filter((l): l is Level =>
       (ALL_LEVELS as string[]).includes(l),
@@ -160,9 +161,9 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const setLang = (l: Lang) => {
-    setLangState(l);
     document.cookie = `vibe.lang=${l};path=/;max-age=31536000;SameSite=Lax`;
     persist(done, ticked, l, theme);
+    router.push(withLang(l, stripLang(pathname)) + (typeof window !== "undefined" ? window.location.search : ""));
   };
 
   /** ponytail: turning the last level off would show an empty course — it turns the other two on instead */

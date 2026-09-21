@@ -1,4 +1,6 @@
 import { redirect } from "next/navigation";
+import { withLang } from "./lang";
+import { serverLang } from "./lang-server";
 import { getEntitlement, type Tier } from "./db";
 import type { Level } from "./types";
 import { sessionClaims } from "./verify-session";
@@ -37,6 +39,6 @@ export async function currentTier(): Promise<Tier | null> {
 export async function requireEntitlement(): Promise<Tier> {
   if (!billingOn()) return "advanced";
   const tier = await currentTier();
-  if (!tier) redirect("/courses");
+  if (!tier) redirect(withLang(await serverLang(), "/courses"));
   return tier;
 }

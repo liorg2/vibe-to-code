@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/Link";
 import { useRouter } from "next/navigation";
+import { withLang } from "@/lib/lang";
 import { useState } from "react";
 import { Progress as ProgressPrimitive } from "@base-ui/react/progress";
 import { ProgressIndicator, ProgressTrack } from "@/components/ui/progress";
@@ -21,7 +22,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
   const onSearch = (value: string) => {
     setQ(value);
     if (!value.trim()) return;
-    router.push(`/lesson?${new URLSearchParams({ q: value.trim() }).toString()}`);
+    router.push(withLang(lang, `/lesson?${new URLSearchParams({ q: value.trim() }).toString()}`));
   };
 
   return (

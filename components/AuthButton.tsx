@@ -3,11 +3,12 @@
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useApp } from "./Providers";
+import { withLang } from "@/lib/lang";
 import { Button } from "@/components/ui/button";
 import { firebaseReady, getClientAuth, googleProvider } from "@/lib/firebase/client";
 
 export function AuthButton() {
-  const { user, t, syncCloud } = useApp();
+  const { user, lang, t, syncCloud } = useApp();
   const router = useRouter();
 
   if (!firebaseReady) return null;
@@ -28,7 +29,7 @@ export function AuthButton() {
   const signOutAll = async () => {
     await fetch("/api/auth/logout", { method: "POST" });
     await signOut(getClientAuth());
-    router.push("/");
+    router.push(withLang(lang, "/"));
     router.refresh();
   };
 

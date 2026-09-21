@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { ModuleHead } from "@/components/ModuleHead";
 import { TermCard } from "@/components/TermCard";
