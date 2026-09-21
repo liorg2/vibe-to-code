@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useApp } from "./Providers";
 import { ARCHITECTURES, CHECKLIST, MODULES, PROJECT, QUIZ, termKey, totalTerms } from "@/lib/course";
 
@@ -15,7 +15,26 @@ export function SideNav() {
   const termMatch = pathname.match(/^\/lesson\/[^/]+\/(\d+)/);
   const activeTerm = termMatch ? Number(termMatch[1]) : null;
   const quizOpen = pathname.endsWith("/quiz");
-  const archOpen = pathname.startsWith("/architectures");
+  const archOnRoute = pathname.startsWith("/architectures");
+
+  // the route decides which group is open; clicking its header overrides that until you navigate
+  const routeGroup = activeLesson || (archOnRoute ? "architectures" : "");
+  const [openId, setOpenId] = useState(routeGroup);
+  useEffect(() => setOpenId(routeGroup), [routeGroup]);
+  /** on a phone the nav is an overlay — anything that navigates should close it */
+  const closeOnMobile = () => {
+    if (window.matchMedia("(max-width:900px)").matches) document.body.classList.remove("nav-toggled");
+  };
+  /** a header click on the open group collapses it and stays put; on a closed one it opens and follows the link */
+  const headerClick = (id: string) => (e: React.MouseEvent) => {
+    if (openId === id) {
+      e.preventDefault();
+      setOpenId("");
+      return;
+    }
+    setOpenId(id);
+    closeOnMobile();
+  };
 
   // the nav scrolls inside itself — bring the current item into view on load
   const navRef = useRef<HTMLElement>(null);
@@ -38,9 +57,10 @@ export function SideNav() {
     <nav
       ref={navRef}
       className="side"
-      onClick={() => {
-        // on a phone the nav is an overlay — a link tap should close it
-        if (window.matchMedia("(max-width:900px)").matches) document.body.classList.remove("nav-toggled");
+      onClick={(e) => {
+        // group headers decide for themselves — collapsing one should not close the drawer
+        if ((e.target as HTMLElement).closest(".nav-lesson-h")) return;
+        closeOnMobile();
       }}
     >
       <h3 id="navTitle">{t("lessons")}</h3>
@@ -49,10 +69,15 @@ export function SideNav() {
         {navLink("/courses", "◇", t("paths"))}
         {MODULES.map((m) => {
           const d = m.terms.filter((_, i) => done.has(termKey(m, i))).length;
-          const open = activeLesson === m.id;
+          const open = openId === m.id;
           return (
             <div key={m.id} className={`nav-lesson${open ? " open" : ""}`}>
-              <Link href={`/lesson/${m.id}/0`} className={`nav-lesson-h${open ? " on" : ""}`}>
+              <Link
+                href={`/lesson/${m.id}/0`}
+                className={`nav-lesson-h${open ? " on" : ""}`}
+                aria-expanded={open}
+                onClick={headerClick(m.id)}
+              >
                 <span className="ic">{m.icon}</span>
                 <span>{m.title[lang]}</span>
                 <span className="cnt">{d}/{m.terms.length}</span>
@@ -79,8 +104,13 @@ export function SideNav() {
         <hr />
         {PROJECT?.id && navLink("/project", PROJECT.icon, PROJECT.title[lang])}
         {ARCHITECTURES?.id ? (
-          <div className={`nav-lesson${archOpen ? " open" : ""}`}>
-            <Link href="/architectures" className={`nav-lesson-h${archOpen ? " on" : ""}`}>
+          <div className={`nav-lesson${openId === "architectures" ? " open" : ""}`}>
+            <Link
+              href="/architectures"
+              className={`nav-lesson-h${openId === "architectures" ? " on" : ""}`}
+              aria-expanded={openId === "architectures"}
+              onClick={headerClick("architectures")}
+            >
               <span className="ic">{ARCHITECTURES.icon}</span>
               <span>{ARCHITECTURES.title[lang]}</span>
               <span className="cnt">{ARCHITECTURES.items.length}</span>
