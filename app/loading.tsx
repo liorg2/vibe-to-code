@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="wrap">
+    <div className="relative z-[1]">
       <div className="slide">
         <div className="chart-load" />
         <div className="chart-load" />

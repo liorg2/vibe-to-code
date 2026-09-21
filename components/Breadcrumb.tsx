@@ -13,7 +13,9 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
           ) : (
             <span aria-current="page">{c.label}</span>
           )}
-          {i < items.length - 1 ? <span className="sep" aria-hidden="true">&rsaquo;</span> : null}
+          {i < items.length - 1 ? (
+            <span className="sep" aria-hidden="true">&rsaquo;</span>
+          ) : null}
         </span>
       ))}
     </nav>

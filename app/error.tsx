@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+
 export default function Error({
   error,
   reset,
@@ -8,12 +10,12 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div className="wrap">
+    <div className="relative z-[1]">
       <div className="empty">
         <p>Something went wrong. Give it another try.</p>
-        <button className="btn prim" onClick={reset}>
+        <Button variant="brand" onClick={reset}>
           Try again
-        </button>
+        </Button>
       </div>
     </div>
   );

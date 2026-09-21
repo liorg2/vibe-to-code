@@ -2,6 +2,9 @@ import Link from "next/link";
 import { BuyButton } from "./BuyButton";
 import { CourseProgress } from "./CourseProgress";
 import { LevelTag } from "./LevelTag";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { MODULES, PATHS, UI, mins } from "@/lib/course";
 import { billingOn, currentTier } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
@@ -32,39 +35,60 @@ export async function Courses({ paid }: { paid?: boolean }) {
     const time = mods.reduce((n, m) => n + mins(m), 0);
     const owned = tier === which || (which === "basic" && tier === "advanced");
     const view = (
-      <Link className={`btn big${owned || open ? " prim" : ""}`} href={`/courses/${p.id}`}>
+      <Link
+        href={`/courses/${p.id}`}
+        className={cn(
+          buttonVariants({ variant: owned || open ? "brand" : "outline", size: "lg" }),
+          "no-underline",
+        )}
+      >
         {owned ? t("continue") : t("viewLessons")}
       </Link>
     );
     return (
-      <article key={p.id} className={`course${which === "advanced" ? " adv" : ""}`}>
-        <div className="row">
-          <span className="ic">{p.icon}</span>
-          <div>
-            <div className="num">
-              <LevelTag lvl="A" />{which === "advanced" ? <LevelTag lvl="B" /> : null}
+      <Card key={p.id} className={cn("course", which === "advanced" && "adv")}>
+        <CardContent className="flex flex-col gap-3 p-0">
+          <div className="row">
+            <span className="ic">{p.icon}</span>
+            <div>
+              <div className="num">
+                <LevelTag lvl="A" />{which === "advanced" ? <LevelTag lvl="B" /> : null}
+              </div>
+              <h4>{p.title[lang]}</h4>
             </div>
-            <h4>{p.title[lang]}</h4>
           </div>
-        </div>
-        <p className="blurb">{p.blurb[lang]}</p>
-        <div className="meta">
-          <span>{mods.length} {t("lessonsN")}</span>
-          <span>{terms} {t("terms")}</span>
-          <span>~{time} {t("min")}</span>
-        </div>
-        <CourseProgress ids={p.mods} />
-        <div className="price">
-          <b>₪{p.price}</b>
-          <span>{t("payOnce")}</span>
-        </div>
-        <div className="cta">
+          <p className="blurb">{p.blurb[lang]}</p>
+          <div className="meta">
+            <span>{mods.length} {t("lessonsN")}</span>
+            <span>{terms} {t("terms")}</span>
+            <span>~{time} {t("min")}</span>
+          </div>
+          <CourseProgress ids={p.mods} />
+          <div className="price">
+            <b>₪{p.price}</b>
+            <span>{t("payOnce")}</span>
+          </div>
+        </CardContent>
+        <CardFooter className="cta border-0 bg-transparent p-0 pt-0">
           {owned ? (
-            <>{view}<span className="btn big">✓ {t("owned")}</span></>
+            <>
+              {view}
+              <Button variant="outline" size="lg" disabled>
+                ✓ {t("owned")}
+              </Button>
+            </>
           ) : open ? (
             view
           ) : !claims ? (
-            <><Link className="btn prim big" href="/login?next=/courses">{t("signInBuy")}</Link>{view}</>
+            <>
+              <Link
+                href="/login?next=/courses"
+                className={cn(buttonVariants({ variant: "brand", size: "lg" }), "no-underline")}
+              >
+                {t("signInBuy")}
+              </Link>
+              {view}
+            </>
           ) : (
             <>
               <BuyButton
@@ -76,8 +100,8 @@ export async function Courses({ paid }: { paid?: boolean }) {
               {view}
             </>
           )}
-        </div>
-      </article>
+        </CardFooter>
+      </Card>
     );
   };
 

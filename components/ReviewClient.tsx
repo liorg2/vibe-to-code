@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useApp } from "./Providers";
 import { MODULES, termKey } from "@/lib/course";
 import type { Level, Module, Term } from "@/lib/types";
@@ -50,18 +51,24 @@ export function ReviewClient({ allowed }: { allowed: Level[] }) {
         )}
       </div>
       <div className="fbar">
-        <button className="btn" type="button" onClick={() => { setCard((c) => c + 1); setFlipped(false); }}>
+        <Button
+          variant="outline"
+          type="button"
+          onClick={() => { setCard((c) => c + 1); setFlipped(false); }}
+        >
           {t("skip")} &rarr;
-        </button>
+        </Button>
         <span className="grow" />
-        <Link className="btn" href={`/lesson/${m.id}/${i}`}>{t("openSlide")}</Link>
-        <button
-          className="btn prim"
+        <Button variant="outline" nativeButton={false} render={<Link href={`/lesson/${m.id}/${i}`} />}>
+          {t("openSlide")}
+        </Button>
+        <Button
+          variant="brand"
           type="button"
           onClick={() => { toggleDone(k); setFlipped(false); setCard((c) => c + 1); }}
         >
           ✓ {t("got")}
-        </button>
+        </Button>
       </div>
     </>
   );

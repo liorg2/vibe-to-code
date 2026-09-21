@@ -1,9 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
 import { LevelFilter } from "./LevelTag";
 import { MODULES, termKey, mins } from "@/lib/course";
+
+const miniBar =
+  "mini mt-3.5 gap-0 [&_[data-slot=progress-track]]:h-[5px] [&_[data-slot=progress-track]]:rounded-full [&_[data-slot=progress-track]]:bg-[var(--line)] [&_[data-slot=progress-indicator]]:rounded-full [&_[data-slot=progress-indicator]]:bg-[var(--grad)]";
 
 /** One card per lesson of a course, numbered by its place in the whole syllabus. */
 export function LessonCards({ ids }: { ids: string[] }) {
@@ -29,7 +34,7 @@ export function LessonCards({ ids }: { ids: string[] }) {
                 </div>
               </div>
               <p>{m.blurb[lang]}</p>
-              <div className="mini"><i style={{ width: `${(d / shown.length) * 100}%` }} /></div>
+              <Progress value={(d / shown.length) * 100} className={cn(miniBar)} />
               <span className="cnt">{d}/{shown.length} {t("terms")}</span>
             </Link>
           );

@@ -19,7 +19,9 @@ export function ModuleHead({
     <>
       <div className="mhead">
         <div className="ic">{m.icon}</div>
-        <div><h2>{String(mi + 1).padStart(2, "0")}. {m.title[lang]}</h2></div>
+        <div>
+          <h2>{String(mi + 1).padStart(2, "0")}. {m.title[lang]}</h2>
+        </div>
         <div className="n">{n}</div>
       </div>
       <p className="mblurb">{m.blurb[lang]}</p>

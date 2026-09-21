@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useApp } from "./Providers";
 
 export function PromptBox({ id, text, label }: { id: string | number; text: string; label: string }) {
@@ -20,7 +21,9 @@ export function PromptBox({ id, text, label }: { id: string | number; text: stri
   return (
     <div className="promptbox">
       <div className="lbl">{label}</div>
-      <button className="btn copy" type="button" onClick={copy}>{msg}</button>
+      <Button className="copy" size="xs" variant="outline" type="button" onClick={copy}>
+        {msg}
+      </Button>
       <pre className="code" id={`p${id}`}>{text}</pre>
     </div>
   );

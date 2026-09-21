@@ -1,5 +1,6 @@
 "use client";
 
+import { Checkbox } from "@/components/ui/checkbox";
 import { useApp } from "./Providers";
 import { CHECKLIST } from "@/lib/course";
 import type { CheckItem } from "@/lib/types";
@@ -14,10 +15,9 @@ export function ChecklistClient() {
         {no ? (
           <span className="x">&times;</span>
         ) : (
-          <input
-            type="checkbox"
+          <Checkbox
             checked={ticked.has(k)}
-            onChange={(e) => toggleTicked(k, e.target.checked)}
+            onCheckedChange={(checked) => toggleTicked(k, checked === true)}
           />
         )}
         <span>{x.t[lang]}</span>

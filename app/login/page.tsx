@@ -5,7 +5,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { MODULES } from "@/lib/course";
 import { AppShell } from "@/components/AppShell";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { firebaseReady, getClientAuth, googleProvider } from "@/lib/firebase/client";
+import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -35,17 +38,23 @@ export default function LoginPage() {
 
   return (
     <AppShell showNav={false}>
-      <section className="slide login-card">
+      <Card className={cn("slide", "login-card")}>
+        <CardContent>
           <div className="kicker">Vibe → Code</div>
           <h2>Sign in to open lessons</h2>
           <p className="lede">
             Lessons are server-rendered and only available after Google sign-in. The home page stays public.
           </p>
           <div className="cta" style={{ marginTop: 24 }}>
-            <button className="btn prim big" type="button" onClick={signIn}>Sign in with Google</button>
-            <Link className="btn big" href="/">Back home</Link>
+            <Button variant="brand" size="lg" type="button" onClick={signIn}>
+              Sign in with Google
+            </Button>
+            <Button variant="outline" size="lg" nativeButton={false} render={<Link href="/" />}>
+              Back home
+            </Button>
           </div>
-      </section>
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

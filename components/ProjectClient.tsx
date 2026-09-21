@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { PromptBox } from "./PromptBox";
 import { useApp } from "./Providers";
 import { findTerm } from "@/lib/course";
@@ -120,14 +122,14 @@ export function ProjectClient({
                 disabled={open}
               />
               {!open ? (
-                <button
+                <Button
                   type="button"
-                  className="btn"
+                  variant="outline"
                   disabled={plan.trim().length < 12}
                   onClick={() => unlock(s.n)}
                 >
                   {t("planGateUnlock")}
-                </button>
+                </Button>
               ) : null}
               {!open && plan.trim().length < 12 ? (
                 <p className="hint">{t("planGateLocked")}</p>
@@ -144,10 +146,9 @@ export function ProjectClient({
                     const ck = `proj:${s.n}:v${i}`;
                     return (
                       <label key={ck} className="practice-check">
-                        <input
-                          type="checkbox"
+                        <Checkbox
                           checked={ticked.has(ck)}
-                          onChange={(e) => toggleTicked(ck, e.target.checked)}
+                          onCheckedChange={(checked) => toggleTicked(ck, checked === true)}
                         />
                         <span>{item[lang]}</span>
                       </label>

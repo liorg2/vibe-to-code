@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useApp } from "./Providers";
 
 /** Plan → ask AI (below) → verify cues. No per-term content. */
@@ -30,10 +31,9 @@ export function PracticeLoop() {
         <div className="lbl">{t("practiceVerifyTitle")}</div>
         {cues.map((label, i) => (
           <label key={i} className="practice-check">
-            <input
-              type="checkbox"
+            <Checkbox
               checked={checks[i]}
-              onChange={() =>
+              onCheckedChange={() =>
                 setChecks((prev) => prev.map((v, j) => (j === i ? !v : v)))
               }
             />

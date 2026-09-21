@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 /** Posts to the billing route and follows the hosted Paddle checkout it hands back. */
 export function BuyButton({
@@ -19,8 +20,9 @@ export function BuyButton({
 
   return (
     <>
-      <button
-        className="btn prim big"
+      <Button
+        variant="brand"
+        size="lg"
         type="button"
         disabled={busy || disabled}
         onClick={async () => {
@@ -41,7 +43,7 @@ export function BuyButton({
         }}
       >
         {busy ? "Opening checkout…" : label}
-      </button>
+      </Button>
       {err ? <p className="hint">{err}</p> : null}
     </>
   );

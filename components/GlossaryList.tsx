@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { Input } from "@/components/ui/input";
 import { useApp } from "./Providers";
 import { LevelFilter, LevelTag } from "./LevelTag";
 import { termKey } from "@/lib/course";
@@ -48,7 +49,7 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
     <>
       <LevelFilter />
       <div className="gsearch">
-        <input
+        <Input
           type="search"
           value={raw}
           onChange={(e) => setRaw(e.target.value)}

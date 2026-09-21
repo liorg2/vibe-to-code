@@ -3,6 +3,7 @@
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useApp } from "./Providers";
+import { Button } from "@/components/ui/button";
 import { firebaseReady, getClientAuth, googleProvider } from "@/lib/firebase/client";
 
 export function AuthButton() {
@@ -34,9 +35,9 @@ export function AuthButton() {
   return (
     <>
       <span id="who">{user ? user.displayName || user.email || "" : ""}</span>
-      <button className="btn" type="button" onClick={() => (user ? signOutAll() : signIn())}>
+      <Button variant="outline" type="button" onClick={() => (user ? signOutAll() : signIn())}>
         {user ? "Sign out" : "Sign in"}
-      </button>
+      </Button>
     </>
   );
 }

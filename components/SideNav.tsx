@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
 import { LevelFilter, LevelTag } from "./LevelTag";
 import {
@@ -62,7 +64,7 @@ export function SideNav() {
   const navLink = (href: string, icon: string, label: string, cnt?: string) => {
     const on = pathname === href || (href !== "/" && pathname.startsWith(href));
     return (
-      <Link href={href} className={on ? "on" : ""}>
+      <Link href={href} className={cn(on && "on")}>
         <span className="ic">{icon}</span>
         <span>{label}</span>
         {cnt ? <span className="cnt">{cnt}</span> : null}
@@ -77,10 +79,10 @@ export function SideNav() {
     const open = openId === m.id;
     const here = open && activeLesson === m.id;
     return (
-      <div key={m.id} className={`nav-lesson${open ? " open" : ""}`}>
+      <div key={m.id} className={cn("nav-lesson", open && "open")}>
         <Link
           href={`/lesson/${m.id}/overview`}
-          className={`nav-lesson-h${open ? " on" : ""}`}
+          className={cn("nav-lesson-h", open && "on")}
           aria-expanded={open}
           onClick={headerClick(m.id, openId, setOpenId)}
         >
@@ -89,24 +91,27 @@ export function SideNav() {
           <span className="cnt">{d}/{shown.length}</span>
         </Link>
         <div className="nav-subs">
-          <Link href={`/lesson/${m.id}/overview`} className={here && sub === "overview" ? "on" : ""}>
+          <Link href={`/lesson/${m.id}/overview`} className={cn(here && sub === "overview" && "on")}>
             {t("overview")}
           </Link>
           {shown.map(({ tm, i }) => (
             <Link
               key={i}
               href={`/lesson/${m.id}/${i}`}
-              className={`${here && activeTerm === i ? "on" : ""}${done.has(termKey(m, i)) ? " done" : ""}`}
+              className={cn(
+                here && activeTerm === i && "on",
+                done.has(termKey(m, i)) && "done",
+              )}
             >
               <LevelTag lvl={tm.lvl} />
               {tm.t[lang]}
             </Link>
           ))}
-          <Link href={`/lesson/${m.id}/summary`} className={here && sub === "summary" ? "on" : ""}>
+          <Link href={`/lesson/${m.id}/summary`} className={cn(here && sub === "summary" && "on")}>
             {t("summary")}
           </Link>
           {QUIZ[m.id] ? (
-            <Link href={`/lesson/${m.id}/quiz`} className={here && sub === "quiz" ? "on" : ""}>
+            <Link href={`/lesson/${m.id}/quiz`} className={cn(here && sub === "quiz" && "on")}>
               {t("test")}
             </Link>
           ) : null}
@@ -132,10 +137,10 @@ export function SideNav() {
         {PATHS.map((p) => {
           const open = openCourse === p.id;
           return (
-            <div key={p.id} className={`nav-course${open ? " open" : ""}`}>
+            <div key={p.id} className={cn("nav-course", open && "open")}>
               <Link
                 href={`/courses/${p.id}`}
-                className={`nav-lesson-h${open ? " on" : ""}`}
+                className={cn("nav-lesson-h", open && "on")}
                 aria-expanded={open}
                 onClick={headerClick(p.id, openCourse, setOpenCourse)}
               >
@@ -149,13 +154,13 @@ export function SideNav() {
             </div>
           );
         })}
-        <hr />
+        <Separator className="my-2 mx-1.5" />
         {PROJECT?.id && navLink("/project", PROJECT.icon, PROJECT.title[lang])}
         {ARCHITECTURES?.id ? (
-          <div className={`nav-lesson${openId === "architectures" ? " open" : ""}`}>
+          <div className={cn("nav-lesson", openId === "architectures" && "open")}>
             <Link
               href="/architectures"
-              className={`nav-lesson-h${openId === "architectures" ? " on" : ""}`}
+              className={cn("nav-lesson-h", openId === "architectures" && "on")}
               aria-expanded={openId === "architectures"}
               onClick={headerClick("architectures", openId, setOpenId)}
             >
@@ -168,7 +173,7 @@ export function SideNav() {
                 <Link
                   key={a.id}
                   href={`/architectures/${a.id}`}
-                  className={pathname === `/architectures/${a.id}` ? "on" : ""}
+                  className={cn(pathname === `/architectures/${a.id}` && "on")}
                 >
                   {a.title[lang]}
                 </Link>

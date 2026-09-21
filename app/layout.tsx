@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Heebo, JetBrains_Mono } from "next/font/google";
+import { Inter, Heebo, JetBrains_Mono, Geist } from "next/font/google";
 import { getCourse } from "@/lib/course";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
 const { UI } = getCourse();
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-sans",
-  display: "swap",
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
   weight: ["400", "500", "700", "800"],
@@ -38,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       dir="ltr"
       data-theme="dark"
-      className={`${inter.variable} ${heebo.variable} ${jetbrainsMono.variable}`}
+      className={cn(heebo.variable, jetbrainsMono.variable, "font-sans", geist.variable)}
     >
       <body dir="ltr" suppressHydrationWarning>
         {/* restore the nav toggle before paint, so a refresh doesn't flash the wrong state */}

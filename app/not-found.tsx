@@ -1,13 +1,14 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <div className="wrap">
+    <div className="relative z-[1]">
       <div className="empty">
         <p>Page not found.</p>
-        <Link className="btn" href="/">
+        <Button variant="outline" nativeButton={false} render={<Link href="/" />}>
           Back home
-        </Link>
+        </Button>
       </div>
     </div>
   );

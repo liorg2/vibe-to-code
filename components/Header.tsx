@@ -3,9 +3,15 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Progress as ProgressPrimitive } from "@base-ui/react/progress";
+import { ProgressIndicator, ProgressTrack } from "@/components/ui/progress";
 import { useApp } from "./Providers";
 import { AuthButton } from "./AuthButton";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { MODULES, totalTerms } from "@/lib/course";
+import { cn } from "@/lib/utils";
 import type { Lang } from "@/lib/types";
 
 export function Header({ showHero, showNav }: { showHero: boolean; showNav: boolean }) {
@@ -23,8 +29,8 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
       <header>
         <div className="bar">
           {showNav && (
-            <button
-              className="btn"
+            <Button
+              variant="outline"
               id="navtoggle"
               type="button"
               title={t("lessons")}
@@ -37,39 +43,51 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
               }}
             >
               ☰
-            </button>
+            </Button>
           )}
           <Link className="logo" href="/">
             <span className="dot">◆</span>
             <span id="brand">{t("brand")}</span>
           </Link>
           <div className="spacer" />
-          <input
+          <Input
             id="search"
             placeholder={t("search")}
             value={q}
             onChange={(e) => onSearch(e.target.value)}
             autoComplete="off"
+            className="w-[200px]"
           />
-          <div className="seg">
+          <ToggleGroup
+            className="seg"
+            variant="outline"
+            spacing={0}
+            value={[lang]}
+            onValueChange={(vals) => vals[0] && setLang(vals[0] as Lang)}
+            aria-label="Language"
+          >
             {(["en", "he"] as Lang[]).map((l) => (
-              <button
+              <ToggleGroupItem
                 key={l}
-                type="button"
+                value={l}
                 data-lang={l}
                 aria-pressed={lang === l}
-                onClick={() => setLang(l)}
+                className="font-semibold text-[var(--tx2)] data-pressed:bg-[var(--acc)] data-pressed:text-white"
               >
                 {l === "en" ? "EN" : "עב"}
-              </button>
+              </ToggleGroupItem>
             ))}
-          </div>
+          </ToggleGroup>
           <AuthButton />
-          <button className="btn" id="theme" type="button" title="Theme" onClick={toggleTheme}>
+          <Button variant="outline" id="theme" type="button" title="Theme" onClick={toggleTheme}>
             ◐
-          </button>
+          </Button>
         </div>
-        <div className="progbar"><i id="pbar" style={{ width: `${progressPct}%` }} /></div>
+        <ProgressPrimitive.Root value={progressPct} className={cn("progbar", "block h-[3px]")}>
+          <ProgressTrack className="h-[3px] rounded-none bg-[var(--line)]">
+            <ProgressIndicator id="pbar" className="bg-[var(--grad)]" />
+          </ProgressTrack>
+        </ProgressPrimitive.Root>
       </header>
 
       {showHero && (
@@ -86,9 +104,15 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
           </h1>
           <p id="tagline">{t("tagline")}</p>
           <div className="cta">
-            <Link className="btn prim big" href={`/lesson/${MODULES[0].id}/overview`} id="startBtn">
+            <Button
+              variant="brand"
+              size="lg"
+              id="startBtn"
+              nativeButton={false}
+              render={<Link href={`/lesson/${MODULES[0].id}/overview`} />}
+            >
               {t("start")}
-            </Link>
+            </Button>
           </div>
           <p id="heroNote" style={{ fontSize: 15, marginTop: 26 }}>{t("heroNote")}</p>
         </div>

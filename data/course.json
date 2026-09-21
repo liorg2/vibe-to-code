@@ -3363,15 +3363,79 @@
       "en": "\"I'll be more careful\" is not an action item. \"Deploys now require a passing health check\" is. Even solo, write one — you are the team that forgets.",
       "he": "״אני אהיה יותר זהיר״ זה לא פריט פעולה. ״דיפלויים דורשות מעכשיו בדיקת תקינות עוברת״ כן. גם לבד, תכתוב אחד — אתה הצוות ששוכח."
      }
+    },
+    {
+     "k": "pageview-vs-event",
+     "lvl": "B",
+     "t": {
+      "en": "Pageview vs event",
+      "he": "צפיית עמוד מול אירוע"
+     },
+     "d": {
+      "en": "A pageview counts a screen being loaded; an event records something a person actually did - created a contact, ran a search, hit save. Traffic versus behaviour.",
+      "he": "צפיית עמוד סופרת מסך שנטען; אירוע מתעד משהו שאדם באמת עשה - יצר איש קשר, הריץ חיפוש, לחץ שמירה. תנועה מול התנהגות."
+     },
+     "w": {
+      "en": "In a single-page app the browser loads once, so pageviews stop counting the moment the user navigates - you fire them on route change yourself. And a tracker on every button is not analytics; four named events you agreed on in advance is.",
+      "he": "באפליקציית עמוד יחיד הדפדפן נטען פעם אחת, אז צפיות העמוד מפסיקות להיספר ברגע שהמשתמש מנווט - אתה שולח אותן בעצמך בכל החלפת מסלול. ומעקב על כל כפתור הוא לא אנליטיקס; ארבעה אירועים בעלי שם שהוסכמו מראש - כן."
+     }
+    },
+    {
+     "k": "funnel-and-drop-off",
+     "lvl": "B",
+     "t": {
+      "en": "Funnel & drop-off",
+      "he": "משפך ונשירה"
+     },
+     "d": {
+      "en": "An ordered list of steps - landed, searched, opened a record, saved - with how many people reached each one. The number that matters is the biggest gap between two neighbouring steps.",
+      "he": "רשימה מסודרת של שלבים - נחת, חיפש, פתח רשומה, שמר - עם כמה אנשים הגיעו לכל אחד. המספר שחשוב הוא הפער הגדול ביותר בין שני שלבים סמוכים."
+     },
+     "w": {
+      "en": "A funnel turns \"people do not use it\" into \"eighty percent search and four percent open a result\" - which is a bug you can go and find. Without it you redesign the wrong screen.",
+      "he": "משפך הופך את ״אנשים לא משתמשים בזה״ ל״שמונים אחוז מחפשים וארבעה אחוז פותחים תוצאה״ - וזה באג שאפשר ללכת ולמצוא. בלעדיו אתה מעצב מחדש את המסך הלא נכון."
+     }
+    },
+    {
+     "k": "retention-and-cohort",
+     "lvl": "B",
+     "t": {
+      "en": "Retention & cohort",
+      "he": "שימור וקוהורטה"
+     },
+     "d": {
+      "en": "Group people by the week they first arrived - that group is a cohort - then ask how many of them came back in week one, two, four. A curve per group, not one total.",
+      "he": "מקבצים אנשים לפי השבוע שבו הגיעו לראשונה - הקבוצה הזו היא קוהורטה - ואז שואלים כמה מהם חזרו בשבוע הראשון, השני, הרביעי. עקומה לכל קבוצה, לא סכום אחד."
+     },
+     "w": {
+      "en": "Total users only goes up, so it can never tell you anything is wrong. Retention can: it is the one number that says whether the thing you built is worth coming back to.",
+      "he": "סך המשתמשים רק עולה, ולכן הוא לעולם לא יגיד לך שמשהו לא בסדר. שימור כן: זה המספר היחיד שאומר אם שווה לחזור למה שבנית."
+     }
+    },
+    {
+     "k": "tracking-without-pii",
+     "lvl": "B",
+     "t": {
+      "en": "Tracking without PII",
+      "he": "מדידה בלי מידע מזהה"
+     },
+     "d": {
+      "en": "Events carry what happened and the context needed to act - result_count, stage, plan, was_empty - and never the person's name, email, note text or raw search query.",
+      "he": "אירועים נושאים את מה שקרה ואת ההקשר שנדרש כדי לפעול - result_count, stage, plan, was_empty - ולעולם לא את השם, האימייל, טקסט ההערה או שאילתת החיפוש הגולמית של האדם."
+     },
+     "w": {
+      "en": "Analytics is the easiest place in an app to leak customer data to a third party by accident, and the hardest to un-leak. Also assume the script is blocked for a quarter of your users - nothing on the page may depend on it loading.",
+      "he": "אנליטיקס הוא המקום הקל ביותר באפליקציה לדלוף בו נתוני לקוחות לצד שלישי בטעות, והקשה ביותר להחזיר. בנוסף, תניח שהסקריפט חסום אצל רבע מהמשתמשים - שום דבר בעמוד לא יכול להיות תלוי בטעינה שלו."
+     }
     }
    ],
    "overview": {
-    "en": "Your app is running somewhere you cannot see. These are the instruments that tell you what it is doing before a user does — logs you can search, numbers you can graph, alerts that wake the right person, and the habit of learning from the bad night.",
-    "he": "האפליקציה שלכם רצה איפשהו שאתם לא רואים. אלה המכשירים שאומרים לכם מה היא עושה לפני שמשתמש אומר — לוגים שאפשר לחפש, מספרים שאפשר לגרף, התראות שמעירות את האדם הנכון, וההרגל ללמוד מהלילה הרע."
+    "en": "Your app is running somewhere you cannot see. These are the instruments that tell you what it is doing before a user does — logs you can search, numbers you can graph, alerts that wake the right person, and the habit of learning from the bad night. The last four are a different instrument for a different question: the first ones tell you whether it broke, these tell you whether it worked.",
+    "he": "האפליקציה שלכם רצה איפשהו שאתם לא רואים. אלה המכשירים שאומרים לכם מה היא עושה לפני שמשתמש אומר — לוגים שאפשר לחפש, מספרים שאפשר לגרף, התראות שמעירות את האדם הנכון, וההרגל ללמוד מהלילה הרע. ארבעת האחרונים הם מכשיר אחר לשאלה אחרת: הראשונים אומרים לכם אם זה נשבר, אלה אומרים לכם אם זה עבד."
    },
    "summary": {
-    "en": "Log structured, not sentences. Measure the few numbers users feel. Tie one request across services with a correlation id. Alert on symptoms, not causes, and write the postmortem without blame — it is the cheapest lesson you will ever buy.",
-    "he": "לוגים מובנים, לא משפטים. מודדים את המספרים הבודדים שמשתמשים מרגישים. קושרים בקשה אחת בין שירותים עם correlation id. מתריעים על סימפטומים, לא סיבות, וכותבים פוסטמורטם בלי האשמות — זה השיעור הזול ביותר שתקנו."
+    "en": "Log structured, not sentences. Measure the few numbers users feel. Tie one request across services with a correlation id. Alert on symptoms, not causes, and write the postmortem without blame — it is the cheapest lesson you will ever buy. And separately from all of it: count pageviews and a handful of named events, so you also know whether anyone used what you shipped.",
+    "he": "לוגים מובנים, לא משפטים. מודדים את המספרים הבודדים שמשתמשים מרגישים. קושרים בקשה אחת בין שירותים עם correlation id. מתריעים על סימפטומים, לא סיבות, וכותבים פוסטמורטם בלי האשמות — זה השיעור הזול ביותר שתקנו. ובנפרד מכל זה: תספרו צפיות עמוד וקומץ אירועים בעלי שם, כדי שתדעו גם אם מישהו בכלל השתמש במה ששחררתם."
    }
   },
   {
@@ -4797,6 +4861,22 @@
   "Demo vs production": {
    "en": "Demos hide auth holes, empty-data paths, concurrency, and cost. Production readiness means: ownership checks on the server, secrets off the client, migrations forward-only, alerts on real failures, and no forgotten cloud resources. Treat applause as a milestone, not a ship gate.",
    "he": "דמו מסתיר חורי auth, נתיבי דאטה ריק, מקביליות ועלות. מוכנות לפרוד: בדיקות בעלות בשרת, סודות מחוץ ללקוח, migrations קדימה, התראות על כשלים אמיתיים, בלי משאבי ענן שנשכחו. מחיאות כפיים הן אבן דרך, לא שער שיגור."
+  },
+  "Pageview vs event": {
+   "en": "Analytics has exactly two primitives and everything else is built from them. A pageview says a screen was displayed: url, referrer, timestamp. An event says a person did something: a name you chose (contact_created, search_performed) plus a few properties describing it. Pageviews map the shape of traffic - which pages get visited, where people arrive from, where they land last before leaving. Events map behaviour - whether the core action your product exists for is actually happening.\n\nThe trap is the single-page app. In a classic site every click is a fresh document load and the analytics snippet runs again on its own. In React, Next.js, Vue or Svelte the browser loads the page once and the router swaps content without a reload, so the snippet never runs again. Unless you explicitly send a pageview on every route change, a user who visits nine screens is recorded as one. Most vendors ship a hook for exactly this; wire it once at the root of the app, and make sure it fires after the URL has changed, not before, or every pageview is labelled with the previous page.\n\nEvents go wrong in the other direction: too many. A track() on every button produces four hundred event names, no two teams meaning the same thing by button_clicked, and nothing you can put on a dashboard. Decide the handful of actions that define your product before writing any of them, name them verb_noun in the past tense, and put every call behind one small module so the vendor SDK is imported in exactly one file. Renaming an event later does not rename the year of history behind it.",
+   "he": "לאנליטיקס יש בדיוק שתי אבני יסוד, וכל השאר נבנה מהן. צפיית עמוד אומרת שמסך הוצג: url, מקור הגעה, חותמת זמן. אירוע אומר שאדם עשה משהו: שם שבחרת (contact_created, search_performed) ועוד כמה מאפיינים שמתארים אותו. צפיות עמוד ממפות את צורת התנועה - אילו עמודים מבקרים בהם, מאיפה אנשים מגיעים, איפה הם נמצאים לאחרונה לפני שהם עוזבים. אירועים ממפים התנהגות - האם הפעולה המרכזית שבגללה המוצר קיים באמת קורית.\n\nהמלכודת היא אפליקציית עמוד יחיד. באתר קלאסי כל קליק הוא טעינת מסמך חדשה וקטע האנליטיקס רץ שוב מעצמו. ב-React, ב-Next.js, ב-Vue או ב-Svelte הדפדפן טוען את העמוד פעם אחת והראוטר מחליף תוכן בלי רענון, כך שהקטע לא רץ שוב לעולם. אלא אם אתה שולח צפיית עמוד במפורש בכל החלפת מסלול, משתמש שביקר בתשעה מסכים נרשם כאחד. לרוב הספקים יש hook בדיוק לזה; חבר אותו פעם אחת בשורש האפליקציה, וודא שהוא נורה אחרי שה-URL השתנה ולא לפני, אחרת כל צפייה מתויגת בעמוד הקודם.\n\nאירועים מתקלקלים בכיוון ההפוך: יותר מדי. track() על כל כפתור מייצר ארבע מאות שמות אירועים, שאין שני צוותים שמתכוונים לאותו דבר ב-button_clicked, ושום דבר שאפשר לשים בדשבורד. תחליט על קומץ הפעולות שמגדירות את המוצר לפני שאתה כותב אחת מהן, תקרא להן פועל_שם-עצם בזמן עבר, ותשים כל קריאה מאחורי מודול קטן אחד כך שה-SDK של הספק מיובא בקובץ אחד בדיוק. שינוי שם של אירוע בדיעבד לא משנה את שם ההיסטוריה של שנה שמאחוריו."
+  },
+  "Funnel & drop-off": {
+   "en": "A funnel is an ordered list of steps you expect a user to pass through, with the count that reached each one: 1,000 landed, 820 searched, 240 opened a result, 31 saved something. Drop-off is the gap between two neighbours, and it is the only part worth looking at. The top number is traffic, the bottom number is your conversion rate, and neither tells you what to do on Monday; 820 to 240 does.\n\nFunnels are built from the events you already send, which is why event names have to be decided before you need them. Two details decide whether the numbers mean anything. First, the window: is a user counted as converting if they search today and save next week, or must it be one session? Pick one, write it down, and keep it, because the same funnel with a different window is a different chart and people will quote both. Second, the denominator: a funnel over all visitors mixes bots, your own team and people who landed by mistake - segment to real signed-in users before you draw conclusions about your product.\n\nThe common failure is fixing the largest absolute drop instead of the most surprising one. Ninety percent of visitors leaving a marketing page is normal; twenty percent of people who opened a record failing to save is not, and it is probably a broken validation message nobody reported. Look for the step where the number is worse than you would have guessed, then go and do the thing yourself in the product while watching the events arrive. Analytics tells you which screen is bleeding; it never tells you why - session recordings, support tickets and a five-minute conversation do that.",
+   "he": "משפך הוא רשימה מסודרת של שלבים שאתה מצפה שמשתמש יעבור בהם, עם הספירה שהגיעה לכל אחד: 1,000 נחתו, 820 חיפשו, 240 פתחו תוצאה, 31 שמרו משהו. נשירה היא הפער בין שני שכנים, והיא החלק היחיד ששווה להסתכל עליו. המספר העליון הוא תנועה, המספר התחתון הוא שיעור ההמרה, ואף אחד מהם לא אומר לך מה לעשות ביום שני; 820 ל-240 כן.\n\nמשפכים נבנים מהאירועים שאתה כבר שולח, ולכן חייבים להחליט על שמות האירועים לפני שצריך אותם. שני פרטים קובעים אם למספרים יש משמעות. ראשית, החלון: האם משתמש נחשב כמי שהמיר אם הוא חיפש היום ושמר בשבוע הבא, או שזה חייב להיות באותו סשן? תבחר אחד, תכתוב אותו, ותישאר איתו, כי אותו משפך עם חלון אחר הוא גרף אחר ואנשים יצטטו את שניהם. שנית, המכנה: משפך על כל המבקרים מערבב בוטים, את הצוות שלך ואנשים שנחתו בטעות - תסנן למשתמשים מחוברים אמיתיים לפני שאתה מסיק מסקנות על המוצר.\n\nהכישלון הנפוץ הוא לתקן את הנשירה הגדולה ביותר במספרים המוחלטים במקום את המפתיעה ביותר. תשעים אחוז מהמבקרים שעוזבים עמוד שיווקי זה נורמלי; עשרים אחוז מאלה שפתחו רשומה ולא הצליחו לשמור זה לא, וכנראה מדובר בהודעת ולידציה שבורה שאף אחד לא דיווח עליה. תחפש את השלב שבו המספר גרוע ממה שהיית מנחש, ואז לך ותעשה את הפעולה בעצמך במוצר בזמן שאתה רואה את האירועים מגיעים. אנליטיקס אומר לך איזה מסך מדמם; הוא אף פעם לא אומר למה - הקלטות סשן, פניות תמיכה ושיחה של חמש דקות עושות את זה."
+  },
+  "Retention & cohort": {
+   "en": "A cohort is a group of users bound by when they first showed up: everyone who signed up in the week of 3 March. Retention asks, for each cohort, how many were still active one week later, two weeks, four. Plotted as a row per cohort you get a triangle chart, and the shape of it is the single most honest picture of a product. A curve that flattens - say 40% still there at week four and still 38% at week eight - means you built something people keep. A curve that decays to zero means you built a demo that people try once, and no amount of new traffic fixes it, because a leaking bucket does not care how fast you pour.\n\nCohorts also let you see the effect of your own work. If the week-6 cohort retains better than the week-2 cohort, whatever shipped in between helped; a single overall retention number would have averaged that away. The same trick works for anything else with a start date: contacts imported, plans upgraded, teams invited.\n\nTwo decisions make or break it. What counts as active - logging in is a weak signal, performing the core action is a strong one, so define it as the thing your product exists for and not as a session. And which calendar you use: weekly buckets for a tool people use weekly, monthly for something occasional, daily only for something genuinely habitual. For a small project with tens of users the chart is too noisy to trust week to week; the value is not the precise percentage, it is noticing that the line does, or does not, ever go flat.",
+   "he": "קוהורטה היא קבוצת משתמשים שמאוגדת לפי מתי הופיעה לראשונה: כל מי שנרשם בשבוע של ה-3 במרץ. שימור שואל, לכל קוהורטה, כמה עדיין היו פעילים שבוע אחרי, שבועיים, ארבעה. כשמציירים שורה לכל קוהורטה מקבלים גרף משולש, והצורה שלו היא התמונה הכי כנה שיש על מוצר. עקומה שמתיישרת - נניח 40% עדיין שם בשבוע הרביעי ועדיין 38% בשבוע השמיני - אומרת שבנית משהו שאנשים נשארים איתו. עקומה שדועכת לאפס אומרת שבנית הדגמה שאנשים מנסים פעם אחת, ושום כמות תנועה חדשה לא תתקן את זה, כי לדלי מחורר לא משנה כמה מהר אתה מוזג.\n\nקוהורטות גם מאפשרות לראות את ההשפעה של העבודה שלך. אם הקוהורטה של שבוע 6 משתמרת טוב יותר מזו של שבוע 2, מה ששוחרר באמצע עזר; מספר שימור כולל אחד היה ממצע את זה החוצה. אותו טריק עובד לכל דבר אחר עם תאריך התחלה: אנשי קשר שיובאו, מנויים ששודרגו, צוותים שהוזמנו.\n\nשתי החלטות קובעות אם זה שווה משהו. מה נחשב פעיל - התחברות היא סימן חלש, ביצוע הפעולה המרכזית הוא סימן חזק, אז תגדיר את זה כדבר שבגללו המוצר קיים ולא כסשן. ובאיזה לוח שנה אתה משתמש: דליים שבועיים לכלי שמשתמשים בו שבועית, חודשיים למשהו מזדמן, יומיים רק למשהו הרגלי באמת. בפרויקט קטן עם עשרות משתמשים הגרף רועש מכדי לסמוך עליו משבוע לשבוע; הערך הוא לא האחוז המדויק, אלא לשים לב שהקו מתיישר, או לא מתיישר, אי פעם."
+  },
+  "Tracking without PII": {
+   "en": "An analytics event should describe what happened, not who it happened to. search_performed with {result_count: 0, filter: \"stage\"} is useful forever. search_performed with {query: \"john@acme.com\"} has just copied a customer's email address into a third party's database, and it will sit in their logs, their backups and their support tooling long after you delete the event. The rule that survives contact with a real codebase: properties are counts, enums, booleans and durations - never free text the user typed, never names, emails, phone numbers, note bodies or file names. If you need to tie events to a person, send your own opaque user id and nothing else; the vendor does not need the email to build a funnel.\n\nThere are three more obligations that people discover late. Consent: in the EU and UK, non-essential analytics needs consent before the script loads - not a banner that appears while it is already reporting. Blocking: a large share of users run an ad blocker or a browser that kills third-party trackers, so your numbers are a sample, not a census, and more importantly your page must render and your saves must succeed with the script never loading at all. Wrap the tracker so a failure inside it can never throw into your UI. Third, retention of the data itself: analytics is the one place a small project quietly accumulates years of personal data with no policy, so set a deletion window when you set it up.\n\nThe safest architectures put distance between your users and the vendor: first-party or server-side event collection, a self-hosted option like Plausible or Umami, or Vercel's own analytics which is cookie-less by design. Whatever you pick, write down the complete list of properties you send, and review it the day someone adds an event in a hurry.",
+   "he": "אירוע אנליטיקס צריך לתאר מה קרה, לא למי זה קרה. search_performed עם {result_count: 0, filter: \"stage\"} שימושי לנצח. search_performed עם {query: \"john@acme.com\"} בדיוק העתיק כתובת אימייל של לקוח למסד נתונים של צד שלישי, והיא תשב אצלו בלוגים, בגיבויים ובכלי התמיכה הרבה אחרי שתמחק את האירוע. הכלל ששורד מפגש עם קוד אמיתי: מאפיינים הם ספירות, ערכים מתוך רשימה סגורה, בוליאנים ומשכי זמן - אף פעם לא טקסט חופשי שהמשתמש הקליד, אף פעם לא שמות, אימיילים, טלפונים, גוף הערות או שמות קבצים. אם אתה חייב לקשור אירועים לאדם, שלח מזהה משתמש אטום משלך ותו לא; הספק לא צריך את האימייל כדי לבנות משפך.\n\nיש עוד שלוש חובות שאנשים מגלים מאוחר. הסכמה: באיחוד האירופי ובבריטניה אנליטיקס לא-חיוני דורש הסכמה לפני שהסקריפט נטען - לא באנר שמופיע בזמן שהוא כבר מדווח. חסימה: חלק גדול מהמשתמשים מריצים חוסם פרסומות או דפדפן שהורג מעקב צד שלישי, כך שהמספרים שלך הם מדגם ולא מפקד, וחשוב מזה - העמוד חייב להיטען והשמירות חייבות להצליח גם כשהסקריפט לא נטען כלל. עטוף את הטראקר כך שכשל בתוכו לעולם לא ייזרק ל-UI. שלישית, שמירת הנתונים עצמם: אנליטיקס הוא המקום היחיד שבו פרויקט קטן צובר בשקט שנים של מידע אישי בלי שום מדיניות, אז קבע חלון מחיקה כבר בהתקנה.\n\nהארכיטקטורות הבטוחות ביותר שמות מרחק בין המשתמשים שלך לספק: איסוף אירועים מצד ראשון או מהשרת, אפשרות באחסון עצמי כמו Plausible או Umami, או האנליטיקס של Vercel שהוא חסר עוגיות בתכנון. מה שתבחר, תכתוב את הרשימה המלאה של המאפיינים שאתה שולח, ותעבור עליה ביום שמישהו מוסיף אירוע בחיפזון."
   }
  },
  "EXAMPLES": {
@@ -6157,6 +6237,34 @@
     "he": "צ'קליסט דמו ≠ שיגור"
    },
    "code": "# Demo passed: happy path create contact\n# Still open:\n# [ ] other user cannot read my contacts (API)\n# [ ] no secrets in client bundle\n# [ ] alert on 5xx\n"
+  },
+  "Pageview vs event": {
+   "cap": {
+    "en": "One loads, one happens",
+    "he": "אחד נטען, אחד קורה"
+   },
+   "code": "// pageview - fires on load AND on every client-side navigation\nuseEffect(() => { track.pageview(pathname) }, [pathname])   // <- the dependency is the whole trick\n\n// event - four names, decided before any of them was written\ntrack(\"contact_created\",  { stage: \"new\", has_company: true })\ntrack(\"search_performed\", { result_count: 0, filter: \"stage\" })\ntrack(\"note_added\",       { length_bucket: \"short\" })\ntrack(\"contact_edited\",   { field: \"stage\", from: \"new\", to: \"won\" })\n\n# before the [pathname] dependency existed:\n#   9 screens visited  ->  1 pageview recorded  ->  \"nobody uses the app\"\n#\n# and the version that is not analytics, it is noise:\n#   track(\"button_clicked\", { id: \"btn-3\" })   x 400 across the codebase"
+  },
+  "Funnel & drop-off": {
+   "cap": {
+    "en": "The gap, not the top",
+    "he": "הפער, לא הפסגה"
+   },
+   "code": "signed-in users, 7-day window, week of 3 Mar\n\n  landed              1,000  ####################\n  searched              820  ################        -18%\n  opened a contact      240  #####                   -71%   <- go look here\n  added a note           31  #                       -87%   <- and here\n\n# -18% at the top is normal. -71% means search results are not clickable,\n# or the result rows do not look like links. That is a bug, not a growth problem.\n#\n# what this chart cannot tell you: WHY. open the app, do the four steps\n# yourself, and watch the events land."
+  },
+  "Retention & cohort": {
+   "cap": {
+    "en": "The triangle that does not lie",
+    "he": "המשולש שלא משקר"
+   },
+   "code": "cohort        users   wk1    wk2    wk4    wk8\n03 Mar          142   38%    29%    24%    23%    <- flattens: they stayed\n10 Mar          210   41%    31%    26%    25%\n17 Mar          188   44%    36%    31%     -     <- better: search shipped 19 Mar\n24 Mar          164   12%     4%     1%     -     <- what did we ship that week?\n\n# active = performed the core action, not \"logged in\"\n# a flat tail at any height beats a high week-1 that decays to zero\n# total users went up every single one of these weeks - it told you nothing"
+  },
+  "Tracking without PII": {
+   "cap": {
+    "en": "What leaves the browser",
+    "he": "מה יוצא מהדפדפן"
+   },
+   "code": "// NO - this is a customer's data now living in a vendor's backups\ntrack(\"search_performed\", { query: \"john@acme.com\" })\ntrack(\"note_added\", { text: note.body, contact: contact.email })\n\n// YES - same questions answerable, nothing personal leaves\ntrack(\"search_performed\", { result_count: 0, filter: \"stage\", q_len: 14 })\ntrack(\"note_added\", { length_bucket: \"short\", contact_stage: \"meeting\" })\n\n// and the wrapper, so a blocked script can never break a page\nexport function track(name, props) {\n  try { window.va?.track(name, props) } catch { /* blocked or offline */ }\n}\n\n# assume ~25% of users never load it at all: your numbers are a sample\n# consent before load in the EU - not a banner over a script already reporting"
   }
  },
  "QUIZ": {
@@ -9502,6 +9610,35 @@
      "en": "Observability without redaction leaks the customer. Scrub secrets and PII.",
      "he": "Observability בלי redaction דולף את הלקוח. מנקים סודות ו-PII."
     }
+   },
+   {
+    "q": {
+     "en": "You added analytics to your Next.js app. Traffic looks flat at one pageview per visitor, though you know people click through five or six screens. What is wrong?",
+     "he": "הוספת אנליטיקס לאפליקציית Next.js. התנועה נראית תקועה על צפיית עמוד אחת למשתמש, למרות שאתה יודע שאנשים עוברים חמישה-שישה מסכים. מה הבעיה?"
+    },
+    "a": [
+     {
+      "en": "Users are blocking the script",
+      "he": "משתמשים חוסמים את הסקריפט"
+     },
+     {
+      "en": "The page loads once, so a pageview must be sent on every client-side route change",
+      "he": "העמוד נטען פעם אחת, אז צריך לשלוח צפיית עמוד בכל החלפת מסלול בצד הלקוח"
+     },
+     {
+      "en": "Analytics vendors deduplicate pageviews per session",
+      "he": "ספקי אנליטיקס מאחדים צפיות עמוד לכל סשן"
+     },
+     {
+      "en": "You need a server-side event for each page",
+      "he": "צריך אירוע מצד השרת לכל עמוד"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "A single-page app never reloads the document, so the snippet runs once. Fire the pageview on route change, after the URL updates, or nine screens are recorded as one.",
+     "he": "אפליקציית עמוד יחיד לא טוענת את המסמך מחדש, אז הקטע רץ פעם אחת. תשלח את צפיית העמוד בהחלפת מסלול, אחרי שה-URL מתעדכן, אחרת תשעה מסכים נרשמים כאחד."
+    }
    }
   ],
   "team": [
@@ -10376,10 +10513,10 @@
      "he": "שלב 12 אומר לך שהאפליקציה בריאה. זה אומר לך אם מישהו בכלל משתמש בה, ואיפה הוא מוותר. לוגים עונים על 'האם זה נשבר'; אנליטיקס עונה על 'האם זה עבד'."
     },
     "uses": [
-     "Metrics",
-     "Dashboard",
-     "SPA vs SSR vs static",
-     "Structured logs"
+     "Pageview vs event",
+     "Funnel & drop-off",
+     "Tracking without PII",
+     "Dashboard"
     ],
     "prompt": "Add product analytics to my Vercel + Neon CRM: page loads and user actions.\n\n1. Page loads: a client-side pageview on first load and on every client-side route change (Next.js App Router does not re-run a layout on navigation — show me exactly where the hook goes so I do not double-count or miss navigations). Use a free tier: Vercel Web Analytics or a self-hostable one — recommend one in two sentences and say what I give up.\n\n2. Actions, as exactly four named events, not a call scattered at every click: contact_created, contact_edited, note_added, search_performed. Wrap them in one track(name, props) module so no component imports the vendor SDK directly. Keep props to non-identifying values: result_count, stage, has_company — never name, email, phone, note text or a raw query string.\n\n3. One funnel I can read: landed -> searched -> opened a contact -> added a note. Tell me which number would tell me the search is useless.\n\n4. Privacy and honesty: no analytics before consent if I ever have EU users, respect Do Not Track, and the app must work normally with the analytics script blocked — failures there must never break a page or a save.\n\nFinish with the one event my CRM should have that a generic setup would miss, and the three vanity metrics I should refuse to put on the dashboard.",
     "acceptance": {
@@ -13230,6 +13367,46 @@
    "s": {
     "en": "A dress rehearsal with friendly actors is not opening night with a paying crowd. Production is opening night.",
     "he": "חזרה גנרלית עם שחקנים ידידותיים אינה ערב בכורה עם קהל משלם. פרודקשן הוא ערב הבכורה."
+   }
+  },
+  "Pageview vs event": {
+   "q": {
+    "en": "What is the difference between counting visits and knowing what people did?",
+    "he": "מה ההבדל בין לספור ביקורים לבין לדעת מה אנשים עשו?"
+   },
+   "s": {
+    "en": "A shop has two ways to know how the day went. A counter on the door clicks every time someone walks in. And the till records every sale: what was bought, how many, for how much. The door counter tells you about traffic. The till tells you whether the shop worked.\n\nA pageview is the door counter: a screen was shown. An event is the till: a person did a specific thing you named in advance - created a contact, ran a search, saved a note.\n\nOne warning that catches everybody. Modern apps load the page once and then swap the content as you click around, so the door counter only clicks on the very first visit. Nine screens get recorded as one. You have to tell it to count again every time the address changes - ask your AI for \"a pageview on every client-side route change\", and then click around and check the number moves.\n\nAnd resist tracking every button. Pick the four actions that define your product, name them, and track only those. Four numbers you trust beat four hundred nobody reads.",
+    "he": "לחנות יש שתי דרכים לדעת איך עבר היום. מונה בדלת שמקליק בכל פעם שמישהו נכנס. והקופה שמתעדת כל מכירה: מה נקנה, כמה, בכמה. המונה בדלת מספר לכם על תנועה. הקופה מספרת לכם אם החנות עבדה.\n\nצפיית עמוד היא המונה בדלת: מסך הוצג. אירוע הוא הקופה: אדם עשה דבר מסוים שנתתם לו שם מראש - יצר איש קשר, הריץ חיפוש, שמר הערה.\n\nאזהרה אחת שתופסת את כולם. אפליקציות מודרניות טוענות את העמוד פעם אחת ואז מחליפות תוכן תוך כדי לחיצות, אז המונה בדלת מקליק רק בביקור הראשון. תשעה מסכים נרשמים כאחד. אתם חייבים להגיד לו לספור שוב בכל פעם שהכתובת משתנה - תבקשו מה-AI ״צפיית עמוד בכל החלפת מסלול בצד הלקוח״, ואז תסתובבו באפליקציה ותוודאו שהמספר זז.\n\nותתאפקו מלעקוב אחרי כל כפתור. תבחרו את ארבע הפעולות שמגדירות את המוצר, תתנו להן שם, ותעקבו רק אחריהן. ארבעה מספרים שסומכים עליהם עדיפים על ארבע מאות שאף אחד לא קורא."
+   }
+  },
+  "Funnel & drop-off": {
+   "q": {
+    "en": "People are not using the feature I built. How do I find out where they give up?",
+    "he": "אנשים לא משתמשים במה שבניתי. איך אני מגלה איפה הם מוותרים?"
+   },
+   "s": {
+    "en": "Picture a supermarket where a thousand people walk in, eight hundred reach the shelves, two hundred and forty pick something up, and thirty-one reach the till. Nobody needs to guess what to fix. Something between the shelf and the basket is going wrong, and you go and stand there and watch.\n\nA funnel is that, written down: your steps in order, and how many people reached each one. The useful number is never the top or the bottom - it is the biggest fall between two steps that stand next to each other.\n\nLosing most of the visitors to a home page is normal, so ignore it. Losing most of the people who already searched, right before they click a result, is not normal - and it is usually something small and stupid, like rows that do not look clickable, or an error message that appears off screen.\n\nSo: write the four steps you expect, get the four numbers, and then go and do those four steps yourself in your own app while watching the events arrive. The chart tells you which screen is bleeding. Only you can find out why.",
+    "he": "דמיינו סופרמרקט שאלף אנשים נכנסים אליו, שמונה מאות מגיעים למדפים, מאתיים ארבעים מרימים משהו, ושלושים ואחד מגיעים לקופה. אף אחד לא צריך לנחש מה לתקן. משהו בין המדף לסל משתבש, והולכים לעמוד שם ולהסתכל.\n\nמשפך הוא בדיוק זה, כתוב: השלבים שלכם לפי הסדר, וכמה אנשים הגיעו לכל אחד. המספר השימושי הוא אף פעם לא העליון או התחתון - אלא הנפילה הגדולה ביותר בין שני שלבים שעומדים אחד ליד השני.\n\nלאבד את רוב המבקרים בעמוד הבית זה נורמלי, אז תתעלמו. לאבד את רוב האנשים שכבר חיפשו, בדיוק לפני שהם לוחצים על תוצאה, זה לא נורמלי - ובדרך כלל זה משהו קטן וטיפשי, כמו שורות שלא נראות לחיצות, או הודעת שגיאה שמופיעה מחוץ למסך.\n\nאז: תכתבו את ארבעת השלבים שאתם מצפים להם, תשיגו את ארבעת המספרים, ואז לכו ותעשו את ארבעת השלבים בעצמכם באפליקציה שלכם בזמן שאתם רואים את האירועים מגיעים. הגרף אומר לכם איזה מסך מדמם. רק אתם יכולים לגלות למה."
+   }
+  },
+  "Retention & cohort": {
+   "q": {
+    "en": "My user count keeps going up. Why does that not tell me if the product is good?",
+    "he": "מספר המשתמשים שלי רק עולה. למה זה לא אומר לי אם המוצר טוב?"
+   },
+   "s": {
+    "en": "A gym sells memberships all January and the total member count looks wonderful. The question the owner should ask is different: of the people who joined in January, how many still come in March? If the answer is nobody, the gym is not growing - it is refilling a bucket with a hole in it, and the hole is the product.\n\nA cohort is just \"everyone who joined the same week\". Retention is how many of them came back a week later, a month later. You look at one line per joining week, and you look at the shape: does the line fall and then flatten out, or does it fall all the way to zero?\n\nFlat at any height is good news. Twenty-four percent still there after a month means you built something people keep using. A line that reaches zero means everyone tried it once, and buying more visitors will never fix that.\n\nTwo tips. \"Came back\" should mean they did the real thing - added a contact, wrote a note - not merely logged in. And with only a few dozen users the percentages jump around, so do not read week-to-week noise. Watch for one thing only: does the line ever go flat?",
+    "he": "חדר כושר מוכר מנויים כל ינואר וסך המנויים נראה נהדר. השאלה שהבעלים צריך לשאול היא אחרת: מתוך מי שהצטרף בינואר, כמה עדיין מגיעים במרץ? אם התשובה היא אף אחד, החדר לא גדל - הוא ממלא מחדש דלי עם חור, והחור הוא המוצר.\n\nקוהורטה היא פשוט ״כל מי שהצטרף באותו שבוע״. שימור הוא כמה מהם חזרו שבוע אחרי, חודש אחרי. מסתכלים על קו אחד לכל שבוע הצטרפות, ומסתכלים על הצורה: האם הקו יורד ואז מתיישר, או שהוא יורד עד הסוף לאפס?\n\nמיושר בכל גובה זה חדשות טובות. עשרים וארבעה אחוז שעדיין שם אחרי חודש אומר שבניתם משהו שאנשים ממשיכים להשתמש בו. קו שמגיע לאפס אומר שכולם ניסו פעם אחת, וקניית עוד מבקרים לעולם לא תתקן את זה.\n\nשתי עצות. ״חזר״ צריך להיות שהוא עשה את הדבר האמיתי - הוסיף איש קשר, כתב הערה - ולא רק התחבר. ועם כמה עשרות משתמשים האחוזים קופצים, אז אל תקראו רעש משבוע לשבוע. תחפשו דבר אחד בלבד: האם הקו מתיישר אי פעם?"
+   }
+  },
+  "Tracking without PII": {
+   "q": {
+    "en": "What is actually dangerous about adding analytics to my app?",
+    "he": "מה באמת מסוכן בלהוסיף אנליטיקס לאפליקציה שלי?"
+   },
+   "s": {
+    "en": "Adding analytics means sending a little message to somebody else's servers every time something happens in your app. The danger is not the counting. The danger is what you put inside the message without thinking.\n\nIf you record \"a search happened, it returned zero results\", that is a fact about your product and it is safe forever. If you record \"a search happened for john@acme.com\", you have just handed a customer's email address to another company, and it will live in their backups long after you delete it on your side.\n\nSo the rule is simple: send counts, categories, yes/no answers and durations. Never send anything a person typed, and never names, emails, phone numbers or note text. If you must know which user, send your own internal id and nothing else.\n\nTwo more things people learn late. Roughly a quarter of visitors block trackers, so treat your numbers as a rough sample - and make sure the app works perfectly when the script never loads. Wrap it so it can never crash a page. And if any of your users are in Europe, the script may only load after they agree.",
+    "he": "להוסיף אנליטיקס אומר לשלוח הודעה קטנה לשרתים של מישהו אחר בכל פעם שמשהו קורה באפליקציה. הסכנה היא לא הספירה. הסכנה היא מה שאתם שמים בתוך ההודעה בלי לחשוב.\n\nאם אתם מתעדים ״קרה חיפוש, הוא החזיר אפס תוצאות״, זו עובדה על המוצר שלכם והיא בטוחה לנצח. אם אתם מתעדים ״קרה חיפוש אחרי john@acme.com״, בדיוק מסרתם כתובת אימייל של לקוח לחברה אחרת, והיא תחיה בגיבויים שלה הרבה אחרי שתמחקו אותה אצלכם.\n\nאז הכלל פשוט: תשלחו ספירות, קטגוריות, תשובות כן/לא ומשכי זמן. אף פעם אל תשלחו משהו שאדם הקליד, ואף פעם לא שמות, אימיילים, טלפונים או טקסט של הערות. אם אתם חייבים לדעת איזה משתמש, תשלחו מזהה פנימי משלכם ותו לא.\n\nעוד שני דברים שלומדים מאוחר. בערך רבע מהמבקרים חוסמים מעקב, אז תתייחסו למספרים כמדגם גס - ותוודאו שהאפליקציה עובדת מצוין כשהסקריפט לא נטען בכלל. תעטפו אותו כך שהוא לעולם לא יפיל עמוד. ואם חלק מהמשתמשים באירופה, הסקריפט רשאי להיטען רק אחרי שהם מסכימים."
    }
   }
  }

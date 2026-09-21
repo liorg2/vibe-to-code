@@ -1,5 +1,8 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
 import type { Level, Module } from "@/lib/types";
 
@@ -9,10 +12,14 @@ const LEVELS: Level[] = ["A", "B"];
 export function LevelTag({ lvl, full = false }: { lvl: Level; full?: boolean }) {
   const { t } = useApp();
   return (
-    <span className={`lvl lvl-${lvl}`} title={`${t("level")} ${lvl} · ${t(`lvl${lvl}`)}`}>
+    <Badge
+      variant="outline"
+      className={cn("lvl", `lvl-${lvl}`)}
+      title={`${t("level")} ${lvl} · ${t(`lvl${lvl}`)}`}
+    >
       {lvl}
       {full ? <b>{t(`lvl${lvl}`)}</b> : null}
-    </span>
+    </Badge>
   );
 }
 
@@ -20,12 +27,14 @@ export function LevelTag({ lvl, full = false }: { lvl: Level; full?: boolean }) 
 export function LevelFilter({ full = false }: { full?: boolean }) {
   const { levels, toggleLevel, t } = useApp();
   return (
-    <div className={`lvl-key${full ? " full" : ""}`} role="group" aria-label={t("filterLvl")}>
+    <div className={cn("lvl-key", full && "full")} role="group" aria-label={t("filterLvl")}>
       {LEVELS.map((l) => (
-        <button
+        <Button
           key={l}
           type="button"
-          className={levels.has(l) ? "on" : ""}
+          variant="outline"
+          size="sm"
+          className={cn(levels.has(l) && "on")}
           aria-pressed={levels.has(l)}
           onClick={() => toggleLevel(l)}
         >
@@ -38,7 +47,7 @@ export function LevelFilter({ full = false }: { full?: boolean }) {
             </span>
           )}
           {full ? <span>{t(`lvl${l}d`)}</span> : null}
-        </button>
+        </Button>
       ))}
     </div>
   );

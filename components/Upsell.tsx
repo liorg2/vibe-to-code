@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import type { Level } from "@/lib/types";
 
 /** Shown in place of a locked term. ponytail: an upsell converts, notFound() does not. */
@@ -12,8 +13,12 @@ export function Upsell({ title, lvl }: { title: string; lvl: Level }) {
         no subscription, no renewal.
       </p>
       <div className="cta" style={{ marginTop: 24 }}>
-        <Link className="btn prim big" href="/courses">See the two courses</Link>
-        <Link className="btn big" href="/">Back to lessons</Link>
+        <Button variant="brand" size="lg" nativeButton={false} render={<Link href="/courses" />}>
+          See the two courses
+        </Button>
+        <Button variant="outline" size="lg" nativeButton={false} render={<Link href="/" />}>
+          Back to lessons
+        </Button>
       </div>
     </section>
   );

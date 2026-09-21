@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
 import type { QuizQ } from "@/lib/types";
 
@@ -28,16 +30,17 @@ export function QuizBlock({ modId, questions }: { modId: string; questions: Quiz
                 else if (ai === pick) { cls = "wrong"; mk = "×"; }
               }
               return (
-                <button
+                <Button
                   key={ai}
                   type="button"
-                  className={`opt ${cls}`}
+                  variant="outline"
+                  className={cn("opt", cls)}
                   disabled={pick !== undefined}
                   onClick={() => setAnswers((prev) => ({ ...prev, [qi]: ai }))}
                 >
                   <span className="mk">{mk}</span>
                   {a[lang]}
-                </button>
+                </Button>
               );
             })}
             {pick !== undefined ? <div className="ans">{q.why[lang]}</div> : null}
@@ -45,7 +48,7 @@ export function QuizBlock({ modId, questions }: { modId: string; questions: Quiz
         );
       })}
       {answered === questions.length ? (
-        <div className={`score ${got === questions.length ? "pass" : ""}`}>
+        <div className={cn("score", got === questions.length && "pass")}>
           {got} / {questions.length}
           {got === questions.length ? ` — ${t("perfect")}` : ""}
         </div>

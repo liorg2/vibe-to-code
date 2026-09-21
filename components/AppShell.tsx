@@ -1,5 +1,6 @@
 import { Header } from "./Header";
 import { SideNav } from "./SideNav";
+import { cn } from "@/lib/utils";
 
 export function AppShell({
   children,
@@ -13,9 +14,14 @@ export function AppShell({
   showNav?: boolean;
 }) {
   return (
-    <div className="wrap">
+    <div className="relative z-[1]">
       <Header showHero={showHero} showNav={showNav} />
-      <main className={showNav ? undefined : "nonav"}>
+      <main
+        className={cn(
+          "mx-auto grid max-w-[1240px] items-start gap-[34px] px-6 pb-[100px]",
+          showNav ? "grid-cols-[272px_1fr]" : "nonav grid-cols-1"
+        )}
+      >
         {showNav && <SideNav />}
         <div id="content">{children}</div>
       </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { useApp } from "./Providers";
 import { termKey } from "@/lib/course";
 import type { Module } from "@/lib/types";
@@ -26,17 +27,23 @@ export function SlideActions({
 
   return (
     <div className="slidebar">
-      <button
-        className={`btn ${isDone ? "" : "prim"}`}
+      <Button
+        variant={isDone ? "outline" : "brand"}
         type="button"
         onClick={() => toggleDone(k)}
       >
         {isDone ? `✓ ${t("gotYes")}` : t("got")}
-      </button>
+      </Button>
       <span className="grow" />
       <span className="kbd">← →</span>
-      {prevHref ? <Link className="btn" href={prevHref}>{prevLabel}</Link> : null}
-      <Link className="btn prim" href={nextHref}>{nextLabel}</Link>
+      {prevHref ? (
+        <Button variant="outline" nativeButton={false} render={<Link href={prevHref} />}>
+          {prevLabel}
+        </Button>
+      ) : null}
+      <Button variant="brand" nativeButton={false} render={<Link href={nextHref} />}>
+        {nextLabel}
+      </Button>
     </div>
   );
 }

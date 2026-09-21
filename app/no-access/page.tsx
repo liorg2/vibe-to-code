@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { AuthButton } from "@/components/AuthButton";
+import { Button } from "@/components/ui/button";
 
 export const metadata = { title: "No access" };
 
@@ -16,7 +17,9 @@ export default function NoAccessPage() {
         </p>
         <div className="cta" style={{ marginTop: 24 }}>
           <AuthButton />
-          <Link className="btn big" href="/">Back home</Link>
+          <Button variant="outline" size="lg" nativeButton={false} render={<Link href="/" />}>
+            Back home
+          </Button>
         </div>
       </section>
     </AppShell>
