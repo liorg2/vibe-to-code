@@ -7,9 +7,13 @@ export type Term = {
   w: L10n;
 };
 
+export type Level = "A" | "B" | "C";
+
 export type Module = {
   id: string;
   icon: string;
+  /** how much you need to already know: A foundations, B building, C running it for real */
+  lvl: Level;
   title: L10n;
   blurb: L10n;
   terms: Term[];

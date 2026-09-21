@@ -1,6 +1,27 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "vibe-dev", "runtimeExecutable": "npx", "runtimeArgs": ["next", "dev", "-p", "3111"], "port": 3111 }
+    {
+      "name": "vibe-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "next",
+        "dev",
+        "-p",
+        "3111"
+      ],
+      "port": 3111
+    },
+    {
+      "name": "vibe-dev-3112",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "next",
+        "dev",
+        "-p",
+        "3112"
+      ],
+      "port": 3112
+    }
   ]
 }

@@ -375,6 +375,39 @@ pre.code{max-width:100%}
 .abox b{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--tx3)}
 .abox p{font-size:14px;margin-top:5px}
 
+/* the course chips carry the level as a left edge, no room for a badge */
+.chips .chip-A{box-shadow:inset 2px 0 0 #12b886}
+.chips .chip-B{box-shadow:inset 2px 0 0 #4c8dff}
+.chips .chip-C{box-shadow:inset 2px 0 0 #b07cff}
+body[dir="rtl"] .chips .chip-A{box-shadow:inset -2px 0 0 #12b886}
+body[dir="rtl"] .chips .chip-B{box-shadow:inset -2px 0 0 #4c8dff}
+body[dir="rtl"] .chips .chip-C{box-shadow:inset -2px 0 0 #b07cff}
+
+/* what the letters mean, once, above the lesson grid */
+.lvl-key{display:flex;flex-wrap:wrap;gap:10px 22px;margin-bottom:20px;
+  color:var(--tx3);font-size:13px}
+.lvl-key>span{display:inline-flex;align-items:center;gap:8px;min-width:0}
+
+/* ---- level tag: A foundations, B building, C running it for real ---- */
+.lvl{display:inline-flex;align-items:center;gap:6px;flex:none;
+  font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:700;line-height:1;
+  padding:4px 6px;border-radius:6px;border:1px solid;letter-spacing:.06em}
+.lvl b{font-family:inherit;font-size:10px;font-weight:600;letter-spacing:0;opacity:.85;
+  text-transform:uppercase;white-space:nowrap}
+.lvl-A{color:#12b886;border-color:color-mix(in srgb,#12b886 40%,transparent);
+  background:color-mix(in srgb,#12b886 12%,transparent)}
+.lvl-B{color:#4c8dff;border-color:color-mix(in srgb,#4c8dff 40%,transparent);
+  background:color-mix(in srgb,#4c8dff 12%,transparent)}
+.lvl-C{color:#b07cff;border-color:color-mix(in srgb,#b07cff 40%,transparent);
+  background:color-mix(in srgb,#b07cff 12%,transparent)}
+/* in the nav there is no room for the word — the letter carries it */
+nav.side a .lvl{margin-inline-start:auto;padding:3px 5px}
+nav.side a .cnt{margin-inline-start:8px}
+.mcard .num{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mcard .num .lvl{margin-inline-start:auto}
+.mhead .lvl{margin-inline-start:10px}
+@media (max-width:480px){ .lvl b{display:none} }
+
 /* ---- glossary ---- */
 .gsearch{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .gsearch input{flex:1;min-width:0;padding:10px 14px;border-radius:12px;font:inherit;font-size:14.5px;

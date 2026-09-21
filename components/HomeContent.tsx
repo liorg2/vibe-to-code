@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useApp } from "./Providers";
+import { LevelTag } from "./LevelTag";
 import { ARCHITECTURES, CHECKLIST, MODULES, PROJECT, termKey, mins } from "@/lib/course";
 
 export function HomeContent() {
@@ -15,6 +16,14 @@ export function HomeContent() {
 
   return (
     <>
+      <div className="lvl-key">
+        {(["A", "B", "C"] as const).map((l) => (
+          <span key={l}>
+            <LevelTag lvl={l} full />
+            {t(`lvl${l}d`)}
+          </span>
+        ))}
+      </div>
       <div className="cards">
         {MODULES.map((m, i) => {
           const d = m.terms.filter((_, j) => done.has(termKey(m, j))).length;
@@ -25,6 +34,7 @@ export function HomeContent() {
                 <div>
                   <div className="num">
                     {t("lesson")} {String(i + 1).padStart(2, "0")} · ~{mins(m)} {t("min")}
+                    <LevelTag lvl={m.lvl} full />
                   </div>
                   <h3>{m.title[lang]}</h3>
                 </div>

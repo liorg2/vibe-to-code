@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useApp } from "./Providers";
+import { LevelTag } from "./LevelTag";
 import { ARCHITECTURES, CHECKLIST, MODULES, PROJECT, QUIZ, termKey, totalTerms } from "@/lib/course";
 
 export function SideNav() {
@@ -80,6 +81,7 @@ export function SideNav() {
               >
                 <span className="ic">{m.icon}</span>
                 <span>{m.title[lang]}</span>
+                <LevelTag lvl={m.lvl} />
                 <span className="cnt">{d}/{m.terms.length}</span>
               </Link>
               <div className="nav-subs">

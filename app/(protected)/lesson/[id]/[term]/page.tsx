@@ -73,7 +73,7 @@ export default async function SlidePage({
         </div>
         <h2>{tm.t[lang]}</h2>
         <div className="lede">{tm.d[lang]}</div>
-        {m.id === "ground" && i === 0 ? (
+        {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />
         ) : null}
         {tm.t.en === "Request / Response" ? (
