@@ -1,21 +1,15 @@
 import { NextResponse } from "next/server";
 import { sessionUid } from "@/lib/verify-session";
-import { getLegacy, getRows, saveRows } from "@/lib/db";
-import { fromLegacy, fromRows, toRows } from "@/lib/progress";
+import { getRows, saveRows } from "@/lib/db";
+import { fromRows, toRows } from "@/lib/progress";
 
 export async function GET() {
   const uid = await sessionUid();
   if (!uid) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
-  const rows = await getRows(uid);
-  if (rows.length) return NextResponse.json(fromRows(rows));
-
-  // nothing name-keyed yet: carry the old position-keyed row over, once
-  const legacy = await getLegacy(uid);
-  if (!legacy) return NextResponse.json({ done: [], ticked: [] });
-  const moved = fromLegacy(legacy);
-  await saveRows(uid, toRows(moved.done, moved.ticked));
-  return NextResponse.json(moved);
+  // ponytail: no migration from the old position-keyed `progress` table — those positions
+  // no longer point at the terms they were saved against, so importing them is worse than zero
+  return NextResponse.json(fromRows(await getRows(uid)));
 }
 
 export async function PUT(req: Request) {

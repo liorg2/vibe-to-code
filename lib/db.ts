@@ -54,17 +54,3 @@ export async function saveRows(uid: string, rows: Row[]): Promise<void> {
         do update set pct = excluded.pct, updated = now()`,
   ]);
 }
-
-/**
- * The old single-row store, keyed by position (`ground:3`). Read once so nobody loses progress;
- * the first save writes name-keyed rows and this is never consulted again.
- */
-export async function getLegacy(uid: string): Promise<{ done: string[]; ticked: string[] } | null> {
-  try {
-    const [row] = (await db()`
-      select done, ticked from progress where uid = ${uid}`) as { done: string[]; ticked: string[] }[];
-    return row ?? null;
-  } catch {
-    return null; // the table may simply not exist any more
-  }
-}

@@ -46,26 +46,3 @@ export function fromRows(rows: Row[]): { done: string[]; ticked: string[] } {
   }
   return { done, ticked };
 }
-
-/**
- * The old keys were positions: `ground:3`, `do:1`. Translate them once against the course as it
- * stands today. Terms that have since moved lesson are lost, which is the honest outcome.
- */
-export function fromLegacy(legacy: { done: string[]; ticked: string[] }) {
-  const done = legacy.done.flatMap((key) => {
-    const parts = split(key);
-    if (!parts) return [];
-    const [lesson, topic] = parts;
-    if (known(lesson, topic)) return [key]; // already a slug
-    const term = MODULES.find((m) => m.id === lesson)?.terms[Number(topic)];
-    return term ? [`${lesson}:${term.k}`] : [];
-  });
-  const ticked = legacy.ticked.flatMap((key) => {
-    const parts = split(key);
-    if (!parts || parts[0] !== "do") return [];
-    if (known(CHECKLIST_LESSON, key)) return [key];
-    const item = CHECKLIST.do[Number(parts[1])];
-    return item ? [`do:${item.k}`] : [];
-  });
-  return { done, ticked };
-}
