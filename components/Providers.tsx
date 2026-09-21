@@ -131,11 +131,22 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     setTicked(mergedTicked);
     lsSet(KEY + ".done", JSON.stringify([...mergedDone]));
     lsSet(KEY + ".check", JSON.stringify([...mergedTicked]));
-    await fetch("/api/progress", {
+    // the PUT replies with what it stored; anything it dropped was a key this course no longer
+    // has, and keeping it locally would show progress against terms that do not exist
+    const saved = await fetch("/api/progress", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ done: [...mergedDone], ticked: [...mergedTicked] }),
-    }).catch(() => {});
+    })
+      .then((r) => (r.ok ? (r.json() as Promise<Progress>) : null))
+      .catch(() => null);
+    if (!saved) return;
+    const keptDone = new Set(saved.done ?? []);
+    const keptTicked = new Set(saved.ticked ?? []);
+    setDone(keptDone);
+    setTicked(keptTicked);
+    lsSet(KEY + ".done", JSON.stringify([...keptDone]));
+    lsSet(KEY + ".check", JSON.stringify([...keptTicked]));
   }, []);
 
   useEffect(() => {

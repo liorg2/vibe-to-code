@@ -6,7 +6,7 @@ function db() {
   return (client ??= neon(process.env.DATABASE_URL ?? process.env.POSTGRES_URL ?? ""));
 }
 
-/** ponytail: one CREATE IF NOT EXISTS per lambda instance beats a migration runner for two tables */
+/** ponytail: one CREATE IF NOT EXISTS per lambda instance beats a migration runner for one table */
 let ready: Promise<unknown> | undefined;
 function ensure() {
   ready ??= db()`

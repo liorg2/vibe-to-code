@@ -23,7 +23,9 @@ export async function PUT(req: Request) {
     Array.isArray(v)
       ? v.filter((x): x is string => typeof x === "string" && x.length <= 200).slice(0, MAX)
       : [];
-  // toRows drops anything that is not a key this course actually has
-  await saveRows(uid, toRows(strings(body.done), strings(body.ticked)));
-  return NextResponse.json({ ok: true });
+  // toRows drops anything that is not a key this course actually has, so the reply is the
+  // stored truth — keys left over from an older shape of the course are not in it
+  const rows = toRows(strings(body.done), strings(body.ticked));
+  await saveRows(uid, rows);
+  return NextResponse.json({ ok: true, ...fromRows(rows) });
 }
