@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
+import { LessonIntro } from "@/components/LessonIntro";
 import { LessonSubNav } from "@/components/LessonSubNav";
 import { LevelTag } from "@/components/LevelTag";
 import { PracticeLoop } from "@/components/PracticeLoop";
@@ -12,8 +13,6 @@ import {
   ASK_PROMPT,
   DETAIL,
   EXAMPLES,
-  MODULES,
-  QUIZ,
   SIMPLE,
   UI,
   getModule,
@@ -33,10 +32,19 @@ export default async function SlidePage({
   const { id, term: termStr } = await params;
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
-  const i = Number(termStr);
   const m = getModule(id);
   const mi = moduleIndex(id);
-  if (!m || mi < 0 || !Number.isInteger(i) || i < 0 || i >= m.terms.length) notFound();
+  if (!m || mi < 0) notFound();
+  // the two bookends share this route so the lesson's sub-nav reads as one sequence
+  if (termStr === "overview" || termStr === "summary") {
+    return (
+      <AppShell>
+        <LessonIntro m={m} mi={mi} kind={termStr} lang={lang} />
+      </AppShell>
+    );
+  }
+  const i = Number(termStr);
+  if (!Number.isInteger(i) || i < 0 || i >= m.terms.length) notFound();
 
   const tm = m.terms[i];
   // the URL is the whole attack surface here — the client filter is decoration, this is the gate
@@ -53,30 +61,19 @@ export default async function SlidePage({
   const ex = EXAMPLES[tm.t.en];
   const flow = FLOWS[tm.t.en];
   const coursePath = pathForModule(m.id);
-  const prevM = MODULES[mi - 1];
-  const nextM = MODULES[mi + 1];
 
-  const prevHref = i > 0 ? `/lesson/${m.id}/${i - 1}` : prevM ? `/lesson/${prevM.id}/${prevM.terms.length - 1}` : null;
-  const nextHref =
-    i < m.terms.length - 1
-      ? `/lesson/${m.id}/${i + 1}`
-      : QUIZ[m.id]
-        ? `/lesson/${m.id}/quiz`
-        : nextM
-          ? `/lesson/${nextM.id}/0`
-          : "/";
-
-  const prevLabel = i > 0 ? t("prevTerm") : prevM ? prevM.title[lang] : t("prevTerm");
-  const nextLabel =
-    i < m.terms.length - 1 ? t("nextTerm") : QUIZ[m.id] ? t("toTest") : nextM ? nextM.title[lang] : t("toTest");
+  const prevHref = i > 0 ? `/lesson/${m.id}/${i - 1}` : `/lesson/${m.id}/overview`;
+  const nextHref = i < m.terms.length - 1 ? `/lesson/${m.id}/${i + 1}` : `/lesson/${m.id}/summary`;
+  const prevLabel = i > 0 ? t("prevTerm") : t("overview");
+  const nextLabel = i < m.terms.length - 1 ? t("nextTerm") : t("summary");
 
   return (
     <AppShell>
       <Breadcrumb
         items={[
-          { label: t("allLessons"), href: "/" },
-          ...(coursePath ? [{ label: coursePath.title[lang], href: "/courses" }] : []),
-          { label: m.title[lang], href: `/lesson/${m.id}/0` },
+          { label: t("paths"), href: "/courses" },
+          ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
+          { label: m.title[lang], href: `/lesson/${m.id}/overview` },
           { label: tm.t[lang] },
         ]}
       />

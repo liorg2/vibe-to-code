@@ -12,7 +12,7 @@ export function Upsell({ title, lvl }: { title: string; lvl: Level }) {
         no subscription, no renewal.
       </p>
       <div className="cta" style={{ marginTop: 24 }}>
-        <Link className="btn prim big" href="/pricing">See the two plans</Link>
+        <Link className="btn prim big" href="/courses">See the two courses</Link>
         <Link className="btn big" href="/">Back to lessons</Link>
       </div>
     </section>

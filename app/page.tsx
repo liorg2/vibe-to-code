@@ -1,10 +1,10 @@
 import { AppShell } from "@/components/AppShell";
-import { HomeContent } from "@/components/HomeContent";
+import { Courses } from "@/components/Courses";
 
 export default function HomePage() {
   return (
     <AppShell showHero>
-      <HomeContent />
+      <Courses />
     </AppShell>
   );
 }

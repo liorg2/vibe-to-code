@@ -28,6 +28,7 @@ export async function allowedLevels(): Promise<Set<Level>> {
 
 /** The tier a signed-in visitor owns, or null. */
 export async function currentTier(): Promise<Tier | null> {
+  if (!billingOn()) return null; // same contract as allowedLevels: dark means no DB read at all
   const claims = await sessionClaims();
   return claims ? getEntitlement(claims.uid) : null;
 }
@@ -36,6 +37,6 @@ export async function currentTier(): Promise<Tier | null> {
 export async function requireEntitlement(): Promise<Tier> {
   if (!billingOn()) return "advanced";
   const tier = await currentTier();
-  if (!tier) redirect("/pricing");
+  if (!tier) redirect("/courses");
   return tier;
 }

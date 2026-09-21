@@ -86,7 +86,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
           </h1>
           <p id="tagline">{t("tagline")}</p>
           <div className="cta">
-            <Link className="btn prim big" href={`/lesson/${MODULES[0].id}/0`} id="startBtn">
+            <Link className="btn prim big" href={`/lesson/${MODULES[0].id}/overview`} id="startBtn">
               {t("start")}
             </Link>
           </div>

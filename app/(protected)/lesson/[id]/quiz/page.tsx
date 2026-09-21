@@ -32,7 +32,7 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
   const coursePath = pathForModule(m.id);
   const prev = MODULES[mi - 1];
   const next = MODULES[mi + 1];
-  const nextLink = next ? `/lesson/${next.id}/0` : "/architectures";
+  const nextLink = next ? `/lesson/${next.id}/overview` : "/architectures";
   const nextName = next ? next.title[lang] : ARCHITECTURES.title[lang];
   const done = m.terms.filter((_, j) => false).length;
 
@@ -40,9 +40,9 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
     <AppShell>
       <Breadcrumb
         items={[
-          { label: t("allLessons"), href: "/" },
-          ...(coursePath ? [{ label: coursePath.title[lang], href: "/courses" }] : []),
-          { label: m.title[lang], href: `/lesson/${m.id}/0` },
+          { label: t("paths"), href: "/courses" },
+          ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
+          { label: m.title[lang], href: `/lesson/${m.id}/overview` },
           { label: t("test") },
         ]}
       />

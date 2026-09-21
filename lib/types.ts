@@ -18,6 +18,9 @@ export type Module = {
   icon: string;
   title: L10n;
   blurb: L10n;
+  /** the two pseudo-topics that open and close a lesson — not terms, so not progress */
+  overview: L10n;
+  summary: L10n;
   terms: Term[];
 };
 
@@ -71,6 +74,8 @@ export type Path = {
   title: L10n;
   blurb: L10n;
   mods: string[];
+  /** ILS, VAT included; the id doubles as the paid tier name */
+  price: number;
 };
 
 export type Simple = { q: L10n; s: L10n };

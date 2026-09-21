@@ -468,3 +468,41 @@ nav.side .nav-subs a .lvl{padding:2px 4px;font-size:9.5px;flex:none}
 /* AuthButton renders a plain .btn — size every button in the card alike */
 .login-card .cta .btn{white-space:nowrap;padding:13px 26px;font-size:15px;border-radius:12px}
 .login-card #who{display:none}
+
+/* ---- course cards (home + /courses) ---- */
+.course{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;
+  display:flex;flex-direction:column;gap:12px;min-width:0}
+.course.adv{border-color:color-mix(in srgb,var(--acc) 55%,var(--line));box-shadow:var(--shadow)}
+.course .row{display:flex;align-items:center;gap:12px}
+.course .ic{width:44px;height:44px;border-radius:13px;background:var(--grad);display:grid;
+  place-items:center;font-size:20px;flex:none}
+.course .num{display:flex;gap:4px;margin-bottom:4px}
+.course h4{font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.course .blurb{color:var(--tx2);font-size:14.5px}
+.course .meta{display:flex;flex-wrap:wrap;gap:6px}
+.course .meta span{font-size:11.5px;padding:3px 9px;border-radius:99px;background:var(--card2);
+  border:1px solid var(--line);color:var(--tx3)}
+.course .mini{height:5px;border-radius:99px;background:var(--line);overflow:hidden}
+.course .mini i{display:block;height:100%;background:var(--grad);transition:width .4s}
+.course .cnt{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--tx3);margin-top:5px;display:block}
+.course .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:auto;
+  padding-top:12px;border-top:1px solid var(--line)}
+.course .price b{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.course .price span{font-size:12.5px;color:var(--tx3)}
+.course .cta{display:flex;gap:10px;flex-wrap:wrap}
+.course .cta .btn{text-decoration:none;display:inline-flex;align-items:center}
+
+/* ---- nav: lessons live under their course ---- */
+.nav-course{margin:2px 0}
+.nav-course-body{display:none;margin-inline-start:10px;padding-inline-start:6px;border-inline-start:1px solid var(--line)}
+.nav-course.open .nav-course-body{display:block}
+
+/* ---- overview / summary slides ---- */
+.ov-list{list-style:none;margin-top:6px;display:grid;gap:6px}
+.ov-list li{display:flex;gap:12px;align-items:baseline;padding:10px 14px;background:var(--card2);
+  border:1px solid var(--line);border-radius:12px}
+.ov-list li .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--tx3);flex:none;min-width:18px}
+.ov-list li a{color:var(--tx);font-weight:700;text-decoration:none}
+.ov-list li a:hover{color:var(--acc2)}
+.ov-list li p{color:var(--tx2);font-size:14px;margin:2px 0 0}
+.ov-list li p.lock{color:var(--tx3);font-size:12px}

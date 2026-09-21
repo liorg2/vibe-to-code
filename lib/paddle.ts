@@ -40,7 +40,7 @@ export async function createCheckout(
     body: JSON.stringify({
       items: [{ price_id: price, quantity: 1 }],
       custom_data: { uid, tier },
-      checkout: { url: `${origin}/pricing?paid=1&txn={transaction_id}` },
+      checkout: { url: `${origin}/courses?paid=1&txn={transaction_id}` },
     }),
   });
   if (!res.ok) {
@@ -58,7 +58,7 @@ export function asTier(v: unknown): Tier | null {
 }
 
 /**
- * The self-healing half: the buyer lands on /pricing?paid=1&txn=… and we ask Paddle what that
+ * The self-healing half: the buyer lands on /courses?paid=1&txn=… and we ask Paddle what that
  * transaction actually is, rather than believing the query string.
  * ponytail: makes a missed webhook cost one page view instead of a cron job.
  */

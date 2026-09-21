@@ -10,7 +10,7 @@ import { firebaseReady, getClientAuth, googleProvider } from "@/lib/firebase/cli
 export default function LoginPage() {
   const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") || `/lesson/${MODULES[0].id}/0`;
+  const next = params.get("next") || `/lesson/${MODULES[0].id}/overview`;
 
   const signIn = async () => {
     if (!firebaseReady) {

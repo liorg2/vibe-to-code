@@ -371,6 +371,82 @@
   "noLvl": {
    "en": "Nothing at this level. Turn one back on.",
    "he": "אין כלום ברמה הזאת. תדליק אחת בחזרה."
+  },
+  "overview": {
+   "en": "Overview",
+   "he": "סקירה"
+  },
+  "summary": {
+   "en": "Summary",
+   "he": "סיכום"
+  },
+  "inLesson": {
+   "en": "In this lesson",
+   "he": "בשיעור הזה"
+  },
+  "recap": {
+   "en": "What to take with you",
+   "he": "מה לקחת איתך"
+  },
+  "startLesson": {
+   "en": "Start the lesson",
+   "he": "להתחיל את השיעור"
+  },
+  "buy": {
+   "en": "Buy",
+   "he": "לקנות"
+  },
+  "owned": {
+   "en": "You own this",
+   "he": "כבר שלך"
+  },
+  "signInBuy": {
+   "en": "Sign in to buy",
+   "he": "להתחבר כדי לקנות"
+  },
+  "payOnce": {
+   "en": "One-time payment · VAT included · lifetime access",
+   "he": "תשלום חד-פעמי · כולל מע״מ · גישה לתמיד"
+  },
+  "lessonsN": {
+   "en": "lessons",
+   "he": "שיעורים"
+  },
+  "viewLessons": {
+   "en": "View lessons",
+   "he": "לצפייה בשיעורים"
+  },
+  "continue": {
+   "en": "Continue",
+   "he": "להמשיך"
+  },
+  "upgrade": {
+   "en": "Upgrade to Advanced",
+   "he": "לשדרג למתקדם"
+  },
+  "upgradeSub": {
+   "en": "Already on Basic? Pay the difference once and every level B lesson opens up.",
+   "he": "כבר בבסיסי? משלמים פעם אחת את ההפרש וכל שיעורי רמה B נפתחים."
+  },
+  "paidOk": {
+   "en": "Payment received — your access is active.",
+   "he": "התשלום התקבל — הגישה שלך פעילה."
+  },
+  "paidWait": {
+   "en": "Payment is still being confirmed. Refresh in a moment.",
+   "he": "התשלום עוד מאושר. רעננו עוד רגע."
+  },
+  "allOpen": {
+   "en": "Everything is currently open to every signed-in account.",
+   "he": "כרגע הכל פתוח לכל חשבון מחובר."
+  },
+  "coursesSub": {
+   "en": "Two courses, paid once. Basic is the foundations; Advanced adds everything it takes to ship and run it for real.",
+   "he": "שני קורסים, תשלום אחד. הבסיסי הוא היסודות; המתקדם מוסיף כל מה שצריך כדי לשחרר ולהריץ באמת."
+  },
+  "locked": {
+   "en": "Locked",
+   "he": "נעול"
   }
  },
  "MODULES": [
@@ -498,7 +574,15 @@
       "he": "כל שיעור אחר כאן הוא קופסה אחת במפה הזאת. לדעת באיזו קופסה אתה עומד זה מה שמונע ממך לתקן את הדבר הלא נכון."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Before any framework, language or cloud, there is one plain fact: code is text, something reads it, and something runs it. This lesson walks that path once — from a file on disk to a running app — so every later term has somewhere to sit. You will also meet the two tools you will use daily without writing code: the terminal and the stack trace.",
+    "he": "לפני כל פריימוורק, שפה או ענן יש עובדה פשוטה אחת: קוד הוא טקסט, משהו קורא אותו ומשהו מריץ אותו. השיעור הזה עובר את הדרך הזאת פעם אחת — מקובץ על הדיסק לאפליקציה שרצה — כדי שלכל מונח שיבוא אחר כך יהיה איפה לשבת. תפגשו גם את שני הכלים שתשתמשו בהם כל יום בלי לכתוב קוד: הטרמינל וה-stack trace."
+   },
+   "summary": {
+    "en": "Code is plain text. Something translates it, a runtime executes it, and it only behaves the same where the environment is the same. When it breaks, the stack trace is a map, not an insult — read it top to bottom before pasting it to the AI.",
+    "he": "קוד הוא טקסט רגיל. משהו מתרגם אותו, runtime מריץ אותו, והוא מתנהג אותו דבר רק איפה שהסביבה זהה. כשזה נשבר, ה-stack trace הוא מפה ולא עלבון — קראו אותו מלמעלה למטה לפני שמדביקים ל-AI."
+   }
   },
   {
    "id": "vcs",
@@ -608,7 +692,15 @@
       "he": "זו המיומנות הבודדת שמודדים בה ג׳וניורים היום: לסקור פלט של AI כמו שסוקרים עבודה של אדם אחר."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Letting an AI change thirty files at once is only sane if you can see exactly what changed and undo it in one move. That is what source control is for. This lesson explains the idea, then the handful of words you will hear constantly: repo, commit, branch, push, pull. Merge conflicts and pull requests are marked level B — real, but not first-week material.",
+    "he": "לתת ל-AI לשנות שלושים קבצים בבת אחת הגיוני רק אם אפשר לראות בדיוק מה השתנה ולבטל במהלך אחד. בשביל זה קיים ניהול גרסאות. השיעור מסביר את הרעיון ואז את קומץ המילים שתשמעו כל הזמן: repo, commit, branch, push, pull. קונפליקטים ו-pull requests מסומנים רמה B — אמיתיים, אבל לא חומר לשבוע הראשון."
+   },
+   "summary": {
+    "en": "Commit small, commit often, and read the diff before you do. A branch is a cheap sandbox; a merge is where two sandboxes meet. If you can answer 'what changed since it last worked?', you can recover from almost anything.",
+    "he": "commit קטן, commit לעתים קרובות, ולקרוא את ה-diff לפני. branch הוא ארגז חול זול; merge הוא המקום שבו שני ארגזי חול נפגשים. אם אתם יכולים לענות 'מה השתנה מאז שזה עבד?', אפשר להתאושש כמעט מכל דבר."
+   }
   },
   {
    "id": "sides",
@@ -782,7 +874,15 @@
       "he": "לעצור ולקרוא ערך אמיתי עדיף על להוסיף עשרים שורות לוג ולנחש ביניהן."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Every web app is two programs pretending to be one: the part running in the visitor's browser and the part running on a machine you control. Most confusing bugs come from not knowing which side you are on. This lesson draws that line and hands you the browser's own debugger, DevTools, so you can watch both sides talk.",
+    "he": "כל אפליקציית ווב היא שתי תוכנות שמתחזות לאחת: החלק שרץ בדפדפן של המבקר והחלק שרץ על מכונה שאתם שולטים בה. רוב הבאגים המבלבלים באים מלא לדעת באיזה צד אתם. השיעור מצייר את הקו הזה ונותן לכם את הדיבאגר של הדפדפן עצמו, DevTools, כדי לראות את שני הצדדים מדברים."
+   },
+   "summary": {
+    "en": "Client asks, server answers; frontend is what the visitor sees, backend is what they never see. Ask 'which side is this running on?' before every fix, and open the Network tab before blaming the code.",
+    "he": "הקליינט שואל, השרת עונה; הפרונטאנד הוא מה שהמבקר רואה, הבקאנד הוא מה שהוא לא רואה אף פעם. לפני כל תיקון שאלו 'באיזה צד זה רץ?', ופתחו את ה-Network tab לפני שמאשימים את הקוד."
+   }
   },
   {
    "id": "langs",
@@ -940,7 +1040,15 @@
       "he": "הגגון ב-^1.4.2 מתיר שדרוגים אוטומטיים. בגלל זה בילד שעבד אתמול יכול להיכשל היום בלי שום שינוי מצדך."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "The AI will happily write in any language, so the choice is yours — and it matters less than the internet suggests. This lesson gives you the two axes that actually distinguish languages, the two you will meet most, and the plumbing every language shares: packages, dependencies and version numbers.",
+    "he": "ה-AI ישמח לכתוב בכל שפה, אז הבחירה שלכם — והיא חשובה פחות ממה שהאינטרנט טוען. השיעור נותן את שני הצירים שבאמת מבדילים בין שפות, את השתיים שתפגשו הכי הרבה, ואת האינסטלציה שכל שפה משתפת: חבילות, dependencies ומספרי גרסה."
+   },
+   "summary": {
+    "en": "Pick the language your AI and your hosting know best, usually TypeScript or Python. Every dependency you add is code you did not read; every version number is a promise about what changed. Framework vs library is about who calls whom.",
+    "he": "בחרו את השפה שה-AI והאחסון שלכם מכירים הכי טוב, בדרך כלל TypeScript או Python. כל dependency שמוסיפים הוא קוד שלא קראתם; כל מספר גרסה הוא הבטחה על מה השתנה. פריימוורק מול ספרייה זה מי קורא למי."
+   }
   },
   {
    "id": "frontend",
@@ -1114,7 +1222,15 @@
       "he": "כל אחד יכול לדלג על הפרונט שלך ולשלוח POST ישירות. אימות בלקוח הוא חוויית משתמש; אימות בשרת הוא אבטחה."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Between the HTML arriving and a button appearing, the browser does a surprising amount of work — and React exists to manage exactly that. This lesson covers the page as a tree, how it is styled, what a component is, and why 'the page freezes' is nearly always one thread doing too much.",
+    "he": "בין הרגע שה-HTML מגיע לרגע שכפתור מופיע, הדפדפן עושה כמות מפתיעה של עבודה — ו-React קיים בדיוק בשביל לנהל את זה. השיעור מכסה את הדף כעץ, איך הוא מעוצב, מה זה קומפוננטה, ולמה 'הדף קופא' זה כמעט תמיד thread אחד שעושה יותר מדי."
+   },
+   "summary": {
+    "en": "The DOM is the live tree; components are reusable branches of it; state is what makes them change. Everything runs on one thread, so slow work belongs elsewhere. Validate forms on both sides — the browser for kindness, the server for truth.",
+    "he": "ה-DOM הוא העץ החי; קומפוננטות הן ענפים שלו לשימוש חוזר; state הוא מה שגורם להן להשתנות. הכל רץ על thread אחד, אז עבודה איטית שייכת למקום אחר. ולידציה לטפסים בשני הצדדים — הדפדפן בשביל נימוס, השרת בשביל האמת."
+   }
   },
   {
    "id": "http",
@@ -1288,7 +1404,15 @@
       "he": "כך עובדת כל אינטגרציה אמיתית — תשלומים, ריפוזיטוריז, הודעות. תבנה אחד מוקדם ממה שאתה מצפה."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Everything on the web is one request followed by one response. Once you can read a request — its verb, its address, what it carried, what came back — half of all 'the API is broken' conversations become short. This lesson is that reading skill.",
+    "he": "כל דבר בווב הוא בקשה אחת ואחריה תשובה אחת. ברגע שאפשר לקרוא בקשה — הפועל, הכתובת, מה היא נשאה, מה חזר — חצי מכל שיחות 'ה-API שבור' הופכות קצרות. השיעור הזה הוא מיומנות הקריאה הזאת."
+   },
+   "summary": {
+    "en": "A request has a verb, an endpoint, headers and maybe a body; a response has a status code and maybe a body, usually JSON. 2xx good, 4xx your fault, 5xx their fault. GET reads, POST creates, and a webhook is just someone else's POST to you.",
+    "he": "לבקשה יש פועל, endpoint, headers ואולי body; לתשובה יש status code ואולי body, בדרך כלל JSON. 2xx טוב, 4xx אשמתכם, 5xx אשמתם. GET קורא, POST יוצר, ו-webhook הוא סתם POST של מישהו אחר אליכם."
+   }
   },
   {
    "id": "apis",
@@ -1446,7 +1570,15 @@
       "he": "פולינג פשוט ובזבזני; דחיפה יעילה וצריכה כתובת ציבורית. תתחיל בפולינג, תעבור לדחיפה כשמספר הבקשות מתחיל לכאוב."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Your product will lean on other people's APIs: payments, email, maps, AI. This lesson is about the shape of that relationship — how it is documented, authenticated, paged, versioned, and how it fails when their side is slow. All of it is level B: skip it until you actually integrate something.",
+    "he": "המוצר שלכם יישען על APIs של אחרים: תשלומים, מייל, מפות, AI. השיעור עוסק בצורה של הקשר הזה — איך הוא מתועד, מאומת, מחולק לעמודים, מנוהל בגרסאות, ואיך הוא נכשל כשהצד שלהם איטי. כולו רמה B: דלגו עד שבאמת תחברו משהו."
+   },
+   "summary": {
+    "en": "Read the spec before the AI does. Keep keys out of the browser, test against sandbox keys, and assume every call can time out. Retry with backoff, page through big lists, and pin the API version so their upgrade is not your outage.",
+    "he": "קראו את ה-spec לפני שה-AI קורא. שמרו מפתחות מחוץ לדפדפן, בדקו מול מפתחות sandbox, והניחו שכל קריאה יכולה להיגמר ב-timeout. retry עם backoff, דפדוף ברשימות גדולות, ונעילת גרסת ה-API כדי שהשדרוג שלהם לא יהיה התקלה שלכם."
+   }
   },
   {
    "id": "data",
@@ -1604,7 +1736,15 @@
       "he": "לשמור זמן ב-UTC, טקסט ב-UTF-8, כסף ביחידות שלמות קטנות. שלושה כללים, מספר עצום של באגים שנמנעו."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "State has to live somewhere that survives a refresh, and that somewhere is a database. This lesson gives you the vocabulary to talk about one: its shape, how you ask it questions, and — level B — the things that keep it fast and honest as it grows.",
+    "he": "state צריך לחיות איפשהו שישרוד רפרש, וה'איפשהו' הזה הוא מסד נתונים. השיעור נותן את אוצר המילים לדבר על אחד כזה: הצורה שלו, איך שואלים אותו שאלות, ו — ברמה B — הדברים שמשאירים אותו מהיר וישר כשהוא גדל."
+   },
+   "summary": {
+    "en": "A schema is the shape; a query is a question; an index is what makes the question fast. Change the shape only through migrations, group related writes in a transaction, and never store money as a float.",
+    "he": "schema היא הצורה; query היא שאלה; index הוא מה שעושה את השאלה מהירה. משנים צורה רק דרך migrations, מקבצים כתיבות קשורות ב-transaction, ולעולם לא שומרים כסף כ-float."
+   }
   },
   {
    "id": "memory",
@@ -1762,7 +1902,15 @@
       "he": "חיפוש ברשימה בתוך לולאה הוא O(n²). אותו קוד עם Set הוא O(n). זה כל השיעור."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "'It got slow' and 'it crashed after a day' usually have the same root: how the program uses memory and time. This lesson gives you enough of the mental model to ask the AI the right question — not to tune a garbage collector yourself.",
+    "he": "'זה נהיה איטי' ו'זה קרס אחרי יום' בדרך כלל באים מאותו שורש: איך התוכנה משתמשת בזיכרון ובזמן. השיעור נותן די מהמודל המנטלי כדי לשאול את ה-AI את השאלה הנכונה — לא כדי לכוונן garbage collector בעצמכם."
+   },
+   "summary": {
+    "en": "RAM is fast and forgetful, disk is slow and permanent. Leaks are memory that is never given back. Latency is one wait, throughput is how many per second. When two things touch the same data at once, you have a race — ask about locks.",
+    "he": "RAM מהיר ושכחני, דיסק איטי וקבוע. leak הוא זיכרון שלא מוחזר אף פעם. latency הוא המתנה אחת, throughput הוא כמה בשנייה. כששני דברים נוגעים באותו דאטה בו-זמנית יש לכם race — תשאלו על נעילות."
+   }
   },
   {
    "id": "cache",
@@ -1888,7 +2036,15 @@
       "he": "מטמון במשתנה מקומי נשבר ברגע שרצים שני שרתים. Redis הוא הגרסה המשותפת."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "The cheapest way to make anything faster is to not do it twice. That is a cache. It is also the reason 'I fixed it but the page still shows the old thing' happens. This lesson covers both faces: the speed-up and the stale data.",
+    "he": "הדרך הזולה ביותר להאיץ כל דבר היא לא לעשות אותו פעמיים. זה cache. זו גם הסיבה ש'תיקנתי אבל הדף עדיין מציג את הישן' קורה. השיעור מכסה את שני הפרצופים: ההאצה והדאטה המיושן."
+   },
+   "summary": {
+    "en": "A cache is a remembered answer. It saves time on a hit, costs nothing on a miss, and lies when it is stale — so every cache needs a TTL or an invalidation rule. Browser, CDN, Redis: same idea, different distance from the user.",
+    "he": "cache הוא תשובה שזוכרים. הוא חוסך זמן ב-hit, לא עולה כלום ב-miss, ומשקר כשהוא מיושן — אז כל cache צריך TTL או חוק invalidation. דפדפן, CDN, Redis: אותו רעיון, מרחק שונה מהמשתמש."
+   }
   },
   {
    "id": "testing",
@@ -2030,7 +2186,15 @@
       "he": "עם AI זו מפסיקה להיות פילוסופיה והופכת לשליטה: הבדיקה היא המפרט שאתה נותן למודל, וההוכחה שאתה בודק מולה."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "An agent that edits your code will, sooner or later, break something that used to work. Tests are the only thing that notices before a user does. This lesson explains what a test is and the words around it, so you can ask for the right kind and read the result.",
+    "he": "סוכן שעורך את הקוד שלכם ישבור, במוקדם או במאוחר, משהו שעבד. בדיקות הן הדבר היחיד ששם לב לפני שמשתמש שם לב. השיעור מסביר מה זה טסט ואת המילים מסביבו, כדי שתוכלו לבקש את הסוג הנכון ולקרוא את התוצאה."
+   },
+   "summary": {
+    "en": "A test is a claim that runs. Unit tests are fast and narrow, E2E tests are slow and honest. A regression is an old bug returning; a flaky test is one you cannot trust. Ask the AI for the test first, then the code — it constrains what it can get wrong.",
+    "he": "טסט הוא טענה שרצה. unit tests מהירים וצרים, E2E איטיים וכנים. regression הוא באג ישן שחוזר; flaky test הוא כזה שאי אפשר לסמוך עליו. בקשו מה-AI את הטסט קודם ואז את הקוד — זה מגביל במה הוא יכול לטעות."
+   }
   },
   {
    "id": "async",
@@ -2188,7 +2352,15 @@
       "he": "מאזני עומסים ודפדפנים חותכים חיבורים ב-30–60 שניות. ״צור את הדוח״ לא יכול להיות בקשת HTTP אחת מעבר לכמה אלפי שורות."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Not everything should happen while the user waits. Sending the email, resizing the image, calling the slow API — real systems push those to the background and report back later. This lesson is how that is done safely and how you know when it finished or failed.",
+    "he": "לא כל דבר צריך לקרות בזמן שהמשתמש מחכה. לשלוח את המייל, לכווץ את התמונה, לקרוא ל-API האיטי — מערכות אמיתיות דוחפות את אלה לרקע ומדווחות אחר כך. השיעור הוא איך עושים את זה בבטחה ואיך יודעים מתי זה נגמר או נכשל."
+   },
+   "summary": {
+    "en": "Answer the user fast, do the slow thing in a job. Jobs fail, so retry with backoff and park the hopeless ones in a dead-letter queue. Data that arrives later is eventually consistent — design the screen to say 'processing'.",
+    "he": "עונים למשתמש מהר, את הדבר האיטי עושים ב-job. jobs נכשלים, אז retry עם backoff ומחנים את חסרי התקווה ב-dead-letter queue. דאטה שמגיע אחר כך הוא eventually consistent — תכננו את המסך להגיד 'בעיבוד'."
+   }
   },
   {
    "id": "auth",
@@ -2362,7 +2534,15 @@
       "he": "אלה שני הליקויים שקוד שנוצר על ידי AI נכשל בהם הכי הרבה במחקרים שפורסמו. תברח פלט; תשתמש בעוגיות SameSite ובטוקני CSRF."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Two questions every app must answer: who is this, and what may they do. This lesson separates those, explains how the browser remembers you between clicks, and covers the handful of security terms the AI will mention in every scaffold — HTTPS, secrets, CORS, injection.",
+    "he": "שתי שאלות שכל אפליקציה חייבת לענות עליהן: מי זה, ומה מותר לו. השיעור מפריד בין השתיים, מסביר איך הדפדפן זוכר אתכם בין קליקים, ומכסה את קומץ מונחי האבטחה שה-AI יזכיר בכל scaffold — HTTPS, סודות, CORS, injection."
+   },
+   "summary": {
+    "en": "Authentication is who, authorization is what. Sessions and tokens are how the server remembers. Secrets live in environment variables, never in code. Hash passwords, encrypt data, validate every input as if it were hostile — because some of it is.",
+    "he": "authentication זה מי, authorization זה מה. sessions ו-tokens הם איך השרת זוכר. סודות חיים במשתני סביבה, לעולם לא בקוד. hash לסיסמאות, הצפנה לדאטה, ולידציה לכל קלט כאילו הוא עוין — כי חלק ממנו כן."
+   }
   },
   {
    "id": "security",
@@ -2536,7 +2716,15 @@
       "he": "הדבר הראשון שלקוח, עורך דין או אתה העתידי שואלים אחרי אירוע. זול להוסיף ביום הראשון, בלתי אפשרי להוסיף בדיעבד."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Login is the front door. This lesson is the rest of the building: what a logged-in user can touch, what leaks through dependencies and git history, and what you do the day something goes wrong. Nothing here needs you to write code — it needs you to ask.",
+    "he": "התחברות היא דלת הכניסה. השיעור הזה הוא שאר הבניין: במה משתמש מחובר יכול לגעת, מה דולף דרך dependencies והיסטוריית git, ומה עושים ביום שמשהו משתבש. שום דבר פה לא דורש לכתוב קוד — הוא דורש לשאול."
+   },
+   "summary": {
+    "en": "Decide what you are protecting from whom, then give every part the least it needs. A secret that once hit git is burned. Patch dependencies, keep backups you have actually restored, and log who did what so the postmortem has facts.",
+    "he": "מחליטים על מה מגנים וממי, ואז נותנים לכל חלק את המינימום שהוא צריך. סוד שפעם נגע ב-git שרוף. מעדכנים dependencies, שומרים גיבויים שבאמת שיחזרתם, ורושמים מי עשה מה כדי שלפוסטמורטם יהיו עובדות."
+   }
   },
   {
    "id": "net",
@@ -2678,7 +2866,15 @@
       "he": "תבדוק דפי סטטוס ו-DownDetector לפני שאתה מאשים את הדיפלוי שלך. אחר כך תן ל-AI את הפלט הגולמי של dig ו-curl -v, לא ״האתר נפל״ — הוא ישים את האצבע על השכבה בתשובה אחת."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Between your code and the person typing your URL sits a layer you did not write: domains, DNS, certificates, proxies, firewalls. Most 'the site is down' moments live here. This lesson gives you enough to tell 'me' from 'them' in five minutes.",
+    "he": "בין הקוד שלכם לאדם שמקליד את ה-URL יושבת שכבה שלא כתבתם: דומיינים, DNS, תעודות, פרוקסי, פיירוול. רוב רגעי 'האתר למטה' חיים פה. השיעור נותן די כדי להבדיל בין 'אני' ל'הם' בחמש דקות."
+   },
+   "summary": {
+    "en": "A domain points at an address through DNS records; a certificate proves it is you; a reverse proxy and a firewall stand in front. When it is down, walk the chain from the outside in — DNS, TLS, proxy, app — before touching code.",
+    "he": "דומיין מצביע על כתובת דרך רשומות DNS; תעודה מוכיחה שזה אתם; reverse proxy ופיירוול עומדים מקדימה. כשזה למטה, עוברים את השרשרת מבחוץ פנימה — DNS, TLS, proxy, app — לפני שנוגעים בקוד."
+   }
   },
   {
    "id": "cloud",
@@ -2820,7 +3016,15 @@
       "he": "בלי לוגים, באג בפרודקשן הוא באג שאי אפשר לתקן. תוציא ללוג את הקלט של כל דבר שאי אפשר לשחזר מקומית."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Your app has to run on a computer that is on when you are asleep. The cloud is renting that computer, and this lesson names its parts: where files go, where code runs, how it gets there, and how you know it is still alive.",
+    "he": "האפליקציה שלכם צריכה לרוץ על מחשב שדלוק כשאתם ישנים. הענן הוא השכרה של המחשב הזה, והשיעור נותן שמות לחלקים שלו: לאן הולכים קבצים, איפה רץ הקוד, איך הוא מגיע לשם, ואיך יודעים שהוא עדיין חי."
+   },
+   "summary": {
+    "en": "The cloud is someone else's computer with an invoice. Files go in object storage, code runs in a VM, a container or a function. A deploy is copying the new version there; CI/CD is doing it automatically; logs are how you find out what it did.",
+    "he": "הענן הוא המחשב של מישהו אחר עם חשבונית. קבצים הולכים ל-object storage, קוד רץ ב-VM, בקונטיינר או בפונקציה. deploy הוא להעתיק את הגרסה החדשה לשם; CI/CD זה לעשות את זה אוטומטית; לוגים הם איך מגלים מה זה עשה."
+   }
   },
   {
    "id": "devops",
@@ -2994,7 +3198,15 @@
       "he": "RENAME COLUMN במיגרציה אחת מקריס כל מופע ישן שעדיין משרת תעבורה ומונע rollback. תבקש מה-AI את השינוי בשני חצאים ותשלח את השני שבוע אחרי."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Getting code from your laptop to real users without a 3am phone call comes down to three things: the same bytes everywhere, a way back, and a switch you can flip. This lesson names the practices that give you each one.",
+    "he": "להעביר קוד מהלפטופ למשתמשים אמיתיים בלי טלפון ב-3 בלילה מסתכם בשלושה דברים: אותם בייטים בכל מקום, דרך חזרה, ומתג שאפשר להפוך. השיעור נותן שמות לפרקטיקות שנותנות כל אחד מהם."
+   },
+   "summary": {
+    "en": "Dev, staging, prod: same code, different config, secrets from a manager. Ship a tagged artifact, preview it first, deploy without downtime, and keep rollback one command away. Feature flags let you ship dark and turn on later.",
+    "he": "dev, staging, prod: אותו קוד, קונפיג שונה, סודות מ-secrets manager. משחררים artifact מתויג, רואים preview קודם, עושים deploy בלי downtime, ומשאירים rollback במרחק פקודה אחת. feature flags מאפשרים לשחרר כבוי ולהדליק אחר כך."
+   }
   },
   {
    "id": "observe",
@@ -3152,7 +3364,15 @@
       "he": "״אני אהיה יותר זהיר״ זה לא פריט פעולה. ״דיפלויים דורשות מעכשיו בדיקת תקינות עוברת״ כן. גם לבד, תכתוב אחד — אתה הצוות ששוכח."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "Your app is running somewhere you cannot see. These are the instruments that tell you what it is doing before a user does — logs you can search, numbers you can graph, alerts that wake the right person, and the habit of learning from the bad night.",
+    "he": "האפליקציה שלכם רצה איפשהו שאתם לא רואים. אלה המכשירים שאומרים לכם מה היא עושה לפני שמשתמש אומר — לוגים שאפשר לחפש, מספרים שאפשר לגרף, התראות שמעירות את האדם הנכון, וההרגל ללמוד מהלילה הרע."
+   },
+   "summary": {
+    "en": "Log structured, not sentences. Measure the few numbers users feel. Tie one request across services with a correlation id. Alert on symptoms, not causes, and write the postmortem without blame — it is the cheapest lesson you will ever buy.",
+    "he": "לוגים מובנים, לא משפטים. מודדים את המספרים הבודדים שמשתמשים מרגישים. קושרים בקשה אחת בין שירותים עם correlation id. מתריעים על סימפטומים, לא סיבות, וכותבים פוסטמורטם בלי האשמות — זה השיעור הזול ביותר שתקנו."
+   }
   },
   {
    "id": "scale",
@@ -3310,7 +3530,15 @@
       "he": "AI הופך צבירת חוב לקלה מדי. מחיקת קוד היא עדיין הדרך היחידה להחזיר אותו."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "What changes when there is more than one of everything — servers, users, teams? This lesson covers the words architects use when the answer is 'a lot': how load is spread, why servers should forget, and where one missing piece takes everything down.",
+    "he": "מה משתנה כשיש יותר מאחד מכל דבר — שרתים, משתמשים, צוותים? השיעור מכסה את המילים שארכיטקטים משתמשים בהן כשהתשובה היא 'הרבה': איך מפזרים עומס, למה שרתים צריכים לשכוח, ואיפה חלק אחד חסר מפיל את כולם."
+   },
+   "summary": {
+    "en": "Scale out, not up. Keep servers stateless so any of them can answer. Put slow work in a queue, make handlers idempotent so retries are safe, rate-limit the door, and find your single point of failure before it finds you. Start with a monolith.",
+    "he": "מרחיבים החוצה, לא למעלה. שומרים שרתים stateless כדי שכל אחד יכול לענות. עבודה איטית לתור, handlers אידמפוטנטיים כדי ש-retry בטוח, rate limit על הדלת, ומוצאים את נקודת הכשל היחידה לפני שהיא מוצאת אתכם. מתחילים ממונולית."
+   }
   },
   {
    "id": "team",
@@ -3500,7 +3728,15 @@
       "he": "אתה לא יכול לשכור אדם שני, אבל אתה יכול להשאיר מאחור מספיק — README, תשתית כקוד, טסטים, סודות בכספת — כדי שזר או סוכן יוכלו להרים את זה. ככה מעלים את הפקטור."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "The habits that let ten people build one thing also let one person plus an AI build it without drowning. This lesson is that vocabulary: how work is sliced, tracked, finished and explained — to a teammate, or to the AI picking up where you left off.",
+    "he": "ההרגלים שמאפשרים לעשרה אנשים לבנות דבר אחד מאפשרים גם לאדם אחד פלוס AI לבנות אותו בלי לטבוע. השיעור הוא אוצר המילים הזה: איך עבודה נחתכת, נעקבת, נגמרת ומוסברת — לחבר צוות, או ל-AI שממשיך מאיפה שעצרתם."
+   },
+   "summary": {
+    "en": "Slice work into tickets small enough to finish. Define 'done' before you start. Write the README the AI will read tomorrow, record the decisions you will forget, and keep branches short. Your bus factor is one — write things down.",
+    "he": "חותכים עבודה לטיקטים קטנים מספיק לסיים. מגדירים 'done' לפני שמתחילים. כותבים את ה-README שה-AI יקרא מחר, מתעדים את ההחלטות שתשכחו, ושומרים branches קצרים. bus factor שלכם הוא אחד — תכתבו דברים."
+   }
   },
   {
    "id": "ai",
@@ -3770,7 +4006,15 @@
       "he": "הצלחת דמו אינה מוכנות לפרודקשן. בודקים בעלות, סודות ונתיבי כשל."
      }
     }
-   ]
+   ],
+   "overview": {
+    "en": "This is the other half of your job now. The AI is an engineer with no memory, no context and no stake in the outcome — treat it like one. This lesson is the working vocabulary for that: what fits in its head, how to ask, how to check, and when to stop and start over.",
+    "he": "זה החצי השני של העבודה שלכם עכשיו. ה-AI הוא מהנדס בלי זיכרון, בלי הקשר ובלי עניין בתוצאה — התייחסו אליו ככזה. השיעור הוא אוצר המילים העבודתי לזה: מה נכנס לו לראש, איך לבקש, איך לבדוק, ומתי לעצור ולהתחיל מחדש."
+   },
+   "summary": {
+    "en": "Be specific, state the shape of the answer, limit the blast radius, and take small steps. Read every diff. Assume it can invent packages and facts. When it loops on a fix, kill the thread and restate the problem. Demo-quality is not production-quality.",
+    "he": "להיות ספציפיים, להגיד מה צורת התשובה, להגביל את רדיוס הנזק, וללכת בצעדים קטנים. לקרוא כל diff. להניח שהוא יכול להמציא חבילות ועובדות. כשהוא נתקע בלופ של תיקונים, הורגים את השיחה ומנסחים את הבעיה מחדש. איכות דמו היא לא איכות פרודקשן."
+   }
   }
  ],
  "DETAIL": {
@@ -10973,7 +11217,8 @@
     "memory",
     "cache",
     "testing"
-   ]
+   ],
+   "price": 99
   },
   {
    "id": "advanced",
@@ -10997,7 +11242,8 @@
     "scale",
     "team",
     "ai"
-   ]
+   ],
+   "price": 149
   }
  ],
  "ASK_PROMPT": "I'm learning the concept \"{term}\". Explain it to me the way a senior developer would explain it to a junior on their team:\n\n1. A one-paragraph mental model. No code.\n2. Where it shows up in MY project - look at the codebase, or ask me two questions about it first.\n3. The most common mistake beginners make with it, and how I would notice that mistake happening.\n4. One small, safe experiment I can run in 10 minutes to see it in action.\n\nKeep it under 300 words. Do not change any code.",

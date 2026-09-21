@@ -12,12 +12,13 @@ export function LessonSubNav({
   quiz,
 }: {
   m: Module;
-  active: number | null;
+  active: number | "overview" | "summary" | null;
   quiz?: boolean;
 }) {
   const { lang, done, levels, t } = useApp();
   return (
     <nav className="subnav" aria-label={m.title[lang]}>
+      <Link href={`/lesson/${m.id}/overview`} className={active === "overview" ? "on" : ""}>{t("overview")}</Link>
       {m.terms.map((tm, j) =>
         // the term you are reading stays listed even when its level is filtered out
         levels.has(tm.lvl) || active === j ? (
@@ -32,6 +33,7 @@ export function LessonSubNav({
           </Link>
         ) : null,
       )}
+      <Link href={`/lesson/${m.id}/summary`} className={active === "summary" ? "on" : ""}>{t("summary")}</Link>
       {QUIZ[m.id] ? (
         <Link href={`/lesson/${m.id}/quiz`} className={quiz ? "on" : ""}>{t("test")}</Link>
       ) : null}
