@@ -6,8 +6,6 @@
       "**/.*",
       "**/node_modules/**",
       "src/**",
-      "index.html",
-      "auth.js",
       "README.md"
     ],
     "headers": [

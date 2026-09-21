@@ -42,11 +42,11 @@ Firebase Hosting runs the Next.js server via `frameworksBackend` (SSR + middlewa
 
 ## Editing content
 
-`data/course.json` is the runtime source. The legacy Python modules under `src/` can still be used to regenerate it:
+`data/course.json` is the runtime source — edit it directly.
 
-```bash
-python src/build.py   # writes the old static index.html; copy output data if needed
-```
+The Python modules under `src/` are the historical content sources. They no longer regenerate
+`data/course.json`: `src/build.py` only ever emitted the old static `index.html` (now deleted), and
+`data/course.json` has since diverged from `src/course.json`. Kept for reference, not for building.
 
 Long term, content authoring should move to TypeScript modules — for now `course.json` is the single bundle.
 
