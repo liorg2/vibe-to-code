@@ -112,6 +112,9 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
         {PATHS.map(card)}
         {lane ? <PacManLane /> : null}
       </div>
+      <p className="sub legal-note">
+        <Link href="/compare">{lang === "he" ? "בסיס או מתקדם? השוואה בין הקורסים ←" : "Basic or Advanced? Compare the courses →"}</Link>
+      </p>
       {mine.size === 1 && !open ? (
         <div className="note" style={{ marginTop: 18 }}>
           <p style={{ marginBottom: 12 }}>{t("addCourseSub")}</p>

@@ -678,3 +678,18 @@ pre.code{max-width:100%}
 .site-foot{max-width:1240px;margin:0 auto;padding:0 24px 32px;text-align:center;font-size:var(--fs-xs);color:var(--tx3)}
 .site-foot a{color:inherit}
 .site-foot{display:flex;justify-content:center;gap:20px}
+
+/* compare */
+.compare h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.02em;margin-top:8px}
+.compare .lede{color:var(--tx2);margin:10px 0 22px;max-width:70ch;line-height:1.6}
+.cmp-wrap{overflow-x:auto}
+.cmp{width:100%;border-collapse:collapse;table-layout:fixed;font-size:var(--fs-sm)}
+.cmp th,.cmp td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top;line-height:1.5}
+.cmp tbody th{width:34%;color:var(--tx2);font-weight:500}
+.cmp thead th{font-size:var(--fs-md);font-weight:700}
+.cmp thead .ic{margin-inline-end:8px}
+.cmp-sec th{padding-top:26px;font-size:var(--fs-md);font-weight:700;color:var(--tx)!important}
+.cmp tr:last-child td{border-bottom:0;padding-top:20px}
+.cmp-note{margin-top:14px}
+@media (max-width:600px){.cmp{font-size:var(--fs-xs)}.cmp th,.cmp td{padding:10px 6px}.cmp tbody th{width:30%}
+  .cmp thead th{font-size:var(--fs-sm)}.cmp .ic{display:block;margin:0 0 4px}.cmp a{width:100%;padding-inline:6px}}
