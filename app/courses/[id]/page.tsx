@@ -23,7 +23,6 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
   const course = id as "basic" | "advanced";
   // titles and goals only — the prompts are paid content and never leave the server
   const steps = buildsFor(course);
-  const builds = Object.fromEntries(steps.map(({ id, step }) => [id, step.done.length]));
   const hours = Math.round(MODULES.filter((m) => p.mods.includes(m.id)).reduce((n, m) => n + mins(m), 0) / 60);
   const H = INTRO.h;
 
@@ -37,7 +36,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
           <div className="n">{p.mods.length} {t("lessonsN")} · ₪{p.price}</div>
         </div>
         <p className="mblurb">{p.blurb[lang]}</p>
-        <CourseStart course={course} ids={p.mods} builds={builds} locked={locked} />
+        <CourseStart course={course} ids={p.mods} locked={locked} />
 
         <h3 className="intro-h">🎒 {H.need[lang]}</h3>
         <div className="intro-grid">

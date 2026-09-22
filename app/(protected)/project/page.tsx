@@ -1,10 +1,13 @@
 import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
+import { BuildBody } from "@/components/BuildBody";
+import { BuildTick } from "@/components/BuildTick";
 import { buildsFor } from "@/lib/builds";
 import { ARCHITECTURES, CHECKLIST, UI, lessonNo } from "@/lib/course";
+import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
-/** The build track at a glance: one app, one step per lesson, each linking to its lesson's Build page. */
+/** The whole build track on one page: each step opens in place, so there is no page to find the way back from. */
 export default async function ProjectPage({
   searchParams,
 }: {
@@ -15,7 +18,7 @@ export default async function ProjectPage({
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const q = (href: string) => `${href}${href.includes("?") ? "&" : "?"}course=${course}`;
-  const steps = buildsFor(course);
+  const steps = await Promise.all(buildsFor(course).map(async (s) => ({ ...s, owned: await ownsModule(s.id) })));
   const next =
     course === "basic"
       ? { href: q("/architectures"), label: ARCHITECTURES.title[lang] }
@@ -38,15 +41,27 @@ export default async function ProjectPage({
       </section>
       <div className="note">⚠ {t("buildTrackWarn")}</div>
       <ol className="roadmap">
-        {steps.map(({ id, step }) => (
+        {steps.map(({ id, step, owned }) => (
           <li key={id}>
-            <Link href={q(`/lesson/${id}/build`)}>
-              <span className="n">{lessonNo(id)}</span>
-              <div>
-                <b>{step.title[lang]}</b>
-                <p>{step.goal[lang]}</p>
+            <details>
+              <summary>
+                <span className="n">{lessonNo(id)}</span>
+                <div>
+                  <b>{step.title[lang]}</b>
+                  <p>{step.goal[lang]}</p>
+                </div>
+                <BuildTick id={id} />
+              </summary>
+              <div className="build">
+                {owned ? (
+                  <BuildBody id={id} b={step} lang={lang} q={q} />
+                ) : (
+                  <p className="build-how">
+                    🔒 <Link href="/courses">{t("unlock")} →</Link>
+                  </p>
+                )}
               </div>
-            </Link>
+            </details>
           </li>
         ))}
       </ol>

@@ -17,17 +17,19 @@ import {
   archesFor,
   termKey,
 } from "@/lib/course";
+import { buildFinished } from "@/lib/builds/counts";
 import { isPreviewModule } from "@/lib/protected";
 import type { Module } from "@/lib/types";
 
 const COURSE_KEY = "vibe.navCourse";
+const HIDE_KEY = "v2c.hideDone";
 
 function asCourse(id: string): "basic" | "advanced" | "" {
   return id === "basic" || id === "advanced" ? id : "";
 }
 
 export function SideNav() {
-  const { lang, done, t, user } = useApp();
+  const { lang, done, ticked, t, user } = useApp();
   const pathname = stripLang(usePathname());
   const queryCourse = asCourse(useSearchParams().get("course") ?? "");
 
@@ -41,6 +43,19 @@ export function SideNav() {
   const homes = PATHS.filter((p) => activeLesson && p.mods.includes(activeLesson)).map((p) => p.id);
   const fromPath = asCourse(pathname.match(/^\/courses\/(basic|advanced)/)?.[1] ?? "");
   const [remembered, setRemembered] = useState("");
+  // hide lessons whose topics are all done; the lesson you are in always stays
+  const [hideDone, setHideDone] = useState(false);
+  useEffect(() => {
+    try {
+      setHideDone(localStorage.getItem(HIDE_KEY) === "1");
+    } catch {}
+  }, []);
+  const flipHideDone = () => {
+    setHideDone(!hideDone);
+    try {
+      localStorage.setItem(HIDE_KEY, hideDone ? "0" : "1");
+    } catch {}
+  };
   useEffect(() => {
     const explicit = queryCourse && (homes.length === 0 || homes.includes(queryCourse)) ? queryCourse : fromPath;
     if (explicit) {
@@ -160,11 +175,12 @@ export function SideNav() {
   };
 
   const ids = PATHS.find((p) => p.id === courseId)?.mods ?? [];
-  const lessons = ids
+  const mods = ids
     .filter((id) => user || isPreviewModule(id))
     .map((id) => MODULES.find((m) => m.id === id))
-    .filter((m): m is Module => !!m)
-    .map(lesson);
+    .filter((m): m is Module => !!m);
+  const finished = mods.filter((m) => m.id !== activeLesson && m.terms.every((_, i) => done.has(termKey(m, i))));
+  const lessons = (hideDone ? mods.filter((m) => !finished.includes(m)) : mods).map(lesson);
   const arches = courseId ? archesFor(courseId) : [];
 
   return (
@@ -200,12 +216,23 @@ export function SideNav() {
         </button>
       </div>
       <div id="nav">
+        {finished.length ? (
+          <button type="button" className="nav-hide" aria-pressed={hideDone}
+            // keeps the phone sheet open: the nav's own click handler closes it
+            onClick={(e) => {
+              e.stopPropagation();
+              flipHideDone();
+            }}
+          >
+            {t(hideDone ? "showDone" : "hideDone")} ({finished.length})
+          </button>
+        ) : null}
         {courseId ? navLink(`/courses/${courseId}`, "🚩", t("courseIntro")) : null}
         {lessons}
         {user && courseId ? (
           <>
             <Separator className="my-2 mx-1.5" />
-            {navLink(q("/project"), "🛠", t("buildTrack"), String(ids.length))}
+            {navLink(q("/project"), "🛠", t("buildTrack"), `${ids.filter((id) => buildFinished(ticked, id)).length}/${ids.length}`)}
             {arches.length ? (
               <div className={cn("nav-lesson", openId === "architectures" && "open")}>
                 <Link

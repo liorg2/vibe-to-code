@@ -2,12 +2,11 @@ import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { BuildDone } from "@/components/BuildDone";
+import { BuildBody } from "@/components/BuildBody";
 import { LessonSubNav } from "@/components/LessonSubNav";
-import { PromptBox } from "@/components/PromptBox";
 import { Upsell } from "@/components/Upsell";
-import { BUILDS, promptFor } from "@/lib/builds";
-import { QUIZ, UI, findTermK, getModule, lessonNo, neighbors, pathForModule } from "@/lib/course";
+import { BUILDS } from "@/lib/builds";
+import { QUIZ, UI, getModule, lessonNo, neighbors, pathForModule } from "@/lib/course";
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
@@ -60,28 +59,10 @@ export default async function BuildPage({
         </div>
         <h2>{b.title[lang]}</h2>
         <div className="lede">{b.goal[lang]}</div>
-        <p className="build-why">{b.why[lang]}</p>
         <p className="build-how">
           {t("buildHow")} <Link href={q("/project")}>{t("buildTrack")} →</Link>
         </p>
-        <div className="tags">
-          {b.uses.map((k) => {
-            const loc = findTermK(k);
-            return loc ? (
-              <Link key={k} href={q(`/lesson/${loc.m.id}/${loc.i}`)}>
-                {loc.tm.t[lang]}
-              </Link>
-            ) : null;
-          })}
-        </div>
-        <h3 className="build-h">{t("buildDo")}</h3>
-        <p className="sub">{t("buildDoSub")}</p>
-        <PromptBox id={`${id}-build`} text={promptFor(b.build, lang)} label={t("prompt")} />
-        <h3 className="build-h">{t("buildCheck")}</h3>
-        <p className="sub">{t("buildCheckSub")}</p>
-        <PromptBox id={`${id}-check`} text={promptFor(b.check, lang)} label={t("prompt")} />
-        <h3 className="build-h">{t("buildDone")}</h3>
-        <BuildDone id={id} items={b.done.map((d) => d[lang])} />
+        <BuildBody id={id} b={b} lang={lang} q={q} />
         <div className="pager">
           <Link href={q(`/lesson/${m.id}/summary`)}><b>{t("prev")}</b><span>{t("summary")}</span></Link>
           <Link className="nx" href={next.href}><b>{t("nextTerm")}</b><span>{next.label}</span></Link>

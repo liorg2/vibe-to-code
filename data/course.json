@@ -475,6 +475,14 @@
   "courseIntro": {
    "en": "Start here",
    "he": "מתחילים כאן"
+  },
+  "hideDone": {
+   "en": "Hide completed",
+   "he": "להסתיר שיעורים שהושלמו"
+  },
+  "showDone": {
+   "en": "Show completed",
+   "he": "להציג שיעורים שהושלמו"
   }
  },
  "MODULES": [

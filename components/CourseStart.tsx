@@ -3,31 +3,28 @@
 import Link from "@/components/Link";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { buildFinished } from "@/lib/builds/counts";
 import { MODULES, termKey } from "@/lib/course";
 import { INTRO } from "@/lib/intro";
 import { useApp } from "./Providers";
 
 /**
  * Topics watched and build steps finished, and one button to wherever the learner left off.
- * `builds` is the number of "done when" items per lesson — a step counts once all are ticked.
  */
 export function CourseStart({
   course,
   ids,
-  builds,
   locked,
 }: {
   course: string;
   ids: string[];
-  builds: Record<string, number>;
   locked: boolean;
 }) {
   const { lang, done, ticked, t } = useApp();
   const mods = ids.map((id) => MODULES.find((m) => m.id === id)!).filter(Boolean);
   const total = mods.reduce((n, m) => n + m.terms.length, 0);
   const seen = mods.reduce((n, m) => n + m.terms.filter((_, i) => done.has(termKey(m, i))).length, 0);
-  const stepDone = (id: string) =>
-    !!builds[id] && Array.from({ length: builds[id] }, (_, i) => ticked.has(`build:${id}:${i}`)).every(Boolean);
+  const stepDone = (id: string) => buildFinished(ticked, id);
   const built = ids.filter(stepDone).length;
   const q = `?course=${course}`;
 
@@ -41,7 +38,7 @@ export function CourseStart({
       label = m.title[lang];
       break;
     }
-    if (builds[m.id] && !stepDone(m.id)) {
+    if (!stepDone(m.id)) {
       href = `/lesson/${m.id}/build${q}`;
       label = `${t("build")} · ${m.title[lang]}`;
       break;

@@ -1,6 +1,7 @@
 /** Run: npx esbuild lib/content.check.ts --bundle --platform=node --outfile=check.mjs --format=esm && node check.mjs */
 import assert from "node:assert/strict";
 import { BUILDS } from "./builds";
+import { BUILD_DONE_N } from "./builds/counts";
 import { MODULES, PATHS } from "./course";
 import { SCENES } from "./scenes";
 
@@ -23,6 +24,7 @@ for (const id of PATHS.find((p) => p.id === "advanced")!.mods) {
     assert.ok(p.includes("STEPS.md"), `build ${id}.${name}: never mentions STEPS.md`);
   }
   assert.match(b.check, /npm run (check|test:all)/, `build ${id}.check: does not run the suite`);
+  assert.equal(BUILD_DONE_N[id], b.done.length, `lib/builds/counts.ts: ${id} should be ${b.done.length}`);
 }
 
 // scenes: every key is a real topic, every beat moves between actors that exist, packets stay readable
