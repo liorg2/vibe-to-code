@@ -124,7 +124,6 @@ nav.side a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radi
   color:var(--tx2);text-decoration:none;font-size:var(--fs-sm);font-weight:400;transition:.15s}
 nav.side a:hover{background:var(--card2);color:var(--tx)}
 nav.side a.on{background:var(--card2);color:var(--tx)}
-body[dir="rtl"] nav.side a.on{box-shadow:inset -2px 0 0 var(--acc)}
 nav.side a .ic{width:24px;height:24px;border-radius:var(--r-sm);background:var(--card2);display:grid;
   place-items:center;font-size:var(--fs-xs);flex:none;border:1px solid var(--line)}
 nav.side a .cnt{margin-inline-start:auto;font-size:var(--fs-xs);color:var(--tx3);font-family:var(--font-mono),ui-monospace,monospace}
@@ -134,7 +133,6 @@ nav.side hr{border:0;border-top:1px solid var(--line);margin:8px 6px}
   color:var(--tx2);text-decoration:none;font-size:var(--fs-sm);font-weight:600;transition:.15s}
 .nav-lesson-h:hover{background:var(--card2);color:var(--tx)}
 .nav-lesson-h.on{background:var(--card2);color:var(--tx)}
-body[dir="rtl"] .nav-lesson-h.on{box-shadow:inset -2px 0 0 var(--acc)}
 .nav-subs{display:none;padding:0 0 4px 8px;margin:0 0 4px 20px;
   border-inline-start:1px solid var(--line)}
 body[dir="rtl"] .nav-subs{margin:0 20px 4px 0}
