@@ -2,17 +2,17 @@
 import assert from "node:assert";
 import { createHmac } from "node:crypto";
 import { PATHS } from "./course";
-import { courseOfModule } from "./entitlement";
+import { courseOfModule, coursesOfModule } from "./entitlement";
 import { verifySignature } from "./paddle";
 
-// the two courses are independent products: a module belongs to exactly one of them
+// shared lessons are listed in both; the home course is the earlier one
 assert.strictEqual(courseOfModule("http"), "basic");
+assert.deepStrictEqual(coursesOfModule("http"), ["basic", "advanced"]);
 assert.strictEqual(courseOfModule("security"), "advanced");
+assert.deepStrictEqual(coursesOfModule("security"), ["advanced"]);
 assert.strictEqual(courseOfModule("nope"), undefined);
 assert.strictEqual(courseOfModule(""), undefined);
-
-// and every module a course lists resolves back to that course
-for (const p of PATHS) for (const m of p.mods) assert.strictEqual(courseOfModule(m), p.id);
+assert.ok(!PATHS.find((p) => p.id === "basic")!.mods.includes("security"));
 
 // the webhook signature: right secret in, wrong secret / tampered body out
 const secret = "whsec_test_not_a_real_secret";

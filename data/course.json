@@ -461,8 +461,8 @@
    "he": "כרגע הכל פתוח לכל חשבון מחובר."
   },
   "coursesSub": {
-   "en": "Basic is the short foundations. Advanced is twice the lessons and more than twice the time — what it takes to ship.",
-   "he": "בסיסי הוא היסודות הקצרים. מתקדם הוא פי שניים שיעורים ויותר מפי שניים זמן — מה שצריך כדי לשחרר."
+   "en": "Basic is the short foundations. Advanced includes every Basic lesson, then keeps going — what it takes to ship.",
+   "he": "בסיסי הוא היסודות הקצרים. מתקדם כולל את כל שיעורי הבסיס, ואז ממשיך — מה שצריך כדי לשחרר."
   },
   "glossaryAll": {
    "en": "Every topic in the course, A to Z.",
@@ -11588,10 +11588,17 @@
     "he": "מושגי פיתוח ל-Vibe Coders: מתקדם"
    },
    "blurb": {
-    "en": "The longer course. Integrations, performance, auth, security, deploys, scale, and how a team actually ships.",
-    "he": "הקורס הארוך. אינטגרציות, ביצועים, הרשאות, אבטחה, פריסות, סקייל, ואיך צוות באמת משחרר."
+    "en": "Every Basic lesson, then integrations, performance, auth, security, deploys, scale, and how a team actually ships.",
+    "he": "כל שיעורי הבסיס, ואז אינטגרציות, ביצועים, הרשאות, אבטחה, פריסות, סקייל, ואיך צוות באמת משחרר."
    },
    "mods": [
+    "ground",
+    "vcs",
+    "sides",
+    "langs",
+    "frontend",
+    "http",
+    "data",
     "async",
     "memory",
     "cache",

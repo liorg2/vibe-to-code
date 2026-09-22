@@ -15,30 +15,33 @@ export async function LessonIntro({
   mi,
   kind,
   lang,
+  course,
 }: {
   m: Module;
   mi: number;
   kind: "overview" | "summary";
   lang: Lang;
+  course?: string;
 }) {
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const owns = await ownsModule(m.id);
-  const coursePath = pathForModule(m.id);
-  const { prev: prevM, next: nextM } = neighbors(m.id);
+  const coursePath = pathForModule(m.id, course);
+  const { prev: prevM, next: nextM } = neighbors(m.id, course);
   const last = m.terms.length - 1;
+  const q = (href: string) => (course ? `${href}?course=${course}` : href);
 
   const prev =
     kind === "overview"
-      ? prevM ? { href: `/lesson/${prevM.id}/summary`, label: prevM.title[lang] } : null
-      : { href: `/lesson/${m.id}/${last}`, label: m.terms[last].t[lang] };
+      ? prevM ? { href: q(`/lesson/${prevM.id}/summary`), label: prevM.title[lang] } : null
+      : { href: q(`/lesson/${m.id}/${last}`), label: m.terms[last].t[lang] };
   const next =
     kind === "overview"
-      ? { href: `/lesson/${m.id}/0`, label: t("startLesson") }
+      ? { href: q(`/lesson/${m.id}/0`), label: t("startLesson") }
       : QUIZ[m.id]
-        ? { href: `/lesson/${m.id}/quiz`, label: t("toTest") }
+        ? { href: q(`/lesson/${m.id}/quiz`), label: t("toTest") }
         : nextM
-          ? { href: `/lesson/${nextM.id}/overview`, label: nextM.title[lang] }
-          : { href: "/courses", label: t("paths") };
+          ? { href: q(`/lesson/${nextM.id}/overview`), label: nextM.title[lang] }
+          : { href: course ? `/courses/${course}` : "/courses", label: t("paths") };
 
   return (
     <>
@@ -46,11 +49,11 @@ export async function LessonIntro({
         items={[
           { label: t("paths"), href: "/courses" },
           ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
-          { label: m.title[lang], href: `/lesson/${m.id}/overview` },
+          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`) },
           { label: t(kind) },
         ]}
       />
-      <LessonSubNav m={m} active={kind} />
+      <LessonSubNav m={m} active={kind} course={course} />
       <article className="slide">
         <div className="kicker">
           {t("lesson")} {lessonNo(m.id)} · {t(kind)}
@@ -66,7 +69,7 @@ export async function LessonIntro({
             <li key={tm.k}>
               <span className="n">{j + 1}</span>
               <div>
-                <Link href={`/lesson/${m.id}/${j}`}>{tm.t[lang]}</Link>
+                <Link href={q(`/lesson/${m.id}/${j}`)}>{tm.t[lang]}</Link>
                 {owns ? <p>{tm.d[lang]}</p> : <p className="lock">🔒 {t("locked")}</p>}
               </div>
             </li>

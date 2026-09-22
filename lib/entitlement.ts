@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { pathForModule } from "./course";
+import { PATHS, pathForModule } from "./course";
 import { withLang } from "./lang";
 import { serverLang } from "./lang-server";
 import { getCourses, type Course } from "./db";
@@ -18,9 +18,14 @@ export function billingOn(): boolean {
   return process.env.BILLING_ENABLED === "1";
 }
 
-/** Which course a lesson belongs to — the two are independent products, so this is the whole gate. */
+/** Home course of a lesson — the earlier path, when Advanced also lists the Basic lessons. */
 export function courseOfModule(moduleId: string): Course | undefined {
   return pathForModule(moduleId)?.id as Course | undefined;
+}
+
+/** Every course that includes this lesson. Advanced includes the Basic ones. */
+export function coursesOfModule(moduleId: string): Course[] {
+  return PATHS.filter((p) => p.mods.includes(moduleId)).map((p) => p.id as Course);
 }
 
 /** What this visitor has actually bought. Nothing bought = empty. Server components only. */
@@ -38,8 +43,8 @@ export async function ownedCourses(): Promise<Set<Course>> {
  */
 export async function ownsModule(moduleId: string): Promise<boolean> {
   if (isPreviewModule(moduleId)) return true;
-  const course = courseOfModule(moduleId);
-  return !!course && (await ownedCourses()).has(course);
+  const mine = await ownedCourses();
+  return coursesOfModule(moduleId).some((c) => mine.has(c));
 }
 
 /** For pages that have nothing at all to show a non-buyer — send them to the offer. */

@@ -13,7 +13,7 @@ const miniBar =
 
 /** One card per lesson of a course, numbered by its place in the whole syllabus.
  *  `locked`: the visitor owns nothing — non-preview cards point at the offer, not the lesson. */
-export function LessonCards({ ids, locked }: { ids: string[]; locked: boolean }) {
+export function LessonCards({ ids, locked, courseId }: { ids: string[]; locked: boolean; courseId?: string }) {
   const { lang, done, t } = useApp();
   return (
     <>
@@ -25,7 +25,7 @@ export function LessonCards({ ids, locked }: { ids: string[]; locked: boolean })
           const preview = isPreviewModule(m.id);
           const gated = locked && !preview;
           return (
-            <Link key={m.id} className="mcard" href={gated ? "/courses" : `/lesson/${m.id}/overview`}>
+            <Link key={m.id} className="mcard" href={gated ? "/courses" : `/lesson/${m.id}/overview${courseId ? `?course=${courseId}` : ""}`}>
               <div className="row">
                 <div className="ic">{gated ? "🔒" : m.icon}</div>
                 <div>

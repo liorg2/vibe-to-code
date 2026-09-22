@@ -18,7 +18,7 @@ export function isProtectedPath(pathname: string): boolean {
 
 /** ponytail: hardcoded, not derived — data/course.json is 1.9 MB and this file is bundled into the
  *  edge middleware. lib/protected.check.ts fails if it drifts from PATHS[*].mods[0]. */
-export const PREVIEW_MODULES = ["ground", "async"] as const;
+export const PREVIEW_MODULES = ["ground", "ground"] as const;
 
 const PREVIEW_RE = new RegExp(`^/lesson/(${PREVIEW_MODULES.join("|")})(/|$)`);
 

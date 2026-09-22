@@ -10,16 +10,19 @@ export function LessonSubNav({
   m,
   active,
   quiz,
+  course,
 }: {
   m: Module;
   active: number | "overview" | "summary" | null;
   quiz?: boolean;
+  course?: string;
 }) {
   const { lang, done, t } = useApp();
+  const href = (path: string) => (course ? `${path}?course=${course}` : path);
   return (
     <nav className="subnav" aria-label={m.title[lang]}>
       <Link
-        href={`/lesson/${m.id}/overview`}
+        href={href(`/lesson/${m.id}/overview`)}
         className={cn(active === "overview" && "on")}
       >
         {t("overview")}
@@ -27,7 +30,7 @@ export function LessonSubNav({
       {m.terms.map((tm, j) => (
         <Link
           key={j}
-          href={`/lesson/${m.id}/${j}`}
+          href={href(`/lesson/${m.id}/${j}`)}
           className={cn(
             !quiz && active === j && "on",
             done.has(termKey(m, j)) && "done",
@@ -38,13 +41,13 @@ export function LessonSubNav({
         </Link>
       ))}
       <Link
-        href={`/lesson/${m.id}/summary`}
+        href={href(`/lesson/${m.id}/summary`)}
         className={cn(active === "summary" && "on")}
       >
         {t("summary")}
       </Link>
       {QUIZ[m.id] ? (
-        <Link href={`/lesson/${m.id}/quiz`} className={cn(quiz && "on")}>
+        <Link href={href(`/lesson/${m.id}/quiz`)} className={cn(quiz && "on")}>
           {t("test")}
         </Link>
       ) : null}

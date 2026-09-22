@@ -15,7 +15,6 @@ import {
   PATHS,
   QUIZ,
   archesFor,
-  pathForModule,
   projectFor,
   termKey,
 } from "@/lib/course";
@@ -40,21 +39,32 @@ export function SideNav() {
   const sub = pathname.match(/^\/lesson\/[^/]+\/(overview|summary|quiz)$/)?.[1] ?? "";
   const archOnRoute = pathname.startsWith("/architectures");
 
-  const routeCourse = asCourse(
-    pathForModule(activeLesson)?.id ??
-      pathname.match(/^\/courses\/(basic|advanced)/)?.[1] ??
-      queryCourse,
-  );
+  const homes = PATHS.filter((p) => activeLesson && p.mods.includes(activeLesson)).map((p) => p.id);
+  const fromPath = asCourse(pathname.match(/^\/courses\/(basic|advanced)/)?.[1] ?? "");
   const [remembered, setRemembered] = useState("");
   useEffect(() => {
-    if (routeCourse) {
-      sessionStorage.setItem(COURSE_KEY, routeCourse);
-      setRemembered(routeCourse);
+    const explicit = queryCourse && (homes.length === 0 || homes.includes(queryCourse)) ? queryCourse : fromPath;
+    if (explicit) {
+      sessionStorage.setItem(COURSE_KEY, explicit);
+      setRemembered(explicit);
       return;
     }
-    setRemembered(asCourse(sessionStorage.getItem(COURSE_KEY) ?? ""));
-  }, [routeCourse]);
-  const courseId = routeCourse || remembered;
+    const saved = asCourse(sessionStorage.getItem(COURSE_KEY) ?? "");
+    if (saved && (homes.length === 0 || homes.includes(saved))) {
+      setRemembered(saved);
+      return;
+    }
+    const home = asCourse(homes[0] ?? "");
+    if (home) {
+      sessionStorage.setItem(COURSE_KEY, home);
+      setRemembered(home);
+    }
+  }, [queryCourse, fromPath, activeLesson]);
+  const courseId =
+    (queryCourse && (!activeLesson || homes.includes(queryCourse)) ? queryCourse : "") ||
+    fromPath ||
+    (remembered && (!activeLesson || homes.includes(remembered)) ? remembered : "") ||
+    asCourse(homes[0] ?? "");
 
   const routeGroup = activeLesson || (archOnRoute ? "architectures" : "");
   const [openId, setOpenId] = useState(routeGroup);
@@ -98,7 +108,7 @@ export function SideNav() {
     return (
       <div key={m.id} className={cn("nav-lesson", open && "open")}>
         <Link
-          href={`/lesson/${m.id}/overview`}
+          href={q(`/lesson/${m.id}/overview`)}
           className={cn("nav-lesson-h", open && "on")}
           aria-expanded={open}
           onClick={headerClick(m.id, openId, setOpenId)}
@@ -108,23 +118,23 @@ export function SideNav() {
           <span className="cnt">{d}/{m.terms.length}</span>
         </Link>
         <div className="nav-subs">
-          <Link href={`/lesson/${m.id}/overview`} className={cn(here && sub === "overview" && "on")}>
+          <Link href={q(`/lesson/${m.id}/overview`)} className={cn(here && sub === "overview" && "on")}>
             {t("overview")}
           </Link>
           {m.terms.map((tm, i) => (
             <Link
               key={i}
-              href={`/lesson/${m.id}/${i}`}
+              href={q(`/lesson/${m.id}/${i}`)}
               className={cn(here && activeTerm === i && "on", done.has(termKey(m, i)) && "done")}
             >
               {tm.t[lang]}
             </Link>
           ))}
-          <Link href={`/lesson/${m.id}/summary`} className={cn(here && sub === "summary" && "on")}>
+          <Link href={q(`/lesson/${m.id}/summary`)} className={cn(here && sub === "summary" && "on")}>
             {t("summary")}
           </Link>
           {QUIZ[m.id] ? (
-            <Link href={`/lesson/${m.id}/quiz`} className={cn(here && sub === "quiz" && "on")}>
+            <Link href={q(`/lesson/${m.id}/quiz`)} className={cn(here && sub === "quiz" && "on")}>
               {t("test")}
             </Link>
           ) : null}

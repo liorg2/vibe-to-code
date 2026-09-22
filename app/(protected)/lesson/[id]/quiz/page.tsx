@@ -10,8 +10,16 @@ import { ARCHITECTURES, QUIZ, UI, getModule, moduleIndex, neighbors, pathForModu
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
-export default async function QuizPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function QuizPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ course?: string }>;
+}) {
   const { id } = await params;
+  const { course: courseRaw } = await searchParams;
+  const course = courseRaw === "basic" || courseRaw === "advanced" ? courseRaw : undefined;
   const lang = await serverLang();
   const m = getModule(id);
   const mi = moduleIndex(id);
@@ -28,9 +36,10 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
   }
 
   const t = (k: string) => UI[k]?.[lang] ?? k;
-  const coursePath = pathForModule(m.id);
-  const { prev, next } = neighbors(m.id);
-  const nextLink = next ? `/lesson/${next.id}/overview` : "/architectures";
+  const coursePath = pathForModule(m.id, course);
+  const { prev, next } = neighbors(m.id, course);
+  const q = (href: string) => (course ? `${href}?course=${course}` : href);
+  const nextLink = next ? q(`/lesson/${next.id}/overview`) : q("/architectures");
   const nextName = next ? next.title[lang] : ARCHITECTURES.title[lang];
   const done = m.terms.filter((_, j) => false).length;
 
@@ -40,11 +49,11 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
         items={[
           { label: t("paths"), href: "/courses" },
           ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
-          { label: m.title[lang], href: `/lesson/${m.id}/overview` },
+          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`) },
           { label: t("test") },
         ]}
       />
-      <LessonSubNav m={m} active={m.terms.length - 1} quiz />
+      <LessonSubNav m={m} active={m.terms.length - 1} quiz course={course} />
       <section className="mod">
         <ModuleHead m={m} lang={lang} doneCount={done} />
       </section>

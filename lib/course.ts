@@ -15,18 +15,18 @@ export function getModule(id: string): Module | undefined {
   return course.MODULES.find((m) => m.id === id);
 }
 
-/** The lessons of a course, in syllabus order — each course is its own index. */
-function courseModules(id: string): Module[] {
-  const p = pathForModule(id);
+/** The lessons of a course, in syllabus order. `courseId` picks which syllabus when a lesson sits in both. */
+function courseModules(id: string, courseId?: string): Module[] {
+  const p = pathForModule(id, courseId);
   if (!p) return course.MODULES;
   return p.mods
     .map((mid) => course.MODULES.find((m) => m.id === mid))
     .filter((m): m is Module => !!m);
 }
 
-/** Previous/next lesson within the same course — navigation never crosses into the other one. */
-export function neighbors(id: string): { prev?: Module; next?: Module } {
-  const mods = courseModules(id);
+/** Previous/next lesson within one course — Advanced continues into its own lessons after the shared ones. */
+export function neighbors(id: string, courseId?: string): { prev?: Module; next?: Module } {
+  const mods = courseModules(id, courseId);
   const i = mods.findIndex((m) => m.id === id);
   return { prev: mods[i - 1], next: mods[i + 1] };
 }
@@ -54,8 +54,12 @@ export function mins(m: Module): number {
   return Math.max(3, Math.round(m.terms.length * 1.6));
 }
 
-/** The course (PATHS entry) a module belongs to, for breadcrumbs. */
-export function pathForModule(id: string): Path | undefined {
+/** The course a lesson is being read in. Shared lessons live in both; without `courseId` the earlier course wins. */
+export function pathForModule(id: string, courseId?: string): Path | undefined {
+  if (courseId) {
+    const picked = course.PATHS.find((p) => p.id === courseId && p.mods.includes(id));
+    if (picked) return picked;
+  }
   return course.PATHS.find((p) => p.mods.includes(id));
 }
 

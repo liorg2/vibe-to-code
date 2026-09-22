@@ -26,10 +26,14 @@ import { para } from "@/lib/utils";
 
 export default async function SlidePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string; term: string }>;
+  searchParams: Promise<{ course?: string }>;
 }) {
   const { id, term: termStr } = await params;
+  const { course: courseRaw } = await searchParams;
+  const course = courseRaw === "basic" || courseRaw === "advanced" ? courseRaw : undefined;
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const m = getModule(id);
@@ -39,7 +43,7 @@ export default async function SlidePage({
   if (termStr === "overview" || termStr === "summary") {
     return (
       <AppShell>
-        <LessonIntro m={m} mi={mi} kind={termStr} lang={lang} />
+        <LessonIntro m={m} mi={mi} kind={termStr} lang={lang} course={course} />
       </AppShell>
     );
   }
@@ -60,10 +64,11 @@ export default async function SlidePage({
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
   const flow = FLOWS[tm.t.en];
-  const coursePath = pathForModule(m.id);
+  const coursePath = pathForModule(m.id, course);
+  const q = (href: string) => (course ? `${href}?course=${course}` : href);
 
-  const prevHref = i > 0 ? `/lesson/${m.id}/${i - 1}` : `/lesson/${m.id}/overview`;
-  const nextHref = i < m.terms.length - 1 ? `/lesson/${m.id}/${i + 1}` : `/lesson/${m.id}/summary`;
+  const prevHref = q(i > 0 ? `/lesson/${m.id}/${i - 1}` : `/lesson/${m.id}/overview`);
+  const nextHref = q(i < m.terms.length - 1 ? `/lesson/${m.id}/${i + 1}` : `/lesson/${m.id}/summary`);
   const prevLabel = i > 0 ? t("prevTerm") : t("overview");
   const nextLabel = i < m.terms.length - 1 ? t("nextTerm") : t("summary");
 
@@ -73,11 +78,11 @@ export default async function SlidePage({
         items={[
           { label: t("paths"), href: "/courses" },
           ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
-          { label: m.title[lang], href: `/lesson/${m.id}/overview` },
+          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`) },
           { label: tm.t[lang] },
         ]}
       />
-      <LessonSubNav m={m} active={i} />
+      <LessonSubNav m={m} active={i} course={course} />
       <article className="slide">
         <div className="kicker">
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}

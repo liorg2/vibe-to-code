@@ -26,7 +26,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
           <div className="n">{p.mods.length} {t("lessonsN")} · ₪{p.price}</div>
         </div>
         <p className="mblurb">{p.blurb[lang]}</p>
-        <LessonCards ids={p.mods} locked={locked} />
+        <LessonCards ids={p.mods} locked={locked} courseId={p.id} />
       </section>
     </AppShell>
   );

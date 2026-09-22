@@ -8,7 +8,7 @@ assert.deepStrictEqual([...PREVIEW_MODULES], PATHS.map((p) => p.mods[0]));
 
 assert.ok(isPreviewPath("/lesson/ground"));
 assert.ok(isPreviewPath("/lesson/ground/3"));
-assert.ok(isPreviewPath("/lesson/async/quiz"));
+assert.ok(!isPreviewPath("/lesson/async/quiz"));
 assert.ok(!isPreviewPath("/lesson/groundx/1")); // prefix must not leak
 assert.ok(!isPreviewPath("/lesson/http/3"));
 assert.ok(!isPreviewPath("/lesson"));
