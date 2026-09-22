@@ -73,8 +73,7 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
 .bar{max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:14px}
 .logo{font-weight:800;font-size:var(--fs-lg);letter-spacing:-.02em;display:flex;align-items:center;gap:10px;
   text-decoration:none;color:inherit}
-.logo .dot{width:26px;height:26px;border-radius:var(--r-md);background:var(--acc);display:grid;
-  place-items:center;font-size:var(--fs-sm);color:#fff}
+.logo .mark{display:block}
 .spacer{flex:1}
 .seg{display:flex;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--card)}
 .seg button{border:0;background:transparent;color:var(--tx2);padding:8px 13px;font:inherit;

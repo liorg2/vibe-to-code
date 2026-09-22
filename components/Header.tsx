@@ -42,7 +42,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
             </Button>
           )}
           <Link className="logo" href="/">
-            <span className="dot">◆</span>
+            <img className="mark" src="/icon.svg" alt="" width={28} height={28} />
             <span id="brand">{t("brand")}</span>
           </Link>
           <div className="spacer" />
