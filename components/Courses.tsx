@@ -10,6 +10,7 @@ import { serverLang } from "@/lib/lang-server";
 import { priceId } from "@/lib/paddle";
 import { sessionClaims } from "@/lib/verify-session";
 import type { Module, Path } from "@/lib/types";
+import { PacManLane } from "./PacManGame";
 
 /** ILS, VAT included — the gap between the two courses. */
 export const UPGRADE_PRICE = 50;
@@ -19,7 +20,7 @@ export function modsOf(p: Path): Module[] {
 }
 
 /** The two courses as buyable cards. Server component: price/ownership never trusts the client. */
-export async function Courses({ paid }: { paid?: boolean }) {
+export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }) {
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const claims = await sessionClaims();
@@ -107,7 +108,17 @@ export async function Courses({ paid }: { paid?: boolean }) {
         <p>{t("coursesSub")}</p>
       </div>
       {paid ? <p className="note">{mine.size ? t("paidOk") : t("paidWait")}</p> : null}
-      <div className="pgrid">{PATHS.map(card)}</div>
+      <div className={cn("pgrid", lane && "pgrid-lane")}>
+        {lane && PATHS.length === 2 ? (
+          <>
+            {card(PATHS[0])}
+            <PacManLane />
+            {card(PATHS[1])}
+          </>
+        ) : (
+          PATHS.map(card)
+        )}
+      </div>
       {mine.size === 1 && !open ? (
         <div className="note" style={{ marginTop: 18 }}>
           <p style={{ marginBottom: 12 }}>{t("addCourseSub")}</p>

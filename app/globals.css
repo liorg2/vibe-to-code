@@ -96,29 +96,25 @@ h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text
 .hero p{max-width:640px;margin:18px auto 0;color:var(--tx2);font-size:var(--fs-lg);text-wrap:pretty}
 .hero .cta{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-/* homepage term Pac-Man */
-.pacman{margin:0 auto 48px;max-width:560px;text-align:center}
-.pacman-head h3{font-size:var(--fs-xl);font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
-.pacman-head p{margin:0;color:var(--tx2);font-size:var(--fs-sm)}
-.pacman-score{margin-top:10px;font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-sm);color:var(--acc2)}
-.pacman-stage{position:relative;display:inline-block;margin-top:16px}
-.pacman-canvas{
-  --pc-board:var(--code);--pc-wall:var(--acc);--pc-pellet:var(--acc2);--pc-label:var(--tx2);
-  display:block;width:min(100%,532px);height:auto;border:1px solid var(--line);border-radius:var(--r);
-  background:var(--code);image-rendering:pixelated
+/* gap between the two homepage course cards — Pac-Man wanders here */
+.pgrid.pgrid-lane{grid-template-columns:minmax(0,1fr) 168px minmax(0,1fr)}
+.pac-lane{position:relative;min-height:100%;overflow:hidden;pointer-events:none}
+.pac-word{position:absolute;font-size:var(--fs-xs);font-weight:600;color:var(--acc2);white-space:nowrap;
+  transition:opacity .25s}
+.pac-word.eaten{opacity:0}
+.pac-man{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:#ffb020;
+  clip-path:polygon(50% 50%, 100% 18%, 100% 82%);animation:pac-chomp .22s infinite alternate}
+@keyframes pac-chomp{
+  from{clip-path:polygon(50% 50%, 100% 0, 100% 100%)}
+  to{clip-path:polygon(50% 50%, 100% 32%, 100% 68%)}
 }
-.pacman-again{
-  position:absolute;inset:0;margin:auto;width:max-content;height:max-content;
-  padding:10px 18px;border:0;border-radius:var(--r-md);background:var(--grad);color:#fff;
-  font:inherit;font-weight:700;cursor:pointer;box-shadow:var(--shadow)
+@media (max-width:860px){
+  .pgrid.pgrid-lane{grid-template-columns:1fr}
+  .pac-lane{min-height:120px}
 }
-.pacman-pads{display:none;margin-top:14px;gap:6px;flex-direction:column;align-items:center}
-.pacman-pads-mid{display:flex;gap:6px}
-.pacman-pads button{
-  width:44px;height:44px;border:1px solid var(--line);border-radius:var(--r-sm);
-  background:var(--card);color:var(--tx);font-size:var(--fs-lg);cursor:pointer
+@media (prefers-reduced-motion:reduce){
+  .pac-man{animation:none}
 }
-@media (max-width:720px){.pacman-pads{display:flex}}
 
 /* layout */
 main{max-width:1240px;margin:0 auto;padding:0 24px 100px;display:grid;
