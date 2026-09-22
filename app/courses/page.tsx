@@ -17,7 +17,7 @@ export default async function CoursesPage({
   if (paid && claims) await claimTransaction(txn || _ptxn || "", claims.uid).catch(() => null);
 
   return (
-    <AppShell>
+    <AppShell showNav={false}>
       <Courses paid={Boolean(paid)} />
     </AppShell>
   );

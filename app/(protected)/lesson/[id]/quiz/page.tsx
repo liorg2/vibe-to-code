@@ -8,6 +8,7 @@ import { QuizBlock } from "@/components/QuizBlock";
 import { Upsell } from "@/components/Upsell";
 import { ARCHITECTURES, MODULES, QUIZ, UI, getModule, moduleIndex, pathForModule } from "@/lib/course";
 import { allowedLevels } from "@/lib/entitlement";
+import { isPreviewModule } from "@/lib/protected";
 import { serverLang } from "@/lib/lang-server";
 
 export default async function QuizPage({ params }: { params: Promise<{ id: string }> }) {
@@ -20,7 +21,7 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
 
   // a quiz mixes the module's levels — entitled to any term in it is enough to sit it
   const allowed = await allowedLevels();
-  if (!m.terms.some((tm) => allowed.has(tm.lvl))) {
+  if (!isPreviewModule(m.id) && !m.terms.some((tm) => allowed.has(tm.lvl))) {
     return (
       <AppShell>
         <Upsell title={m.title[lang]} lvl={m.terms[0].lvl} />

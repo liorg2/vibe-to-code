@@ -3,6 +3,7 @@
 import Link from "@/components/Link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { stripLang } from "@/lib/lang";
@@ -19,10 +20,11 @@ import {
   termKey,
   totalTerms,
 } from "@/lib/course";
+import { isPreviewModule } from "@/lib/protected";
 import type { Module } from "@/lib/types";
 
 export function SideNav() {
-  const { lang, done, levels, t } = useApp();
+  const { lang, done, levels, t, user } = useApp();
   const pathname = stripLang(usePathname());
 
   const lessonMatch = pathname.match(/^\/lesson\/([^/]+)/);
@@ -120,6 +122,33 @@ export function SideNav() {
       </div>
     );
   };
+
+  // ponytail: anonymous visitor on a preview lesson — everything else is gated, so show only what opens
+  if (!user) {
+    return (
+      <nav ref={navRef} className="side" onClick={closeOnMobile}>
+        <h3 id="navTitle">{t("paths")}</h3>
+        <LevelFilter />
+        <div id="nav">
+          {navLink("/courses", "◇", t("paths"))}
+          {PATHS.map((p) => (
+            <div key={p.id} className="nav-course open">
+              <Link href={`/courses/${p.id}`} className="nav-lesson-h">
+                <span className="ic">{p.icon}</span>
+                <span>{p.title[lang]}</span>
+              </Link>
+              <div className="nav-course-body">
+                {MODULES.filter((m) => p.mods.includes(m.id) && isPreviewModule(m.id)).map(lesson)}
+              </div>
+            </div>
+          ))}
+          <Button variant="brand" className="m-1.5 w-[calc(100%-12px)]" nativeButton={false} render={<Link href="/courses" />}>
+            {t("unlock")}
+          </Button>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav

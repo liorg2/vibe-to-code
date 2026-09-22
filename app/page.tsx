@@ -3,7 +3,7 @@ import { Courses } from "@/components/Courses";
 
 export default function HomePage() {
   return (
-    <AppShell showHero>
+    <AppShell showHero showNav={false}>
       <Courses />
     </AppShell>
   );

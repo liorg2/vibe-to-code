@@ -21,6 +21,7 @@ import {
 } from "@/lib/course";
 import { FLOWS, LIFECYCLE } from "@/lib/diagrams";
 import { allowedLevels } from "@/lib/entitlement";
+import { isPreviewModule } from "@/lib/protected";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
 
@@ -48,7 +49,7 @@ export default async function SlidePage({
 
   const tm = m.terms[i];
   // the URL is the whole attack surface here — the client filter is decoration, this is the gate
-  if (!(await allowedLevels()).has(tm.lvl)) {
+  if (!isPreviewModule(m.id) && !(await allowedLevels()).has(tm.lvl)) {
     return (
       <AppShell>
         <Upsell title={tm.t[lang]} lvl={tm.lvl} />

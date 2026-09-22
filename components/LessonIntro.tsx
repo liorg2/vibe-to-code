@@ -4,6 +4,7 @@ import { LessonSubNav } from "./LessonSubNav";
 import { Breadcrumb } from "./Breadcrumb";
 import { MODULES, QUIZ, UI, pathForModule } from "@/lib/course";
 import { allowedLevels } from "@/lib/entitlement";
+import { isPreviewModule } from "@/lib/protected";
 import { para } from "@/lib/utils";
 import type { Lang, Module } from "@/lib/types";
 
@@ -69,7 +70,7 @@ export async function LessonIntro({
               <span className="n">{j + 1}</span>
               <div>
                 <Link href={`/lesson/${m.id}/${j}`}>{tm.t[lang]}</Link> <LevelTag lvl={tm.lvl} />
-                {allowed.has(tm.lvl) ? <p>{tm.d[lang]}</p> : <p className="lock">🔒 {t("locked")}</p>}
+                {isPreviewModule(m.id) || allowed.has(tm.lvl) ? <p>{tm.d[lang]}</p> : <p className="lock">🔒 {t("locked")}</p>}
               </div>
             </li>
           ))}

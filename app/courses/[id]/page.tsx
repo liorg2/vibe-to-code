@@ -4,6 +4,8 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { LessonCards } from "@/components/LessonCards";
 import { PATHS, UI } from "@/lib/course";
 import { serverLang } from "@/lib/lang-server";
+import { billingOn, currentTier } from "@/lib/entitlement";
+import { sessionClaims } from "@/lib/verify-session";
 
 export default async function CoursePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -11,9 +13,11 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
   if (!p) notFound();
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
+  // no session, or billing on and no tier: only the preview module is readable
+  const locked = !(await sessionClaims()) || (billingOn() && !(await currentTier()));
 
   return (
-    <AppShell>
+    <AppShell showNav={false}>
       <Breadcrumb items={[{ label: t("paths"), href: "/courses" }, { label: p.title[lang] }]} />
       <section className="mod">
         <div className="mhead">
@@ -22,7 +26,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
           <div className="n">{p.mods.length} {t("lessonsN")} · ₪{p.price}</div>
         </div>
         <p className="mblurb">{p.blurb[lang]}</p>
-        <LessonCards ids={p.mods} />
+        <LessonCards ids={p.mods} locked={locked} />
       </section>
     </AppShell>
   );

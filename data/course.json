@@ -12,6 +12,14 @@
    "en": "Start learning",
    "he": "להתחיל ללמוד"
   },
+  "freePreview": {
+   "en": "Free preview",
+   "he": "שיעור לדוגמה"
+  },
+  "unlock": {
+   "en": "Unlock all lessons",
+   "he": "לפתוח את כל השיעורים"
+  },
   "lessons": {
    "en": "Lessons",
    "he": "שיעורים"
