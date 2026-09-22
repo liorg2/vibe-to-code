@@ -309,8 +309,8 @@
    "he": "בלי ידע מוקדם. המילים שכל השאר בנוי מהן."
   },
   "lvlBd": {
-   "en": "Building it, shipping it, and running it once strangers depend on it.",
-   "he": "לבנות את זה, לשחרר ולהריץ כשזרים כבר תלויים בזה."
+   "en": "The longer course: integrations, performance, shipping, and running it once strangers depend on it.",
+   "he": "הקורס הארוך: אינטגרציות, ביצועים, שחרור, והרצה כשזרים כבר תלויים בזה."
   },
   "practice": {
    "en": "Practice the loop",
@@ -461,8 +461,8 @@
    "he": "כרגע הכל פתוח לכל חשבון מחובר."
   },
   "coursesSub": {
-   "en": "Two small courses. Pay once, keep them. Start here is the foundations; Go further is what it takes to ship.",
-   "he": "שני קורסים קצרים. משלמים פעם אחת, והם נשארים שלכם. התחלה כאן זה היסודות; הצעד הבא זה מה שצריך כדי לשחרר."
+   "en": "Basic is the short foundations. Advanced is twice the lessons and more than twice the time — what it takes to ship.",
+   "he": "בסיסי הוא היסודות הקצרים. מתקדם הוא פי שניים שיעורים ויותר מפי שניים זמן — מה שצריך כדי לשחרר."
   },
   "glossaryAll": {
    "en": "Every topic in the course, A to Z.",
@@ -726,8 +726,8 @@
     }
    ],
    "overview": {
-    "en": "Letting an AI change thirty files at once is only sane if you can see exactly what changed and undo it in one move. That is what source control is for. This lesson explains the idea, then the handful of words you will hear constantly: repo, commit, branch, push, pull. Merge conflicts and pull requests are marked level B — real, but not first-week material.",
-    "he": "לתת ל-AI לשנות שלושים קבצים בבת אחת הגיוני רק אם אפשר לראות בדיוק מה השתנה ולבטל במהלך אחד. בשביל זה קיים ניהול גרסאות. השיעור מסביר את הרעיון ואז את קומץ המילים שתשמעו כל הזמן: repo, commit, branch, push, pull. קונפליקטים ו-pull requests מסומנים רמה B — אמיתיים, אבל לא חומר לשבוע הראשון."
+    "en": "Letting an AI change thirty files at once is only sane if you can see exactly what changed and undo it in one move. That is what source control is for. This lesson explains the idea, then the handful of words you will hear constantly: repo, commit, branch, push, pull. Merge conflicts and pull requests come last: you meet them the first time two changes touch the same lines.",
+    "he": "לתת ל-AI לשנות שלושים קבצים בבת אחת הגיוני רק אם אפשר לראות בדיוק מה השתנה ולבטל במהלך אחד. בשביל זה קיים ניהול גרסאות. השיעור מסביר את הרעיון ואז את קומץ המילים שתשמעו כל הזמן: repo, commit, branch, push, pull. קונפליקטים ו-pull requests מגיעים בסוף: פוגשים אותם בפעם הראשונה ששני שינויים נוגעים באותן שורות."
    },
    "summary": {
     "en": "Commit small, commit often, and read the diff before you do. A branch is a cheap sandbox; a merge is where two sandboxes meet. If you can answer 'what changed since it last worked?', you can recover from almost anything.",
@@ -1604,8 +1604,8 @@
     }
    ],
    "overview": {
-    "en": "Your product will lean on other people's APIs: payments, email, maps, AI. This lesson is about the shape of that relationship — how it is documented, authenticated, paged, versioned, and how it fails when their side is slow. All of it is level B: skip it until you actually integrate something.",
-    "he": "המוצר שלכם יישען על APIs של אחרים: תשלומים, מייל, מפות, AI. השיעור עוסק בצורה של הקשר הזה — איך הוא מתועד, מאומת, מחולק לעמודים, מנוהל בגרסאות, ואיך הוא נכשל כשהצד שלהם איטי. כולו רמה B: דלגו עד שבאמת תחברו משהו."
+    "en": "Your product will lean on other people's APIs: payments, email, maps, AI. This lesson is about the shape of that relationship — how it is documented, authenticated, paged, versioned, and how it fails when their side is slow. Read it when you are about to connect payments, email, or an AI provider.",
+    "he": "המוצר שלכם יישען על APIs של אחרים: תשלומים, מייל, מפות, AI. השיעור עוסק בצורה של הקשר הזה — איך הוא מתועד, מאומת, מחולק לעמודים, מנוהל בגרסאות, ואיך הוא נכשל כשהצד שלהם איטי. לקרוא אותו כשאתם עומדים לחבר תשלומים, מייל, או ספק AI."
    },
    "summary": {
     "en": "Read the spec before the AI does. Keep keys out of the browser, test against sandbox keys, and assume every call can time out. Retry with backoff, page through big lists, and pin the API version so their upgrade is not your outage.",
@@ -1770,8 +1770,8 @@
     }
    ],
    "overview": {
-    "en": "State has to live somewhere that survives a refresh, and that somewhere is a database. This lesson gives you the vocabulary to talk about one: its shape, how you ask it questions, and — level B — the things that keep it fast and honest as it grows.",
-    "he": "state צריך לחיות איפשהו שישרוד רפרש, וה'איפשהו' הזה הוא מסד נתונים. השיעור נותן את אוצר המילים לדבר על אחד כזה: הצורה שלו, איך שואלים אותו שאלות, ו — ברמה B — הדברים שמשאירים אותו מהיר וישר כשהוא גדל."
+    "en": "State has to live somewhere that survives a refresh, and that somewhere is a database. This lesson gives you the vocabulary to talk about one: its shape, how you ask it questions, and the things that keep it fast and honest as it grows.",
+    "he": "state צריך לחיות איפשהו שישרוד רפרש, וה'איפשהו' הזה הוא מסד נתונים. השיעור נותן את אוצר המילים לדבר על אחד כזה: הצורה שלו, איך שואלים אותו שאלות, והדברים שמשאירים אותו מהיר וישר כשהוא גדל."
    },
    "summary": {
     "en": "A schema is the shape; a query is a question; an index is what makes the question fast. Change the shape only through migrations, group related writes in a transaction, and never store money as a float.",
@@ -11425,10 +11425,7 @@
     "langs",
     "frontend",
     "http",
-    "apis",
-    "data",
-    "memory",
-    "cache"
+    "data"
    ],
    "price": 99
   },
@@ -11440,11 +11437,14 @@
     "he": "מושגי פיתוח ל-Vibe Coders: מתקדם"
    },
    "blurb": {
-    "en": "When you are ready to ship: auth, security, deploys, scale, and how a team actually works.",
-    "he": "כשאתם מוכנים לשחרר: הרשאות, אבטחה, פריסות, סקייל, ואיך צוות באמת עובד."
+    "en": "The longer course. Integrations, performance, auth, security, deploys, scale, and how a team actually ships.",
+    "he": "הקורס הארוך. אינטגרציות, ביצועים, הרשאות, אבטחה, פריסות, סקייל, ואיך צוות באמת משחרר."
    },
    "mods": [
     "async",
+    "memory",
+    "cache",
+    "apis",
     "testing",
     "auth",
     "security",

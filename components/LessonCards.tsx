@@ -18,8 +18,9 @@ export function LessonCards({ ids, locked }: { ids: string[]; locked: boolean })
   return (
     <>
       <div className="cards">
-        {MODULES.map((m) => {
-          if (!ids.includes(m.id)) return null;
+        {ids.map((id) => {
+          const m = MODULES.find((x) => x.id === id);
+          if (!m) return null;
           const d = m.terms.filter((_, j) => done.has(termKey(m, j))).length;
           const preview = isPreviewModule(m.id);
           const gated = locked && !preview;
