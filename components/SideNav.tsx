@@ -168,6 +168,7 @@ export function SideNav() {
     >
       <h3 id="navTitle">{t("lessons")}</h3>
       <div id="nav">
+        {courseId ? navLink(`/courses/${courseId}`, "🚩", t("courseIntro")) : null}
         {lessons}
         {user && courseId ? (
           <>

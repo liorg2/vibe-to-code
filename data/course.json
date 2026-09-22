@@ -483,6 +483,10 @@
   "yourProjectLesson": {
    "en": "This lesson's build step:",
    "he": "שלב הבנייה של השיעור:"
+  },
+  "courseIntro": {
+   "en": "Start here",
+   "he": "מתחילים כאן"
   }
  },
  "MODULES": [

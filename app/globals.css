@@ -435,6 +435,34 @@ pre.code{max-width:100%}
 .roadmap b{display:block;font-size:var(--fs-md)}
 .roadmap p{color:var(--tx2);font-size:var(--fs-sm);margin-top:2px}
 
+/* ---- course intro: progress, the app, what to have ready, how a lesson runs ---- */
+.intro-prog{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;padding:18px 20px;border-radius:var(--r);
+  border:1px solid var(--line);background:var(--card)}
+.intro-prog .stats{display:flex;flex-wrap:wrap;gap:14px 28px;flex:1 1 320px;font-size:var(--fs-sm);color:var(--tx2)}
+.intro-prog .stats>div{flex:1 1 140px}
+.intro-prog .stats b{font-size:var(--fs-lg);color:var(--tx)}
+.intro-prog .mini{margin-top:8px;gap:0}
+.intro-prog [data-slot=progress-track]{height:6px;border-radius:99px;background:var(--line)}
+.intro-prog [data-slot=progress-indicator]{border-radius:99px;background:var(--grad)}
+.intro-prog .where{opacity:.85;font-weight:500;max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.intro-prog .fin{font-weight:600}
+.intro-h{margin:40px 0 12px;font-size:var(--fs-xl);font-weight:700;letter-spacing:-.01em}
+.intro-p{color:var(--tx2);font-size:var(--fs-md);max-width:70ch;text-wrap:pretty}
+.intro-steps{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.intro-steps li{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--r-md);border:1px solid var(--line);
+  background:var(--card);font-size:var(--fs-sm)}
+.intro-steps .n{flex:none;width:28px;height:28px;border-radius:var(--r-md);background:var(--acc);color:#fff;display:grid;place-items:center;
+  font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-xs);font-weight:700}
+.intro-end{margin-top:14px;color:var(--tx2);font-size:var(--fs-sm)}
+.intro-grid,.intro-flow{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.intro-flow{counter-reset:flow}
+.intro-card{padding:16px 18px;border-radius:var(--r);border:1px solid var(--line);background:var(--card)}
+.intro-card b{display:flex;align-items:center;gap:8px;font-size:var(--fs-md)}
+.intro-card .ic{font-size:1.2em}
+.intro-card p{margin-top:6px;color:var(--tx2);font-size:var(--fs-sm);text-wrap:pretty}
+.intro-flow .intro-card b::before{counter-increment:flow;content:counter(flow);font-family:var(--font-mono),ui-monospace,monospace;
+  font-size:var(--fs-xs);color:var(--tx3)}
+
 /* ---- architectures ---- */
 .chart{background:var(--card2);border:1px solid var(--line);border-radius:var(--r);
   padding:18px 14px;margin:20px 0;overflow-x:auto}
