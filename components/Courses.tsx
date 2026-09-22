@@ -109,15 +109,8 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
       </div>
       {paid ? <p className="note">{mine.size ? t("paidOk") : t("paidWait")}</p> : null}
       <div className={cn("pgrid", lane && "pgrid-lane")}>
-        {lane && PATHS.length === 2 ? (
-          <>
-            {card(PATHS[0])}
-            <PacManLane />
-            {card(PATHS[1])}
-          </>
-        ) : (
-          PATHS.map(card)
-        )}
+        {PATHS.map(card)}
+        {lane ? <PacManLane /> : null}
       </div>
       {mine.size === 1 && !open ? (
         <div className="note" style={{ marginTop: 18 }}>

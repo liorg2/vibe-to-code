@@ -96,24 +96,18 @@ h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text
 .hero p{max-width:640px;margin:18px auto 0;color:var(--tx2);font-size:var(--fs-lg);text-wrap:pretty}
 .hero .cta{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-/* gap between the two homepage course cards — Pac-Man wanders here */
-.pgrid.pgrid-lane{grid-template-columns:minmax(0,1fr) 168px minmax(0,1fr)}
-.pac-lane{position:relative;min-height:100%;overflow:hidden;pointer-events:none}
+/* homepage: room around the two cards so words can ring the titles and the cards */
+.pgrid.pgrid-lane{position:relative;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:64px;padding:28px 4px 22px;overflow:visible}
+.pgrid.pgrid-lane .course{position:relative;z-index:1}
+.pac-board{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:visible}
 .pac-word{position:absolute;font-size:var(--fs-xs);font-weight:600;color:var(--acc2);white-space:nowrap;
-  transition:opacity .25s}
+  line-height:1;transition:opacity .25s}
 .pac-word.eaten{opacity:0}
-.pac-man{position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:#ffb020;
-  clip-path:polygon(50% 50%, 100% 18%, 100% 82%);animation:pac-chomp .22s infinite alternate}
-@keyframes pac-chomp{
-  from{clip-path:polygon(50% 50%, 100% 0, 100% 100%)}
-  to{clip-path:polygon(50% 50%, 100% 32%, 100% 68%)}
-}
+.pac-man{position:absolute;left:0;top:0;width:32px;height:32px;overflow:visible;transform-origin:16px 16px}
+.pac-man svg{display:block;overflow:visible}
 @media (max-width:860px){
-  .pgrid.pgrid-lane{grid-template-columns:1fr}
-  .pac-lane{min-height:120px}
-}
-@media (prefers-reduced-motion:reduce){
-  .pac-man{animation:none}
+  .pgrid.pgrid-lane{grid-template-columns:1fr;row-gap:44px;padding:26px 2px 20px}
 }
 
 /* layout */
