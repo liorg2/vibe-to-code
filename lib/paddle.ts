@@ -1,5 +1,5 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { upsertEntitlement, type Tier } from "./db";
+import { grantCourse, type Course } from "./db";
 
 /**
  * Paddle Billing, merchant of record: it charges, collects the VAT and issues the invoice,
@@ -13,10 +13,10 @@ function api(): { base: string; key: string } | null {
   return { base: sandbox ? "https://sandbox-api.paddle.com" : "https://api.paddle.com", key };
 }
 
-export function priceId(tier: Tier | "upgrade"): string | undefined {
-  return tier === "advanced"
+export function priceId(course: Course | "upgrade"): string | undefined {
+  return course === "advanced"
     ? process.env.PADDLE_PRICE_ADVANCED
-    : tier === "upgrade"
+    : course === "upgrade"
       ? process.env.PADDLE_PRICE_UPGRADE
       : process.env.PADDLE_PRICE_BASIC;
 }
@@ -29,7 +29,7 @@ export function priceId(tier: Tier | "upgrade"): string | undefined {
 export async function createCheckout(
   price: string,
   uid: string,
-  tier: Tier,
+  course: Course,
   origin: string,
 ): Promise<string | null> {
   const p = api();
@@ -39,7 +39,9 @@ export async function createCheckout(
     headers: { Authorization: `Bearer ${p.key}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       items: [{ price_id: price, quantity: 1 }],
-      custom_data: { uid, tier },
+      // The wire field keeps the name `tier` — in-flight Paddle transactions already carry it —
+      // but what it holds is a course id.
+      custom_data: { uid, tier: course },
       checkout: { url: `${origin}/courses?paid=1&txn={transaction_id}` },
     }),
   });
@@ -53,7 +55,7 @@ export async function createCheckout(
 
 type Txn = { status?: string; custom_data?: { uid?: string; tier?: string } };
 
-export function asTier(v: unknown): Tier | null {
+export function asTier(v: unknown): Course | null {
   return v === "basic" || v === "advanced" ? v : null;
 }
 
@@ -62,7 +64,7 @@ export function asTier(v: unknown): Tier | null {
  * transaction actually is, rather than believing the query string.
  * ponytail: makes a missed webhook cost one page view instead of a cron job.
  */
-export async function claimTransaction(txn: string, uid: string): Promise<Tier | null> {
+export async function claimTransaction(txn: string, uid: string): Promise<Course | null> {
   const p = api();
   if (!p || !txn.startsWith("txn_")) return null;
   const res = await fetch(`${p.base}/transactions/${encodeURIComponent(txn)}`, {
@@ -71,11 +73,11 @@ export async function claimTransaction(txn: string, uid: string): Promise<Tier |
   });
   if (!res.ok) return null;
   const { data } = (await res.json()) as { data?: Txn };
-  const tier = asTier(data?.custom_data?.tier);
+  const course = asTier(data?.custom_data?.tier);
   // paid by someone else, or not paid yet — either way this account bought nothing
-  if (!tier || data?.status !== "completed" || data?.custom_data?.uid !== uid) return null;
-  await upsertEntitlement(uid, tier, txn);
-  return tier;
+  if (!course || data?.status !== "completed" || data?.custom_data?.uid !== uid) return null;
+  await grantCourse(uid, course, txn);
+  return course;
 }
 
 /**

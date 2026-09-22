@@ -1,16 +1,14 @@
 import Link from "@/components/Link";
 import { BuyButton } from "./BuyButton";
 import { CourseProgress } from "./CourseProgress";
-import { LevelTag } from "./LevelTag";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { MODULES, PATHS, UI, mins } from "@/lib/course";
-import { billingOn, currentTier } from "@/lib/entitlement";
+import { billingOn, ownedCourses, type Course } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { priceId } from "@/lib/paddle";
 import { sessionClaims } from "@/lib/verify-session";
-import type { Tier } from "@/lib/db";
 import type { Module, Path } from "@/lib/types";
 
 /** ILS, VAT included — the gap between the two courses. */
@@ -25,15 +23,15 @@ export async function Courses({ paid }: { paid?: boolean }) {
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const claims = await sessionClaims();
-  const tier = await currentTier();
+  const mine = await ownedCourses();
   const open = !billingOn();
 
   const card = (p: Path) => {
-    const which = p.id as Tier;
+    const which = p.id as Course;
     const mods = modsOf(p);
     const terms = mods.reduce((n, m) => n + m.terms.length, 0);
     const time = mods.reduce((n, m) => n + mins(m), 0);
-    const owned = tier === which || (which === "basic" && tier === "advanced");
+    const owned = mine.has(which);
     const view = (
       <Link
         href={`/courses/${p.id}`}
@@ -51,9 +49,6 @@ export async function Courses({ paid }: { paid?: boolean }) {
           <div className="row">
             <span className="ic">{p.icon}</span>
             <div>
-              <div className="num">
-                <LevelTag lvl="A" />{which === "advanced" ? <LevelTag lvl="B" /> : null}
-              </div>
               <h4>{p.title[lang]}</h4>
             </div>
           </div>
@@ -111,14 +106,14 @@ export async function Courses({ paid }: { paid?: boolean }) {
         <h3>{t("paths")}</h3>
         <p>{t("coursesSub")}</p>
       </div>
-      {paid ? <p className="note">{tier ? t("paidOk") : t("paidWait")}</p> : null}
+      {paid ? <p className="note">{mine.size ? t("paidOk") : t("paidWait")}</p> : null}
       <div className="pgrid">{PATHS.map(card)}</div>
-      {tier === "basic" && !open ? (
+      {mine.size === 1 && !open ? (
         <div className="note" style={{ marginTop: 18 }}>
-          <p style={{ marginBottom: 12 }}>{t("upgradeSub")}</p>
+          <p style={{ marginBottom: 12 }}>{t("addCourseSub")}</p>
           <BuyButton
             endpoint="/api/billing/upgrade"
-            label={`${t("upgrade")} · ₪${UPGRADE_PRICE}`}
+            label={`${t("addCourse")} · ₪${UPGRADE_PRICE}`}
             disabled={!priceId("upgrade")}
           />
         </div>

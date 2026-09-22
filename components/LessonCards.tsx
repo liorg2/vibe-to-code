@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
-import { LevelFilter } from "./LevelTag";
 import { MODULES, termKey, mins } from "@/lib/course";
 import { isPreviewModule } from "@/lib/protected";
 
@@ -15,16 +14,13 @@ const miniBar =
 /** One card per lesson of a course, numbered by its place in the whole syllabus.
  *  `locked`: the visitor owns nothing — non-preview cards point at the offer, not the lesson. */
 export function LessonCards({ ids, locked }: { ids: string[]; locked: boolean }) {
-  const { lang, done, levels, t } = useApp();
+  const { lang, done, t } = useApp();
   return (
     <>
-      <LevelFilter full />
       <div className="cards">
         {MODULES.map((m, i) => {
           if (!ids.includes(m.id)) return null;
-          const shown = m.terms.map((tm, j) => ({ tm, j })).filter(({ tm }) => levels.has(tm.lvl));
-          if (!shown.length) return null;
-          const d = shown.filter(({ j }) => done.has(termKey(m, j))).length;
+          const d = m.terms.filter((_, j) => done.has(termKey(m, j))).length;
           const preview = isPreviewModule(m.id);
           const gated = locked && !preview;
           return (
@@ -42,8 +38,8 @@ export function LessonCards({ ids, locked }: { ids: string[]; locked: boolean })
               <p>{m.blurb[lang]}</p>
               {!gated && (
                 <>
-                  <Progress value={(d / shown.length) * 100} className={cn(miniBar)} />
-                  <span className="cnt">{d}/{shown.length} {t("terms")}</span>
+                  <Progress value={(d / m.terms.length) * 100} className={cn(miniBar)} />
+                  <span className="cnt">{d}/{m.terms.length} {t("terms")}</span>
                 </>
               )}
             </Link>

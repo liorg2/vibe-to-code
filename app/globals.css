@@ -444,37 +444,7 @@ pre.code{max-width:100%}
 .abox b{font-size:var(--fs-2xs);text-transform:uppercase;letter-spacing:.1em;color:var(--tx3)}
 .abox p{font-size:var(--fs-sm);margin-top:5px}
 
-/* the three levels as switches: letters only in the nav, with the sentence on a page */
-.lvl-key{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.lvl-key button{display:inline-flex;align-items:center;gap:8px;min-width:0;min-height:24px;padding:4px 8px;
-  border:1px solid var(--line);border-radius:var(--r-md);background:var(--card2);cursor:pointer;
-  color:var(--tx3);font:inherit;font-size:var(--fs-sm);text-align:start;opacity:.45;transition:.13s}
-.lvl-key button.on{opacity:1;border-color:color-mix(in srgb,var(--acc) 35%,var(--line))}
-.lvl-key button:hover{color:var(--tx)}
-.lvl-key.full{gap:8px 18px;margin-bottom:20px}
-.lvl-key.full button{flex:1 1 260px}
-/* in the nav it is three letters in a row, nothing else */
-nav.side .lvl-key{flex-direction:column;gap:5px;margin:0 0 10px;padding:0 2px}
-nav.side .lvl-key button{width:100%;justify-content:flex-start;padding:4px 6px}
-nav.side .lvl-key .lvl{min-width:0;overflow:hidden}
-
-/* ---- level tag: A foundations, B building, C running it for real ---- */
-.lvl{display:inline-flex;align-items:center;gap:6px;flex:none;
-  font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-2xs);font-weight:700;line-height:1;
-  padding:4px 6px;border-radius:var(--r-sm);border:1px solid;letter-spacing:.06em}
-.lvl b{font-family:inherit;font-size:var(--fs-2xs);font-weight:600;letter-spacing:0;opacity:.85;
-  text-transform:uppercase;white-space:nowrap}
-.lvl-A{color:#12b886;border-color:color-mix(in srgb,#12b886 40%,transparent);
-  background:color-mix(in srgb,#12b886 12%,transparent)}
-.lvl-B{color:#4c8dff;border-color:color-mix(in srgb,#4c8dff 40%,transparent);
-  background:color-mix(in srgb,#4c8dff 12%,transparent)}
-/* in the nav there is no room for the word — the letter carries it */
-nav.side .nav-subs a .lvl{padding:2px 4px;font-size:var(--fs-2xs);flex:none}
-.subnav a .lvl{padding:2px 4px;font-size:var(--fs-2xs)}
-.term h4 .lvl,.slide h2 .lvl{margin-inline-start:10px;vertical-align:middle}
-.gl a .lvl{padding:2px 4px;font-size:var(--fs-2xs);margin-inline-end:7px}
 .gl a>span{display:inline-flex;align-items:baseline;gap:0;min-width:0}
-@media (max-width:480px){ .lvl b{display:none} }
 
 /* ---- glossary ---- */
 .gsearch{display:flex;align-items:center;gap:10px;margin-bottom:18px}

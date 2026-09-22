@@ -4,7 +4,6 @@ import Link from "@/components/Link";
 import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useApp } from "./Providers";
-import { LevelFilter, LevelTag } from "./LevelTag";
 import { termKey } from "@/lib/course";
 import type { Module, Term } from "@/lib/types";
 
@@ -23,20 +22,17 @@ function mark(text: string, q: string) {
 }
 
 export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Term }[] }) {
-  const { lang, done, levels, t } = useApp();
+  const { lang, done, t } = useApp();
   const [raw, setRaw] = useState("");
   const q = raw.trim().toLowerCase();
 
   // the definition is searched too, so "makes pages load faster" finds Cache
   const hits = useMemo(
     () =>
-      items
-        .filter(({ tm }) => levels.has(tm.lvl))
-        .filter(
-          ({ tm }) =>
-            !q || (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(q),
-        ),
-    [items, q, lang, levels],
+      items.filter(
+        ({ tm }) => !q || (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(q),
+      ),
+    [items, q, lang],
   );
 
   const groups: Record<string, typeof items> = {};
@@ -47,7 +43,6 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
 
   return (
     <>
-      <LevelFilter />
       <div className="gsearch">
         <Input
           type="search"
@@ -70,7 +65,7 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
                   href={`/lesson/${m.id}/${i}`}
                   className={done.has(termKey(m, i)) ? "done" : ""}
                 >
-                  <span><LevelTag lvl={tm.lvl} />{mark(tm.t[lang], q)}</span>
+                  <span>{mark(tm.t[lang], q)}</span>
                   <i>{m.title[lang]}</i>
                 </Link>
               ))}

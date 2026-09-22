@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { LessonCards } from "@/components/LessonCards";
 import { PATHS, UI } from "@/lib/course";
 import { serverLang } from "@/lib/lang-server";
-import { billingOn, currentTier } from "@/lib/entitlement";
+import { billingOn, ownedCourses, type Course } from "@/lib/entitlement";
 import { sessionClaims } from "@/lib/verify-session";
 
 export default async function CoursePage({ params }: { params: Promise<{ id: string }> }) {
@@ -13,8 +13,8 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
   if (!p) notFound();
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
-  // no session, or billing on and no tier: only the preview module is readable
-  const locked = !(await sessionClaims()) || (billingOn() && !(await currentTier()));
+  // no session, or billing on and this course unpaid: only the preview module is readable
+  const locked = !(await sessionClaims()) || (billingOn() && !(await ownedCourses()).has(id as Course));
 
   return (
     <AppShell showNav={false}>

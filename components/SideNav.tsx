@@ -8,7 +8,6 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { stripLang } from "@/lib/lang";
 import { useApp } from "./Providers";
-import { LevelFilter, LevelTag } from "./LevelTag";
 import {
   ARCHITECTURES,
   CHECKLIST,
@@ -24,7 +23,7 @@ import { isPreviewModule } from "@/lib/protected";
 import type { Module } from "@/lib/types";
 
 export function SideNav() {
-  const { lang, done, levels, t, user } = useApp();
+  const { lang, done, t, user } = useApp();
   const pathname = stripLang(usePathname());
 
   const lessonMatch = pathname.match(/^\/lesson\/([^/]+)/);
@@ -76,9 +75,7 @@ export function SideNav() {
   };
 
   const lesson = (m: Module) => {
-    const shown = m.terms.map((tm, i) => ({ tm, i })).filter(({ tm }) => levels.has(tm.lvl));
-    if (!shown.length) return null;
-    const d = shown.filter(({ i }) => done.has(termKey(m, i))).length;
+    const d = m.terms.filter((_, i) => done.has(termKey(m, i))).length;
     const open = openId === m.id;
     const here = open && activeLesson === m.id;
     return (
@@ -91,13 +88,13 @@ export function SideNav() {
         >
           <span className="ic">{m.icon}</span>
           <span>{m.title[lang]}</span>
-          <span className="cnt">{d}/{shown.length}</span>
+          <span className="cnt">{d}/{m.terms.length}</span>
         </Link>
         <div className="nav-subs">
           <Link href={`/lesson/${m.id}/overview`} className={cn(here && sub === "overview" && "on")}>
             {t("overview")}
           </Link>
-          {shown.map(({ tm, i }) => (
+          {m.terms.map((tm, i) => (
             <Link
               key={i}
               href={`/lesson/${m.id}/${i}`}
@@ -106,7 +103,6 @@ export function SideNav() {
                 done.has(termKey(m, i)) && "done",
               )}
             >
-              <LevelTag lvl={tm.lvl} />
               {tm.t[lang]}
             </Link>
           ))}
@@ -128,7 +124,6 @@ export function SideNav() {
     return (
       <nav ref={navRef} className="side" onClick={closeOnMobile}>
         <h3 id="navTitle">{t("paths")}</h3>
-        <LevelFilter />
         <div id="nav">
           {navLink("/courses", "◇", t("paths"))}
           {PATHS.map((p) => (
@@ -161,7 +156,6 @@ export function SideNav() {
       }}
     >
       <h3 id="navTitle">{t("paths")}</h3>
-      <LevelFilter />
       <div id="nav">
         {navLink("/courses", "◇", t("paths"), `${done.size}/${totalTerms()}`)}
         {PATHS.map((p) => {

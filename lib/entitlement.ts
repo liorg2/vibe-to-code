@@ -1,11 +1,14 @@
 import { redirect } from "next/navigation";
+import { pathForModule } from "./course";
 import { withLang } from "./lang";
 import { serverLang } from "./lang-server";
-import { getEntitlement, type Tier } from "./db";
-import type { Level } from "./types";
+import { getCourses, type Course } from "./db";
+import { isPreviewModule } from "./protected";
 import { sessionClaims } from "./verify-session";
 
-const ALL: Level[] = ["A", "B"];
+export type { Course };
+
+const ALL: Course[] = ["basic", "advanced"];
 
 /**
  * ponytail: dark until the owner flips it in Vercel — unset means today's behaviour exactly,
@@ -15,30 +18,33 @@ export function billingOn(): boolean {
   return process.env.BILLING_ENABLED === "1";
 }
 
-/** Level maps one-to-one onto tier: basic buys A, advanced buys A and B. */
-export function tierLevels(tier: Tier | null): Set<Level> {
-  return new Set<Level>(tier === "advanced" ? ALL : tier === "basic" ? ["A"] : []);
+/** Which course a lesson belongs to — the two are independent products, so this is the whole gate. */
+export function courseOfModule(moduleId: string): Course | undefined {
+  return pathForModule(moduleId)?.id as Course | undefined;
 }
 
-/** What this visitor may actually read. No entitlement = nothing. Server components only. */
-export async function allowedLevels(): Promise<Set<Level>> {
+/** What this visitor has actually bought. Nothing bought = empty. Server components only. */
+export async function ownedCourses(): Promise<Set<Course>> {
   if (!billingOn()) return new Set(ALL);
   const claims = await sessionClaims();
-  if (!claims) return new Set<Level>();
-  return tierLevels(await getEntitlement(claims.uid));
+  if (!claims) return new Set<Course>();
+  return new Set(await getCourses(claims.uid));
 }
 
-/** The tier a signed-in visitor owns, or null. */
-export async function currentTier(): Promise<Tier | null> {
-  if (!billingOn()) return null; // same contract as allowedLevels: dark means no DB read at all
-  const claims = await sessionClaims();
-  return claims ? getEntitlement(claims.uid) : null;
+/**
+ * Owning a course opens every term in its lessons — there is no level inside a course any more.
+ * ponytail: the free preview short-circuits before any session or DB read, so a logged-out
+ * visitor still gets the first lesson of each course.
+ */
+export async function ownsModule(moduleId: string): Promise<boolean> {
+  if (isPreviewModule(moduleId)) return true;
+  const course = courseOfModule(moduleId);
+  return !!course && (await ownedCourses()).has(course);
 }
 
 /** For pages that have nothing at all to show a non-buyer — send them to the offer. */
-export async function requireEntitlement(): Promise<Tier> {
-  if (!billingOn()) return "advanced";
-  const tier = await currentTier();
-  if (!tier) redirect(withLang(await serverLang(), "/courses"));
-  return tier;
+export async function requireEntitlement(): Promise<Set<Course>> {
+  const owned = await ownedCourses();
+  if (!owned.size) redirect(withLang(await serverLang(), "/courses"));
+  return owned;
 }

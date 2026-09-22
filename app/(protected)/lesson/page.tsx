@@ -2,8 +2,9 @@ import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { ModuleHead } from "@/components/ModuleHead";
 import { TermCard } from "@/components/TermCard";
-import { MODULES } from "@/lib/course";
-import { allowedLevels } from "@/lib/entitlement";
+import { MODULES, PATHS } from "@/lib/course";
+import { ownedCourses, type Course } from "@/lib/entitlement";
+import { PREVIEW_MODULES } from "@/lib/protected";
 import { serverLang } from "@/lib/lang-server";
 
 export default async function LessonSearchPage({
@@ -18,12 +19,12 @@ export default async function LessonSearchPage({
     (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(query);
 
   // search reads d and w — without this a non-buyer could read a locked term straight out of ?q=
-  const allowed = await allowedLevels();
+  const mine = await ownedCourses();
+  const open = new Set([...PATHS.filter((p) => mine.has(p.id as Course)).flatMap((p) => p.mods), ...PREVIEW_MODULES]);
 
   const secs = MODULES.map((m, i) => {
-    const hits = m.terms
-      .map((tm, j) => ({ tm, j }))
-      .filter(({ tm }) => allowed.has(tm.lvl) && hit(tm));
+    if (!open.has(m.id)) return null;
+    const hits = m.terms.map((tm, j) => ({ tm, j })).filter(({ tm }) => hit(tm));
     if (!hits.length) return null;
     const doneCount = 0;
     return (

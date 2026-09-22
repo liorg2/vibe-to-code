@@ -4,7 +4,6 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
 import { LessonIntro } from "@/components/LessonIntro";
 import { LessonSubNav } from "@/components/LessonSubNav";
-import { LevelTag } from "@/components/LevelTag";
 import { PracticeLoop } from "@/components/PracticeLoop";
 import { PromptBox } from "@/components/PromptBox";
 import { SlideActions } from "@/components/SlideActions";
@@ -20,8 +19,7 @@ import {
   pathForModule,
 } from "@/lib/course";
 import { FLOWS, LIFECYCLE } from "@/lib/diagrams";
-import { allowedLevels } from "@/lib/entitlement";
-import { isPreviewModule } from "@/lib/protected";
+import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
 
@@ -48,11 +46,11 @@ export default async function SlidePage({
   if (!Number.isInteger(i) || i < 0 || i >= m.terms.length) notFound();
 
   const tm = m.terms[i];
-  // the URL is the whole attack surface here — the client filter is decoration, this is the gate
-  if (!isPreviewModule(m.id) && !(await allowedLevels()).has(tm.lvl)) {
+  // the URL is the whole attack surface here — own the module, own every term in it
+  if (!(await ownsModule(m.id))) {
     return (
       <AppShell>
-        <Upsell title={tm.t[lang]} lvl={tm.lvl} />
+        <Upsell title={tm.t[lang]} />
       </AppShell>
     );
   }
@@ -83,7 +81,7 @@ export default async function SlidePage({
         <div className="kicker">
           {String(mi + 1).padStart(2, "0")} {m.title[lang]} · {i + 1}/{m.terms.length}
         </div>
-        <h2>{tm.t[lang]}<LevelTag lvl={tm.lvl} full /></h2>
+        <h2>{tm.t[lang]}</h2>
         <div className="lede">{tm.d[lang]}</div>
         {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />

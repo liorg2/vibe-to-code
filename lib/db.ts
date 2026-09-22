@@ -20,14 +20,26 @@ function ensure() {
       primary key (uid, lesson, topic)
     )`,
     db()`
-    create table if not exists entitlement (
-      uid     text        primary key,
-      tier    text        not null,
+    create table if not exists entitlement_course (
+      uid     text        not null,
+      course  text        not null,
       txn     text        not null,
       paid_at timestamptz not null default now(),
-      updated timestamptz not null default now()
+      updated timestamptz not null default now(),
+      primary key (uid, course)
     )`,
-  ]);
+  ]).then(
+    // Backfill from the pre-split `entitlement` table (one tier per uid): each legacy tier grants
+    // the course of the SAME name and nothing else — a legacy `advanced` row does not hand out basic.
+    // ponytail: idempotent, so re-running it per cold start beats owning a migration runner; the
+    // exception handler is what makes it a no-op once the old table is dropped.
+    () => db()`
+    do $$ begin
+      insert into entitlement_course (uid, course, txn)
+      select uid, tier, txn from entitlement
+      on conflict do nothing;
+    exception when undefined_table then end $$`,
+  );
   return ready;
 }
 
@@ -65,27 +77,25 @@ export async function saveRows(uid: string, rows: Row[]): Promise<void> {
   ]);
 }
 
-/** One paid tier per account, forever — one-time purchases, so there is nothing to expire. */
-export type Tier = "basic" | "advanced";
+/** One row per course owned, forever — one-time purchases, so there is nothing to expire. */
+export type Course = "basic" | "advanced";
 
-export async function getEntitlement(uid: string): Promise<Tier | null> {
+export async function getCourses(uid: string): Promise<Course[]> {
   await ensure();
-  const rows = (await db()`select tier from entitlement where uid = ${uid}`) as { tier: Tier }[];
-  return rows[0]?.tier ?? null;
+  const rows = (await db()`
+    select course from entitlement_course where uid = ${uid}`) as { course: Course }[];
+  return rows.map((r) => r.course);
 }
 
 /**
  * Idempotent: the webhook and the return-URL re-check can both land the same transaction.
- * ponytail: "never downgrade advanced" lives in the SQL, so every caller gets it for free —
- * a late basic webhook after an upgrade cannot take level B away again.
+ * ponytail: `do nothing` rather than `do update` — the first payment for a course is the one that
+ * bought it, and a replayed event must not rewrite its txn.
  */
-export async function upsertEntitlement(uid: string, tier: Tier, txn: string): Promise<void> {
+export async function grantCourse(uid: string, course: Course, txn: string): Promise<void> {
   await ensure();
   await db()`
-    insert into entitlement (uid, tier, txn, paid_at, updated)
-    values (${uid}, ${tier}, ${txn}, now(), now())
-    on conflict (uid) do update
-      set tier    = case when entitlement.tier = 'advanced' then 'advanced' else excluded.tier end,
-          txn     = excluded.txn,
-          updated = now()`;
+    insert into entitlement_course (uid, course, txn, paid_at, updated)
+    values (${uid}, ${course}, ${txn}, now(), now())
+    on conflict (uid, course) do nothing`;
 }

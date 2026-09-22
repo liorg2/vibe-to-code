@@ -1,15 +1,14 @@
 import Link from "@/components/Link";
 import { Button } from "@/components/ui/button";
-import type { Level } from "@/lib/types";
 
 /** Shown in place of a locked term. ponytail: an upsell converts, notFound() does not. */
-export function Upsell({ title, lvl }: { title: string; lvl: Level }) {
+export function Upsell({ title }: { title: string }) {
   return (
     <section className="slide">
-      <div className="kicker">Locked · Level {lvl}</div>
+      <div className="kicker">Locked</div>
       <h2>{title}</h2>
       <p className="lede">
-        This topic is part of {lvl === "A" ? "Dev Concepts for Vibe Coders: Basic" : "Dev Concepts for Vibe Coders: Advanced"}. Pay once and it stays yours —
+        This lesson is part of a course you do not own yet. Pay once and it stays yours —
         no subscription, no renewal.
       </p>
       <div className="cta" style={{ marginTop: 24 }}>

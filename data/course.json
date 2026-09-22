@@ -440,6 +440,14 @@
    "en": "Already on Start here? Pay the difference once and the rest of the topics open up.",
    "he": "כבר בהתחלה כאן? משלמים פעם אחת את ההפרש ושאר הנושאים נפתחים."
   },
+  "addCourse": {
+   "en": "Add the other course",
+   "he": "להוסיף את הקורס השני"
+  },
+  "addCourseSub": {
+   "en": "You own one of the two. Pay the difference once and the other course opens up too.",
+   "he": "יש לך אחד מהשניים. משלמים פעם אחת את ההפרש וגם הקורס השני נפתח."
+  },
   "paidOk": {
    "en": "Payment received — your access is active.",
    "he": "התשלום התקבל — הגישה שלך פעילה."

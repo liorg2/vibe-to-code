@@ -1,13 +1,18 @@
 /** Run: npx esbuild lib/entitlement.check.ts --bundle --platform=node --outfile=check.mjs --format=esm && node check.mjs */
 import assert from "node:assert";
 import { createHmac } from "node:crypto";
-import { tierLevels } from "./entitlement";
+import { PATHS } from "./course";
+import { courseOfModule } from "./entitlement";
 import { verifySignature } from "./paddle";
 
-// what each tier buys
-assert.deepStrictEqual([...tierLevels(null)], []);
-assert.deepStrictEqual([...tierLevels("basic")], ["A"]);
-assert.deepStrictEqual([...tierLevels("advanced")], ["A", "B"]);
+// the two courses are independent products: a module belongs to exactly one of them
+assert.strictEqual(courseOfModule("http"), "basic");
+assert.strictEqual(courseOfModule("security"), "advanced");
+assert.strictEqual(courseOfModule("nope"), undefined);
+assert.strictEqual(courseOfModule(""), undefined);
+
+// and every module a course lists resolves back to that course
+for (const p of PATHS) for (const m of p.mods) assert.strictEqual(courseOfModule(m), p.id);
 
 // the webhook signature: right secret in, wrong secret / tampered body out
 const secret = "whsec_test_not_a_real_secret";

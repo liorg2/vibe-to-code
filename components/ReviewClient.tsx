@@ -5,25 +5,25 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useApp } from "./Providers";
 import { MODULES, termKey } from "@/lib/course";
-import type { Level, Module, Term } from "@/lib/types";
+import type { Module, Term } from "@/lib/types";
 
 type Card = { m: Module; i: number; tm: Term };
 
-/** `allowed` is the server's word on what this account paid for; `levels` is only the user's filter. */
-export function ReviewClient({ allowed }: { allowed: Level[] }) {
-  const { lang, done, levels, toggleDone, t } = useApp();
+/** `allowed` is the server's word on which modules this account paid for. */
+export function ReviewClient({ allowed }: { allowed: string[] }) {
+  const { lang, done, toggleDone, t } = useApp();
   const [card, setCard] = useState(0);
   const [flipped, setFlipped] = useState(false);
 
-  // the level filter picks the deck; unlearnt cards first, the whole deck once they are gone
+  // unlearnt cards first, the whole deck once they are gone
   const deck: Card[] = [];
   MODULES.forEach((m) => m.terms.forEach((tm, i) => {
-    if (levels.has(tm.lvl) && allowed.includes(tm.lvl)) deck.push({ m, i, tm });
+    if (allowed.includes(m.id)) deck.push({ m, i, tm });
   }));
   const pool = deck.filter(({ m, i }) => !done.has(termKey(m, i)));
   const all = pool.length ? pool : deck;
 
-  // the filter can exclude every card the account owns — that is a message, not a crash
+  // requireEntitlement already sent a non-buyer to the offer — this is belt and braces
   if (!all.length) return <div className="empty">{t("noLvl")}</div>;
 
   const idx = card >= all.length ? 0 : card;

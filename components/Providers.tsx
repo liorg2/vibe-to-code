@@ -13,7 +13,7 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { parseLangFromPath, stripLang, withLang } from "@/lib/lang";
-import type { Lang, Level } from "@/lib/types";
+import type { Lang } from "@/lib/types";
 import { firebaseReady, getClientAuth } from "@/lib/firebase/client";
 import { totalTerms } from "@/lib/course";
 
@@ -21,12 +21,8 @@ const KEY = "vibe2code.v2";
 
 type Progress = { done: string[]; ticked: string[] };
 
-const ALL_LEVELS: Level[] = ["A", "B"];
-
 type Ctx = {
   lang: Lang;
-  levels: Set<Level>;
-  toggleLevel: (l: Level) => void;
   theme: "dark" | "light";
   done: Set<string>;
   ticked: Set<string>;
@@ -65,7 +61,6 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
   const router = useRouter();
   const lang = parseLangFromPath(pathname);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [levels, setLevels] = useState<Set<Level>>(new Set(ALL_LEVELS));
   const [done, setDone] = useState<Set<string>>(new Set());
   const [ticked, setTicked] = useState<Set<string>>(new Set());
   const [user, setUser] = useState<User | null>(null);
@@ -95,10 +90,6 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
 
   useEffect(() => {
     setTheme((lsGet(KEY + ".theme") as "dark" | "light") || "dark");
-    const savedLevels = (lsGet(KEY + ".levels") || "").split(",").filter((l): l is Level =>
-      (ALL_LEVELS as string[]).includes(l),
-    );
-    if (savedLevels.length) setLevels(new Set(savedLevels));
     setDone(new Set(JSON.parse(lsGet(KEY + ".done") || "[]")));
     setTicked(new Set(JSON.parse(lsGet(KEY + ".check") || "[]")));
   }, []);
@@ -166,15 +157,6 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     router.push(withLang(l, stripLang(pathname)) + (typeof window !== "undefined" ? window.location.search : ""));
   };
 
-  /** ponytail: turning the last level off would show an empty course — it turns the other two on instead */
-  const toggleLevel = (l: Level) => {
-    const next = new Set(levels);
-    next.has(l) ? next.delete(l) : next.add(l);
-    if (!next.size) ALL_LEVELS.forEach((x) => x !== l && next.add(x));
-    setLevels(next);
-    lsSet(KEY + ".levels", [...next].join(","));
-  };
-
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
@@ -208,8 +190,6 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
   const value = useMemo(
     () => ({
       lang,
-      levels,
-      toggleLevel,
       theme,
       done,
       ticked,
@@ -224,7 +204,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
       UI,
       progressPct,
     }),
-    [lang, levels, theme, done, ticked, user, syncCloud, UI, progressPct],
+    [lang, theme, done, ticked, user, syncCloud, UI, progressPct],
   );
 
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;
