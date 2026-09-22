@@ -8,6 +8,10 @@
    "en": "The words developers use, explained for people who ship with AI.",
    "he": "המילים שמפתחים משתמשים בהן, מוסברות למי שבונה עם AI."
   },
+  "hours": {
+   "en": "h",
+   "he": "��'"
+  },
   "start": {
    "en": "Start learning",
    "he": "להתחיל ללמוד"
@@ -11416,8 +11420,7 @@
     "apis",
     "data",
     "memory",
-    "cache",
-    "testing"
+    "cache"
    ],
    "price": 99
   },
@@ -11434,6 +11437,7 @@
    },
    "mods": [
     "async",
+    "testing",
     "auth",
     "security",
     "net",

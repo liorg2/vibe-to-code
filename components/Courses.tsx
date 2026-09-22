@@ -61,7 +61,7 @@ export async function Courses({ paid }: { paid?: boolean }) {
           <div className="meta">
             <span>{mods.length} {t("lessonsN")}</span>
             <span>{terms} {t("terms")}</span>
-            <span>~{time} {t("min")}</span>
+            <span>~{(time / 60).toFixed(1)} {t("hours")}</span>
           </div>
           <CourseProgress ids={p.mods} />
           <div className="price">
