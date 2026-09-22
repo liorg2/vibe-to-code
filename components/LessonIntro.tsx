@@ -1,6 +1,6 @@
 import Link from "@/components/Link";
 import { LessonSubNav } from "./LessonSubNav";
-import { Breadcrumb } from "./Breadcrumb";
+import { Breadcrumb, lessonMenu } from "./Breadcrumb";
 import { UI, lessonNo, neighbors, pathForModule } from "@/lib/course";
 import { ownsModule } from "@/lib/entitlement";
 import { para } from "@/lib/utils";
@@ -45,7 +45,7 @@ export async function LessonIntro({
         items={[
           { label: t("paths"), href: "/courses" },
           ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
-          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`) },
+          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`), menu: lessonMenu(coursePath, m.id, lang, q) },
           { label: t(kind) },
         ]}
       />

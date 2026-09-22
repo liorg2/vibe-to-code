@@ -327,6 +327,15 @@ body[dir="rtl"] .ans{border-radius:var(--r-md) 0 0 var(--r-md)}
 .crumbs a:hover{color:var(--acc)}
 .crumbs [aria-current="page"]{color:var(--tx);font-weight:600}
 .crumbs .sep{color:var(--tx3);opacity:.7}
+.crumb-menu{position:relative}
+.crumb-menu>button{border:0;background:none;padding:0;font:inherit;color:var(--tx2);cursor:pointer}
+.crumb-menu>button:hover,.crumb-menu>button[aria-expanded=true]{color:var(--acc)}
+.crumb-menu ul{position:absolute;z-index:40;top:calc(100% + 6px);inset-inline-start:0;min-width:240px;max-width:min(320px,calc(100vw - 32px));
+  max-height:min(60vh,420px);overflow:auto;list-style:none;margin:0;padding:6px;border-radius:var(--r);border:1px solid var(--line);
+  background:var(--card);box-shadow:var(--shadow)}
+.crumb-menu li a{display:block;padding:7px 10px;border-radius:var(--r-md);color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crumb-menu li a:hover{background:var(--card2);color:var(--tx)}
+.crumb-menu li a.on{background:var(--card2);color:var(--tx);font-weight:600}
 .finish{text-align:center;padding:30px;border:1px dashed var(--line);border-radius:var(--r);color:var(--tx2)}
 .finish.win{border-color:var(--acc2);color:var(--tx)}
 .empty{padding:40px;text-align:center;color:var(--tx3)}
@@ -370,7 +379,7 @@ body[dir="rtl"] .ans{border-radius:var(--r-md) 0 0 var(--r-md)}
 .nav-hide{display:block;margin:0 8px 8px;padding:0;border:0;background:none;color:var(--tx3);font-size:var(--fs-xs);cursor:pointer}
 .nav-hide:hover{color:var(--acc)}
 @media(min-width:901px){
-  body.nav-collapsed main{grid-template-columns:48px 1fr}
+  body.nav-collapsed main:not(.nonav){grid-template-columns:48px 1fr}
   body.nav-collapsed nav.side{padding:8px 6px;overflow:hidden}
   body.nav-collapsed nav.side h3,body.nav-collapsed #nav{display:none}
   body.nav-collapsed .nav-fold{transform:scaleX(-1)}
@@ -436,6 +445,10 @@ pre.code{max-width:100%}
 .build .build-h{margin-top:28px;font-size:var(--fs-lg);font-weight:700;letter-spacing:-.01em}
 .build .sub{color:var(--tx3);font-size:var(--fs-sm);margin:4px 0 12px}
 .build-done{margin-top:8px}
+.tip{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:var(--r-md);
+  border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));background:color-mix(in srgb,var(--warn) 7%,var(--card2))}
+.tip .ic{flex:none;font-size:1.15em;line-height:1.4}
+.tip p{color:var(--tx2);font-size:var(--fs-sm);text-wrap:pretty}
 .roadmap{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
 .roadmap summary{list-style:none;cursor:pointer;display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:var(--r);border:1px solid var(--line);
   background:var(--card);text-decoration:none;color:inherit;transition:.15s}
@@ -658,3 +671,4 @@ pre.code{max-width:100%}
 .login-or::before,.login-or::after{content:"";flex:1;height:1px;background:var(--line)}
 .login-back{display:inline-block;margin-top:24px;color:var(--tx3);font-size:var(--fs-sm)}
 .login-back:hover{color:var(--tx)}
+

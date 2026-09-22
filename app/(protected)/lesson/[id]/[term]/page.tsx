@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { Breadcrumb, lessonMenu } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
 import { LessonIntro } from "@/components/LessonIntro";
 import { LessonSubNav } from "@/components/LessonSubNav";
@@ -78,7 +78,7 @@ export default async function SlidePage({
         items={[
           { label: t("paths"), href: "/courses" },
           ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
-          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`) },
+          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`), menu: lessonMenu(coursePath, m.id, lang, q) },
           { label: tm.t[lang] },
         ]}
       />

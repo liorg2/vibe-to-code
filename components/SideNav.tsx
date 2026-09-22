@@ -19,6 +19,7 @@ import {
 } from "@/lib/course";
 import { buildFinished } from "@/lib/builds/counts";
 import { isPreviewModule } from "@/lib/protected";
+import { LessonIcon } from "./LessonIcon";
 import type { Module } from "@/lib/types";
 
 const COURSE_KEY = "vibe.navCourse";
@@ -141,7 +142,7 @@ export function SideNav() {
           aria-expanded={open}
           onClick={headerClick(m.id, openId, setOpenId)}
         >
-          <span className="ic">{m.icon}</span>
+          <span className="ic"><LessonIcon m={m} size={15} /></span>
           <span>{m.title[lang]}</span>
           <span className="cnt">{d}/{m.terms.length}</span>
         </Link>

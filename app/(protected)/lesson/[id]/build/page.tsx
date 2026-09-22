@@ -1,7 +1,7 @@
 import Link from "@/components/Link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
-import { Breadcrumb } from "@/components/Breadcrumb";
+import { Breadcrumb, lessonMenu } from "@/components/Breadcrumb";
 import { BuildBody } from "@/components/BuildBody";
 import { LessonSubNav } from "@/components/LessonSubNav";
 import { Upsell } from "@/components/Upsell";
@@ -48,7 +48,7 @@ export default async function BuildPage({
         items={[
           { label: t("paths"), href: "/courses" },
           ...(coursePath ? [{ label: coursePath.title[lang], href: `/courses/${coursePath.id}` }] : []),
-          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`) },
+          { label: m.title[lang], href: q(`/lesson/${m.id}/overview`), menu: lessonMenu(coursePath, m.id, lang, q) },
           { label: t("build") },
         ]}
       />

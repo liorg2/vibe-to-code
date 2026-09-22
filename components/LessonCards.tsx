@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
 import { MODULES, termKey, mins, lessonNo } from "@/lib/course";
 import { isPreviewModule } from "@/lib/protected";
+import { LessonIcon } from "./LessonIcon";
 
 const miniBar =
   "mini mt-3.5 gap-0 [&_[data-slot=progress-track]]:h-[5px] [&_[data-slot=progress-track]]:rounded-full [&_[data-slot=progress-track]]:bg-[var(--line)] [&_[data-slot=progress-indicator]]:rounded-full [&_[data-slot=progress-indicator]]:bg-[var(--grad)]";
@@ -27,7 +28,7 @@ export function LessonCards({ ids, locked, courseId }: { ids: string[]; locked: 
           return (
             <Link key={m.id} className="mcard" href={gated ? "/courses" : `/lesson/${m.id}/overview${courseId ? `?course=${courseId}` : ""}`}>
               <div className="row">
-                <div className="ic">{gated ? "🔒" : m.icon}</div>
+                <div className="ic">{gated ? "🔒" : <LessonIcon m={m} />}</div>
                 <div>
                   <div className="num">
                     {t("lesson")} {lessonNo(m.id)} · ~{mins(m)} {t("min")}

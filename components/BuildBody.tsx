@@ -2,6 +2,7 @@ import Link from "@/components/Link";
 import { BuildDone } from "@/components/BuildDone";
 import { PromptBox } from "@/components/PromptBox";
 import { promptFor } from "@/lib/builds";
+import { tipsFor } from "@/lib/builds/tips";
 import type { BuildStep } from "@/lib/builds/types";
 import { UI, findTermK } from "@/lib/course";
 import type { Lang } from "@/lib/types";
@@ -23,6 +24,12 @@ export function BuildBody({ id, b, lang, q }: { id: string; b: BuildStep; lang: 
           ) : null;
         })}
       </div>
+      {tipsFor(id).map((tip, i) => (
+        <aside key={i} className="tip">
+          <span className="ic" aria-hidden="true">💡</span>
+          <p>{tip[lang]}</p>
+        </aside>
+      ))}
       <h3 className="build-h">{t("buildDo")}</h3>
       <p className="sub">{t("buildDoSub")}</p>
       <PromptBox id={`${id}-build`} text={promptFor(b.build, lang)} label={t("prompt")} />
