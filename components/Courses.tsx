@@ -123,6 +123,13 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
         </div>
       ) : null}
       {open ? <p className="empty">{t("allOpen")}</p> : null}
+      <p className="sub legal-note">
+        <Link href="/terms">
+          {lang === "he"
+            ? "רכישה מהווה הסכמה לתנאי השימוש. עלויות של שירותי AI, ענן ומסדי נתונים שתפתחו במהלך הקורס הן באחריותכם."
+            : "Buying means you accept the terms. Costs of AI, cloud and database services you open during the course are yours."}
+        </Link>
+      </p>
     </section>
   );
 }

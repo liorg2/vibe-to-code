@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "@/components/Link";
 import { Header } from "./Header";
 import { SideNav } from "./SideNav";
 import { cn } from "@/lib/utils";
@@ -30,6 +31,10 @@ export function AppShell({
         )}
         <div id="content">{children}</div>
       </main>
+      <footer className="site-foot">
+        <Link href="/terms">Terms · תנאי שימוש</Link>
+        <Link href="/privacy">Privacy · פרטיות</Link>
+      </footer>
     </div>
   );
 }

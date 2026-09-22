@@ -671,3 +671,12 @@ pre.code{max-width:100%}
 .login-back{display:inline-block;margin-top:24px;color:var(--tx3);font-size:var(--fs-sm)}
 .login-back:hover{color:var(--tx)}
 
+/* legal */
+.legal section{margin-top:22px}
+.legal h3{font-size:var(--fs-md,18px);margin-bottom:8px}
+.legal section p{color:var(--tx2);margin-top:8px;line-height:1.65}
+.legal-note{margin-top:18px;text-align:center}
+.legal-note a{color:var(--tx3)}
+.site-foot{max-width:1240px;margin:0 auto;padding:0 24px 32px;text-align:center;font-size:var(--fs-xs);color:var(--tx3)}
+.site-foot a{color:inherit}
+.site-foot{display:flex;justify-content:center;gap:20px}
