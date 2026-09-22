@@ -154,6 +154,9 @@ export const ARCH_MINI: Record<string, string> = {
 /** `mid` turns the slide into three nodes: left → mid → right, then the answer comes back the same path. */
 export type Flow = { cap: L10n; left: L10n; right: L10n; out: L10n; back: L10n; mid?: L10n };
 
+/** A process, in order. Each beat names the step and where it happens. */
+export type FlowStep = { t: L10n; d: L10n };
+
 export const FLOWS: Record<string, Flow> = {
   "Request / Response": {
     cap: { en: "One exchange — request first, response second, always paired", he: "חילופים אחד — ריקווסט קודם, רספונס אחר כך, תמיד בזוגות" },
@@ -161,6 +164,20 @@ export const FLOWS: Record<string, Flow> = {
     right: { en: "Server", he: "שרת" },
     out: { en: "Request", he: "ריקווסט" },
     back: { en: "Response", he: "רספונס" },
+  },
+  "Commit / Branch / Merge": {
+    cap: { en: "A branch is a copy. The commit stays local until a merge folds it back", he: "ברנץ' הוא עותק. הקומיט נשאר מקומי עד שמרג' מחזיר אותו" },
+    left: { en: "Branch", he: "ברנץ'" },
+    right: { en: "Main", he: "ראשי" },
+    out: { en: "commit", he: "commit" },
+    back: { en: "merge", he: "merge" },
+  },
+  "Merge conflict": {
+    cap: { en: "Git stops when two edits touch the same lines. You choose, then commit", he: "Git עוצר כששני עריכות נוגעות באותן שורות. אתם בוחרים, ואז קומיט" },
+    left: { en: "Yours", he: "שלכם" },
+    right: { en: "Theirs", he: "שלהם" },
+    out: { en: "same lines", he: "אותן שורות" },
+    back: { en: "you pick", he: "אתם בוחרים" },
   },
   "Clone / push / pull": {
     cap: { en: "Two copies of the same history — push sends yours up, pull brings theirs down", he: "שני עותקים של אותה היסטוריה — push שולח את שלך למעלה, pull מוריד את שלהם" },
@@ -454,4 +471,266 @@ export const FLOWS: Record<string, Flow> = {
     out: { en: "what changed?", he: "מה השתנה?" },
     back: { en: "the diff", he: "ה-diff" },
   },
+};
+
+/** Detailed sequences. When a term is here, the slide plays these beats instead of a single out-and-back. */
+export const STEPS: Record<string, FlowStep[]> = {
+  "Clone / push / pull": [
+    { t: { en: "Pull", he: "Pull" }, d: { en: "Bring their latest down from the remote", he: "מורידים את הגרסה האחרונה שלהם מהרימוט" } },
+    { t: { en: "Change", he: "שינוי" }, d: { en: "Edit the files on your machine", he: "עורכים את הקבצים על המחשב שלכם" } },
+    { t: { en: "Commit", he: "Commit" }, d: { en: "Save a snapshot. This stays local", he: "שומרים תמונת מצב. זה נשאר אצלכם" } },
+    { t: { en: "Push", he: "Push" }, d: { en: "Send that snapshot up to the remote", he: "שולחים את התמונה הזאת לרימוט" } },
+  ],
+  "Commit / Branch / Merge": [
+    { t: { en: "Branch", he: "ברנץ'" }, d: { en: "Make a copy so the experiment cannot wreck main", he: "עושים עותק כדי שהניסוי לא ישבור את הראשי" } },
+    { t: { en: "Change", he: "שינוי" }, d: { en: "Edit only on that copy", he: "עורכים רק על העותק הזה" } },
+    { t: { en: "Commit", he: "Commit" }, d: { en: "Snapshot the copy, still local", he: "תמונת מצב של העותק, עדיין מקומי" } },
+    { t: { en: "Merge", he: "Merge" }, d: { en: "Fold the good copy back into main", he: "מחזירים את העותק הטוב אל הראשי" } },
+  ],
+  "Merge conflict": [
+    { t: { en: "Same lines", he: "אותן שורות" }, d: { en: "Two changes touch the same lines", he: "שני שינויים נוגעים באותן שורות" } },
+    { t: { en: "Git stops", he: "Git עוצר" }, d: { en: "It refuses to guess which lines win", he: "הוא מסרב לנחש אילו שורות מנצחות" } },
+    { t: { en: "You pick", he: "אתם בוחרים" }, d: { en: "Read both versions and keep the right lines", he: "קוראים את שתי הגרסאות ושומרים את השורות הנכונות" } },
+    { t: { en: "Commit", he: "Commit" }, d: { en: "Save the choice. That is the resolution", he: "שומרים את הבחירה. זו ההכרעה" } },
+  ],
+  "Pull request & code review": [
+    { t: { en: "Push", he: "Push" }, d: { en: "The branch is on the remote, not in main yet", he: "הברנץ' ברימוט, עוד לא בראשי" } },
+    { t: { en: "Open", he: "פתיחה" }, d: { en: "A pull request shows the added and removed lines", he: "ה-pull request מראה שורות שנוספו ונמחקו" } },
+    { t: { en: "Review", he: "סקירה" }, d: { en: "Someone reads it and leaves comments", he: "מישהו קורא ומשאיר הערות" } },
+    { t: { en: "Merge", he: "Merge" }, d: { en: "It joins main only after the comments are settled", he: "זה נכנס לראשי רק אחרי שההערות סגורות" } },
+  ],
+  "Request / Response": [
+    { t: { en: "Ask", he: "שאלה" }, d: { en: "The client writes what it wants", he: "הקליינט כותב מה הוא רוצה" } },
+    { t: { en: "Send", he: "שליחה" }, d: { en: "That request travels to the server", he: "הבקשה נוסעת אל השרת" } },
+    { t: { en: "Work", he: "עבודה" }, d: { en: "The server does the job, or refuses", he: "השרת עושה את העבודה, או מסרב" } },
+    { t: { en: "Answer", he: "תשובה" }, d: { en: "A response comes back, paired with that request", he: "תשובה חוזרת, בזוג עם הבקשה הזאת" } },
+  ],
+  DNS: [
+    { t: { en: "Name", he: "שם" }, d: { en: "You type example.com, not a number", he: "מקלידים example.com, לא מספר" } },
+    { t: { en: "Resolver", he: "פותר" }, d: { en: "A resolver takes the question", he: "פותר לוקח את השאלה" } },
+    { t: { en: "DNS", he: "DNS" }, d: { en: "The DNS answers with an address", he: "ה-DNS עונה בכתובת" } },
+    { t: { en: "Connect", he: "חיבור" }, d: { en: "Only then does the browser open the site", he: "רק אז הדפדפן פותח את האתר" } },
+  ],
+  "Hit / Miss": [
+    { t: { en: "Ask cache", he: "שואלים קאש" }, d: { en: "The app checks the fast copy first", he: "האפליקציה בודקת קודם את העותק המהיר" } },
+    { t: { en: "Hit", he: "Hit" }, d: { en: "The copy is there. The database is never asked", he: "העותק שם. המסד לא נשאל בכלל" } },
+    { t: { en: "Miss", he: "Miss" }, d: { en: "No copy. The question continues to the database", he: "אין עותק. השאלה ממשיכה למסד" } },
+    { t: { en: "Store", he: "שמירה" }, d: { en: "The answer is saved so the next ask is a hit", he: "התשובה נשמרת כדי שהשאלה הבאה תהיה hit" } },
+  ],
+  "Token / JWT": [
+    { t: { en: "Log in", he: "התחברות" }, d: { en: "You prove who you are once", he: "מוכיחים מי אתם פעם אחת" } },
+    { t: { en: "Token", he: "טוקן" }, d: { en: "The server hands back a signed token", he: "השרת מחזיר טוקן חתום" } },
+    { t: { en: "Every call", he: "כל קריאה" }, d: { en: "The token rides along on the next requests", he: "הטוקן נוסע עם הבקשות הבאות" } },
+    { t: { en: "Check", he: "בדיקה" }, d: { en: "No token, or a bad one, and the answer is a refusal", he: "בלי טוקן, או עם טוקן רע, התשובה היא סירוב" } },
+  ],
+  Webhook: [
+    { t: { en: "Event", he: "אירוע" }, d: { en: "Something happens on their side, a payment for example", he: "משהו קורה אצלם, למשל תשלום" } },
+    { t: { en: "They call", he: "הם קוראים" }, d: { en: "Their server posts to your address", he: "השרת שלהם שולח לכתובת שלכם" } },
+    { t: { en: "You answer", he: "אתם עונים" }, d: { en: "You reply 200 quickly, before they retry", he: "עונים 200 מהר, לפני שהם מנסים שוב" } },
+    { t: { en: "Then work", he: "ואז עבודה" }, d: { en: "The slow part happens after the answer, not before", he: "החלק האיטי קורה אחרי התשובה, לא לפני" } },
+  ],
+  "Health check & uptime monitor": [
+    { t: { en: "Timer", he: "טיימר" }, d: { en: "A monitor wakes up every minute", he: "מוניטור מתעורר כל דקה" } },
+    { t: { en: "Ping", he: "פינג" }, d: { en: "It asks /healthz and nothing else", he: "הוא שואל /healthz ושום דבר אחר" } },
+    { t: { en: "Ok", he: "תקין" }, d: { en: "200 means the app is up", he: "200 אומר שהאפליקציה באוויר" } },
+    { t: { en: "Fail", he: "כשל" }, d: { en: "Silence or an error becomes an alert", he: "שקט או שגיאה הופכים להתראה" } },
+  ],
+  "Compiler / Interpreter": [
+    { t: { en: "File", he: "קובץ" }, d: { en: "Your source text goes in", he: "טקסט המקור שלכם נכנס" } },
+    { t: { en: "Read", he: "קריאה" }, d: { en: "The translator reads the whole file, or line by line", he: "המתרגם קורא את כל הקובץ, או שורה-שורה" } },
+    { t: { en: "Refuse", he: "סירוב" }, d: { en: "A broken line stops it and names the line", he: "שורה שבורה עוצרת אותו ומציינת את השורה" } },
+    { t: { en: "Run", he: "הרצה" }, d: { en: "Only a clean translation becomes a running program", he: "רק תרגום נקי הופך לתוכנית שרצה" } },
+  ],
+  "Package manager": [
+    { t: { en: "Name", he: "שם" }, d: { en: "You ask for a package and a version", he: "מבקשים חבילה וגרסה" } },
+    { t: { en: "Registry", he: "מאגר" }, d: { en: "The registry looks up that exact version", he: "המאגר מחפש את הגרסה המדויקת" } },
+    { t: { en: "Download", he: "הורדה" }, d: { en: "The files land in your project", he: "הקבצים נוחתים בפרויקט" } },
+    { t: { en: "Lock", he: "נעילה" }, d: { en: "A lockfile remembers the version so tomorrow matches today", he: "קובץ נעילה זוכר את הגרסה כדי שמחר יהיה כמו היום" } },
+  ],
+  "Forms & validation": [
+    { t: { en: "Fill", he: "מילוי" }, d: { en: "The person types into the boxes", he: "האדם מקליד בתיבות" } },
+    { t: { en: "Send", he: "שליחה" }, d: { en: "The browser posts the form to the server", he: "הדפדפן שולח את הטופס לשרת" } },
+    { t: { en: "Check", he: "בדיקה" }, d: { en: "The server rejects an empty name. The browser check is not enough", he: "השרת דוחה שם ריק. הבדיקה בדפדפן לא מספיקה" } },
+    { t: { en: "Save or say", he: "שומרים או אומרים" }, d: { en: "It saves the row, or it sends back what was wrong", he: "הוא שומר את השורה, או מחזיר מה לא היה בסדר" } },
+  ],
+  GET: [
+    { t: { en: "Ask", he: "בקשה" }, d: { en: "GET /orders asks for the list", he: "GET /orders מבקש את הרשימה" } },
+    { t: { en: "No change", he: "בלי שינוי" }, d: { en: "A GET must not create, edit, or delete", he: "GET לא אמור ליצור, לערוך, או למחוק" } },
+    { t: { en: "Read", he: "קריאה" }, d: { en: "The server only looks the data up", he: "השרת רק מחפש את הנתונים" } },
+    { t: { en: "200", he: "200" }, d: { en: "The list comes back with the page", he: "הרשימה חוזרת עם העמוד" } },
+  ],
+  "POST / PUT / PATCH / DELETE": [
+    { t: { en: "Change", he: "שינוי" }, d: { en: "The body says what should be different", he: "הגוף אומר מה צריך להיות שונה" } },
+    { t: { en: "Send", he: "שליחה" }, d: { en: "POST creates, PUT replaces, PATCH edits, DELETE removes", he: "POST יוצר, PUT מחליף, PATCH עורך, DELETE מוחק" } },
+    { t: { en: "Server", he: "שרת" }, d: { en: "The server applies it, or rejects it", he: "השרת מיישם, או דוחה" } },
+    { t: { en: "Status", he: "סטטוס" }, d: { en: "201 means created. 400 means you sent something it will not take", he: "201 אומר נוצר. 400 אומר שלחתם משהו שהוא לא יקבל" } },
+  ],
+  Query: [
+    { t: { en: "Question", he: "שאלה" }, d: { en: "The app writes a question, not a whole dump", he: "האפליקציה כותבת שאלה, לא שפיכה של הכל" } },
+    { t: { en: "Send", he: "שליחה" }, d: { en: "The question goes to the database", he: "השאלה הולכת למסד" } },
+    { t: { en: "Find", he: "מציאה" }, d: { en: "An index makes the lookup fast. Without one it reads the whole table", he: "אינדקס עושה את החיפוש מהיר. בלי אחד הוא קורא את כל הטבלה" } },
+    { t: { en: "Rows", he: "שורות" }, d: { en: "Only the matching rows come back", he: "רק השורות שתואמות חוזרות" } },
+  ],
+  "Polling vs push": [
+    { t: { en: "Ask", he: "שאלה" }, d: { en: "The page asks: done yet?", he: "העמוד שואל: נגמר?" } },
+    { t: { en: "Not yet", he: "עוד לא" }, d: { en: "The server says no. The page waits", he: "השרת אומר לא. העמוד מחכה" } },
+    { t: { en: "Ask again", he: "שואלים שוב" }, d: { en: "It asks on a timer until the answer changes", he: "הוא שואל בטיימר עד שהתשובה משתנה" } },
+    { t: { en: "Done", he: "נגמר" }, d: { en: "Push skips the asking: the server speaks when it is ready", he: "Push מדלג על השאלות: השרת מדבר כשהוא מוכן" } },
+  ],
+  Pagination: [
+    { t: { en: "Ask", he: "בקשה" }, d: { en: "The client asks for page 2, not everything", he: "הקליינט מבקש עמוד 2, לא את הכל" } },
+    { t: { en: "Slice", he: "פרוסה" }, d: { en: "The API cuts twenty rows", he: "ה-API חותך עשרים שורות" } },
+    { t: { en: "Return", he: "החזרה" }, d: { en: "Those twenty come back, plus a hint that more exist", he: "עשרים האלה חוזרות, ועוד רמז שיש עוד" } },
+    { t: { en: "Next", he: "הבא" }, d: { en: "The next click asks for page 3", he: "הלחיצה הבאה מבקשת עמוד 3" } },
+  ],
+  "Timeouts & retries": [
+    { t: { en: "Call", he: "קריאה" }, d: { en: "Your app asks their API", he: "האפליקציה שואלת את ה-API שלהם" } },
+    { t: { en: "Wait", he: "המתנה" }, d: { en: "A clock starts. The answer has a deadline", he: "שעון מתחיל. לתשובה יש דדליין" } },
+    { t: { en: "Too late", he: "מאוחר" }, d: { en: "Past the deadline, the answer does not count", he: "אחרי הדדליין, התשובה לא נחשבת" } },
+    { t: { en: "Retry", he: "ניסיון נוסף" }, d: { en: "You try again, or you show an error and stop", he: "מנסים שוב, או מראים שגיאה ועוצרים" } },
+  ],
+  "Retry & backoff": [
+    { t: { en: "Try 1", he: "ניסיון 1" }, d: { en: "The first call gets a 503", he: "הקריאה הראשונה מקבלת 503" } },
+    { t: { en: "Wait", he: "המתנה" }, d: { en: "You pause, longer than a frantic instant retry", he: "עוצרים, יותר מרגע של ניסיון מיידי" } },
+    { t: { en: "Try 2", he: "ניסיון 2" }, d: { en: "A quieter second call goes out", he: "קריאה שנייה שקטה יותר יוצאת" } },
+    { t: { en: "Stop", he: "עצירה" }, d: { en: "After a few failures you stop, so you do not hammer them", he: "אחרי כמה כשלונות עוצרים, כדי לא להפציץ אותם" } },
+  ],
+  "API key vs OAuth app": [
+    { t: { en: "Key", he: "מפתח" }, d: { en: "A secret key is attached to the call", he: "מפתח סודי מצורף לקריאה" } },
+    { t: { en: "Send", he: "שליחה" }, d: { en: "Their API sees the key before the data", he: "ה-API שלהם רואה את המפתח לפני הנתונים" } },
+    { t: { en: "Recognise", he: "זיהוי" }, d: { en: "A known key is allowed. An unknown one is refused", he: "מפתח מוכר מורשה. מפתח לא מוכר נדחה" } },
+    { t: { en: "Data", he: "נתונים" }, d: { en: "Only then does the payload come back", he: "רק אז המטען חוזר" } },
+  ],
+  "Background job": [
+    { t: { en: "Click", he: "לחיצה" }, d: { en: "The page asks for something slow, like an email", he: "העמוד מבקש משהו איטי, כמו מייל" } },
+    { t: { en: "Queue", he: "תור" }, d: { en: "The job is written down and the page is free", he: "העבודה נרשמת והעמוד פנוי" } },
+    { t: { en: "Worker", he: "עובד" }, d: { en: "A worker picks the job up when it can", he: "עובד מרים את העבודה כשהוא יכול" } },
+    { t: { en: "Done", he: "נגמר" }, d: { en: "Sent comes back later, not while the person is staring", he: "נשלח חוזר אחר כך, לא בזמן שהאדם בוהה" } },
+  ],
+  "Queue / worker": [
+    { t: { en: "Drop", he: "הנחה" }, d: { en: "The app puts job 18 on the queue", he: "האפליקציה שמה את עבודה 18 על התור" } },
+    { t: { en: "Wait", he: "המתנה" }, d: { en: "The job sits until a worker is free", he: "העבודה יושבת עד שעובד פנוי" } },
+    { t: { en: "Take", he: "לקיחה" }, d: { en: "One worker takes it. Two workers must not take the same one", he: "עובד אחד לוקח. שני עובדים לא אמורים לקחת את אותה אחת" } },
+    { t: { en: "Done", he: "נגמר" }, d: { en: "Finished travels back. A crash returns the job to the queue", he: "נגמר חוזר. קריסה מחזירה את העבודה לתור" } },
+  ],
+  "Event & pub/sub": [
+    { t: { en: "Fact", he: "עובדה" }, d: { en: "Orders decides an order was placed", he: "הזמנות מחליטות שהזמנה בוצעה" } },
+    { t: { en: "Publish", he: "פרסום" }, d: { en: "It puts OrderPlaced on the bus and does not call billing", he: "היא שמה OrderPlaced על האפיק ולא קוראת לחיוב" } },
+    { t: { en: "Deliver", he: "מסירה" }, d: { en: "The bus hands that fact to whoever is listening", he: "האפיק מוסר את העובדה למי שמאזין" } },
+    { t: { en: "Receive", he: "קבלה" }, d: { en: "Billing receives it and charges. Orders already moved on", he: "חיוב מקבל וגובה. הזמנות כבר המשיכו" } },
+  ],
+  "Real-time (WebSocket / SSE)": [
+    { t: { en: "Connect", he: "חיבור" }, d: { en: "The browser opens one line and keeps it", he: "הדפדפן פותח קו אחד ושומר אותו" } },
+    { t: { en: "Stay open", he: "נשאר פתוח" }, d: { en: "Nobody hangs up between messages", he: "אף אחד לא מנתק בין הודעות" } },
+    { t: { en: "Push", he: "דחיפה" }, d: { en: "The server sends the next event down that line", he: "השרת שולח את האירוע הבא על הקו הזה" } },
+    { t: { en: "Show", he: "הצגה" }, d: { en: "The page updates without a refresh", he: "העמוד מתעדכן בלי רענון" } },
+  ],
+  "Session & cookie": [
+    { t: { en: "Log in", he: "התחברות" }, d: { en: "Email and password go to the server once", he: "מייל וסיסמה הולכים לשרת פעם אחת" } },
+    { t: { en: "Cookie", he: "עוגייה" }, d: { en: "The server sends Set-Cookie back", he: "השרת שולח Set-Cookie בחזרה" } },
+    { t: { en: "Store", he: "שמירה" }, d: { en: "The browser keeps that cookie", he: "הדפדפן שומר את העוגייה" } },
+    { t: { en: "Next visit", he: "ביקור הבא" }, d: { en: "Every later request carries it, so you stay signed in", he: "כל בקשה אחר כך סוחבת אותה, אז נשארים מחוברים" } },
+  ],
+  OAuth: [
+    { t: { en: "Click", he: "לחיצה" }, d: { en: "The person asks your app to log in", he: "האדם מבקש מהאפליקציה להתחבר" } },
+    { t: { en: "Redirect", he: "הפניה" }, d: { en: "The browser is sent to Google, not given your password store", he: "הדפדפן נשלח ל-Google, לא למחסן הסיסמאות שלכם" } },
+    { t: { en: "Allow", he: "אישור" }, d: { en: "They approve it on Google's page", he: "הם מאשרים בעמוד של Google" } },
+    { t: { en: "Code", he: "קוד" }, d: { en: "Google sends a code back. The password never comes with it", he: "Google שולח קוד בחזרה. הסיסמה לא מגיעה איתו" } },
+  ],
+  CORS: [
+    { t: { en: "Other site", he: "אתר אחר" }, d: { en: "A page on one site wants data from another", he: "עמוד באתר אחד רוצה נתונים מאתר אחר" } },
+    { t: { en: "Ask", he: "שאלה" }, d: { en: "The browser asks the API: may I?", he: "הדפדפן שואל את ה-API: מותר לי?" } },
+    { t: { en: "Allow", he: "אישור" }, d: { en: "The API answers with an allow, or it does not", he: "ה-API עונה באישור, או שלא" } },
+    { t: { en: "Then data", he: "ואז נתונים" }, d: { en: "Only an allow lets the browser show the answer to the page", he: "רק אישור נותן לדפדפן להראות את התשובה לעמוד" } },
+  ],
+  "HTTPS / TLS": [
+    { t: { en: "Hello", he: "שלום" }, d: { en: "The browser introduces itself", he: "הדפדפן מציג את עצמו" } },
+    { t: { en: "Certificate", he: "תעודה" }, d: { en: "The server shows a certificate that names the site", he: "השרת מראה תעודה שמציינת את האתר" } },
+    { t: { en: "Lock", he: "מנעול" }, d: { en: "They agree on a lock before any real message", he: "הם מסכימים על מנעול לפני כל הודעה אמיתית" } },
+    { t: { en: "Talk", he: "דיבור" }, d: { en: "The request and the response travel inside that lock", he: "הבקשה והתשובה נוסעות בתוך המנעול" } },
+  ],
+  "Load balancer": [
+    { t: { en: "Arrive", he: "הגעה" }, d: { en: "The client's request hits the balancer first", he: "הבקשה של הקליינט פוגעת קודם במאזן" } },
+    { t: { en: "Pick", he: "בחירה" }, d: { en: "It chooses a server that has room", he: "הוא בוחר שרת שיש לו מקום" } },
+    { t: { en: "Forward", he: "העברה" }, d: { en: "That server does the work", he: "השרת הזה עושה את העבודה" } },
+    { t: { en: "Return", he: "חזרה" }, d: { en: "The page comes back through the balancer to the client", he: "העמוד חוזר דרך המאזן אל הקליינט" } },
+  ],
+  Idempotency: [
+    { t: { en: "Key", he: "מפתח" }, d: { en: "The call carries a key, pay · 9", he: "הקריאה סוחבת מפתח, שלם · 9" } },
+    { t: { en: "First time", he: "פעם ראשונה" }, d: { en: "The API charges once and stores the receipt", he: "ה-API גובה פעם אחת ושומר את הקבלה" } },
+    { t: { en: "Again", he: "שוב" }, d: { en: "The same key arrives a second time", he: "אותו מפתח מגיע פעם שנייה" } },
+    { t: { en: "Same receipt", he: "אותה קבלה" }, d: { en: "It does not charge again. It returns the first receipt", he: "הוא לא גובה שוב. הוא מחזיר את הקבלה הראשונה" } },
+  ],
+  "Rate limiting": [
+    { t: { en: "Calls", he: "קריאות" }, d: { en: "The client sends call after call", he: "הקליינט שולח קריאה אחרי קריאה" } },
+    { t: { en: "Count", he: "ספירה" }, d: { en: "The API counts them inside a window", he: "ה-API סופר אותן בתוך חלון" } },
+    { t: { en: "Limit", he: "גבול" }, d: { en: "Call 101 crosses the line", he: "קריאה 101 חוצה את הקו" } },
+    { t: { en: "429", he: "429" }, d: { en: "The answer is slow down, not the data", he: "התשובה היא לאט, לא הנתונים" } },
+  ],
+  "Browser cache": [
+    { t: { en: "First visit", he: "ביקור ראשון" }, d: { en: "The browser downloads app.js", he: "הדפדפן מוריד את app.js" } },
+    { t: { en: "Store", he: "שמירה" }, d: { en: "It keeps a copy, with a freshness time", he: "הוא שומר עותק, עם זמן טריות" } },
+    { t: { en: "Second visit", he: "ביקור שני" }, d: { en: "It asks: do I already have this?", he: "הוא שואל: זה כבר אצלי?" } },
+    { t: { en: "Use copy", he: "שימוש בעותק" }, d: { en: "Yes. It does not download the file again", he: "כן. הוא לא מוריד את הקובץ שוב" } },
+  ],
+  CDN: [
+    { t: { en: "Client", he: "קליינט" }, d: { en: "The browser asks for app.js", he: "הדפדפן מבקש את app.js" } },
+    { t: { en: "CDN", he: "CDN" }, d: { en: "A copy near you receives the ask", he: "עותק קרוב אליכם מקבל את הבקשה" } },
+    { t: { en: "Origin", he: "מקור" }, d: { en: "Only a miss continues to the origin, where the real file lives", he: "רק פספוס ממשיך למקור, שם הקובץ האמיתי חי" } },
+    { t: { en: "File", he: "קובץ" }, d: { en: "The file comes back through the CDN, which keeps a copy", he: "הקובץ חוזר דרך ה-CDN, ששומר עותק" } },
+  ],
+  "Reverse proxy": [
+    { t: { en: "Browser", he: "דפדפן" }, d: { en: "The visitor asks for the page", he: "המבקר מבקש את העמוד" } },
+    { t: { en: "Proxy", he: "פרוקסי" }, d: { en: "They talk only to the proxy, never to the app directly", he: "הם מדברים רק עם הפרוקסי, אף פעם לא ישירות עם האפליקציה" } },
+    { t: { en: "App", he: "אפליקציה" }, d: { en: "The proxy fetches the page from the app", he: "הפרוקסי מביא את העמוד מהאפליקציה" } },
+    { t: { en: "Page", he: "עמוד" }, d: { en: "The page returns through the proxy to the browser", he: "העמוד חוזר דרך הפרוקסי אל הדפדפן" } },
+  ],
+  "CI/CD": [
+    { t: { en: "Push", he: "Push" }, d: { en: "You send the commit to the repo", he: "שולחים את הקומיט לריפו" } },
+    { t: { en: "Pipeline", he: "צינור" }, d: { en: "The pipeline wakes up on that push", he: "הצינור מתעורר על הדחיפה הזאת" } },
+    { t: { en: "Checks", he: "בדיקות" }, d: { en: "It builds and runs the tests", he: "הוא בונה ומריץ את הבדיקות" } },
+    { t: { en: "Result", he: "תוצאה" }, d: { en: "Passed or failed comes back. Failed does not ship", he: "עבר או נכשל חוזר. נכשל לא נשלח" } },
+  ],
+  Deploy: [
+    { t: { en: "Push", he: "Push" }, d: { en: "The code leaves your machine", he: "הקוד עוזב את המחשב" } },
+    { t: { en: "Build", he: "בנייה" }, d: { en: "The pipeline turns it into something runnable", he: "הצינור הופך אותו למשהו שאפשר להריץ" } },
+    { t: { en: "Host", he: "מארח" }, d: { en: "The host swaps in that build", he: "המארח מחליף לבנייה הזאת" } },
+    { t: { en: "Live", he: "באוויר" }, d: { en: "A real address comes back and serves the new version", he: "כתובת אמיתית חוזרת ומגישה את הגרסה החדשה" } },
+  ],
+  "Preview deployment": [
+    { t: { en: "Branch", he: "ברנץ'" }, d: { en: "The work is on a branch, not on main", he: "העבודה על ברנץ', לא על הראשי" } },
+    { t: { en: "Push", he: "Push" }, d: { en: "That branch is pushed", he: "הברנץ' הזה נדחף" } },
+    { t: { en: "Build", he: "בנייה" }, d: { en: "The pipeline builds just that branch", he: "הצינור בונה רק את הברנץ' הזה" } },
+    { t: { en: "Preview", he: "תצוגה" }, d: { en: "A separate address comes back. The real site is untouched", he: "כתובת נפרדת חוזרת. האתר האמיתי לא נגע" } },
+  ],
+  Rollback: [
+    { t: { en: "Bad release", he: "שחרור רע" }, d: { en: "The version that is live is wrong", he: "הגרסה שבאוויר שגויה" } },
+    { t: { en: "Ask", he: "בקשה" }, d: { en: "You tell the host to go back", he: "אומרים למארח לחזור אחורה" } },
+    { t: { en: "Previous", he: "קודמת" }, d: { en: "It puts the last good version in place", he: "הוא שם את הגרסה הטובה האחרונה" } },
+    { t: { en: "Live", he: "באוויר" }, d: { en: "Visitors now get that older version", he: "מבקרים מקבלים עכשיו את הגרסה הישנה יותר" } },
+  ],
+  Alert: [
+    { t: { en: "Watch", he: "צפייה" }, d: { en: "A monitor watches the error rate", he: "מוניטור צופה בשיעור השגיאות" } },
+    { t: { en: "Cross", he: "חצייה" }, d: { en: "Errors go over 5%", he: "השגיאות עוברות 5%" } },
+    { t: { en: "Fire", he: "ירי" }, d: { en: "The rule fires an alert", he: "הכלל יורה התראה" } },
+    { t: { en: "Reach you", he: "מגיע אליכם" }, d: { en: "The page arrives. The number alone does not", he: "ההתראה מגיעה. המספר לבד לא" } },
+  ],
+  "Tracing & correlation id": [
+    { t: { en: "Browser", he: "דפדפן" }, d: { en: "The request is born with an id, a1b2", he: "הבקשה נולדת עם מזהה, a1b2" } },
+    { t: { en: "API", he: "API" }, d: { en: "The API keeps that same id as it works", he: "ה-API שומר את אותו מזהה בזמן שהוא עובד" } },
+    { t: { en: "Database", he: "מסד" }, d: { en: "The database call is stamped with it too", he: "גם הקריאה למסד חתומה בו" } },
+    { t: { en: "Trail", he: "שביל" }, d: { en: "Later you follow a1b2 across every hop", he: "אחר כך עוקבים אחרי a1b2 בכל תחנה" } },
+  ],
+  "Make it verify itself": [
+    { t: { en: "Ask", he: "בקשה" }, d: { en: "You tell the AI to check its own work", he: "אומרים ל-AI לבדוק את העבודה שלו" } },
+    { t: { en: "Run", he: "הרצה" }, d: { en: "It runs the check, it does not just say looks good", he: "הוא מריץ את הבדיקה, לא רק אומר נראה טוב" } },
+    { t: { en: "Failures", he: "כשלונות" }, d: { en: "It lists what failed, with the line", he: "הוא רושם מה נכשל, עם השורה" } },
+    { t: { en: "You read", he: "אתם קוראים" }, d: { en: "You read that list before you trust the change", he: "קוראים את הרשימה לפני שסומכים על השינוי" } },
+  ],
+  "Read the diff": [
+    { t: { en: "Ask", he: "שאלה" }, d: { en: "You ask what changed, not fix it", he: "שואלים מה השתנה, לא לתקן" } },
+    { t: { en: "Diff", he: "Diff" }, d: { en: "Added lines and removed lines come back", he: "שורות שנוספו ושורות שנמחקו חוזרות" } },
+    { t: { en: "Removed", he: "נמחק" }, d: { en: "You read what was deleted before what was added", he: "קוראים מה נמחק לפני מה שנוסף" } },
+    { t: { en: "Decide", he: "החלטה" }, d: { en: "If you cannot say what it does, you have not reviewed it", he: "אם אי אפשר להגיד מה זה עושה, לא סקרתם" } },
+  ],
 };

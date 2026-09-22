@@ -19,7 +19,7 @@ import {
   moduleIndex,
   pathForModule,
 } from "@/lib/course";
-import { FLOWS, LIFECYCLE } from "@/lib/diagrams";
+import { FLOWS, LIFECYCLE, STEPS } from "@/lib/diagrams";
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
@@ -64,6 +64,7 @@ export default async function SlidePage({
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
   const flow = FLOWS[tm.t.en];
+  const steps = STEPS[tm.t.en];
   const coursePath = pathForModule(m.id, course);
   const q = (href: string) => (course ? `${href}?course=${course}` : href);
 
@@ -92,7 +93,19 @@ export default async function SlidePage({
         {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />
         ) : null}
-        {flow ? (
+        {steps ? (
+          <div className={`http-flow hf-steps n${steps.length}`} aria-hidden="true">
+            <div className="hf-cap">{flow?.cap[lang]}</div>
+            <div className="hf-step-row">
+              {steps.map((s, i) => (
+                <div key={i} className="hf-step" style={{ ["--i" as string]: i, ["--n" as string]: steps.length }}>
+                  <b>{i + 1} · {s.t[lang]}</b>
+                  <span>{s.d[lang]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : flow ? (
           <div className={flow.mid ? "http-flow hf-3" : "http-flow"} aria-hidden="true">
             <div className="hf-cap">{flow.cap[lang]}</div>
             <div className="hf-row">
