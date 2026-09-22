@@ -96,9 +96,6 @@ h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text
 .hero p{max-width:640px;margin:18px auto 0;color:var(--tx2);font-size:var(--fs-lg);text-wrap:pretty}
 .hero .cta{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-footer{max-width:1240px;margin:0 auto;padding:26px 24px 60px;color:var(--tx3);
-  font-size:var(--fs-sm);text-align:center;text-wrap:pretty}
-
 /* layout */
 main{max-width:1240px;margin:0 auto;padding:0 24px 100px;display:grid;
   grid-template-columns:272px 1fr;gap:34px;align-items:start}

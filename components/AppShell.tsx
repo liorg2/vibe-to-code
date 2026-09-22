@@ -25,7 +25,6 @@ export function AppShell({
         {showNav && <SideNav />}
         <div id="content">{children}</div>
       </main>
-      <footer>One static page. No tracking — progress lives in your browser, and in your account if you sign in.</footer>
     </div>
   );
 }
