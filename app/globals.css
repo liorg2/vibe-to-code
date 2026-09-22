@@ -101,9 +101,12 @@ h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text
   column-gap:64px;padding:28px 4px 22px;overflow:visible}
 .pgrid.pgrid-lane .course{position:relative;z-index:1}
 .pac-board{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:visible}
-.pac-word{position:absolute;font-size:var(--fs-xs);font-weight:600;color:var(--acc2);white-space:nowrap;
-  line-height:1;transition:opacity .25s}
-.pac-word.eaten{opacity:0}
+.pac-word{position:absolute;display:inline-flex;align-items:center;gap:5px;
+  padding:3px 8px 3px 6px;border-radius:99px;background:var(--card);border:1px solid var(--line);
+  box-shadow:0 4px 12px rgba(20,25,50,.08);font-size:var(--fs-xs);font-weight:600;color:var(--tx2);
+  white-space:nowrap;line-height:1.2;transition:opacity .25s,transform .25s}
+.pac-word::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc2);flex:none}
+.pac-word.eaten{opacity:0;transform:scale(.7)}
 .pac-man{position:absolute;left:0;top:0;width:32px;height:32px;overflow:visible;transform-origin:16px 16px}
 .pac-man svg{display:block;overflow:visible}
 @media (max-width:860px){

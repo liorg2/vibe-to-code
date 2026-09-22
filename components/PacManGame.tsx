@@ -82,7 +82,7 @@ function spotsFor(root: HTMLElement): Spot[] {
 
   const out: Spot[] = [];
   for (const s of raw) {
-    if (out.every((o) => Math.hypot(o.x - s.x, o.y - s.y) > 52)) out.push(s);
+    if (out.every((o) => Math.hypot(o.x - s.x, o.y - s.y) > 78)) out.push(s);
   }
   return out;
 }
