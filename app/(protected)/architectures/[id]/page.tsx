@@ -5,18 +5,32 @@ import { ArchSubNav } from "@/components/ArchSubNav";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
 import { PromptBox } from "@/components/PromptBox";
-import { ARCHITECTURES, findTerm } from "@/lib/course";
+import { ARCHITECTURES, archesFor, findTerm } from "@/lib/course";
 import { ARCH_CHARTS } from "@/lib/diagrams";
 import { serverLang } from "@/lib/lang-server";
 
-export default async function ArchitectureDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function ArchitectureDetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ course?: string }>;
+}) {
   const { id } = await params;
+  const { course } = await searchParams;
+  const asked = course === "basic" || course === "advanced" ? course : "";
+  const which = asked
+    ? asked
+    : archesFor("basic").some((a) => a.id === id)
+      ? "basic"
+      : "advanced";
   const lang = await serverLang();
   const A = ARCHITECTURES;
-  const i = A.items.findIndex((x) => x.id === id);
+  const items = archesFor(which);
+  const i = items.findIndex((x) => x.id === id);
   if (i < 0) notFound();
-  const a = A.items[i];
-  const next = A.items[i + 1];
+  const a = items[i];
+  const next = items[i + 1];
 
   const box = (title: string, text: string, cls = "") => (
     <div className={`abox ${cls}`}><b>{title}</b><p>{text}</p></div>
@@ -27,11 +41,11 @@ export default async function ArchitectureDetailPage({ params }: { params: Promi
       <Breadcrumb
         items={[
           { label: "All lessons", href: "/" },
-          { label: A.title[lang], href: "/architectures" },
+          { label: A.title[lang], href: `/architectures?course=${which}` },
           { label: a.title[lang] },
         ]}
       />
-      <ArchSubNav active={a.id} />
+      <ArchSubNav active={a.id} items={items} course={which} />
       <article className="slide arch">
         <div className="kicker">{String(i + 1).padStart(2, "0")} {A.title[lang]} · {a.tag[lang]}</div>
         <h2>{a.title[lang]}</h2>
@@ -65,7 +79,7 @@ export default async function ArchitectureDetailPage({ params }: { params: Promi
         <PromptBox id="arch" text={a.prompt} label="Prompt to scaffold it" />
         <div className="pager">
           {next ? (
-            <Link className="nx" href={`/architectures/${next.id}`}>
+            <Link className="nx" href={`/architectures/${next.id}?course=${which}`}>
               <b>Next</b><span>{next.title[lang]}</span>
             </Link>
           ) : null}

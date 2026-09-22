@@ -2,13 +2,20 @@ import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { ArchSubNav } from "@/components/ArchSubNav";
 import { Chart } from "@/components/Chart";
-import { ARCHITECTURES } from "@/lib/course";
+import { ARCHITECTURES, archesFor } from "@/lib/course";
 import { ARCH_MINI } from "@/lib/diagrams";
 import { serverLang } from "@/lib/lang-server";
 
-export default async function ArchitecturesPage() {
+export default async function ArchitecturesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ course?: string }>;
+}) {
+  const { course } = await searchParams;
+  const which = course === "basic" ? "basic" : "advanced";
   const lang = await serverLang();
   const A = ARCHITECTURES;
+  const items = archesFor(which);
 
   return (
     <AppShell>
@@ -17,14 +24,14 @@ export default async function ArchitecturesPage() {
         <div className="mhead">
           <div className="ic">{A.icon}</div>
           <div><h2>{A.title[lang]}</h2></div>
-          <div className="n">{A.items.length}</div>
+          <div className="n">{items.length}</div>
         </div>
         <p className="mblurb">{A.blurb[lang]}</p>
       </section>
-      <ArchSubNav active="" />
+      <ArchSubNav active="" items={items} course={which} />
       <div className="cards arch-cards">
-        {A.items.map((a, i) => (
-          <Link key={a.id} className="mcard arch-card" href={`/architectures/${a.id}`}>
+        {items.map((a, i) => (
+          <Link key={a.id} className="mcard arch-card" href={`/architectures/${a.id}?course=${which}`}>
             <div className="row">
               <div className="ic">{i + 1}</div>
               <div>

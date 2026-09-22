@@ -10576,6 +10576,156 @@
    }
   ]
  },
+ "BASIC_PROJECT": {
+  "id": "project",
+  "icon": "▶",
+  "title": {
+   "en": "Final project — a page that remembers",
+   "he": "פרויקט מסכם — עמוד שזוכר"
+  },
+  "blurb": {
+   "en": "Four steps. One page with a box for a name and a note, and a list that is still there after you refresh. You paste the prompt, read what comes back, and click it yourself.",
+   "he": "ארבעה שלבים. עמוד אחד עם תיבה לשם ולהערה, ורשימה שנשארת אחרי רענון. מדביקים את הפרומפט, קוראים מה חזר, ולוחצים בעצמכם."
+  },
+  "warn": {
+   "en": "This stays a practice page. Do not type a real password, card number, or someone else's private details into it.",
+   "he": "זה נשאר עמוד לתרגול. אל תקלידו לתוכו סיסמה אמיתית, מספר כרטיס, או פרטים פרטיים של מישהו אחר."
+  },
+  "steps": [
+   {
+    "n": 1,
+    "title": {
+     "en": "Say what the page does",
+     "he": "להגיד מה העמוד עושה"
+    },
+    "goal": {
+     "en": "One sentence: a page where you type a name and a note, and see the ones you already saved. Nothing else.",
+     "he": "משפט אחד: עמוד שבו מקלידים שם והערה, ורואים את אלה שכבר נשמרו. שום דבר אחר."
+    },
+    "why": {
+     "en": "If you cannot say it in one sentence, the AI will invent a product. Login, payments and email are how a small page becomes a month.",
+     "he": "אם אי אפשר להגיד את זה במשפט אחד, ה-AI ימציא מוצר. התחברות, תשלומים ומייל הם איך שעמוד קטן הופך לחודש."
+    },
+    "uses": ["Client", "Frontend"],
+    "prompt": "I am building one practice page. Do not write code.\n\nThe page does exactly this: I type a name and a short note, I press save, and I see a list of the names I already saved. Refreshing the page may forget them for now.\n\nIt does NOT have: login, passwords, payments, email, file uploads, search, or more than one page.\n\nReply with three lines only: the one sentence of what it does, the list of things it will not do, and the one way a beginner would accidentally make it bigger.",
+    "acceptance": {
+     "en": "Write the one sentence of what the page does, and one thing it will not do.",
+     "he": "כתבו את המשפט האחד של מה העמוד עושה, ודבר אחד שהוא לא יעשה."
+    },
+    "verify": [
+     {
+      "en": "I can say what the page does in one sentence",
+      "he": "אני יכול להגיד מה העמוד עושה במשפט אחד"
+     },
+     {
+      "en": "I named something it will not do",
+      "he": "ציינתי משהו שהוא לא יעשה"
+     }
+    ]
+   },
+   {
+    "n": 2,
+    "title": {
+     "en": "A page you can click",
+     "he": "עמוד שאפשר ללחוץ עליו"
+    },
+    "goal": {
+     "en": "A page in the browser: a name box, a note box, a save button, and a list. Refreshing may clear the list. That is fine for this step.",
+     "he": "עמוד בדפדפן: תיבת שם, תיבת הערה, כפתור שמירה, ורשימה. רענון יכול למחוק את הרשימה. זה בסדר בשלב הזה."
+    },
+    "why": {
+     "en": "You need something you can click before anything is saved. If you cannot see it, you cannot tell the AI what is wrong.",
+     "he": "צריך משהו שאפשר ללחוץ עליו לפני ששומרים משהו. אם אי אפשר לראות את זה, אי אפשר להגיד ל-AI מה לא בסדר."
+    },
+    "uses": ["Frontend", "Forms & validation"],
+    "prompt": "Build a single web page I can open in the browser. One screen only.\n\nIt has a text box for a name, a text box for a short note, a Save button, and a list under them of what I have added in this visit. Empty name: do not add a row, show a short message instead.\n\nDo NOT add: a database, login, a second page, styling frameworks, or any feature I did not name.\nBefore the code, list the pieces of the page in plain words. After the code, tell me the exact command to open it and what I should see.",
+    "acceptance": {
+     "en": "What will you see on the page, and what should happen if the name is empty?",
+     "he": "מה תראו על העמוד, ומה אמור לקרות אם השם ריק?"
+    },
+    "verify": [
+     {
+      "en": "I opened the page and saw the two boxes and the button",
+      "he": "פתחתי את העמוד וראיתי את שתי התיבות ואת הכפתור"
+     },
+     {
+      "en": "An empty name did not add a row",
+      "he": "שם ריק לא הוסיף שורה"
+     },
+     {
+      "en": "A real name showed up in the list",
+      "he": "שם אמיתי הופיע ברשימה"
+     }
+    ]
+   },
+   {
+    "n": 3,
+    "title": {
+     "en": "Make refresh keep the names",
+     "he": "לגרום לרענון לשמור את השמות"
+    },
+    "goal": {
+     "en": "You add a name, refresh the page, and it is still in the list.",
+     "he": "מוסיפים שם, מרעננים את העמוד, והוא עדיין ברשימה."
+    },
+    "why": {
+     "en": "Until this step the list lived only in the browser's memory. A refresh throws that away. A database is the place that survives.",
+     "he": "עד השלב הזה הרשימה חיה רק בזיכרון של הדפדפן. רענון זורק אותה. מסד נתונים הוא המקום ששורד."
+    },
+    "uses": ["Database", "Server", "Schema"],
+    "prompt": "The page already has a name box, a note box, a Save button, and a list that disappears on refresh. Make the list survive a refresh.\n\nUse the smallest database that runs on my machine. One table, two columns: name and note. Saving writes a row. Loading the page reads the rows back.\n\nDo NOT add: login, a second table, editing, deleting, or a hosted database.\nBefore the code, name the table and the two columns in plain words, and say what is lost if the database file is deleted. After the code, give me the exact commands to start it and the click-by-click check: add a name, refresh, it is still there.",
+    "acceptance": {
+     "en": "Where do the names live after a refresh, and what disappears if you delete that place?",
+     "he": "איפה השמות חיים אחרי רענון, ומה נעלם אם מוחקים את המקום הזה?"
+    },
+    "verify": [
+     {
+      "en": "I added a name, refreshed, and it was still there",
+      "he": "הוספתי שם, רעננתי, והוא עדיין היה שם"
+     },
+     {
+      "en": "I can point at the one table that holds the names",
+      "he": "אני יכול להצביע על הטבלה האחת שמחזיקה את השמות"
+     }
+    ]
+   },
+   {
+    "n": 4,
+    "title": {
+     "en": "Try to break it",
+     "he": "לנסות לשבור את זה"
+    },
+    "goal": {
+     "en": "An empty name still does not save. A real name still survives refresh. You did both with your own hands.",
+     "he": "שם ריק עדיין לא נשמר. שם אמיתי עדיין שורד רענון. עשיתם את שניהם במו ידיכם."
+    },
+    "why": {
+     "en": "The AI will say it works. The only check that counts is you clicking it, including the case that should fail.",
+     "he": "ה-AI יגיד שזה עובד. הבדיקה היחידה שנחשבת היא שאתם לוחצים, כולל המקרה שאמור להיכשל."
+    },
+    "uses": ["Bug / Stack trace", "Forms & validation"],
+    "prompt": "Look at the page that saves a name and a note. Do not add features.\n\nCheck these three cases and fix only what fails:\n1. Save with an empty name — no new row, a short message.\n2. Save a normal name and note, refresh — the row is still there.\n3. Save a name that is only spaces — treat it like empty.\n\nIf something fails, paste me the exact thing you saw, not a guess. Do not add delete, edit, login, or styling.",
+    "acceptance": {
+     "en": "What will you click to prove an empty name is rejected and a real name survives refresh?",
+     "he": "על מה תלחצו כדי להוכיח ששם ריק נדחה ושם אמיתי שורד רענון?"
+    },
+    "verify": [
+     {
+      "en": "Empty name and spaces-only name did not save",
+      "he": "שם ריק ושם של רווחים בלבד לא נשמרו"
+     },
+     {
+      "en": "A real name was still there after refresh",
+      "he": "שם אמיתי עדיין היה שם אחרי רענון"
+     },
+     {
+      "en": "I clicked both checks myself",
+      "he": "לחצתי על שתי הבדיקות בעצמי"
+     }
+    ]
+   }
+  ]
+ },
  "CHECKLIST": {
   "id": "checklist",
   "icon": "☑",
@@ -10870,14 +11020,14 @@
  "ARCHITECTURES": {
   "id": "architectures",
   "icon": "⬡",
-  "title": {
-   "en": "Five Real Architectures",
-   "he": "חמש ארכיטקטורות אמיתיות"
-  },
-  "blurb": {
-   "en": "Almost every product you have ever used is one of these five shapes. Learn them, then pick the smallest one that fits — and know what forces you up to the next.",
-   "he": "כמעט כל מוצר שאי פעם השתמשת בו הוא אחת מחמש הצורות האלה. תלמד אותן, ואז תבחר את הקטנה ביותר שמתאימה — ותדע מה דוחף אותך לבאה."
-  },
+   "title": {
+    "en": "Architectures",
+    "he": "ארכיטקטורות"
+   },
+   "blurb": {
+    "en": "The shapes a product can take. This course has the ones you are ready for. Pick the smallest that fits.",
+    "he": "הצורות שמוצר יכול לקבל. בקורס הזה יש את אלה שאתם מוכנים להן. בוחרים את הקטנה ביותר שמתאימה."
+   },
   "items": [
    {
     "id": "static-site",
@@ -11427,6 +11577,7 @@
     "http",
     "data"
    ],
+   "arch": ["static-site", "classic-monolith"],
    "price": 99
   },
   {
@@ -11456,6 +11607,7 @@
     "team",
     "ai"
    ],
+   "arch": ["serverless", "pipeline", "microservices"],
    "price": 149
   }
  ],

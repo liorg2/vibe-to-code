@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "@/components/Link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -13,18 +13,25 @@ import {
   CHECKLIST,
   MODULES,
   PATHS,
-  PROJECT,
   QUIZ,
+  archesFor,
   pathForModule,
+  projectFor,
   termKey,
-  totalTerms,
 } from "@/lib/course";
 import { isPreviewModule } from "@/lib/protected";
 import type { Module } from "@/lib/types";
 
+const COURSE_KEY = "vibe.navCourse";
+
+function asCourse(id: string): "basic" | "advanced" | "" {
+  return id === "basic" || id === "advanced" ? id : "";
+}
+
 export function SideNav() {
   const { lang, done, t, user } = useApp();
   const pathname = stripLang(usePathname());
+  const queryCourse = asCourse(useSearchParams().get("course") ?? "");
 
   const lessonMatch = pathname.match(/^\/lesson\/([^/]+)/);
   const activeLesson = lessonMatch?.[1] ?? "";
@@ -33,19 +40,28 @@ export function SideNav() {
   const sub = pathname.match(/^\/lesson\/[^/]+\/(overview|summary|quiz)$/)?.[1] ?? "";
   const archOnRoute = pathname.startsWith("/architectures");
 
-  // the route decides which course and which lesson are open; a header click overrides until you navigate
+  const routeCourse = asCourse(
+    pathForModule(activeLesson)?.id ??
+      pathname.match(/^\/courses\/(basic|advanced)/)?.[1] ??
+      queryCourse,
+  );
+  const [remembered, setRemembered] = useState("");
+  useEffect(() => {
+    if (routeCourse) {
+      sessionStorage.setItem(COURSE_KEY, routeCourse);
+      setRemembered(routeCourse);
+      return;
+    }
+    setRemembered(asCourse(sessionStorage.getItem(COURSE_KEY) ?? ""));
+  }, [routeCourse]);
+  const courseId = routeCourse || remembered;
+
   const routeGroup = activeLesson || (archOnRoute ? "architectures" : "");
-  const routeCourse =
-    pathForModule(activeLesson)?.id ?? pathname.match(/^\/courses\/([^/]+)/)?.[1] ?? "";
   const [openId, setOpenId] = useState(routeGroup);
-  const [openCourse, setOpenCourse] = useState(routeCourse);
   useEffect(() => setOpenId(routeGroup), [routeGroup]);
-  useEffect(() => setOpenCourse(routeCourse), [routeCourse]);
-  /** on a phone the nav is an overlay — anything that navigates should close it */
   const closeOnMobile = () => {
     if (window.matchMedia("(max-width:900px)").matches) document.body.classList.remove("nav-toggled");
   };
-  /** a header click on the open group collapses it and stays put; on a closed one it opens and follows the link */
   const headerClick =
     (id: string, open: string, set: (v: string) => void) => (e: React.MouseEvent) => {
       if (open === id) {
@@ -57,14 +73,15 @@ export function SideNav() {
       closeOnMobile();
     };
 
-  // the nav scrolls inside itself — bring the current item into view on load
   const navRef = useRef<HTMLElement>(null);
   useEffect(() => {
     navRef.current?.querySelector(".on")?.scrollIntoView({ block: "nearest" });
   }, [pathname]);
 
+  const q = (href: string) => (courseId ? `${href}?course=${courseId}` : href);
   const navLink = (href: string, icon: string, label: string, cnt?: string) => {
-    const on = pathname === href || (href !== "/" && pathname.startsWith(href));
+    const path = href.split("?")[0];
+    const on = pathname === path || (path !== "/" && pathname.startsWith(path));
     return (
       <Link href={href} className={cn(on && "on")}>
         <span className="ic">{icon}</span>
@@ -98,10 +115,7 @@ export function SideNav() {
             <Link
               key={i}
               href={`/lesson/${m.id}/${i}`}
-              className={cn(
-                here && activeTerm === i && "on",
-                done.has(termKey(m, i)) && "done",
-              )}
+              className={cn(here && activeTerm === i && "on", done.has(termKey(m, i)) && "done")}
             >
               {tm.t[lang]}
             </Link>
@@ -119,95 +133,72 @@ export function SideNav() {
     );
   };
 
-  // ponytail: anonymous visitor on a preview lesson — everything else is gated, so show only what opens
-  if (!user) {
-    return (
-      <nav ref={navRef} className="side" onClick={closeOnMobile}>
-        <h3 id="navTitle">{t("paths")}</h3>
-        <div id="nav">
-          {navLink("/courses", "◇", t("paths"))}
-          {PATHS.map((p) => (
-            <div key={p.id} className="nav-course open">
-              <Link href={`/courses/${p.id}`} className="nav-lesson-h">
-                <span className="ic">{p.icon}</span>
-                <span>{p.title[lang]}</span>
-              </Link>
-              <div className="nav-course-body">
-                {MODULES.filter((m) => p.mods.includes(m.id) && isPreviewModule(m.id)).map(lesson)}
-              </div>
-            </div>
-          ))}
-          <Button variant="brand" className="m-1.5 w-[calc(100%-12px)]" nativeButton={false} render={<Link href="/courses" />}>
-            {t("unlock")}
-          </Button>
-        </div>
-      </nav>
-    );
-  }
+  const ids = PATHS.find((p) => p.id === courseId)?.mods ?? [];
+  const lessons = ids
+    .filter((id) => user || isPreviewModule(id))
+    .map((id) => MODULES.find((m) => m.id === id))
+    .filter((m): m is Module => !!m)
+    .map(lesson);
+  const arches = courseId ? archesFor(courseId) : [];
+  const project = courseId ? projectFor(courseId) : null;
 
   return (
     <nav
       ref={navRef}
       className="side"
       onClick={(e) => {
-        // group headers decide for themselves — collapsing one should not close the drawer
+        if (!user) {
+          closeOnMobile();
+          return;
+        }
         if ((e.target as HTMLElement).closest(".nav-lesson-h")) return;
         closeOnMobile();
       }}
     >
-      <h3 id="navTitle">{t("paths")}</h3>
+      <h3 id="navTitle">{t("lessons")}</h3>
       <div id="nav">
-        {navLink("/courses", "◇", t("paths"), `${done.size}/${totalTerms()}`)}
-        {PATHS.map((p) => {
-          const open = openCourse === p.id;
-          return (
-            <div key={p.id} className={cn("nav-course", open && "open")}>
-              <Link
-                href={`/courses/${p.id}`}
-                className={cn("nav-lesson-h", open && "on")}
-                aria-expanded={open}
-                onClick={headerClick(p.id, openCourse, setOpenCourse)}
-              >
-                <span className="ic">{p.icon}</span>
-                <span>{p.title[lang]}</span>
-                <span className="cnt">{p.mods.length}</span>
-              </Link>
-              <div className="nav-course-body">
-                {p.mods.map((id) => MODULES.find((m) => m.id === id)).filter(Boolean).map((m) => lesson(m!))}
-              </div>
-            </div>
-          );
-        })}
-        <Separator className="my-2 mx-1.5" />
-        {PROJECT?.id && navLink("/project", PROJECT.icon, PROJECT.title[lang])}
-        {ARCHITECTURES?.id ? (
-          <div className={cn("nav-lesson", openId === "architectures" && "open")}>
-            <Link
-              href="/architectures"
-              className={cn("nav-lesson-h", openId === "architectures" && "on")}
-              aria-expanded={openId === "architectures"}
-              onClick={headerClick("architectures", openId, setOpenId)}
-            >
-              <span className="ic">{ARCHITECTURES.icon}</span>
-              <span>{ARCHITECTURES.title[lang]}</span>
-              <span className="cnt">{ARCHITECTURES.items.length}</span>
-            </Link>
-            <div className="nav-subs">
-              {ARCHITECTURES.items.map((a) => (
+        {lessons}
+        {user && project ? (
+          <>
+            <Separator className="my-2 mx-1.5" />
+            {navLink(q("/project"), project.icon, project.title[lang], String(project.steps.length))}
+            {arches.length ? (
+              <div className={cn("nav-lesson", openId === "architectures" && "open")}>
                 <Link
-                  key={a.id}
-                  href={`/architectures/${a.id}`}
-                  className={cn(pathname === `/architectures/${a.id}` && "on")}
+                  href={q("/architectures")}
+                  className={cn("nav-lesson-h", openId === "architectures" && "on")}
+                  aria-expanded={openId === "architectures"}
+                  onClick={headerClick("architectures", openId, setOpenId)}
                 >
-                  {a.title[lang]}
+                  <span className="ic">{ARCHITECTURES.icon}</span>
+                  <span>{ARCHITECTURES.title[lang]}</span>
+                  <span className="cnt">{arches.length}</span>
                 </Link>
-              ))}
-            </div>
-          </div>
+                <div className="nav-subs">
+                  {arches.map((a) => (
+                    <Link
+                      key={a.id}
+                      href={`/architectures/${a.id}?course=${courseId}`}
+                      className={cn(pathname === `/architectures/${a.id}` && "on")}
+                    >
+                      {a.title[lang]}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+            {courseId === "advanced" && CHECKLIST?.id
+              ? navLink(q("/checklist"), CHECKLIST.icon, CHECKLIST.title[lang])
+              : null}
+            {navLink(q("/glossary"), "☰", t("glossary"))}
+            {navLink(q("/review"), "🗐", t("review"))}
+          </>
         ) : null}
-        {CHECKLIST?.id && navLink("/checklist", CHECKLIST.icon, CHECKLIST.title[lang])}
-        {navLink("/glossary", "☰", t("glossary"))}
-        {navLink("/review", "🗐", t("review"))}
+        {!user ? (
+          <Button variant="brand" className="m-1.5 w-[calc(100%-12px)]" nativeButton={false} render={<Link href="/courses" />}>
+            {t("unlock")}
+          </Button>
+        ) : null}
       </div>
     </nav>
   );

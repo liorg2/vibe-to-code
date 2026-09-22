@@ -3,14 +3,20 @@ import { AppShell } from "@/components/AppShell";
 import { GlossaryList } from "@/components/GlossaryList";
 import { MODULES, PATHS, UI } from "@/lib/course";
 import { ownedCourses, type Course } from "@/lib/entitlement";
-import { PREVIEW_MODULES } from "@/lib/protected";
 import { serverLang } from "@/lib/lang-server";
 
-export default async function GlossaryPage() {
+export default async function GlossaryPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ course?: string }>;
+}) {
+  const { course } = await searchParams;
   const lang = await serverLang();
   // filtered here, not in GlossaryList — a locked term's definition must not reach the browser
   const mine = await ownedCourses();
-  const open = new Set([...PATHS.filter((p) => mine.has(p.id as Course)).flatMap((p) => p.mods), ...PREVIEW_MODULES]);
+  const asked = PATHS.find((p) => p.id === course);
+  const paths = asked && mine.has(asked.id as Course) ? [asked] : PATHS.filter((p) => mine.has(p.id as Course));
+  const open = new Set(paths.flatMap((p) => p.mods));
   const all = MODULES.filter((m) => open.has(m.id)).flatMap((m) =>
     m.terms.map((tm, i) => ({ m, i, tm })),
   );

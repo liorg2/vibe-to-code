@@ -1,4 +1,4 @@
-import type { Course, Lang, Module, Path, Term } from "./types";
+import type { Architecture, Course, Lang, Module, Path, Project, Term } from "./types";
 import raw from "@/data/course.json";
 
 const course = raw as Course;
@@ -18,7 +18,10 @@ export function getModule(id: string): Module | undefined {
 /** The lessons of a course, in syllabus order — each course is its own index. */
 function courseModules(id: string): Module[] {
   const p = pathForModule(id);
-  return p ? course.MODULES.filter((m) => p.mods.includes(m.id)) : course.MODULES;
+  if (!p) return course.MODULES;
+  return p.mods
+    .map((mid) => course.MODULES.find((m) => m.id === mid))
+    .filter((m): m is Module => !!m);
 }
 
 /** Previous/next lesson within the same course — navigation never crosses into the other one. */
@@ -56,6 +59,18 @@ export function pathForModule(id: string): Path | undefined {
   return course.PATHS.find((p) => p.mods.includes(id));
 }
 
+export function projectFor(courseId: string): Project {
+  return courseId === "basic" ? course.BASIC_PROJECT : course.PROJECT;
+}
+
+/** Architectures that belong to one course, in syllabus order. */
+export function archesFor(courseId: string): Architecture[] {
+  const ids = course.PATHS.find((p) => p.id === courseId)?.arch ?? [];
+  return ids
+    .map((id) => course.ARCHITECTURES.items.find((a) => a.id === id))
+    .filter((a): a is Architecture => !!a);
+}
+
 export function findTerm(nameEn: string): { m: Module; i: number; tm: Term } | null {
   for (const m of course.MODULES) {
     const i = m.terms.findIndex((x) => x.t.en === nameEn);
@@ -64,5 +79,5 @@ export function findTerm(nameEn: string): { m: Module; i: number; tm: Term } | n
   return null;
 }
 
-export const { UI, MODULES, SIMPLE, DETAIL, EXAMPLES, QUIZ, PROJECT, CHECKLIST, ARCHITECTURES, PATHS, ASK_PROMPT } =
+export const { UI, MODULES, SIMPLE, DETAIL, EXAMPLES, QUIZ, PROJECT, BASIC_PROJECT, CHECKLIST, ARCHITECTURES, PATHS, ASK_PROMPT } =
   course;

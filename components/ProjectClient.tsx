@@ -33,14 +33,19 @@ export function ProjectClient({
   warn,
   icon,
   steps,
-  checklistTitle,
+  planPrefix = "",
+  nextHref,
+  nextLabel,
 }: {
   title: string;
   blurb: string;
   warn: string;
   icon: string;
   steps: ProjectStep[];
-  checklistTitle: string;
+  /** Keeps Basic and Advanced checkmarks from sharing step numbers. Empty keeps the old keys. */
+  planPrefix?: string;
+  nextHref: string;
+  nextLabel: string;
 }) {
   const { lang, t, ticked, toggleTicked } = useApp();
   const [plans, setPlans] = useState<Record<string, string>>({});
@@ -51,21 +56,21 @@ export function ProjectClient({
     setPlans(saved);
     const u: Record<string, boolean> = {};
     for (const s of steps) {
-      const k = String(s.n);
+      const k = planPrefix ? `${planPrefix}:${s.n}` : String(s.n);
       if ((saved[k] || "").trim().length >= 12) u[k] = true;
     }
     setUnlocked(u);
-  }, [steps]);
+  }, [steps, planPrefix]);
 
   const setPlan = (n: number, text: string) => {
-    const k = String(n);
+    const k = planPrefix ? `${planPrefix}:${n}` : String(n);
     const next = { ...plans, [k]: text };
     setPlans(next);
     savePlans(next);
   };
 
   const unlock = (n: number) => {
-    const k = String(n);
+    const k = planPrefix ? `${planPrefix}:${n}` : String(n);
     if ((plans[k] || "").trim().length < 12) return;
     setUnlocked((u) => ({ ...u, [k]: true }));
   };
@@ -87,7 +92,7 @@ export function ProjectClient({
       </section>
       <div className="note">⚠ {warn}</div>
       {steps.map((s) => {
-        const k = String(s.n);
+        const k = planPrefix ? `${planPrefix}:${s.n}` : String(s.n);
         const open = !!unlocked[k];
         const plan = plans[k] || "";
         return (
@@ -143,7 +148,7 @@ export function ProjectClient({
                   <div className="lbl">{t("verifyGate")}</div>
                   <p className="sub">{t("verifyGateSub")}</p>
                   {(s.verify || []).map((item, i) => {
-                    const ck = `proj:${s.n}:v${i}`;
+                    const ck = planPrefix ? `proj:${planPrefix}:${s.n}:v${i}` : `proj:${s.n}:v${i}`;
                     return (
                       <label key={ck} className="practice-check">
                         <Checkbox
@@ -161,9 +166,9 @@ export function ProjectClient({
         );
       })}
       <div className="pager">
-        <Link className="nx" href="/checklist">
+        <Link className="nx" href={nextHref}>
           <b>Next</b>
-          <span>{checklistTitle}</span>
+          <span>{nextLabel}</span>
         </Link>
       </div>
     </>

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Header } from "./Header";
 import { SideNav } from "./SideNav";
 import { cn } from "@/lib/utils";
@@ -22,7 +23,11 @@ export function AppShell({
           showNav ? "grid-cols-[272px_1fr]" : "nonav grid-cols-1"
         )}
       >
-        {showNav && <SideNav />}
+        {showNav && (
+          <Suspense fallback={null}>
+            <SideNav />
+          </Suspense>
+        )}
         <div id="content">{children}</div>
       </main>
     </div>

@@ -36,6 +36,15 @@ export type Example = {
   code: string;
 };
 
+export type Project = {
+  id: string;
+  icon: string;
+  title: L10n;
+  blurb: L10n;
+  warn: L10n;
+  steps: ProjectStep[];
+};
+
 export type ProjectStep = {
   n: number;
   title: L10n;
@@ -74,6 +83,8 @@ export type Path = {
   title: L10n;
   blurb: L10n;
   mods: string[];
+  /** Architecture ids that belong to this course. */
+  arch?: string[];
   /** ILS, VAT included; the id doubles as the paid tier name */
   price: number;
 };
@@ -87,14 +98,8 @@ export type Course = {
   DETAIL: Record<string, L10n>;
   EXAMPLES: Record<string, Example>;
   QUIZ: Record<string, QuizQ[]>;
-  PROJECT: {
-    id: string;
-    icon: string;
-    title: L10n;
-    blurb: L10n;
-    warn: L10n;
-    steps: ProjectStep[];
-  };
+  PROJECT: Project;
+  BASIC_PROJECT: Project;
   CHECKLIST: {
     id: string;
     icon: string;
