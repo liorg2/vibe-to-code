@@ -15,6 +15,25 @@ export function getModule(id: string): Module | undefined {
   return course.MODULES.find((m) => m.id === id);
 }
 
+/** The lessons of a course, in syllabus order — each course is its own index. */
+function courseModules(id: string): Module[] {
+  const p = pathForModule(id);
+  return p ? course.MODULES.filter((m) => p.mods.includes(m.id)) : course.MODULES;
+}
+
+/** Previous/next lesson within the same course — navigation never crosses into the other one. */
+export function neighbors(id: string): { prev?: Module; next?: Module } {
+  const mods = courseModules(id);
+  const i = mods.findIndex((m) => m.id === id);
+  return { prev: mods[i - 1], next: mods[i + 1] };
+}
+
+/** Display number of a lesson, 1-based within its own course ("01", "02", ...). */
+export function lessonNo(id: string): string {
+  return String(courseModules(id).findIndex((m) => m.id === id) + 1).padStart(2, "0");
+}
+
+/** Position in the whole syllabus — used for prev/next navigation, not for display. */
 export function moduleIndex(id: string): number {
   return course.MODULES.findIndex((m) => m.id === id);
 }

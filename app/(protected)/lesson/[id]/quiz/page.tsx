@@ -6,7 +6,7 @@ import { LessonSubNav } from "@/components/LessonSubNav";
 import { ModuleHead } from "@/components/ModuleHead";
 import { QuizBlock } from "@/components/QuizBlock";
 import { Upsell } from "@/components/Upsell";
-import { ARCHITECTURES, MODULES, QUIZ, UI, getModule, moduleIndex, pathForModule } from "@/lib/course";
+import { ARCHITECTURES, QUIZ, UI, getModule, moduleIndex, neighbors, pathForModule } from "@/lib/course";
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 
@@ -29,8 +29,7 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
 
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const coursePath = pathForModule(m.id);
-  const prev = MODULES[mi - 1];
-  const next = MODULES[mi + 1];
+  const { prev, next } = neighbors(m.id);
   const nextLink = next ? `/lesson/${next.id}/overview` : "/architectures";
   const nextName = next ? next.title[lang] : ARCHITECTURES.title[lang];
   const done = m.terms.filter((_, j) => false).length;
@@ -47,7 +46,7 @@ export default async function QuizPage({ params }: { params: Promise<{ id: strin
       />
       <LessonSubNav m={m} active={m.terms.length - 1} quiz />
       <section className="mod">
-        <ModuleHead m={m} mi={mi} lang={lang} doneCount={done} />
+        <ModuleHead m={m} lang={lang} doneCount={done} />
       </section>
       <QuizBlock modId={id} questions={qs} />
       <div className="pager">

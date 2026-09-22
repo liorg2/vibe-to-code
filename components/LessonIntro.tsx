@@ -1,7 +1,7 @@
 import Link from "@/components/Link";
 import { LessonSubNav } from "./LessonSubNav";
 import { Breadcrumb } from "./Breadcrumb";
-import { MODULES, QUIZ, UI, pathForModule } from "@/lib/course";
+import { QUIZ, UI, lessonNo, neighbors, pathForModule } from "@/lib/course";
 import { ownsModule } from "@/lib/entitlement";
 import { para } from "@/lib/utils";
 import type { Lang, Module } from "@/lib/types";
@@ -24,8 +24,7 @@ export async function LessonIntro({
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const owns = await ownsModule(m.id);
   const coursePath = pathForModule(m.id);
-  const prevM = MODULES[mi - 1];
-  const nextM = MODULES[mi + 1];
+  const { prev: prevM, next: nextM } = neighbors(m.id);
   const last = m.terms.length - 1;
 
   const prev =
@@ -54,7 +53,7 @@ export async function LessonIntro({
       <LessonSubNav m={m} active={kind} />
       <article className="slide">
         <div className="kicker">
-          {t("lesson")} {String(mi + 1).padStart(2, "0")} · {t(kind)}
+          {t("lesson")} {lessonNo(m.id)} · {t(kind)}
         </div>
         <h2>{m.title[lang]}</h2>
         <div className="lede">{m.blurb[lang]}</div>

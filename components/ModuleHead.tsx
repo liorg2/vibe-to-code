@@ -1,15 +1,13 @@
 import type { Module } from "@/lib/types";
-import { mins } from "@/lib/course";
+import { mins, lessonNo } from "@/lib/course";
 
 export function ModuleHead({
   m,
-  mi,
   lang,
   doneCount,
   extra,
 }: {
   m: Module;
-  mi: number;
   lang: "en" | "he";
   doneCount?: number;
   extra?: string;
@@ -20,7 +18,7 @@ export function ModuleHead({
       <div className="mhead">
         <div className="ic">{m.icon}</div>
         <div>
-          <h2>{String(mi + 1).padStart(2, "0")}. {m.title[lang]}</h2>
+          <h2>{lessonNo(m.id)}. {m.title[lang]}</h2>
         </div>
         <div className="n">{n}</div>
       </div>

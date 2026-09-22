@@ -15,6 +15,7 @@ import {
   SIMPLE,
   UI,
   getModule,
+  lessonNo,
   moduleIndex,
   pathForModule,
 } from "@/lib/course";
@@ -79,7 +80,7 @@ export default async function SlidePage({
       <LessonSubNav m={m} active={i} />
       <article className="slide">
         <div className="kicker">
-          {String(mi + 1).padStart(2, "0")} {m.title[lang]} · {i + 1}/{m.terms.length}
+          {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
         </div>
         <h2>{tm.t[lang]}</h2>
         <div className="lede">{tm.d[lang]}</div>

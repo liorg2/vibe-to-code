@@ -22,14 +22,14 @@ export default async function LessonSearchPage({
   const mine = await ownedCourses();
   const open = new Set([...PATHS.filter((p) => mine.has(p.id as Course)).flatMap((p) => p.mods), ...PREVIEW_MODULES]);
 
-  const secs = MODULES.map((m, i) => {
+  const secs = MODULES.map((m) => {
     if (!open.has(m.id)) return null;
     const hits = m.terms.map((tm, j) => ({ tm, j })).filter(({ tm }) => hit(tm));
     if (!hits.length) return null;
     const doneCount = 0;
     return (
       <section key={m.id} className="mod">
-        <ModuleHead m={m} mi={i} lang={lang} doneCount={doneCount} />
+        <ModuleHead m={m} lang={lang} doneCount={doneCount} />
         <div className="cardgrid">
           {hits.map(({ tm, j }) => <TermCard key={j} m={m} i={j} tm={tm} />)}
         </div>

@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
-import { MODULES, termKey, mins } from "@/lib/course";
+import { MODULES, termKey, mins, lessonNo } from "@/lib/course";
 import { isPreviewModule } from "@/lib/protected";
 
 const miniBar =
@@ -18,7 +18,7 @@ export function LessonCards({ ids, locked }: { ids: string[]; locked: boolean })
   return (
     <>
       <div className="cards">
-        {MODULES.map((m, i) => {
+        {MODULES.map((m) => {
           if (!ids.includes(m.id)) return null;
           const d = m.terms.filter((_, j) => done.has(termKey(m, j))).length;
           const preview = isPreviewModule(m.id);
@@ -29,7 +29,7 @@ export function LessonCards({ ids, locked }: { ids: string[]; locked: boolean })
                 <div className="ic">{gated ? "🔒" : m.icon}</div>
                 <div>
                   <div className="num">
-                    {t("lesson")} {String(i + 1).padStart(2, "0")} · ~{mins(m)} {t("min")}
+                    {t("lesson")} {lessonNo(m.id)} · ~{mins(m)} {t("min")}
                     {preview && <Badge variant="secondary" className="ms-2">{t("freePreview")}</Badge>}
                   </div>
                   <h3>{m.title[lang]}</h3>
