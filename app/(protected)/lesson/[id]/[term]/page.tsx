@@ -20,7 +20,6 @@ import {
 } from "@/lib/course";
 import { LIFECYCLE } from "@/lib/diagrams";
 import { SCENES } from "@/lib/scenes";
-import { BUILDS } from "@/lib/builds";
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
@@ -65,7 +64,6 @@ export default async function SlidePage({
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
   const scene = SCENES[tm.k];
-  const build = BUILDS[m.id];
   const coursePath = pathForModule(m.id, course);
   const q = (href: string) => (course ? `${href}?course=${course}` : href);
 
@@ -117,14 +115,6 @@ export default async function SlidePage({
               </div>
             ) : null}
           </details>
-        ) : null}
-        {build ? (
-          <Link className="yourproj" href={q(`/lesson/${m.id}/build`)}>
-            <b>{t("yourProject")}</b>
-            <span>
-              {t(build.uses.includes(tm.k) ? "yourProjectUses" : "yourProjectLesson")} {build.title[lang]} →
-            </span>
-          </Link>
         ) : null}
         <SlideActions
           m={m}

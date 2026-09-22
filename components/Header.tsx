@@ -36,12 +36,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
               type="button"
               title={t("lessons")}
               aria-label={t("lessons")}
-              onClick={() => {
-                const on = document.body.classList.toggle("nav-toggled");
-                try {
-                  localStorage.setItem("v2c.nav", on ? "1" : "0");
-                } catch {}
-              }}
+              onClick={() => document.body.classList.toggle("nav-toggled")}
             >
               ☰
             </Button>

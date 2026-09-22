@@ -83,9 +83,23 @@ export function SideNav() {
     };
 
   const navRef = useRef<HTMLElement>(null);
+  // the open lesson sits at the top of the menu, with its active topic still in view below it.
+  // Scrolls the nav itself, never the page (the sticky nav is every link's offsetParent).
+  // Re-runs when the signed-in user arrives: that is when the full lesson list renders.
   useEffect(() => {
-    navRef.current?.querySelector(".on")?.scrollIntoView({ block: "nearest" });
-  }, [pathname]);
+    const id = requestAnimationFrame(() => {
+      const nav = navRef.current;
+      if (!nav) return;
+      const head = nav.querySelector<HTMLElement>(".nav-lesson.open");
+      const on = nav.querySelector<HTMLElement>("a.on:not(.nav-lesson-h)") ?? nav.querySelector<HTMLElement>("a.on");
+      if (head) nav.scrollTop = head.offsetTop - 12;
+      if (!on) return;
+      if (on.offsetTop + on.offsetHeight > nav.scrollTop + nav.clientHeight)
+        nav.scrollTop = on.offsetTop + on.offsetHeight - nav.clientHeight + 12;
+      else if (on.offsetTop < nav.scrollTop) nav.scrollTop = on.offsetTop - 12;
+    });
+    return () => cancelAnimationFrame(id);
+  }, [pathname, openId, user]);
 
   const q = (href: string) => (courseId ? `${href}?course=${courseId}` : href);
   const navLink = (href: string, icon: string, label: string, cnt?: string) => {
@@ -166,7 +180,25 @@ export function SideNav() {
         closeOnMobile();
       }}
     >
-      <h3 id="navTitle">{t("lessons")}</h3>
+      <div className="nav-top">
+        <h3 id="navTitle">{t("lessons")}</h3>
+        {/* desktop only: folds the menu to a thin strip; phones use the header's ☰ instead */}
+        <button
+          type="button"
+          className="nav-fold"
+          title={t("lessons")}
+          aria-label={t("lessons")}
+          onClick={(e) => {
+            e.stopPropagation();
+            const on = document.body.classList.toggle("nav-collapsed");
+            try {
+              localStorage.setItem("v2c.nav", on ? "1" : "0");
+            } catch {}
+          }}
+        >
+          «
+        </button>
+      </div>
       <div id="nav">
         {courseId ? navLink(`/courses/${courseId}`, "🚩", t("courseIntro")) : null}
         {lessons}

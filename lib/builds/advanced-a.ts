@@ -8,12 +8,12 @@ export const BUILDS_ADV_A: Record<string, BuildStep> = {
       he: "תזכורות מעקב שרצות לפי לוח זמנים",
     },
     goal: {
-      en: "Every day a cron job finds the contacts due for a follow-up and records exactly one reminder for each, no matter how many times it runs.",
-      he: "כל יום עבודת cron מוצאת את אנשי הקשר שהגיע זמן המעקב שלהם ורושמת לכל אחד תזכורת אחת בדיוק, לא משנה כמה פעמים היא רצה.",
+      en: "Every day the app checks who is due for a follow-up and creates exactly one reminder for each of them, even if the daily check runs twice.",
+      he: "כל יום האפליקציה בודקת למי הגיע זמן מעקב ויוצרת לכל אחד תזכורת אחת בדיוק, גם אם הבדיקה היומית רצה פעמיים.",
     },
     why: {
       en: "Reminders are work nobody waits for: they run on a timetable, in the background, and must be safe to run twice.",
-      he: "תזכורות הן עבודה שאף אחד לא מחכה לה: הן רצות לפי לוח זמנים, ברקע, וחייבות להיות בטוחות להרצה כפולה.",
+      he: "תזכורות הן עבודה שאף אחד לא מחכה לה מול המסך: הן רצות לפי לוח זמנים, ברקע, וחייבות להיות בטוחות גם אם הן רצות פעמיים.",
     },
     uses: [
       "scheduled-job-cron",
@@ -23,39 +23,43 @@ export const BUILDS_ADV_A: Record<string, BuildStep> = {
       "idempotency",
       "environment-variables-secrets",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 08 — async: follow-up reminders. Work on branch step-08-async.
+    build: `Read AGENTS.md and STEPS.md first. This is step 8: follow-up reminders. Start a new branch for it.
 
-Add scheduled follow-up reminders:
-1. A migration that adds a nullable follow_up_at (timestamptz, UTC) to contacts, and a new reminders table: id, contact_id (foreign key), due_on (date, UTC), status, created_at. Put a unique constraint on (contact_id, due_on) — that constraint is what makes the job idempotent, not an if-check in code.
-2. GET /api/cron/reminders: without the header "Authorization: Bearer <CRON_SECRET>" it returns 401 and does nothing. Otherwise it finds contacts whose follow_up_at is due (<= now), inserts one reminder per contact per day with ON CONFLICT DO NOTHING, logs one line per new reminder, and returns JSON { found, created }.
-3. A cron entry in vercel.json that calls the route once a day (the Hobby plan allows daily crons). CRON_SECRET is a long random value in .env.local and in the Vercel env vars.
-4. An optional follow-up date field on the contact form.
+Each contact gets an optional "follow up on" date. Once a day the app checks on its own who is due and creates a reminder for each of them. This is a cron job: work that runs in the background on a timetable, with nobody waiting for it.
 
-Do not send email (that is step 11), do not add a queue service or any new dependency. Before the code, give me the plan in 3–5 bullets, since this changes the database. At the end, tell me the curl command that runs the job locally and the JSON I should see.`,
-    check: `Verify step 08 — async: follow-up reminders. Do not add features.
+Must-haves:
+- Each due contact gets exactly one reminder per day, even if the job runs twice or two runs overlap. The database itself guarantees it.
+- Only our scheduler can start the job. It needs a secret; anyone else gets a 401 and nothing happens. The secret lives in the environment settings, never in the code.
+- It works on Vercel's free plan.
+- No emails yet (that is step 11), and no new tools.
 
-1. Add tests for the reminders job against the test DB, never production: a contact due now gets exactly one reminder even when the job runs twice; two runs at the same time (Promise.all) still leave one row; a contact due tomorrow gets none; a contact with no follow_up_at gets none; a missing or wrong secret returns 401 and inserts nothing.
-2. Run npm run check and npm run e2e.
-3. Evidence: start the dev server, curl the route twice with the right secret and once with a wrong one, and paste the three responses. Then run a SQL query that counts today's reminders per contact and paste the rows.
-4. Show the cron entry in vercel.json, and confirm CRON_SECRET exists in the Vercel env vars for production (print the name only, never the value).
+This changes the database, so first tell me your plan in a few plain bullets and wait for my OK. Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
+    check: `Check step 8: follow-up reminders. Don't add features.
 
-Report a table: check | command | result, pasting the real output lines. If anything fails, STOP and show me the failure — do not fix it silently. If everything is green, append this line to STEPS.md and commit: "08 async — daily follow-up reminders, idempotent per contact and day".`,
+Add tests, against the test database and never the real one, that prove:
+- a contact due today gets exactly one reminder, even when the job runs twice, or twice at the same moment;
+- a contact due tomorrow, or with no follow-up date, gets none;
+- a missing or wrong secret gets a 401 and creates nothing.
+
+Run all the tests with npm run check and npm run e2e. Then run the job twice yourself and once with a wrong secret, and show me how many reminders each contact has.
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "08 async: daily follow-up reminders, one per contact per day".`,
     done: [
       {
-        en: "I ran the job twice and saw one reminder per due contact, not two",
-        he: "הרצתם את ה-job פעמיים וראיתם תזכורת אחת לכל איש קשר שהגיע זמנו, לא שתיים",
+        en: "The job ran twice and each due contact still had one reminder, not two",
+        he: "המשימה רצה פעמיים ולכל איש קשר שהגיע זמנו עדיין הייתה תזכורת אחת, לא שתיים",
       },
       {
         en: "A wrong secret got a 401 and created nothing",
-        he: "סוד שגוי קיבל 401 ולא יצר כלום",
+        he: "סוד שגוי קיבל 401 ולא נוצר כלום",
       },
       {
         en: "A contact due tomorrow has no reminder yet",
         he: "לאיש קשר שמועד המעקב שלו מחר אין עדיין תזכורת",
       },
       {
-        en: "The cron entry is in vercel.json and CRON_SECRET is set in Vercel",
-        he: "ה-cron מוגדר ב-vercel.json ו-CRON_SECRET מוגדר ב-Vercel",
+        en: "The secret is set in Vercel, not written in the code",
+        he: "הסוד מוגדר ב-Vercel ולא כתוב בקוד",
       },
     ],
   },
@@ -66,42 +70,47 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       he: "ייבוא 5,000 אנשי קשר בלי שהזיכרון ייגמר",
     },
     goal: {
-      en: "A CSV of thousands of contacts imports in batches, bad rows are reported instead of crashing the import, and the list loads 50 at a time with a constant number of queries.",
-      he: "קובץ CSV עם אלפי אנשי קשר מיובא במנות, שורות פגומות מדווחות במקום להפיל את הייבוא, והרשימה נטענת 50 בכל פעם עם מספר קבוע של שאילתות.",
+      en: "You can import a file of thousands of contacts: bad rows are listed instead of breaking the import, and the list loads 50 at a time and stays fast.",
+      he: "אפשר לייבא קובץ עם אלפי אנשי קשר: שורות פגומות מוצגות ברשימה במקום להפיל את הייבוא, והרשימה נטענת 50 בכל פעם ונשארת מהירה.",
     },
     why: {
-      en: "Big input is where memory and Big-O stop being theory: streaming keeps RAM flat, and one join instead of N queries keeps the page fast.",
-      he: "קלט גדול הוא המקום שבו זיכרון ו-Big-O מפסיקים להיות תיאוריה: קריאה בזרם שומרת את ה-RAM יציב, ו-join אחד במקום N שאילתות שומר על הדף מהיר.",
+      en: "Big files are where memory and speed stop being theory: reading a little at a time keeps memory flat, and one request to the database instead of one per row keeps the page fast.",
+      he: "קבצים גדולים הם המקום שבו זיכרון ומהירות מפסיקים להיות תיאוריה: קריאה של קצת בכל פעם שומרת על הזיכרון יציב, ובקשה אחת למסד הנתונים במקום בקשה לכל שורה שומרת על הדף מהיר.",
     },
     uses: ["ram-vs-disk", "big-o", "latency-vs-throughput", "memory-leak", "pagination", "transaction"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 09 — memory: bulk import and pagination. Work on branch step-09-memory.
+    build: `Read AGENTS.md and STEPS.md first. This is step 9: importing lots of contacts. Start a new branch for it.
 
-1. CSV import: POST /api/contacts/import (plus an upload form on /contacts) parses a CSV (name, email, stage, company) as a stream — never the whole file in memory, never one big array. Validate each row with the existing zod schema. Insert valid rows in batches of 500, one transaction per batch. A bad row or duplicate email is skipped and reported with its line number and reason; it never fails the import. Companies are matched by name once per batch, not one query per row. Return { imported, skipped, errors }. You may add csv-parse, nothing else.
-2. Cursor pagination: GET /api/contacts returns 50 per page, ordered by created_at then id, with a nextCursor. No OFFSET. The page gets a "Load more" button.
-3. No N+1: each page loads contacts and their company names in one joined query. In development, log the number of DB queries per request.
-4. scripts/make-csv.ts writes a CSV of N fake contacts, optionally with some bad rows.
+On the contacts page I can upload a CSV file (a spreadsheet saved as plain text) and all its contacts get added.
 
-No schema changes except an index the cursor needs. Before the code, give me the plan in 3–5 bullets. At the end, tell me the commands that generate and import a 5,000-row file, and what I should see.`,
-    check: `Verify step 09 — memory: bulk import and pagination. Do not add features.
+Must-haves:
+- A file of 5,000 or even 50,000 rows works without the app running out of memory. Read it a bit at a time, never the whole file at once.
+- A bad row or a duplicate email is skipped, not fatal. At the end I see how many were imported and the skipped rows, each with its line number and the reason.
+- The contacts list shows 50 at a time with a "Load more" button, and every page is as fast as the first, however many contacts there are.
+- Give me a way to make a test file of fake contacts, with a few bad rows in it.
 
-1. Add tests against the test DB, never production: a 20-row file with 3 bad rows imports 17 and reports those 3 with their line numbers; pagination with 0 contacts, exactly 50 and 51 (first page full, then one row, then no nextCursor); across all pages no contact appears twice or goes missing; the query count for page 1 and page 3 is the same.
-2. Run npm run check and npm run e2e.
-3. Evidence, against the test DB: generate a 5,000-row CSV, import it, and paste the response, the elapsed time and the peak memory (log process.memoryUsage().rss during the import). Then request pages 1 and 3 and paste the query-count log lines.
-4. Say in one sentence whether peak memory would grow with a 50,000-row file, and why.
+Pick the tools yourself, write the choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
+    check: `Check step 9: importing lots of contacts. Don't add features.
 
-Report a table: check | command | result, pasting the real output lines. If anything fails, STOP and show me the failure — do not fix it silently. If everything is green, append this line to STEPS.md and commit: "09 memory — streamed CSV import in batches, cursor pagination, no N+1".`,
+Add tests, against the test database and never the real one, that prove:
+- a 20-row file with 3 bad rows imports 17 and lists those 3 with their line numbers;
+- paging works with no contacts, exactly 50 and 51, and no contact appears twice or goes missing across pages;
+- a later page needs as many database requests as the first one, not more.
+
+Run all the tests with npm run check and npm run e2e. Then import a 5,000-row test file and tell me how long it took and the most memory the app used. Would that memory grow with a 50,000-row file? One sentence.
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "09 memory: big CSV import in small batches, list loads 50 at a time".`,
     done: [
       {
-        en: "The 5,000-row import finished and I saw its time and peak memory",
-        he: "ייבוא 5,000 השורות הסתיים וראיתם את הזמן ואת שיא הזיכרון שלו",
+        en: "I imported 5,000 contacts and saw how long it took and how much memory it used",
+        he: "ייבאתם 5,000 אנשי קשר וראיתם כמה זמן זה לקח וכמה זיכרון זה צרך",
       },
       {
         en: "The 20-row file imported 17 rows and listed the 3 bad ones with a reason",
         he: "הקובץ עם 20 השורות ייבא 17 והציג את 3 השורות הפגומות עם סיבה",
       },
       {
-        en: "Paging through the list showed the same query count on every page",
-        he: "דפדוף ברשימה הראה אותו מספר שאילתות בכל עמוד",
+        en: "Load more was as quick on the third page as on the first",
+        he: "Load more היה מהיר בעמוד השלישי בדיוק כמו בראשון",
       },
     ],
   },
@@ -112,47 +121,51 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       he: "דשבורד שלא סופר מחדש בכל כניסה",
     },
     goal: {
-      en: "The home page shows how many contacts sit in each stage; the numbers come from a cache and refresh the moment a contact changes.",
-      he: "דף הבית מציג כמה אנשי קשר יש בכל שלב; המספרים מגיעים מהקאש ומתעדכנים ברגע שאיש קשר משתנה.",
+      en: "The home page shows how many contacts are in each stage. The numbers are kept ready in a cache and refresh the moment a contact changes.",
+      he: "דף הבית מציג כמה אנשי קשר יש בכל שלב. המספרים שמורים מוכנים בקאש ומתעדכנים ברגע שאיש קשר משתנה.",
     },
     why: {
       en: "A cache is only useful if you also know when to throw it away. This step does both, and shows what goes stale without the second half.",
       he: "קאש שווה משהו רק אם יודעים גם מתי לזרוק אותו. הצעד הזה עושה את שניהם, ומראה מה מתיישן כשהחצי השני חסר.",
     },
     uses: ["cache", "hit-miss", "ttl", "invalidation", "browser-cache", "cdn"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 10 — cache: a cached dashboard. Work on branch step-10-cache.
+    build: `Read AGENTS.md and STEPS.md first. This is step 10: a dashboard with a cache. Start a new branch for it.
 
-1. The home page / becomes a dashboard: the number of contacts in each stage (lead, qualified, won, lost) and the total, from one GROUP BY query.
-2. Cache that query with Next.js's own data cache: tag "contact-counts", 60-second lifetime. Check package.json for the Next.js version and use the API that version documents (unstable_cache, or "use cache" with cacheTag and cacheLife) — do not guess. Log "counts: miss (Xms)" only when the query actually runs.
-3. Invalidate the tag on every contact write: create, update, delete and CSV import. Put the call next to the writes in one place, not scattered across routes.
-4. Static assets: confirm /_next/static already gets "public, max-age=31536000, immutable", and add a one-day Cache-Control for files in /public in next.config.
-5. Pages and API responses with contact data must not be cached by the browser or a CDN — tell me which header they send today.
+The home page becomes a small dashboard: how many contacts are in each stage (lead, qualified, won, lost) and the total. Counting on every visit is wasted work, so keep the numbers in a cache: a saved copy of an answer, so we don't work it out again each time.
 
-No Redis, no new dependency, no client-side caching library. At the end, tell me how to see a miss and then a hit on a production build (npm run build && npm start — dev mode caches differently) and what I should see.`,
-    check: `Verify step 10 — cache: a cached dashboard. Do not add features.
+Must-haves:
+- The numbers are counted at most once a minute, not on every visit.
+- The moment a contact is added, changed, deleted or imported, the saved numbers are thrown away, so the dashboard is never wrong.
+- Files that never change, like images and scripts, are kept by the browser for a long time. Pages and API answers with contact data are never kept by the browser or anyone in between.
+- Use what Next.js already offers. No new tools.
 
-1. Add tests: the counts query returns the right numbers for a known fixture in the test DB; every contact write function (create, update, delete, import) calls revalidateTag("contact-counts") — mock next/cache. Add one e2e: add a contact on /contacts, open /, the count for its stage went up by one.
-2. Run npm run check and npm run e2e.
-3. Evidence on a production build: load / three times and paste the server log (one miss, then no log line), with the time of an uncached and a cached request from curl -w "%{time_total}". Run curl -I on a file under /_next/static, a file from /public and /api/contacts, and paste the three Cache-Control lines.
-4. Temporarily remove the invalidation, rebuild, add a contact and show the old count. Restore it with git and show git status is clean. Explain in two sentences what a user would have seen.
+Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working, and how to tell a fresh count from a cached one.`,
+    check: `Check step 10: a dashboard with a cache. Don't add features.
 
-Report a table: check | command | result, pasting the real output lines. If anything fails, STOP and show me the failure — do not fix it silently. If everything is green, append this line to STEPS.md and commit: "10 cache — stage counts cached with a tag, invalidated on every write".`,
+Add tests that prove:
+- the counts are right for a known set of contacts in the test database;
+- adding, changing, deleting or importing a contact throws the saved numbers away;
+- in the browser: add a contact, open the home page, and its stage count went up by one.
+
+Run all the tests with npm run check and npm run e2e. Then, on a production build, show me that the first visit counts and the next ones use the cache, and how long each took. Show what the browser is told to keep for a fixed file and for the contacts API. Last, switch off the throwing away for a moment, show me the dashboard going stale, then put it back exactly as it was.
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "10 cache: stage counts cached, refreshed on every change".`,
     done: [
       {
         en: "I added a contact and the dashboard count went up on the next load",
         he: "הוספתם איש קשר והמספר בדשבורד עלה בטעינה הבאה",
       },
       {
-        en: "The server log showed one miss, and the next loads were faster",
-        he: "בלוג של השרת ראיתם miss אחד, והטעינות הבאות היו מהירות יותר",
+        en: "The first visit counted, and the next ones were faster",
+        he: "הכניסה הראשונה ספרה, והכניסות הבאות היו מהירות יותר",
       },
       {
-        en: "curl -I showed a long-lived Cache-Control on a static file and none on the API",
-        he: "curl -I הראה Cache-Control ארוך טווח על קובץ סטטי, ובלי קאש על ה-API",
+        en: "Fixed files are kept by the browser; contact data never is",
+        he: "קבצים קבועים נשמרים בדפדפן; נתוני אנשי קשר אף פעם לא",
       },
       {
-        en: "I can say what went stale when the invalidation was removed",
-        he: "אתם יכולים להסביר מה התיישן כשביטול התוקף הוסר",
+        en: "I saw the dashboard go stale when the refresh was switched off, and I can say why",
+        he: "ראיתם את הדשבורד מתיישן כשהרענון כובה, ואתם יכולים להסביר למה",
       },
     ],
   },
@@ -163,12 +176,12 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       he: "התזכורות הופכות למיילים אמיתיים",
     },
     goal: {
-      en: "Each due reminder sends an email through a provider in test mode, survives a slow or failing provider, and records whether it was delivered.",
-      he: "כל תזכורת שהגיע זמנה שולחת מייל דרך ספק במצב בדיקה, שורדת ספק איטי או כושל, ורושמת אם המייל נמסר.",
+      en: "Each due reminder goes out as a real email through Resend in test mode. A slow or failing email service breaks nothing, and the app records whether each email arrived.",
+      he: "כל תזכורת שהגיע זמנה יוצאת כמייל אמיתי דרך Resend במצב בדיקה. שירות מייל איטי או תקוע לא שובר כלום, והאפליקציה רושמת אם כל מייל הגיע.",
     },
     why: {
-      en: "Your first dependency on someone else's API: it will be slow, it will fail, and it will call you back. The code has to expect all three.",
-      he: "התלות הראשונה שלכם ב-API של מישהו אחר: הוא יהיה איטי, הוא ייכשל, והוא יפנה אליכם בחזרה. הקוד צריך לצפות לשלושתם.",
+      en: "Your first dependency on someone else's API: it will be slow, it will fail, and it will call you back. The app has to expect all three.",
+      he: "התלות הראשונה שלכם ב-API של מישהו אחר: הוא יהיה איטי, הוא ייכשל, והוא יפנה אליכם בחזרה. האפליקציה צריכה לצפות לשלושתם.",
     },
     uses: [
       "timeouts-and-retries",
@@ -178,40 +191,45 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       "webhook",
       "retry-and-backoff",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 11 — apis: reminder emails. Work on branch step-11-apis.
+    build: `Read AGENTS.md and STEPS.md first. This is step 11: reminder emails. Start a new branch for it.
 
-Send the reminders from step 08 as email through Resend on the free plan (add the resend package — the one new dependency).
-1. Sandbox only: send from onboarding@resend.dev to my own sign-up address (REMINDER_TO). RESEND_API_KEY, RESEND_WEBHOOK_SECRET and REMINDER_TO live in .env.local and Vercel env vars, never in code.
-2. Wrap the send in lib/email.ts: a 5-second timeout per attempt, up to 3 attempts with exponential backoff plus jitter (about 0.5s, then 1s). Retry only on timeouts, network errors and 5xx — never on 4xx.
-3. An idempotency key per reminder ("reminder-<id>"), so a retry or a second cron run never sends twice.
-4. On the reminders row: status (pending, sent, failed, delivered, bounced), provider message id, attempts, last error.
-5. POST /api/webhooks/resend verifies the signature (Resend signs with Svix headers — follow Resend's docs, ask me before adding a package). Missing or bad signature: 400. Valid: 200, and the row's status is updated by message id.
+The reminders from step 8 now go out as real emails through Resend. I will create a free Resend account. While we test, emails only go to my own address, from Resend's test sender.
 
-The cron job now sends pending reminders after creating them. No queue service, no templates. At the end, tell me how to trigger one real send locally and what I should see in my inbox and in the reminders table.`,
-    check: `Verify step 11 — apis: reminder emails. Do not add features, and never use a live key.
+Must-haves:
+- The Resend API key is a secret: it lives in the environment settings on my machine and on Vercel, never in the code.
+- If Resend is slow or down, the app gives up after a few seconds, tries again a couple of times, then marks the reminder as failed. No retry when Resend says our request was wrong.
+- A reminder is never emailed twice, even after a retry or a second daily run.
+- Resend calls us back (a webhook) to say an email was delivered or bounced. We only trust calls really signed by Resend, and save the result on the reminder.
 
-1. Add tests with the provider mocked, no network: timeout on every attempt → 3 attempts, then failed with the error stored; 503 then 200 → sent after 2 attempts; 400 → exactly 1 attempt, failed; the same reminder sent twice uses the same idempotency key; webhook with a missing or wrong signature → 400, nothing changed; with a valid signature (signed in the test with a test secret) → 200 and the status stored.
-2. Run npm run check and npm run e2e.
-3. Evidence: with one contact due today, trigger the cron route locally once. Paste the log lines and the reminders row (status sent, message id), and the subject line of the email that arrived. Run git grep -nE "re_[A-Za-z0-9]{20,}" and show no key is in the repo.
-4. Explain in two sentences what the app does if Resend is down for a whole day.
+Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
+    check: `Check step 11: reminder emails. Don't add features; never use a live key.
 
-Report a table: check | command | result, pasting the real output lines. If anything fails, STOP and show me the failure — do not fix it silently. If everything is green, append this line to STEPS.md and commit: "11 apis — reminder emails via Resend sandbox, retries, idempotency key, signed webhook".`,
+Add tests, with Resend faked so nothing is really sent, that prove:
+- when Resend never answers, the app tries 3 times, then marks the reminder failed with the reason;
+- when Resend fails once, then works, the email is sent;
+- when Resend says our request was wrong, there is no retry;
+- a reminder is never sent twice;
+- a webhook call with a missing or fake signature is refused and changes nothing; a real one updates the reminder.
+
+Run all the tests with npm run check and npm run e2e. Then send one real test reminder to my inbox, show me its status, and confirm the API key is nowhere in the code or its history. In two sentences: what if Resend is down all day?
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "11 apis: reminder emails via Resend, safe retries, signed webhook".`,
     done: [
       {
-        en: "A real reminder email arrived in my inbox from the sandbox sender",
-        he: "מייל תזכורת אמיתי הגיע לתיבה שלכם מהשולח של הסנדבוקס",
+        en: "A real reminder email arrived in my inbox from Resend's test sender",
+        he: "מייל תזכורת אמיתי הגיע לתיבה שלכם מהשולח לבדיקות של Resend",
       },
       {
-        en: "Tests showed a timeout retried 3 times and marked failed, and a 400 not retried",
-        he: "הטסטים הראו ש-timeout נוסה 3 פעמים וסומן כנכשל, ושתשובת 400 לא נוסתה שוב",
+        en: "The tests showed a silent Resend tried 3 times and then marked failed, and a wrong request not retried",
+        he: "הטסטים הראו שכש-Resend לא עונה יש 3 ניסיונות ואז סימון ככישלון, ושבקשה שגויה לא נשלחת שוב",
       },
       {
-        en: "A webhook with a bad signature got 400; a valid one got 200 and updated the status",
-        he: "webhook עם חתימה שגויה קיבל 400; webhook עם חתימה תקינה קיבל 200 ועדכן את הסטטוס",
+        en: "A fake webhook call was refused; a real one updated the reminder",
+        he: "קריאת webhook מזויפת נדחתה; קריאה אמיתית עדכנה את התזכורת",
       },
       {
-        en: "The API key is only in .env.local and Vercel, never in git",
-        he: "מפתח ה-API נמצא רק ב-.env.local וב-Vercel, אף פעם לא ב-git",
+        en: "The API key is only in my environment settings and in Vercel, never in the code",
+        he: "מפתח ה-API נמצא רק בהגדרות הסביבה שלכם וב-Vercel, אף פעם לא בקוד",
       },
     ],
   },
@@ -222,32 +240,35 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       he: "טסטים שאפשר לסמוך עליהם",
     },
     goal: {
-      en: "One command runs every test, coverage shows what is still untested, and the whole suite passes three times in a row with no flaky failure.",
-      he: "פקודה אחת מריצה את כל הטסטים, הכיסוי מראה מה עדיין לא נבדק, וכל הטסטים עוברים שלוש פעמים ברצף בלי כישלון הפכפך.",
+      en: "One command runs every test, a coverage report shows what is still untested, and all the tests pass three times in a row with no random failures.",
+      he: "פקודה אחת מריצה את כל הטסטים, דוח כיסוי מראה מה עדיין לא נבדק, וכל הטסטים עוברים שלוש פעמים ברצף בלי כישלונות אקראיים.",
     },
     why: {
       en: "After eleven steps of AI edits, the tests are the only thing that notices when an old rule breaks.",
       he: "אחרי אחד-עשר צעדים של עריכות AI, הטסטים הם הדבר היחיד ששם לב כשכלל ישן נשבר.",
     },
     uses: ["coverage", "regression", "flaky-test", "unit-integration-e2e", "assertion", "test-first-tdd"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 12 — testing: a suite you can trust. Work on branch step-12-testing.
+    build: `Read AGENTS.md and STEPS.md first. This is step 12: tests we can trust. Start a new branch for it.
 
-1. Add npm run test:coverage (Vitest with @vitest/coverage-v8 — the one new dependency). Run it and keep the summary as the "before" numbers.
-2. From the report, name the two most important business rules that no test checks — rules, not lines: stage values, reminder idempotency, import validation, cache invalidation. Say in one line why each matters, then test them.
-3. Add a regression test for this rule: PATCH /api/contacts/:id with a stage outside lead/qualified/won/lost returns 400 and leaves the row unchanged. If it already passes, it stays as the guard.
-4. Hunt flaky e2e tests: run npm run e2e -- --repeat-each=5. Remove every fixed sleep (waitForTimeout), wait on the UI instead (expect(locator).toBeVisible and friends), and give each test its own data so order does not matter. Fix at least one.
-5. Add npm run test:all that runs check and then e2e, and fails if either fails.
+After eleven steps, I want tests that really protect the app.
 
-Do not change app behaviour, except to fix a real bug a new test finds — and tell me if that happens. At the end, tell me the command to run and the coverage numbers before and after.`,
-    check: `Verify step 12 — testing: a suite you can trust. Do not add features.
+Must-haves:
+- A coverage report: which parts of the app no test ever runs. Keep today's numbers as "before".
+- From it, pick the two most important untested business rules (rules, not lines of code), say in one line why each matters, and test them.
+- A regression test (it stops an old bug coming back): moving a contact to a stage that doesn't exist is refused, and the contact stays as it was.
+- Find browser tests that sometimes pass and sometimes fail (flaky) and fix at least one. Tests wait for the page, not for a fixed number of seconds.
+- One command that runs every test and fails if any fails.
 
-1. Pick one more untested rule from the coverage report and add its test.
-2. Run npm run test:coverage and paste the summary lines next to the "before" numbers from the build.
-3. Run npm run test:all three times in a row and paste the totals of each run. A failure in any run is a flaky test: STOP and show it.
-4. Plant the bug on purpose: change the PATCH validation so it accepts any stage. Run only the regression test and paste the failure (the assertion and its line). Undo the change with git, run the test again and paste the pass, then show git status is clean.
-5. Show the diff of the flaky e2e fix and say in one sentence what made it flaky.
+Don't change how the app behaves, unless a new test finds a real bug; then tell me. Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working, and the coverage before and after.`,
+    check: `Check step 12: tests we can trust. Don't add features.
 
-Report a table: check | command | result, pasting the real output lines. If anything fails, STOP and show me the failure — do not fix it silently. If everything is green, append this line to STEPS.md and commit: "12 testing — coverage, regression guard, no flaky e2e, npm run test:all".`,
+- Pick one more untested rule from the coverage report and add a test for it.
+- Show me the coverage now next to the "before" numbers.
+- Run every test three times in a row (npm run check and npm run e2e each time) and show the totals. A failure in any run means a flaky test: stop and show it.
+- Plant a bug on purpose: let a contact take any stage. Show me the regression test failing, then undo the bug and show it passing, with nothing else left changed.
+- Tell me in one sentence what made the flaky test flaky.
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "12 testing: coverage, a regression guard, no flaky tests, one command runs them all".`,
     done: [
       {
         en: "I saw the coverage numbers before and after",
@@ -258,8 +279,8 @@ Report a table: check | command | result, pasting the real output lines. If anyt
         he: "טסט הרגרסיה נכשל על הבאג שנשתל ועבר אחרי שהוסר",
       },
       {
-        en: "npm run test:all was green three times in a row",
-        he: "npm run test:all עבר שלוש פעמים ברצף",
+        en: "All the tests passed three times in a row",
+        he: "כל הטסטים עברו שלוש פעמים ברצף",
       },
     ],
   },
@@ -270,12 +291,12 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       he: "התחברות, ולכל שורה יש בעלים",
     },
     goal: {
-      en: "People sign up and sign in with email and password, and each of them sees only their own contacts, through the pages and through the API.",
+      en: "People sign up and sign in with email and password, and each of them sees only their own contacts, in the pages and through the API.",
       he: "אנשים נרשמים ומתחברים עם מייל וסיסמה, וכל אחד רואה רק את אנשי הקשר שלו, גם בדפים וגם ב-API.",
     },
     why: {
-      en: "Authentication says who you are; authorization — the owner filter on every query — decides what you may touch. This step builds both.",
-      he: "אותנטיקציה אומרת מי אתם; הרשאות — סינון לפי בעלים בכל שאילתה — קובעות במה מותר לכם לגעת. הצעד הזה בונה את שתיהן.",
+      en: "Authentication (signing in) says who you are; authorization decides what you may see and change. This step builds both.",
+      he: "אותנטיקציה (התחברות) אומרת מי אתם; הרשאות קובעות מה מותר לכם לראות ולשנות. הצעד הזה בונה את שתיהן.",
     },
     uses: [
       "authentication-vs-authorization",
@@ -284,40 +305,44 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       "environment-variables-secrets",
       "owasp-top-10",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 13 — auth: sign-in and owners. Work on branch step-13-auth.
+    build: `Read AGENTS.md and STEPS.md first. This is step 13: sign-in. Start a new branch for it.
 
-This step is risky. First reply with a plan in 3–6 bullets: the library, the schema change, how existing rows get an owner, how scoping is enforced, which routes stay public. Then STOP and wait for my OK before writing code.
+People sign up, sign in and sign out with email and password. Each person only ever sees and changes their own data.
 
-1. Sign up, sign in and sign out with email and password. Compare Better Auth (built-in email/password, Drizzle adapter) with Auth.js credentials plus argon2 in two lines, then pick one. Passwords hashed by the library, never logged. Session cookie HttpOnly, SameSite=Lax, Secure in production. AUTH_SECRET only in env vars.
-2. owner_id on companies, contacts, notes and reminders. Existing rows go to one seed user, then owner_id becomes NOT NULL. Email uniqueness becomes per owner.
-3. Scoping that is hard to forget: all DB access goes through repository functions whose first argument is ownerId, and routes never import the DB client. Someone else's row returns 404, not 403. The dashboard cache becomes per owner.
-4. Signed out, API routes return 401 and pages redirect to /login. Public: /api/health, the auth routes, /api/cron/* (secret) and /api/webhooks/* (signature).
+Must-haves:
+- Passwords are only stored as a hash (a scrambled fingerprint that can't be turned back into the password), and never logged.
+- You stay signed in with a cookie that scripts on the page can't read.
+- Signed out, nobody can read contacts, not even through the API: the API answers 401 and pages send you to sign in.
+- Someone else's contact looks as if it doesn't exist, and the owner check is hard to forget in future pages.
+- Existing contacts go to a first user. The daily reminder job and the Resend webhook still work.
 
-No OAuth, roles or password reset. At the end, tell me how to create two users locally and what each should see.`,
-    check: `Verify step 13 — auth: sign-in and owners. Do not add features.
+This step is risky: first tell me your plan in a few plain bullets and wait for my OK. Pick the tools yourself, write the choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working, with two users.`,
+    check: `Check step 13: sign-in and owners. Don't add features.
 
-1. Add a Playwright e2e with two users: A creates a contact; B opening A's contact page gets a 404, and B calling GET, PATCH and DELETE /api/contacts/<A's id> gets 404 each time, with A's row unchanged. Signed out, /contacts redirects to /login and GET /api/contacts returns 401.
-2. Add a repository-level test that seeds two owners, calls every exported repository function as A, and fails if any row of B comes back. Add a test that fails if any file under app/ imports the DB client directly.
-3. Run npm run check and npm run e2e.
-4. Evidence: select one user's stored password field (wherever the library keeps it) and paste it — it must be a hash. After signing in, paste the session cookie's flags from the Set-Cookie header or DevTools → Application, and the config line that makes it Secure in production. Curl /api/contacts without a cookie and paste the 401.
+Add tests that prove:
+- in the browser, with two people: A adds a contact; B can't open, change or delete it, in the pages or through the API, and A's contact is unchanged;
+- signed out, the contacts page sends you to sign in and the API answers 401;
+- everything that reads data, used as A, never returns anything of B's, and no page can reach the database without the owner check.
 
-Report a table: check | command | result, pasting the real output lines. If anything fails, STOP and show me the failure — do not fix it silently. If everything is green, append this line to STEPS.md and commit: "13 auth — email sign-in, owner_id on every table, every query scoped".`,
+Run all the tests with npm run check and npm run e2e. Then show me what is stored for one user's password (it must be a hash, not the password), and show me that the sign-in cookie can't be read by page scripts and is only sent over https in production.
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "13 auth: email sign-in, every contact has an owner, nobody sees anyone else's".`,
     done: [
       {
-        en: "User B opening user A's contact got a 404, in the page and in the API",
-        he: "משתמש B שפתח איש קשר של משתמש A קיבל 404, גם בדף וגם ב-API",
+        en: "Signed in as a second person, I couldn't open the first person's contact, in the page or in the API",
+        he: "כשהתחברתם כאדם שני לא הצלחתם לפתוח את איש הקשר של האדם הראשון, לא בדף ולא ב-API",
       },
       {
-        en: "Signed out, the API answered 401 and the pages sent me to /login",
-        he: "בלי התחברות ה-API ענה 401 והדפים העבירו אתכם ל-/login",
+        en: "Signed out, the API answered 401 and the pages sent me to sign in",
+        he: "בלי התחברות ה-API ענה 401 והדפים העבירו אתכם להתחברות",
       },
       {
         en: "The database holds a password hash, not the password",
         he: "במסד הנתונים שמור hash של הסיסמה, לא הסיסמה עצמה",
       },
       {
-        en: "The session cookie is HttpOnly",
-        he: "ה-cookie של הסשן מסומן HttpOnly",
+        en: "I was shown that scripts on the page can't read the sign-in cookie",
+        he: "הראו לכם שסקריפטים בדף לא יכולים לקרוא את ה-cookie של ההתחברות",
       },
     ],
   },
@@ -328,11 +353,11 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       he: "לנעול את שאר הבניין",
     },
     goal: {
-      en: "The app sends security headers and a CSP, slows down password guessing, keeps an audit log of sign-ins and deletes, and carries no known-vulnerable package or leaked secret.",
-      he: "האפליקציה שולחת כותרות אבטחה ו-CSP, מאטה ניחוש סיסמאות, שומרת יומן ביקורת של התחברויות ומחיקות, ואין בה חבילה עם חולשה ידועה או סוד שדלף.",
+      en: "The app tells the browser to block common attacks, slows down password guessing, keeps a log of sign-ins and deletes that can't be edited, and has no known-vulnerable package or leaked secret.",
+      he: "האפליקציה אומרת לדפדפן לחסום התקפות נפוצות, מאטה ניחוש סיסמאות, שומרת יומן של התחברויות ומחיקות שאי אפשר לערוך, ואין בה חבילה עם חולשה ידועה או סוד שדלף.",
     },
     why: {
-      en: "Login was the front door. This is the lesson's checklist for everything behind it, run against your own app.",
+      en: "Sign-in was the front door. This is the lesson's checklist for everything behind it, run against your own app.",
       he: "ההתחברות הייתה דלת הכניסה. זו רשימת הבדיקה של השיעור לכל מה שמאחוריה, מול האפליקציה שלכם.",
     },
     uses: [
@@ -343,42 +368,44 @@ Report a table: check | command | result, pasting the real output lines. If anyt
       "cve-and-patching",
       "injection-and-validation",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 14 — security: beyond login. Work on branch step-14-security.
+    build: `Read AGENTS.md and STEPS.md first. This is step 14: security beyond sign-in. Start a new branch for it.
 
-First reply with a 5-line threat model (what is worth stealing, who wants it, how they would get it) and a plan in 3–6 bullets. Then STOP and wait for my OK before writing code.
+First, a five-line threat model: what here is worth stealing, who wants it, how they would try. Then your plan in a few plain bullets; wait for my OK.
 
-1. Security headers on every response: Content-Security-Policy, X-Content-Type-Options, Referrer-Policy, frame-ancestors 'none', Permissions-Policy. Build the CSP as the Next.js docs describe (nonce in middleware), Report-Only first, then enforced; list any 'unsafe-*' you kept and why.
-2. Rate-limit sign-in: 5 attempts per minute per IP + email, then 429 with Retry-After. Store attempts in Postgres — serverless instances do not share memory.
-3. An append-only audit_log table (actor, action, target type and id, ip, created_at), written on every sign-in attempt and every delete. No code path updates or deletes it.
-4. Review input validation on every route: a table route | schema | what it rejects; fix gaps.
-5. Triage every high and critical from npm audit: upgrade, or explain why it does not apply. Never --force.
-6. Scan the whole git history with gitleaks (official release or Docker image). A real key means rotate it at the provider; rewriting history is not enough.
+Must-haves:
+- Every page tells the browser to block common attacks, like running strangers' scripts or showing our pages inside another site. Try the rules in report-only mode, then switch them on.
+- After 5 sign-in tries in a minute for the same email, the app answers 429 (slow down).
+- An audit log (a record that is only added to, never edited) of every sign-in try and delete: who, what, when.
+- Every form and API route refuses bad input; show me a table of what each refuses.
+- Check our packages for known security holes; fix the serious ones. Scan the whole project history for leaked keys; a real leak means I replace that key.
 
-No paid service. At the end, tell me what curl -I should show.`,
-    check: `Verify step 14 — security: beyond login. Do not add features. Work against localhost and the test DB, never production data.
+Nothing paid. Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
+    check: `Check step 14: security beyond sign-in. Don't add features. Use my machine and the test database, never real data.
 
-1. Add tests: the 6th sign-in attempt in a minute for the same IP + email returns 429, while another email still gets through; a delete and a sign-in each write one audit_log row; pages and API responses carry the CSP and other headers.
-2. Run npm run check and npm run e2e, with the CSP enforced; report any CSP violation in the console.
-3. Attacker pass: signed in, put "' OR 1=1 --", "<script>alert(1)</script>" and "<img src=x onerror=alert(1)>" into every text field — contact name, email, company, note, CSV import. For each, report: accepted or rejected, how it was stored, how it rendered. A 500 or a running script is a failure.
-4. Evidence: curl -I / and paste the header lines; six sign-in attempts in a loop with their status codes; the gitleaks summary line; the latest 5 audit_log rows.
+Add tests that prove:
+- the 6th sign-in try in a minute for one email gets a 429; another email still gets in;
+- a delete and a sign-in each add one line to the audit log;
+- pages and API answers carry the security rules.
 
-Report a table: check | command | result, pasting the real output lines. If anything fails, STOP and show me the failure — do not fix it silently. If everything is green, append this line to STEPS.md and commit: "14 security — headers and CSP, sign-in rate limit, audit log, deps and history scanned".`,
+Run all the tests with npm run check and npm run e2e, rules switched on; tell me anything they broke. Then play the attacker: type things like ' OR 1=1 -- and <script>alert(1)</script> into every text field and the CSV import. For each: refused or saved as plain text, and did anything run? A crash or a running script is a failure. Show me the leak scan result and the last 5 audit log lines.
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "14 security: browser safety rules, sign-in limit, audit log, packages and history scanned".`,
     done: [
       {
-        en: "The 6th sign-in attempt in a minute got a 429",
+        en: "The 6th sign-in try in a minute got a 429",
         he: "ניסיון ההתחברות השישי בתוך דקה קיבל 429",
       },
       {
-        en: "curl -I showed the CSP and the other security headers",
-        he: "curl -I הראה את ה-CSP ואת שאר כותרות האבטחה",
+        en: "I was shown the security rules on every page",
+        he: "הראו לכם את כללי האבטחה בכל דף",
       },
       {
-        en: "In the attacker pass every payload was stored as plain text and nothing ran",
-        he: "ב-attacker pass כל payload נשמר כטקסט רגיל ושום דבר לא רץ",
+        en: "When I played the attacker, every trick was saved as plain text and nothing ran",
+        he: "כששיחקתם את התוקף, כל טריק נשמר כטקסט רגיל ושום דבר לא רץ",
       },
       {
-        en: "gitleaks found nothing, or the leaked key was rotated",
-        he: "gitleaks לא מצא כלום, או שהמפתח שדלף הוחלף",
+        en: "The leak scan found nothing, or the leaked key was replaced",
+        he: "הסריקה לדליפות לא מצאה כלום, או שהמפתח שדלף הוחלף",
       },
     ],
   },

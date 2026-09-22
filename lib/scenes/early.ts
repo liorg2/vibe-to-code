@@ -9,94 +9,94 @@ const browser = { id: "b", icon: "🌐", label: { en: "Browser", he: "דפדפן
 const server = { id: "s", icon: "🖥️", label: { en: "Server", he: "שרת" } };
 const db = { id: "d", icon: "🗄️", label: { en: "Database", he: "מסד נתונים" } };
 const code = { id: "c", icon: "⚙️", label: { en: "Your code", he: "הקוד שלכם" } };
-const tests = { id: "t", icon: "🧪", label: { en: "Test runner", he: "הרצת טסטים" } };
+const tests = { id: "t", icon: "🧪", label: { en: "Tests", he: "טסטים" } };
 
 export const EARLY_SCENES: Record<string, Scene> = {
   "compiler-interpreter": {
-    cap: { en: "One typo, two translators. One stops you in seconds, the other waits for a user", he: "טעות הקלדה אחת, שני מתרגמים. אחד עוצר אתכם תוך שניות, השני מחכה למשתמש" },
+    cap: { en: "The same typo: one checker catches it in seconds, the other lets a customer find it weeks later", he: "אותה טעות הקלדה: בודק אחד תופס אותה תוך שניות, השני נותן ללקוחה למצוא אותה אחרי שבועות" },
     actors: [
       code,
-      { id: "k", icon: "🛠️", label: { en: "Compiler (tsc)", he: "קומפיילר (tsc)" } },
-      { id: "i", icon: "▶️", label: { en: "Interpreter (node)", he: "אינטרפרטר (node)" } },
+      { id: "k", icon: "🛠️", label: { en: "Compiler", he: "קומפיילר" } },
+      { id: "i", icon: "▶️", label: { en: "Interpreter", he: "אינטרפרטר" } },
       { id: "u", icon: "👩", label: { en: "Dana", he: "דנה" } },
     ],
     beats: [
       {
-        from: "c", to: "k", label: "tsc --noEmit",
-        body: ["// reminders.ts, line 14", "if (isFirstOfMonth) sendRemindr(c)"],
-        say: { en: "The compiler reads the whole project first, even the branch that only runs once a month.", he: "הקומפיילר קורא קודם את כל הפרויקט, גם את הענף שרץ רק פעם בחודש." },
+        from: "c", to: "k", label: "check the whole project",
+        body: ["reminders.ts, line 14", "sendRemindr(contact)"],
+        say: { en: "The compiler reads all the code before anything runs, even the part that only runs once a month.", he: "הקומפיילר קורא את כל הקוד לפני שמשהו רץ, גם את החלק שרץ רק פעם בחודש." },
       },
       {
-        from: "k", to: "k", label: "TS2304: Cannot find 'sendRemindr'", tone: "err",
-        say: { en: "It refuses and names the line. Nothing is built, so nothing broken can ship.", he: "הוא מסרב ומציין את השורה. שום דבר לא נבנה, אז שום דבר שבור לא יוצא." },
+        from: "k", to: "k", label: "Can't find 'sendRemindr'", tone: "err",
+        say: { en: "It finds a name that doesn't exist and stops. Nothing gets built, so nothing broken goes live.", he: "הוא מוצא שם שלא קיים ועוצר. שום דבר לא נבנה, אז שום דבר שבור לא עולה לאוויר." },
       },
       {
-        from: "k", to: "c", label: "✗ reminders.ts:14:23", tone: "err",
-        say: { en: "The error reaches you two seconds after you saved. Not a user, you.", he: "השגיאה מגיעה אליכם שתי שניות אחרי השמירה. לא למשתמש, אליכם." },
+        from: "k", to: "c", label: "✗ reminders.ts, line 14", tone: "err",
+        say: { en: "The error reaches you seconds after saving. You find it, not a customer.", he: "השגיאה מגיעה אליכם שניות אחרי השמירה. אתם מוצאים אותה, לא לקוח." },
       },
       {
-        from: "c", to: "i", label: "node reminders.js",
-        body: ["// same typo, plain JavaScript", "if (isFirstOfMonth) sendRemindr(c)"],
-        say: { en: "Now the same typo in plain JavaScript. The interpreter starts at once and runs line by line.", he: "עכשיו אותה טעות ב-JavaScript רגיל. האינטרפרטר מתחיל מיד ומריץ שורה אחרי שורה." },
+        from: "c", to: "i", label: "run it right away",
+        body: ["same typo, plain JavaScript", "sendRemindr(contact)"],
+        say: { en: "Now the same typo in plain JavaScript. The interpreter doesn't read ahead: it just starts running, line by line.", he: "עכשיו אותה טעות ב-JavaScript רגיל. האינטרפרטר לא קורא מראש: הוא פשוט מתחיל להריץ, שורה אחרי שורה." },
       },
       {
         from: "i", to: "u", label: "contacts page · works", tone: "ok",
-        say: { en: "Every page Dana opens works. The broken line has not been reached, so nothing complains.", he: "כל עמוד שדנה פותחת עובד. אף אחד עוד לא הגיע לשורה השבורה, אז שום דבר לא מתלונן." },
+        say: { en: "Every page Dana opens works. No one has reached the broken line yet, so nothing complains.", he: "כל עמוד שדנה פותחת עובד. אף אחד עוד לא הגיע לשורה השבורה, אז שום דבר לא מתלונן." },
       },
       {
-        from: "u", to: "i", label: "1st of the month · send reminders",
-        say: { en: "Three weeks later, on the 1st, the monthly branch runs for the first time.", he: "שלושה שבועות אחר כך, ב-1 לחודש, הענף החודשי רץ בפעם הראשונה." },
+        from: "u", to: "i", label: "1st of the month: reminders",
+        say: { en: "Three weeks later, on the 1st, the monthly reminders run for the first time.", he: "שלושה שבועות אחר כך, ב-1 לחודש, התזכורות החודשיות רצות בפעם הראשונה." },
       },
       {
-        from: "i", to: "i", label: "ReferenceError · reminders.js:14", tone: "err",
+        from: "i", to: "i", label: "Crash · reminders.js line 14", tone: "err",
         body: ["sendRemindr is not defined"],
-        say: { en: "Same typo, same one-letter fix. But a user found it, weeks late. That is why 'it builds' proves more in TypeScript.", he: "אותה טעות, אותו תיקון של אות אחת. אבל משתמשת מצאה אותה, באיחור של שבועות. לכן 'זה נבנה' מוכיח יותר ב-TypeScript." },
+        say: { en: "Same one-letter fix, but a customer hit it weeks late. That's why a passing build tells you more in TypeScript.", he: "אותו תיקון של אות אחת, אבל לקוחה נתקלה בזה אחרי שבועות. לכן ב-TypeScript, 'זה נבנה' אומר לכם הרבה יותר." },
       },
     ],
   },
 
   "clone-push-pull": {
-    cap: { en: "Two copies of one history. Git syncs them only when you tell it to", he: "שני עותקים של אותה היסטוריה. Git מסנכרן אותם רק כשאתם אומרים לו" },
+    cap: { en: "Your laptop and GitHub each hold a copy. They only sync when you say so", he: "גם במחשב שלכם וגם ב-GitHub יש עותק. הם מסתנכרנים רק כשאתם אומרים" },
     actors: [laptop, github, omer],
     beats: [
       {
-        from: "g", to: "l", label: "git clone github.com/dana/pocket-crm",
-        body: ["Receiving objects: 100% (312/312)"],
-        say: { en: "Clone copies the whole repo down, history included. From now on you work on your own copy.", he: "clone מעתיק את כל הריפו למחשב, כולל ההיסטוריה. מעכשיו אתם עובדים על עותק משלכם." },
+        from: "g", to: "l", label: "git clone",
+        body: ["copying the whole project…"],
+        say: { en: "Clone copies the whole project to your laptop, with its full history. From now on you work on your own copy.", he: "clone מעתיק את כל הפרויקט למחשב שלכם, עם כל ההיסטוריה. מעכשיו אתם עובדים על עותק משלכם." },
       },
       {
-        from: "l", to: "l", label: "git commit -m \"add stage filter\"",
-        say: { en: "A commit saves a point in your copy only. GitHub and Omer see nothing yet.", he: "commit שומר נקודה רק בעותק שלכם. GitHub ועומר עוד לא רואים כלום." },
+        from: "l", to: "l", label: "commit: add stage filter",
+        say: { en: "A commit is a save point, like in a game, but only on your laptop. Nobody else sees it yet.", he: "commit הוא נקודת שמירה, כמו במשחק, אבל רק במחשב שלכם. אף אחד אחר עוד לא רואה אותה." },
       },
       {
-        from: "o", to: "g", label: "git push origin main",
-        body: ["a41f2c  move lib/ to src/lib/"],
-        say: { en: "Meanwhile Omer pushes his own commit to the shared copy.", he: "בינתיים עומר עושה push לקומיט שלו לעותק המשותף." },
+        from: "o", to: "g", label: "git push",
+        body: ["Omer: move files into src/"],
+        say: { en: "Meanwhile Omer sends his own commit up to the shared copy on GitHub.", he: "בינתיים עומר שולח commit משלו לעותק המשותף ב-GitHub." },
       },
       {
-        from: "l", to: "g", label: "git push origin main", tone: "err",
-        body: ["! [rejected]  main -> main (fetch first)"],
-        say: { en: "Your push is refused. Git will not erase Omer's commit to make room for yours.", he: "ה-push שלכם נדחה. Git לא ימחק את הקומיט של עומר כדי לפנות מקום לשלכם." },
+        from: "l", to: "g", label: "git push · rejected", tone: "err",
+        body: ["GitHub has changes you don't"],
+        say: { en: "Your push is refused. Git won't erase Omer's work to make room for yours.", he: "ה-push שלכם נדחה. Git לא ימחק את העבודה של עומר כדי לפנות מקום לשלכם." },
       },
       {
         from: "g", to: "l", label: "git pull",
-        body: ["a41f2c  move lib/ to src/lib/", "Merge made by the 'ort' strategy."],
-        say: { en: "Pull brings his commit down and merges it with yours. Nothing was overwritten.", he: "pull מוריד את הקומיט שלו וממזג אותו עם שלכם. שום דבר לא נדרס." },
+        body: ["Omer's commit + yours, combined"],
+        say: { en: "Pull brings Omer's work down and combines it with yours. Nothing is lost.", he: "pull מוריד את העבודה של עומר ומשלב אותה עם שלכם. שום דבר לא הולך לאיבוד." },
       },
       {
-        from: "l", to: "g", label: "git push origin main", tone: "ok",
-        body: ["a41f2c..9b07e1  main -> main"],
-        say: { en: "Now the push goes through. Both commits live in the shared copy.", he: "עכשיו ה-push עובר. שני הקומיטים נמצאים בעותק המשותף." },
+        from: "l", to: "g", label: "git push", tone: "ok",
+        body: ["both commits uploaded"],
+        say: { en: "Now the push goes through. Both changes are in the shared copy.", he: "עכשיו ה-push עובר. שני השינויים נמצאים בעותק המשותף." },
       },
       {
         from: "g", to: "o", label: "git pull", tone: "ok",
-        say: { en: "Omer pulls to get yours. Pull before you start, push before you stop, and Git stays boring.", he: "עומר עושה pull כדי לקבל את שלכם. pull לפני שמתחילים, push לפני שמפסיקים, ו-Git נשאר משעמם." },
+        say: { en: "Omer pulls to get yours. Pull before you start, push when you stop, and Git stays calm.", he: "עומר עושה pull כדי לקבל את שלכם. pull לפני שמתחילים, push כשמסיימים, ו-Git נשאר רגוע." },
       },
     ],
   },
 
   "commit-branch-merge": {
-    cap: { en: "Let the agent loose on a branch. A bad attempt costs two commands", he: "משחררים את הסוכן על ברנץ'. ניסיון גרוע עולה שתי פקודות" },
+    cap: { en: "Let the AI try things on a branch. If it goes wrong, you just throw the branch away", he: "תנו ל-AI לנסות דברים על ברנץ'. אם משהו משתבש, פשוט זורקים את הברנץ'" },
     actors: [
       { id: "m", icon: "🏠", label: { en: "main", he: "main" } },
       { id: "r", icon: "🌿", label: { en: "Branch", he: "ברנץ'" } },
@@ -104,47 +104,46 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
     beats: [
       {
-        from: "m", to: "r", label: "git switch -c step-09-import",
-        say: { en: "Before the agent touches anything, make a branch. It starts as an exact copy of main.", he: "לפני שהסוכן נוגע במשהו, פותחים ברנץ'. הוא מתחיל כעותק מדויק של main." },
+        from: "m", to: "r", label: "new branch: step-09-import",
+        say: { en: "Before the AI touches anything, make a branch: a safe side copy of main, the app that works.", he: "לפני שה-AI נוגע במשהו, פותחים ברנץ': עותק צדדי ובטוח של main, האפליקציה שעובדת." },
       },
       {
-        from: "a", to: "r", label: "commit 3e1a9c",
-        body: ["import contacts from CSV", "22 files changed"],
-        say: { en: "The agent works and commits on the branch. main has not changed at all.", he: "הסוכן עובד ועושה commit על הברנץ'. ב-main שום דבר לא השתנה." },
+        from: "a", to: "r", label: "commit: import from CSV",
+        body: ["import contacts from a file", "22 files changed"],
+        say: { en: "The AI works and saves commits on the branch. main hasn't changed at all.", he: "ה-AI עובד ושומר commits על הברנץ'. ב-main שום דבר לא השתנה." },
       },
       {
         from: "r", to: "r", label: "npm run check · 1 failed", tone: "err",
-        body: ["export.test.ts", "expected 20 rows, got 0"],
-        say: { en: "The export broke: a shared helper changed shape. On main this would be an evening of untangling.", he: "הייצוא נשבר: פונקציית עזר משותפת שינתה צורה. על main זה היה ערב שלם של פירוק." },
+        body: ["export test:", "expected 20 rows, got 0"],
+        say: { en: "Export broke: the AI changed a piece other features share. On main, that's an evening of untangling.", he: "הייצוא נשבר: ה-AI שינה חלק שגם פיצ'רים אחרים משתמשים בו. על main זה היה ערב שלם של פירוק." },
       },
       {
-        from: "r", to: "m", label: "git switch main", tone: "warn",
-        body: ["git branch -D step-09-import"],
-        say: { en: "Here it is two commands: switch back, delete the branch. The app is exactly as it was at 14:00.", he: "כאן זה שתי פקודות: חוזרים, מוחקים את הברנץ'. האפליקציה בדיוק כמו שהייתה ב-14:00." },
+        from: "r", to: "m", label: "back to main, delete branch", tone: "warn",
+        say: { en: "Here it's two commands: go back to main, delete the branch. The app is exactly as it was at 14:00.", he: "כאן זה שתי פקודות: חוזרים ל-main, מוחקים את הברנץ'. האפליקציה בדיוק כמו שהייתה ב-14:00." },
       },
       {
-        from: "m", to: "r", label: "git switch -c step-09-import",
-        say: { en: "Start again from a known-good state, with a prompt that names the export helper.", he: "מתחילים שוב ממצב שידוע שעובד, עם פרומפט שמציין את פונקציית הייצוא." },
+        from: "m", to: "r", label: "new branch: step-09-import",
+        say: { en: "Start again from a state you know works, with a prompt that warns about the export.", he: "מתחילים שוב ממצב שידוע שעובד, עם פרומפט שמזהיר לגבי הייצוא." },
       },
       {
-        from: "a", to: "r", label: "commit 7c42d0",
-        body: ["import CSV, keep toRow() shape"],
-        say: { en: "Small commits with messages you could still read at 2am.", he: "commits קטנים, עם הודעות שאפשר לקרוא גם בשתיים בלילה." },
+        from: "a", to: "r", label: "commit: import, keep export",
+        body: ["import from CSV,", "export left untouched"],
+        say: { en: "Small commits, with messages you could still understand at 2am.", he: "commits קטנים, עם הודעות שאפשר להבין גם בשתיים בלילה." },
       },
       {
         from: "r", to: "r", label: "npm run check · 48 passed", tone: "ok",
-        say: { en: "Green on the branch. Now it has earned its way into main.", he: "ירוק על הברנץ'. עכשיו הוא הרוויח את הכניסה ל-main." },
+        say: { en: "All tests green on the branch. Now it has earned its place in main.", he: "כל הטסטים ירוקים על הברנץ'. עכשיו הוא הרוויח את המקום שלו ב-main." },
       },
       {
-        from: "r", to: "m", label: "git merge step-09-import", tone: "ok",
-        body: ["Fast-forward", " 9 files changed"],
-        say: { en: "Merge folds the branch back into main. Only the version that works ever lands there.", he: "merge מחזיר את הברנץ' אל main. רק הגרסה שעובדת מגיעה לשם." },
+        from: "r", to: "m", label: "git merge", tone: "ok",
+        body: ["9 files changed"],
+        say: { en: "Merge brings the branch's work into main. Only the version that works ever lands there.", he: "merge מכניס את העבודה מהברנץ' אל main. רק הגרסה שעובדת מגיעה לשם." },
       },
     ],
   },
 
   "merge-conflict": {
-    cap: { en: "Two people changed the same line. Git refuses to guess and asks you", he: "שני אנשים שינו את אותה שורה. Git מסרב לנחש ושואל אתכם" },
+    cap: { en: "Two people changed the same line. Git won't guess, so it asks you", he: "שני אנשים שינו את אותה שורה. Git לא מנחש, אז הוא שואל אתכם" },
     actors: [
       you,
       { id: "m", icon: "🔀", label: { en: "main", he: "main" } },
@@ -152,42 +151,42 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
     beats: [
       {
-        from: "o", to: "m", label: "git merge step-11-proposal",
-        body: ["STAGES = [lead, qualified,", "  proposal, won, lost]"],
-        say: { en: "Omer merges first. He added a 'proposal' stage to the stages line.", he: "עומר עושה merge ראשון. הוא הוסיף שלב 'proposal' לשורת השלבים." },
+        from: "o", to: "m", label: "git merge (Omer's branch)",
+        body: ["stages: lead, qualified,", "  proposal, won, lost"],
+        say: { en: "Omer merges first. He added a 'proposal' stage to the list of deal stages.", he: "עומר עושה merge ראשון. הוא הוסיף שלב 'proposal' לרשימת שלבי העסקה." },
       },
       {
         from: "m", to: "y", label: "git merge main",
-        body: ["STAGES = [lead, qualified,", "  won, lost, on_hold]"],
-        say: { en: "On your branch you changed the same line: an 'on_hold' stage. Now you bring main in.", he: "בברנץ' שלכם שיניתם את אותה שורה: שלב 'on_hold'. עכשיו אתם מושכים פנימה את main." },
+        body: ["stages: lead, qualified,", "  won, lost, on_hold"],
+        say: { en: "On your branch you changed that same line, adding 'on_hold'. Now you bring main's changes in.", he: "בברנץ' שלכם שיניתם את אותה שורה והוספתם 'on_hold'. עכשיו אתם מכניסים את השינויים מ-main." },
       },
       {
-        from: "y", to: "y", label: "Auto-merging 6 files", tone: "ok",
-        say: { en: "Everything else merges on its own. Different regions, so both sides are kept.", he: "כל השאר מתמזג לבד. אזורים שונים, אז שני הצדדים נשמרים." },
+        from: "y", to: "y", label: "6 files combined on their own", tone: "ok",
+        say: { en: "Everything else combines by itself. Different parts of the files, so both sides are kept.", he: "כל השאר מתחבר לבד. חלקים שונים בקבצים, אז שני הצדדים נשמרים." },
       },
       {
-        from: "y", to: "y", label: "CONFLICT (content): stages.ts", tone: "err",
-        body: ["<<<<<<< HEAD", "  won, lost, on_hold]", "=======", "  proposal, won, lost]"],
-        say: { en: "Same line, so Git writes both versions between markers and stops. Not corruption: a question.", he: "אותה שורה, אז Git כותב את שתי הגרסאות בין סימנים ועוצר. זה לא קובץ הרוס, זו שאלה." },
+        from: "y", to: "y", label: "CONFLICT: stages.ts", tone: "err",
+        body: ["<<<<<<< yours: won, lost, on_hold", "=======", ">>>>>>> Omer: proposal, won, lost"],
+        say: { en: "Same line, so Git writes both versions one above the other and stops. Nothing is broken: it's asking you.", he: "אותה שורה, אז Git כותב את שתי הגרסאות אחת מעל השנייה ועוצר. שום דבר לא הרוס: הוא שואל אתכם." },
       },
       {
-        from: "y", to: "y", label: "git checkout --ours stages.ts?", tone: "warn",
-        say: { en: "The shortcut: keep your whole side. It compiles, and Omer's stage vanishes without a trace.", he: "קיצור הדרך: לשמור את כל הצד שלכם. זה מתקמפל, והשלב של עומר נעלם בלי להשאיר עקבות." },
+        from: "y", to: "y", label: "keep only my side?", tone: "warn",
+        say: { en: "The shortcut: keep your whole side. It works, and Omer's stage quietly disappears.", he: "קיצור הדרך: לשמור רק את הצד שלכם. זה עובד, והשלב של עומר נעלם בשקט." },
       },
       {
-        from: "y", to: "y", label: "resolved by hand", tone: "ok",
-        body: ["STAGES = [lead, qualified,", "  proposal, won, lost, on_hold]"],
-        say: { en: "Read both instead. Each side had a reason, so here the answer keeps both stages. Delete the markers.", he: "במקום זה, קוראים את שתיהן. לכל צד הייתה סיבה, אז כאן התשובה שומרת את שני השלבים. מוחקים את הסימנים." },
+        from: "y", to: "y", label: "combined by hand", tone: "ok",
+        body: ["stages: lead, qualified, proposal,", "  won, lost, on_hold"],
+        say: { en: "Read both instead. Each side had a reason, so the answer keeps both stages. Remove Git's markers.", he: "במקום זה, קוראים את שתיהן. לכל צד הייתה סיבה, אז התשובה שומרת את שני השלבים. מוחקים את הסימנים של Git." },
       },
       {
-        from: "y", to: "m", label: "git add stages.ts && git commit", tone: "ok",
-        say: { en: "Committing the edited file is the resolution. Branches merged within a day keep conflicts this small.", he: "ה-commit של הקובץ המתוקן הוא ההכרעה. ברנצ'ים שמתמזגים תוך יום שומרים על קונפליקטים קטנים כאלה." },
+        from: "y", to: "m", label: "commit the fix", tone: "ok",
+        say: { en: "Committing the fixed file settles it. Merge branches within a day and conflicts stay this small.", he: "ה-commit של הקובץ המתוקן סוגר את זה. כשממזגים ברנצ'ים תוך יום, הקונפליקטים נשארים קטנים כאלה." },
       },
     ],
   },
 
   "pull-request-and-code-review": {
-    cap: { en: "An agent-made change gets split, read backwards, and merged only after review", he: "שינוי שסוכן כתב מתפצל, נקרא מהסוף להתחלה, ומתמזג רק אחרי סקירה" },
+    cap: { en: "A big AI change gets split into small pieces, read carefully, and merged only after review", he: "שינוי גדול של AI מתפצל לחלקים קטנים, נקרא בעיון, ונכנס רק אחרי סקירה" },
     actors: [
       you,
       github,
@@ -195,175 +194,175 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
     beats: [
       {
-        from: "y", to: "g", label: "git push origin step-13-auth",
-        say: { en: "The branch goes up. It is on GitHub now, but not in main.", he: "הברנץ' עולה. הוא עכשיו ב-GitHub, אבל לא ב-main." },
+        from: "y", to: "g", label: "git push step-13-auth",
+        say: { en: "The branch goes up to GitHub. It's online now, but not part of main yet.", he: "הברנץ' עולה ל-GitHub. הוא באוויר עכשיו, אבל עוד לא חלק מ-main." },
       },
       {
         from: "g", to: "g", label: "PR #14 · 41 files · +912 −37", tone: "warn",
-        say: { en: "One sitting with the agent, 41 files. Past a few hundred lines, reviewers stop reading and start skimming.", he: "ישיבה אחת עם הסוכן, 41 קבצים. אחרי כמה מאות שורות, סוקרים מפסיקים לקרוא ומתחילים לרפרף." },
+        say: { en: "One session with the AI, 41 files changed. Past a few hundred lines, reviewers stop reading and start skimming.", he: "ישיבה אחת עם ה-AI, 41 קבצים השתנו. אחרי כמה מאות שורות, סוקרים מפסיקים לקרוא ומתחילים לרפרף." },
       },
       {
         from: "y", to: "g", label: "split into #15, #16, #17",
-        body: ["#15 migration", "#16 API routes", "#17 sign-in page"],
-        say: { en: "So you split it. Each piece is small enough to run on its own and actually read.", he: "אז מפצלים. כל חלק קטן מספיק כדי להריץ אותו לבד ולקרוא אותו באמת." },
+        body: ["#15 database changes", "#16 API routes", "#17 sign-in page"],
+        say: { en: "So you split it. Each piece is small enough to test alone and actually read.", he: "אז מפצלים. כל חלק קטן מספיק כדי לבדוק אותו לבד ולקרוא אותו באמת." },
       },
       {
         from: "g", to: "n", label: "PR #16 · 3 files · +96 −4",
-        say: { en: "Noa reads the red lines first. What was removed matters more than what was added.", he: "נועה קוראת קודם את השורות האדומות. מה שנמחק חשוב יותר ממה שנוסף." },
+        say: { en: "Noa reads the red lines first. What got deleted can matter more than what got added.", he: "נועה קוראת קודם את השורות האדומות. מה שנמחק יכול להיות חשוב יותר ממה שנוסף." },
       },
       {
-        from: "n", to: "g", label: "Changes requested · contacts.ts:31", tone: "err",
-        body: ["- .where(eq(contacts.ownerId, user.id))", "+ .where(eq(contacts.id, id))"],
-        say: { en: "One quiet deleted line: the owner filter. Without it, anyone can open anyone's contact by its id.", he: "שורה אחת שנמחקה בשקט: הסינון לפי בעלים. בלעדיו, כל אחד יכול לפתוח כל איש קשר לפי ה-id." },
+        from: "n", to: "g", label: "Changes requested", tone: "err",
+        body: ["- only the owner's contacts", "+ any contact, by its number"],
+        say: { en: "One quietly deleted line: the owner check. Without it, anyone can open anyone's contact.", he: "שורה אחת שנמחקה בשקט: הבדיקה של הבעלים. בלעדיה, כל אחד יכול לפתוח כל איש קשר." },
       },
       {
-        from: "y", to: "g", label: "commit a19f0e · restore owner filter",
-        body: ["+ test: Omer gets 404 on Dana's contact"],
-        say: { en: "The fix comes with a test, so the check can't disappear quietly again.", he: "התיקון מגיע עם טסט, כדי שהבדיקה לא תוכל להיעלם בשקט שוב." },
+        from: "y", to: "g", label: "commit: bring owner check back",
+        body: ["+ test: Omer can't open Dana's contact"],
+        say: { en: "The fix comes with a test, so the check can't quietly vanish again.", he: "התיקון מגיע עם טסט, כדי שהבדיקה לא תוכל להיעלם בשקט שוב." },
       },
       {
         from: "n", to: "g", label: "✓ Approved", tone: "ok",
-        say: { en: "Approved, and the checks are green.", he: "אושר, והבדיקות ירוקות." },
+        say: { en: "Approved, and the automatic checks are green.", he: "אושר, והבדיקות האוטומטיות ירוקות." },
       },
       {
         from: "g", to: "g", label: "Merged into main", tone: "ok",
-        say: { en: "Only now does it join main. If you can't say what it changes and how to undo it, it wasn't reviewed.", he: "רק עכשיו זה נכנס ל-main. אם אתם לא יכולים להגיד מה זה משנה ואיך מבטלים, זה לא נסקר." },
+        say: { en: "Only now does it join main. If you can't say what it changes and how to undo it, it wasn't really reviewed.", he: "רק עכשיו זה נכנס ל-main. אם אתם לא יכולים להגיד מה זה משנה ואיך מבטלים את זה, זה לא באמת נסקר." },
       },
     ],
   },
 
   dns: {
-    cap: { en: "The name becomes a number, and the number gets cached for as long as you said", he: "השם הופך למספר, והמספר נשמר בקאש כמה זמן שאמרתם" },
+    cap: { en: "A website name gets turned into an address, and the answer is remembered for as long as you allowed", he: "שם של אתר מתורגם לכתובת, והתשובה נזכרת כמה זמן שהרשיתם" },
     actors: [
       browser,
-      { id: "r", icon: "🔎", label: { en: "Resolver", he: "Resolver" } },
-      { id: "n", icon: "📒", label: { en: "Nameserver", he: "שרת השמות" } },
+      { id: "r", icon: "🔎", label: { en: "Lookup service", he: "שירות החיפוש" } },
+      { id: "n", icon: "📒", label: { en: "Name server", he: "שרת השמות" } },
     ],
     beats: [
       {
-        from: "b", to: "r", label: "A? pocketcrm.app",
-        say: { en: "Dana types pocketcrm.app. Machines connect to numbers, so the browser asks a resolver.", he: "דנה מקלידה pocketcrm.app. מחשבים מתחברים למספרים, אז הדפדפן שואל resolver." },
+        from: "b", to: "r", label: "where is pocketcrm.app?",
+        say: { en: "Dana types pocketcrm.app. Computers connect to number addresses, like phone numbers, so the browser asks for it.", he: "דנה מקלידה pocketcrm.app. מחשבים מתחברים לכתובות של מספרים, כמו מספרי טלפון, אז הדפדפן שואל מה המספר." },
       },
       {
-        from: "r", to: "n", label: "A? pocketcrm.app",
-        say: { en: "The resolver asks its way down to the domain's nameserver, the one that holds the record.", he: "ה-resolver שואל שלב אחרי שלב, עד שרת השמות של הדומיין, זה שמחזיק את הרשומה." },
+        from: "r", to: "n", label: "where is pocketcrm.app?",
+        say: { en: "The lookup service asks around until it reaches the domain's name server, which holds the real answer.", he: "שירות החיפוש שואל עד שהוא מגיע לשרת השמות של הדומיין, שמחזיק את התשובה האמיתית." },
       },
       {
-        from: "n", to: "r", label: "A 203.0.113.10 · TTL 86400",
-        say: { en: "The answer comes with a TTL: you may keep this for 86,400 seconds. A full day.", he: "התשובה מגיעה עם TTL: מותר לשמור אותה 86,400 שניות. יום שלם." },
+        from: "n", to: "r", label: "203.0.113.10 · keep for 1 day",
+        say: { en: "The answer comes with a TTL, a 'keep until' time: you may remember this for a full day.", he: "התשובה מגיעה עם TTL, זמן תפוגה: מותר לזכור אותה יום שלם." },
       },
       {
         from: "r", to: "b", label: "203.0.113.10",
-        say: { en: "The browser connects. The resolver keeps the answer in its cache.", he: "הדפדפן מתחבר. ה-resolver שומר את התשובה בקאש שלו." },
+        say: { en: "The browser connects. The lookup service keeps the answer in its cache, its short-term memory.", he: "הדפדפן מתחבר. שירות החיפוש שומר את התשובה בקאש, הזיכרון הקצר שלו." },
       },
       {
-        from: "n", to: "n", label: "A → 198.51.100.7 (new host)", tone: "warn",
-        say: { en: "That evening you move to a new host and update the record. The nameserver changes instantly.", he: "באותו ערב אתם עוברים לאחסון חדש ומעדכנים את הרשומה. שרת השמות משתנה מיד." },
+        from: "n", to: "n", label: "new address: 198.51.100.7", tone: "warn",
+        say: { en: "That evening you move to a new host and update the address. The name server changes right away.", he: "באותו ערב אתם עוברים לאחסון חדש ומעדכנים את הכתובת. שרת השמות משתנה מיד." },
       },
       {
-        from: "b", to: "r", label: "A? pocketcrm.app",
-        body: ["(Omer, same resolver, 2 hours later)"],
-        say: { en: "Two hours later, Omer asks through the same resolver.", he: "שעתיים אחר כך, עומר שואל דרך אותו resolver." },
+        from: "b", to: "r", label: "where is pocketcrm.app?",
+        body: ["(Omer, 2 hours later)"],
+        say: { en: "Two hours later, Omer asks through the same lookup service.", he: "שעתיים אחר כך, עומר שואל דרך אותו שירות חיפוש." },
       },
       {
-        from: "r", to: "b", label: "203.0.113.10 (cached, 22h left)", tone: "err",
-        say: { en: "He gets the old address from cache. The old server is still up, serving stale pages. The nameserver was never asked.", he: "הוא מקבל את הכתובת הישנה מהקאש. השרת הישן עדיין למעלה ומגיש דפים ישנים. אף אחד לא שאל את שרת השמות." },
+        from: "r", to: "b", label: "203.0.113.10 (remembered)", tone: "err",
+        say: { en: "He gets the old address from memory and sees the old site. Nobody asked the name server again.", he: "הוא מקבל את הכתובת הישנה מהזיכרון ורואה את האתר הישן. אף אחד לא שאל שוב את שרת השמות." },
       },
       {
-        from: "n", to: "n", label: "TTL 86400 → 300 (a day before)", tone: "info",
-        say: { en: "The only fix works in advance: lower the TTL to 300 a day before the move, so caches forget in minutes.", he: "התיקון היחיד עובד רק מראש: מורידים את ה-TTL ל-300 יום לפני המעבר, כך שהקאשים שוכחים תוך דקות." },
+        from: "n", to: "n", label: "keep for 5 min (a day before)", tone: "info",
+        say: { en: "The only fix is done in advance: a day before moving, lower the TTL to 5 minutes, so everyone forgets fast.", he: "התיקון היחיד נעשה מראש: יום לפני המעבר מורידים את ה-TTL ל-5 דקות, כך שכולם שוכחים מהר." },
       },
     ],
   },
 
   "package-manager": {
-    cap: { en: "package.json is the recipe. The lock file is the receipt", he: "package.json הוא המתכון. קובץ הנעילה הוא הקבלה" },
+    cap: { en: "package.json is the shopping list. The lock file is the receipt of exactly what you got", he: "package.json הוא רשימת הקניות. קובץ הנעילה הוא הקבלה על מה שקיבלתם בדיוק" },
     actors: [
       laptop,
-      { id: "p", icon: "📦", label: { en: "npm registry", he: "מאגר npm" } },
-      { id: "i", icon: "🤖", label: { en: "CI", he: "CI" } },
+      { id: "p", icon: "📦", label: { en: "Package store (npm)", he: "חנות החבילות (npm)" } },
+      { id: "i", icon: "🤖", label: { en: "Build server (CI)", he: "שרת הבנייה (CI)" } },
     ],
     beats: [
       {
         from: "l", to: "p", label: "npm install csv-kit",
-        say: { en: "You ask for a package. package.json saves a range: ^2.1.0 means 2.1.0 or any newer 2.x.", he: "מבקשים חבילה. package.json שומר טווח: ^2.1.0 אומר 2.1.0 או כל 2.x חדשה יותר." },
+        say: { en: "You add a ready-made package. The shopping list says 'version 2.1 or any newer 2.x'.", he: "מוסיפים חבילה מוכנה. רשימת הקניות אומרת 'גרסה 2.1 או כל 2.x חדשה יותר'." },
       },
       {
-        from: "p", to: "l", label: "csv-kit@2.1.0 + 3 deps", tone: "ok",
-        body: ["package.json  \"csv-kit\": \"^2.1.0\"", "lock file     csv-kit 2.1.0 + 3, exact"],
-        say: { en: "The lock file writes down exactly what arrived, helpers' helpers included.", he: "קובץ הנעילה רושם בדיוק מה הגיע, כולל התלויות של התלויות." },
+        from: "p", to: "l", label: "csv-kit 2.1.0 + 3 more", tone: "ok",
+        body: ["list:    csv-kit 2.1 or newer", "receipt: csv-kit 2.1.0 + 3, exact"],
+        say: { en: "The lock file writes down exactly what arrived, including the packages it needed.", he: "קובץ הנעילה רושם בדיוק מה הגיע, כולל החבילות שהיא צריכה." },
       },
       {
         from: "l", to: "i", label: "git push · no lock file", tone: "warn",
-        say: { en: "But the lock file was never committed. CI gets only the recipe.", he: "אבל קובץ הנעילה אף פעם לא נכנס ל-commit. ה-CI מקבל רק את המתכון." },
+        say: { en: "But the lock file was never saved to the repo. The build server only gets the shopping list.", he: "אבל קובץ הנעילה אף פעם לא נשמר בריפו. שרת הבנייה מקבל רק את רשימת הקניות." },
       },
       {
         from: "i", to: "p", label: "npm install",
-        say: { en: "A month later, a fresh install on CI. The range allows any 2.x.", he: "חודש אחר כך, התקנה נקייה ב-CI. הטווח מרשה כל 2.x." },
+        say: { en: "A month later, the build server installs from scratch. The list allows any 2.x.", he: "חודש אחר כך, שרת הבנייה מתקין מאפס. הרשימה מרשה כל 2.x." },
       },
       {
-        from: "p", to: "i", label: "csv-kit@2.4.0", tone: "warn",
-        body: ["2.4.0: new default delimiter handling"],
-        say: { en: "It gets 2.4.0, with a changed default. Nobody touched a line of your code.", he: "הוא מקבל 2.4.0, עם ברירת מחדל ששונתה. אף אחד לא נגע בשורה בקוד שלכם." },
+        from: "p", to: "i", label: "csv-kit 2.4.0", tone: "warn",
+        body: ["2.4.0 reads commas differently"],
+        say: { en: "It gets 2.4.0, which behaves a bit differently. Nobody touched your code.", he: "הוא מקבל 2.4.0, שמתנהגת קצת אחרת. אף אחד לא נגע בקוד שלכם." },
       },
       {
-        from: "i", to: "i", label: "import.test.ts · 20 rows → 0", tone: "err",
-        say: { en: "The import test fails on CI and passes on your laptop. Same code, different library.", he: "טסט הייבוא נכשל ב-CI ועובר אצלכם. אותו קוד, ספרייה אחרת." },
+        from: "i", to: "i", label: "import test: 20 rows → 0", tone: "err",
+        say: { en: "The import test fails there and passes on your laptop. Same code, different package.", he: "טסט הייבוא נכשל שם ועובר אצלכם. אותו קוד, חבילה אחרת." },
       },
       {
-        from: "l", to: "i", label: "git push · package-lock.json",
-        say: { en: "Commit the lock file. When the AI adds a package, read the lock diff: it shows everything that really arrived.", he: "מכניסים את קובץ הנעילה ל-commit. כשה-AI מוסיף חבילה, קוראים את ה-diff שלו: הוא מראה כל מה שבאמת הגיע." },
+        from: "l", to: "i", label: "git push · with lock file",
+        say: { en: "Save the lock file in the repo. When the AI adds a package, glance at it: it shows everything that really arrived.", he: "שומרים את קובץ הנעילה בריפו. כשה-AI מוסיף חבילה, מציצים בו: הוא מראה כל מה שבאמת הגיע." },
       },
       {
         from: "i", to: "p", label: "npm ci", tone: "ok",
-        body: ["csv-kit 2.1.0 (from the lock file)"],
-        say: { en: "npm ci installs exactly the locked tree, and fails loudly if it disagrees with package.json.", he: "npm ci מתקין בדיוק את מה שנעול, ונכשל בקול אם זה לא מתאים ל-package.json." },
+        body: ["csv-kit 2.1.0, as on the receipt"],
+        say: { en: "npm ci installs exactly what the receipt says, and stops loudly if the list and receipt disagree.", he: "npm ci מתקין בדיוק מה שכתוב בקבלה, ועוצר בקול אם הרשימה והקבלה לא מתאימות." },
       },
     ],
   },
 
   "forms-and-validation": {
-    cap: { en: "The browser check is for speed. The server check is the one that decides", he: "הבדיקה בדפדפן היא בשביל מהירות. הבדיקה בשרת היא זו שמחליטה" },
+    cap: { en: "The check in the browser is for speed. The check on the server is the one that counts", he: "הבדיקה בדפדפן היא בשביל מהירות. הבדיקה בשרת היא זו שקובעת" },
     actors: [browser, server, db],
     beats: [
       {
-        from: "b", to: "b", label: "contactSchema · email invalid", tone: "err",
-        body: ['email: "noa@"'],
-        say: { en: "Noa types a broken email. The browser runs the schema and shows the message before any request.", he: "נועה מקלידה מייל שבור. הדפדפן מריץ את הסכמה ומראה הודעה עוד לפני שיש בקשה." },
+        from: "b", to: "b", label: "check the form · bad email", tone: "err",
+        body: ["email: noa@"],
+        say: { en: "Noa types a broken email. The browser checks the form and shows a message before anything is sent.", he: "נועה מקלידה מייל שבור. הדפדפן בודק את הטופס ומראה הודעה לפני שמשהו נשלח." },
       },
       {
         from: "b", to: "s", label: "POST /api/contacts",
-        body: ['{ "name": "" }', "(required removed in DevTools)"],
-        say: { en: "But the browser isn't yours. Anyone can delete the check in DevTools, or skip the page with curl.", he: "אבל הדפדפן לא שלכם. כל אחד יכול למחוק את הבדיקה ב-DevTools, או לדלג על העמוד עם curl." },
+        body: ["name: (empty)", "(check switched off in the browser)"],
+        say: { en: "But the browser belongs to the user. Anyone can switch that check off, or skip the page entirely.", he: "אבל הדפדפן שייך למשתמש. כל אחד יכול לכבות את הבדיקה, או לדלג על העמוד לגמרי." },
       },
       {
-        from: "s", to: "s", label: "contactSchema.safeParse → ✗", tone: "err",
-        say: { en: "The server runs the same schema again. This one is the truth.", he: "השרת מריץ שוב את אותה סכמה. הבדיקה הזאת היא האמת." },
+        from: "s", to: "s", label: "check the data again · ✗", tone: "err",
+        say: { en: "The server runs the same check again. This is the one that decides.", he: "השרת מריץ שוב את אותה בדיקה. היא זו שמחליטה." },
       },
       {
         from: "s", to: "b", label: "400 Bad Request", status: 400,
-        body: ['{ "errors": { "name": "Required" } }'],
-        say: { en: "400 with field errors, before the database is touched. The page shows it by the field, not as a crash.", he: "400 עם שגיאות לפי שדה, לפני שנגעו במסד. העמוד מציג אותה ליד השדה, לא כקריסה." },
+        body: ["name: required"],
+        say: { en: "It answers 400, 'your request is wrong', before the database is touched. The page shows it by the field.", he: "הוא עונה 400, 'הבקשה שלכם שגויה', לפני שנוגעים במסד. העמוד מציג את זה ליד השדה." },
       },
       {
         from: "b", to: "s", label: "POST /api/contacts",
-        body: ['{ "name": "Noa Levi",', '  "email": "noa@levi.io" }'],
+        body: ["name: Noa Levi", "email: noa@levi.io"],
         say: { en: "Fixed and sent again.", he: "תוקן ונשלח שוב." },
       },
       {
-        from: "s", to: "d", label: "INSERT INTO contacts …",
-        say: { en: "Only data that passed the server's check reaches the database.", he: "רק נתונים שעברו את הבדיקה בשרת מגיעים למסד." },
+        from: "s", to: "d", label: "save the new contact",
+        say: { en: "Only data that passed the server's check reaches the database.", he: "רק נתונים שעברו את הבדיקה בשרת מגיעים למסד הנתונים." },
       },
       {
         from: "s", to: "b", label: "201 Created", status: 201,
-        body: ["Location: /api/contacts/42"],
-        say: { en: "One schema, used twice: in the browser for speed, on the server for truth.", he: "סכמה אחת, בשני מקומות: בדפדפן בשביל מהירות, בשרת בשביל אמת." },
+        body: ["new contact #42"],
+        say: { en: "One set of rules, checked twice: in the browser for speed, on the server for safety.", he: "אותם כללים, בשני מקומות: בדפדפן בשביל מהירות, בשרת בשביל ביטחון." },
       },
     ],
   },
 
   "bug-stack-trace": {
-    cap: { en: "The call goes down through the frames. The trace brings back the path it took", he: "הקריאה יורדת דרך השכבות. ה-stack trace מחזיר את הדרך שהיא עשתה" },
+    cap: { en: "The stack trace shows the exact path a request took before it broke", he: "ה-stack trace מראה בדיוק באיזו דרך הבקשה עברה לפני שהיא נשברה" },
     actors: [
       browser,
       { id: "f", icon: "🧱", label: { en: "Next.js", he: "Next.js" } },
@@ -373,94 +372,94 @@ export const EARLY_SCENES: Record<string, Scene> = {
     beats: [
       {
         from: "b", to: "f", label: "GET /api/contacts/42",
-        say: { en: "Dana opens a contact. The request enters through the framework.", he: "דנה פותחת איש קשר. הבקשה נכנסת דרך הפריימוורק." },
+        say: { en: "Dana opens a contact. The request comes in through the framework, the base your app is built on.", he: "דנה פותחת איש קשר. הבקשה נכנסת דרך הפריימוורק, הבסיס שעליו האפליקציה בנויה." },
       },
       {
-        from: "f", to: "r", label: "GET(req, { params })",
-        say: { en: "The framework calls your route handler.", he: "הפריימוורק קורא לפונקציית ה-route שלכם." },
+        from: "f", to: "r", label: "hand over to route.ts",
+        say: { en: "The framework passes the request to your code.", he: "הפריימוורק מעביר את הבקשה לקוד שלכם." },
       },
       {
-        from: "r", to: "v", label: "ownerName(contact)",
-        say: { en: "Your route calls your own function with the contact it loaded.", he: "ה-route שלכם קורא לפונקציה שלכם עם איש הקשר שהוא טען." },
+        from: "r", to: "v", label: "get the owner's name",
+        say: { en: "Your code asks another part of your code for the contact owner's name.", he: "הקוד שלכם מבקש מחלק אחר בקוד את שם הבעלים של איש הקשר." },
       },
       {
-        from: "v", to: "v", label: "TypeError", tone: "err",
-        body: ["Cannot read properties of undefined", "(reading 'name')"],
-        say: { en: "Line 42 expects contact.owner, and it is undefined. This is where it actually broke.", he: "שורה 42 מצפה ל-contact.owner, והוא undefined. כאן זה באמת נשבר." },
+        from: "v", to: "v", label: "Crash: owner is missing", tone: "err",
+        body: ["Cannot read 'name' of undefined"],
+        say: { en: "Line 42 expects the contact to have an owner, and it has none. This is where it actually broke.", he: "שורה 42 מצפה שלאיש הקשר יהיו בעלים, ואין לו. כאן זה באמת נשבר." },
       },
       {
         from: "f", to: "b", label: "500 Internal Server Error", status: 500,
-        say: { en: "Dana sees a 500. The real story is printed in the terminal.", he: "דנה רואה 500. הסיפור האמיתי מודפס בטרמינל." },
+        say: { en: "Dana just sees an error page. The real story is printed in the terminal.", he: "דנה רואה רק עמוד שגיאה. הסיפור האמיתי מודפס בטרמינל." },
       },
       {
         from: "f", to: "f", label: "stack trace · newest first", tone: "info",
-        body: ["at ownerName (lib/contacts.ts:42)", "at GET (app/api/contacts/[id]/route.ts:17)", "at … 12 frames in node_modules/next"],
-        say: { en: "Read top down: the top frame broke, the next one called it. The framework lines only prove the request came in.", he: "קוראים מלמעלה: השורה העליונה נשברה, זו שמתחתיה קראה לה. שורות הפריימוורק רק מוכיחות שהבקשה נכנסה." },
+        body: ["at contacts.ts line 42", "at route.ts line 17", "at … 12 lines inside Next.js"],
+        say: { en: "Read top down: the top line broke, the one below called it. The framework lines only show the request came in.", he: "קוראים מלמעלה: השורה העליונה נשברה, זו שמתחתיה קראה לה. שורות הפריימוורק רק מראות שהבקשה נכנסה." },
       },
       {
-        from: "v", to: "v", label: "if (!contact.owner) return \"\"", tone: "warn",
-        say: { en: "Ask the AI to 'fix this error' and you often get this. The 500 disappears, and the real bug becomes invisible.", he: "תבקשו מה-AI 'לתקן את השגיאה' ולרוב תקבלו את זה. ה-500 נעלם, והבאג האמיתי הופך לבלתי נראה." },
+        from: "v", to: "v", label: "no owner? show nothing", tone: "warn",
+        say: { en: "Ask the AI to 'fix this error' and you often get this. The error vanishes, and the real bug gets hidden.", he: "תבקשו מה-AI 'לתקן את השגיאה' ולרוב תקבלו את זה. השגיאה נעלמת, והבאג האמיתי מוסתר." },
       },
       {
-        from: "v", to: "v", label: "why is contact.owner undefined?", tone: "ok",
-        body: ["CSV import saved 17 rows", "without owner_id"],
-        say: { en: "Paste the full trace and ask why instead. The import saved contacts with no owner. Fix that, not line 42.", he: "הדביקו את כל ה-trace ושאלו למה. הייבוא שמר אנשי קשר בלי בעלים. את זה מתקנים, לא את שורה 42." },
+        from: "v", to: "v", label: "why is the owner missing?", tone: "ok",
+        body: ["CSV import saved 17 contacts", "with no owner"],
+        say: { en: "Paste the whole trace and ask why instead. The import saved contacts with no owner. Fix that, not line 42.", he: "במקום זה, הדביקו את כל ה-trace ושאלו למה. הייבוא שמר אנשי קשר בלי בעלים. את זה מתקנים, לא את שורה 42." },
       },
     ],
   },
 
   "localhost-and-port": {
-    cap: { en: "localhost is this computer. The port is which door on it", he: "localhost הוא המחשב הזה. הפורט הוא איזו דלת בו" },
+    cap: { en: "localhost means this computer. The port is which door on it", he: "localhost זה המחשב הזה. הפורט הוא איזו דלת בו" },
     actors: [
       { id: "t", icon: "⌨️", label: { en: "Terminal", he: "טרמינל" } },
       { id: "p", icon: "🚪", label: { en: "localhost:3000", he: "localhost:3000" } },
       browser,
-      { id: "v", icon: "☁️", label: { en: "Vercel server", he: "שרת ב-Vercel" } },
+      { id: "v", icon: "☁️", label: { en: "Live server (Vercel)", he: "השרת באוויר (Vercel)" } },
     ],
     beats: [
       {
         from: "t", to: "p", label: "npm run dev", tone: "err",
-        body: ["Error: listen EADDRINUSE:", "address already in use :::3000"],
+        body: ["door 3000 is already in use"],
         say: { en: "Door 3000 is taken. Nothing is broken: yesterday's server never shut down and is still standing there.", he: "דלת 3000 תפוסה. שום דבר לא שבור: השרת של אתמול לא נסגר ועדיין עומד שם." },
       },
       {
-        from: "t", to: "t", label: "lsof -i :3000",
-        body: ["node  8812  TCP *:3000 (LISTEN)"],
-        say: { en: "One command shows who holds the door: an old node process, PID 8812.", he: "פקודה אחת מראה מי מחזיק את הדלת: תהליך node ישן, PID 8812." },
+        from: "t", to: "t", label: "who is using door 3000?",
+        body: ["an old copy of your app"],
+        say: { en: "Ask the AI who holds the door: an old copy of your app, still running.", he: "שואלים את ה-AI מי מחזיק את הדלת: עותק ישן של האפליקציה, שעדיין רץ." },
       },
       {
-        from: "t", to: "t", label: "kill 8812", tone: "ok",
-        say: { en: "Stop it and the door is free. Moving to 3001 instead is how a confusing hour begins.", he: "עוצרים אותו והדלת פנויה. לעבור ל-3001 במקום זה, ככה מתחילה שעה מבלבלת." },
+        from: "t", to: "t", label: "stop the old server", tone: "ok",
+        say: { en: "Stop it and the door is free. Moving to door 3001 instead is how a confusing hour begins.", he: "עוצרים אותו והדלת פנויה. לעבור לדלת 3001 במקום זה, ככה מתחילה שעה מבלבלת." },
       },
       {
         from: "t", to: "p", label: "npm run dev · ready", tone: "ok",
-        body: ["- Local: http://localhost:3000"],
-        say: { en: "Now your app listens on door 3000 of this computer.", he: "עכשיו האפליקציה שלכם מאזינה בדלת 3000 של המחשב הזה." },
+        body: ["open http://localhost:3000"],
+        say: { en: "Now your app waits at door 3000 of this computer.", he: "עכשיו האפליקציה שלכם מחכה בדלת 3000 של המחשב הזה." },
       },
       {
         from: "b", to: "p", label: "GET localhost:3000/api/health",
-        say: { en: "The browser knocks on the same machine, same door. No network involved.", he: "הדפדפן דופק על אותו מחשב, אותה דלת. בלי רשת בכלל." },
+        say: { en: "The browser knocks on the same computer, same door. No internet involved.", he: "הדפדפן דופק על אותו מחשב, אותה דלת. בלי אינטרנט בכלל." },
       },
       {
         from: "p", to: "b", label: "200 OK", status: 200,
-        body: ['{ "ok": true }'],
+        body: ["ok: true"],
         say: { en: "It answers. So far, everything lives on your laptop.", he: "היא עונה. בינתיים, הכול חי על המחשב שלכם." },
       },
       {
-        from: "v", to: "v", label: "connect ECONNREFUSED 127.0.0.1:5432", tone: "err",
-        body: ["DATABASE_URL=postgres://localhost/crm"],
-        say: { en: "Deployed, the same config breaks. On the server, localhost means the server, and no database is there.", he: "אחרי דיפלוי, אותה הגדרה נשברת. בשרת, localhost זה השרת עצמו, ואין שם מסד נתונים." },
+        from: "v", to: "v", label: "can't reach the database", tone: "err",
+        body: ["database address: localhost"],
+        say: { en: "After deploying, the same setting breaks. On the server, localhost means the server itself, and there's no database there.", he: "אחרי דיפלוי, אותה הגדרה נשברת. בשרת, localhost זה השרת עצמו, ואין שם מסד נתונים." },
       },
       {
-        from: "v", to: "v", label: "DATABASE_URL from env vars", tone: "ok",
-        body: ["postgres://…@ep-x.neon.tech/crm"],
-        say: { en: "Keep the address in one config value, so moving machines is one change, not a search.", he: "שומרים את הכתובת בערך הגדרה אחד, כך שמעבר מחשב הוא שינוי אחד ולא חיפוש." },
+        from: "v", to: "v", label: "database address from settings", tone: "ok",
+        body: ["…neon.tech (the real database)"],
+        say: { en: "Keep the address in one setting, so moving to another machine is one change, not a hunt.", he: "שומרים את הכתובת בהגדרה אחת, כך שמעבר למחשב אחר הוא שינוי אחד ולא חיפוש." },
       },
     ],
   },
 
   "the-network-tab": {
-    cap: { en: "\"Something went wrong\" becomes a diagnosis in one minute", he: "\"משהו השתבש\" הופך לאבחנה תוך דקה" },
+    cap: { en: "\"Something went wrong\" turns into a clear answer in one minute", he: "\"משהו השתבש\" הופך לתשובה ברורה תוך דקה" },
     actors: [
       browser,
       { id: "n", icon: "🔍", label: { en: "Network tab", he: "לשונית Network" } },
@@ -473,31 +472,31 @@ export const EARLY_SCENES: Record<string, Scene> = {
       },
       {
         from: "s", to: "b", label: "400 Bad Request", status: 400,
-        say: { en: "The page swallows the answer and shows 'Something went wrong'. Omer is sure the server is broken.", he: "העמוד בולע את התשובה ומציג 'משהו השתבש'. עומר בטוח שהשרת שבור." },
+        say: { en: "The page hides the answer and shows 'Something went wrong'. Omer is sure the server is broken.", he: "העמוד מסתיר את התשובה ומציג 'משהו השתבש'. עומר בטוח שהשרת שבור." },
       },
       {
-        from: "b", to: "n", label: "F12 → Network → Fetch/XHR",
-        say: { en: "Stop guessing. Open DevTools, go to Network, filter to Fetch/XHR, click the red row.", he: "מפסיקים לנחש. פותחים DevTools, עוברים ל-Network, מסננים ל-Fetch/XHR, לוחצים על השורה האדומה." },
+        from: "b", to: "n", label: "F12 → Network",
+        say: { en: "Stop guessing. Press F12, open the Network tab, and click the red row.", he: "מפסיקים לנחש. לוחצים F12, פותחים את לשונית Network, ולוחצים על השורה האדומה." },
       },
       {
         from: "n", to: "n", label: "Response", status: 400,
-        body: ['{ "errors": { "stage": "Required" } }'],
-        say: { en: "Response shows the real message the page hid: stage is required.", he: "ב-Response רואים את ההודעה האמיתית שהעמוד הסתיר: חסר stage." },
+        body: ["stage: required"],
+        say: { en: "Response shows the server's real message, which the page hid: the stage is missing.", he: "ב-Response רואים את ההודעה האמיתית של השרת, שהעמוד הסתיר: חסר stage." },
       },
       {
         from: "n", to: "n", label: "Payload", tone: "err",
-        body: ['{ "name": "Noa Levi",', '  "email": "noa@levi.io" }'],
-        say: { en: "Payload shows what actually left: no stage. The form cleared it when the company field was reset.", he: "ב-Payload רואים מה באמת יצא: אין stage. הטופס ניקה אותו כששדה החברה אופס." },
+        body: ["name: Noa Levi", "email: noa@levi.io", "(no stage)"],
+        say: { en: "Payload shows what was actually sent: no stage. The form cleared it by mistake.", he: "ב-Payload רואים מה באמת נשלח: אין stage. הטופס מחק אותו בטעות." },
       },
       {
         from: "n", to: "n", label: "Headers · Timing", tone: "info",
-        body: ["Cookie: session=7f3a…  (attached)", "Waiting 38 ms · Download 2 ms"],
-        say: { en: "4xx means the request was wrong, not the server. The cookie was sent and the server was fast.", he: "4xx אומר שהבקשה הייתה שגויה, לא השרת. ה-cookie נשלח והשרת היה מהיר." },
+        body: ["cookie: sent", "server answered in 38 ms"],
+        say: { en: "A 4xx code means the request was wrong, not the server. The login cookie was sent, and the server was fast.", he: "קוד 4xx אומר שהבקשה הייתה שגויה, לא השרת. ה-cookie של ההתחברות נשלח, והשרת היה מהיר." },
       },
       {
         from: "b", to: "s", label: "POST /api/contacts",
-        body: ['{ "name": "Noa Levi",', '  "email": "noa@levi.io",', '  "stage": "lead" }'],
-        say: { en: "The form keeps the stage now. Same request, with the missing field.", he: "עכשיו הטופס שומר את ה-stage. אותה בקשה, עם השדה שחסר." },
+        body: ["name: Noa Levi", "email: noa@levi.io", "stage: lead"],
+        say: { en: "Now the form keeps the stage. Same request, with the missing field.", he: "עכשיו הטופס שומר את ה-stage. אותה בקשה, עם השדה שחסר." },
       },
       {
         from: "s", to: "b", label: "201 Created", status: 201,
@@ -507,7 +506,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
   },
 
   "race-condition": {
-    cap: { en: "Two saves, seven milliseconds apart, both sure there is room for one more", he: "שתי שמירות, בהפרש של שבע אלפיות שנייה, ושתיהן בטוחות שיש מקום לעוד אחד" },
+    cap: { en: "Two saves, a split second apart, both sure there's room for one more", he: "שתי שמירות, בהפרש של שבריר שנייה, ושתיהן בטוחות שיש מקום לעוד אחד" },
     actors: [
       { id: "a", icon: "👩", label: { en: "Dana's tab", he: "הלשונית של דנה" } },
       db,
@@ -515,148 +514,148 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
     beats: [
       {
-        from: "a", to: "d", label: "SELECT used FROM teams WHERE id=7",
-        say: { en: "The free plan allows 100 contacts; the team is at 99. Dana adds one, and her request reads the counter first.", he: "התוכנית החינמית מרשה 100 אנשי קשר, והצוות ב-99. דנה מוסיפה אחד, והבקשה שלה קוראת קודם את המונה." },
+        from: "a", to: "d", label: "how many contacts?",
+        say: { en: "The free plan allows 100 contacts and the team has 99. Dana adds one, and her request checks the count first.", he: "התוכנית החינמית מרשה 100 אנשי קשר, ולצוות יש 99. דנה מוסיפה אחד, והבקשה שלה בודקת קודם את הספירה." },
       },
       {
-        from: "o", to: "d", label: "SELECT used FROM teams WHERE id=7",
-        say: { en: "Seven milliseconds later, Omer adds one too. His request reads the same counter.", he: "שבע אלפיות שנייה אחר כך, גם עומר מוסיף אחד. הבקשה שלו קוראת את אותו מונה." },
+        from: "o", to: "d", label: "how many contacts?",
+        say: { en: "A split second later, Omer adds one too. His request checks the same count.", he: "שבריר שנייה אחר כך, גם עומר מוסיף אחד. הבקשה שלו בודקת את אותה ספירה." },
       },
       {
-        from: "d", to: "a", label: "used = 99",
-        say: { en: "Dana's code sees 99, checks 99 < 100, and goes ahead.", he: "הקוד של דנה רואה 99, בודק ש-99 קטן מ-100, וממשיך." },
+        from: "d", to: "a", label: "99 contacts",
+        say: { en: "Dana's request sees 99, which is under 100, so it goes ahead.", he: "הבקשה של דנה רואה 99, פחות מ-100, אז היא ממשיכה." },
       },
       {
-        from: "d", to: "o", label: "used = 99",
-        say: { en: "Omer's code sees 99 too. Nothing has been written yet.", he: "גם הקוד של עומר רואה 99. עוד לא נכתב כלום." },
+        from: "d", to: "o", label: "99 contacts",
+        say: { en: "Omer's sees 99 too. Nothing has been saved yet.", he: "גם הבקשה של עומר רואה 99. עוד לא נשמר כלום." },
       },
       {
-        from: "a", to: "d", label: "INSERT contact · SET used = 100",
-        say: { en: "Dana's request writes.", he: "הבקשה של דנה כותבת." },
+        from: "a", to: "d", label: "save contact · count = 100",
+        say: { en: "Dana's request saves.", he: "הבקשה של דנה שומרת." },
       },
       {
-        from: "o", to: "d", label: "INSERT contact · SET used = 100", tone: "err",
-        say: { en: "So does Omer's. 101 contacts, counter says 100. Every line was right; the gap between read and write was not.", he: "גם של עומר. 101 אנשי קשר, והמונה אומר 100. כל שורה הייתה נכונה, הפער בין הקריאה לכתיבה לא." },
+        from: "o", to: "d", label: "save contact · count = 100", tone: "err",
+        say: { en: "So does Omer's. 101 contacts, but the count says 100. Each step was right; the gap between check and save wasn't.", he: "גם של עומר. 101 אנשי קשר, והספירה אומרת 100. כל צעד היה נכון, הפער בין הבדיקה לשמירה לא." },
       },
       {
-        from: "a", to: "d", label: "UPDATE teams SET used = used + 1", tone: "ok",
-        body: ["WHERE id = 7 AND used < 100", "→ UPDATE 1"],
-        say: { en: "Replay with the fix: check and change in one statement. The database locks the row while it runs.", he: "אותו רגע, עם התיקון: בודקים ומשנים בפקודה אחת. המסד נועל את השורה בזמן שהיא רצה." },
+        from: "a", to: "d", label: "add one, only if under 100", tone: "ok",
+        body: ["→ added"],
+        say: { en: "Replay with the fix: check and add in one single step. The database lets one request do it at a time.", he: "אותו רגע, עם התיקון: בודקים ומוסיפים בצעד אחד. המסד נותן רק לבקשה אחת לעשות את זה בכל פעם." },
       },
       {
-        from: "o", to: "d", label: "UPDATE teams SET used = used + 1", tone: "warn",
-        body: ["WHERE id = 7 AND used < 100", "→ UPDATE 0"],
-        say: { en: "Omer's waits for the lock, re-checks, sees 100, changes nothing. He's told the plan is full. A sleep fixes nothing.", he: "של עומר מחכה לנעילה, בודקת שוב, רואה 100, ולא משנה כלום. הוא מקבל הודעה שהתוכנית מלאה. sleep לא מתקן כלום." },
+        from: "o", to: "d", label: "add one, only if under 100", tone: "warn",
+        body: ["→ nothing added: plan is full"],
+        say: { en: "Omer's waits its turn, sees 100, adds nothing. He's told the plan is full. Adding a delay would fix nothing.", he: "של עומר מחכה לתורה, רואה 100, ולא מוסיפה כלום. הוא מקבל הודעה שהתוכנית מלאה. השהיה לא הייתה מתקנת כלום." },
       },
     ],
   },
 
   "memory-leak": {
-    cap: { en: "A cache that only ever grows, until the process is killed", he: "קאש שרק גדל, עד שהתהליך נהרג" },
+    cap: { en: "A cache that only ever grows, until the app runs out of memory and crashes", he: "קאש שרק גדל, עד שלאפליקציה נגמר הזיכרון והיא קורסת" },
     actors: [
       { id: "q", icon: "🌐", label: { en: "Requests", he: "בקשות" } },
       code,
       { id: "m", icon: "🧠", label: { en: "Memory", he: "זיכרון" } },
-      { id: "g", icon: "🧹", label: { en: "Garbage collector", he: "Garbage collector" } },
+      { id: "g", icon: "🧹", label: { en: "Memory cleaner", he: "מנקה הזיכרון" } },
     ],
     beats: [
       {
         from: "q", to: "c", label: "GET /api/contacts?q=dan",
-        say: { en: "Each search runs, and the code keeps the result in a Map 'to be faster next time'.", he: "כל חיפוש רץ, והקוד שומר את התוצאה ב-Map 'כדי שבפעם הבאה יהיה מהיר יותר'." },
+        say: { en: "Each search runs, and the code keeps the result 'to be faster next time'. That's a cache.", he: "כל חיפוש רץ, והקוד שומר את התוצאה 'כדי שבפעם הבאה יהיה מהיר יותר'. זה קאש." },
       },
       {
-        from: "c", to: "m", label: "cache.set(\"dan\", rows)",
-        body: ["const cache = new Map()  // module level"],
-        say: { en: "The Map lives at module level, so it outlives every request.", he: "ה-Map חי ברמת המודול, אז הוא חי יותר מכל בקשה." },
+        from: "c", to: "m", label: "remember results for 'dan'",
+        body: ["kept for as long as the app runs"],
+        say: { en: "The saved results aren't tied to one request, so they stay after every request ends.", he: "התוצאות השמורות לא קשורות לבקשה אחת, אז הן נשארות גם אחרי שכל בקשה נגמרת." },
       },
       {
-        from: "g", to: "m", label: "GC sweep",
-        body: ["request objects: freed", "cache entries: still referenced"],
-        say: { en: "The garbage collector frees what nothing points to. The Map points to every result, so they all stay.", he: "ה-garbage collector משחרר את מה ששום דבר לא מצביע עליו. ה-Map מצביע על כל תוצאה, אז כולן נשארות." },
+        from: "g", to: "m", label: "cleanup round",
+        body: ["finished requests: cleared", "saved results: still kept"],
+        say: { en: "The memory cleaner throws out what nothing uses. The cache still holds every result, so they all stay.", he: "מנקה הזיכרון זורק את מה ששום דבר לא משתמש בו. הקאש עדיין מחזיק כל תוצאה, אז כולן נשארות." },
       },
       {
-        from: "q", to: "c", label: "day 3 · 180,000 different searches",
-        say: { en: "Nothing ever removes an entry. Every new search adds one.", he: "שום דבר לא מוחק רשומה אף פעם. כל חיפוש חדש מוסיף אחת." },
+        from: "q", to: "c", label: "day 3 · 180,000 searches",
+        say: { en: "Nothing ever removes an old result. Every new search adds one.", he: "שום דבר לא מוחק תוצאה ישנה אף פעם. כל חיפוש חדש מוסיף אחת." },
       },
       {
         from: "m", to: "m", label: "280 MB → 1.1 GB → 3.9 GB", tone: "warn",
         say: { en: "The memory graph is a staircase, not a sawtooth. It only ever goes up.", he: "גרף הזיכרון הוא מדרגות, לא שיני מסור. הוא רק עולה." },
       },
       {
-        from: "m", to: "c", label: "JavaScript heap out of memory", tone: "err",
-        say: { en: "The process is killed and restarted, at a predictable hour. Anything held only in memory is gone.", he: "התהליך נהרג ומופעל מחדש, בשעה שאפשר לצפות מראש. כל מה שהיה רק בזיכרון נעלם." },
+        from: "m", to: "c", label: "Out of memory", tone: "err",
+        say: { en: "The app is killed and restarted, like clockwork. Anything kept only in memory is gone.", he: "האפליקציה נהרגת ומופעלת מחדש, כמו שעון. כל מה שנשמר רק בזיכרון נעלם." },
       },
       {
-        from: "c", to: "c", label: "new LRUCache({ max: 500 })", tone: "ok",
-        body: ["ttl: 60_000  // 1 minute"],
-        say: { en: "The fix answers one question: what removes entries from this? Now a size limit and an expiry do.", he: "התיקון עונה על שאלה אחת: מה מוחק רשומות מכאן? עכשיו מגבלת גודל ותוקף עושים את זה." },
+        from: "c", to: "c", label: "keep only the last 500", tone: "ok",
+        body: ["each one expires after 1 minute"],
+        say: { en: "The fix answers one question: what removes old entries? Now a size limit and an expiry time do.", he: "התיקון עונה על שאלה אחת: מה מוחק רשומות ישנות? עכשיו מגבלת גודל וזמן תפוגה עושים את זה." },
       },
       {
         from: "m", to: "m", label: "steady around 300 MB", tone: "ok",
-        say: { en: "The graph becomes a sawtooth: up, collected, down. Ask that question of every Map, list and listener the AI writes.", he: "הגרף הופך לשיני מסור: עולה, נאסף, יורד. שאלו את השאלה הזאת על כל Map, רשימה ו-listener שה-AI כותב." },
+        say: { en: "The graph becomes a sawtooth: up, cleaned, down. Ask that question about anything the AI keeps in memory.", he: "הגרף הופך לשיני מסור: עולה, מתנקה, יורד. שאלו את השאלה הזאת על כל דבר שה-AI שומר בזיכרון." },
       },
     ],
   },
 
   "unit-integration-e2e": {
-    cap: { en: "An agent renames a column. Three levels of tests, three different verdicts", he: "סוכן משנה שם של עמודה. שלוש רמות של טסטים, שלוש תשובות שונות" },
+    cap: { en: "The AI renames one field. Three kinds of tests give three different answers", he: "ה-AI משנה שם של שדה אחד. שלושה סוגי טסטים נותנים שלוש תשובות שונות" },
     actors: [
       agent,
-      { id: "u", icon: "🧪", label: { en: "Unit", he: "יחידה" } },
-      { id: "i", icon: "🔗", label: { en: "Integration", he: "אינטגרציה" } },
-      { id: "e", icon: "🎭", label: { en: "E2E", he: "E2E" } },
+      { id: "u", icon: "🧪", label: { en: "Unit tests", he: "טסטי יחידה" } },
+      { id: "i", icon: "🔗", label: { en: "Integration tests", he: "טסטי אינטגרציה" } },
+      { id: "e", icon: "🎭", label: { en: "E2E tests", he: "טסטי E2E" } },
     ],
     beats: [
       {
-        from: "a", to: "u", label: "rename stage → deal_stage · 18 files",
-        say: { en: "The agent renames a column across 18 files, and forgets the migration.", he: "הסוכן משנה שם של עמודה ב-18 קבצים, ושוכח את המיגרציה." },
+        from: "a", to: "u", label: "rename stage → deal_stage",
+        say: { en: "The AI renames a field across 18 files, but forgets to update the database itself.", he: "ה-AI משנה שם של שדה ב-18 קבצים, אבל שוכח לעדכן את מסד הנתונים עצמו." },
       },
       {
         from: "u", to: "u", label: "210 passed · 0.4s", tone: "ok",
-        say: { en: "Unit tests call one function with a fake row built inside the test. All green, in under a second.", he: "טסטי יחידה קוראים לפונקציה אחת עם שורה מזויפת שנבנתה בתוך הטסט. הכול ירוק, בפחות משנייה." },
+        say: { en: "Unit tests check one small piece at a time, with fake data. All green, in under a second.", he: "טסטי יחידה בודקים חלק קטן אחד בכל פעם, עם נתונים מזויפים. הכול ירוק, בפחות משנייה." },
       },
       {
-        from: "u", to: "i", label: "npm run test:integration",
-        say: { en: "Integration tests run your parts together against a real test database.", he: "טסטי אינטגרציה מריצים את החלקים שלכם יחד מול מסד נתונים אמיתי לבדיקות." },
+        from: "u", to: "i", label: "run the integration tests",
+        say: { en: "Integration tests run the pieces together, against a real test database.", he: "טסטי אינטגרציה מריצים את החלקים יחד, מול מסד נתונים אמיתי לבדיקות." },
       },
       {
-        from: "i", to: "i", label: "column \"deal_stage\" does not exist", tone: "err",
-        body: ["contacts.repo.test.ts › list by stage"],
-        say: { en: "The real database still says 'stage'. Every part was fine; the seam between them broke.", he: "במסד האמיתי זה עדיין 'stage'. כל חלק היה תקין, התפר ביניהם נשבר." },
+        from: "i", to: "i", label: "no field called deal_stage", tone: "err",
+        body: ["test: list contacts by stage"],
+        say: { en: "The real database still says 'stage'. Every piece was fine; the join between them broke.", he: "במסד האמיתי זה עדיין 'stage'. כל חלק היה תקין, החיבור ביניהם נשבר." },
       },
       {
-        from: "a", to: "i", label: "migration 0008: RENAME COLUMN",
-        say: { en: "The agent adds the missing migration.", he: "הסוכן מוסיף את המיגרציה שחסרה." },
+        from: "a", to: "i", label: "rename it in the database too",
+        say: { en: "The AI adds the missing database change.", he: "ה-AI מוסיף את השינוי שחסר במסד הנתונים." },
       },
       {
         from: "i", to: "e", label: "26 passed · 5s", tone: "ok",
-        say: { en: "Integration is green. On to the slowest, truest level.", he: "האינטגרציה ירוקה. ממשיכים לרמה האיטית והאמיתית ביותר." },
+        say: { en: "Integration is green. On to the slowest, most realistic level.", he: "האינטגרציה ירוקה. ממשיכים לרמה האיטית והמציאותית ביותר." },
       },
       {
-        from: "e", to: "e", label: "add contact → appears in list", tone: "ok",
-        body: ["chromium · 4 passed · 24s"],
-        say: { en: "E2E drives the real app in a browser, like Noa would. Only it proves the button is wired to something.", he: "E2E מפעיל את האפליקציה האמיתית בדפדפן, כמו שנועה הייתה עושה. רק הוא מוכיח שהכפתור מחובר למשהו." },
+        from: "e", to: "e", label: "add contact → shows in list", tone: "ok",
+        body: ["real browser · 4 passed · 24s"],
+        say: { en: "E2E tests click through the real app in a browser, like Noa would. Only they prove the button really works.", he: "טסטי E2E לוחצים על האפליקציה האמיתית בדפדפן, כמו שנועה הייתה עושה. רק הם מוכיחים שהכפתור באמת עובד." },
       },
       {
         from: "e", to: "a", label: "240 passed", tone: "ok",
-        say: { en: "Many unit tests, solid integration around data, auth and money, a few E2E. Tell the AI which level you want.", he: "הרבה טסטי יחידה, אינטגרציה רצינית סביב נתונים, הרשאות וכסף, ומעט E2E. תגידו ל-AI איזו רמה אתם רוצים." },
+        say: { en: "Lots of unit tests, solid integration around data, sign-in and money, a few E2E. Tell the AI which kind you want.", he: "הרבה טסטי יחידה, אינטגרציה רצינית סביב נתונים, התחברות וכסף, ומעט E2E. תגידו ל-AI איזה סוג אתם רוצים." },
       },
     ],
   },
 
   regression: {
-    cap: { en: "A bug fixed without a test comes back. A bug fixed with one cannot", he: "באג שתוקן בלי טסט חוזר. באג שתוקן עם טסט לא יכול" },
+    cap: { en: "A bug fixed without a test comes back. A bug fixed with one can't", he: "באג שתוקן בלי טסט חוזר. באג שתוקן עם טסט לא יכול לחזור" },
     actors: [you, code, tests, agent],
     beats: [
       {
-        from: "y", to: "c", label: "fix: lowercase emails on save",
-        body: ["+ email = email.toLowerCase()"],
+        from: "y", to: "c", label: "fix: ignore capitals in emails",
+        body: ["DANA@acme.io = dana@acme.io"],
         say: { en: "March: Noa sees Dana twice, once as DANA@acme.io. A one-line fix, so obvious nobody writes a test.", he: "מרץ: נועה רואה את דנה פעמיים, פעם אחת כ-DANA@acme.io. תיקון של שורה אחת, כל כך ברור שאף אחד לא כותב טסט." },
       },
       {
-        from: "a", to: "c", label: "refactor: merge 3 email helpers", tone: "warn",
-        body: ["- email = email.toLowerCase()"],
-        say: { en: "September: an agent tidies the helpers. The line goes, because its reason lived in a chat, not in the repo.", he: "ספטמבר: סוכן מסדר את פונקציות העזר. השורה נעלמת, כי הסיבה שלה חיה בצ'אט, לא בריפו." },
+        from: "a", to: "c", label: "tidy up: merge email helpers", tone: "warn",
+        body: ["- the capitals fix is gone"],
+        say: { en: "September: the AI tidies up the code. The line goes, because its reason lived in a chat, not in the repo.", he: "ספטמבר: ה-AI מסדר את הקוד. השורה נעלמת, כי הסיבה שלה חיה בצ'אט, לא בריפו." },
       },
       {
         from: "t", to: "t", label: "npm run check · 248 passed", tone: "ok",
@@ -668,8 +667,8 @@ export const EARLY_SCENES: Record<string, Scene> = {
       },
       {
         from: "y", to: "t", label: "add the failing test first",
-        body: ["it(\"same email in capitals is", "    one contact\")"],
-        say: { en: "This time, first a test named in the customer's words, not the function's.", he: "הפעם, קודם טסט שנקרא במילים של הלקוחה, לא של הפונקציה." },
+        body: ["test: same email in capitals", "      is one contact"],
+        say: { en: "This time, first a test named in the customer's words, not the code's.", he: "הפעם, קודם טסט שנקרא במילים של הלקוחה, לא של הקוד." },
       },
       {
         from: "t", to: "y", label: "✗ expected 1 contact, got 2", tone: "err",
@@ -677,63 +676,63 @@ export const EARLY_SCENES: Record<string, Scene> = {
       },
       {
         from: "y", to: "c", label: "fix + test, one commit", tone: "ok",
-        body: ["+ email = email.trim().toLowerCase()"],
+        body: ["+ ignore capitals and extra spaces"],
         say: { en: "One commit per bug: the test that fails because of it, and the fix that makes it pass.", he: "commit אחד לכל באג: הטסט שנכשל בגללו, והתיקון שגורם לו לעבור." },
       },
       {
         from: "t", to: "t", label: "249 passed", tone: "ok",
-        say: { en: "Green, and now the suite remembers why that line exists.", he: "ירוק, ועכשיו חבילת הטסטים זוכרת למה השורה הזאת קיימת." },
+        say: { en: "Green, and now the tests remember why that line exists.", he: "ירוק, ועכשיו הטסטים זוכרים למה השורה הזאת קיימת." },
       },
       {
-        from: "t", to: "a", label: "✗ same email in capitals is one contact", tone: "err",
-        say: { en: "The next time an agent drops that line, this test fails in CI, before any customer sees it.", he: "בפעם הבאה שסוכן יוריד את השורה, הטסט הזה ייכשל ב-CI, לפני שלקוח כלשהו יראה." },
+        from: "t", to: "a", label: "✗ same email in capitals", tone: "err",
+        say: { en: "Next time the AI drops that line, this test fails in the automatic checks, before any customer sees it.", he: "בפעם הבאה שה-AI יוריד את השורה, הטסט הזה ייכשל בבדיקות האוטומטיות, לפני שלקוח כלשהו יראה." },
       },
     ],
   },
 
   "flaky-test": {
-    cap: { en: "Same code, green then red. The cost is that red stops meaning anything", he: "אותו קוד, ירוק ואז אדום. המחיר: אדום מפסיק להגיד משהו" },
+    cap: { en: "Same code, green then red. The real cost: red stops meaning anything", he: "אותו קוד, ירוק ואז אדום. המחיר האמיתי: אדום מפסיק להגיד משהו" },
     actors: [
-      { id: "i", icon: "🤖", label: { en: "CI", he: "CI" } },
+      { id: "i", icon: "🤖", label: { en: "Automatic checks (CI)", he: "בדיקות אוטומטיות (CI)" } },
       { id: "e", icon: "🎭", label: { en: "E2E test", he: "טסט E2E" } },
       { id: "p", icon: "🌐", label: { en: "App", he: "אפליקציה" } },
     ],
     beats: [
       {
-        from: "e", to: "p", label: "click Save · wait 500 ms",
-        body: ["await page.waitForTimeout(500)"],
-        say: { en: "The test adds a contact, then waits a fixed half second before checking the list.", he: "הטסט מוסיף איש קשר, ואז מחכה חצי שנייה קבועה לפני שהוא בודק את הרשימה." },
+        from: "e", to: "p", label: "click Save · wait 0.5 s",
+        body: ["then check the list"],
+        say: { en: "The test adds a contact, then always waits half a second before checking the list.", he: "הטסט מוסיף איש קשר, ואז תמיד מחכה חצי שנייה לפני שהוא בודק את הרשימה." },
       },
       {
-        from: "p", to: "e", label: "row visible after 180 ms", tone: "ok",
-        say: { en: "Usually the save takes 180 ms. Green.", he: "בדרך כלל השמירה לוקחת 180 מילישניות. ירוק." },
+        from: "p", to: "e", label: "row shows after 0.18 s", tone: "ok",
+        say: { en: "Usually saving takes less than a fifth of a second. Green.", he: "בדרך כלל השמירה לוקחת פחות מחמישית שנייה. ירוק." },
       },
       {
-        from: "p", to: "e", label: "row visible after 620 ms", tone: "err",
-        body: ["expect(row).toBeVisible() ✗"],
-        say: { en: "On a busy CI machine it took 620 ms. Red, on the same code. That is a flaky test.", he: "במכונת CI עמוסה זה לקח 620 מילישניות. אדום, על אותו קוד. זה טסט הפכפך." },
+        from: "p", to: "e", label: "row shows after 0.62 s", tone: "err",
+        body: ["row not there yet ✗"],
+        say: { en: "On a busy test machine it took 0.62 s. Red, on the same code. A flaky test passes or fails by luck.", he: "במכונת בדיקות עמוסה זה לקח 0.62 שניות. אדום, על אותו קוד. טסט הפכפך עובר או נכשל לפי מזל." },
       },
       {
-        from: "i", to: "i", label: "Re-run failed jobs → ✓", tone: "warn",
-        say: { en: "Retry, green. A few weeks of this and the team presses retry without reading.", he: "מריצים שוב, ירוק. כמה שבועות כאלה, והצוות לוחץ retry בלי לקרוא." },
+        from: "i", to: "i", label: "run again → ✓", tone: "warn",
+        say: { en: "Retry, green. After a few weeks of this, the team presses retry without reading.", he: "מריצים שוב, ירוק. אחרי כמה שבועות כאלה, הצוות לוחץ retry בלי לקרוא." },
       },
       {
-        from: "i", to: "i", label: "✗ Omer gets 404 on Dana's contact", tone: "err",
-        body: ["re-run → ✓ (lucky order) → merged"],
-        say: { en: "Then a real bug fails a test. The retry passes by luck and it ships. The flake cost you the meaning of red.", he: "ואז באג אמיתי מפיל טסט. ההרצה החוזרת עוברת במזל, וזה עולה לאוויר. הטסט ההפכפך עלה לכם במשמעות של אדום." },
+        from: "i", to: "i", label: "✗ Omer can open Dana's contact", tone: "err",
+        body: ["run again → ✓ by luck → shipped"],
+        say: { en: "Then a real bug fails a test. The retry passes by luck and it goes live. The flaky test cost you the meaning of red.", he: "ואז באג אמיתי מפיל טסט. ההרצה החוזרת עוברת במזל, וזה עולה לאוויר. הטסט ההפכפך עלה לכם במשמעות של אדום." },
       },
       {
         from: "e", to: "e", label: "wait for the row, not the clock", tone: "ok",
-        body: ["- await page.waitForTimeout(500)", "+ await expect(row).toBeVisible()"],
-        say: { en: "Fix it within a day: wait for the condition. Playwright's expect keeps retrying until the row shows up.", he: "מתקנים תוך יום: מחכים לתנאי. ה-expect של Playwright ממשיך לנסות עד שהשורה מופיעה." },
+        body: ["- wait half a second", "+ wait until the row appears"],
+        say: { en: "Fix it within a day: wait for the thing itself. The test keeps looking until the row shows up.", he: "מתקנים תוך יום: מחכים לדבר עצמו. הטסט ממשיך לחפש עד שהשורה מופיעה." },
       },
       {
         from: "e", to: "p", label: "click Save",
         say: { en: "Same slow machine, same test.", he: "אותה מכונה איטית, אותו טסט." },
       },
       {
-        from: "p", to: "e", label: "row visible after 620 ms ✓", tone: "ok",
-        say: { en: "Green. Raising the timeout would only hide the question: what is this test actually waiting for?", he: "ירוק. הגדלת ה-timeout רק הייתה מסתירה את השאלה: למה הטסט הזה בעצם מחכה?" },
+        from: "p", to: "e", label: "row shows after 0.62 s ✓", tone: "ok",
+        say: { en: "Green. Just waiting longer would only hide the question: what is this test actually waiting for?", he: "ירוק. סתם לחכות יותר רק היה מסתיר את השאלה: למה הטסט הזה בעצם מחכה?" },
       },
     ],
   },

@@ -68,10 +68,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={cn(heebo.variable, jetbrainsMono.variable, "font-sans", geist.variable)}
     >
       <body dir={dir} suppressHydrationWarning>
-        {/* restore the nav toggle before paint, so a refresh doesn't flash the wrong state */}
+        {/* restore the folded desktop nav before paint, so a refresh doesn't flash the wrong state */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem('v2c.nav')==='1')document.body.classList.add('nav-toggled')}catch(e){}`,
+            __html: `try{if(localStorage.getItem('v2c.nav')==='1')document.body.classList.add('nav-collapsed')}catch(e){}`,
           }}
         />
         <Providers UI={UI}>{children}</Providers>

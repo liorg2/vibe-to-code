@@ -19,7 +19,7 @@ for (const id of PATHS.find((p) => p.id === "advanced")!.mods) {
   b.uses.forEach((k) => assert.ok(slugs.has(k), `build ${id}: unknown topic ${k}`));
   for (const [name, p] of [["build", b.build], ["check", b.check]] as const) {
     const n = words(p);
-    assert.ok(n >= 60 && n <= 260, `build ${id}.${name}: ${n} words`);
+    assert.ok(n >= 40 && n <= 200, `build ${id}.${name}: ${n} words`);
     assert.ok(p.includes("STEPS.md"), `build ${id}.${name}: never mentions STEPS.md`);
   }
   assert.match(b.check, /npm run (check|test:all)/, `build ${id}.check: does not run the suite`);

@@ -5,51 +5,44 @@ export const BUILDS_BASIC: Record<string, BuildStep> = {
   ground: {
     title: { en: "From an empty folder to a running app", he: "מתיקייה ריקה לאפליקציה שרצה" },
     goal: {
-      en: "Pocket CRM runs on your own machine at localhost:3000, with one passing test and the house rules written down.",
-      he: "Pocket CRM רץ אצלכם על המחשב ב-localhost:3000, עם טסט אחד שעובר וחוקי הבית כתובים בקובץ.",
+      en: "Pocket CRM opens in your browser on your own computer, with one passing test and the house rules written down.",
+      he: "Pocket CRM נפתח בדפדפן על המחשב שלכם, עם טסט אחד שעובר וחוקי הבית כתובים בקובץ.",
     },
     why: {
-      en: "Code is text, a runtime runs it, and the terminal is where you watch it happen — this step makes all three real.",
-      he: "קוד הוא טקסט, סביבת ריצה מריצה אותו, והטרמינל הוא המקום שבו רואים את זה קורה. הצעד הזה הופך את שלושתם למשהו מוחשי.",
+      en: "Code is just text, something has to run it, and the terminal is where you watch that happen. This step makes all three real.",
+      he: "קוד הוא בסך הכול טקסט, משהו צריך להריץ אותו, והטרמינל הוא המקום שבו רואים את זה קורה. הצעד הזה הופך את שלושתם למשהו מוחשי.",
     },
     uses: ["source-code", "runtime", "terminal-cli", "environment", "bug-stack-trace"],
-    build: `This folder is empty. I have only Node.js and you, so run every command yourself.
+    build: `I'm not a developer: you run every command yourself. This is step 1 of Pocket CRM, a small app for tracking the people I work with.
 
-1. Scaffold Next.js here: App Router, TypeScript strict, ESLint, npm, no Tailwind, no src directory, package name pocket-crm. The home page shows one heading: Pocket CRM.
-2. Add Vitest and lib/displayName.ts: displayName(first, last) trims both and joins the non-empty parts with one space. One test.
-3. Add npm scripts: typecheck (tsc --noEmit), test (vitest run), and check: typecheck, lint, test, stopping at the first failure.
-4. Create AGENTS.md containing exactly these house rules:
-- Stack: Next.js App Router, TypeScript strict, npm. Tests: Vitest; Playwright from step 05. From step 07: Postgres on Neon, Drizzle ORM, drizzle-kit migrations. Hosting: Vercel.
-- npm run check (typecheck + lint + unit tests) must be green before a step is done. Paste real output, never "should pass".
-- Start every task by reading AGENTS.md and STEPS.md. Each finished step appends one line to STEPS.md.
-- From step 02: one branch per step (step-NN-slug), small commits, merge to main after the check passes.
-- Small diffs; do not touch unrelated files. Ask before adding an unnamed dependency. Never commit secrets; .env.local stays gitignored.
-5. Create STEPS.md containing only "# Steps".
+- Start a new Next.js app in this empty folder, called pocket-crm. The home page shows only the title "Pocket CRM".
+- Add a tiny helper that joins a first and last name into a full name, with one test.
+- Add one command, npm run check, that runs every automatic check.
+- Create AGENTS.md with house rules for every step: read AGENTS.md and STEPS.md before starting; run all the tests before calling a step done and show me the real output; one branch per step once we have Git; small changes, don't touch unrelated files; ask before adding a new tool; never put passwords or keys in the code. Add a short "Stack" section listing the tools you picked.
+- Create STEPS.md with just the heading "Steps". Each finished step adds one line to it.
 
-No git yet. Run npm run check, then start npm run dev and tell me which URL to open and what I will see.`,
-    check: `Verify step 01 — ground. Do not add features.
+Explain your tool choices to me in 2–3 plain sentences. Then start the app with npm run dev and tell me in plain words what to open or click to see it working.`,
+    check: `Check step 1. Don't add features.
 
-1. Extend the displayName test: first and last name joined; extra spaces trimmed; an empty last name gives just the first name.
-2. Run npm run check and paste the last lines of the typecheck, lint and test parts.
-3. Break displayName on purpose (make it return only the first name), run npm test, and paste the failure with its full stack trace. Walk me through it top-down: which line is our code, which lines belong to Vitest or Node internals, and which file and line you would open first. Then revert the change and run npm test again to show it is green.
-4. Run node -v and npm -v. Add a "Runtime" section to AGENTS.md with both versions and the line "Environment: local, http://localhost:3000".
-5. Start npm run dev, fetch http://localhost:3000 with curl, and show the line of HTML that contains Pocket CRM.
+- Add tests proving the full-name helper works: first and last name are joined with one space, extra spaces are removed, and a missing last name gives just the first name.
+- Run all the tests with npm run check.
+- Break the helper on purpose so a test fails. Show me the error with its full list of lines (the stack trace) and tell me in plain words which line is our own code and which lines belong to the tools. Then undo the break and show the tests pass again.
+- Add a short "Runtime" section to AGENTS.md: which version of Node this runs on, and that we work locally at http://localhost:3000.
+- With the app running, confirm the home page really shows "Pocket CRM".
 
-Report a table with the columns check | command | result, pasting real output lines, not summaries. If any check fails, STOP: show me the failure and do not fix it silently.
-
-Last, append this line to STEPS.md: 01 ground — Next.js app runs locally, npm run check green.`,
+Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently. If all is green, add one line to STEPS.md: "1 ground: the app runs on my computer". (No Git yet, so nothing to commit; that's step 2.)`,
     done: [
       {
         en: "I opened localhost:3000 in my browser and saw Pocket CRM",
         he: "פתחתם את localhost:3000 בדפדפן וראיתם Pocket CRM",
       },
       {
-        en: "npm run check finished green: typecheck, lint and tests",
-        he: "npm run check הסתיים בירוק: typecheck, lint וטסטים",
+        en: "npm run check finished green",
+        he: "npm run check הסתיים בירוק",
       },
       {
-        en: "I saw the broken test's stack trace and know which line was our code",
-        he: "ראיתם את ה-stack trace של הטסט השבור ואתם יודעים איזו שורה היא הקוד שלנו",
+        en: "I saw the broken test's error and know which line was our own code",
+        he: "ראיתם את השגיאה של הטסט השבור ואתם יודעים איזו שורה היא הקוד שלנו",
       },
       {
         en: "AGENTS.md and STEPS.md exist and I read them",
@@ -61,50 +54,48 @@ Last, append this line to STEPS.md: 01 ground — Next.js app runs locally, npm 
   vcs: {
     title: { en: "Git, GitHub and a live URL", he: "Git, GitHub וכתובת חיה באוויר" },
     goal: {
-      en: "The project has its full history on GitHub, and Vercel serves it at a public https URL, with a separate preview URL for every branch.",
-      he: "לפרויקט יש היסטוריה מלאה ב-GitHub, ו-Vercel מגיש אותו בכתובת https ציבורית, עם כתובת preview נפרדת לכל ברנץ'.",
+      en: "The project's full history is saved on GitHub, and Vercel shows it at a public web address, with a separate preview address for every branch.",
+      he: "כל ההיסטוריה של הפרויקט שמורה ב-GitHub, ו-Vercel מציג אותו בכתובת אינטרנט ציבורית, עם כתובת preview נפרדת לכל ברנץ'.",
     },
     why: {
       en: "Once every change is a commit you can read and undo, letting an AI edit thirty files stops being scary.",
       he: "ברגע שכל שינוי הוא commit שאפשר לקרוא ולבטל, לתת ל-AI לערוך שלושים קבצים כבר לא מפחיד.",
     },
     uses: ["source-control", "repository-repo", "commit-branch-merge", "clone-push-pull", "deploy"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 02 — vcs. Work on branch step-02-vcs.
+    build: `Read AGENTS.md and STEPS.md first. This is step 2: saving our history and putting the app online.
 
-Git does not exist here yet, so start on main and create the branch in step 3.
+This step publishes the app, so first tell me your plan in a few plain bullets and wait for my OK.
 
-1. Run git init with main as the default branch. Write a .gitignore covering node_modules, .next, .vercel, coverage, test-results, playwright-report, *.tsbuildinfo and every .env* file except .env.example. Show me the file.
-2. First commit on main: "chore: scaffold Pocket CRM".
-3. Create the branch step-02-vcs.
-4. Create a GitHub repo named pocket-crm and push main. Use the gh CLI if it is installed and logged in; otherwise give me the exact clicks and wait for the repo URL.
-5. Walk me through importing the repo into Vercel (Add New → Project → pocket-crm, defaults, production branch main) and wait for me to paste the production URL.
-6. On step-02-vcs: add a small footer "v0.1" to the home page, add the production URL to AGENTS.md with the line "Vercel deploys main to production and every other branch to a preview URL", commit, and push the branch.
+- Set up Git so every change is saved as a commit (a named snapshot I can go back to). Secret files, like the one for passwords later, must never be saved into it.
+- Save everything so far as the first commit on main.
+- Put it on GitHub as a repo called pocket-crm (free account); if you can't do it yourself, give me the exact clicks.
+- Walk me through connecting it to Vercel (free account), so main goes live on a public address. Wait for me to paste it, then note it in AGENTS.md.
+- Start a branch (a side copy of the work) for this step, add a small "v0.1" at the bottom of the home page, and send it to GitHub. Don't merge yet.
 
-Do not merge yet or change anything else. Finish by telling me where in Vercel I find the preview URL for step-02-vcs, and what I should see there versus on production.`,
-    check: `Verify step 02 — vcs. Do not add features.
+Then tell me in plain words what to open or click to see it working: where to find this branch's preview address, and how it differs from the live site.`,
+    check: `Check step 2. Don't add features.
 
-1. Add lib/repo.test.ts: it reads .gitignore and asserts it ignores node_modules, .next and .env.local. Run npm run check.
-2. git status must say the working tree is clean. Paste git log --oneline --all -n 10.
-3. Create .env.local with the line DEMO=not-a-secret. Run git check-ignore -v .env.local and show which .gitignore line matched, then git status to prove it is not listed.
-4. git remote -v, and compare git rev-parse main with git ls-remote origin main: same SHA.
-5. curl -I the production URL: status 200. curl -s it: contains Pocket CRM and does NOT contain v0.1 yet.
-6. Ask me to open the step-02-vcs preview URL (Vercel may ask me to log in, previews are protected by default) and tell you whether I see v0.1. Confirm the preview URL differs from the production URL.
+- Add a test proving secret files, like .env.local, are on Git's ignore list. Then create a fake secret file and show that Git really ignores it.
+- Show that nothing is left unsaved, and that GitHub has exactly the same latest commit as my computer.
+- Show that the live site answers and shows "Pocket CRM", but no "v0.1" yet.
+- Ask me to open the branch's preview address (Vercel may ask me to log in) and tell you whether I see v0.1. Confirm it is a different address from the live one.
+- Run all the tests with npm run check.
 
-Report a table: check | command | result, with real output lines. If anything fails, STOP and show me the failure; do not fix it silently.
+Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
 
-If every row passed: append "02 vcs — on GitHub, live on Vercel, branch previews work" to STEPS.md, commit, merge step-02-vcs into main, push, and curl -s production again to show v0.1 is now live.`,
+If all is green: add the line "2 vcs: on GitHub, live on Vercel, branch previews work" to STEPS.md, save it as a commit, merge the branch into main, send it to GitHub, and show me that v0.1 is now on the live site.`,
     done: [
       {
-        en: "I opened the production URL and saw Pocket CRM",
-        he: "פתחתם את כתובת הפרודקשן וראיתם Pocket CRM",
+        en: "I opened the live address and saw Pocket CRM",
+        he: "פתחתם את הכתובת החיה וראיתם Pocket CRM",
       },
       {
-        en: "The preview URL showed v0.1 before production did",
-        he: "כתובת ה-preview הראתה v0.1 לפני שהפרודקשן הראה",
+        en: "The preview address showed v0.1 before the live site did",
+        he: "כתובת ה-preview הראתה v0.1 לפני שהאתר החי הראה",
       },
       {
-        en: "git check-ignore proved .env.local will never be committed",
-        he: "git check-ignore הוכיח ש-.env.local לא ייכנס אף פעם ל-commit",
+        en: "The AI proved the fake secret file will never be saved to Git",
+        he: "ה-AI הוכיח שקובץ הסוד המדומה לא יישמר אף פעם ב-Git",
       },
       {
         en: "I saw my commits on the repo page on GitHub",
@@ -116,35 +107,37 @@ If every row passed: append "02 vcs — on GitHub, live on Vercel, branch previe
   sides: {
     title: { en: "Both sides talking", he: "שני הצדדים מדברים" },
     goal: {
-      en: "The home page asks your own server GET /api/health and shows the answer, and you watch that request in DevTools.",
-      he: "דף הבית שולח לשרת שלכם GET /api/health ומציג את התשובה, ואתם רואים את הבקשה הזאת ב-DevTools.",
+      en: "The home page asks your own server whether it is up and shows the answer, and you watch that request happen in the browser's DevTools.",
+      he: "דף הבית שואל את השרת שלכם אם הוא עובד ומציג את התשובה, ואתם רואים את הבקשה הזאת קורית ב-DevTools של הדפדפן.",
     },
     why: {
-      en: "One log lands in the terminal and the other in the browser console — the fastest way to learn which side a line of code runs on.",
-      he: "לוג אחד מופיע בטרמינל והשני ב-console של הדפדפן. זו הדרך המהירה ביותר ללמוד באיזה צד רצה שורת קוד.",
+      en: "One note lands in the terminal and the other in the browser console. It's the fastest way to learn which side a piece of code runs on.",
+      he: "הודעה אחת מופיעה בטרמינל והשנייה ב-console של הדפדפן. זו הדרך המהירה ביותר ללמוד באיזה צד רץ כל חלק בקוד.",
     },
     uses: ["client", "server", "localhost-and-port", "devtools", "the-network-tab", "console-and-breakpoints"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 03 — sides. Work on branch step-03-sides.
+    build: `Read AGENTS.md and STEPS.md first. This is step 3. Start a new branch for it.
 
-1. Create lib/health.ts exporting getHealth(now: Date), which returns { ok: true, time: now.toISOString() }. Keeping it a plain function lets us test it without a running server.
-2. Create app/api/health/route.ts: GET logs "[server] health checked" with console.log and returns getHealth(new Date()) as JSON.
-3. Create components/HealthStatus.tsx, a client component ("use client"), and render it on the home page under the Pocket CRM heading. On mount it fetches /api/health, logs "[browser] health response" with the body, and shows "Checking server…" while waiting, then "Server OK at <time>", or "Server unreachable" if the request fails.
-4. Mark the route so it is never cached or prerendered; the time must be fresh on every request.
+I want to see the browser and the server talk to each other.
 
-Do not add other routes, a data-fetching library or styling changes. Explain in two lines which of these files runs on the server, which runs in the browser, and how you can tell from the code.
+- Give the server a small health check at the address /api/health that answers "I'm OK" with the current time. The time must be fresh on every request, never a saved copy.
+- Each time it answers, the server writes "[server] health checked" in the terminal.
+- Under the Pocket CRM title, the home page asks the server and shows "Checking server…" while it waits, then "Server OK at <time>", or "Server unreachable" if there is no answer. When the answer arrives, the browser writes "[browser] health response" in its console.
+- Nothing else: no new tools, no design changes.
 
-Finish with: run npm run dev, open http://localhost:3000, and tell me what I should see on the page, in the terminal, and in the browser console.`,
-    check: `Verify step 03 — sides. Do not add features.
+Explain to me in 2–3 plain sentences which part runs on the server, which runs in the browser, and how you can tell.
 
-1. Add unit tests: getHealth with a fixed Date returns ok: true and exactly that ISO time; calling the exported GET from app/api/health/route.ts directly returns status 200, a JSON content-type, and ok: true.
-2. Run npm run check.
-3. With npm run dev running, run curl -i http://localhost:3000/api/health. Paste the status line, the content-type header and the body, plus the matching "[server]" line from the dev server's terminal.
-4. Ask me to open the page, press F12, go to the Network tab, reload, click the health request, and tell you its status and time; then the Console tab and the "[browser]" line. Add what I report to the table.
-5. Explain in two plain sentences why the [server] line appears only in the terminal and the [browser] line only in the browser console.
+Then start the app with npm run dev and tell me in plain words what to open or click to see it working: on the page, in the terminal, and in the browser console.`,
+    check: `Check step 3. Don't add features.
 
-Report a table: check | command | result, with real output lines. If anything fails, STOP and show me the failure; do not fix it silently.
+- Add tests proving the health check says OK with exactly the time it was given, and that /api/health answers with status 200 and JSON.
+- Run all the tests with npm run check.
+- With the app running, ask /api/health yourself and show me the real answer, plus the matching "[server]" line from the terminal.
+- Guide me step by step: press F12, open the Network tab, reload, click the health request, and tell you its status and how long it took. Then open the Console tab and find the "[browser]" line.
+- Explain in two plain sentences why each line shows up only where it does.
 
-If every row passed: append "03 sides — /api/health on the server, called from the browser" to STEPS.md, commit, merge step-03-sides into main and push. Then curl -i the production URL + /api/health and add that row.`,
+Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
+
+If all is green: add the line "3 sides: the browser talks to our server" to STEPS.md, save it as a commit, merge into main, send it to GitHub, and check /api/health on the live site too.`,
     done: [
       {
         en: "The home page showed Server OK with a fresh time",
@@ -155,12 +148,12 @@ If every row passed: append "03 sides — /api/health on the server, called from
         he: "מצאתם את בקשת ה-health בלשונית Network וקראתם את הסטטוס והזמן שלה",
       },
       {
-        en: "I saw the [server] log in the terminal and the [browser] log in the console",
-        he: "ראיתם את לוג ה-[server] בטרמינל ואת לוג ה-[browser] ב-console",
+        en: "I saw the [server] note in the terminal and the [browser] note in the console",
+        he: "ראיתם את הודעת ה-[server] בטרמינל ואת הודעת ה-[browser] ב-console",
       },
       {
-        en: "/api/health answered on the live URL",
-        he: "/api/health ענה בכתובת החיה",
+        en: "/api/health answered on the live site too",
+        he: "/api/health ענה גם באתר החי",
       },
     ],
   },
@@ -168,49 +161,51 @@ If every row passed: append "03 sides — /api/health on the server, called from
   langs: {
     title: { en: "Types that say no", he: "טיפוסים שיודעים להגיד לא" },
     goal: {
-      en: "A Contact type and one zod schema define what a valid contact is, and both the typechecker and the tests reject anything else.",
-      he: "טיפוס Contact וסכמת zod אחת מגדירים מה זה איש קשר תקין, וגם ה-typechecker וגם הטסטים דוחים כל דבר אחר.",
+      en: "One clear definition says what a valid contact is, and both TypeScript and the tests refuse anything else.",
+      he: "הגדרה אחת ברורה קובעת מה זה איש קשר תקין, וגם TypeScript וגם הטסטים דוחים כל דבר אחר.",
     },
     why: {
-      en: "TypeScript catches a bad stage before the code runs, the schema catches it when data arrives at runtime — you need both, and it costs exactly one dependency.",
-      he: "TypeScript תופס stage שגוי לפני שהקוד רץ, והסכמה תופסת אותו כשהנתונים מגיעים בזמן ריצה. צריך את שניהם, וזה עולה dependency אחת בלבד.",
+      en: "TypeScript catches a bad value while the code is written; a runtime check catches it when real data arrives. You need both, and it costs one small tool.",
+      he: "TypeScript תופס ערך שגוי כבר כשכותבים את הקוד, ובדיקה בזמן ריצה תופסת אותו כשמגיעים נתונים אמיתיים. צריך את שניהם, וזה עולה כלי קטן אחד.",
     },
     uses: ["typed-vs-untyped", "javascript-typescript", "package-manager", "dependency", "semantic-versioning"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 04 — langs. Work on branch step-04-langs.
+    build: `Read AGENTS.md and STEPS.md first. This is step 4. Start a new branch for it.
 
-1. Install zod with npm. It is the only new dependency in this step; add nothing else.
-2. Create lib/contact.ts with:
-- STAGES = ["lead", "qualified", "won", "lost"] as const;
-- a zod schema ContactInput: name (trimmed, required, at most 100 characters), email (a valid email), company (optional string), stage (one of STAGES, default "lead");
-- type ContactInput inferred from the schema, and type Contact = ContactInput plus id: string and createdAt: string.
-3. In tsconfig.json keep "strict": true and add "noUncheckedIndexedAccess": true. Fix any new type errors properly, with no any, no @ts-ignore and no non-null assertions added to silence them.
-4. In the ESLint config, make no-explicit-any and no-unused-vars errors, not warnings. Fix whatever they find.
-5. Make sure package-lock.json is tracked by git. Show me the zod line in package.json and explain in one sentence what its ^ allows under semantic versioning.
+Define, in one place, what a valid contact is:
+- a name: required, not just spaces, at most 100 characters;
+- an email that really looks like an email;
+- a company, optional;
+- a stage: one of lead, qualified, won or lost, and lead when not given.
 
-Do not use the schema in the UI or any route yet; that is the next steps. Finish with: run npm run check, and tell me what I should see.`,
-    check: `Verify step 04 — langs. Do not add features.
+- It must work twice: TypeScript (a checker that reads the code before it runs) rejects a bad contact in the code, and a runtime check rejects bad data as it arrives.
+- You may add one small tool for the runtime check. Tell me which one and why, and write it in AGENTS.md. Nothing else new.
+- Make TypeScript strict and fix what it finds properly, with no shortcuts that hide errors.
+- Make sure the exact versions of our tools are locked and saved in Git. Explain in one sentence what the ^ before a version number allows.
 
-1. Add lib/contact.test.ts: one valid contact parses and its stage defaults to "lead"; four invalid inputs fail, each with the error on the right field: empty name, a name of only spaces, email "not-an-email", stage "maybe".
-2. In the same file add a type-level test: a Contact object with stage: "maybe" on the line after // @ts-expect-error. Remove that comment temporarily, run npm run typecheck, paste the type error it prints, then put the comment back.
-3. Run npm run check.
-4. Run npm ls zod: exactly one version. Run git ls-files package-lock.json to prove the lockfile is tracked.
-5. Run git grep -nE ": any\\b|as any" -- "*.ts" "*.tsx": no results.
+Don't use it on any page yet. Run npm run check and tell me in plain words what I should see. STEPS.md gets its line after the check.`,
+    check: `Check step 4. Don't add features.
 
-Report a table: check | command | result, with real output lines. If anything fails, STOP and show me the failure; do not fix it silently.
+- Add tests proving the rules work: one valid contact is accepted and its stage becomes lead; four bad ones are refused, each with the error on the right field: an empty name, a name of only spaces, the email "not-an-email", and the stage "maybe".
+- Add a test proving TypeScript itself refuses a contact with stage "maybe", and show me the exact error message it prints.
+- Show that only one version of the new tool is installed and that the file locking the versions is saved in Git.
+- Confirm there are no shortcuts anywhere that switch TypeScript's checks off.
+- Run all the tests with npm run check.
 
-If every row passed: append "04 langs — Contact type and zod schema, strict TypeScript" to STEPS.md, commit, merge step-04-langs into main and push.`,
+Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
+
+If all is green: add the line "4 langs: one clear definition of a valid contact" to STEPS.md, save it as a commit, merge into main and send it to GitHub.`,
     done: [
       {
-        en: "I saw the type error TypeScript printed for stage \"maybe\"",
-        he: "ראיתם את שגיאת הטיפוס ש-TypeScript הדפיס על stage בשם maybe",
+        en: "I saw the error TypeScript printed for stage \"maybe\"",
+        he: "ראיתם את השגיאה ש-TypeScript הדפיס על stage בשם maybe",
       },
       {
-        en: "All five schema tests passed: one valid, four invalid",
-        he: "כל חמשת הטסטים של הסכמה עברו: אחד תקין, ארבעה לא תקינים",
+        en: "All five contact tests passed: one valid, four refused",
+        he: "כל חמשת הטסטים של איש הקשר עברו: אחד תקין, ארבעה נדחו",
       },
       {
-        en: "npm ls zod showed exactly one version",
-        he: "npm ls zod הראה גרסה אחת בלבד",
+        en: "The AI named the one new tool, its version, and what the ^ allows",
+        he: "ה-AI אמר מה הכלי החדש היחיד, מה הגרסה שלו ומה ה-^ מאפשר",
       },
     ],
   },
@@ -218,55 +213,54 @@ If every row passed: append "04 langs — Contact type and zod schema, strict Ty
   frontend: {
     title: { en: "The contacts page", he: "דף אנשי הקשר" },
     goal: {
-      en: "A /contacts page where you add a contact and see it in the list, with clear errors, on a phone and by keyboard alone, and a browser test that proves it.",
-      he: "דף /contacts שבו מוסיפים איש קשר ורואים אותו ברשימה, עם הודעות שגיאה ברורות, בטלפון ובמקלדת בלבד, וטסט בדפדפן שמוכיח את זה.",
+      en: "A contacts page where you add a person and see them in the list, with clear errors, on a phone and by keyboard alone, and a browser test that proves it.",
+      he: "דף אנשי קשר שבו מוסיפים אדם ורואים אותו ברשימה, עם הודעות שגיאה ברורות, בטלפון ובמקלדת בלבד, וטסט בדפדפן שמוכיח את זה.",
     },
     why: {
-      en: "The list is client state and disappears on refresh — on purpose, so you see what the browser holds on its own before the server takes over.",
-      he: "הרשימה היא state בצד הקליינט ונעלמת ברענון. זה בכוונה, כדי שתראו מה הדפדפן מחזיק לבד לפני שהשרת לוקח פיקוד.",
+      en: "For now the list lives only in the browser and disappears on refresh. That's on purpose, so you see what the browser holds on its own before the server takes over.",
+      he: "בינתיים הרשימה חיה רק בדפדפן ונעלמת ברענון. זה בכוונה, כדי שתראו מה הדפדפן מחזיק לבד לפני שהשרת לוקח פיקוד.",
     },
     uses: ["component", "client-state", "forms-and-validation", "accessibility-a11y", "css-and-responsive-layout", "dom"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 05 — frontend. Work on branch step-05-frontend.
+    build: `Read AGENTS.md and STEPS.md first. This is step 5. Start a new branch for it.
 
-1. Add app/contacts/page.tsx rendering a client component, components/ContactsPanel.tsx: a form (name, email, company, stage select) above a list of the contacts added during this visit. Keep them in React state only; losing them on refresh is expected in this step.
-2. On submit, validate with ContactInput from lib/contact.ts. Show each field's error next to that field, linked with aria-describedby, and add no row when invalid. After a successful add, clear the form and move focus back to the name field.
-3. Accessibility: every input has a visible label, submit is a real button, focus is always visible, and the whole flow works with Tab and Enter only.
-4. Layout: works at 375px wide with no horizontal scroll. Plain CSS modules, no UI library.
-5. Link to /contacts from the home page.
-6. Add Playwright (@playwright/test, Chromium only, installed with npx playwright install chromium). Its config starts the dev server by itself; tests live in tests/e2e; add an npm script e2e. Keep tests/e2e out of Vitest.
+Build a Contacts page at /contacts, linked from the home page:
+- A form (name, email, company, stage) with the list of contacts added so far below it. Keep them only in the browser for now; a refresh empties the list, as expected.
+- Use the contact rules from step 4: show each problem next to its field and add nothing if anything is wrong. After a good add, clear the form and put the cursor back in the name field.
+- It works with the keyboard alone (Tab and Enter), every field has a visible label, and you always see where you are.
+- It fits a phone screen 375 pixels wide, with no sideways scrolling.
+- Set up browser tests (a robot that clicks through the real page), run with npm run e2e. That's the only new tool; note it in AGENTS.md.
 
-Do not add an API, storage or any other dependency. Finish with: run npm run dev, open http://localhost:3000/contacts, and tell me what to try.`,
-    check: `Verify step 05 — frontend. Do not add features.
+Then start the app with npm run dev and tell me in plain words what to open or click to see it working, and what to try. STEPS.md gets its line after the check.`,
+    check: `Check step 5. Don't add features.
 
-1. Write tests/e2e/contacts.spec.ts with getByLabel and getByRole only: no CSS selectors, no fixed waits, and no test depending on another or on an empty list.
-a. valid contact submitted: it appears in the list;
-b. empty name: an error shows next to name and the row count is unchanged;
-c. at 375×812, add a contact, assert the page's scrollWidth is at most 375, save a screenshot to test-results/contacts-375.png;
-d. keyboard only: type a name, Tab through the fields, press Enter: the row appears.
-2. If you extracted a helper (for example, mapping zod issues to field errors), add a Vitest test for it.
-3. Run npm run check, then npm run e2e. Paste the summary lines of both.
-4. Open the screenshot and describe it in one line.
-5. Ask me to add a contact and refresh, then explain in one sentence why the list emptied.
+- Add browser tests that use the page the way a person does, by field labels and button names:
+  a good contact appears in the list;
+  an empty name shows an error next to the name and adds nothing;
+  on a phone-sized screen the page fits with no sideways scroll, and you save a screenshot;
+  keyboard only: type a name, Tab through, press Enter, and the contact appears.
+- Run all the tests with npm run check, then npm run e2e.
+- Open the screenshot and describe it to me in one line.
+- Ask me to add a contact and refresh, then explain in one plain sentence why the list emptied.
 
-Report a table: check | command | result, with real output lines. If anything fails, STOP and show me the failure; do not change a test to make it pass.
+Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't change a test just to make it pass.
 
-If every row passed: append "05 frontend — /contacts page with validation, a11y and e2e tests" to STEPS.md, commit, merge step-05-frontend into main and push.`,
+If all is green: add the line "5 frontend: a contacts page that works by keyboard and on a phone" to STEPS.md, save it as a commit, merge into main and send it to GitHub.`,
     done: [
       {
         en: "I added a contact by keyboard alone, without touching the mouse",
         he: "הוספתם איש קשר רק עם המקלדת, בלי לגעת בעכבר",
       },
       {
-        en: "An empty name showed an error next to the field and added no row",
-        he: "שם ריק הציג שגיאה ליד השדה ולא הוסיף שורה",
+        en: "An empty name showed an error next to the field and added nothing",
+        he: "שם ריק הציג שגיאה ליד השדה ולא הוסיף כלום",
       },
       {
         en: "npm run e2e opened a real browser and all four tests passed",
-        he: "npm run e2e הריץ דפדפן אמיתי וכל ארבעת הטסטים עברו",
+        he: "npm run e2e פתח דפדפן אמיתי וכל ארבעת הטסטים עברו",
       },
       {
-        en: "I saw the 375px screenshot and the page fits a phone",
-        he: "ראיתם את צילום המסך ברוחב 375px והדף נכנס בטלפון",
+        en: "I saw the phone-sized screenshot and the page fits",
+        he: "ראיתם את צילום המסך בגודל טלפון והדף נכנס",
       },
     ],
   },
@@ -274,39 +268,41 @@ If every row passed: append "05 frontend — /contacts page with validation, a11
   http: {
     title: { en: "A real REST API", he: "REST API אמיתי" },
     goal: {
-      en: "Contacts live behind a REST API on the server, with honest status codes, and the page talks to it.",
-      he: "אנשי הקשר יושבים מאחורי REST API בשרת, עם קודי סטטוס נכונים, והדף מדבר איתו.",
+      en: "Contacts now live on the server behind an API that answers with honest status codes, and the page talks to it.",
+      he: "אנשי הקשר יושבים עכשיו בשרת מאחורי API שעונה עם קודי סטטוס כנים, והדף מדבר איתו.",
     },
     why: {
-      en: "Every later feature is a request and a response; get the verbs and status codes right now and every future bug report gets short.",
-      he: "כל פיצ'ר מכאן והלאה הוא בקשה ותשובה. אם הפעלים וקודי הסטטוס נכונים עכשיו, כל דיווח באג בעתיד יהיה קצר.",
+      en: "From here on, every feature is a request and a response. Get the actions and status codes right now, and every future bug report gets short.",
+      he: "מכאן והלאה, כל פיצ'ר הוא בקשה ותשובה. אם הפעולות וקודי הסטטוס נכונים עכשיו, כל דיווח באג בעתיד יהיה קצר.",
     },
     uses: ["request-response", "rest", "endpoint", "post-put-patch-delete", "status-codes", "json"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 06 — http. Work on branch step-06-http.
+    build: `Read AGENTS.md and STEPS.md first. This is step 6. Start a new branch for it.
 
-Before any code, list the endpoints as a table: verb | path | success | errors.
+Move the contacts from the browser to the server, behind an API (the door the page knocks on to read or change data).
 
-1. lib/contactStore.ts: an in-memory store on the server (list, get, create, update, remove) keyed by crypto.randomUUID(). Add a comment that it resets on every restart and is replaced by Postgres in step 07.
-2. app/api/contacts/route.ts: GET returns 200 with the array. POST validates the body with ContactInput and returns 201 with the created contact and a Location: /api/contacts/<id> header, or 400 with { errors: { field: message } }.
-3. app/api/contacts/[id]/route.ts: GET returns 200 or 404. PATCH validates a partial ContactInput and returns 200, 400 or 404. DELETE returns 204 with no body, or 404.
-4. Malformed JSON returns 400. A method a route does not support, such as PUT, returns 405 with an Allow header. Every body, errors included, is JSON with a JSON Content-Type.
-5. Change ContactsPanel to load the list with GET and add with POST, showing the server's field errors under the fields. Keep the labels, focus handling and keyboard flow.
+Before any code, show me the API as a simple table: action | address | answer when it works | answer when it fails.
 
-Do not add a database, auth or any dependency. Finish with the curl command that creates one contact, and what it should print.`,
-    check: `Verify step 06 — http. Do not add features.
+- The API can list contacts, add one, show one, change one and delete one.
+- Every answer is honest: 201 when something was created, 400 for bad input (saying which field is wrong), 404 when the contact doesn't exist, 204 after a delete, 405 for an action the address doesn't support. Every answer, errors too, is JSON.
+- For now keep contacts in the server's memory; they vanish on restart until the database arrives in step 7.
+- The Contacts page now uses the API, and shows the server's errors under the right fields. Keyboard use and labels keep working.
+- No new tools.
 
-1. Add tests/api/contacts.test.ts that calls the route handlers directly with Request objects and resets the store before each test. Assert: GET list 200; POST valid 201 with a Location that points at the new id; POST invalid 400 with errors.name and errors.email; malformed JSON 400; GET unknown id 404; PATCH 200 and 400; DELETE 204 then GET 404; PUT 405 with an Allow header.
-2. Run npm run check, then npm run e2e. The step 05 tests must still pass, now through the API.
-3. With npm run dev running, record a curl -i transcript: create a contact, GET it by the id from Location, PATCH its stage to qualified, DELETE it, GET it again (404). Paste each status line and body.
-4. Restart the dev server and GET /api/contacts. Show that the list is empty and say in one line why that is expected until step 07.
+Then start the app with npm run dev and tell me in plain words what to open or click to see it working. STEPS.md gets its line after the check.`,
+    check: `Check step 6. Don't add features.
 
-Report a table: check | command | result, with real output lines. If anything fails, STOP and show me the failure; do not fix it silently.
+- Add tests proving each answer: list 200; a good contact 201 plus its new address; a bad one 400 naming the name and email problems; broken input 400; an unknown contact 404; a change 200, or 400 if invalid; delete 204, then 404 when asked again; an unsupported action 405.
+- Run all the tests with npm run check, then npm run e2e. The step 5 browser tests must still pass, now through the API.
+- With the app running, do one real round trip: add a contact, read it, change its stage to qualified, delete it, read it again. Show me the status code of each.
+- Restart the server, show the list is now empty, and explain in one line why.
 
-If every row passed: append "06 http — REST API for contacts with correct status codes" to STEPS.md, commit, merge step-06-http into main and push.`,
+Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
+
+If all is green: add the line "6 http: contacts behind a real API" to STEPS.md, save it as a commit, merge into main and send it to GitHub.`,
     done: [
       {
-        en: "I read the curl transcript: 201, 200, 200, 204, then 404",
-        he: "קראתם את תמליל ה-curl: 201, 200, 200, 204 ואז 404",
+        en: "I read the round trip: 201, 200, 200, 204, then 404",
+        he: "קראתם את הסבב המלא: 201, 200, 200, 204 ואז 404",
       },
       {
         en: "Adding a bad contact on the page showed the server's error under the field",
@@ -322,56 +318,55 @@ If every row passed: append "06 http — REST API for contacts with correct stat
   data: {
     title: { en: "A real database — and it's live", he: "מסד נתונים אמיתי — והכול באוויר" },
     goal: {
-      en: "Contacts, companies and notes live in Postgres on Neon, survive restarts and redeploys, and the live CRM on Vercel reads and writes them.",
-      he: "אנשי קשר, חברות והערות יושבים ב-Postgres על Neon, שורדים הפעלה מחדש ודיפלוי, וה-CRM החי ב-Vercel קורא וכותב אותם.",
+      en: "Contacts, companies and notes are saved in a real database, survive restarts and redeploys, and the live CRM reads and writes them.",
+      he: "אנשי קשר, חברות והערות נשמרים במסד נתונים אמיתי, שורדים הפעלה מחדש ודיפלוי, וה-CRM החי קורא וכותב אותם.",
     },
     why: {
-      en: "State has to live somewhere that survives a restart; a schema, indexes and a migration give you that without losing data or guessing.",
-      he: "ה-state צריך לחיות במקום ששורד הפעלה מחדש. סכמה, אינדקסים ומיגרציה נותנים את זה בלי לאבד נתונים ובלי לנחש.",
+      en: "Data has to live somewhere that survives a restart. A clear structure and saved migrations give you that without losing data or guessing.",
+      he: "הנתונים צריכים לחיות במקום ששורד הפעלה מחדש. מבנה ברור ומיגרציות שמורות נותנים את זה בלי לאבד נתונים ובלי לנחש.",
     },
     uses: ["database", "schema", "migration", "index", "orm", "time-text-and-money"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 07 — data. Work on branch step-07-data.
+    build: `Read AGENTS.md and STEPS.md first. This is step 7. Start a new branch for it.
 
-This touches the database, so first give me your plan in 3–6 bullets and wait for my OK.
+This touches the database, so first tell me your plan in a few plain bullets and wait for my OK.
 
-1. Walk me through creating a free Neon project with a second branch named test. I will paste both connection strings: DATABASE_URL into .env.local, TEST_DATABASE_URL into .env.test.local. Add .env.example with names only.
-2. Add drizzle-orm, @neondatabase/serverless and drizzle-kit (dev). Nothing else.
-3. db/schema.ts: companies (uuid id, name, website); contacts (uuid id, name, unique email, company_id ON DELETE SET NULL, stage limited to lead/qualified/won/lost and indexed, created_at); notes (uuid id, contact_id ON DELETE CASCADE, body, created_at). Every timestamp is timestamptz, default now(), UTC.
-4. Generate the first migration into drizzle/ and commit it. Add scripts db:generate, db:migrate, db:seed, test:int.
-5. Replace the in-memory store with a Drizzle repository, same functions. Duplicate email returns 409 with errors.email.
-6. Move the step 06 API tests to tests/integration, run by test:int against TEST_DATABASE_URL; npm test stays database-free. Point Playwright's dev server at TEST_DATABASE_URL.
-7. scripts/seed.ts: 5 companies, 20 contacts, some notes; safe to run twice.
-8. Tell me to add DATABASE_URL in Vercel (Production and Preview), and wait.
+Contacts must survive restarts and deploys.
+- Walk me through a free Neon account with two databases: the real one, and a separate one only for tests. I'll paste the connection details into the secret file, never the code.
+- Store contacts, companies and notes. A contact may have a company; a note belongs to a contact. Deleting a contact deletes its notes; deleting a company keeps its contacts. A duplicate email gets 409. Times are saved in UTC. Filtering by stage is fast (add an index).
+- Every change to the database's structure is a migration: a saved step in the repo, so any database can be rebuilt identically.
+- Add some sample data that is safe to load twice.
+- Pick the tools, note them in AGENTS.md, and explain them in 2–3 plain sentences. Tell me how to give Vercel the connection details, and wait.
 
-Finish with: npm run db:migrate, npm run db:seed, npm run dev, and what /contacts should show.`,
-    check: `Verify step 07 — data. Do not add features.
+Then tell me in plain words what to open or click to see it working.`,
+    check: `Check step 7. Don't add features.
 
-1. On the test branch only (never DATABASE_URL): drop and recreate the public and drizzle schemas, run the migrations from scratch against TEST_DATABASE_URL, and paste the tables and indexes that exist afterwards.
-2. Extend tests/integration: they refuse to run if TEST_DATABASE_URL equals DATABASE_URL; create then read back; duplicate email 409; stage "maybe" 400; created_at comes back in UTC; deleting a contact deletes its notes. Run npm run check, npm run test:int and npm run e2e.
-3. Restart proof: POST a contact with curl, restart the dev server, GET it back.
-4. Run git grep -nE "postgres(ql)?://": no results. Run git check-ignore .env.local .env.test.local.
+- On the test database only, wipe it, rebuild it from the migrations alone, and show what it contains.
+- Add tests proving: they refuse to run against the real database; a saved contact reads back the same; a duplicate email gets 409; the stage "maybe" gets 400; times come back in UTC; deleting a contact deletes its notes.
+- Run all the tests with npm run check and npm run e2e, including the database tests.
+- Add a contact, restart the server, and show it is still there.
+- Confirm no passwords or connection details are in the code.
 
-Report a table: check | command | result, with real output lines. If anything fails, STOP and show me the failure; do not fix it silently.
+Report in plain words: what you checked, pass or fail, with the real output below. If something fails, stop and explain it simply; don't fix it silently.
 
-If every row passed: append "07 data — contacts live in Postgres" to STEPS.md, commit, merge step-07-data into main and push. Then, on production: curl the production URL + /api/contacts to show the seeded rows, POST one contact, ask me to click Redeploy in Vercel, and GET it again to prove it survived.
+If all is green: add "7 data: contacts live in a real database" to STEPS.md, commit, merge into main and send it to GitHub. Then on the live site: show the sample contacts, add one, ask me to click Redeploy in Vercel, and show it survived.
 
-Close with a short "what I shipped" note: the live URL, the stack, how many unit, API, integration and e2e tests pass, and the seven lines of STEPS.md.`,
+Close with a short "what I shipped" note: live address, tools, how many tests pass, and STEPS.md.`,
     done: [
       {
-        en: "I added a contact on the live URL and it was still there after a redeploy",
-        he: "הוספתם איש קשר בכתובת החיה והוא עדיין היה שם אחרי דיפלוי מחדש",
+        en: "I added a contact on the live site and it was still there after a redeploy",
+        he: "הוספתם איש קשר באתר החי והוא עדיין היה שם אחרי דיפלוי מחדש",
       },
       {
-        en: "I saw the tables and the email index in the Neon console, not only in the AI's summary",
-        he: "ראיתם את הטבלאות ואת האינדקס על email בקונסול של Neon, לא רק בסיכום של ה-AI",
+        en: "I saw the contacts, companies and notes in the Neon dashboard, not only in the AI's summary",
+        he: "ראיתם את אנשי הקשר, החברות וההערות בלוח הבקרה של Neon, לא רק בסיכום של ה-AI",
       },
       {
-        en: "A duplicate email was refused with 409",
-        he: "אימייל כפול נדחה עם 409",
+        en: "Adding a second contact with the same email was refused with 409",
+        he: "הוספה של איש קשר שני עם אותו אימייל נדחתה עם 409",
       },
       {
-        en: "I read the \"what I shipped\" note: a live CRM on a real database, with unit, API and e2e tests",
-        he: "קראתם את הסיכום: CRM חי על מסד נתונים אמיתי, עם טסטים של יחידה, API ו-e2e",
+        en: "I read the \"what I shipped\" note: a live CRM on a real database, with tests",
+        he: "קראתם את הסיכום: CRM חי על מסד נתונים אמיתי, עם טסטים",
       },
     ],
   },

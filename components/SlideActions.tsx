@@ -27,21 +27,19 @@ export function SlideActions({
 
   return (
     <div className="slidebar">
-      <Button
-        variant={isDone ? "outline" : "brand"}
-        type="button"
-        onClick={() => toggleDone(k)}
-      >
-        {isDone ? `✓ ${t("gotYes")}` : t("got")}
-      </Button>
+      {isDone ? <span className="learned">✓ {t("gotYes")}</span> : null}
       <span className="grow" />
-      <span className="kbd">← →</span>
       {prevHref ? (
         <Button variant="outline" nativeButton={false} render={<Link href={prevHref} />}>
           {prevLabel}
         </Button>
       ) : null}
-      <Button variant="brand" nativeButton={false} render={<Link href={nextHref} />}>
+      {/* moving on is the "got it": one button, not two that look alike */}
+      <Button
+        variant="brand"
+        nativeButton={false}
+        render={<Link href={nextHref} onClick={() => !isDone && toggleDone(k)} />}
+      >
         {nextLabel}
       </Button>
     </div>

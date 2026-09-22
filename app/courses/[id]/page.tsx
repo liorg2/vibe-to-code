@@ -10,7 +10,7 @@ import { serverLang } from "@/lib/lang-server";
 import { billingOn, ownedCourses, type Course } from "@/lib/entitlement";
 import { sessionClaims } from "@/lib/verify-session";
 
-/** The course intro: progress, the app you build, what to have ready, how a lesson runs, then the lessons. */
+/** The course intro: progress, what to have ready, how a lesson runs, the app you build, then the lessons. */
 export default async function CoursePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const p = PATHS.find((x) => x.id === id);
@@ -39,18 +39,6 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
         <p className="mblurb">{p.blurb[lang]}</p>
         <CourseStart course={course} ids={p.mods} builds={builds} locked={locked} />
 
-        <h3 className="intro-h">🛠 {H.app[lang]}</h3>
-        <p className="intro-p">{INTRO.app[lang]}</p>
-        <ol className="intro-steps">
-          {steps.map(({ id, step }) => (
-            <li key={id} title={step.goal[lang]}>
-              <span className="n">{lessonNo(id)}</span>
-              {step.title[lang]}
-            </li>
-          ))}
-        </ol>
-        <p className="intro-end">🏁 {INTRO.end[course][lang]}</p>
-
         <h3 className="intro-h">🎒 {H.need[lang]}</h3>
         <div className="intro-grid">
           {INTRO.need.map((x) => (
@@ -78,6 +66,18 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
             </li>
           ))}
         </ol>
+
+        <h3 className="intro-h">🛠 {H.app[lang]}</h3>
+        <p className="intro-p">{INTRO.app[lang]}</p>
+        <ol className="intro-steps">
+          {steps.map(({ id, step }) => (
+            <li key={id} title={step.goal[lang]}>
+              <span className="n">{lessonNo(id)}</span>
+              {step.title[lang]}
+            </li>
+          ))}
+        </ol>
+        <p className="intro-end">🏁 {INTRO.end[course][lang]}</p>
 
         <h3 className="intro-h">📚 {H.syllabus[lang]}</h3>
         <LessonCards ids={p.mods} locked={locked} courseId={p.id} />
