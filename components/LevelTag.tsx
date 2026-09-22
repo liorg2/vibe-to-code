@@ -41,9 +41,10 @@ export function LevelFilter({ full = false }: { full?: boolean }) {
           {full ? (
             <LevelTag lvl={l} full />
           ) : (
-            <span className={`lvl lvl-${l}`}>
+            // ponytail: the nav column is 272px — the course name does not fit and its nowrap
+            // put a horizontal scrollbar under the whole nav. The title says what A and B are.
+            <span className={`lvl lvl-${l}`} title={t(`lvl${l}`)}>
               {`${t("level")} ${l}`}
-              <b>{t(`lvl${l}`)}</b>
             </span>
           )}
           {full ? <span>{t(`lvl${l}d`)}</span> : null}
