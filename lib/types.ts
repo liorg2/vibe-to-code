@@ -36,28 +36,6 @@ export type Example = {
   code: string;
 };
 
-export type Project = {
-  id: string;
-  icon: string;
-  title: L10n;
-  blurb: L10n;
-  warn: L10n;
-  steps: ProjectStep[];
-};
-
-export type ProjectStep = {
-  n: number;
-  title: L10n;
-  goal: L10n;
-  why: L10n;
-  uses: string[];
-  prompt: string;
-  /** Learner writes this before the paste prompt unlocks. */
-  acceptance: L10n;
-  /** Post-step checks (run / diff / security-or-data). */
-  verify: L10n[];
-};
-
 export type CheckItem = { k: string; t: L10n; d: L10n };
 
 export type ArchPart = { n: L10n; d: L10n };
@@ -98,8 +76,6 @@ export type Course = {
   DETAIL: Record<string, L10n>;
   EXAMPLES: Record<string, Example>;
   QUIZ: Record<string, QuizQ[]>;
-  PROJECT: Project;
-  BASIC_PROJECT: Project;
   CHECKLIST: {
     id: string;
     icon: string;
@@ -116,5 +92,4 @@ export type Course = {
     items: Architecture[];
   };
   PATHS: Path[];
-  ASK_PROMPT: string;
 };

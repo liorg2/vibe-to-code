@@ -1,7 +1,7 @@
 import Link from "@/components/Link";
 import { LessonSubNav } from "./LessonSubNav";
 import { Breadcrumb } from "./Breadcrumb";
-import { QUIZ, UI, lessonNo, neighbors, pathForModule } from "@/lib/course";
+import { UI, lessonNo, neighbors, pathForModule } from "@/lib/course";
 import { ownsModule } from "@/lib/entitlement";
 import { para } from "@/lib/utils";
 import type { Lang, Module } from "@/lib/types";
@@ -26,7 +26,7 @@ export async function LessonIntro({
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const owns = await ownsModule(m.id);
   const coursePath = pathForModule(m.id, course);
-  const { prev: prevM, next: nextM } = neighbors(m.id, course);
+  const { prev: prevM } = neighbors(m.id, course);
   const last = m.terms.length - 1;
   const q = (href: string) => (course ? `${href}?course=${course}` : href);
 
@@ -37,11 +37,7 @@ export async function LessonIntro({
   const next =
     kind === "overview"
       ? { href: q(`/lesson/${m.id}/0`), label: t("startLesson") }
-      : QUIZ[m.id]
-        ? { href: q(`/lesson/${m.id}/quiz`), label: t("toTest") }
-        : nextM
-          ? { href: q(`/lesson/${nextM.id}/overview`), label: nextM.title[lang] }
-          : { href: course ? `/courses/${course}` : "/courses", label: t("paths") };
+      : { href: q(`/lesson/${m.id}/build`), label: t("toBuild") };
 
   return (
     <>

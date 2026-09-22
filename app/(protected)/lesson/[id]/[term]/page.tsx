@@ -4,12 +4,11 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
 import { LessonIntro } from "@/components/LessonIntro";
 import { LessonSubNav } from "@/components/LessonSubNav";
-import { PracticeLoop } from "@/components/PracticeLoop";
-import { PromptBox } from "@/components/PromptBox";
+import Link from "@/components/Link";
+import { Scene } from "@/components/Scene";
 import { SlideActions } from "@/components/SlideActions";
 import { Upsell } from "@/components/Upsell";
 import {
-  ASK_PROMPT,
   DETAIL,
   EXAMPLES,
   SIMPLE,
@@ -19,7 +18,9 @@ import {
   moduleIndex,
   pathForModule,
 } from "@/lib/course";
-import { FLOWS, LIFECYCLE, STEPS } from "@/lib/diagrams";
+import { LIFECYCLE } from "@/lib/diagrams";
+import { SCENES } from "@/lib/scenes";
+import { BUILDS } from "@/lib/builds";
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { para } from "@/lib/utils";
@@ -63,8 +64,8 @@ export default async function SlidePage({
   const simple = SIMPLE[tm.t.en];
   const det = DETAIL[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
-  const flow = FLOWS[tm.t.en];
-  const steps = STEPS[tm.t.en];
+  const scene = SCENES[tm.k];
+  const build = BUILDS[m.id];
   const coursePath = pathForModule(m.id, course);
   const q = (href: string) => (course ? `${href}?course=${course}` : href);
 
@@ -93,40 +94,7 @@ export default async function SlidePage({
         {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />
         ) : null}
-        {steps ? (
-          <div className={`http-flow hf-steps n${steps.length}`} aria-hidden="true">
-            <div className="hf-cap">{flow?.cap[lang]}</div>
-            <div className="hf-step-row">
-              {steps.map((s, i) => (
-                <div key={i} className="hf-step" style={{ ["--i" as string]: i, ["--n" as string]: steps.length }}>
-                  <b>{i + 1} · {s.t[lang]}</b>
-                  <span>{s.d[lang]}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : flow ? (
-          <div className={flow.mid ? "http-flow hf-3" : "http-flow"} aria-hidden="true">
-            <div className="hf-cap">{flow.cap[lang]}</div>
-            <div className="hf-row">
-              <div className="hf-node hf-client">{flow.left[lang]}</div>
-              <div className="hf-track">
-                <div className={flow.mid ? "hf-packet hf-req hf-leg1" : "hf-packet hf-req"}>{flow.out[lang]}</div>
-                <div className={flow.mid ? "hf-packet hf-res hf-leg4" : "hf-packet hf-res"}>{flow.back[lang]}</div>
-              </div>
-              {flow.mid ? (
-                <>
-                  <div className="hf-node hf-mid">{flow.mid[lang]}</div>
-                  <div className="hf-track">
-                    <div className="hf-packet hf-req hf-leg2">{flow.out[lang]}</div>
-                    <div className="hf-packet hf-res hf-leg3">{flow.back[lang]}</div>
-                  </div>
-                </>
-              ) : null}
-              <div className="hf-node hf-server">{flow.right[lang]}</div>
-            </div>
-          </div>
-        ) : null}
+        {scene ? <Scene scene={scene} /> : null}
         {simple ? (
           <div className="plain">
             <h3>{simple.q[lang]}</h3>
@@ -150,12 +118,14 @@ export default async function SlidePage({
             ) : null}
           </details>
         ) : null}
-        <PracticeLoop />
-        <details className="ask">
-          <summary>{t("askAI")}</summary>
-          <p className="sub">{t("askSub")}</p>
-          <PromptBox id="ask" text={ASK_PROMPT.replace("{term}", tm.t.en)} label={t("prompt")} />
-        </details>
+        {build ? (
+          <Link className="yourproj" href={q(`/lesson/${m.id}/build`)}>
+            <b>{t("yourProject")}</b>
+            <span>
+              {t(build.uses.includes(tm.k) ? "yourProjectUses" : "yourProjectLesson")} {build.title[lang]} →
+            </span>
+          </Link>
+        ) : null}
         <SlideActions
           m={m}
           i={i}

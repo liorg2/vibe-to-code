@@ -15,7 +15,6 @@ import {
   PATHS,
   QUIZ,
   archesFor,
-  projectFor,
   termKey,
 } from "@/lib/course";
 import { isPreviewModule } from "@/lib/protected";
@@ -36,7 +35,7 @@ export function SideNav() {
   const activeLesson = lessonMatch?.[1] ?? "";
   const termMatch = pathname.match(/^\/lesson\/[^/]+\/(\d+)/);
   const activeTerm = termMatch ? Number(termMatch[1]) : null;
-  const sub = pathname.match(/^\/lesson\/[^/]+\/(overview|summary|quiz)$/)?.[1] ?? "";
+  const sub = pathname.match(/^\/lesson\/[^/]+\/(overview|summary|build|quiz)$/)?.[1] ?? "";
   const archOnRoute = pathname.startsWith("/architectures");
 
   const homes = PATHS.filter((p) => activeLesson && p.mods.includes(activeLesson)).map((p) => p.id);
@@ -133,6 +132,9 @@ export function SideNav() {
           <Link href={q(`/lesson/${m.id}/summary`)} className={cn(here && sub === "summary" && "on")}>
             {t("summary")}
           </Link>
+          <Link href={q(`/lesson/${m.id}/build`)} className={cn(here && sub === "build" && "on")}>
+            {t("build")}
+          </Link>
           {QUIZ[m.id] ? (
             <Link href={q(`/lesson/${m.id}/quiz`)} className={cn(here && sub === "quiz" && "on")}>
               {t("test")}
@@ -150,7 +152,6 @@ export function SideNav() {
     .filter((m): m is Module => !!m)
     .map(lesson);
   const arches = courseId ? archesFor(courseId) : [];
-  const project = courseId ? projectFor(courseId) : null;
 
   return (
     <nav
@@ -168,10 +169,10 @@ export function SideNav() {
       <h3 id="navTitle">{t("lessons")}</h3>
       <div id="nav">
         {lessons}
-        {user && project ? (
+        {user && courseId ? (
           <>
             <Separator className="my-2 mx-1.5" />
-            {navLink(q("/project"), project.icon, project.title[lang], String(project.steps.length))}
+            {navLink(q("/project"), "🛠", t("buildTrack"), String(ids.length))}
             {arches.length ? (
               <div className={cn("nav-lesson", openId === "architectures" && "open")}>
                 <Link

@@ -13,7 +13,7 @@ export function LessonSubNav({
   course,
 }: {
   m: Module;
-  active: number | "overview" | "summary" | null;
+  active: number | "overview" | "summary" | "build" | null;
   quiz?: boolean;
   course?: string;
 }) {
@@ -45,6 +45,9 @@ export function LessonSubNav({
         className={cn(active === "summary" && "on")}
       >
         {t("summary")}
+      </Link>
+      <Link href={href(`/lesson/${m.id}/build`)} className={cn(active === "build" && "on")}>
+        {t("build")}
       </Link>
       {QUIZ[m.id] ? (
         <Link href={href(`/lesson/${m.id}/quiz`)} className={cn(quiz && "on")}>

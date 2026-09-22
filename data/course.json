@@ -220,14 +220,6 @@
    "en": "Open the slide",
    "he": "פתח את השקף"
   },
-  "askAI": {
-   "en": "Ask your AI about this",
-   "he": "שאל את ה-AI שלך על זה"
-  },
-  "askSub": {
-   "en": "Paste into Claude, Cursor or Copilot with your project open.",
-   "he": "להדביק ל-Claude, Cursor או Copilot כשהפרויקט שלך פתוח."
-  },
   "archParts": {
    "en": "The pieces",
    "he": "החלקים"
@@ -311,70 +303,6 @@
   "lvlBd": {
    "en": "The longer course: integrations, performance, shipping, and running it once strangers depend on it.",
    "he": "הקורס הארוך: אינטגרציות, ביצועים, שחרור, והרצה כשזרים כבר תלויים בזה."
-  },
-  "practice": {
-   "en": "Practice the loop",
-   "he": "לתרגל את הלולאה"
-  },
-  "practiceSub": {
-   "en": "Plan → ask AI → check the result. Skip this and the word stays trivia.",
-   "he": "תוכנית → לשאול AI → לבדוק תוצאה. מדלגים — והמילה נשארת טריוויה."
-  },
-  "practicePlan": {
-   "en": "1. Your one-line plan",
-   "he": "1. תוכנית במשפט אחד"
-  },
-  "practicePlanPh": {
-   "en": "In one sentence, what should the AI do that needs this concept?",
-   "he": "במשפט אחד: מה ה-AI צריך לעשות שדורש את המושג הזה?"
-  },
-  "practiceGo": {
-   "en": "2. Ask AI (open Ask AI below and paste the prompt)",
-   "he": "2. לשאול AI (לפתוח Ask AI למטה ולהדביק את הפרומפט)"
-  },
-  "practiceVerifyTitle": {
-   "en": "3. After the AI replies, check",
-   "he": "3. אחרי תשובת ה-AI, לסמן"
-  },
-  "practiceV1": {
-   "en": "I can explain the change in one plain sentence",
-   "he": "אני יכול להסביר את השינוי במשפט פשוט אחד"
-  },
-  "practiceV2": {
-   "en": "I know what 'wrong' would look like (error, bad data, or missing check)",
-   "he": "אני יודע איך נראה 'לא נכון' (שגיאה, דאטה רע, או בדיקה חסרה)"
-  },
-  "practiceV3": {
-   "en": "I looked at the diff (or the exact output), not only the AI's summary",
-   "he": "הסתכלתי על ה-diff (או על הפלט המדויק), לא רק על סיכום ה-AI"
-  },
-  "planGate": {
-   "en": "Done when…",
-   "he": "Done when…"
-  },
-  "planGateSub": {
-   "en": "Write your acceptance line before the paste prompt unlocks.",
-   "he": "כותבים שורת קבלה לפני שפרומפט ההדבקה נפתח."
-  },
-  "planGatePh": {
-   "en": "This step is done when…",
-   "he": "השלב הזה הסתיים כאשר…"
-  },
-  "planGateUnlock": {
-   "en": "Unlock prompt",
-   "he": "לפתוח פרומפט"
-  },
-  "planGateLocked": {
-   "en": "Write at least one clear sentence above to unlock the prompt.",
-   "he": "כותבים לפחות משפט ברור אחד למעלה כדי לפתוח את הפרומפט."
-  },
-  "verifyGate": {
-   "en": "Verify before next step",
-   "he": "לוודא לפני השלב הבא"
-  },
-  "verifyGateSub": {
-   "en": "Tick what you actually checked.",
-   "he": "מסמנים מה שבאמת בדקתם."
   },
   "filterLvl": {
    "en": "Show",
@@ -479,6 +407,82 @@
   "locked": {
    "en": "Locked",
    "he": "נעול"
+  },
+  "scenePlay": {
+   "en": "Play",
+   "he": "ניגון"
+  },
+  "scenePause": {
+   "en": "Pause",
+   "he": "השהיה"
+  },
+  "scenePrev": {
+   "en": "Previous beat",
+   "he": "הצעד הקודם"
+  },
+  "sceneNext": {
+   "en": "Next beat",
+   "he": "הצעד הבא"
+  },
+  "build": {
+   "en": "Build",
+   "he": "בנייה"
+  },
+  "buildStep": {
+   "en": "Build step",
+   "he": "שלב בנייה"
+  },
+  "toBuild": {
+   "en": "Build this lesson's step",
+   "he": "לשלב הבנייה של השיעור"
+  },
+  "buildTrack": {
+   "en": "Build track",
+   "he": "מסלול הבנייה"
+  },
+  "buildTrackBlurb": {
+   "en": "One app, from an empty folder to production. Every lesson adds one step: you paste a build prompt into your AI agent, then a check prompt that adds tests, runs all of them and reports back. You write no code. You read, verify and ship.",
+   "he": "אפליקציה אחת, מתיקייה ריקה ועד פרודקשן. כל שיעור מוסיף שלב אחד: מדביקים לסוכן ה-AI פרומפט בנייה, ואז פרומפט בדיקה שמוסיף טסטים, מריץ את כולם ומדווח. אתם לא כותבים קוד. אתם קוראים, מוודאים ומשחררים."
+  },
+  "buildTrackWarn": {
+   "en": "Everything here fits free tiers: Vercel Hobby, Neon Postgres, Sentry, a sandbox email key. The only optional cost is your own domain in step 15, about $10–15 a year. Never put real customer data in it.",
+   "he": "הכול כאן נכנס בחבילות החינמיות: Vercel Hobby,‏ Neon Postgres,‏ Sentry ומפתח מייל של sandbox. העלות האופציונלית היחידה היא דומיין משלכם בשלב 15, בערך 10–15 דולר לשנה. אל תכניסו לשם נתוני לקוחות אמיתיים."
+  },
+  "buildHow": {
+   "en": "Open your AI coding agent (Claude Code, Cursor, Copilot) in the project folder. Paste prompt 1, read what it did, then paste prompt 2. Move on only when its table is all green.",
+   "he": "פתחו את סוכן ה-AI שלכם (Claude Code,‏ Cursor,‏ Copilot) בתיקיית הפרויקט. הדביקו את פרומפט 1, קראו מה הוא עשה, ואז הדביקו את פרומפט 2. ממשיכים רק כשכל הטבלה שלו ירוקה."
+  },
+  "buildDo": {
+   "en": "1 · Build it",
+   "he": "1 · בונים"
+  },
+  "buildDoSub": {
+   "en": "Makes this lesson's change to your app.",
+   "he": "מבצע באפליקציה שלכם את השינוי של השיעור הזה."
+  },
+  "buildCheck": {
+   "en": "2 · Check it",
+   "he": "2 · בודקים"
+  },
+  "buildCheckSub": {
+   "en": "Adds tests for what you just built, runs the whole suite and reports a table. If anything is red, it stops and shows you.",
+   "he": "מוסיף טסטים למה שבניתם עכשיו, מריץ את כל הטסטים ומחזיר טבלה. אם משהו אדום, הוא עוצר ומראה לכם."
+  },
+  "buildDone": {
+   "en": "3 · Done when",
+   "he": "3 · סיימתם כש…"
+  },
+  "yourProject": {
+   "en": "In your project",
+   "he": "בפרויקט שלכם"
+  },
+  "yourProjectUses": {
+   "en": "You put this to work in this lesson's build step:",
+   "he": "תשתמשו בזה בשלב הבנייה של השיעור:"
+  },
+  "yourProjectLesson": {
+   "en": "This lesson's build step:",
+   "he": "שלב הבנייה של השיעור:"
   }
  },
  "MODULES": [
@@ -10026,706 +10030,6 @@
    }
   ]
  },
- "PROJECT": {
-  "id": "project",
-  "icon": "▶",
-  "title": {
-   "en": "Final Project — a real CRM",
-   "he": "פרויקט מסכם — CRM אמיתי"
-  },
-  "blurb": {
-   "en": "One project, decided in advance: a small CRM — companies, contacts, notes, deal stage — with a real Postgres database, running live on Vercel at your own domain. Thirteen steps, and every prompt is already written. You paste it, you read what comes back, you ship.",
-   "he": "פרויקט אחד, שהוגדר מראש: CRM קטן — חברות, אנשי קשר, הערות ושלב בעסקה — עם מסד נתונים Postgres אמיתי, שרץ חי ב-Vercel על דומיין משלך. שלושה-עשר שלבים, וכל פרומפט כבר כתוב. מדביקים, קוראים מה חזר, ומעלים לאוויר."
-  },
-  "warn": {
-   "en": "This one is built to cost nothing: Vercel's Hobby plan and Neon's free Postgres both fit this app. The only real money is a domain, about $10-15 a year, and only if you want one — step 11 is optional. Never put real customer data in it: this is a learning project, not a system of record.",
-   "he": "הפרויקט הזה בנוי לעלות אפס: התוכנית החינמית של Vercel ו-Postgres החינמי של Neon מספיקים לאפליקציה הזאת. הכסף היחיד הוא דומיין, בערך 10-15 דולר לשנה, ורק אם רוצים — שלב 11 הוא רשות. אל תכניסו לשם נתוני לקוחות אמיתיים: זה פרויקט לימוד, לא מערכת אמת."
-  },
-  "steps": [
-   {
-    "n": 1,
-    "title": {
-     "en": "The product, decided for you",
-     "he": "המוצר — כבר הוחלט בשבילך"
-    },
-    "goal": {
-     "en": "One page that says exactly what this CRM is and what it is not — before a single line of code.",
-     "he": "עמוד אחד שאומר בדיוק מה ה-CRM הזה ומה הוא לא — לפני שורת קוד אחת."
-    },
-    "why": {
-     "en": "Every project that dies of scope dies here. You are handed the scope so you can practise defending it instead of inventing it.",
-     "he": "כל פרויקט שנשבר על גודל נשבר כאן. מוסרים לך את הסקופ כדי שתתאמן להגן עליו במקום להמציא אותו."
-    },
-    "uses": [
-     "MVP & scope",
-     "Definition of done",
-     "Ask for the trade-off first",
-     "Specificity beats politeness"
-    ],
-    "prompt": "I am building a small CRM as a learning project. The scope is fixed and I do not want it widened.\n\nIt has exactly four things: companies (name, website, notes), contacts (name, email, phone, job title, belonging to one company), notes (free text, timestamped, attached to a contact), and a deal stage on each contact — one of: new, contacted, meeting, won, lost. One user account owns everything. There are no teams, no permissions, no file uploads, no email sending, no reports.\n\nWrite me a one-page spec of this: the single core action the product exists for, the screens needed to support it, the data as plain nouns and relationships, and an explicit NON-goals list. Then name the two decisions in this scope that will hurt most later, and what the cheap version of fixing each one looks like. Do not write code.",
-    "acceptance": {
-     "en": "Write your done-when: what exactly is in scope for this CRM, and what is explicitly out?",
-     "he": "כתבו done-when: מה בדיוק בתוך הסקופ של ה-CRM, ומה במפורש בחוץ?"
-    },
-    "verify": [
-     {
-      "en": "I wrote a one-page scope that a stranger could follow",
-      "he": "כתבתי עמוד סקופ שאדם זר יכול לעקוב אחריו"
-     },
-     {
-      "en": "Out-of-scope items are listed, not vague",
-      "he": "פריטים מחוץ לסקופ רשומים, לא מעורפלים"
-     },
-     {
-      "en": "I resisted adding 'just one more feature'",
-      "he": "התנגדתי להוסיף 'עוד פיצ'ר אחד'"
-     }
-    ]
-   },
-   {
-    "n": 2,
-    "title": {
-     "en": "Repo, Next.js, a live URL on day one",
-     "he": "ריפו, Next.js, כתובת חיה ביום הראשון"
-    },
-    "goal": {
-     "en": "An empty but deployed app: a git repo, a Next.js skeleton, and a real https:// URL on Vercel before any feature exists.",
-     "he": "אפליקציה ריקה אבל מדופלית: ריפו git, שלד Next.js, וכתובת https:// אמיתית ב-Vercel עוד לפני שיש פיצ'ר אחד."
-    },
-    "why": {
-     "en": "Deploying on day one turns every later step into a small deploy, instead of one terrifying deploy at the end.",
-     "he": "דיפלוי ביום הראשון הופך כל שלב הבא לדיפלוי קטן, במקום אחד מפחיד בסוף."
-    },
-    "uses": [
-     "Repository (repo)",
-     "Commit / Branch / Merge",
-     "Deploy",
-     "Package manager",
-     "Runtime"
-    ],
-    "prompt": "Walk me through creating a new Next.js project (App Router, TypeScript) for a small CRM and getting it deployed to Vercel today, with nothing in it but a homepage that shows the app's name.\n\nGive me the exact commands in order: create the app, initialise git, what belongs in .gitignore, the first commit, pushing to a new GitHub repo, and importing that repo into Vercel. Then tell me what Vercel does on every push after that, and what the difference is between the preview URL and the production URL.\n\nWhere a step needs a choice — package manager, project name, region — pick a sensible default and say why in one line. Stop when I have a live URL. No features yet.",
-    "acceptance": {
-     "en": "Done when: repo exists, Next.js app runs locally, and a live URL is reachable.",
-     "he": "Done when: יש ריפו, Next.js רץ מקומית, ויש URL חי שנגיש."
-    },
-    "verify": [
-     {
-      "en": "I opened the live URL myself",
-      "he": "פתחתי את ה-URL החי בעצמי"
-     },
-     {
-      "en": "I checked the git remote and first commit",
-      "he": "בדקתי remote ו-commit ראשון"
-     },
-     {
-      "en": "I know which env the deploy uses",
-      "he": "אני יודע באיזו סביבה הדיפלוי רץ"
-     }
-    ]
-   },
-   {
-    "n": 3,
-    "title": {
-     "en": "The database, and the shape of the data",
-     "he": "מסד הנתונים וצורת הנתונים"
-    },
-    "goal": {
-     "en": "A free Neon Postgres database, a schema with four tables, and a migration file that creates them.",
-     "he": "מסד Postgres חינמי ב-Neon, סכמה עם ארבע טבלאות, וקובץ מיגרציה שיוצר אותן."
-    },
-    "why": {
-     "en": "The schema is the one decision that gets expensive to change the moment real rows exist. It is worth an hour now.",
-     "he": "הסכמה היא ההחלטה היחידה שיקר לשנות ברגע שיש שורות אמיתיות. שווה לה שעה עכשיו."
-    },
-    "uses": [
-     "Database",
-     "Schema",
-     "Migration",
-     "Index",
-     "Time, text & money"
-    ],
-    "prompt": "My CRM needs Postgres. I want Neon's free tier, connected to my Vercel project.\n\nFirst: the exact steps to create a Neon project, get the connection string, and put it into Vercel as an environment variable plus a local .env.local that is gitignored.\n\nThen write the first migration as plain SQL for four tables: companies, contacts, notes, users. A contact belongs to one company and carries a stage column limited to new / contacted / meeting / won / lost. A note belongs to one contact. Use uuid primary keys, timestamptz for every time column, and a foreign key with an explicit ON DELETE rule that you justify in one line each.\n\nAdd the indexes this app will actually need and name the query each one serves. Explain why you chose text over varchar, and timestamptz over timestamp.",
-    "acceptance": {
-     "en": "Done when: Postgres is connected and the contact schema matches what you intended.",
-     "he": "Done when: Postgres מחובר וסכמת אנשי הקשר תואמת למה שתכננתם."
-    },
-    "verify": [
-     {
-      "en": "I inspected the tables/columns (not only the AI summary)",
-      "he": "בדקתי טבלאות/עמודות (לא רק סיכום AI)"
-     },
-     {
-      "en": "Migrations are forward-only; I did not edit applied history",
-      "he": "Migrations רק קדימה; לא ערכתי היסטוריה שכבר רצה"
-     },
-     {
-      "en": "Connection string is not in the client bundle",
-      "he": "מחרוזת החיבור לא בבאנדל הלקוח"
-     }
-    ]
-   },
-   {
-    "n": 4,
-    "title": {
-     "en": "Reading: the contacts list",
-     "he": "קריאה: רשימת אנשי הקשר"
-    },
-    "goal": {
-     "en": "A page that lists contacts with their company and stage, read straight from Postgres on the server.",
-     "he": "עמוד שמציג אנשי קשר עם החברה והשלב שלהם, נקרא ישירות מ-Postgres בשרת."
-    },
-    "why": {
-     "en": "This is the first moment your code, your database and your deployment all have to be right at the same time.",
-     "he": "זה הרגע הראשון שבו הקוד, המסד והדיפלוי צריכים להיות נכונים בו-זמנית."
-    },
-    "uses": [
-     "Query",
-     "Server",
-     "SPA vs SSR vs static",
-     "Environment variables / secrets"
-    ],
-    "prompt": "Add a /contacts page to my Next.js CRM that lists every contact with name, company name, email and stage, newest first.\n\nRequirements: the query runs on the server, never in the browser; the database URL is never exposed to the client; one SQL query with a join, not a query per row; the SQL is parameterised. Use @neondatabase/serverless.\n\nShow me the data-access file, the page component, and what the empty state looks like when there are no contacts yet. Then give me a one-off SQL script that inserts five rows of realistic fake data. Finally, explain how I could tell from the browser alone whether this page was rendered on the server or in the browser.",
-    "acceptance": {
-     "en": "Done when: the contacts list page loads real rows from the database.",
-     "he": "Done when: עמוד רשימת אנשי הקשר טוען שורות אמיתיות מהמסד."
-    },
-    "verify": [
-     {
-      "en": "I loaded the list in the browser with real data",
-      "he": "טענתי את הרשימה בדפדפן עם נתונים אמיתיים"
-     },
-     {
-      "en": "I skimmed the query/API diff for surprises",
-      "he": "עברתי על diff של query/API להפתעות"
-     },
-     {
-      "en": "Empty state does not look like an error crash",
-      "he": "מצב ריק לא נראה כמו קריסת שגיאה"
-     }
-    ]
-   },
-   {
-    "n": 5,
-    "title": {
-     "en": "Search, and why it needs an index",
-     "he": "חיפוש, ולמה הוא צריך אינדקס"
-    },
-    "goal": {
-     "en": "A search box over name, email and company, with pagination — and proof from the database that the index is actually used.",
-     "he": "תיבת חיפוש על שם, אימייל וחברה, עם עימוד — והוכחה מהמסד שהאינדקס אכן בשימוש."
-    },
-    "why": {
-     "en": "Search is where a demo becomes a product — and where a table scan starts quietly costing you.",
-     "he": "החיפוש הוא המקום שבו דמו הופך למוצר — וגם המקום שבו סריקת טבלה מתחילה לעלות לך בשקט."
-    },
-    "uses": [
-     "Index",
-     "Pagination",
-     "Query",
-     "Latency vs throughput"
-    ],
-    "prompt": "Add search and pagination to my CRM's /contacts page. Search matches contact name, email, or company name, case-insensitively. Page size 25, with the page and query in the URL so a result can be linked and shared.\n\nThen: show me the EXPLAIN ANALYZE output I should expect before and after the right index, tell me exactly which index to create for a case-insensitive prefix search in Postgres, and explain in plain words when this approach stops being enough and real full-text search takes over.\n\nKeep the SQL parameterised, and show me what the naive string-concatenated version would let an attacker do.",
-    "acceptance": {
-     "en": "Done when: search returns expected matches and you know which index supports it.",
-     "he": "Done when: חיפוש מחזיר התאמות צפויות ואתם יודעים איזה אינדקס תומך בזה."
-    },
-    "verify": [
-     {
-      "en": "I tried a search that should hit and one that should miss",
-      "he": "ניסיתי חיפוש שצריך לפגוע ואחד שצריך להחטיא"
-     },
-     {
-      "en": "I confirmed an index exists for the filter path",
-      "he": "אישרתי שקיים אינדקס לנתיב הסינון"
-     },
-     {
-      "en": "I did not load the whole table into memory to 'search'",
-      "he": "לא טענתי את כל הטבלה לזיכרון כדי 'לחפש'"
-     }
-    ]
-   },
-   {
-    "n": 6,
-    "title": {
-     "en": "Writing: create and edit a contact",
-     "he": "כתיבה: יצירה ועריכה של איש קשר"
-    },
-    "goal": {
-     "en": "A form that creates and edits contacts, validates on the server, and writes company and contact in one transaction.",
-     "he": "טופס שיוצר ועורך אנשי קשר, מוודא קלט בשרת, וכותב חברה ואיש קשר בטרנזקציה אחת."
-    },
-    "why": {
-     "en": "Anything that writes is where bad input, half-finished saves and double-clicks show up.",
-     "he": "כל דבר שכותב הוא המקום שבו קלט רע, שמירות חצי-גמורות ולחיצות כפולות מתגלות."
-    },
-    "uses": [
-     "Forms & validation",
-     "POST / PUT / PATCH / DELETE",
-     "Transaction",
-     "Injection & validation",
-     "Idempotency"
-    ],
-    "prompt": "Add create and edit for contacts in my Next.js CRM, using Server Actions.\n\nRules: validation runs on the server even though the form also validates in the browser, and both share one schema definition; creating a contact for a company that does not exist yet creates the company and the contact in a single transaction that rolls back as a unit; email is optional but must be valid when present; stage must be one of the five allowed values, enforced in the database as well as the code.\n\nShow me the schema, the action, the form, and how errors get back to the user field by field. Then tell me what happens today if I double-click Save, and the smallest change that makes that harmless.",
-    "acceptance": {
-     "en": "Done when: create and edit persist correctly and validation errors are visible.",
-     "he": "Done when: יצירה ועריכה נשמרות נכון ושגיאות ולידציה גלויות."
-    },
-    "verify": [
-     {
-      "en": "I created and edited a contact end-to-end",
-      "he": "יצרתי וערכתי איש קשר מקצה לקצה"
-     },
-     {
-      "en": "Server rejects bad input (not only the UI)",
-      "he": "השרת דוחה קלט רע (לא רק ה-UI)"
-     },
-     {
-      "en": "I read the mutation/API diff",
-      "he": "קראתי את ה-diff של ה-mutation/API"
-     }
-    ]
-   },
-   {
-    "n": 7,
-    "title": {
-     "en": "Notes: the timeline on a contact",
-     "he": "הערות: ציר הזמן של איש קשר"
-    },
-    "goal": {
-     "en": "A contact page with its notes in time order, added without a full page reload, and no N+1 queries.",
-     "he": "עמוד איש קשר עם ההערות לפי זמן, הוספה בלי רענון עמוד מלא, ובלי שאילתות N+1."
-    },
-    "why": {
-     "en": "One list inside another is where most apps accidentally start making one query per row.",
-     "he": "רשימה בתוך רשימה היא המקום שבו רוב האפליקציות מתחילות בטעות לשאול שאילתה לכל שורה."
-    },
-    "uses": [
-     "Query",
-     "ORM",
-     "Component",
-     "Client state",
-     "Time, text & money"
-    ],
-    "prompt": "Add a /contacts/[id] page to my CRM: the contact's details, their company, and all their notes newest first, plus a box to add a note.\n\nRequirements: the page loads the contact and its notes in at most two queries, never one per note; adding a note does not reload the whole page and the new note appears immediately; timestamps are stored in UTC and shown in the viewer's local time, with the absolute time available on hover.\n\nShow me the queries, the page and the note form. Then explain what an N+1 query is, show me the version of this page that accidentally has one, and how I would spot it in a log before a user complains.",
-    "acceptance": {
-     "en": "Done when: notes appear on a contact timeline in order and survive refresh.",
-     "he": "Done when: הערות מופיעות בטיימליין של איש קשר בסדר ושורדות רענון."
-    },
-    "verify": [
-     {
-      "en": "I added two notes and refreshed",
-      "he": "הוספתי שתי הערות ורעננתי"
-     },
-     {
-      "en": "Ordering matches what I expect",
-      "he": "הסדר תואם למה שציפיתי"
-     },
-     {
-      "en": "Notes are scoped to the contact (no bleed)",
-      "he": "הערות שייכות לאיש הקשר (בלי דליפה)"
-     }
-    ]
-   },
-   {
-    "n": 8,
-    "title": {
-     "en": "Login, and who owns what",
-     "he": "התחברות, ומי הבעלים של מה"
-    },
-    "goal": {
-     "en": "Email and password sign-in with a session cookie, and every query scoped so one user can never read another's rows.",
-     "he": "התחברות עם אימייל וסיסמה, עוגיית סשן, וכל שאילתה מסונן כך שמשתמש לא יכול לקרוא שורות של אחר."
-    },
-    "why": {
-     "en": "Authorisation is not a login screen. It is a WHERE clause you cannot afford to forget once.",
-     "he": "הרשאות הן לא מסך התחברות. הן תנאי WHERE שאסור לשכוח אפילו פעם אחת."
-    },
-    "uses": [
-     "Authentication vs Authorization",
-     "Session & cookie",
-     "Hashing vs encryption",
-     "Environment variables / secrets",
-     "Least privilege"
-    ],
-    "prompt": "Add authentication to my Next.js CRM: sign up and log in with email and password, a session cookie, and a logout.\n\nRequirements: passwords hashed with a modern algorithm and never logged; the session cookie is httpOnly, Secure and SameSite=Lax; the session secret comes from an environment variable; every company, contact and note row belongs to a user, and every query filters by the logged-in user — show me how to make that hard to forget rather than something I must remember; unauthenticated requests to any CRM route redirect to /login.\n\nShow the schema change, the auth code, the middleware, and one test proving user A cannot fetch user B's contact by guessing its id. Then say plainly what this setup does not protect against.",
-    "acceptance": {
-     "en": "Done when: login works and a user cannot read/write another user's contacts.",
-     "he": "Done when: login עובד ומשתמש לא יכול לקרוא/לכתוב אנשי קשר של אחר."
-    },
-    "verify": [
-     {
-      "en": "I tested with two users (or two sessions)",
-      "he": "בדקתי עם שני משתמשים (או שני sessions)"
-     },
-     {
-      "en": "API enforces ownership — not only hidden buttons",
-      "he": "ה-API אוכף בעלות — לא רק כפתורים מוסתרים"
-     },
-     {
-      "en": "No secrets landed in the client bundle",
-      "he": "שום סוד לא נחת בבאנדל הלקוח"
-     }
-    ]
-   },
-   {
-    "n": 9,
-    "title": {
-     "en": "Preview deploys, and a database per environment",
-     "he": "דיפלוי פרה-וויו ומסד לכל סביבה"
-    },
-    "goal": {
-     "en": "Every pull request gets its own URL and its own database branch, so nothing you try can touch production data.",
-     "he": "לכל pull request יש כתובת משלו וענף מסד משלו, כך ששום ניסוי לא נוגע בנתוני הפרודקשן."
-    },
-    "why": {
-     "en": "The habit that separates a hobby project from a real one: production is never where you find out.",
-     "he": "ההרגל שמבדיל פרויקט תחביב ממערכת אמיתית: פרודקשן הוא אף פעם לא המקום שבו מגלים."
-    },
-    "uses": [
-     "Preview deployment",
-     "Environments (dev / staging / prod)",
-     "Config per environment",
-     "Pull request & code review"
-    ],
-    "prompt": "Set up environment separation for my Vercel + Neon CRM.\n\nI want: a production database and a separate database for preview deployments using Neon's branching, wired so a Vercel preview automatically points at the preview branch while production points at production; environment variables set per environment in Vercel, with the ones that must differ listed explicitly; a local .env.local pointing at a third, throwaway branch.\n\nShow me the exact configuration. Then walk the workflow: I open a pull request — what URL do I get, which database does it read, how do migrations reach each environment, and what happens to the preview database when the PR is merged or closed. Finish with the one mistake in this setup that would let a preview write to production data.",
-    "acceptance": {
-     "en": "Done when: preview deploy works and preview DB is not production.",
-     "he": "Done when: preview deploy עובד ומסד ה-preview אינו פרודקשן."
-    },
-    "verify": [
-     {
-      "en": "I opened a preview URL from a branch/PR",
-      "he": "פתחתי URL של preview מענף/PR"
-     },
-     {
-      "en": "Preview env vars / DB are separate from prod",
-      "he": "משתני/מסד preview מופרדים מפרוד"
-     },
-     {
-      "en": "I know how to tear the preview down",
-      "he": "אני יודע איך לפרק את ה-preview"
-     }
-    ]
-   },
-   {
-    "n": 10,
-    "title": {
-     "en": "Tests worth running, and CI that blocks",
-     "he": "בדיקות ששווה להריץ, ו-CI שחוסם"
-    },
-    "goal": {
-     "en": "A handful of tests covering the rules that matter, running on every push, blocking the merge when they fail.",
-     "he": "קומץ בדיקות שמכסות את הכללים שחשובים, רצות בכל push, וחוסמות מיזוג כשהן נכשלות."
-    },
-    "why": {
-     "en": "Tests you do not trust are worse than none. Pick the few that would have caught a real bug.",
-     "he": "בדיקות שלא סומכים עליהן גרועות מכלום. בוחרים את המעטות שהיו תופסות באג אמיתי."
-    },
-    "uses": [
-     "Test",
-     "Unit / Integration / E2E",
-     "CI/CD",
-     "Make it verify itself",
-     "Flaky test"
-    ],
-    "prompt": "Add a test suite to my Next.js CRM covering exactly the things that would really break it: the ownership rule (user A cannot read user B's rows), stage validation rejecting a bad value, the create-company-and-contact transaction rolling back as a unit, and one end-to-end path — log in, create a contact, add a note, see it on the page.\n\nPick the tools and justify each in one line. Show me how the tests get a database, and why that choice will not make them flaky.\n\nThen give me the GitHub Actions workflow that runs typecheck, lint, tests and build on every push, and tell me how to make a failing check actually block the merge instead of just showing a red mark.",
-    "acceptance": {
-     "en": "Done when: meaningful tests run in CI and a red test blocks merge.",
-     "he": "Done when: בדיקות משמעותיות רצות ב-CI ובדיקה אדומה חוסמת מיזוג."
-    },
-    "verify": [
-     {
-      "en": "I saw CI run on a push/PR",
-      "he": "ראיתי CI רץ על push/PR"
-     },
-     {
-      "en": "At least one test would catch a real break",
-      "he": "לפחות בדיקה אחת תתפוס שבירה אמיתית"
-     },
-     {
-      "en": "I did not skip failing tests to go green",
-      "he": "לא דילגתי על בדיקות כושלות כדי להיות ירוק"
-     }
-    ]
-   },
-   {
-    "n": 11,
-    "title": {
-     "en": "A domain, DNS, and the padlock",
-     "he": "דומיין, DNS, והמנעול"
-    },
-    "goal": {
-     "en": "Your own domain pointing at the Vercel deployment, HTTPS working, www sorted out. Optional — and the only step that costs money.",
-     "he": "דומיין משלך שמצביע על הדיפלוי ב-Vercel, HTTPS שעובד, ו-www מסודר. רשות — והשלב היחיד שעולה כסף."
-    },
-    "why": {
-     "en": "Buying a name and pointing it somewhere is the single most demystifying hour in this whole course.",
-     "he": "לקנות שם ולכוון אותו למקום היא אולי השעה הכי מפזרת ערפל בכל הקורס."
-    },
-    "uses": [
-     "Domain & registrar",
-     "DNS records (A, CNAME, TXT)",
-     "TLS certificate",
-     "HTTPS / TLS",
-     "Is it me or them?"
-    ],
-    "prompt": "I want my CRM on my own domain. Walk me through it end to end.\n\nCover: buying a domain from a registrar and what the price actually includes; adding it to my Vercel project; exactly which DNS records to create and what each one means; choosing whether the canonical address is example.com or www.example.com and redirecting the other; how the HTTPS certificate is issued and renewed without me doing anything.\n\nThen give me the commands to check propagation myself — dig or nslookup — and how to read the answer. Finish with the three most common reasons a freshly pointed domain shows the wrong site, and how to tell which one is happening to me.",
-    "acceptance": {
-     "en": "Done when: custom domain resolves and HTTPS padlock works.",
-     "he": "Done when: דומיין מותאם נפתר והמנעול של HTTPS עובד."
-    },
-    "verify": [
-     {
-      "en": "I opened the site on the custom domain",
-      "he": "פתחתי את האתר על הדומיין המותאם"
-     },
-     {
-      "en": "Certificate is valid (no click-through warnings)",
-      "he": "התעודה תקפה (בלי אזהרות)"
-     },
-     {
-      "en": "I did not disable TLS verification to 'make it work'",
-      "he": "לא כיביתי אימות TLS כדי 'שיעבוד'"
-     }
-    ]
-   },
-   {
-    "n": 12,
-    "title": {
-     "en": "Errors, one alert, and the bill",
-     "he": "שגיאות, התראה אחת, והחשבון"
-    },
-    "goal": {
-     "en": "Structured logs, an error tracker catching real exceptions, one alert that wakes you for a reason, and a written answer to what this costs.",
-     "he": "לוגים מובנים, מעקב שגיאות שתופס חריגות אמיתיות, התראה אחת שמעירה אותך מסיבה טובה, ותשובה כתובה לשאלה כמה זה עולה."
-    },
-    "why": {
-     "en": "Shipping is not the end. Knowing it is broken before a user tells you is the end.",
-     "he": "העלייה לאוויר היא לא הסוף. לדעת שנשבר לפני שמשתמש מספר לך — זה הסוף."
-    },
-    "uses": [
-     "Structured logs",
-     "Error tracking",
-     "Alert",
-     "Health check & uptime monitor",
-     "The cloud"
-    ],
-    "prompt": "Close out my Vercel + Neon CRM with the operations layer.\n\nGive me: structured JSON logging with a request id that ties a browser request to its server log lines, plus a list of what must never be logged; an error tracker on a free tier wired into both server and browser errors, with source maps so stack traces are readable; an /api/health endpoint and a free uptime monitor hitting it; and exactly one alert, with your argument for why that one and not four.\n\nThen the numbers: what this app costs per month on the free tiers, which limit I hit first as usage grows, what the first paid bill looks like, and the earliest signal I would see before it arrives. Finish with a five-line runbook to keep for when the site is down.",
-    "acceptance": {
-     "en": "Done when: errors are visible, one alert fires on a real failure, and you know the bill drivers.",
-     "he": "Done when: שגיאות גלויות, התראה אחת עובדת על כשל אמיתי, ואתם יודעים מה מניע את החשבון."
-    },
-    "verify": [
-     {
-      "en": "I triggered a safe error and saw it in logs/alerts",
-      "he": "יצרתי שגיאה בטוחה וראיתי אותה בלוגים/התראות"
-     },
-     {
-      "en": "PII/secrets are not dumped raw into logs",
-      "he": "PII/סודות לא נשפכים גולמיים ללוגים"
-     },
-     {
-      "en": "I checked cost/usage so nothing forgotten is burning money",
-      "he": "בדקתי עלות/שימוש כדי ששום דבר שנשכח לא שורף כסף"
-     }
-    ]
-   },
-   {
-    "n": 13,
-    "title": {
-     "en": "Analytics: page loads and the actions that matter",
-     "he": "אנליטיקס: טעינות עמוד והפעולות שחשובות"
-    },
-    "goal": {
-     "en": "Every page load counted, four product actions tracked as named events, one funnel you can read — and no personal data leaving the app.",
-     "he": "כל טעינת עמוד נספרת, ארבע פעולות מוצר נרשמות כאירועים בעלי שם, משפך אחד שאפשר לקרוא — ובלי שנתונים אישיים יוצאים מהאפליקציה."
-    },
-    "why": {
-     "en": "Step 12 tells you the app is healthy. This tells you whether anyone is using it, and where they give up. Logs answer 'did it break'; analytics answers 'did it work'.",
-     "he": "שלב 12 אומר לך שהאפליקציה בריאה. זה אומר לך אם מישהו בכלל משתמש בה, ואיפה הוא מוותר. לוגים עונים על 'האם זה נשבר'; אנליטיקס עונה על 'האם זה עבד'."
-    },
-    "uses": [
-     "Pageview vs event",
-     "Funnel & drop-off",
-     "Tracking without PII",
-     "Dashboard"
-    ],
-    "prompt": "Add product analytics to my Vercel + Neon CRM: page loads and user actions.\n\n1. Page loads: a client-side pageview on first load and on every client-side route change (Next.js App Router does not re-run a layout on navigation — show me exactly where the hook goes so I do not double-count or miss navigations). Use a free tier: Vercel Web Analytics or a self-hostable one — recommend one in two sentences and say what I give up.\n\n2. Actions, as exactly four named events, not a call scattered at every click: contact_created, contact_edited, note_added, search_performed. Wrap them in one track(name, props) module so no component imports the vendor SDK directly. Keep props to non-identifying values: result_count, stage, has_company — never name, email, phone, note text or a raw query string.\n\n3. One funnel I can read: landed -> searched -> opened a contact -> added a note. Tell me which number would tell me the search is useless.\n\n4. Privacy and honesty: no analytics before consent if I ever have EU users, respect Do Not Track, and the app must work normally with the analytics script blocked — failures there must never break a page or a save.\n\nFinish with the one event my CRM should have that a generic setup would miss, and the three vanity metrics I should refuse to put on the dashboard.",
-    "acceptance": {
-     "en": "Done when: pageviews count on navigation too, the four events fire with clean props, and blocking the script changes nothing in the app.",
-     "he": "Done when: טעינות נספרות גם בניווט פנימי, ארבעת האירועים נשלחים עם מאפיינים נקיים, וחסימת הסקריפט לא משנה כלום באפליקציה."
-    },
-    "verify": [
-     {
-      "en": "I navigated between pages and saw a pageview per navigation, not one per session",
-      "he": "ניווטתי בין עמודים וראיתי pageview לכל ניווט, לא אחד לכל סשן"
-     },
-     {
-      "en": "I performed all four actions and each event arrived with the props I expected",
-      "he": "ביצעתי את כל ארבע הפעולות וכל אירוע הגיע עם המאפיינים שציפיתי להם"
-     },
-     {
-      "en": "No name, email, phone, note text or raw query appears in any event payload",
-      "he": "אין שם, אימייל, טלפון, טקסט הערה או שאילתה גולמית באף אירוע"
-     },
-     {
-      "en": "With the analytics script blocked, pages still render and saves still work",
-      "he": "כשהסקריפט חסום, העמודים עדיין נטענים והשמירות עדיין עובדות"
-     }
-    ]
-   }
-  ]
- },
- "BASIC_PROJECT": {
-  "id": "project",
-  "icon": "▶",
-  "title": {
-   "en": "Final project — a page that remembers",
-   "he": "פרויקט מסכם — עמוד שזוכר"
-  },
-  "blurb": {
-   "en": "Four steps. One page with a box for a name and a note, and a list that is still there after you refresh. You paste the prompt, read what comes back, and click it yourself.",
-   "he": "ארבעה שלבים. עמוד אחד עם תיבה לשם ולהערה, ורשימה שנשארת אחרי רענון. מדביקים את הפרומפט, קוראים מה חזר, ולוחצים בעצמכם."
-  },
-  "warn": {
-   "en": "This stays a practice page. Do not type a real password, card number, or someone else's private details into it.",
-   "he": "זה נשאר עמוד לתרגול. אל תקלידו לתוכו סיסמה אמיתית, מספר כרטיס, או פרטים פרטיים של מישהו אחר."
-  },
-  "steps": [
-   {
-    "n": 1,
-    "title": {
-     "en": "Say what the page does",
-     "he": "להגיד מה העמוד עושה"
-    },
-    "goal": {
-     "en": "One sentence: a page where you type a name and a note, and see the ones you already saved. Nothing else.",
-     "he": "משפט אחד: עמוד שבו מקלידים שם והערה, ורואים את אלה שכבר נשמרו. שום דבר אחר."
-    },
-    "why": {
-     "en": "If you cannot say it in one sentence, the AI will invent a product. Login, payments and email are how a small page becomes a month.",
-     "he": "אם אי אפשר להגיד את זה במשפט אחד, ה-AI ימציא מוצר. התחברות, תשלומים ומייל הם איך שעמוד קטן הופך לחודש."
-    },
-    "uses": ["Client", "Frontend"],
-    "prompt": "I am building one practice page. Do not write code.\n\nThe page does exactly this: I type a name and a short note, I press save, and I see a list of the names I already saved. Refreshing the page may forget them for now.\n\nIt does NOT have: login, passwords, payments, email, file uploads, search, or more than one page.\n\nReply with three lines only: the one sentence of what it does, the list of things it will not do, and the one way a beginner would accidentally make it bigger.",
-    "acceptance": {
-     "en": "Write the one sentence of what the page does, and one thing it will not do.",
-     "he": "כתבו את המשפט האחד של מה העמוד עושה, ודבר אחד שהוא לא יעשה."
-    },
-    "verify": [
-     {
-      "en": "I can say what the page does in one sentence",
-      "he": "אני יכול להגיד מה העמוד עושה במשפט אחד"
-     },
-     {
-      "en": "I named something it will not do",
-      "he": "ציינתי משהו שהוא לא יעשה"
-     }
-    ]
-   },
-   {
-    "n": 2,
-    "title": {
-     "en": "A page you can click",
-     "he": "עמוד שאפשר ללחוץ עליו"
-    },
-    "goal": {
-     "en": "A page in the browser: a name box, a note box, a save button, and a list. Refreshing may clear the list. That is fine for this step.",
-     "he": "עמוד בדפדפן: תיבת שם, תיבת הערה, כפתור שמירה, ורשימה. רענון יכול למחוק את הרשימה. זה בסדר בשלב הזה."
-    },
-    "why": {
-     "en": "You need something you can click before anything is saved. If you cannot see it, you cannot tell the AI what is wrong.",
-     "he": "צריך משהו שאפשר ללחוץ עליו לפני ששומרים משהו. אם אי אפשר לראות את זה, אי אפשר להגיד ל-AI מה לא בסדר."
-    },
-    "uses": ["Frontend", "Forms & validation"],
-    "prompt": "Build a single web page I can open in the browser. One screen only.\n\nIt has a text box for a name, a text box for a short note, a Save button, and a list under them of what I have added in this visit. Empty name: do not add a row, show a short message instead.\n\nDo NOT add: a database, login, a second page, styling frameworks, or any feature I did not name.\nBefore the code, list the pieces of the page in plain words. After the code, tell me the exact command to open it and what I should see.",
-    "acceptance": {
-     "en": "What will you see on the page, and what should happen if the name is empty?",
-     "he": "מה תראו על העמוד, ומה אמור לקרות אם השם ריק?"
-    },
-    "verify": [
-     {
-      "en": "I opened the page and saw the two boxes and the button",
-      "he": "פתחתי את העמוד וראיתי את שתי התיבות ואת הכפתור"
-     },
-     {
-      "en": "An empty name did not add a row",
-      "he": "שם ריק לא הוסיף שורה"
-     },
-     {
-      "en": "A real name showed up in the list",
-      "he": "שם אמיתי הופיע ברשימה"
-     }
-    ]
-   },
-   {
-    "n": 3,
-    "title": {
-     "en": "Make refresh keep the names",
-     "he": "לגרום לרענון לשמור את השמות"
-    },
-    "goal": {
-     "en": "You add a name, refresh the page, and it is still in the list.",
-     "he": "מוסיפים שם, מרעננים את העמוד, והוא עדיין ברשימה."
-    },
-    "why": {
-     "en": "Until this step the list lived only in the browser's memory. A refresh throws that away. A database is the place that survives.",
-     "he": "עד השלב הזה הרשימה חיה רק בזיכרון של הדפדפן. רענון זורק אותה. מסד נתונים הוא המקום ששורד."
-    },
-    "uses": ["Database", "Server", "Schema"],
-    "prompt": "The page already has a name box, a note box, a Save button, and a list that disappears on refresh. Make the list survive a refresh.\n\nUse the smallest database that runs on my machine. One table, two columns: name and note. Saving writes a row. Loading the page reads the rows back.\n\nDo NOT add: login, a second table, editing, deleting, or a hosted database.\nBefore the code, name the table and the two columns in plain words, and say what is lost if the database file is deleted. After the code, give me the exact commands to start it and the click-by-click check: add a name, refresh, it is still there.",
-    "acceptance": {
-     "en": "Where do the names live after a refresh, and what disappears if you delete that place?",
-     "he": "איפה השמות חיים אחרי רענון, ומה נעלם אם מוחקים את המקום הזה?"
-    },
-    "verify": [
-     {
-      "en": "I added a name, refreshed, and it was still there",
-      "he": "הוספתי שם, רעננתי, והוא עדיין היה שם"
-     },
-     {
-      "en": "I can point at the one table that holds the names",
-      "he": "אני יכול להצביע על הטבלה האחת שמחזיקה את השמות"
-     }
-    ]
-   },
-   {
-    "n": 4,
-    "title": {
-     "en": "Try to break it",
-     "he": "לנסות לשבור את זה"
-    },
-    "goal": {
-     "en": "An empty name still does not save. A real name still survives refresh. You did both with your own hands.",
-     "he": "שם ריק עדיין לא נשמר. שם אמיתי עדיין שורד רענון. עשיתם את שניהם במו ידיכם."
-    },
-    "why": {
-     "en": "The AI will say it works. The only check that counts is you clicking it, including the case that should fail.",
-     "he": "ה-AI יגיד שזה עובד. הבדיקה היחידה שנחשבת היא שאתם לוחצים, כולל המקרה שאמור להיכשל."
-    },
-    "uses": ["Bug / Stack trace", "Forms & validation"],
-    "prompt": "Look at the page that saves a name and a note. Do not add features.\n\nCheck these three cases and fix only what fails:\n1. Save with an empty name — no new row, a short message.\n2. Save a normal name and note, refresh — the row is still there.\n3. Save a name that is only spaces — treat it like empty.\n\nIf something fails, paste me the exact thing you saw, not a guess. Do not add delete, edit, login, or styling.",
-    "acceptance": {
-     "en": "What will you click to prove an empty name is rejected and a real name survives refresh?",
-     "he": "על מה תלחצו כדי להוכיח ששם ריק נדחה ושם אמיתי שורד רענון?"
-    },
-    "verify": [
-     {
-      "en": "Empty name and spaces-only name did not save",
-      "he": "שם ריק ושם של רווחים בלבד לא נשמרו"
-     },
-     {
-      "en": "A real name was still there after refresh",
-      "he": "שם אמיתי עדיין היה שם אחרי רענון"
-     },
-     {
-      "en": "I clicked both checks myself",
-      "he": "לחצתי על שתי הבדיקות בעצמי"
-     }
-    ]
-   }
-  ]
- },
  "CHECKLIST": {
   "id": "checklist",
   "icon": "☑",
@@ -11020,14 +10324,14 @@
  "ARCHITECTURES": {
   "id": "architectures",
   "icon": "⬡",
-   "title": {
-    "en": "Architectures",
-    "he": "ארכיטקטורות"
-   },
-   "blurb": {
-    "en": "The shapes a product can take. This course has the ones you are ready for. Pick the smallest that fits.",
-    "he": "הצורות שמוצר יכול לקבל. בקורס הזה יש את אלה שאתם מוכנים להן. בוחרים את הקטנה ביותר שמתאימה."
-   },
+  "title": {
+   "en": "Architectures",
+   "he": "ארכיטקטורות"
+  },
+  "blurb": {
+   "en": "The shapes a product can take. This course has the ones you are ready for. Pick the smallest that fits.",
+   "he": "הצורות שמוצר יכול לקבל. בקורס הזה יש את אלה שאתם מוכנים להן. בוחרים את הקטנה ביותר שמתאימה."
+  },
   "items": [
    {
     "id": "static-site",
@@ -11577,7 +10881,10 @@
     "http",
     "data"
    ],
-   "arch": ["static-site", "classic-monolith"],
+   "arch": [
+    "static-site",
+    "classic-monolith"
+   ],
    "price": 99
   },
   {
@@ -11614,11 +10921,14 @@
     "team",
     "ai"
    ],
-   "arch": ["serverless", "pipeline", "microservices"],
+   "arch": [
+    "serverless",
+    "pipeline",
+    "microservices"
+   ],
    "price": 149
   }
  ],
- "ASK_PROMPT": "I'm learning the concept \"{term}\". Explain it to me the way a senior developer would explain it to a junior on their team:\n\n1. A one-paragraph mental model. No code.\n2. Where it shows up in MY project - look at the codebase, or ask me two questions about it first.\n3. The most common mistake beginners make with it, and how I would notice that mistake happening.\n4. One small, safe experiment I can run in 10 minutes to see it in action.\n\nKeep it under 300 words. Do not change any code.",
  "SIMPLE": {
   "Source code": {
    "q": {

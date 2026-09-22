@@ -1,4 +1,4 @@
-import type { Architecture, Course, Lang, Module, Path, Project, Term } from "./types";
+import type { Architecture, Course, Lang, Module, Path, Term } from "./types";
 import raw from "@/data/course.json";
 
 const course = raw as Course;
@@ -63,10 +63,6 @@ export function pathForModule(id: string, courseId?: string): Path | undefined {
   return course.PATHS.find((p) => p.mods.includes(id));
 }
 
-export function projectFor(courseId: string): Project {
-  return courseId === "basic" ? course.BASIC_PROJECT : course.PROJECT;
-}
-
 /** Architectures that belong to one course, in syllabus order. */
 export function archesFor(courseId: string): Architecture[] {
   const ids = course.PATHS.find((p) => p.id === courseId)?.arch ?? [];
@@ -83,5 +79,14 @@ export function findTerm(nameEn: string): { m: Module; i: number; tm: Term } | n
   return null;
 }
 
-export const { UI, MODULES, SIMPLE, DETAIL, EXAMPLES, QUIZ, PROJECT, BASIC_PROJECT, CHECKLIST, ARCHITECTURES, PATHS, ASK_PROMPT } =
+export const { UI, MODULES, SIMPLE, DETAIL, EXAMPLES, QUIZ, CHECKLIST, ARCHITECTURES, PATHS } =
   course;
+
+/** Locate a term by its stable slug, in whichever lesson it lives. */
+export function findTermK(k: string): { m: Module; i: number; tm: Term } | null {
+  for (const m of course.MODULES) {
+    const i = m.terms.findIndex((x) => x.k === k);
+    if (i >= 0) return { m, i, tm: m.terms[i] };
+  }
+  return null;
+}

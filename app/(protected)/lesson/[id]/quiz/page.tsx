@@ -37,11 +37,10 @@ export default async function QuizPage({
 
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const coursePath = pathForModule(m.id, course);
-  const { prev, next } = neighbors(m.id, course);
+  const { next } = neighbors(m.id, course);
   const q = (href: string) => (course ? `${href}?course=${course}` : href);
   const nextLink = next ? q(`/lesson/${next.id}/overview`) : q("/architectures");
   const nextName = next ? next.title[lang] : ARCHITECTURES.title[lang];
-  const done = m.terms.filter((_, j) => false).length;
 
   return (
     <AppShell>
@@ -55,17 +54,15 @@ export default async function QuizPage({
       />
       <LessonSubNav m={m} active={m.terms.length - 1} quiz course={course} />
       <section className="mod">
-        <ModuleHead m={m} lang={lang} doneCount={done} />
+        <ModuleHead m={m} lang={lang} doneCount={0} />
       </section>
       <QuizBlock modId={id} questions={qs} />
       <div className="pager">
-        {prev ? (
-          <Link href={`/lesson/${prev.id}/quiz`}>
-            <b>Previous</b><span>{prev.title[lang]}</span>
-          </Link>
-        ) : null}
+        <Link href={q(`/lesson/${m.id}/build`)}>
+          <b>{t("prev")}</b><span>{t("build")}</span>
+        </Link>
         <Link className="nx" href={nextLink}>
-          <b>Next</b><span>{nextName}</span>
+          <b>{t("nextTerm")}</b><span>{nextName}</span>
         </Link>
       </div>
     </AppShell>
