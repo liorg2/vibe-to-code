@@ -93,14 +93,23 @@ export default async function SlidePage({
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />
         ) : null}
         {flow ? (
-          <div className="http-flow" aria-hidden="true">
+          <div className={flow.mid ? "http-flow hf-3" : "http-flow"} aria-hidden="true">
             <div className="hf-cap">{flow.cap[lang]}</div>
             <div className="hf-row">
               <div className="hf-node hf-client">{flow.left[lang]}</div>
               <div className="hf-track">
-                <div className="hf-packet hf-req">{flow.out[lang]}</div>
-                <div className="hf-packet hf-res">{flow.back[lang]}</div>
+                <div className={flow.mid ? "hf-packet hf-req hf-leg1" : "hf-packet hf-req"}>{flow.out[lang]}</div>
+                <div className={flow.mid ? "hf-packet hf-res hf-leg4" : "hf-packet hf-res"}>{flow.back[lang]}</div>
               </div>
+              {flow.mid ? (
+                <>
+                  <div className="hf-node hf-mid">{flow.mid[lang]}</div>
+                  <div className="hf-track">
+                    <div className="hf-packet hf-req hf-leg2">{flow.out[lang]}</div>
+                    <div className="hf-packet hf-res hf-leg3">{flow.back[lang]}</div>
+                  </div>
+                </>
+              ) : null}
               <div className="hf-node hf-server">{flow.right[lang]}</div>
             </div>
           </div>

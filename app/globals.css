@@ -242,10 +242,39 @@ section.mod{scroll-margin-top:90px;margin-bottom:40px}
   56%{opacity:1}
   94%{inset-inline-start:0;opacity:1}
   100%{opacity:0}}
+.hf-mid{border-color:color-mix(in srgb,var(--tx3) 50%,var(--line))}
+.hf-3 .hf-node{width:68px;padding:8px 4px;font-size:var(--fs-xs)}
+.hf-3 .hf-row{gap:8px}
+.hf-3 .hf-leg1{animation:hf-leg1 6.4s ease-in-out infinite}
+.hf-3 .hf-leg2{animation:hf-leg2 6.4s ease-in-out infinite}
+.hf-3 .hf-leg3{animation:hf-leg3 6.4s ease-in-out infinite}
+.hf-3 .hf-leg4{animation:hf-leg4 6.4s ease-in-out infinite}
+@keyframes hf-leg1{
+  0%,100%{inset-inline-start:0;opacity:0}
+  3%{opacity:1}
+  22%{inset-inline-start:calc(100% - 5.2rem);opacity:1}
+  25%,100%{opacity:0}}
+@keyframes hf-leg2{
+  0%,25%{inset-inline-start:0;opacity:0}
+  28%{opacity:1}
+  47%{inset-inline-start:calc(100% - 5.2rem);opacity:1}
+  50%,100%{opacity:0}}
+@keyframes hf-leg3{
+  0%,50%{inset-inline-start:calc(100% - 5.2rem);opacity:0}
+  53%{opacity:1}
+  72%{inset-inline-start:0;opacity:1}
+  75%,100%{opacity:0}}
+@keyframes hf-leg4{
+  0%,75%{inset-inline-start:calc(100% - 5.2rem);opacity:0}
+  78%{opacity:1}
+  97%{inset-inline-start:0;opacity:1}
+  100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){
   .hf-packet{animation:none}
   .hf-req{inset-inline-start:18%;opacity:1}
-  .hf-res{inset-inline-start:62%;opacity:1}}
+  .hf-res{inset-inline-start:62%;opacity:1}
+  .hf-3 .hf-leg1,.hf-3 .hf-leg2{inset-inline-start:12%;opacity:1}
+  .hf-3 .hf-leg3,.hf-3 .hf-leg4{inset-inline-start:58%;opacity:1}}
 .slide .body{margin-top:26px;color:var(--tx2);font-size:var(--fs-md);max-width:72ch}
 .slide .body p{margin-bottom:16px;text-wrap:pretty}
 .slide .cal{margin-top:26px;background:var(--card2);border:1px solid var(--line);
