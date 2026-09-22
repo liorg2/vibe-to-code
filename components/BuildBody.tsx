@@ -24,6 +24,15 @@ export function BuildBody({ id, b, lang, q }: { id: string; b: BuildStep; lang: 
           ) : null;
         })}
       </div>
+      <aside className="tip">
+        <span className="ic" aria-hidden="true">💸</span>
+        <p>
+          {lang === "he"
+            ? "הטוקנים, האחסון ומסד הנתונים מחויבים בחשבונות שלכם. הגדירו תקרת הוצאה, ומחקו מה שלא צריך. "
+            : "Tokens, hosting and the database bill your own accounts. Set a spending limit and delete what you don't need. "}
+          <Link href="/terms">{lang === "he" ? "תנאי שימוש" : "Terms"}</Link>
+        </p>
+      </aside>
       {tipsFor(id).map((tip, i) => (
         <aside key={i} className="tip">
           <span className="ic" aria-hidden="true">💡</span>
