@@ -284,7 +284,7 @@ section.mod{scroll-margin-top:90px;margin-bottom:40px}
   .hf-step-row{grid-template-columns:1fr 1fr}}
 @media (prefers-reduced-motion:reduce){
   .hf-packet,.hf-step{animation:none}
-  .hf-step{opacity:1}}
+  .hf-step{opacity:1}
   .hf-req{inset-inline-start:18%;opacity:1}
   .hf-res{inset-inline-start:62%;opacity:1}
   .hf-3 .hf-leg1,.hf-3 .hf-leg2{inset-inline-start:12%;opacity:1}
