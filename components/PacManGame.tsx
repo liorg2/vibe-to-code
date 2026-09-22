@@ -138,48 +138,38 @@ export function PacManLane() {
     let last = 0;
     const timers: number[] = [];
 
+    const eat = (i: number) => {
+      const hit = state.dots[i];
+      if (!hit || hit.eaten) return;
+      hit.eaten = true;
+      dots.current[i]?.classList.add("eaten");
+      if (state.aim === i) {
+        const n = state.dots.findIndex((d) => !d.eaten);
+        if (n >= 0) state.aim = n;
+      }
+      timers.push(window.setTimeout(() => {
+        const free = state.spots.filter((s) => state.dots.every((d) => d.eaten || Math.hypot(d.x - s.x, d.y - s.y) > 40));
+        const next = free[Math.floor(Math.random() * free.length)] ?? state.spots[Math.floor(Math.random() * state.spots.length)];
+        if (next) {
+          hit.x = next.x;
+          hit.y = next.y;
+        }
+        hit.word = pick(pool, used());
+        hit.eaten = false;
+        const el = dots.current[i];
+        if (el) {
+          el.textContent = hit.word;
+          el.style.left = `${hit.x}px`;
+          el.style.top = `${hit.y}px`;
+          el.classList.remove("eaten");
+        }
+      }, 240));
+    };
+
     const frame = (t: number) => {
       if (!state.dots.length) layout();
       const dt = last ? Math.min(32, t - last) : 16;
       last = t;
-      const target = state.spots[state.aim] ?? state.dots[0];
-      if (target) {
-        const dx = target.x - state.x;
-        const dy = target.y - state.y;
-        const dist = Math.hypot(dx, dy) || 1;
-        const step = Math.min(dist, 0.11 * dt);
-        state.x += (dx / dist) * step;
-        state.y += (dy / dist) * step;
-        const ang = (Math.atan2(dy, dx) * 180) / Math.PI;
-        pc.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${ang}deg)`;
-        if (dist < 16) {
-          const hit = state.dots.find((d) => !d.eaten && Math.hypot(d.x - target.x, d.y - target.y) < 8);
-          if (hit) {
-            hit.eaten = true;
-            const i = state.dots.indexOf(hit);
-            dots.current[i]?.classList.add("eaten");
-            timers.push(window.setTimeout(() => {
-              const free = state.spots.filter((s) => state.dots.every((d) => d.eaten || Math.hypot(d.x - s.x, d.y - s.y) > 40));
-              const next = free[Math.floor(Math.random() * free.length)] ?? state.spots[Math.floor(Math.random() * state.spots.length)];
-              if (next) {
-                hit.x = next.x;
-                hit.y = next.y;
-              }
-              hit.word = pick(pool, used());
-              hit.eaten = false;
-              const el = dots.current[i];
-              if (el) {
-                el.textContent = hit.word;
-                el.style.left = `${hit.x}px`;
-                el.style.top = `${hit.y}px`;
-                el.classList.remove("eaten");
-              }
-            }, 240));
-          }
-          const next = Math.floor(Math.random() * Math.max(state.spots.length, 1));
-          state.aim = next === state.aim ? (next + 1) % Math.max(state.spots.length, 1) : next;
-        }
-      }
 
       state.dots.forEach((d, i) => {
         const el = dots.current[i];
@@ -187,6 +177,37 @@ export function PacManLane() {
         el.textContent = d.word;
         el.style.left = `${d.x}px`;
         el.style.top = `${d.y}px`;
+      });
+
+      if (!state.dots[state.aim] || state.dots[state.aim].eaten) {
+        const n = state.dots.findIndex((d) => !d.eaten);
+        if (n >= 0) state.aim = n;
+      }
+      const target = state.dots[state.aim];
+      const pill = dots.current[state.aim];
+      if (target && !target.eaten) {
+        const tx = target.x + (pill?.offsetWidth ?? 36) / 2 - SIZE / 2;
+        const ty = target.y + (pill?.offsetHeight ?? 18) / 2 - SIZE / 2;
+        const dx = tx - state.x;
+        const dy = ty - state.y;
+        const dist = Math.hypot(dx, dy) || 1;
+        const step = Math.min(dist, 0.11 * dt);
+        state.x += (dx / dist) * step;
+        state.y += (dy / dist) * step;
+        pc.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${(Math.atan2(dy, dx) * 180) / Math.PI}deg)`;
+      }
+
+      const box = pc.getBoundingClientRect();
+      const mx = box.left + box.width / 2;
+      const my = box.top + box.height / 2;
+      state.dots.forEach((d, i) => {
+        if (d.eaten) return;
+        const el = dots.current[i];
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const cx = Math.max(r.left, Math.min(mx, r.right));
+        const cy = Math.max(r.top, Math.min(my, r.bottom));
+        if (Math.hypot(mx - cx, my - cy) < 6) eat(i);
       });
 
       raf = requestAnimationFrame(frame);
