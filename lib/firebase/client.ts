@@ -78,5 +78,8 @@ export async function startSession(user: User) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ idToken }),
   });
-  if (!res.ok) throw new Error("Could not create a session. Is FIREBASE_SERVICE_ACCOUNT_JSON set on the server?");
+  if (!res.ok) {
+    const { error, code } = (await res.json().catch(() => ({}))) as { error?: string; code?: string };
+    throw new Error(`Could not create a session (${res.status}): ${error ?? "unknown"}${code ? ` [${code}]` : ""}`);
+  }
 }

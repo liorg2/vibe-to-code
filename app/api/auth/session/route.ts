@@ -22,7 +22,17 @@ export async function POST(req: Request) {
     return res;
   }
 
-  const session = await getAdminAuth().createSessionCookie(idToken, { expiresIn: MAX_AGE * 1000 });
+  let session: string;
+  try {
+    session = await getAdminAuth().createSessionCookie(idToken, { expiresIn: MAX_AGE * 1000 });
+  } catch (err) {
+    // ponytail: a rejected token and an unusable service account both threw into a blank 500 —
+    // the code is the only thing that tells prod which one it was
+    const code = (err as { code?: string })?.code ?? "unknown";
+    console.error("createSessionCookie failed:", code, err instanceof Error ? err.message : err);
+    const bad = code.includes("argument-error") || code.includes("id-token");
+    return NextResponse.json({ error: bad ? "invalid token" : "auth not configured", code }, { status: bad ? 401 : 500 });
+  }
   const res = NextResponse.json({ ok: true });
   res.cookies.set({
     name: SESSION_COOKIE,
