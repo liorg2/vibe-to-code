@@ -8,7 +8,7 @@ export type Prices = { basic: string; advanced: string; upgrade: string };
 const ILS: Prices = {
   basic: `₪${PATHS.find((p) => p.id === "basic")!.price}`,
   advanced: `₪${PATHS.find((p) => p.id === "advanced")!.price}`,
-  upgrade: "₪50",
+  upgrade: "₪170",
 };
 
 // ponytail: per-instance cache, a country's prices change only when edited in Paddle.

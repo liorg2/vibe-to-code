@@ -10881,7 +10881,7 @@
     "static-site",
     "classic-monolith"
    ],
-   "price": 99
+   "price": 129
   },
   {
    "id": "advanced",
@@ -10922,7 +10922,7 @@
     "pipeline",
     "microservices"
    ],
-   "price": 149
+   "price": 299
   }
  ],
  "SIMPLE": {
