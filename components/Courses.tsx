@@ -80,7 +80,7 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
                 href="/login?next=/courses"
                 className={cn(buttonVariants({ variant: "brand", size: "lg" }), "no-underline")}
               >
-                {t("signInBuy")}
+                {`${t("buy")} · ₪${p.price}`}
               </Link>
               {view}
             </>

@@ -41,7 +41,10 @@ export default function LoginPage() {
   const params = useSearchParams();
   const { syncCloud } = useApp();
   const lang = parseLangFromPath(usePathname());
-  const next = withLang(lang, params.get("next") || `/lesson/${MODULES[0].id}/overview`);
+  const asked = params.get("next");
+  // same-site paths only — "//x.com" or "https://x.com" would bounce a fresh login off-site
+  const safe = asked && asked.startsWith("/") && !asked.startsWith("//") && !asked.startsWith("/\\") ? asked : null;
+  const next = withLang(lang, safe || `/lesson/${MODULES[0].id}/overview`);
 
   const [mode, setMode] = useState<"in" | "up">("in");
   const [email, setEmail] = useState("");

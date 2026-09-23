@@ -3,6 +3,8 @@ import raw from "@/data/course.json";
 import { BUILD_DONE_N } from "./builds/counts";
 
 const course = raw as Course;
+// Term names stay English in the Hebrew UI too — devs say "flaky test", not "בדיקה הפכפכה". Explanations stay translated.
+for (const m of course.MODULES) for (const tm of m.terms) tm.t.he = tm.t.en;
 
 export function getCourse(): Course {
   return course;

@@ -14,7 +14,7 @@
   },
   "start": {
    "en": "Start learning",
-   "he": "להתחיל ללמוד"
+   "he": "התחילו ללמוד"
   },
   "freePreview": {
    "en": "Free preview",
@@ -22,7 +22,7 @@
   },
   "unlock": {
    "en": "Unlock all lessons",
-   "he": "לפתוח את כל השיעורים"
+   "he": "פתחו את כל השיעורים"
   },
   "lessons": {
    "en": "Lessons",
@@ -162,7 +162,7 @@
   },
   "doSub": {
    "en": "Tick these off before anything meets a real user.",
-   "he": "לסמן את כל אלה לפני שמשהו פוגש משתמש אמיתי."
+   "he": "סמנו את כל אלה לפני שמשהו פוגש משתמש אמיתי."
   },
   "neverThis": {
    "en": "Never",
@@ -206,7 +206,7 @@
   },
   "tapToFlip": {
    "en": "Tap to reveal",
-   "he": "לחץ לחשיפה"
+   "he": "לחצו לחשיפה"
   },
   "skip": {
    "en": "Not yet",
@@ -274,7 +274,7 @@
   },
   "deeper": {
    "en": "Go deeper",
-   "he": "לצלול פנימה"
+   "he": "צללו לעומק"
   },
   "deeperSub": {
    "en": "The full picture, with a real example. Optional.",
@@ -330,19 +330,15 @@
   },
   "startLesson": {
    "en": "Start the lesson",
-   "he": "להתחיל את השיעור"
+   "he": "התחילו את השיעור"
   },
   "buy": {
    "en": "Buy",
-   "he": "לקנות"
+   "he": "רכישה"
   },
   "owned": {
    "en": "You own this",
    "he": "כבר שלך"
-  },
-  "signInBuy": {
-   "en": "Sign in to buy",
-   "he": "להתחבר כדי לקנות"
   },
   "payOnce": {
    "en": "Pay once · VAT included",
@@ -354,15 +350,15 @@
   },
   "viewLessons": {
    "en": "See topics",
-   "he": "לראות נושאים"
+   "he": "צפו בנושאים"
   },
   "continue": {
    "en": "Continue",
-   "he": "להמשיך"
+   "he": "המשיכו"
   },
   "upgrade": {
    "en": "Add Go further",
-   "he": "להוסיף את הצעד הבא"
+   "he": "הוסיפו את הצעד הבא"
   },
   "upgradeSub": {
    "en": "Already on Start here? Pay the difference once and the rest of the topics open up.",
@@ -370,7 +366,7 @@
   },
   "addCourse": {
    "en": "Add the other course",
-   "he": "להוסיף את הקורס השני"
+   "he": "הוסיפו את הקורס השני"
   },
   "addCourseSub": {
    "en": "You own one of the two. Pay the difference once and the other course opens up too.",
@@ -478,11 +474,11 @@
   },
   "hideDone": {
    "en": "Hide completed",
-   "he": "להסתיר שיעורים שהושלמו"
+   "he": "הסתרת שיעורים שהושלמו"
   },
   "showDone": {
    "en": "Show completed",
-   "he": "להציג שיעורים שהושלמו"
+   "he": "הצגת שיעורים שהושלמו"
   }
  },
  "MODULES": [

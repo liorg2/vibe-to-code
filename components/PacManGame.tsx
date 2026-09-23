@@ -5,7 +5,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useApp } from "./Providers";
 import { pacmanWords } from "@/lib/pacman-terms";
 
 const DOTS = 10;
@@ -88,7 +87,6 @@ function spotsFor(root: HTMLElement): Spot[] {
 }
 
 export function PacManLane() {
-  const { lang } = useApp();
   const lane = useRef<HTMLDivElement>(null);
   const man = useRef<HTMLDivElement>(null);
   const dots = useRef<(HTMLSpanElement | null)[]>([]);
@@ -99,7 +97,7 @@ export function PacManLane() {
     if (!root || !pc) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const pool = pacmanWords(lang);
+    const pool = pacmanWords();
     if (!pool.length) return;
 
     const state = {
@@ -219,7 +217,7 @@ export function PacManLane() {
       ro.disconnect();
       timers.forEach((id) => window.clearTimeout(id));
     };
-  }, [lang]);
+  }, []);
 
   return (
     <div className="pac-board" ref={lane} aria-hidden="true">
