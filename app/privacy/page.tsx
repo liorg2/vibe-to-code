@@ -34,13 +34,13 @@ const TEXT: Record<Lang, LegalText> = {
           "To provide the course: sign-in, access to what you bought, and saving your progress across devices (performing our contract with you).",
           "To handle payments, refunds and tax records (contract and legal obligations).",
           "To keep the site secure and working (our legitimate interest).",
-          "To answer you when you write to us. We don't send marketing email without asking you first.",
+          "To send one welcome email when you sign up, and to answer you when you write to us. We don't send marketing email without asking you first.",
         ],
       },
       {
         h: "4. Who we share it with",
         p: [
-          "Only the service providers that run the site, each for its own part: Google Firebase (sign-in), Neon (database for progress and purchases), Vercel (hosting and logs) and Paddle (payments, as merchant of record under its own privacy policy).",
+          "Only the service providers that run the site, each for its own part: Google Firebase (sign-in), Neon (database for progress and purchases), Vercel (hosting and logs), Resend (sending our emails) and Paddle (payments, as merchant of record under its own privacy policy).",
           "Some of them store data outside your country, including in the United States, under their standard data-protection terms. We don't sell or rent personal data, and we don't share it for advertising.",
           "We may disclose data if the law requires it.",
         ],
@@ -109,13 +109,13 @@ const TEXT: Record<Lang, LegalText> = {
           "כדי לספק את הקורס: התחברות, גישה למה שרכשתם ושמירת ההתקדמות בין מכשירים (ביצוע החוזה איתכם).",
           "כדי לטפל בתשלומים, החזרים ורישומי מס (חוזה וחובה חוקית).",
           "כדי לשמור על האתר מאובטח ופועל (אינטרס לגיטימי).",
-          "כדי לענות לכם כשאתם פונים אלינו. לא נשלח אימייל שיווקי בלי לבקש מכם קודם.",
+          "כדי לשלוח מייל ברוכים הבאים אחד כשאתם נרשמים, ולענות לכם כשאתם פונים אלינו. לא נשלח אימייל שיווקי בלי לבקש מכם קודם.",
         ],
       },
       {
         h: "4. עם מי אנחנו משתפים",
         p: [
-          "רק עם ספקי השירות שמפעילים את האתר, כל אחד לחלק שלו: Google Firebase (התחברות), Neon (מסד נתונים להתקדמות ולרכישות), Vercel (אחסון ולוגים) ו-Paddle (תשלומים, כמוכרת הרשמית ולפי מדיניות הפרטיות שלה).",
+          "רק עם ספקי השירות שמפעילים את האתר, כל אחד לחלק שלו: Google Firebase (התחברות), Neon (מסד נתונים להתקדמות ולרכישות), Vercel (אחסון ולוגים), Resend (שליחת המיילים שלנו) ו-Paddle (תשלומים, כמוכרת הרשמית ולפי מדיניות הפרטיות שלה).",
           "חלקם שומרים מידע מחוץ למדינתכם, כולל בארצות הברית, לפי תנאי הגנת המידע הסטנדרטיים שלהם. אנחנו לא מוכרים או משכירים מידע אישי, ולא משתפים אותו לצורכי פרסום.",
           "ייתכן שנמסור מידע אם החוק מחייב זאת.",
         ],

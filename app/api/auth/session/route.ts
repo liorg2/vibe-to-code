@@ -1,6 +1,9 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { SESSION_COOKIE } from "@/lib/protected";
 import { getAdminAuth } from "@/lib/firebase/admin";
+import { claimWelcome } from "@/lib/db";
+import { emailEnabled, sendWelcome } from "@/lib/email";
+import { serverLang } from "@/lib/lang-server";
 
 const MAX_AGE = 60 * 60 * 24 * 5; // 5 days
 
@@ -42,6 +45,23 @@ export async function POST(req: Request) {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
+  });
+
+  // After the response: a slow or broken mail service must never slow or break sign-in.
+  const lang = await serverLang();
+  after(async () => {
+    if (!emailEnabled()) return; // don't claim a welcome we can't send
+    try {
+      const { uid } = await getAdminAuth().verifyIdToken(idToken);
+      const user = await getAdminAuth().getUser(uid);
+      // ponytail: only accounts made in the last day — keeps everyone who signed up before this
+      // shipped from getting a surprise welcome on their next login
+      if (!user.email || Date.now() - Date.parse(user.metadata.creationTime) > 86_400_000) return;
+      // Claimed before sending: a failed send means no welcome, never a second one.
+      if (await claimWelcome(uid)) await sendWelcome(uid, user.email, user.displayName ?? "", lang);
+    } catch (err) {
+      console.error("welcome email failed:", err instanceof Error ? err.message : err);
+    }
   });
   return res;
 }
