@@ -114,7 +114,7 @@ If all is green: add the line "2 vcs: on GitHub, live on Vercel, branch previews
       en: "One note lands in the terminal and the other in the browser console. It's the fastest way to learn which side a piece of code runs on.",
       he: "הודעה אחת מופיעה בטרמינל והשנייה ב-console של הדפדפן. זו הדרך המהירה ביותר ללמוד באיזה צד רץ כל חלק בקוד.",
     },
-    uses: ["client", "server", "localhost-and-port", "devtools", "the-network-tab", "console-and-breakpoints"],
+    uses: ["client", "server", "api", "localhost-and-port", "devtools", "the-network-tab", "console-and-breakpoints"],
     build: `Read AGENTS.md and STEPS.md first. This is step 3. Start a new branch for it.
 
 I want to see the browser and the server talk to each other.

@@ -661,22 +661,6 @@
      }
     },
     {
-     "k": "clone-push-pull",
-     "lvl": "A",
-     "t": {
-      "en": "Clone / push / pull",
-      "he": "Clone / push / pull"
-     },
-     "d": {
-      "en": "Copy a repo down to your machine, send your saved work up to the shared copy, bring everyone else's work down.",
-      "he": "להוריד עותק של ריפו למחשב שלך, לשלוח את מה ששמרת לעותק המשותף, ולמשוך אליך את מה שאחרים עשו."
-     },
-     "w": {
-      "en": "Three commands cover almost every normal day. Nearly every Git horror story is one of them going sideways.",
-      "he": "שלוש פקודות מכסות כמעט כל יום רגיל. כמעט כל סיפור אימה על Git הוא אחת מהן שהשתבשה."
-     }
-    },
-    {
      "k": "commit-branch-merge",
      "lvl": "A",
      "t": {
@@ -690,6 +674,22 @@
      "w": {
       "en": "Branch before you let an AI refactor half your app. Then throwing it away costs nothing.",
       "he": "תפתח ברנץ׳ לפני שאתה נותן ל-AI לשכתב חצי אפליקציה. ככה לזרוק את זה לא עולה כלום."
+     }
+    },
+    {
+     "k": "clone-push-pull",
+     "lvl": "A",
+     "t": {
+      "en": "Clone / push / pull",
+      "he": "Clone / push / pull"
+     },
+     "d": {
+      "en": "Copy a repo down to your machine, send your saved work up to the shared copy, bring everyone else's work down.",
+      "he": "להוריד עותק של ריפו למחשב שלך, לשלוח את מה ששמרת לעותק המשותף, ולמשוך אליך את מה שאחרים עשו."
+     },
+     "w": {
+      "en": "Three commands cover almost every normal day. Nearly every Git horror story is one of them going sideways.",
+      "he": "שלוש פקודות מכסות כמעט כל יום רגיל. כמעט כל סיפור אימה על Git הוא אחת מהן שהשתבשה."
      }
     },
     {
@@ -742,8 +742,8 @@
     "he": "שני הצדדים"
    },
    "blurb": {
-    "en": "Client, server, and the line between them.",
-    "he": "לקוח, שרת, והגבול ביניהם."
+    "en": "Client, server, APIs, and the line between them.",
+    "he": "קליינט, שרת, API, והקו ביניהם."
    },
    "terms": [
     {
@@ -808,6 +808,22 @@
      "w": {
       "en": "Every rule that matters — pricing, permissions, limits — must live here, not in the UI.",
       "he": "כל חוק שבאמת חשוב — תמחור, הרשאות, מגבלות — חייב לשבת כאן, לא בממשק."
+     }
+    },
+    {
+     "k": "api",
+     "lvl": "A",
+     "t": {
+      "en": "API",
+      "he": "API"
+     },
+     "d": {
+      "en": "A contract that says which requests one program accepts from another and what responses it returns.",
+      "he": "חוזה שמגדיר אילו בקשות תוכנה אחת מקבלת מתוכנה אחרת ואילו תשובות היא מחזירה."
+     },
+     "w": {
+      "en": "Your frontend, mobile app and integrations all depend on this contract. Change it carelessly and someone else's code breaks.",
+      "he": "הפרונט, האפליקציה והאינטגרציות שלכם תלויים בחוזה הזה. שינוי לא זהיר בו שובר קוד של מישהו אחר."
      }
     },
     {
@@ -908,12 +924,12 @@
     }
    ],
    "overview": {
-    "en": "Every web app is two programs pretending to be one: the part running in the visitor's browser and the part running on a machine you control. Most confusing bugs come from not knowing which side you are on. This lesson draws that line and hands you the browser's own debugger, DevTools, so you can watch both sides talk.",
-    "he": "כל אפליקציית ווב היא שתי תוכנות שמתחזות לאחת: החלק שרץ בדפדפן של המבקר והחלק שרץ על מכונה שאתם שולטים בה. רוב הבאגים המבלבלים באים מלא לדעת באיזה צד אתם. השיעור מצייר את הקו הזה ונותן לכם את הדיבאגר של הדפדפן עצמו, DevTools, כדי לראות את שני הצדדים מדברים."
+    "en": "Every web app is two programs pretending to be one: the part running in the visitor's browser and the part running on a machine you control. An API is the contract across that line. This lesson draws the boundary and hands you the browser's own debugger, DevTools, so you can see which side did what.",
+    "he": "כל אפליקציית ווב היא שתי תוכנות שמעמידות פנים שהן אחת: החלק שרץ בדפדפן של המבקר והחלק שרץ במחשב שבשליטתכם. API הוא החוזה שחוצה את הקו הזה. השיעור מצייר את הגבול ונותן לכם את כלי הדיבוג של הדפדפן, DevTools, כדי לראות איזה צד עשה מה."
    },
    "summary": {
-    "en": "Client asks, server answers; frontend is what the visitor sees, backend is what they never see. Ask 'which side is this running on?' before every fix, and open the Network tab before blaming the code.",
-    "he": "הקליינט שואל, השרת עונה; הפרונטאנד הוא מה שהמבקר רואה, הבקאנד הוא מה שהוא לא רואה אף פעם. לפני כל תיקון שאלו 'באיזה צד זה רץ?', ופתחו את ה-Network tab לפני שמאשימים את הקוד."
+    "en": "Client asks, server answers; frontend is what the visitor sees, backend is what they never see, and an API is their contract. Ask 'which side is this running on?' before every fix, and inspect the browser's evidence before blaming the code.",
+    "he": "הקליינט מבקש והשרת עונה; הפרונט הוא מה שהמבקר רואה, הבק-אנד הוא מה שלא, ו-API הוא החוזה ביניהם. לפני כל תיקון שאלו 'באיזה צד זה רץ?', ובדקו את הראיות בדפדפן לפני שמאשימים את הקוד."
    }
   },
   {
@@ -1041,22 +1057,6 @@
      }
     },
     {
-     "k": "framework-vs-library",
-     "lvl": "B",
-     "t": {
-      "en": "Framework vs library",
-      "he": "פריימוורק מול ספרייה"
-     },
-     "d": {
-      "en": "You call a library. A framework calls you — it owns the structure and you fill in the blanks.",
-      "he": "אתה קורא לספרייה. פריימוורק קורא לך — הוא מחזיק את המבנה ואתה ממלא את החללים."
-     },
-     "w": {
-      "en": "Frameworks give speed on day one and constraints on day one hundred. Know which you're buying.",
-      "he": "פריימוורקים נותנים מהירות ביום הראשון ומגבלות ביום המאה. תדע מה אתה קונה."
-     }
-    },
-    {
      "k": "semantic-versioning",
      "lvl": "B",
      "t": {
@@ -1070,6 +1070,22 @@
      "w": {
       "en": "The caret in ^1.4.2 permits automatic upgrades. It is why a build that worked yesterday can fail today with no change from you.",
       "he": "הגגון ב-^1.4.2 מתיר שדרוגים אוטומטיים. בגלל זה בילד שעבד אתמול יכול להיכשל היום בלי שום שינוי מצדך."
+     }
+    },
+    {
+     "k": "framework-vs-library",
+     "lvl": "B",
+     "t": {
+      "en": "Framework vs library",
+      "he": "פריימוורק מול ספרייה"
+     },
+     "d": {
+      "en": "You call a library. A framework calls you — it owns the structure and you fill in the blanks.",
+      "he": "אתה קורא לספרייה. פריימוורק קורא לך — הוא מחזיק את המבנה ואתה ממלא את החללים."
+     },
+     "w": {
+      "en": "Frameworks give speed on day one and constraints on day one hundred. Know which you're buying.",
+      "he": "פריימוורקים נותנים מהירות ביום הראשון ומגבלות ביום המאה. תדע מה אתה קונה."
      }
     }
    ],
@@ -1124,6 +1140,22 @@
      "w": {
       "en": "More than half of your users are on a phone. \"Looks great\" on your 27-inch monitor means nothing until you drag the window narrow.",
       "he": "יותר ממחצית המשתמשים שלך על טלפון. ״נראה מעולה״ על מסך 27 אינץ׳ לא אומר כלום עד שאתה מצר את החלון."
+     }
+    },
+    {
+     "k": "accessibility-a11y",
+     "lvl": "B",
+     "t": {
+      "en": "Accessibility (a11y)",
+      "he": "נגישות (a11y)"
+     },
+     "d": {
+      "en": "Making the page usable by keyboard, screen reader and low vision: real buttons, labelled inputs, sufficient contrast, visible focus.",
+      "he": "להפוך את הדף לשמיש במקלדת, בקורא מסך ובראייה חלשה: כפתורים אמיתיים, שדות עם תוויות, ניגודיות מספקת, פוקוס נראה."
+     },
+     "w": {
+      "en": "A div with an onClick is not a button: it cannot be tabbed to or pressed with Enter. It is also a legal requirement in many places.",
+      "he": "div עם onClick הוא לא כפתור: אי אפשר להגיע אליו ב-Tab או ללחוץ עליו ב-Enter. במקומות רבים זו גם דרישה חוקית."
      }
     },
     {
@@ -1223,22 +1255,6 @@
      }
     },
     {
-     "k": "accessibility-a11y",
-     "lvl": "B",
-     "t": {
-      "en": "Accessibility (a11y)",
-      "he": "נגישות (a11y)"
-     },
-     "d": {
-      "en": "Making the page usable by keyboard, screen reader and low vision: real buttons, labelled inputs, sufficient contrast, visible focus.",
-      "he": "להפוך את הדף לשמיש במקלדת, בקורא מסך ובראייה חלשה: כפתורים אמיתיים, שדות עם תוויות, ניגודיות מספקת, פוקוס נראה."
-     },
-     "w": {
-      "en": "A div with an onClick is not a button: it cannot be tabbed to or pressed with Enter. It is also a legal requirement in many places.",
-      "he": "div עם onClick הוא לא כפתור: אי אפשר להגיע אליו ב-Tab או ללחוץ עליו ב-Enter. במקומות רבים זו גם דרישה חוקית."
-     }
-    },
-    {
      "k": "forms-and-validation",
      "lvl": "A",
      "t": {
@@ -1293,6 +1309,22 @@
      }
     },
     {
+     "k": "endpoint",
+     "lvl": "A",
+     "t": {
+      "en": "Endpoint",
+      "he": "Endpoint"
+     },
+     "d": {
+      "en": "One specific URL + verb combination the server answers, e.g. POST /orders.",
+      "he": "שילוב ספציפי של כתובת ופועל שהשרת עונה עליו, למשל POST /orders."
+     },
+     "w": {
+      "en": "When someone says \"the endpoint is slow\", they mean one route, not the whole app.",
+      "he": "כשמישהו אומר \"ה-endpoint איטי\", הוא מתכוון לנתיב אחד, לא לכל האפליקציה."
+     }
+    },
+    {
      "k": "get",
      "lvl": "A",
      "t": {
@@ -1322,6 +1354,22 @@
      "w": {
       "en": "Picking the right verb is free documentation for every future reader, including the AI.",
       "he": "בחירת המתודה הנכונה היא תיעוד חינם לכל מי שיקרא בעתיד, כולל ה-AI."
+     }
+    },
+    {
+     "k": "status-codes",
+     "lvl": "A",
+     "t": {
+      "en": "Status codes",
+      "he": "קודי סטטוס"
+     },
+     "d": {
+      "en": "2xx worked. 3xx moved. 4xx you messed up. 5xx the server messed up.",
+      "he": "2xx הצליח. 3xx עבר מקום. 4xx אתה טעית. 5xx השרת טעה."
+     },
+     "w": {
+      "en": "404 not found, 401 not logged in, 403 logged in but not allowed, 429 too many requests, 500 server crashed.",
+      "he": "404 לא נמצא, 401 לא מחובר, 403 מחובר אבל אסור, 429 יותר מדי בקשות, 500 השרת קרס."
      }
     },
     {
@@ -1357,22 +1405,6 @@
      }
     },
     {
-     "k": "status-codes",
-     "lvl": "A",
-     "t": {
-      "en": "Status codes",
-      "he": "קודי סטטוס"
-     },
-     "d": {
-      "en": "2xx worked. 3xx moved. 4xx you messed up. 5xx the server messed up.",
-      "he": "2xx הצליח. 3xx עבר מקום. 4xx אתה טעית. 5xx השרת טעה."
-     },
-     "w": {
-      "en": "404 not found, 401 not logged in, 403 logged in but not allowed, 429 too many requests, 500 server crashed.",
-      "he": "404 לא נמצא, 401 לא מחובר, 403 מחובר אבל אסור, 429 יותר מדי בקשות, 500 השרת קרס."
-     }
-    },
-    {
      "k": "json",
      "lvl": "A",
      "t": {
@@ -1405,22 +1437,6 @@
      }
     },
     {
-     "k": "endpoint",
-     "lvl": "A",
-     "t": {
-      "en": "Endpoint",
-      "he": "Endpoint"
-     },
-     "d": {
-      "en": "One specific URL + verb combination the server answers, e.g. POST /orders.",
-      "he": "שילוב ספציפי של כתובת ופועל שהשרת עונה עליו, למשל POST /orders."
-     },
-     "w": {
-      "en": "When someone says \"the endpoint is slow\", they mean one route, not the whole app.",
-      "he": "כשמישהו אומר \"ה-endpoint איטי\", הוא מתכוון לנתיב אחד, לא לכל האפליקציה."
-     }
-    },
-    {
      "k": "webhook",
      "lvl": "B",
      "t": {
@@ -1444,172 +1460,6 @@
    "summary": {
     "en": "A request has a verb, an endpoint, headers and maybe a body; a response has a status code and maybe a body, usually JSON. 2xx good, 4xx your fault, 5xx their fault. GET reads, POST creates, and a webhook is just someone else's POST to you.",
     "he": "לבקשה יש פועל, endpoint, headers ואולי body; לתשובה יש status code ואולי body, בדרך כלל JSON. 2xx טוב, 4xx אשמתכם, 5xx אשמתם. GET קורא, POST יוצר, ו-webhook הוא סתם POST של מישהו אחר אליכם."
-   }
-  },
-  {
-   "id": "apis",
-   "icon": "⇆",
-   "title": {
-    "en": "APIs & Integrations",
-    "he": "APIs ואינטגרציות"
-   },
-   "blurb": {
-    "en": "Every product you build talks to someone else's. This is how that conversation is shaped, paid for, and kept from breaking.",
-    "he": "כל מוצר שתבנה מדבר עם מוצר של מישהו אחר. כך השיחה הזאת מעוצבת, מתומחרת ונשמרת מלהישבר."
-   },
-   "terms": [
-    {
-     "k": "rest-vs-graphql",
-     "lvl": "B",
-     "t": {
-      "en": "REST vs GraphQL",
-      "he": "REST מול GraphQL"
-     },
-     "d": {
-      "en": "REST gives you fixed URLs that each return a fixed shape. GraphQL gives you one URL where you describe exactly the fields you want.",
-      "he": "REST נותן לך כתובות קבועות שכל אחת מחזירה צורה קבועה. GraphQL נותן לך כתובת אחת שבה אתה מתאר בדיוק אילו שדות אתה רוצה."
-     },
-     "w": {
-      "en": "Most APIs you will consume are REST. When an AI suggests GraphQL for your three-table app, ask what problem it is solving.",
-      "he": "רוב ה-APIs שתצרוך הם REST. כשה-AI מציע GraphQL לאפליקציה שלך עם שלוש טבלאות, תשאל איזו בעיה זה פותר."
-     }
-    },
-    {
-     "k": "api-spec-openapi",
-     "lvl": "B",
-     "t": {
-      "en": "API spec (OpenAPI)",
-      "he": "מפרט API (OpenAPI)"
-     },
-     "d": {
-      "en": "A machine-readable file that lists every endpoint, its inputs and its outputs. Docs, client code and validation can all be generated from it.",
-      "he": "קובץ שמכונה יכולה לקרוא, שמפרט כל נקודת קצה, הקלטים והפלטים שלה. תיעוד, קוד לקוח ואימות — כולם יכולים להיווצר ממנו."
-     },
-     "w": {
-      "en": "Paste the spec into the AI's context and it stops guessing field names. It is the single best input you can give it about a third-party API.",
-      "he": "תדביק את המפרט להקשר של ה-AI והוא יפסיק לנחש שמות שדות. זה הקלט הטוב ביותר שאתה יכול לתת לו על API חיצוני."
-     }
-    },
-    {
-     "k": "api-key-vs-oauth-app",
-     "lvl": "B",
-     "t": {
-      "en": "API key vs OAuth app",
-      "he": "מפתח API מול אפליקציית OAuth"
-     },
-     "d": {
-      "en": "An API key identifies your app to a provider. An OAuth app lets your users grant your app access to their account at that provider.",
-      "he": "מפתח API מזהה את האפליקציה שלך מול ספק. אפליקציית OAuth מאפשרת למשתמשים שלך להעניק לאפליקציה שלך גישה לחשבון שלהם אצל אותו ספק."
-     },
-     "w": {
-      "en": "\"Connect your Google Calendar\" is OAuth. \"Send an email via Resend\" is an API key. Mixing them up costs a week.",
-      "he": "״חבר את יומן גוגל שלך״ זה OAuth. ״שלח מייל דרך Resend״ זה מפתח API. לערבב ביניהם עולה שבוע."
-     }
-    },
-    {
-     "k": "pagination",
-     "lvl": "B",
-     "t": {
-      "en": "Pagination",
-      "he": "עימוד (Pagination)"
-     },
-     "d": {
-      "en": "Returning a large list in pages: a slice at a time plus a pointer to the next slice, rather than everything in one response.",
-      "he": "החזרת רשימה גדולה בעמודים: פרוסה אחת בכל פעם ומצביע לפרוסה הבאה, במקום הכל בתשובה אחת."
-     },
-     "w": {
-      "en": "The endpoint that returns \"all orders\" works with 40 orders and takes the server down at 400,000. Every list needs a page size.",
-      "he": "נקודת הקצה שמחזירה ״את כל ההזמנות״ עובדת עם 40 הזמנות ומפילה את השרת ב-400,000. כל רשימה צריכה גודל עמוד."
-     }
-    },
-    {
-     "k": "api-versioning",
-     "lvl": "B",
-     "t": {
-      "en": "API versioning",
-      "he": "גרסאות API"
-     },
-     "d": {
-      "en": "Keeping the old shape of an API alive under /v1 while /v2 changes it, so existing clients keep working while new ones move on.",
-      "he": "להשאיר את הצורה הישנה של ה-API חיה תחת /v1 בזמן ש-/v2 משנה אותה, כדי שלקוחות קיימים ימשיכו לעבוד בזמן שחדשים מתקדמים."
-     },
-     "w": {
-      "en": "The moment anyone but you calls your API, renaming a field is a breaking change. Additive changes are free; removals need a version.",
-      "he": "ברגע שמישהו מלבדך קורא ל-API שלך, שינוי שם של שדה הוא שינוי שובר. הוספות הן חינם; הסרות צריכות גרסה."
-     }
-    },
-    {
-     "k": "timeouts-and-retries",
-     "lvl": "B",
-     "t": {
-      "en": "Timeouts & retries",
-      "he": "טיים-אאוט וניסיונות חוזרים"
-     },
-     "d": {
-      "en": "A timeout is how long you wait for an answer before giving up. A retry is trying again — carefully, with growing pauses, and only for calls that are safe to repeat.",
-      "he": "טיים-אאוט הוא כמה זמן אתה מחכה לתשובה לפני שאתה מוותר. ניסיון חוזר הוא לנסות שוב — בזהירות, עם הפסקות גדלות, ורק לקריאות שבטוח לחזור עליהן."
-     },
-     "w": {
-      "en": "A call with no timeout can hang forever and take your request handler with it. Every outbound call gets a timeout, no exceptions.",
-      "he": "קריאה בלי טיים-אאוט יכולה להיתקע לנצח ולקחת איתה את מטפל הבקשה שלך. כל קריאה יוצאת מקבלת טיים-אאוט, בלי חריגים."
-     }
-    },
-    {
-     "k": "sdk-vs-raw-http",
-     "lvl": "B",
-     "t": {
-      "en": "SDK vs raw HTTP",
-      "he": "SDK מול HTTP גולמי"
-     },
-     "d": {
-      "en": "An SDK is the provider's own library that wraps their API in functions for your language. Raw HTTP is calling the endpoints yourself.",
-      "he": "SDK הוא הספרייה של הספק עצמו שעוטפת את ה-API שלו בפונקציות בשפה שלך. HTTP גולמי הוא לקרוא לנקודות הקצה בעצמך."
-     },
-     "w": {
-      "en": "Use the SDK when one exists: it handles auth, retries and pagination you would otherwise get wrong. Drop to raw HTTP only to debug.",
-      "he": "תשתמש ב-SDK כשיש אחד: הוא מטפל בהזדהות, ניסיונות חוזרים ועימוד שאחרת היית עושה לא נכון. תרד ל-HTTP גולמי רק כדי לדבג."
-     }
-    },
-    {
-     "k": "sandbox-vs-live-keys",
-     "lvl": "B",
-     "t": {
-      "en": "Sandbox vs live keys",
-      "he": "מפתחות סנדבוקס מול חיים"
-     },
-     "d": {
-      "en": "Providers give you a test environment with fake money, fake emails and its own keys. Live keys touch real customers and real cards.",
-      "he": "ספקים נותנים לך סביבת בדיקה עם כסף מזויף, מיילים מזויפים ומפתחות משלה. מפתחות חיים נוגעים בלקוחות אמיתיים ובכרטיסים אמיתיים."
-     },
-     "w": {
-      "en": "Develop against sandbox. The classic disaster is a live Stripe key in a local .env and a test loop that charges a real card 200 times.",
-      "he": "תפתח מול סנדבוקס. האסון הקלאסי הוא מפתח Stripe חי ב-.env מקומי ולולאת בדיקה שמחייבת כרטיס אמיתי 200 פעמים."
-     }
-    },
-    {
-     "k": "polling-vs-push",
-     "lvl": "B",
-     "t": {
-      "en": "Polling vs push",
-      "he": "פולינג מול דחיפה"
-     },
-     "d": {
-      "en": "Polling asks \"anything new?\" every few seconds. Push means the other side tells you when something happens — via a webhook or an open connection.",
-      "he": "פולינג שואל ״יש משהו חדש?״ כל כמה שניות. דחיפה אומרת שהצד השני מודיע לך כשמשהו קורה — דרך webhook או חיבור פתוח."
-     },
-     "w": {
-      "en": "Polling is simple and wasteful; push is efficient and needs a public URL. Start with polling, move to push when the poll count hurts.",
-      "he": "פולינג פשוט ובזבזני; דחיפה יעילה וצריכה כתובת ציבורית. תתחיל בפולינג, תעבור לדחיפה כשמספר הבקשות מתחיל לכאוב."
-     }
-    }
-   ],
-   "overview": {
-    "en": "Your product will lean on other people's APIs: payments, email, maps, AI. This lesson is about the shape of that relationship — how it is documented, authenticated, paged, versioned, and how it fails when their side is slow. Read it when you are about to connect payments, email, or an AI provider.",
-    "he": "המוצר שלכם יישען על APIs של אחרים: תשלומים, מייל, מפות, AI. השיעור עוסק בצורה של הקשר הזה — איך הוא מתועד, מאומת, מחולק לעמודים, מנוהל בגרסאות, ואיך הוא נכשל כשהצד שלהם איטי. לקרוא אותו כשאתם עומדים לחבר תשלומים, מייל, או ספק AI."
-   },
-   "summary": {
-    "en": "Read the spec before the AI does. Keep keys out of the browser, test against sandbox keys, and assume every call can time out. Retry with backoff, page through big lists, and pin the API version so their upgrade is not your outage.",
-    "he": "קראו את ה-spec לפני שה-AI קורא. שמרו מפתחות מחוץ לדפדפן, בדקו מול מפתחות sandbox, והניחו שכל קריאה יכולה להיגמר ב-timeout. retry עם backoff, דפדוף ברשימות גדולות, ונעילת גרסת ה-API כדי שהשדרוג שלהם לא יהיה התקלה שלכם."
    }
   },
   {
@@ -1779,456 +1629,6 @@
    }
   },
   {
-   "id": "memory",
-   "icon": "▦",
-   "title": {
-    "en": "Memory & Speed",
-    "he": "זיכרון ומהירות"
-   },
-   "blurb": {
-    "en": "Why things are fast, slow, or suddenly dead.",
-    "he": "למה דברים מהירים, איטיים, או מתים פתאום."
-   },
-   "terms": [
-    {
-     "k": "ram-vs-disk",
-     "lvl": "A",
-     "t": {
-      "en": "RAM vs disk",
-      "he": "RAM מול דיסק"
-     },
-     "d": {
-      "en": "RAM is fast and forgets everything on restart. Disk is ~1000× slower and remembers.",
-      "he": "RAM מהיר ושוכח הכל בהפעלה מחדש. דיסק איטי פי ~1000 וזוכר."
-     },
-     "w": {
-      "en": "Anything you hold \"in a variable\" vanishes on deploy. State that matters goes to a DB.",
-      "he": "כל מה שאתה מחזיק ״במשתנה״ נעלם בכל דיפלוי. מצב שחשוב הולך לדאטהבייס."
-     }
-    },
-    {
-     "k": "stack-and-heap",
-     "lvl": "B",
-     "t": {
-      "en": "Stack & heap",
-      "he": "סטאק והיפ (Stack & heap)"
-     },
-     "d": {
-      "en": "Stack: small, ordered, automatic — local variables and the call chain. Heap: large, flexible, manually managed area for objects.",
-      "he": "סטאק: קטן, מסודר, אוטומטי — משתנים מקומיים ושרשרת הקריאות. היפ: גדול, גמיש, אזור האובייקטים שה-GC מנקה."
-     },
-     "w": {
-      "en": "\"Stack overflow\" = a function called itself forever. \"Out of memory\" = the heap filled up.",
-      "he": "״Stack overflow״ = פונקציה קראה לעצמה בלי סוף. ״Out of memory״ = ההיפ התמלא."
-     }
-    },
-    {
-     "k": "garbage-collection",
-     "lvl": "B",
-     "t": {
-      "en": "Garbage collection",
-      "he": "גרבג׳ קולקשן (GC)"
-     },
-     "d": {
-      "en": "The runtime automatically frees memory nothing refers to anymore. Free, but it pauses your program briefly.",
-      "he": "הראנטיים משחרר אוטומטית זיכרון שאף אחד כבר לא מצביע אליו. חינם, אבל עוצר את התוכנית לרגע."
-     },
-     "w": {
-      "en": "Explains random latency spikes in an otherwise idle service.",
-      "he": "מסביר קפיצות לייטנסי אקראיות בשירות שאחרת נראה רגוע לגמרי."
-     }
-    },
-    {
-     "k": "memory-leak",
-     "lvl": "B",
-     "t": {
-      "en": "Memory leak",
-      "he": "ליק זיכרון (Memory leak)"
-     },
-     "d": {
-      "en": "You keep references to things you no longer need, so GC can't free them. Usage only grows.",
-      "he": "שומרים הפניות לדברים שכבר לא צריך, אז ה-GC לא יכול לשחרר אותם. השימוש רק עולה."
-     },
-     "w": {
-      "en": "The classic symptom: fine for 6 hours, then crashes every night at the same time.",
-      "he": "הסימפטום הקלאסי: תקין 6 שעות, ואז קורס כל לילה באותה שעה."
-     }
-    },
-    {
-     "k": "latency-vs-throughput",
-     "lvl": "B",
-     "t": {
-      "en": "Latency vs throughput",
-      "he": "לייטנסי מול תפוקה (Throughput)"
-     },
-     "d": {
-      "en": "Latency: how long one request takes. Throughput: how many you handle per second.",
-      "he": "לייטנסי: כמה זמן לוקחת בקשה אחת. תפוקה: כמה בקשות מטפלים בשנייה."
-     },
-     "w": {
-      "en": "They trade off. Batching raises throughput and hurts latency. Pick which one your users feel.",
-      "he": "יש ביניהם מתח. באטצ׳ינג מעלה תפוקה ופוגע בלייטנסי. תבחר מה המשתמשים שלך מרגישים."
-     }
-    },
-    {
-     "k": "big-o",
-     "lvl": "B",
-     "t": {
-      "en": "Big-O",
-      "he": "Big-O"
-     },
-     "d": {
-      "en": "Shorthand for how work grows with input size. O(1) constant, O(n) linear, O(n²) quadratic.",
-      "he": "קיצור לתיאור איך העבודה גדלה עם גודל הקלט. O(1) קבוע, O(n) לינארי, O(n²) ריבועי."
-     },
-     "w": {
-      "en": "A loop inside a loop over the same list is O(n²) — invisible in testing, fatal in production.",
-      "he": "לולאה בתוך לולאה על אותה רשימה היא O(n²) — בלתי נראית בבדיקות, קטלנית בפרודקשן."
-     }
-    },
-    {
-     "k": "blocking-vs-async",
-     "lvl": "B",
-     "t": {
-      "en": "Blocking vs async",
-      "he": "בלוקינג מול אסינכרוני"
-     },
-     "d": {
-      "en": "Blocking waits and holds the thread. Async starts the work and handles the result later, serving others meanwhile.",
-      "he": "קוד בלוקינג ממתין ותופס את הת׳רד. אסינכרוני מתחיל את העבודה ומטפל בתוצאה אחר כך, ובינתיים משרת אחרים."
-     },
-     "w": {
-      "en": "One blocking call in a Node server freezes every user, not just the one waiting.",
-      "he": "קריאה חוסמת אחת בשרת Node מקפיאה את כל המשתמשים, לא רק את זה שממתין."
-     }
-    },
-    {
-     "k": "race-condition",
-     "lvl": "B",
-     "t": {
-      "en": "Race condition",
-      "he": "רייס קונדישן (Race condition)"
-     },
-     "d": {
-      "en": "Two operations touch the same data at the same time and the result depends on who won.",
-      "he": "שתי פעולות נוגעות באותם נתונים בו-זמנית והתוצאה תלויה במי שהקדים."
-     },
-     "w": {
-      "en": "Reproduces once a week, never on your laptop. Fix with a transaction or a lock, not with a retry.",
-      "he": "משחזר פעם בשבוע, אף פעם לא אצלך. פותרים עם טרנזקציה או נעילה, לא עם ניסיון חוזר."
-     }
-    },
-    {
-     "k": "data-structures",
-     "lvl": "B",
-     "t": {
-      "en": "Data structures",
-      "he": "מבני נתונים"
-     },
-     "d": {
-      "en": "Array, map, set, queue, tree — different shapes with different costs for the same data.",
-      "he": "מערך, מפה, סט, תור, עץ — צורות שונות עם מחירים שונים לאותם נתונים."
-     },
-     "w": {
-      "en": "Searching a list inside a loop is O(n²). The same code with a Set is O(n). That is the whole lesson.",
-      "he": "חיפוש ברשימה בתוך לולאה הוא O(n²). אותו קוד עם Set הוא O(n). זה כל השיעור."
-     }
-    }
-   ],
-   "overview": {
-    "en": "'It got slow' and 'it crashed after a day' usually have the same root: how the program uses memory and time. This lesson gives you enough of the mental model to ask the AI the right question — not to tune a garbage collector yourself.",
-    "he": "'זה נהיה איטי' ו'זה קרס אחרי יום' בדרך כלל באים מאותו שורש: איך התוכנה משתמשת בזיכרון ובזמן. השיעור נותן די מהמודל המנטלי כדי לשאול את ה-AI את השאלה הנכונה — לא כדי לכוונן garbage collector בעצמכם."
-   },
-   "summary": {
-    "en": "RAM is fast and forgetful, disk is slow and permanent. Leaks are memory that is never given back. Latency is one wait, throughput is how many per second. When two things touch the same data at once, you have a race — ask about locks.",
-    "he": "RAM מהיר ושכחני, דיסק איטי וקבוע. leak הוא זיכרון שלא מוחזר אף פעם. latency הוא המתנה אחת, throughput הוא כמה בשנייה. כששני דברים נוגעים באותו דאטה בו-זמנית יש לכם race — תשאלו על נעילות."
-   }
-  },
-  {
-   "id": "cache",
-   "icon": "⚡",
-   "title": {
-    "en": "Cache",
-    "he": "מטמון (Cache)"
-   },
-   "blurb": {
-    "en": "The cheapest speed-up and the sneakiest bug source.",
-    "he": "שיפור המהירות הזול ביותר ומקור הבאגים הערמומי ביותר."
-   },
-   "terms": [
-    {
-     "k": "cache",
-     "lvl": "A",
-     "t": {
-      "en": "Cache",
-      "he": "קאש / מטמון (Cache)"
-     },
-     "d": {
-      "en": "A copy of an expensive result kept somewhere fast, so the next request skips the work.",
-      "he": "עותק של תוצאה יקרה שנשמר במקום מהיר, כדי שהבקשה הבאה תדלג על העבודה."
-     },
-     "w": {
-      "en": "Fastest performance win that exists. Also the reason your change \"didn't do anything\".",
-      "he": "שיפור הביצועים המהיר ביותר שקיים. וגם הסיבה שהשינוי שלך \"לא עשה כלום\"."
-     }
-    },
-    {
-     "k": "hit-miss",
-     "lvl": "B",
-     "t": {
-      "en": "Hit / Miss",
-      "he": "פגיעה / פספוס (Hit / Miss)"
-     },
-     "d": {
-      "en": "A hit means the copy was there. A miss means you paid the full cost and stored the result.",
-      "he": "פגיעה = העותק היה שם. פספוס = שילמת את המחיר המלא ושמרת את התוצאה."
-     },
-     "w": {
-      "en": "Hit rate is the number to watch. A 20% hit rate cache is mostly overhead.",
-      "he": "אחוז הפגיעות (hit rate) הוא המספר שחשוב. קאש עם 20% פגיעות הוא בעיקר תקורה."
-     }
-    },
-    {
-     "k": "ttl",
-     "lvl": "B",
-     "t": {
-      "en": "TTL",
-      "he": "TTL"
-     },
-     "d": {
-      "en": "Time To Live — how long a cached copy is allowed to be trusted before it's dropped.",
-      "he": "Time To Live — כמה זמן מותר לסמוך על העותק השמור לפני שהוא נזרק."
-     },
-     "w": {
-      "en": "Short TTL = fresher and slower. Long TTL = faster and staler. That's the whole dial.",
-      "he": "TTL קצר = טרי ואיטי. TTL ארוך = מהיר ומיושן. זה כל הכפתור."
-     }
-    },
-    {
-     "k": "invalidation",
-     "lvl": "B",
-     "t": {
-      "en": "Invalidation",
-      "he": "ביטול תוקף (Invalidation)"
-     },
-     "d": {
-      "en": "Deliberately throwing away a cached copy because the underlying data changed.",
-      "he": "זריקה מכוונת של עותק שמור כי הנתונים שמאחוריו השתנו."
-     },
-     "w": {
-      "en": "Famously one of the two hard problems in computing. Prefer a short TTL over clever invalidation.",
-      "he": "אחת משתי הבעיות הקשות במדעי המחשב. עדיף TTL קצר על פני ביטול תוקף חכם."
-     }
-    },
-    {
-     "k": "browser-cache",
-     "lvl": "A",
-     "t": {
-      "en": "Browser cache",
-      "he": "קאש הדפדפן"
-     },
-     "d": {
-      "en": "The browser keeps files it already downloaded — JS, CSS, images — and reuses them.",
-      "he": "הדפדפן שומר קבצים שכבר הוריד — JS, CSS, תמונות — ומשתמש בהם מחדש."
-     },
-     "w": {
-      "en": "Before debugging for an hour: hard refresh. Ctrl+Shift+R. It's that, more often than you'd like.",
-      "he": "לפני שעה של דיבוג: רענון קשיח (hard refresh). Ctrl+Shift+R. זה זה, יותר פעמים ממה שהיית רוצה."
-     }
-    },
-    {
-     "k": "cdn",
-     "lvl": "B",
-     "t": {
-      "en": "CDN",
-      "he": "CDN"
-     },
-     "d": {
-      "en": "Servers spread worldwide that hold copies of your static files close to each user.",
-      "he": "שרתים פרוסים בעולם שמחזיקים עותקים של הקבצים הסטטיים שלך קרוב לכל משתמש."
-     },
-     "w": {
-      "en": "Turns a 300ms transatlantic load into 20ms, and absorbs traffic spikes for free.",
-      "he": "הופך טעינה של 300ms מעבר לאוקיינוס ל-20ms, וסופג קפיצות תעבורה בחינם."
-     }
-    },
-    {
-     "k": "redis-in-memory-store",
-     "lvl": "B",
-     "t": {
-      "en": "Redis / in-memory store",
-      "he": "Redis / אחסון בזיכרון"
-     },
-     "d": {
-      "en": "A separate, very fast key-value database kept in RAM. Shared by all your servers.",
-      "he": "מסד נתונים נפרד מסוג מפתח-ערך, מהיר מאוד, שיושב ב-RAM. משותף לכל השרתים."
-     },
-     "w": {
-      "en": "Caching in a local variable breaks the moment you run two servers. Redis is the shared version.",
-      "he": "מטמון במשתנה מקומי נשבר ברגע שרצים שני שרתים. Redis הוא הגרסה המשותפת."
-     }
-    }
-   ],
-   "overview": {
-    "en": "The cheapest way to make anything faster is to not do it twice. That is a cache. It is also the reason 'I fixed it but the page still shows the old thing' happens. This lesson covers both faces: the speed-up and the stale data.",
-    "he": "הדרך הזולה ביותר להאיץ כל דבר היא לא לעשות אותו פעמיים. זה cache. זו גם הסיבה ש'תיקנתי אבל הדף עדיין מציג את הישן' קורה. השיעור מכסה את שני הפרצופים: ההאצה והדאטה המיושן."
-   },
-   "summary": {
-    "en": "A cache is a remembered answer. It saves time on a hit, costs nothing on a miss, and lies when it is stale — so every cache needs a TTL or an invalidation rule. Browser, CDN, Redis: same idea, different distance from the user.",
-    "he": "cache הוא תשובה שזוכרים. הוא חוסך זמן ב-hit, לא עולה כלום ב-miss, ומשקר כשהוא מיושן — אז כל cache צריך TTL או חוק invalidation. דפדפן, CDN, Redis: אותו רעיון, מרחק שונה מהמשתמש."
-   }
-  },
-  {
-   "id": "testing",
-   "icon": "✓",
-   "title": {
-    "en": "Testing & Confidence",
-    "he": "בדיקות וביטחון"
-   },
-   "blurb": {
-    "en": "The only thing standing between you and an agent quietly breaking working code.",
-    "he": "הדבר היחיד שעומד בינך לבין סוכן ששובר בשקט קוד שעבד."
-   },
-   "terms": [
-    {
-     "k": "test",
-     "lvl": "A",
-     "t": {
-      "en": "Test",
-      "he": "בדיקה"
-     },
-     "d": {
-      "en": "Code that runs your code and fails loudly if the result is not what you said it should be.",
-      "he": "קוד שמריץ את הקוד שלך ונכשל ברעש אם התוצאה אינה מה שאמרת שהיא צריכה להיות."
-     },
-     "w": {
-      "en": "It is the only form of checking that still works at 3am, on someone else's machine, six months from now.",
-      "he": "זו צורת הבדיקה היחידה שעדיין עובדת בשלוש לפנות בוקר, על מכונה של מישהו אחר, בעוד חצי שנה."
-     }
-    },
-    {
-     "k": "assertion",
-     "lvl": "B",
-     "t": {
-      "en": "Assertion",
-      "he": "טענה (Assertion)"
-     },
-     "d": {
-      "en": "The single line that states the expectation: this value must equal that one, or the test fails.",
-      "he": "השורה הבודדת שמצהירה על הציפייה: הערך הזה חייב להיות שווה לזה, אחרת הבדיקה נכשלת."
-     },
-     "w": {
-      "en": "A test with no assertion passes forever and proves nothing. It happens more often than you would think.",
-      "he": "בדיקה בלי טענה עוברת לנצח ולא מוכיחה כלום. זה קורה יותר ממה שנדמה."
-     }
-    },
-    {
-     "k": "unit-integration-e2e",
-     "lvl": "B",
-     "t": {
-      "en": "Unit / Integration / E2E",
-      "he": "יחידה / אינטגרציה / קצה לקצה"
-     },
-     "d": {
-      "en": "Unit: one function alone. Integration: several parts together, with a real database. E2E: the whole app through a browser, like a user.",
-      "he": "יחידה: פונקציה אחת לבדה. אינטגרציה: כמה חלקים יחד, עם מסד נתונים אמיתי. קצה לקצה: כל האפליקציה דרך דפדפן, כמו משתמש."
-     },
-     "w": {
-      "en": "Each one is slower and more realistic than the last. You want many of the fast ones and a few of the slow ones.",
-      "he": "כל אחת איטית ומציאותית יותר מקודמתה. אתה רוצה הרבה מהמהירות וכמה מהאיטיות."
-     }
-    },
-    {
-     "k": "mock-fixture",
-     "lvl": "B",
-     "t": {
-      "en": "Mock / Fixture",
-      "he": "מוק / פיקסצ׳ר"
-     },
-     "d": {
-      "en": "A mock is a fake stand-in for something real. A fixture is the known starting data a test runs against.",
-      "he": "מוק הוא תחליף מזויף למשהו אמיתי. פיקסצ׳ר הוא נתוני הפתיחה הידועים שהבדיקה רצה מולם."
-     },
-     "w": {
-      "en": "Mock the payment provider, not your own database. Mocking the thing you are testing is how a suite passes while the product is broken.",
-      "he": "תזייף את ספק התשלומים, לא את מסד הנתונים שלך. זיוף הדבר שאתה בודק הוא איך שחבילת בדיקות עוברת בזמן שהמוצר שבור."
-     }
-    },
-    {
-     "k": "regression",
-     "lvl": "B",
-     "t": {
-      "en": "Regression",
-      "he": "רגרסיה"
-     },
-     "d": {
-      "en": "Something that used to work and stopped. A regression test is one you add the moment you fix a bug, so it can never come back unnoticed.",
-      "he": "משהו שעבד והפסיק. בדיקת רגרסיה היא כזו שמוסיפים ברגע שמתקנים באג, כדי שהוא לא יוכל לחזור בלי שישימו לב."
-     },
-     "w": {
-      "en": "This is the highest-value test you will ever write, because it is provably about a mistake that has already been made once.",
-      "he": "זו הבדיקה בעלת הערך הגבוה ביותר שתכתוב, כי היא מוכחת מול טעות שכבר נעשתה פעם אחת."
-     }
-    },
-    {
-     "k": "coverage",
-     "lvl": "B",
-     "t": {
-      "en": "Coverage",
-      "he": "כיסוי"
-     },
-     "d": {
-      "en": "The percentage of your lines that some test executed. It measures what was run, not what was checked.",
-      "he": "אחוז השורות שאיזושהי בדיקה הריצה. היא מודדת מה רץ, לא מה נבדק."
-     },
-     "w": {
-      "en": "100% coverage with weak assertions proves nothing. Chase the risky paths — auth, money, deletion — not the number.",
-      "he": "כיסוי של 100% עם טענות חלשות לא מוכיח כלום. תרדוף אחרי הנתיבים המסוכנים — הרשאות, כסף, מחיקה — לא אחרי המספר."
-     }
-    },
-    {
-     "k": "flaky-test",
-     "lvl": "B",
-     "t": {
-      "en": "Flaky test",
-      "he": "בדיקה הפכפכה"
-     },
-     "d": {
-      "en": "A test that passes and fails on the same code, usually because of timing, ordering or shared state.",
-      "he": "בדיקה שעוברת ונכשלת על אותו קוד, בדרך כלל בגלל תזמון, סדר או מצב משותף."
-     },
-     "w": {
-      "en": "One flaky test teaches the team to ignore red. That is more damaging than having no test at all — fix it or delete it.",
-      "he": "בדיקה הפכפכה אחת מלמדת את הצוות להתעלם מאדום. זה מזיק יותר מלא לבדוק בכלל — תתקן אותה או תמחק."
-     }
-    },
-    {
-     "k": "test-first-tdd",
-     "lvl": "B",
-     "t": {
-      "en": "Test-first (TDD)",
-      "he": "בדיקה קודם (TDD)"
-     },
-     "d": {
-      "en": "Write the failing test that describes what you want, then make it pass.",
-      "he": "כותבים את הבדיקה שנכשלת ומתארת את מה שרוצים, ואז גורמים לה לעבור."
-     },
-     "w": {
-      "en": "With AI this stops being a philosophy and becomes a control: the test is the specification you hand the model, and the proof you check it against.",
-      "he": "עם AI זו מפסיקה להיות פילוסופיה והופכת לשליטה: הבדיקה היא המפרט שאתה נותן למודל, וההוכחה שאתה בודק מולה."
-     }
-    }
-   ],
-   "overview": {
-    "en": "An agent that edits your code will, sooner or later, break something that used to work. Tests are the only thing that notices before a user does. This lesson explains what a test is and the words around it, so you can ask for the right kind and read the result.",
-    "he": "סוכן שעורך את הקוד שלכם ישבור, במוקדם או במאוחר, משהו שעבד. בדיקות הן הדבר היחיד ששם לב לפני שמשתמש שם לב. השיעור מסביר מה זה טסט ואת המילים מסביבו, כדי שתוכלו לבקש את הסוג הנכון ולקרוא את התוצאה."
-   },
-   "summary": {
-    "en": "A test is a claim that runs. Unit tests are fast and narrow, E2E tests are slow and honest. A regression is an old bug returning; a flaky test is one you cannot trust. Ask the AI for the test first, then the code — it constrains what it can get wrong.",
-    "he": "טסט הוא טענה שרצה. unit tests מהירים וצרים, E2E איטיים וכנים. regression הוא באג ישן שחוזר; flaky test הוא כזה שאי אפשר לסמוך עליו. בקשו מה-AI את הטסט קודם ואז את הקוד — זה מגביל במה הוא יכול לטעות."
-   }
-  },
-  {
    "id": "async",
    "icon": "↻",
    "title": {
@@ -2392,6 +1792,622 @@
    "summary": {
     "en": "Answer the user fast, do the slow thing in a job. Jobs fail, so retry with backoff and park the hopeless ones in a dead-letter queue. Data that arrives later is eventually consistent — design the screen to say 'processing'.",
     "he": "עונים למשתמש מהר, את הדבר האיטי עושים ב-job. jobs נכשלים, אז retry עם backoff ומחנים את חסרי התקווה ב-dead-letter queue. דאטה שמגיע אחר כך הוא eventually consistent — תכננו את המסך להגיד 'בעיבוד'."
+   }
+  },
+  {
+   "id": "memory",
+   "icon": "▦",
+   "title": {
+    "en": "Memory & Speed",
+    "he": "זיכרון ומהירות"
+   },
+   "blurb": {
+    "en": "Why things are fast, slow, or suddenly dead.",
+    "he": "למה דברים מהירים, איטיים, או מתים פתאום."
+   },
+   "terms": [
+    {
+     "k": "ram-vs-disk",
+     "lvl": "A",
+     "t": {
+      "en": "RAM vs disk",
+      "he": "RAM מול דיסק"
+     },
+     "d": {
+      "en": "RAM is fast and forgets everything on restart. Disk is ~1000× slower and remembers.",
+      "he": "RAM מהיר ושוכח הכל בהפעלה מחדש. דיסק איטי פי ~1000 וזוכר."
+     },
+     "w": {
+      "en": "Anything you hold \"in a variable\" vanishes on deploy. State that matters goes to a DB.",
+      "he": "כל מה שאתה מחזיק ״במשתנה״ נעלם בכל דיפלוי. מצב שחשוב הולך לדאטהבייס."
+     }
+    },
+    {
+     "k": "stack-and-heap",
+     "lvl": "B",
+     "t": {
+      "en": "Stack & heap",
+      "he": "סטאק והיפ (Stack & heap)"
+     },
+     "d": {
+      "en": "Stack: small, ordered, automatic — local variables and the call chain. Heap: large, flexible, manually managed area for objects.",
+      "he": "סטאק: קטן, מסודר, אוטומטי — משתנים מקומיים ושרשרת הקריאות. היפ: גדול, גמיש, אזור האובייקטים שה-GC מנקה."
+     },
+     "w": {
+      "en": "\"Stack overflow\" = a function called itself forever. \"Out of memory\" = the heap filled up.",
+      "he": "״Stack overflow״ = פונקציה קראה לעצמה בלי סוף. ״Out of memory״ = ההיפ התמלא."
+     }
+    },
+    {
+     "k": "garbage-collection",
+     "lvl": "B",
+     "t": {
+      "en": "Garbage collection",
+      "he": "גרבג׳ קולקשן (GC)"
+     },
+     "d": {
+      "en": "The runtime automatically frees memory nothing refers to anymore. Free, but it pauses your program briefly.",
+      "he": "הראנטיים משחרר אוטומטית זיכרון שאף אחד כבר לא מצביע אליו. חינם, אבל עוצר את התוכנית לרגע."
+     },
+     "w": {
+      "en": "Explains random latency spikes in an otherwise idle service.",
+      "he": "מסביר קפיצות לייטנסי אקראיות בשירות שאחרת נראה רגוע לגמרי."
+     }
+    },
+    {
+     "k": "memory-leak",
+     "lvl": "B",
+     "t": {
+      "en": "Memory leak",
+      "he": "ליק זיכרון (Memory leak)"
+     },
+     "d": {
+      "en": "You keep references to things you no longer need, so GC can't free them. Usage only grows.",
+      "he": "שומרים הפניות לדברים שכבר לא צריך, אז ה-GC לא יכול לשחרר אותם. השימוש רק עולה."
+     },
+     "w": {
+      "en": "The classic symptom: fine for 6 hours, then crashes every night at the same time.",
+      "he": "הסימפטום הקלאסי: תקין 6 שעות, ואז קורס כל לילה באותה שעה."
+     }
+    },
+    {
+     "k": "latency-vs-throughput",
+     "lvl": "B",
+     "t": {
+      "en": "Latency vs throughput",
+      "he": "לייטנסי מול תפוקה (Throughput)"
+     },
+     "d": {
+      "en": "Latency: how long one request takes. Throughput: how many you handle per second.",
+      "he": "לייטנסי: כמה זמן לוקחת בקשה אחת. תפוקה: כמה בקשות מטפלים בשנייה."
+     },
+     "w": {
+      "en": "They trade off. Batching raises throughput and hurts latency. Pick which one your users feel.",
+      "he": "יש ביניהם מתח. באטצ׳ינג מעלה תפוקה ופוגע בלייטנסי. תבחר מה המשתמשים שלך מרגישים."
+     }
+    },
+    {
+     "k": "data-structures",
+     "lvl": "B",
+     "t": {
+      "en": "Data structures",
+      "he": "מבני נתונים"
+     },
+     "d": {
+      "en": "Array, map, set, queue, tree — different shapes with different costs for the same data.",
+      "he": "מערך, מפה, סט, תור, עץ — צורות שונות עם מחירים שונים לאותם נתונים."
+     },
+     "w": {
+      "en": "Searching a list inside a loop is O(n²). The same code with a Set is O(n). That is the whole lesson.",
+      "he": "חיפוש ברשימה בתוך לולאה הוא O(n²). אותו קוד עם Set הוא O(n). זה כל השיעור."
+     }
+    },
+    {
+     "k": "big-o",
+     "lvl": "B",
+     "t": {
+      "en": "Big-O",
+      "he": "Big-O"
+     },
+     "d": {
+      "en": "Shorthand for how work grows with input size. O(1) constant, O(n) linear, O(n²) quadratic.",
+      "he": "קיצור לתיאור איך העבודה גדלה עם גודל הקלט. O(1) קבוע, O(n) לינארי, O(n²) ריבועי."
+     },
+     "w": {
+      "en": "A loop inside a loop over the same list is O(n²) — invisible in testing, fatal in production.",
+      "he": "לולאה בתוך לולאה על אותה רשימה היא O(n²) — בלתי נראית בבדיקות, קטלנית בפרודקשן."
+     }
+    },
+    {
+     "k": "blocking-vs-async",
+     "lvl": "B",
+     "t": {
+      "en": "Blocking vs async",
+      "he": "בלוקינג מול אסינכרוני"
+     },
+     "d": {
+      "en": "Blocking waits and holds the thread. Async starts the work and handles the result later, serving others meanwhile.",
+      "he": "קוד בלוקינג ממתין ותופס את הת׳רד. אסינכרוני מתחיל את העבודה ומטפל בתוצאה אחר כך, ובינתיים משרת אחרים."
+     },
+     "w": {
+      "en": "One blocking call in a Node server freezes every user, not just the one waiting.",
+      "he": "קריאה חוסמת אחת בשרת Node מקפיאה את כל המשתמשים, לא רק את זה שממתין."
+     }
+    },
+    {
+     "k": "race-condition",
+     "lvl": "B",
+     "t": {
+      "en": "Race condition",
+      "he": "רייס קונדישן (Race condition)"
+     },
+     "d": {
+      "en": "Two operations touch the same data at the same time and the result depends on who won.",
+      "he": "שתי פעולות נוגעות באותם נתונים בו-זמנית והתוצאה תלויה במי שהקדים."
+     },
+     "w": {
+      "en": "Reproduces once a week, never on your laptop. Fix with a transaction or a lock, not with a retry.",
+      "he": "משחזר פעם בשבוע, אף פעם לא אצלך. פותרים עם טרנזקציה או נעילה, לא עם ניסיון חוזר."
+     }
+    }
+   ],
+   "overview": {
+    "en": "'It got slow' and 'it crashed after a day' usually have the same root: how the program uses memory and time. This lesson gives you enough of the mental model to ask the AI the right question — not to tune a garbage collector yourself.",
+    "he": "'זה נהיה איטי' ו'זה קרס אחרי יום' בדרך כלל באים מאותו שורש: איך התוכנה משתמשת בזיכרון ובזמן. השיעור נותן די מהמודל המנטלי כדי לשאול את ה-AI את השאלה הנכונה — לא כדי לכוונן garbage collector בעצמכם."
+   },
+   "summary": {
+    "en": "RAM is fast and forgetful, disk is slow and permanent. Leaks are memory that is never given back. Latency is one wait, throughput is how many per second. When two things touch the same data at once, you have a race — ask about locks.",
+    "he": "RAM מהיר ושכחני, דיסק איטי וקבוע. leak הוא זיכרון שלא מוחזר אף פעם. latency הוא המתנה אחת, throughput הוא כמה בשנייה. כששני דברים נוגעים באותו דאטה בו-זמנית יש לכם race — תשאלו על נעילות."
+   }
+  },
+  {
+   "id": "cache",
+   "icon": "⚡",
+   "title": {
+    "en": "Cache",
+    "he": "מטמון (Cache)"
+   },
+   "blurb": {
+    "en": "The cheapest speed-up and the sneakiest bug source.",
+    "he": "שיפור המהירות הזול ביותר ומקור הבאגים הערמומי ביותר."
+   },
+   "terms": [
+    {
+     "k": "cache",
+     "lvl": "A",
+     "t": {
+      "en": "Cache",
+      "he": "קאש / מטמון (Cache)"
+     },
+     "d": {
+      "en": "A copy of an expensive result kept somewhere fast, so the next request skips the work.",
+      "he": "עותק של תוצאה יקרה שנשמר במקום מהיר, כדי שהבקשה הבאה תדלג על העבודה."
+     },
+     "w": {
+      "en": "Fastest performance win that exists. Also the reason your change \"didn't do anything\".",
+      "he": "שיפור הביצועים המהיר ביותר שקיים. וגם הסיבה שהשינוי שלך \"לא עשה כלום\"."
+     }
+    },
+    {
+     "k": "hit-miss",
+     "lvl": "B",
+     "t": {
+      "en": "Hit / Miss",
+      "he": "פגיעה / פספוס (Hit / Miss)"
+     },
+     "d": {
+      "en": "A hit means the copy was there. A miss means you paid the full cost and stored the result.",
+      "he": "פגיעה = העותק היה שם. פספוס = שילמת את המחיר המלא ושמרת את התוצאה."
+     },
+     "w": {
+      "en": "Hit rate is the number to watch. A 20% hit rate cache is mostly overhead.",
+      "he": "אחוז הפגיעות (hit rate) הוא המספר שחשוב. קאש עם 20% פגיעות הוא בעיקר תקורה."
+     }
+    },
+    {
+     "k": "ttl",
+     "lvl": "B",
+     "t": {
+      "en": "TTL",
+      "he": "TTL"
+     },
+     "d": {
+      "en": "Time To Live — how long a cached copy is allowed to be trusted before it's dropped.",
+      "he": "Time To Live — כמה זמן מותר לסמוך על העותק השמור לפני שהוא נזרק."
+     },
+     "w": {
+      "en": "Short TTL = fresher and slower. Long TTL = faster and staler. That's the whole dial.",
+      "he": "TTL קצר = טרי ואיטי. TTL ארוך = מהיר ומיושן. זה כל הכפתור."
+     }
+    },
+    {
+     "k": "invalidation",
+     "lvl": "B",
+     "t": {
+      "en": "Invalidation",
+      "he": "ביטול תוקף (Invalidation)"
+     },
+     "d": {
+      "en": "Deliberately throwing away a cached copy because the underlying data changed.",
+      "he": "זריקה מכוונת של עותק שמור כי הנתונים שמאחוריו השתנו."
+     },
+     "w": {
+      "en": "Famously one of the two hard problems in computing. Prefer a short TTL over clever invalidation.",
+      "he": "אחת משתי הבעיות הקשות במדעי המחשב. עדיף TTL קצר על פני ביטול תוקף חכם."
+     }
+    },
+    {
+     "k": "browser-cache",
+     "lvl": "A",
+     "t": {
+      "en": "Browser cache",
+      "he": "קאש הדפדפן"
+     },
+     "d": {
+      "en": "The browser keeps files it already downloaded — JS, CSS, images — and reuses them.",
+      "he": "הדפדפן שומר קבצים שכבר הוריד — JS, CSS, תמונות — ומשתמש בהם מחדש."
+     },
+     "w": {
+      "en": "Before debugging for an hour: hard refresh. Ctrl+Shift+R. It's that, more often than you'd like.",
+      "he": "לפני שעה של דיבוג: רענון קשיח (hard refresh). Ctrl+Shift+R. זה זה, יותר פעמים ממה שהיית רוצה."
+     }
+    },
+    {
+     "k": "cdn",
+     "lvl": "B",
+     "t": {
+      "en": "CDN",
+      "he": "CDN"
+     },
+     "d": {
+      "en": "Servers spread worldwide that hold copies of your static files close to each user.",
+      "he": "שרתים פרוסים בעולם שמחזיקים עותקים של הקבצים הסטטיים שלך קרוב לכל משתמש."
+     },
+     "w": {
+      "en": "Turns a 300ms transatlantic load into 20ms, and absorbs traffic spikes for free.",
+      "he": "הופך טעינה של 300ms מעבר לאוקיינוס ל-20ms, וסופג קפיצות תעבורה בחינם."
+     }
+    },
+    {
+     "k": "redis-in-memory-store",
+     "lvl": "B",
+     "t": {
+      "en": "Redis / in-memory store",
+      "he": "Redis / אחסון בזיכרון"
+     },
+     "d": {
+      "en": "A separate, very fast key-value database kept in RAM. Shared by all your servers.",
+      "he": "מסד נתונים נפרד מסוג מפתח-ערך, מהיר מאוד, שיושב ב-RAM. משותף לכל השרתים."
+     },
+     "w": {
+      "en": "Caching in a local variable breaks the moment you run two servers. Redis is the shared version.",
+      "he": "מטמון במשתנה מקומי נשבר ברגע שרצים שני שרתים. Redis הוא הגרסה המשותפת."
+     }
+    }
+   ],
+   "overview": {
+    "en": "The cheapest way to make anything faster is to not do it twice. That is a cache. It is also the reason 'I fixed it but the page still shows the old thing' happens. This lesson covers both faces: the speed-up and the stale data.",
+    "he": "הדרך הזולה ביותר להאיץ כל דבר היא לא לעשות אותו פעמיים. זה cache. זו גם הסיבה ש'תיקנתי אבל הדף עדיין מציג את הישן' קורה. השיעור מכסה את שני הפרצופים: ההאצה והדאטה המיושן."
+   },
+   "summary": {
+    "en": "A cache is a remembered answer. It saves time on a hit, costs nothing on a miss, and lies when it is stale — so every cache needs a TTL or an invalidation rule. Browser, CDN, Redis: same idea, different distance from the user.",
+    "he": "cache הוא תשובה שזוכרים. הוא חוסך זמן ב-hit, לא עולה כלום ב-miss, ומשקר כשהוא מיושן — אז כל cache צריך TTL או חוק invalidation. דפדפן, CDN, Redis: אותו רעיון, מרחק שונה מהמשתמש."
+   }
+  },
+  {
+   "id": "apis",
+   "icon": "⇆",
+   "title": {
+    "en": "APIs & Integrations",
+    "he": "APIs ואינטגרציות"
+   },
+   "blurb": {
+    "en": "Every product you build talks to someone else's. This is how that conversation is shaped, paid for, and kept from breaking.",
+    "he": "כל מוצר שתבנה מדבר עם מוצר של מישהו אחר. כך השיחה הזאת מעוצבת, מתומחרת ונשמרת מלהישבר."
+   },
+   "terms": [
+    {
+     "k": "rest-vs-graphql",
+     "lvl": "B",
+     "t": {
+      "en": "REST vs GraphQL",
+      "he": "REST מול GraphQL"
+     },
+     "d": {
+      "en": "REST gives you fixed URLs that each return a fixed shape. GraphQL gives you one URL where you describe exactly the fields you want.",
+      "he": "REST נותן לך כתובות קבועות שכל אחת מחזירה צורה קבועה. GraphQL נותן לך כתובת אחת שבה אתה מתאר בדיוק אילו שדות אתה רוצה."
+     },
+     "w": {
+      "en": "Most APIs you will consume are REST. When an AI suggests GraphQL for your three-table app, ask what problem it is solving.",
+      "he": "רוב ה-APIs שתצרוך הם REST. כשה-AI מציע GraphQL לאפליקציה שלך עם שלוש טבלאות, תשאל איזו בעיה זה פותר."
+     }
+    },
+    {
+     "k": "api-spec-openapi",
+     "lvl": "B",
+     "t": {
+      "en": "API spec (OpenAPI)",
+      "he": "מפרט API (OpenAPI)"
+     },
+     "d": {
+      "en": "A machine-readable file that lists every endpoint, its inputs and its outputs. Docs, client code and validation can all be generated from it.",
+      "he": "קובץ שמכונה יכולה לקרוא, שמפרט כל נקודת קצה, הקלטים והפלטים שלה. תיעוד, קוד לקוח ואימות — כולם יכולים להיווצר ממנו."
+     },
+     "w": {
+      "en": "Paste the spec into the AI's context and it stops guessing field names. It is the single best input you can give it about a third-party API.",
+      "he": "תדביק את המפרט להקשר של ה-AI והוא יפסיק לנחש שמות שדות. זה הקלט הטוב ביותר שאתה יכול לתת לו על API חיצוני."
+     }
+    },
+    {
+     "k": "api-key-vs-oauth-app",
+     "lvl": "B",
+     "t": {
+      "en": "API key vs OAuth app",
+      "he": "מפתח API מול אפליקציית OAuth"
+     },
+     "d": {
+      "en": "An API key identifies your app to a provider. An OAuth app lets your users grant your app access to their account at that provider.",
+      "he": "מפתח API מזהה את האפליקציה שלך מול ספק. אפליקציית OAuth מאפשרת למשתמשים שלך להעניק לאפליקציה שלך גישה לחשבון שלהם אצל אותו ספק."
+     },
+     "w": {
+      "en": "\"Connect your Google Calendar\" is OAuth. \"Send an email via Resend\" is an API key. Mixing them up costs a week.",
+      "he": "״חבר את יומן גוגל שלך״ זה OAuth. ״שלח מייל דרך Resend״ זה מפתח API. לערבב ביניהם עולה שבוע."
+     }
+    },
+    {
+     "k": "pagination",
+     "lvl": "B",
+     "t": {
+      "en": "Pagination",
+      "he": "עימוד (Pagination)"
+     },
+     "d": {
+      "en": "Returning a large list in pages: a slice at a time plus a pointer to the next slice, rather than everything in one response.",
+      "he": "החזרת רשימה גדולה בעמודים: פרוסה אחת בכל פעם ומצביע לפרוסה הבאה, במקום הכל בתשובה אחת."
+     },
+     "w": {
+      "en": "The endpoint that returns \"all orders\" works with 40 orders and takes the server down at 400,000. Every list needs a page size.",
+      "he": "נקודת הקצה שמחזירה ״את כל ההזמנות״ עובדת עם 40 הזמנות ומפילה את השרת ב-400,000. כל רשימה צריכה גודל עמוד."
+     }
+    },
+    {
+     "k": "api-versioning",
+     "lvl": "B",
+     "t": {
+      "en": "API versioning",
+      "he": "גרסאות API"
+     },
+     "d": {
+      "en": "Keeping the old shape of an API alive under /v1 while /v2 changes it, so existing clients keep working while new ones move on.",
+      "he": "להשאיר את הצורה הישנה של ה-API חיה תחת /v1 בזמן ש-/v2 משנה אותה, כדי שלקוחות קיימים ימשיכו לעבוד בזמן שחדשים מתקדמים."
+     },
+     "w": {
+      "en": "The moment anyone but you calls your API, renaming a field is a breaking change. Additive changes are free; removals need a version.",
+      "he": "ברגע שמישהו מלבדך קורא ל-API שלך, שינוי שם של שדה הוא שינוי שובר. הוספות הן חינם; הסרות צריכות גרסה."
+     }
+    },
+    {
+     "k": "timeouts-and-retries",
+     "lvl": "B",
+     "t": {
+      "en": "Timeouts & retries",
+      "he": "טיים-אאוט וניסיונות חוזרים"
+     },
+     "d": {
+      "en": "A timeout is how long you wait for an answer before giving up. A retry is trying again — carefully, with growing pauses, and only for calls that are safe to repeat.",
+      "he": "טיים-אאוט הוא כמה זמן אתה מחכה לתשובה לפני שאתה מוותר. ניסיון חוזר הוא לנסות שוב — בזהירות, עם הפסקות גדלות, ורק לקריאות שבטוח לחזור עליהן."
+     },
+     "w": {
+      "en": "A call with no timeout can hang forever and take your request handler with it. Every outbound call gets a timeout, no exceptions.",
+      "he": "קריאה בלי טיים-אאוט יכולה להיתקע לנצח ולקחת איתה את מטפל הבקשה שלך. כל קריאה יוצאת מקבלת טיים-אאוט, בלי חריגים."
+     }
+    },
+    {
+     "k": "sdk-vs-raw-http",
+     "lvl": "B",
+     "t": {
+      "en": "SDK vs raw HTTP",
+      "he": "SDK מול HTTP גולמי"
+     },
+     "d": {
+      "en": "An SDK is the provider's own library that wraps their API in functions for your language. Raw HTTP is calling the endpoints yourself.",
+      "he": "SDK הוא הספרייה של הספק עצמו שעוטפת את ה-API שלו בפונקציות בשפה שלך. HTTP גולמי הוא לקרוא לנקודות הקצה בעצמך."
+     },
+     "w": {
+      "en": "Use the SDK when one exists: it handles auth, retries and pagination you would otherwise get wrong. Drop to raw HTTP only to debug.",
+      "he": "תשתמש ב-SDK כשיש אחד: הוא מטפל בהזדהות, ניסיונות חוזרים ועימוד שאחרת היית עושה לא נכון. תרד ל-HTTP גולמי רק כדי לדבג."
+     }
+    },
+    {
+     "k": "sandbox-vs-live-keys",
+     "lvl": "B",
+     "t": {
+      "en": "Sandbox vs live keys",
+      "he": "מפתחות סנדבוקס מול חיים"
+     },
+     "d": {
+      "en": "Providers give you a test environment with fake money, fake emails and its own keys. Live keys touch real customers and real cards.",
+      "he": "ספקים נותנים לך סביבת בדיקה עם כסף מזויף, מיילים מזויפים ומפתחות משלה. מפתחות חיים נוגעים בלקוחות אמיתיים ובכרטיסים אמיתיים."
+     },
+     "w": {
+      "en": "Develop against sandbox. The classic disaster is a live Stripe key in a local .env and a test loop that charges a real card 200 times.",
+      "he": "תפתח מול סנדבוקס. האסון הקלאסי הוא מפתח Stripe חי ב-.env מקומי ולולאת בדיקה שמחייבת כרטיס אמיתי 200 פעמים."
+     }
+    },
+    {
+     "k": "polling-vs-push",
+     "lvl": "B",
+     "t": {
+      "en": "Polling vs push",
+      "he": "פולינג מול דחיפה"
+     },
+     "d": {
+      "en": "Polling asks \"anything new?\" every few seconds. Push means the other side tells you when something happens — via a webhook or an open connection.",
+      "he": "פולינג שואל ״יש משהו חדש?״ כל כמה שניות. דחיפה אומרת שהצד השני מודיע לך כשמשהו קורה — דרך webhook או חיבור פתוח."
+     },
+     "w": {
+      "en": "Polling is simple and wasteful; push is efficient and needs a public URL. Start with polling, move to push when the poll count hurts.",
+      "he": "פולינג פשוט ובזבזני; דחיפה יעילה וצריכה כתובת ציבורית. תתחיל בפולינג, תעבור לדחיפה כשמספר הבקשות מתחיל לכאוב."
+     }
+    }
+   ],
+   "overview": {
+    "en": "Your product will lean on other people's APIs: payments, email, maps, AI. This lesson is about the shape of that relationship — how it is documented, authenticated, paged, versioned, and how it fails when their side is slow. Read it when you are about to connect payments, email, or an AI provider.",
+    "he": "המוצר שלכם יישען על APIs של אחרים: תשלומים, מייל, מפות, AI. השיעור עוסק בצורה של הקשר הזה — איך הוא מתועד, מאומת, מחולק לעמודים, מנוהל בגרסאות, ואיך הוא נכשל כשהצד שלהם איטי. לקרוא אותו כשאתם עומדים לחבר תשלומים, מייל, או ספק AI."
+   },
+   "summary": {
+    "en": "Read the spec before the AI does. Keep keys out of the browser, test against sandbox keys, and assume every call can time out. Retry with backoff, page through big lists, and pin the API version so their upgrade is not your outage.",
+    "he": "קראו את ה-spec לפני שה-AI קורא. שמרו מפתחות מחוץ לדפדפן, בדקו מול מפתחות sandbox, והניחו שכל קריאה יכולה להיגמר ב-timeout. retry עם backoff, דפדוף ברשימות גדולות, ונעילת גרסת ה-API כדי שהשדרוג שלהם לא יהיה התקלה שלכם."
+   }
+  },
+  {
+   "id": "testing",
+   "icon": "✓",
+   "title": {
+    "en": "Testing & Confidence",
+    "he": "בדיקות וביטחון"
+   },
+   "blurb": {
+    "en": "The only thing standing between you and an agent quietly breaking working code.",
+    "he": "הדבר היחיד שעומד בינך לבין סוכן ששובר בשקט קוד שעבד."
+   },
+   "terms": [
+    {
+     "k": "test",
+     "lvl": "A",
+     "t": {
+      "en": "Test",
+      "he": "בדיקה"
+     },
+     "d": {
+      "en": "Code that runs your code and fails loudly if the result is not what you said it should be.",
+      "he": "קוד שמריץ את הקוד שלך ונכשל ברעש אם התוצאה אינה מה שאמרת שהיא צריכה להיות."
+     },
+     "w": {
+      "en": "It is the only form of checking that still works at 3am, on someone else's machine, six months from now.",
+      "he": "זו צורת הבדיקה היחידה שעדיין עובדת בשלוש לפנות בוקר, על מכונה של מישהו אחר, בעוד חצי שנה."
+     }
+    },
+    {
+     "k": "assertion",
+     "lvl": "B",
+     "t": {
+      "en": "Assertion",
+      "he": "טענה (Assertion)"
+     },
+     "d": {
+      "en": "The single line that states the expectation: this value must equal that one, or the test fails.",
+      "he": "השורה הבודדת שמצהירה על הציפייה: הערך הזה חייב להיות שווה לזה, אחרת הבדיקה נכשלת."
+     },
+     "w": {
+      "en": "A test with no assertion passes forever and proves nothing. It happens more often than you would think.",
+      "he": "בדיקה בלי טענה עוברת לנצח ולא מוכיחה כלום. זה קורה יותר ממה שנדמה."
+     }
+    },
+    {
+     "k": "test-first-tdd",
+     "lvl": "B",
+     "t": {
+      "en": "Test-first (TDD)",
+      "he": "בדיקה קודם (TDD)"
+     },
+     "d": {
+      "en": "Write the failing test that describes what you want, then make it pass.",
+      "he": "כותבים את הבדיקה שנכשלת ומתארת את מה שרוצים, ואז גורמים לה לעבור."
+     },
+     "w": {
+      "en": "With AI this stops being a philosophy and becomes a control: the test is the specification you hand the model, and the proof you check it against.",
+      "he": "עם AI זו מפסיקה להיות פילוסופיה והופכת לשליטה: הבדיקה היא המפרט שאתה נותן למודל, וההוכחה שאתה בודק מולה."
+     }
+    },
+    {
+     "k": "unit-integration-e2e",
+     "lvl": "B",
+     "t": {
+      "en": "Unit / Integration / E2E",
+      "he": "יחידה / אינטגרציה / קצה לקצה"
+     },
+     "d": {
+      "en": "Unit: one function alone. Integration: several parts together, with a real database. E2E: the whole app through a browser, like a user.",
+      "he": "יחידה: פונקציה אחת לבדה. אינטגרציה: כמה חלקים יחד, עם מסד נתונים אמיתי. קצה לקצה: כל האפליקציה דרך דפדפן, כמו משתמש."
+     },
+     "w": {
+      "en": "Each one is slower and more realistic than the last. You want many of the fast ones and a few of the slow ones.",
+      "he": "כל אחת איטית ומציאותית יותר מקודמתה. אתה רוצה הרבה מהמהירות וכמה מהאיטיות."
+     }
+    },
+    {
+     "k": "mock-fixture",
+     "lvl": "B",
+     "t": {
+      "en": "Mock / Fixture",
+      "he": "מוק / פיקסצ׳ר"
+     },
+     "d": {
+      "en": "A mock is a fake stand-in for something real. A fixture is the known starting data a test runs against.",
+      "he": "מוק הוא תחליף מזויף למשהו אמיתי. פיקסצ׳ר הוא נתוני הפתיחה הידועים שהבדיקה רצה מולם."
+     },
+     "w": {
+      "en": "Mock the payment provider, not your own database. Mocking the thing you are testing is how a suite passes while the product is broken.",
+      "he": "תזייף את ספק התשלומים, לא את מסד הנתונים שלך. זיוף הדבר שאתה בודק הוא איך שחבילת בדיקות עוברת בזמן שהמוצר שבור."
+     }
+    },
+    {
+     "k": "regression",
+     "lvl": "B",
+     "t": {
+      "en": "Regression",
+      "he": "רגרסיה"
+     },
+     "d": {
+      "en": "Something that used to work and stopped. A regression test is one you add the moment you fix a bug, so it can never come back unnoticed.",
+      "he": "משהו שעבד והפסיק. בדיקת רגרסיה היא כזו שמוסיפים ברגע שמתקנים באג, כדי שהוא לא יוכל לחזור בלי שישימו לב."
+     },
+     "w": {
+      "en": "This is the highest-value test you will ever write, because it is provably about a mistake that has already been made once.",
+      "he": "זו הבדיקה בעלת הערך הגבוה ביותר שתכתוב, כי היא מוכחת מול טעות שכבר נעשתה פעם אחת."
+     }
+    },
+    {
+     "k": "coverage",
+     "lvl": "B",
+     "t": {
+      "en": "Coverage",
+      "he": "כיסוי"
+     },
+     "d": {
+      "en": "The percentage of your lines that some test executed. It measures what was run, not what was checked.",
+      "he": "אחוז השורות שאיזושהי בדיקה הריצה. היא מודדת מה רץ, לא מה נבדק."
+     },
+     "w": {
+      "en": "100% coverage with weak assertions proves nothing. Chase the risky paths — auth, money, deletion — not the number.",
+      "he": "כיסוי של 100% עם טענות חלשות לא מוכיח כלום. תרדוף אחרי הנתיבים המסוכנים — הרשאות, כסף, מחיקה — לא אחרי המספר."
+     }
+    },
+    {
+     "k": "flaky-test",
+     "lvl": "B",
+     "t": {
+      "en": "Flaky test",
+      "he": "בדיקה הפכפכה"
+     },
+     "d": {
+      "en": "A test that passes and fails on the same code, usually because of timing, ordering or shared state.",
+      "he": "בדיקה שעוברת ונכשלת על אותו קוד, בדרך כלל בגלל תזמון, סדר או מצב משותף."
+     },
+     "w": {
+      "en": "One flaky test teaches the team to ignore red. That is more damaging than having no test at all — fix it or delete it.",
+      "he": "בדיקה הפכפכה אחת מלמדת את הצוות להתעלם מאדום. זה מזיק יותר מלא לבדוק בכלל — תתקן אותה או תמחק."
+     }
+    }
+   ],
+   "overview": {
+    "en": "An agent that edits your code will, sooner or later, break something that used to work. Tests are the only thing that notices before a user does. This lesson explains what a test is and the words around it, so you can ask for the right kind and read the result.",
+    "he": "סוכן שעורך את הקוד שלכם ישבור, במוקדם או במאוחר, משהו שעבד. בדיקות הן הדבר היחיד ששם לב לפני שמשתמש שם לב. השיעור מסביר מה זה טסט ואת המילים מסביבו, כדי שתוכלו לבקש את הסוג הנכון ולקרוא את התוצאה."
+   },
+   "summary": {
+    "en": "A test is a claim that runs. Unit tests are fast and narrow, E2E tests are slow and honest. A regression is an old bug returning; a flaky test is one you cannot trust. Ask the AI for the test first, then the code — it constrains what it can get wrong.",
+    "he": "טסט הוא טענה שרצה. unit tests מהירים וצרים, E2E איטיים וכנים. regression הוא באג ישן שחוזר; flaky test הוא כזה שאי אפשר לסמוך עליו. בקשו מה-AI את הטסט קודם ואז את הקוד — זה מגביל במה הוא יכול לטעות."
    }
   },
   {
@@ -3863,6 +3879,22 @@
      }
     },
     {
+     "k": "agents-md",
+     "lvl": "B",
+     "t": {
+      "en": "AGENTS.md",
+      "he": "AGENTS.md"
+     },
+     "d": {
+      "en": "A file in your repo that tells any AI assistant how this project works: stack, setup commands, code style, how to run the tests, what not to touch.",
+      "he": "קובץ בריפו שמסביר לכל עוזר AI איך הפרויקט עובד: הסטאק, פקודות ההתקנה, סגנון הקוד, איך מריצים בדיקות, ובמה לא לגעת."
+     },
+     "w": {
+      "en": "It is the highest-leverage prompt you will ever write, because you write it once and every session starts with it.",
+      "he": "זה הפרומפט בעל המנוף הגבוה ביותר שתכתוב, כי כותבים אותו פעם אחת וכל שיחה מתחילה איתו."
+     }
+    },
+    {
      "k": "specificity-beats-politeness",
      "lvl": "A",
      "t": {
@@ -3895,22 +3927,6 @@
      }
     },
     {
-     "k": "constrain-the-blast-radius",
-     "lvl": "A",
-     "t": {
-      "en": "Constrain the blast radius",
-      "he": "תגביל את רדיוס הפגיעה"
-     },
-     "d": {
-      "en": "Name the files it may touch and the ones it must not. Ask for the smallest change that works.",
-      "he": "תציין אילו קבצים מותר לו לגעת בהם ואילו אסור. תבקש את השינוי הקטן ביותר שעובד."
-     },
-     "w": {
-      "en": "Without a boundary it will helpfully refactor four files you did not ask about, and one of them mattered.",
-      "he": "בלי גבול הוא ישכתב בעזרה רבה ארבעה קבצים שלא ביקשת, ואחד מהם היה חשוב."
-     }
-    },
-    {
      "k": "ask-for-the-trade-off-first",
      "lvl": "B",
      "t": {
@@ -3927,35 +3943,19 @@
      }
     },
     {
-     "k": "hallucination",
+     "k": "constrain-the-blast-radius",
      "lvl": "A",
      "t": {
-      "en": "Hallucination",
-      "he": "הזיה"
+      "en": "Constrain the blast radius",
+      "he": "תגביל את רדיוס הפגיעה"
      },
      "d": {
-      "en": "Confidently stated output that is wrong: a function that does not exist, a flag that was never added, an API shaped the way it should be rather than the way it is.",
-      "he": "פלט שנאמר בביטחון ואינו נכון: פונקציה שלא קיימת, דגל שמעולם לא נוסף, API בצורה שהוא היה אמור להיות ולא כפי שהוא."
+      "en": "Name the files it may touch and the ones it must not. Ask for the smallest change that works.",
+      "he": "תציין אילו קבצים מותר לו לגעת בהם ואילו אסור. תבקש את השינוי הקטן ביותר שעובד."
      },
      "w": {
-      "en": "Confidence carries no information about correctness. Library names, version numbers and config keys are the highest-risk answers — verify those against real docs.",
-      "he": "ביטחון לא נושא שום מידע על נכונות. שמות ספריות, מספרי גרסאות ומפתחות קונפיגורציה הם התשובות המסוכנות ביותר — תאמת אותן מול תיעוד אמיתי."
-     }
-    },
-    {
-     "k": "make-it-verify-itself",
-     "lvl": "B",
-     "t": {
-      "en": "Make it verify itself",
-      "he": "תגרום לו לאמת את עצמו"
-     },
-     "d": {
-      "en": "Ask for the failing test first, or for the command that proves the fix, or for the three inputs that would break it.",
-      "he": "תבקש קודם את הבדיקה שנכשלת, או את הפקודה שמוכיחה את התיקון, או את שלושת הקלטים שישברו אותו."
-     },
-     "w": {
-      "en": "A claim you can run is worth more than a paragraph explaining why it should work.",
-      "he": "טענה שאפשר להריץ שווה יותר מפסקה שמסבירה למה זה אמור לעבוד."
+      "en": "Without a boundary it will helpfully refactor four files you did not ask about, and one of them mattered.",
+      "he": "בלי גבול הוא ישכתב בעזרה רבה ארבעה קבצים שלא ביקשת, ואחד מהם היה חשוב."
      }
     },
     {
@@ -3975,6 +3975,22 @@
      }
     },
     {
+     "k": "make-it-verify-itself",
+     "lvl": "B",
+     "t": {
+      "en": "Make it verify itself",
+      "he": "תגרום לו לאמת את עצמו"
+     },
+     "d": {
+      "en": "Ask for the failing test first, or for the command that proves the fix, or for the three inputs that would break it.",
+      "he": "תבקש קודם את הבדיקה שנכשלת, או את הפקודה שמוכיחה את התיקון, או את שלושת הקלטים שישברו אותו."
+     },
+     "w": {
+      "en": "A claim you can run is worth more than a paragraph explaining why it should work.",
+      "he": "טענה שאפשר להריץ שווה יותר מפסקה שמסבירה למה זה אמור לעבוד."
+     }
+    },
+    {
      "k": "read-the-diff",
      "lvl": "A",
      "t": {
@@ -3991,51 +4007,35 @@
      }
     },
     {
-     "k": "prompt-injection",
-     "lvl": "B",
+     "k": "hallucination",
+     "lvl": "A",
      "t": {
-      "en": "Prompt injection",
-      "he": "הזרקת פרומפט"
+      "en": "Hallucination",
+      "he": "הזיה"
      },
      "d": {
-      "en": "Text the model reads — from a web page, a file, an issue, a dependency — that contains instructions aimed at it.",
-      "he": "טקסט שהמודל קורא — מדף אינטרנט, קובץ, תקלה, תלות — שמכיל הוראות שמכוונות אליו."
+      "en": "Confidently stated output that is wrong: a function that does not exist, a flag that was never added, an API shaped the way it should be rather than the way it is.",
+      "he": "פלט שנאמר בביטחון ואינו נכון: פונקציה שלא קיימת, דגל שמעולם לא נוסף, API בצורה שהוא היה אמור להיות ולא כפי שהוא."
      },
      "w": {
-      "en": "It is the injection bug from module 08 in a new suit: data being treated as instructions. Anything an agent reads is data, never orders.",
-      "he": "זה באג ההזרקה ממודול 08 בחליפה חדשה: נתונים שמטופלים כהוראות. כל מה שסוכן קורא הוא נתונים, אף פעם לא פקודות."
+      "en": "Confidence carries no information about correctness. Library names, version numbers and config keys are the highest-risk answers — verify those against real docs.",
+      "he": "ביטחון לא נושא שום מידע על נכונות. שמות ספריות, מספרי גרסאות ומפתחות קונפיגורציה הם התשובות המסוכנות ביותר — תאמת אותן מול תיעוד אמיתי."
      }
     },
     {
-     "k": "vibe-coding-vs-vibe-engineering",
+     "k": "package-hallucination",
      "lvl": "B",
      "t": {
-      "en": "Vibe coding vs vibe engineering",
-      "he": "Vibe coding מול Vibe engineering"
+      "en": "Package hallucination",
+      "he": "הזיית חבילה"
      },
      "d": {
-      "en": "Vibe coding is accepting code you have not reviewed. If you reviewed, tested and understood it, it is simply engineering with a fast assistant.",
-      "he": "Vibe coding הוא קבלת קוד שלא סקרת. אם סקרת, בדקת והבנת אותו, זו פשוט הנדסה עם עוזר מהיר."
+      "en": "The AI invents a library name or version that does not exist (or is not what you think).",
+      "he": "ה-AI ממציא שם או גרסת ספרייה שלא קיימים (או שאינם מה שחשבתם)."
      },
      "w": {
-      "en": "This distinction is the point of this entire course. Nothing here is about typing less — it is about being able to review what you accept.",
-      "he": "ההבחנה הזו היא כל הנקודה של הקורס הזה. שום דבר כאן הוא לא על להקליד פחות — הוא על היכולת לסקור את מה שאתה מקבל."
-     }
-    },
-    {
-     "k": "agents-md",
-     "lvl": "B",
-     "t": {
-      "en": "AGENTS.md",
-      "he": "AGENTS.md"
-     },
-     "d": {
-      "en": "A file in your repo that tells any AI assistant how this project works: stack, setup commands, code style, how to run the tests, what not to touch.",
-      "he": "קובץ בריפו שמסביר לכל עוזר AI איך הפרויקט עובד: הסטאק, פקודות ההתקנה, סגנון הקוד, איך מריצים בדיקות, ובמה לא לגעת."
-     },
-     "w": {
-      "en": "It is the highest-leverage prompt you will ever write, because you write it once and every session starts with it.",
-      "he": "זה הפרומפט בעל המנוף הגבוה ביותר שתכתוב, כי כותבים אותו פעם אחת וכל שיחה מתחילה איתו."
+      "en": "Never install a name you did not verify — same rule as the ship checklist.",
+      "he": "לא מתקינים שם שלא אומת — אותו כלל כמו בצ'קליסט לפני שיגור."
      }
     },
     {
@@ -4071,19 +4071,35 @@
      }
     },
     {
-     "k": "package-hallucination",
+     "k": "prompt-injection",
      "lvl": "B",
      "t": {
-      "en": "Package hallucination",
-      "he": "הזיית חבילה"
+      "en": "Prompt injection",
+      "he": "הזרקת פרומפט"
      },
      "d": {
-      "en": "The AI invents a library name or version that does not exist (or is not what you think).",
-      "he": "ה-AI ממציא שם או גרסת ספרייה שלא קיימים (או שאינם מה שחשבתם)."
+      "en": "Text the model reads — from a web page, a file, an issue, a dependency — that contains instructions aimed at it.",
+      "he": "טקסט שהמודל קורא — מדף אינטרנט, קובץ, תקלה, תלות — שמכיל הוראות שמכוונות אליו."
      },
      "w": {
-      "en": "Never install a name you did not verify — same rule as the ship checklist.",
-      "he": "לא מתקינים שם שלא אומת — אותו כלל כמו בצ'קליסט לפני שיגור."
+      "en": "It is the injection bug from module 08 in a new suit: data being treated as instructions. Anything an agent reads is data, never orders.",
+      "he": "זה באג ההזרקה ממודול 08 בחליפה חדשה: נתונים שמטופלים כהוראות. כל מה שסוכן קורא הוא נתונים, אף פעם לא פקודות."
+     }
+    },
+    {
+     "k": "vibe-coding-vs-vibe-engineering",
+     "lvl": "B",
+     "t": {
+      "en": "Vibe coding vs vibe engineering",
+      "he": "Vibe coding מול Vibe engineering"
+     },
+     "d": {
+      "en": "Vibe coding is accepting code you have not reviewed. If you reviewed, tested and understood it, it is simply engineering with a fast assistant.",
+      "he": "Vibe coding הוא קבלת קוד שלא סקרת. אם סקרת, בדקת והבנת אותו, זו פשוט הנדסה עם עוזר מהיר."
+     },
+     "w": {
+      "en": "This distinction is the point of this entire course. Nothing here is about typing less — it is about being able to review what you accept.",
+      "he": "ההבחנה הזו היא כל הנקודה של הקורס הזה. שום דבר כאן הוא לא על להקליד פחות — הוא על היכולת לסקור את מה שאתה מקבל."
      }
     },
     {
@@ -6332,31 +6348,31 @@
    },
    {
     "q": {
-     "en": "You are about to let an AI refactor half your project. What do you do first?",
-     "he": "אתה עומד לתת ל-AI לשכתב חצי מהפרויקט. מה אתה עושה קודם?"
+     "en": "The AI proposes changing twenty files before reading the crash output. What should you do first?",
+     "he": "ה-AI מציע לשנות עשרים קבצים לפני שקרא את פלט הקריסה. מה עושים קודם?"
     },
     "a": [
      {
-      "en": "Copy the folder to a backup",
-      "he": "מעתיק את התיקייה לגיבוי"
+      "en": "Let it try — a larger change has a better chance of fixing it",
+      "he": "לתת לו לנסות — לשינוי גדול יש סיכוי טוב יותר לתקן"
      },
      {
-      "en": "Create a branch",
-      "he": "פותח ענף"
+      "en": "Read the top of the stack trace and identify the runtime and environment",
+      "he": "לקרוא את ראש ה-stack trace ולזהות את סביבת הריצה והסביבה"
      },
      {
-      "en": "Write tests for everything",
-      "he": "כותב בדיקות להכל"
+      "en": "Reinstall every dependency",
+      "he": "להתקין מחדש את כל התלויות"
      },
      {
-      "en": "Nothing — you can always undo in the editor",
-      "he": "כלום — תמיד אפשר לבטל בעורך"
+      "en": "Restart the computer and hide the error",
+      "he": "להפעיל מחדש את המחשב ולהסתיר את השגיאה"
      }
     ],
     "c": 1,
     "why": {
-     "en": "A branch is free, keeps the history, and lets you throw the whole attempt away with one command. Editor undo does not survive a restart.",
-     "he": "ענף הוא חינם, שומר את ההיסטוריה, ומאפשר לזרוק את כל הניסיון בפקודה אחת. ביטול בעורך לא שורד הפעלה מחדש."
+     "en": "Evidence first. The top of the trace says where it broke; the runtime and environment explain why identical code can behave differently.",
+     "he": "קודם ראיות. ראש ה-trace אומר איפה נשבר; סביבת הריצה והסביבה מסבירות למה קוד זהה יכול להתנהג אחרת."
     }
    },
    {
@@ -6976,31 +6992,31 @@
    },
    {
     "q": {
-     "en": "AI builds SQL with `WHERE name = '${userInput}'` and says it's fine because the UI validates input. Critique?",
-     "he": "ה-AI בונה SQL עם `WHERE name = '${userInput}'` ואומר שזה בסדר כי ה-UI מבצע ולידציה. ביקורת?"
+     "en": "The AI makes every database field optional text because that is quickest to ship. What is wrong with that?",
+     "he": "ה-AI מגדיר כל שדה במסד הנתונים כטקסט אופציונלי כי כך הכי מהר לשחרר. מה הבעיה?"
     },
     "a": [
      {
-      "en": "UI validation is enough",
-      "he": "ולידציית UI מספיקה"
+      "en": "Nothing — application code can remember every rule",
+      "he": "אין בעיה — קוד האפליקציה יכול לזכור כל כלל"
      },
      {
-      "en": "String-built SQL is injection risk — use parameterized queries; UI is not a boundary",
-      "he": "SQL מבניות מחרוזת = הזרקה — פרמטרים בלבד; UI אינו גבול"
+      "en": "The schema no longer rejects missing, duplicate or nonsensical data",
+      "he": "הסכמה כבר לא דוחה נתונים חסרים, כפולים או חסרי היגיון"
      },
      {
-      "en": "Switch to Mongo and ignore SQL",
-      "he": "לעבור ל-Mongo ולהתעלם מ-SQL"
+      "en": "Text fields cannot be indexed",
+      "he": "אי אפשר ליצור אינדקס על שדות טקסט"
      },
      {
-      "en": "Escape by uppercasing the string",
-      "he": "לברוח ע\"י אותיות גדולות"
+      "en": "Optional fields always make queries slower",
+      "he": "שדות אופציונליים תמיד מאטים שאילתות"
      }
     ],
     "c": 1,
     "why": {
-     "en": "Never concatenate user input into SQL. Parameters + server checks.",
-     "he": "לא מחברים קלט משתמש ל-SQL. פרמטרים + בדיקות בשרת."
+     "en": "The schema is the rule every writer must obey. Types, required fields and uniqueness constraints stop bad data before it spreads.",
+     "he": "הסכמה היא הכלל שכל כותב חייב לציית לו. טיפוסים, שדות חובה ואילוצי ייחודיות עוצרים נתונים גרועים לפני שהם מתפשטים."
     }
    }
   ],
@@ -8736,31 +8752,31 @@
    },
    {
     "q": {
-     "en": "AI stores the user's session token in localStorage and logs it to the console 'for debugging'. Critique?",
-     "he": "ה-AI שומר את ה-token ב-localStorage ומדפיס אותו לקונסול 'לדיבאג'. מה הביקורת?"
+     "en": "Two components keep separate copies of the selected contact and show different names. What is the best fix?",
+     "he": "שתי קומפוננטות מחזיקות עותקים נפרדים של איש הקשר שנבחר ומציגות שמות שונים. מה התיקון הטוב ביותר?"
     },
     "a": [
      {
-      "en": "Fine for MVP",
-      "he": "בסדר ל-MVP"
+      "en": "Refresh both components every second",
+      "he": "לרענן את שתי הקומפוננטות כל שנייה"
      },
      {
-      "en": "Tokens in localStorage + console are easy XSS/leak targets; keep secrets out of the client log",
-      "he": "טוקנים ב-localStorage ובקונסול חשופים ל-XSS/דליפה; סודות לא נכנסים ללוג בצד לקוח"
+      "en": "Give the state one owner and pass the same value to both",
+      "he": "לתת ל-state בעלים אחד ולהעביר את אותו ערך לשתיהן"
      },
      {
-      "en": "Console logs are encrypted",
-      "he": "לוגי קונסול מוצפנים"
+      "en": "Store a third copy in another component",
+      "he": "לשמור עותק שלישי בקומפוננטה אחרת"
      },
      {
-      "en": "localStorage is safer than httpOnly cookies",
-      "he": "localStorage בטוח יותר מ-cookies עם httpOnly"
+      "en": "Replace the components with plain HTML",
+      "he": "להחליף את הקומפוננטות ב-HTML רגיל"
      }
     ],
     "c": 1,
     "why": {
-     "en": "Client storage and console are hostile. Prefer httpOnly cookies; never log secrets.",
-     "he": "אחסון לקוח וקונסול הם שטח עוין. מעדיפים cookies עם httpOnly; לא מדפיסים סודות."
+     "en": "One piece of state needs one owner. Multiple copies drift; shared state keeps every component on the same value.",
+     "he": "לכל state צריכים להיות בעלים אחד. כמה עותקים מתפצלים; state משותף משאיר את כל הקומפוננטות על אותו ערך."
     }
    }
   ],
@@ -12904,6 +12920,16 @@
    "s": {
     "en": "Adding analytics means sending a little message to somebody else's servers every time something happens in your app. The danger is not the counting. The danger is what you put inside the message without thinking.\n\nIf you record \"a search happened, it returned zero results\", that is a fact about your product and it is safe forever. If you record \"a search happened for john@acme.com\", you have just handed a customer's email address to another company, and it will live in their backups long after you delete it on your side.\n\nSo the rule is simple: send counts, categories, yes/no answers and durations. Never send anything a person typed, and never names, emails, phone numbers or note text. If you must know which user, send your own internal id and nothing else.\n\nTwo more things people learn late. Roughly a quarter of visitors block trackers, so treat your numbers as a rough sample - and make sure the app works perfectly when the script never loads. Wrap it so it can never crash a page. And if any of your users are in Europe, the script may only load after they agree.",
     "he": "להוסיף אנליטיקס אומר לשלוח הודעה קטנה לשרתים של מישהו אחר בכל פעם שמשהו קורה באפליקציה. הסכנה היא לא הספירה. הסכנה היא מה שאתם שמים בתוך ההודעה בלי לחשוב.\n\nאם אתם מתעדים ״קרה חיפוש, הוא החזיר אפס תוצאות״, זו עובדה על המוצר שלכם והיא בטוחה לנצח. אם אתם מתעדים ״קרה חיפוש אחרי john@acme.com״, בדיוק מסרתם כתובת אימייל של לקוח לחברה אחרת, והיא תחיה בגיבויים שלה הרבה אחרי שתמחקו אותה אצלכם.\n\nאז הכלל פשוט: תשלחו ספירות, קטגוריות, תשובות כן/לא ומשכי זמן. אף פעם אל תשלחו משהו שאדם הקליד, ואף פעם לא שמות, אימיילים, טלפונים או טקסט של הערות. אם אתם חייבים לדעת איזה משתמש, תשלחו מזהה פנימי משלכם ותו לא.\n\nעוד שני דברים שלומדים מאוחר. בערך רבע מהמבקרים חוסמים מעקב, אז תתייחסו למספרים כמדגם גס - ותוודאו שהאפליקציה עובדת מצוין כשהסקריפט לא נטען בכלל. תעטפו אותו כך שהוא לעולם לא יפיל עמוד. ואם חלק מהמשתמשים באירופה, הסקריפט רשאי להיטען רק אחרי שהם מסכימים."
+   }
+  },
+  "API": {
+   "q": {
+    "en": "What is an API?",
+    "he": "מה זה API?"
+   },
+   "s": {
+    "en": "A restaurant menu lists what you may ask for and what will come back. You do not need to know how the kitchen works; you only need to order something the menu promises.\n\nAn API is that menu for software. It is a contract listing the requests one program accepts, the data each request needs and the response it returns. Your frontend uses an API to ask your backend for data; your backend uses other APIs to send email or charge a card.\n\nWhen an AI connects a service, give it the provider's current API documentation. If either side guesses the contract, the integration may look correct and still fail.",
+    "he": "תפריט במסעדה מפרט מה אפשר לבקש ומה תקבלו בחזרה. לא צריך לדעת איך המטבח עובד; צריך רק להזמין משהו שהתפריט מבטיח.\n\nAPI הוא התפריט הזה לתוכנות. זה חוזה שמפרט אילו בקשות תוכנה מקבלת, אילו נתונים כל בקשה צריכה ואיזו תשובה חוזרת. הפרונט משתמש ב-API כדי לבקש נתונים מהבק-אנד; הבק-אנד משתמש ב-API-ים אחרים כדי לשלוח מייל או לחייב כרטיס.\n\nכש-AI מחבר שירות, תנו לו את תיעוד ה-API העדכני של הספק. אם אחד הצדדים מנחש את החוזה, האינטגרציה יכולה להיראות נכונה ועדיין להיכשל."
    }
   }
  }
