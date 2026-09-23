@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { buildFinished } from "@/lib/builds/counts";
 import { MODULES, termKey } from "@/lib/course";
 import { INTRO } from "@/lib/intro";
+import { PREVIEW } from "@/lib/protected";
 import { useApp } from "./Providers";
 
 /**
@@ -46,7 +47,7 @@ export function CourseStart({
   }
   const fresh = seen === 0 && built === 0;
   if (locked) {
-    href = `/lesson/${ids[0]}/overview${q}`;
+    href = `/lesson/${PREVIEW[course as keyof typeof PREVIEW] ?? ids[0]}/overview${q}`;
     label = "";
   }
 
