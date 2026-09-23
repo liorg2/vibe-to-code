@@ -14,7 +14,7 @@ export const INTRO = {
     builds: { en: "build steps", he: "שלבי בנייה" },
     preview: { en: "Try the free lesson", he: "לנסות את השיעור החינמי" },
     finished: { en: "All done. Your app is shipped.", he: "סיימתם. האפליקציה שלכם באוויר." },
-    reading: { en: "of reading and watching, plus the build steps at your agent's pace", he: "של קריאה וצפייה, ועוד שלבי הבנייה בקצב של הסוכן שלכם" },
+    reading: { en: "of reading and building, about 45 minutes per build step. Faster or slower with your agent's pace", he: "של קריאה ובנייה, בערך 45 דקות לכל שלב בנייה. מהר יותר או לאט יותר לפי הקצב של הסוכן שלכם" },
   },
   app: {
     en: "Pocket CRM: a small contact manager for a freelancer, with contacts, notes and follow-up reminders. It is small enough to understand end to end, and real enough to run into every problem a real app runs into. You start from an empty folder. Every lesson adds one step to the same app, so by the end you have built it, tested it and shipped it yourself.",

@@ -4,7 +4,7 @@ import { CourseProgress } from "./CourseProgress";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { MODULES, PATHS, UI, mins } from "@/lib/course";
+import { MODULES, PATHS, UI, courseHours } from "@/lib/course";
 import { billingOn, ownedCourses, type Course } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { priceId } from "@/lib/paddle";
@@ -31,7 +31,6 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
     const which = p.id as Course;
     const mods = modsOf(p);
     const terms = mods.reduce((n, m) => n + m.terms.length, 0);
-    const time = mods.reduce((n, m) => n + mins(m), 0);
     const owned = mine.has(which);
     const view = (
       <Link
@@ -57,7 +56,7 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
           <div className="meta">
             <span>{mods.length} {t("lessonsN")}</span>
             <span>{terms} {t("terms")}</span>
-            <span>~{(time / 60).toFixed(1)} {t("hours")}</span>
+            <span>~{courseHours(mods)} {t("hours")}</span>
           </div>
           <CourseProgress ids={p.mods} />
           <div className="price">

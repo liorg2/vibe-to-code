@@ -1,5 +1,6 @@
 import type { Architecture, Course, Lang, Module, Path, Term } from "./types";
 import raw from "@/data/course.json";
+import { BUILD_DONE_N } from "./builds/counts";
 
 const course = raw as Course;
 
@@ -52,6 +53,15 @@ export function totalTerms(): number {
 
 export function mins(m: Module): number {
   return Math.max(3, Math.round(m.terms.length * 1.6));
+}
+
+/** ponytail: a flat guess for one build step — paste, let the agent work, run the check, look with
+ *  your own eyes. Replace with per-step numbers if learners report very different times. */
+export const BUILD_MINS = 45;
+
+/** Whole-course estimate in hours: reading every lesson plus doing every build step. */
+export function courseHours(mods: Module[]): number {
+  return Math.round(mods.reduce((n, m) => n + mins(m) + (BUILD_DONE_N[m.id] ? BUILD_MINS : 0), 0) / 60);
 }
 
 /** The course a lesson is being read in. Shared lessons live in both; without `courseId` the earlier course wins. */

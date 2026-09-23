@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { UPGRADE_PRICE } from "@/components/Courses";
 import { buttonVariants } from "@/components/ui/button";
 import { buildsFor } from "@/lib/builds";
-import { MODULES, PATHS, UI, archesFor, mins } from "@/lib/course";
+import { MODULES, PATHS, UI, archesFor, courseHours } from "@/lib/course";
 import { INTRO } from "@/lib/intro";
 import { serverLang } from "@/lib/lang-server";
 import { cn } from "@/lib/utils";
@@ -34,7 +34,7 @@ const X = {
   },
   lessons: { en: "Lessons", he: "שיעורים" },
   topics: { en: "Topics", he: "נושאים" },
-  time: { en: "Reading time", he: "זמן קריאה" },
+  time: { en: "Time, reading + building", he: "זמן, קריאה + בנייה" },
   steps: { en: "Build steps", he: "שלבי בנייה" },
   arch: { en: "Architectures", he: "ארכיטקטורות" },
   land: { en: "Where you land", he: "איפה נוחתים" },
@@ -56,7 +56,7 @@ export default async function ComparePage() {
     return {
       p,
       topics: mods.reduce((n, m) => n + m.terms.length, 0),
-      hours: (mods.reduce((n, m) => n + mins(m), 0) / 60).toFixed(1),
+      hours: courseHours(mods),
       steps: buildsFor(p.id).length,
       arch: archesFor(p.id).map((a) => a.title[lang]).join(", "),
     };

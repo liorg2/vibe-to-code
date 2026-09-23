@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CourseStart } from "@/components/CourseStart";
 import { LessonCards } from "@/components/LessonCards";
 import { buildsFor } from "@/lib/builds";
-import { MODULES, PATHS, UI, lessonNo, mins } from "@/lib/course";
+import { MODULES, PATHS, UI, courseHours, lessonNo } from "@/lib/course";
 import { INTRO } from "@/lib/intro";
 import { serverLang } from "@/lib/lang-server";
 import { billingOn, ownedCourses, type Course } from "@/lib/entitlement";
@@ -23,7 +23,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
   const course = id as "basic" | "advanced";
   // titles and goals only — the prompts are paid content and never leave the server
   const steps = buildsFor(course);
-  const hours = Math.round(MODULES.filter((m) => p.mods.includes(m.id)).reduce((n, m) => n + mins(m), 0) / 60);
+  const hours = courseHours(MODULES.filter((m) => p.mods.includes(m.id)));
   const H = INTRO.h;
 
   return (
