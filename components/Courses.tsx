@@ -8,12 +8,10 @@ import { MODULES, PATHS, UI, courseHours } from "@/lib/course";
 import { billingOn, ownedCourses, type Course } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { priceId } from "@/lib/paddle";
+import { localPrices } from "@/lib/price";
 import { sessionClaims } from "@/lib/verify-session";
 import type { Module, Path } from "@/lib/types";
 import { PacManLane } from "./PacManGame";
-
-/** ILS, VAT included — the gap between the two courses. */
-export const UPGRADE_PRICE = 50;
 
 export function modsOf(p: Path): Module[] {
   return p.mods.map((id) => MODULES.find((m) => m.id === id)).filter(Boolean) as Module[];
@@ -26,6 +24,7 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
   const claims = await sessionClaims();
   const mine = await ownedCourses();
   const open = !billingOn();
+  const price = await localPrices();
 
   const card = (p: Path) => {
     const which = p.id as Course;
@@ -60,7 +59,7 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
           </div>
           <CourseProgress ids={p.mods} />
           <div className="price">
-            <b>₪{p.price}</b>
+            <b>{price[which]}</b>
             <span>{t("payOnce")}</span>
           </div>
         </CardContent>
@@ -80,7 +79,7 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
                 href="/login?next=/courses"
                 className={cn(buttonVariants({ variant: "brand", size: "lg" }), "no-underline")}
               >
-                {`${t("buy")} · ₪${p.price}`}
+                {`${t("buy")} · ${price[which]}`}
               </Link>
               {view}
             </>
@@ -89,7 +88,7 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
               <BuyButton
                 endpoint="/api/billing/checkout"
                 tier={which}
-                label={`${t("buy")} · ₪${p.price}`}
+                label={`${t("buy")} · ${price[which]}`}
                 disabled={!priceId(which)}
               />
               {view}
@@ -119,7 +118,7 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
           <p style={{ marginBottom: 12 }}>{t("addCourseSub")}</p>
           <BuyButton
             endpoint="/api/billing/upgrade"
-            label={`${t("addCourse")} · ₪${UPGRADE_PRICE}`}
+            label={`${t("addCourse")} · ${price.upgrade}`}
             disabled={!priceId("upgrade")}
           />
         </div>

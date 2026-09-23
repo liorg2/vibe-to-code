@@ -1,12 +1,12 @@
 import Link from "@/components/Link";
 import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { UPGRADE_PRICE } from "@/components/Courses";
 import { buttonVariants } from "@/components/ui/button";
 import { buildsFor } from "@/lib/builds";
 import { MODULES, PATHS, UI, archesFor, courseHours } from "@/lib/course";
 import { INTRO } from "@/lib/intro";
 import { serverLang } from "@/lib/lang-server";
+import { localPrices } from "@/lib/price";
 import { cn } from "@/lib/utils";
 import type { Lang, Path } from "@/lib/types";
 
@@ -43,14 +43,15 @@ const X = {
   covered: { en: "What's covered", he: "מה מכוסה" },
   some: { en: "the basics", he: "היסודות" },
   upgrade: {
-    en: `Already bought Basic? Add Advanced for ₪${UPGRADE_PRICE}, the difference in price.`,
-    he: `כבר רכשתם את הבסיס? הוסיפו את המתקדם ב-₪${UPGRADE_PRICE}, הפרש המחיר.`,
+    en: "Already bought Basic? Add Advanced for {p}, the difference in price.",
+    he: "כבר רכשתם את הבסיס? הוסיפו את המתקדם ב-{p}, הפרש המחיר.",
   },
 };
 
 export default async function ComparePage() {
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
+  const price = await localPrices();
   const cols = PATHS.map((p: Path) => {
     const mods = MODULES.filter((m) => p.mods.includes(m.id));
     return {
@@ -102,7 +103,7 @@ export default async function ComparePage() {
               {row(X.land[lang], (c) => INTRO.end[c.p.id as "basic" | "advanced"][lang].replace(/^[^:]+:\s*(.)/, (_, ch: string) => ch.toUpperCase()))}
               {row(X.price[lang], (c) => (
                 <>
-                  <b>₪{c.p.price}</b> <span className="sub">{X.once[lang]}</span>
+                  <b>{price[c.p.id as "basic" | "advanced"]}</b> <span className="sub">{X.once[lang]}</span>
                 </>
               ))}
               <tr className="cmp-sec">
@@ -125,7 +126,7 @@ export default async function ComparePage() {
             </tbody>
           </table>
         </div>
-        <p className="sub cmp-note">{X.upgrade[lang]}</p>
+        <p className="sub cmp-note">{X.upgrade[lang].replace("{p}", price.upgrade)}</p>
       </section>
     </AppShell>
   );

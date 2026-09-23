@@ -7,6 +7,7 @@ import { buildsFor } from "@/lib/builds";
 import { MODULES, PATHS, UI, courseHours, lessonNo } from "@/lib/course";
 import { INTRO } from "@/lib/intro";
 import { serverLang } from "@/lib/lang-server";
+import { localPrices } from "@/lib/price";
 import { billingOn, ownedCourses, type Course } from "@/lib/entitlement";
 import { sessionClaims } from "@/lib/verify-session";
 
@@ -33,7 +34,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
         <div className="mhead">
           <div className="ic">{p.icon}</div>
           <div><h2>{p.title[lang]}</h2></div>
-          <div className="n">{p.mods.length} {t("lessonsN")} · ₪{p.price}</div>
+          <div className="n">{p.mods.length} {t("lessonsN")} · {(await localPrices())[course]}</div>
         </div>
         <p className="mblurb">{p.blurb[lang]}</p>
         <CourseStart course={course} ids={p.mods} locked={locked} />
