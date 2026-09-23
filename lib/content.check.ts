@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { BUILDS } from "./builds";
 import { BUILD_DONE_N } from "./builds/counts";
 import { tipsFor } from "./builds/tips";
-import { MODULES, PATHS } from "./course";
+import { DETAIL, EXAMPLES, MODULES, PATHS, SIMPLE } from "./course";
 import { SCENES } from "./scenes";
 
 const slugs = new Set(MODULES.flatMap((m) => m.terms.map((t) => t.k)));
@@ -11,8 +11,37 @@ const words = (s: string) => s.trim().split(/\s+/).length;
 const both = (x: { en: string; he: string }, where: string) =>
   assert.ok(x.en.trim() && x.he.trim(), `${where}: missing en or he`);
 
+// Curriculum integrity: navigation, glossary order and keyed content must describe the same course.
+const advanced = PATHS.find((p) => p.id === "advanced")!;
+const basic = PATHS.find((p) => p.id === "basic")!;
+const titles = new Set(MODULES.flatMap((m) => m.terms.map((t) => t.t.en)));
+assert.deepEqual(MODULES.map((m) => m.id), advanced.mods, "MODULES and Advanced path order drifted");
+assert.deepEqual(basic.mods, advanced.mods.slice(0, basic.mods.length), "Basic must remain an Advanced prefix");
+assert.equal(slugs.size, [...titles].length, "topic slugs or English titles are not unique");
+for (const title of titles) {
+  assert.ok(SIMPLE[title], `${title}: missing simple explanation`);
+  assert.ok(DETAIL[title], `${title}: missing detail`);
+  if (title !== "App lifecycle") assert.ok(EXAMPLES[title], `${title}: missing example`);
+}
+for (const [name, keyed] of [["SIMPLE", SIMPLE], ["DETAIL", DETAIL], ["EXAMPLES", EXAMPLES]] as const) {
+  for (const title of Object.keys(keyed)) assert.ok(titles.has(title), `${name}: orphan content for ${title}`);
+}
+
+const before = (moduleId: string, first: string, second: string) => {
+  const keys = MODULES.find((m) => m.id === moduleId)!.terms.map((t) => t.k);
+  assert.ok(keys.indexOf(first) < keys.indexOf(second), `${moduleId}: ${first} must precede ${second}`);
+};
+before("vcs", "commit-branch-merge", "clone-push-pull");
+before("sides", "api", "full-stack");
+before("langs", "semantic-versioning", "framework-vs-library");
+before("http", "endpoint", "get");
+before("http", "status-codes", "headers");
+before("memory", "data-structures", "big-o");
+before("testing", "test-first-tdd", "unit-integration-e2e");
+before("ai", "agents-md", "specificity-beats-politeness");
+
 // the build track: one step for every lesson, each one a build prompt and a check prompt that runs the suite
-for (const id of PATHS.find((p) => p.id === "advanced")!.mods) {
+for (const id of advanced.mods) {
   const b = BUILDS[id];
   assert.ok(b, `no build step for lesson ${id}`);
   [b.title, b.goal, b.why, ...b.done].forEach((x) => both(x, `build ${id}`));
