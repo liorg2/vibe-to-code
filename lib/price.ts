@@ -45,7 +45,8 @@ export async function localPrices(): Promise<Prices> {
     const { data } = (await res.json()) as {
       data?: { details?: { line_items?: { price: { id: string }; formatted_totals: { total: string } }[] } };
     };
-    const by = new Map(data?.details?.line_items?.map((l) => [l.price.id, l.formatted_totals.total]));
+    // "₪99.00" → "₪99", "99,00 €" → "99 €"; real cents ("$9.99") stay
+    const by = new Map(data?.details?.line_items?.map((l) => [l.price.id, l.formatted_totals.total.replace(/[.,]00(?!\d)/, "")]));
     const p: Prices = {
       basic: by.get(ids.basic) ?? ILS.basic,
       advanced: by.get(ids.advanced) ?? ILS.advanced,
