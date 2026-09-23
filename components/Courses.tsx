@@ -1,6 +1,6 @@
 import Link from "@/components/Link";
 import { BuyButton } from "./BuyButton";
-import { CourseProgress } from "./CourseProgress";
+import { CourseOpen, CourseProgress } from "./CourseProgress";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -32,15 +32,15 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
     const terms = mods.reduce((n, m) => n + m.terms.length, 0);
     const owned = mine.has(which);
     const view = (
-      <Link
+      <CourseOpen
+        ids={p.mods}
         href={`/courses/${p.id}`}
+        owned={owned}
         className={cn(
           buttonVariants({ variant: owned || open ? "brand" : "outline", size: "lg" }),
           "no-underline",
         )}
-      >
-        {owned ? t("continue") : t("viewLessons")}
-      </Link>
+      />
     );
     return (
       <Card key={p.id} className={cn("course overflow-visible ring-0 py-0 shadow-none", which === "advanced" && "adv")}>
@@ -58,10 +58,12 @@ export async function Courses({ paid, lane }: { paid?: boolean; lane?: boolean }
             <span>~{courseHours(mods)} {t("hours")}</span>
           </div>
           <CourseProgress ids={p.mods} />
-          <div className="price">
-            <b>{price[which]}</b>
-            <span>{t("payOnce")}</span>
-          </div>
+          {owned ? null : (
+            <div className="price">
+              <b>{price[which]}</b>
+              <span>{t("payOnce")}</span>
+            </div>
+          )}
         </CardContent>
         <CardFooter className="cta mt-auto flex-col items-stretch gap-2 border-0 bg-transparent p-0">
           {owned ? (

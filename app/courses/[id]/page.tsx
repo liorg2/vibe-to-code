@@ -19,12 +19,14 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
   const lang = await serverLang();
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const signedIn = !!(await sessionClaims());
-  // no session, or billing on and this course unpaid: only the preview module is readable
-  const locked = !signedIn || (billingOn() && !(await ownedCourses()).has(id as Course));
+  const mine = await ownedCourses();
   const course = id as "basic" | "advanced";
+  // no session, or billing on and this course unpaid: only the preview module is readable
+  const locked = !signedIn || (billingOn() && !mine.has(course));
   // titles and goals only — the prompts are paid content and never leave the server
   const steps = buildsFor(course);
   const hours = courseHours(MODULES.filter((m) => p.mods.includes(m.id)));
+  const price = mine.has(course) ? "" : (await localPrices())[course];
   const H = INTRO.h;
 
   return (
@@ -34,7 +36,7 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
         <div className="mhead">
           <div className="ic">{p.icon}</div>
           <div><h2>{p.title[lang]}</h2></div>
-          <div className="n">{p.mods.length} {t("lessonsN")} · {(await localPrices())[course]}</div>
+          <div className="n">{p.mods.length} {t("lessonsN")}{price ? ` · ${price}` : ""}</div>
         </div>
         <p className="mblurb">{p.blurb[lang]}</p>
         <CourseStart course={course} ids={p.mods} locked={locked} />
