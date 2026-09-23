@@ -26,8 +26,8 @@ export const INTRO = {
       he: "איפה נוחתים: CRM חי בכתובת ציבורית, עם REST API, בסיס נתונים Postgres וטסטים שרצים בכל שינוי.",
     },
     advanced: {
-      en: "Where you land: a production app with sign-in, scheduled emails, a cache, CI that blocks bad merges, error alerts, and a repo a stranger can pick up.",
-      he: "איפה נוחתים: אפליקציה בפרודקשן עם התחברות, מיילים מתוזמנים, קאש, CI שחוסם מיזוגים שבורים, התראות על שגיאות, וריפו שמישהו זר יכול להרים.",
+      en: "Where you land: a production app with sign-in, scheduled emails, AI-drafted follow-ups, a cache, CI that blocks bad merges, error alerts, and a repo a stranger can pick up.",
+      he: "איפה נוחתים: אפליקציה בפרודקשן עם התחברות, מיילים מתוזמנים, טיוטות מעקב שנכתבות עם AI, קאש, CI שחוסם מיזוגים שבורים, התראות על שגיאות, וריפו שמישהו זר יכול להרים.",
     },
   },
   need: [
@@ -71,8 +71,8 @@ export const INTRO = {
       he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7. לכולם יש מסלול חינמי, ופותחים כל אחד כשמגיעים אליו.",
     },
     advanced: {
-      en: "GitHub and Vercel in step 2, Neon in step 7, Resend in step 11, Sentry in step 18. All have a free tier; you open each one when you get there.",
-      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7, Resend בשלב 11, Sentry בשלב 18. לכולם יש מסלול חינמי, ופותחים כל אחד כשמגיעים אליו.",
+      en: "GitHub and Vercel in step 2, Neon in step 7, Resend in step 11, Sentry in step 18: all have a free tier. In step 21, an AI provider key (Anthropic or OpenAI): pay per use, a few cents for the whole step, so set a spending limit first. You open each one when you get there.",
+      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7, Resend בשלב 11, Sentry בשלב 18: לכולם יש מסלול חינמי. בשלב 21, מפתח של ספק AI (Anthropic או OpenAI): משלמים לפי שימוש, כמה סנטים לכל השלב, אז הגדירו קודם מגבלת הוצאה. פותחים כל אחד כשמגיעים אליו.",
     },
   },
   flow: [
