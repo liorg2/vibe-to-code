@@ -562,8 +562,8 @@
       "he": "קבצי טקסט עם הוראות בשפת תכנות. זהו — טקסט רגיל."
      },
      "w": {
-      "en": "The AI writes text files. Understanding that removes the magic and lets you read them.",
-      "he": "ה-AI כותב קבצי טקסט. ברגע שמבינים את זה, הקסם נעלם ואפשר פשוט לקרוא אותם."
+      "en": "The AI writes text files. Understanding that removes the magic and lets you read them. If you join an existing project, ask the AI to map its folders, entry points, scripts and tests before it edits anything.",
+      "he": "ה-AI כותב קבצי טקסט. ברגע שמבינים את זה, הקסם נעלם ואפשר פשוט לקרוא אותם. כשמצטרפים לפרויקט קיים, בקשו מה-AI למפות את התיקיות, נקודות הכניסה, הפקודות והבדיקות לפני שהוא עורך משהו."
      }
     },
     {
@@ -661,6 +661,38 @@
       "en": "Every other lesson here is one box on this map. Knowing which box you are standing in is what stops you from fixing the wrong thing.",
       "he": "כל שיעור אחר כאן הוא קופסה אחת במפה הזאת. לדעת באיזו קופסה אתה עומד זה מה שמונע ממך לתקן את הדבר הלא נכון."
      }
+    },
+    {
+     "k": "test",
+     "lvl": "A",
+     "t": {
+      "en": "Test",
+      "he": "בדיקה"
+     },
+     "d": {
+      "en": "Code that runs your code and fails loudly if the result is not what you said it should be.",
+      "he": "קוד שמריץ את הקוד שלך ונכשל ברעש אם התוצאה אינה מה שאמרת שהיא צריכה להיות."
+     },
+     "w": {
+      "en": "It is the only form of checking that still works at 3am, on someone else's machine, six months from now.",
+      "he": "זו צורת הבדיקה היחידה שעדיין עובדת בשלוש לפנות בוקר, על מכונה של מישהו אחר, בעוד חצי שנה."
+     }
+    },
+    {
+     "k": "assertion",
+     "lvl": "B",
+     "t": {
+      "en": "Assertion",
+      "he": "טענה (Assertion)"
+     },
+     "d": {
+      "en": "The single line that states the expectation: this value must equal that one, or the test fails.",
+      "he": "השורה הבודדת שמצהירה על הציפייה: הערך הזה חייב להיות שווה לזה, אחרת הבדיקה נכשלת."
+     },
+     "w": {
+      "en": "A test with no assertion passes forever and proves nothing. It happens more often than you would think.",
+      "he": "בדיקה בלי טענה עוברת לנצח ולא מוכיחה כלום. זה קורה יותר ממה שנדמה."
+     }
     }
    ],
    "overview": {
@@ -668,8 +700,8 @@
     "he": "לפני כל פריימוורק, שפה או ענן יש עובדה פשוטה אחת: קוד הוא טקסט, משהו קורא אותו ומשהו מריץ אותו. השיעור הזה עובר את הדרך הזאת פעם אחת — מקובץ על הדיסק לאפליקציה שרצה — כדי שלכל מונח שיבוא אחר כך יהיה איפה לשבת. תפגשו גם את שני הכלים שתשתמשו בהם כל יום בלי לכתוב קוד: הטרמינל וה-stack trace."
    },
    "summary": {
-    "en": "Code is plain text. Something translates it, a runtime executes it, and it only behaves the same where the environment is the same. When it breaks, the stack trace is a map, not an insult — read it top to bottom before pasting it to the AI.",
-    "he": "קוד הוא טקסט רגיל. משהו מתרגם אותו, runtime מריץ אותו, והוא מתנהג אותו דבר רק איפה שהסביבה זהה. כשזה נשבר, ה-stack trace הוא מפה ולא עלבון — קראו אותו מלמעלה למטה לפני שמדביקים ל-AI."
+    "en": "Code is plain text. Something translates it, a runtime executes it, and it only behaves the same where the environment is the same. Tests are executable claims; assertions say exactly what result you expect. When code breaks, read the stack trace as a map before asking the AI for help.",
+    "he": "קוד הוא טקסט רגיל. משהו מתרגם אותו, סביבת ריצה מריצה אותו, והוא מתנהג אותו דבר רק כשהסביבה זהה. בדיקות הן טענות שאפשר להריץ; assertions מגדירות בדיוק מה התוצאה המצופה. כשהקוד נשבר, קראו את ה-stack trace כמפה לפני שמבקשים עזרה מה-AI."
    }
   },
   {
@@ -1578,8 +1610,8 @@
     "he": "כל דבר בווב הוא בקשה אחת ואחריה תשובה אחת. ברגע שאפשר לקרוא בקשה — הפועל, הכתובת, מה היא נשאה, מה חזר — חצי מכל שיחות 'ה-API שבור' הופכות קצרות. השיעור הזה הוא מיומנות הקריאה הזאת."
    },
    "summary": {
-    "en": "A request has a verb, an endpoint, headers and maybe a body; a response has a status code and maybe a body, usually JSON. 2xx good, 4xx your fault, 5xx their fault. GET reads, POST creates, and a webhook is just someone else's POST to you.",
-    "he": "לבקשה יש פועל, endpoint, headers ואולי body; לתשובה יש status code ואולי body, בדרך כלל JSON. 2xx טוב, 4xx אשמתכם, 5xx אשמתם. GET קורא, POST יוצר, ו-webhook הוא סתם POST של מישהו אחר אליכם."
+    "en": "A request has a method, endpoint, headers and sometimes a body; a response has a status and sometimes a body, often JSON. 2xx usually indicates success; 4xx means the request was not fulfilled because of the request or caller context; 5xx points to a server or upstream failure. The status helps locate the problem, but does not by itself say who is at fault. GET reads, POST often creates, and a webhook is another service calling your endpoint.",
+    "he": "לבקשה יש method, כתובת, headers ולפעמים body; לתשובה יש סטטוס ולפעמים body, לרוב JSON. קוד 2xx מציין בדרך כלל הצלחה; 4xx אומר שהבקשה לא בוצעה בגלל הבקשה או ההקשר של השולח; 5xx מצביע על כשל בשרת או בשירות upstream. הסטטוס עוזר לאתר את הבעיה, אבל לבדו לא קובע מי אשם. GET קורא, POST משמש לעיתים קרובות ליצירה, ו-webhook הוא שירות אחר שקורא לנקודת הקצה שלכם."
    }
   },
   {
@@ -2210,8 +2242,8 @@
     "he": "הדרך הזולה ביותר להאיץ כל דבר היא לא לעשות אותו פעמיים. זה cache. זו גם הסיבה ש'תיקנתי אבל הדף עדיין מציג את הישן' קורה. השיעור מכסה את שני הפרצופים: ההאצה והדאטה המיושן."
    },
    "summary": {
-    "en": "A cache is a remembered answer. It saves time on a hit, costs nothing on a miss, and lies when it is stale — so every cache needs a TTL or an invalidation rule. Browser, CDN, Redis: same idea, different distance from the user.",
-    "he": "cache הוא תשובה שזוכרים. הוא חוסך זמן ב-hit, לא עולה כלום ב-miss, ומשקר כשהוא מיושן — אז כל cache צריך TTL או חוק invalidation. דפדפן, CDN, Redis: אותו רעיון, מרחק שונה מהמשתמש."
+    "en": "A cache stores a previously computed answer. A hit can save work; a miss still costs a lookup and the work to fetch or compute the answer. Stale entries can show old data, so each cache needs a clear TTL or invalidation rule. Browser, CDN and Redis caches sit at different distances from the user.",
+    "he": "cache שומר תשובה שחושבה קודם. ב-hit הוא יכול לחסוך עבודה; ב-miss עדיין צריך לבדוק את ה-cache וגם להביא או לחשב את התשובה. ערך ישן עלול להציג מידע לא מעודכן, לכן לכל cache צריך כלל ברור של TTL או invalidation. Cache בדפדפן, ב-CDN וב-Redis נמצא במרחק שונה מהמשתמש."
    }
   },
   {
@@ -2393,38 +2425,6 @@
    },
    "terms": [
     {
-     "k": "test",
-     "lvl": "A",
-     "t": {
-      "en": "Test",
-      "he": "בדיקה"
-     },
-     "d": {
-      "en": "Code that runs your code and fails loudly if the result is not what you said it should be.",
-      "he": "קוד שמריץ את הקוד שלך ונכשל ברעש אם התוצאה אינה מה שאמרת שהיא צריכה להיות."
-     },
-     "w": {
-      "en": "It is the only form of checking that still works at 3am, on someone else's machine, six months from now.",
-      "he": "זו צורת הבדיקה היחידה שעדיין עובדת בשלוש לפנות בוקר, על מכונה של מישהו אחר, בעוד חצי שנה."
-     }
-    },
-    {
-     "k": "assertion",
-     "lvl": "B",
-     "t": {
-      "en": "Assertion",
-      "he": "טענה (Assertion)"
-     },
-     "d": {
-      "en": "The single line that states the expectation: this value must equal that one, or the test fails.",
-      "he": "השורה הבודדת שמצהירה על הציפייה: הערך הזה חייב להיות שווה לזה, אחרת הבדיקה נכשלת."
-     },
-     "w": {
-      "en": "A test with no assertion passes forever and proves nothing. It happens more often than you would think.",
-      "he": "בדיקה בלי טענה עוברת לנצח ולא מוכיחה כלום. זה קורה יותר ממה שנדמה."
-     }
-    },
-    {
      "k": "test-first-tdd",
      "lvl": "B",
      "t": {
@@ -2526,8 +2526,8 @@
     "he": "סוכן שעורך את הקוד שלכם ישבור, במוקדם או במאוחר, משהו שעבד. בדיקות הן הדבר היחיד ששם לב לפני שמשתמש שם לב. השיעור מסביר מה זה טסט ואת המילים מסביבו, כדי שתוכלו לבקש את הסוג הנכון ולקרוא את התוצאה."
    },
    "summary": {
-    "en": "A test is a claim that runs. Unit tests are fast and narrow, E2E tests are slow and honest. A regression is an old bug returning; a flaky test is one you cannot trust. Ask the AI for the test first, then the code — it constrains what it can get wrong.",
-    "he": "טסט הוא טענה שרצה. unit tests מהירים וצרים, E2E איטיים וכנים. regression הוא באג ישן שחוזר; flaky test הוא כזה שאי אפשר לסמוך עליו. בקשו מה-AI את הטסט קודם ואז את הקוד — זה מגביל במה הוא יכול לטעות."
+    "en": "Choose the right evidence for the change: unit tests for small pieces, integration tests for connected parts, and E2E tests for user flows. Cover regressions and risky paths with strong assertions; treat flaky tests and coverage numbers with care. Ask the AI for a failing test before the implementation when it helps clarify the behavior.",
+    "he": "בחרו את הבדיקה המתאימה לשינוי: unit tests לחלקים קטנים, בדיקות אינטגרציה לחלקים מחוברים ו-E2E לתהליכי משתמש. כסו רגרסיות ונתיבים מסוכנים בעזרת assertions חזקות; התייחסו בזהירות לבדיקות flaky ולאחוזי כיסוי. כשזה עוזר להבהיר את ההתנהגות, בקשו מה-AI לכתוב בדיקה נכשלת לפני המימוש."
    }
   },
   {
@@ -4625,8 +4625,8 @@
    "he": "Redis הוא מסד נתונים נפרד שמחזיק הכל ב-RAM ועונה הרבה מתחת למילישנייה. הוא לא תחליף ל-Postgres שלך; הוא שטח העבודה המשותף שכל אחד מהשרתים שלך יכול להגיע אליו. המילה הזאת — משותף — היא כל העניין. ברגע שהאפליקציה שלך רצה ביותר מתהליך אחד, כל מצב ששמרת במשתנה רגיל מפסיק להיות דבר אחד והופך לכמה דברים שלא מסכימים ביניהם, ואף שגיאה לא נזרקת כשזה קורה.\n\nהכשל נראה ככה. מגביל קצב ממומש כמונה במפה ברמת המודול: 100 בקשות לדקה לכל IP, נבדק מקומית, עובד. האפליקציה מתרחבת אוטומטית לשלושה מופעים מאחורי מאזן עומסים, וכל מופע מחזיק עכשיו ספירה משלו, אז המגבלה האמיתית היא 300 לדקה — והיא נודדת בכל פעם שמופע מופעל מחדש או שנוסף חדש. אותה צורה שוברת סשנים שנשמרים בזיכרון התהליך, שבהם משתמש מחובר במופע אחד ומנותק בבא, והיא שוברת נעילות של משימות רקע, שבהן שלושה עובדים כל אחד בטוח שהוא היחיד ששולח את מייל החשבונית. העברת המונה למפתח יחיד ב-Redis עם פקיעה מעלימה את שלוש הבעיות בבת אחת.\n\nשני דברים לזכור כשסוכן מושיט יד ל-Redis. Redis הוא זיכרון, אז תתייחס אליו כאל בר-חלוף: הוא יכול לעלות מחדש, הוא יכול להגיע לתקרת הזיכרון ולהתחיל לפנות מפתחות לפי מדיניות LRU, ואסור שהוא יהיה המקום היחיד שבו נתון קיים. וכל מפתח שאתה כותב צריך פקיעה, אלא אם אתה יכול להסביר למה לא — הדליפה האיטית שבה שום דבר לא פג היא הדרך שבה קאש הופך בשקט למסד נתונים בלי גבול ובלי גיבוי שנופל בשלוש לפנות בוקר. תשאל איפה המצב חי, והאם הוא שורד הפעלה מחדש."
   },
   "Authentication vs Authorization": {
-   "en": "Authentication answers \"who is this?\" — a password, a one-time code, a Google sign-in. Authorization answers \"is this person allowed to do this particular thing to this particular object?\" They are separate checks, they fail at separate moments, and confusing them is the single most common security hole in applications built quickly. Authentication tends to get built carefully because it is visible: there is a login screen, someone tests it. Authorization is invisible, so it is the one that gets skipped.\n\nHere is what that looks like from the attacker's side, and it requires no tools at all. A customer logs into a real account, opens an invoice, and sees the address bar read /orders/10428. They change the number to 10427 and press Enter. If the handler only checked that a valid session exists — and not that this order belongs to this user — the server happily returns someone else's name, address, items and total. From there it is a loop: a short script walking from 10000 to 11000 with their own valid cookie pulls a thousand customer records in under a minute, and every request looks completely legitimate in the access log, because it is. This is called IDOR, and it is found constantly in real products.\n\nThe defence is a rule, not a patch: every handler that receives an identifier from the outside must re-derive what the current user is allowed to see, in the handler, on the server. Fetch the row, compare its owner to the session user, return 403 otherwise. Hiding the admin button in the UI is not authorization; the endpoint behind it is still there. When an AI writes CRUD endpoints for you it will reliably add the login check and reliably omit the ownership check, so that is the exact line to look for in every route that takes an id.",
-   "he": "אותנטיקציה עונה על ״מי זה?״ — סיסמה, קוד חד-פעמי, התחברות עם גוגל. הרשאה עונה על ״האם לאדם הזה מותר לעשות את הפעולה הזאת על האובייקט הזה?״. אלה שתי בדיקות נפרדות, הן נכשלות ברגעים נפרדים, והבלבול ביניהן הוא חור האבטחה הנפוץ ביותר באפליקציות שנבנות מהר. אותנטיקציה נוטה להיבנות בזהירות כי היא נראית לעין: יש מסך התחברות, מישהו בודק אותו. הרשאות הן בלתי נראות, ולכן דווקא הן אלה שמדלגים עליהן.\n\nככה זה נראה מהצד של התוקף, ולא צריך שום כלי. לקוח מתחבר לחשבון אמיתי, פותח חשבונית, ורואה בשורת הכתובת /orders/10428. הוא משנה את המספר ל-10427 ולוחץ Enter. אם המטפל רק בדק שקיים סשן תקף — ולא שההזמנה הזאת שייכת למשתמש הזה — השרת מחזיר בשמחה שם, כתובת, פריטים וסכום של מישהו אחר. משם זאת לולאה: סקריפט קצר שרץ מ-10000 עד 11000 עם הקוקי התקף שלו עצמו שולף אלף רשומות לקוח בפחות מדקה, וכל בקשה נראית לגמרי לגיטימית ביומן הגישה, כי היא באמת כזאת. לזה קוראים IDOR, וזה נמצא כל הזמן במוצרים אמיתיים.\n\nההגנה היא כלל, לא טלאי: כל מטפל שמקבל מזהה מבחוץ חייב לגזור מחדש מה מותר למשתמש הנוכחי לראות, בתוך המטפל, בצד השרת. לשלוף את השורה, להשוות את הבעלים למשתמש שבסשן, ולהחזיר 403 אחרת. להסתיר את כפתור האדמין בממשק זאת לא הרשאה; נקודת הקצה שמאחוריו עדיין שם. כש-AI כותב לך נקודות קצה של CRUD הוא יוסיף בעקביות את בדיקת ההתחברות ויוותר בעקביות על בדיקת הבעלות, אז זאת בדיוק השורה שצריך לחפש בכל נתיב שמקבל מזהה."
+   "en": "Authentication answers \"who is this?\" — a password, a one-time code, a Google sign-in. Authorization answers \"is this person allowed to do this particular thing to this particular object?\" They are separate checks, they fail at separate moments, and confusing them is the single most common security hole in applications built quickly. Authentication tends to get built carefully because it is visible: there is a login screen, someone tests it. Authorization is invisible, so it is the one that gets skipped.\n\nHere is what that looks like from the attacker's side, and it requires no tools at all. A customer logs into a real account, opens an invoice, and sees the address bar read /orders/10428. They change the number to 10427 and press Enter. If the handler only checked that a valid session exists — and not that this order belongs to this user — the server happily returns someone else's name, address, items and total. From there it is a loop: a short script walking from 10000 to 11000 with their own valid cookie pulls a thousand customer records in under a minute, and every request looks completely legitimate in the access log, because it is. This is called IDOR, and it is found constantly in real products.\n\nThe defence is a rule, not a patch: every handler that receives an identifier from the outside must re-derive what the current user is allowed to see, in the handler, on the server. Fetch the row, compare its owner to the session user, return 403 otherwise. Hiding the admin button in the UI is not authorization; the endpoint behind it is still there. When an AI writes CRUD endpoints for you it will reliably add the login check and reliably omit the ownership check, so that is the exact line to look for in every route that takes an id.\n\nFor a production app, consider a managed authentication provider before building sign-in yourself. Account recovery also needs deliberate design: email verification, password resets, multi-factor authentication where appropriate, and a way to revoke existing sessions. A login screen alone is not a complete authentication system.",
+   "he": "אותנטיקציה עונה על ״מי זה?״ — סיסמה, קוד חד-פעמי, התחברות עם גוגל. הרשאה עונה על ״האם לאדם הזה מותר לעשות את הפעולה הזאת על האובייקט הזה?״. אלה שתי בדיקות נפרדות, הן נכשלות ברגעים נפרדים, והבלבול ביניהן הוא חור האבטחה הנפוץ ביותר באפליקציות שנבנות מהר. אותנטיקציה נוטה להיבנות בזהירות כי היא נראית לעין: יש מסך התחברות, מישהו בודק אותו. הרשאות הן בלתי נראות, ולכן דווקא הן אלה שמדלגים עליהן.\n\nככה זה נראה מהצד של התוקף, ולא צריך שום כלי. לקוח מתחבר לחשבון אמיתי, פותח חשבונית, ורואה בשורת הכתובת /orders/10428. הוא משנה את המספר ל-10427 ולוחץ Enter. אם המטפל רק בדק שקיים סשן תקף — ולא שההזמנה הזאת שייכת למשתמש הזה — השרת מחזיר בשמחה שם, כתובת, פריטים וסכום של מישהו אחר. משם זאת לולאה: סקריפט קצר שרץ מ-10000 עד 11000 עם הקוקי התקף שלו עצמו שולף אלף רשומות לקוח בפחות מדקה, וכל בקשה נראית לגמרי לגיטימית ביומן הגישה, כי היא באמת כזאת. לזה קוראים IDOR, וזה נמצא כל הזמן במוצרים אמיתיים.\n\nההגנה היא כלל, לא טלאי: כל מטפל שמקבל מזהה מבחוץ חייב לגזור מחדש מה מותר למשתמש הנוכחי לראות, בתוך המטפל, בצד השרת. לשלוף את השורה, להשוות את הבעלים למשתמש שבסשן, ולהחזיר 403 אחרת. להסתיר את כפתור האדמין בממשק זאת לא הרשאה; נקודת הקצה שמאחוריו עדיין שם. כש-AI כותב לך נקודות קצה של CRUD הוא יוסיף בעקביות את בדיקת ההתחברות ויוותר בעקביות על בדיקת הבעלות, אז זאת בדיוק השורה שצריך לחפש בכל נתיב שמקבל מזהה.\n\nבאפליקציית production, שקלו ספק authentication מנוהל לפני שבונים התחברות בעצמכם. גם שחזור חשבון דורש תכנון: אימות כתובת דוא״ל, איפוס סיסמה, אימות רב-שלבי כשמתאים, ואפשרות לבטל sessions קיימים. מסך התחברות לבדו אינו מערכת authentication שלמה."
   },
   "Session & cookie": {
    "en": "A session is a row the server keeps saying \"this identifier belongs to user 88, created at this time\". The cookie is just a small piece of text the browser stores and attaches automatically to every subsequent request to that domain. The identity itself never leaves the server; the browser only carries a pointer. That design is why you can log someone out instantly — delete the row — and it is also why the word \"automatically\" in the previous sentence is the source of an entire class of attacks.\n\nThe attack is CSRF, and it is worth picturing concretely. You are logged into your bank in one tab. In another tab you open a page that looks like a meme gallery. That page contains a hidden form pointed at your bank's transfer endpoint with the amount and destination pre-filled, and a line of script that submits it the moment the page loads. Your browser sends that POST, and because the request goes to the bank's domain, it helpfully attaches your session cookie. The bank sees a fully authenticated request from a logged-in user. Nothing was stolen; the attacker never saw your cookie. They just borrowed the fact that it gets sent on its own. SameSite=Lax on the cookie stops the ordinary version of this, which is why it is now the browser default.\n\nThe flags are the whole defence and there are only a few: HttpOnly so page scripts cannot read the cookie and an XSS bug cannot steal the session, Secure so it never travels over plain HTTP, SameSite to control cross-site sending, and a sensible Max-Age. Beyond that, two habits: logging out must delete the server-side session, not just the cookie, and logging in must issue a brand-new session id rather than reusing whatever the visitor arrived with.",
@@ -12517,8 +12517,8 @@
     "he": "איך אפליקציה יודעת שזה באמת אני, ואיך היא מחליטה מה מותר לי לעשות?"
    },
    "s": {
-    "en": "At a concert, the bouncer checks your ID at the door. That proves who you are. Then your wristband decides where you can go: general admission, or backstage. Passing the first does not mean you may wander into the dressing rooms.\n\nAuthentication is the ID check: a password, a code from your phone, a Google sign-in. Authorization is the wristband: 'is this person allowed to do this thing to this item?' Apps built fast get the first right, because the login screen is visible and someone tests it. The second is invisible, so it gets skipped. Then a user changes the number in the address bar from order 10428 to 10427 and sees a stranger's invoice.\n\nAI assistants reliably add the login check and omit the ownership check. On every route that takes an id, ask: does this verify the item belongs to the current user?",
-    "he": "בהופעה, הסדרן בודק תעודת זהות בכניסה. זה מוכיח מי אתם. ואז הצמיד קובע לאן מותר לכם ללכת: קהל רגיל, או מאחורי הקלעים. שתי בדיקות שונות. לעבור את הראשונה לא אומר שאפשר להסתובב בחדרי ההלבשה.\n\nאותנטיקציה היא בדיקת התעודה: סיסמה, קוד מהטלפון, התחברות עם Google. היא עונה על 'מי זה?'. הרשאות הן הצמיד: הן עונות על 'האם לאדם הזה מותר לעשות את הפעולה הזאת על הפריט הזה?'. אפליקציות שנבנות מהר עושות את הראשונה נכון, כי מסך ההתחברות נראה לעין ומישהו בודק אותו. השנייה בלתי נראית, אז מדלגים עליה. ואז משתמש משנה את המספר בשורת הכתובת מהזמנה 10428 ל-10427, ורואה חשבונית של זר.\n\nעוזרי AI מוסיפים בקביעות את בדיקת ההתחברות ומשמיטים בקביעות את בדיקת הבעלות. בכל נתיב שמקבל מזהה, תשאלו: זה מוודא שהפריט שייך למשתמש הנוכחי?"
+    "en": "At a concert, the bouncer checks your ID at the door. That proves who you are. Then your wristband decides where you can go: general admission, or backstage. Passing the first does not mean you may wander into the dressing rooms.\n\nAuthentication is the ID check: a password, a code from your phone, a Google sign-in. Authorization is the wristband: 'is this person allowed to do this thing to this item?' Apps built fast get the first right, because the login screen is visible and someone tests it. The second is invisible, so it gets skipped. Then a user changes the number in the address bar from order 10428 to 10427 and sees a stranger's invoice.\n\nAI assistants reliably add the login check and omit the ownership check. On every route that takes an id, ask: does this verify the item belongs to the current user?\n\nFor production, consider managed authentication before building sign-in yourself. Plan account recovery too: email verification, password resets, multi-factor authentication where appropriate, and session revocation. A login screen alone is not a complete auth system.",
+    "he": "בהופעה, הסדרן בודק תעודת זהות בכניסה. זה מוכיח מי אתם. ואז הצמיד קובע לאן מותר לכם ללכת: קהל רגיל, או מאחורי הקלעים. שתי בדיקות שונות. לעבור את הראשונה לא אומר שאפשר להסתובב בחדרי ההלבשה.\n\nאותנטיקציה היא בדיקת התעודה: סיסמה, קוד מהטלפון, התחברות עם Google. היא עונה על 'מי זה?'. הרשאות הן הצמיד: הן עונות על 'האם לאדם הזה מותר לעשות את הפעולה הזאת על הפריט הזה?'. אפליקציות שנבנות מהר עושות את הראשונה נכון, כי מסך ההתחברות נראה לעין ומישהו בודק אותו. השנייה בלתי נראית, אז מדלגים עליה. ואז משתמש משנה את המספר בשורת הכתובת מהזמנה 10428 ל-10427, ורואה חשבונית של זר.\n\nעוזרי AI מוסיפים בקביעות את בדיקת ההתחברות ומשמיטים בקביעות את בדיקת הבעלות. בכל נתיב שמקבל מזהה, תשאלו: זה מוודא שהפריט שייך למשתמש הנוכחי?\n\nבמוצר production, שקלו authentication מנוהל לפני שבונים התחברות בעצמכם. תכננו גם שחזור חשבון: אימות דוא״ל, איפוס סיסמה, אימות רב-שלבי כשמתאים וביטול sessions. מסך התחברות לבדו אינו מערכת authentication שלמה."
    }
   },
   "Session & cookie": {

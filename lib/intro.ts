@@ -56,6 +56,14 @@ export const INTRO = {
       },
     },
     {
+      icon: "🧭",
+      t: { en: "A safe way to work with AI", he: "דרך בטוחה לעבוד עם AI" },
+      d: {
+        en: "For each change, state the goal and how you will know it is done. On an existing project, ask for a short map before edits. Keep the change small, run the relevant tests, read the diff, and check the result yourself. Ask before a production deploy, merge, destructive action, or new paid service.",
+        he: "בכל שינוי, הגדירו את המטרה ואיך תדעו שהוא הושלם. בפרויקט קיים, בקשו מה-AI למפות אותו בקצרה לפני עריכה. עבדו בשינויים קטנים, הריצו את הבדיקות המתאימות, קראו את ה-diff ובדקו בעצמכם את התוצאה. בקשו אישור לפני פריסה לפרודקשן, מיזוג, פעולה הרסנית או שימוש בשירות בתשלום.",
+      },
+    },
+    {
       icon: "📝",
       t: { en: "A code editor", he: "עורך קוד" },
       d: {

@@ -309,6 +309,8 @@ Report back in plain words: a short list of what you checked, each pass or fail,
 
 People sign up, sign in and sign out with email and password. Each person only ever sees and changes their own data.
 
+Before coding, explain the trade-offs between a managed auth provider and running sign-in in this app. This is a teaching example: use a maintained library rather than writing password or session cryptography yourself, and document whether email verification, password recovery, MFA and session revocation are included. Explain which of those a production app needs and why.
+
 Must-haves:
 - Passwords are only stored as a hash (a scrambled fingerprint that can't be turned back into the password), and never logged.
 - You stay signed in with a cookie that scripts on the page can't read.
@@ -323,6 +325,7 @@ Add tests that prove:
 - in the browser, with two people: A adds a contact; B can't open, change or delete it, in the pages or through the API, and A's contact is unchanged;
 - signed out, the contacts page sends you to sign in and the API answers 401;
 - everything that reads data, used as A, never returns anything of B's, and no page can reach the database without the owner check.
+- the README or AGENTS.md states which account recovery protections are and are not implemented; do not describe the exercise as production-ready if they are missing.
 
 Run all the tests with npm run check and npm run e2e. Then show me what is stored for one user's password (it must be a hash, not the password), and show me that the sign-in cookie can't be read by page scripts and is only sent over https in production.
 

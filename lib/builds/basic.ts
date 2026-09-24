@@ -12,13 +12,13 @@ export const BUILDS_BASIC: Record<string, BuildStep> = {
       en: "Code is just text, something has to run it, and the terminal is where you watch that happen. This step makes all three real.",
       he: "קוד הוא בסך הכול טקסט, משהו צריך להריץ אותו, והטרמינל הוא המקום שבו רואים את זה קורה. הצעד הזה הופך את שלושתם למשהו מוחשי.",
     },
-    uses: ["source-code", "runtime", "terminal-cli", "environment", "bug-stack-trace"],
+    uses: ["source-code", "runtime", "terminal-cli", "environment", "bug-stack-trace", "test", "assertion"],
     build: `I'm not a developer: you run every command yourself. This is step 1 of Pocket CRM, a small app for tracking the people I work with.
 
 - Start a new Next.js app in this empty folder, called pocket-crm. The home page shows only the title "Pocket CRM".
 - Add a tiny helper that joins a first and last name into a full name, with one test.
 - Add one command, npm run check, that runs every automatic check.
-- Create AGENTS.md with house rules for every step: read AGENTS.md and STEPS.md before starting; run all the tests before calling a step done and show me the real output; one branch per step once we have Git; small changes, don't touch unrelated files; ask before adding a new tool; never put passwords or keys in the code. Add a short "Stack" section listing the tools you picked.
+- Create AGENTS.md with house rules for every step: read AGENTS.md and STEPS.md before starting; run all the tests before calling a step done and show me the real output; one branch per step once we have Git; small changes, don't touch unrelated files; ask before adding a new tool; never put passwords or keys in the code; never merge to main or deploy to production until I have reviewed the branch preview and explicitly approved it; never run automated tests against production data or use live credentials. Add a short "Stack" section listing the tools you picked.
 - Create STEPS.md with just the heading "Steps". Each finished step adds one line to it.
 
 Explain your tool choices to me in 2–3 plain sentences. Then start the app with npm run dev and tell me in plain words what to open or click to see it working.`,
@@ -27,6 +27,7 @@ Explain your tool choices to me in 2–3 plain sentences. Then start the app wit
 - Add tests proving the full-name helper works: first and last name are joined with one space, extra spaces are removed, and a missing last name gives just the first name.
 - Run all the tests with npm run check.
 - Break the helper on purpose so a test fails. Show me the error with its full list of lines (the stack trace) and tell me in plain words which line is our own code and which lines belong to the tools. Then undo the break and show the tests pass again.
+- Show me the test's assertion and explain what result it expects and what wrong result would make it fail.
 - Add a short "Runtime" section to AGENTS.md: which version of Node this runs on, and that we work locally at http://localhost:3000.
 - With the app running, confirm the home page really shows "Pocket CRM".
 
@@ -83,7 +84,7 @@ Then tell me in plain words what to open or click to see it working: where to fi
 
 Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add the line "2 vcs: on GitHub, live on Vercel, branch previews work" to STEPS.md, save it as a commit, merge the branch into main, send it to GitHub, and show me that v0.1 is now on the live site.`,
+If all is green: add the line "2 vcs: on GitHub, live on Vercel, branch previews work" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge and show me that v0.1 is on the live site.`,
     done: [
       {
         en: "I opened the live address and saw Pocket CRM",
@@ -137,7 +138,7 @@ Then start the app with npm run dev and tell me in plain words what to open or c
 
 Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add the line "3 sides: the browser talks to our server" to STEPS.md, save it as a commit, merge into main, send it to GitHub, and check /api/health on the live site too.`,
+If all is green: add the line "3 sides: the browser talks to our server" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge and check /api/health on the live site too.`,
     done: [
       {
         en: "The home page showed Server OK with a fresh time",
@@ -193,7 +194,7 @@ Don't use it on any page yet. Run npm run check and tell me in plain words what 
 
 Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add the line "4 langs: one clear definition of a valid contact" to STEPS.md, save it as a commit, merge into main and send it to GitHub.`,
+If all is green: add the line "4 langs: one clear definition of a valid contact" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
     done: [
       {
         en: "I saw the error TypeScript printed for stage \"maybe\"",
@@ -244,7 +245,7 @@ Then start the app with npm run dev and tell me in plain words what to open or c
 
 Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't change a test just to make it pass.
 
-If all is green: add the line "5 frontend: a contacts page that works by keyboard and on a phone" to STEPS.md, save it as a commit, merge into main and send it to GitHub.`,
+If all is green: add the line "5 frontend: a contacts page that works by keyboard and on a phone" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
     done: [
       {
         en: "I added a contact by keyboard alone, without touching the mouse",
@@ -298,7 +299,7 @@ Then start the app with npm run dev and tell me in plain words what to open or c
 
 Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add the line "6 http: contacts behind a real API" to STEPS.md, save it as a commit, merge into main and send it to GitHub.`,
+If all is green: add the line "6 http: contacts behind a real API" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
     done: [
       {
         en: "I read the round trip: 201, 200, 200, 204, then 404",
@@ -348,7 +349,7 @@ Then tell me in plain words what to open or click to see it working.`,
 
 Report in plain words: what you checked, pass or fail, with the real output below. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add "7 data: contacts live in a real database" to STEPS.md, commit, merge into main and send it to GitHub. Then on the live site: show the sample contacts, add one, ask me to click Redeploy in Vercel, and show it survived.
+If all is green: add "7 data: contacts live in a real database" to STEPS.md and commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, show the sample contacts on the live site, ask me before adding a demo contact or redeploying, and show that the contact survived.
 
 Close with a short "what I shipped" note: live address, tools, how many tests pass, and STEPS.md.`,
     done: [
