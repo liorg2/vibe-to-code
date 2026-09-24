@@ -5217,6 +5217,852 @@
    "he": "רוני משיקה ספר דיגיטלי ב-₪59 ביום שישי, אחרי רכישה מוצלחת אחת ב-sandbox. בשבת, הכרטיס של קונה נדחה והאפליקציה מציגה דף לבן וריק, אז הוא מניח שהאתר שבור ועוזב. קונה אחרת, בטלפון איטי, לוחצת פעמיים על \"קנה\" ומקבלת שני צ׳קאאוטים פתוחים. אף אחד מהמקרים לא נדיר. שניהם היו זמינים כמקרי בדיקה ב-sandbox, ואף אחד לא ניסה אותם.\n\nSandbox הוא עותק מלא של הספק עם כסף מזויף, וכרטיסי הבדיקה שלו מפעילים תוצאות מסוימות בכוונה. ב-Stripe, הכרטיס 4242 4242 4242 4242 מצליח, הכרטיס 4000 0000 0000 0002 הוא דחייה כללית, ומספרים מתועדים אחרים מדמים חוסר כיסוי, אימות 3-D Secure או הכחשת עסקה מאוחרת; Paddle ו-Lemon Squeezy מתעדים כרטיסים משלהם. רוב הכישלונות בתהליך תשלום הם לא אצל הספק, אלא בתגובה של האפליקציה שלך: מה הדף אומר, מה מסד הנתונים מחזיק, והאם ניסיון חוזר או לחיצה שנייה יוצרים כפילות. ה-sandbox גם שולח webhooks אמיתיים לכתובת ה-staging שלך, אז אפשר לראות ניסיון חוזר קורה, או לשלוח שוב אירוע מהדשבורד.\n\nככה נראה נכון: רשימה כתובה שאתה מריץ על staging לפני כל שינוי בתהליך התשלום: הצלחה אחת, דחייה אחת, חוסר כיסוי, 3-D Secure שהושלם ושננטש, צ׳קאאוט שנסגר באמצע, לחיצה כפולה על \"קנה\", webhook שנשלח שוב פעמיים, webhook שמגיע אחרי דף החזרה, והחזר. אחרי כל אחד, תבדוק את שורת הזכאות, לא רק את המסך. ואז תעבור למפתחות live ולסוד ה-webhook של live יחד, בפרודקשן בלבד. לעולם אל תבדוק עם הכרטיס שלך ב-live: זה יוצר חיובים ועמלות אמיתיים, ולא מוכיח שום דבר שה-sandbox לא היה מוכיח."
   }
  },
+ "TLDR": {
+  "Source code": {
+   "en": "Source code is the human-written text that tells a computer what to do.",
+   "he": "קוד מקור הוא טקסט שנכתב בידי אדם ומנחה את המחשב מה לעשות."
+  },
+  "Compiler / Interpreter": {
+   "en": "Compilers translate code into a form the computer can run; interpreters execute it through a runtime, and many languages combine both.",
+   "he": "קומפיילרים מתרגמים קוד לצורה שהמחשב יכול להריץ; אינטרפרטרים מריצים אותו דרך סביבת ריצה, ושפות רבות משלבות בין השיטות."
+  },
+  "Runtime": {
+   "en": "A runtime is the engine that executes a program, such as Node.js on a server or a browser on a page.",
+   "he": "סביבת ריצה היא המנוע שמפעיל תוכנית, כמו Node.js בשרת או דפדפן בדף אינטרנט."
+  },
+  "Terminal / CLI": {
+   "en": "The terminal lets you control your computer by typing commands instead of clicking through menus.",
+   "he": "הטרמינל מאפשר לשלוט במחשב באמצעות הקלדת פקודות במקום לחיצה בתפריטים."
+  },
+  "Environment": {
+   "en": "An environment is a configured place where code runs, such as your computer, staging, or production.",
+   "he": "סביבה היא מקום מוגדר שבו הקוד רץ, כמו המחשב שלך, סביבת staging או production."
+  },
+  "Bug / Stack trace": {
+   "en": "A bug is unintended behavior; its stack trace lists the calls that led to a crash and helps locate the cause.",
+   "he": "באג הוא התנהגות לא צפויה; ה-stack trace מפרט את הקריאות שהובילו לקריסה ועוזר לאתר את הסיבה."
+  },
+  "App lifecycle": {
+   "en": "An app moves from design and code through tests and deployment, then needs ongoing monitoring and fixes.",
+   "he": "אפליקציה עוברת מתכנון וקוד דרך בדיקות ופריסה, ואז דורשת ניטור ותיקונים שוטפים."
+  },
+  "Test": {
+   "en": "A test runs code and reports failure when its result differs from the expected behavior.",
+   "he": "בדיקה מריצה קוד ומדווחת על כישלון כשהתוצאה שונה מההתנהגות המצופה."
+  },
+  "Assertion": {
+   "en": "An assertion states the exact result a test expects; without one, a test cannot prove the behavior is correct.",
+   "he": "Assertion מגדירה את התוצאה המדויקת שהבדיקה מצפה לה; בלעדיה הבדיקה לא מוכיחה שההתנהגות נכונה."
+  },
+  "Source control": {
+   "en": "Source control records file changes over time so a team can understand, share, and restore versions of its work.",
+   "he": "ניהול גרסאות מתעד שינויים בקבצים לאורך זמן, כדי שהצוות יוכל להבין, לשתף ולשחזר גרסאות של העבודה."
+  },
+  "Repository (repo)": {
+   "en": "A repository is a project folder whose files and complete change history are tracked by Git.",
+   "he": "Repository הוא תיקיית פרויקט ש-Git עוקב בה אחר הקבצים ואחר היסטוריית השינויים המלאה."
+  },
+  "Commit / Branch / Merge": {
+   "en": "A commit saves a project snapshot, a branch isolates parallel work, and a merge combines that work again.",
+   "he": "Commit שומר תמונת מצב של הפרויקט, branch מבודד עבודה במקביל, ו-merge משלב אותה בחזרה."
+  },
+  "Clone / push / pull": {
+   "en": "Clone copies a repository to your computer, push shares your commits, and pull brings shared changes back down.",
+   "he": "Clone מעתיק מאגר למחשב, push משתף את ה-commits שלך, ו-pull מוריד שינויים משותפים למחשב."
+  },
+  "Merge conflict": {
+   "en": "A merge conflict occurs when changes overlap and Git cannot choose which version to keep, so a person must resolve it.",
+   "he": "התנגשות מיזוג מתרחשת כששינויים חופפים ו-Git לא יכול לבחור איזו גרסה להשאיר, ולכן אדם צריך לפתור אותה."
+  },
+  "Pull request & code review": {
+   "en": "A pull request presents proposed changes for discussion and review before they are merged into the shared code.",
+   "he": "Pull request מציג שינויים מוצעים לדיון ולבדיקה לפני שממזגים אותם לקוד המשותף."
+  },
+  "Client": {
+   "en": "The client is the user's browser or app; it sends requests to get data or perform actions.",
+   "he": "ה-client הוא הדפדפן או האפליקציה של המשתמש; הוא שולח בקשות לקבלת נתונים או לביצוע פעולות."
+  },
+  "Server": {
+   "en": "A server runs elsewhere, receives client requests, applies app logic, and sends back responses.",
+   "he": "שרת רץ במקום אחר, מקבל בקשות מה-client, מפעיל את הלוגיקה של האפליקציה ומחזיר תשובות."
+  },
+  "Frontend": {
+   "en": "The frontend is the visible, interactive part of an app, including its layout, controls, and screen behavior.",
+   "he": "ה-frontend הוא החלק הגלוי והאינטראקטיבי באפליקציה, כולל הפריסה, הפקדים וההתנהגות על המסך."
+  },
+  "Backend": {
+   "en": "The backend handles data, business rules, database access, and decisions about what each user may do.",
+   "he": "ה-backend מטפל בנתונים, בכללים העסקיים, בגישה למסד הנתונים ובהחלטה מה כל משתמש רשאי לעשות."
+  },
+  "API": {
+   "en": "An API defines how programs request services from each other and what responses they can expect.",
+   "he": "API מגדיר איך תוכניות מבקשות שירות זו מזו ואילו תשובות הן יכולות לקבל."
+  },
+  "localhost & port": {
+   "en": "Localhost points to your own computer; a port is a numbered channel that directs traffic to a particular program.",
+   "he": "localhost מצביע על המחשב שלך; port הוא ערוץ ממוספר שמנתב תעבורה לתוכנית מסוימת."
+  },
+  "DNS": {
+   "en": "DNS looks up a domain name and returns the IP address computers use to find its server.",
+   "he": "DNS מחפש שם מתחם ומחזיר את כתובת ה-IP שמחשבים משתמשים בה כדי למצוא את השרת שלו."
+  },
+  "Full stack": {
+   "en": "Full-stack work spans the user interface, server, data storage, and deployment that together make an app run.",
+   "he": "עבודת full-stack כוללת את ממשק המשתמש, השרת, אחסון הנתונים והפריסה שמרכיבים יחד אפליקציה עובדת."
+  },
+  "DevTools": {
+   "en": "Browser DevTools reveal how a page behaves, letting you inspect its elements, requests, errors, and performance.",
+   "he": "DevTools של הדפדפן חושפים איך דף מתנהג ומאפשרים לבדוק את הרכיבים, הבקשות, השגיאות והביצועים שלו."
+  },
+  "The Network tab": {
+   "en": "The Network tab lists browser requests and their responses, timing, headers, and transferred data.",
+   "he": "לשונית Network מציגה את בקשות הדפדפן ואת התשובות, זמני הטעינה, הכותרות והנתונים שהועברו."
+  },
+  "Console & breakpoints": {
+   "en": "The console displays errors and lets you inspect a page; breakpoints pause code so you can examine its current values.",
+   "he": "ה-console מציג שגיאות ומאפשר לבדוק דף; breakpoints עוצרים את הקוד כדי לבחון את הערכים באותו רגע."
+  },
+  "Typed vs untyped": {
+   "en": "Typed languages check how values are used, often catching type mistakes before launch; untyped code may expose them only at runtime.",
+   "he": "שפות עם טיפוסים בודקות איך משתמשים בערכים ולעיתים תופסות טעויות לפני ההרצה; בקוד ללא טיפוסים הן עלולות להתגלות רק בזמן ריצה."
+  },
+  "Compiled vs interpreted": {
+   "en": "Compiled programs are translated into a runnable build before execution, while interpreted programs run from source through an execution engine.",
+   "he": "תוכניות מקומפלות מתורגמות לגרסה להרצה לפני הביצוע, ואילו תוכניות מפורשות רצות מהמקור דרך מנוע ביצוע."
+  },
+  "JavaScript / TypeScript": {
+   "en": "JavaScript runs in browsers; TypeScript adds static type checks to JavaScript, then converts back to JavaScript for delivery.",
+   "he": "JavaScript רצה בדפדפנים; TypeScript מוסיפה לה בדיקות טיפוסים בזמן פיתוח ומומרת בחזרה ל-JavaScript לפני הפריסה."
+  },
+  "Python": {
+   "en": "Python favors readable code and a broad library ecosystem, making it common in automation, data work, and machine learning.",
+   "he": "Python שמה דגש על קוד קריא ומציעה מגוון רחב של ספריות, ולכן נפוצה באוטומציה, בעבודה עם נתונים ובלמידת מכונה."
+  },
+  "Go / Rust / Java / C#": {
+   "en": "These languages suit different needs: Go for straightforward services, Rust for speed and memory safety, and Java or C# for mature enterprise systems.",
+   "he": "השפות האלה מתאימות לצרכים שונים: Go לשירותים פשוטים, Rust למהירות ולבטיחות זיכרון, ו-Java או C# למערכות ארגוניות ותיקות."
+  },
+  "Package manager": {
+   "en": "A package manager downloads project dependencies and keeps track of their versions, using tools such as npm, pip, or cargo.",
+   "he": "מנהל חבילות מוריד את התלויות של הפרויקט ועוקב אחר הגרסאות שלהן, בעזרת כלים כמו npm, pip או cargo."
+  },
+  "Dependency": {
+   "en": "A dependency is external code your project relies on, bringing useful features along with maintenance and security responsibilities.",
+   "he": "תלות היא קוד חיצוני שהפרויקט מסתמך עליו, והיא מביאה איתה יכולות שימושיות וגם אחריות לתחזוקה ולאבטחה."
+  },
+  "Semantic versioning": {
+   "en": "Semantic versions use major, minor, and patch numbers to signal breaking changes, new compatible features, and fixes.",
+   "he": "גרסאות סמנטיות משתמשות במספרי major, minor ו-patch כדי לסמן שינויים שוברים, תכונות תואמות חדשות ותיקונים."
+  },
+  "Framework vs library": {
+   "en": "Your code calls a library when needed; a framework controls the app structure and calls your code at designated points.",
+   "he": "הקוד שלך קורא לספרייה כשצריך; framework מנהל את מבנה האפליקציה וקורא לקוד שלך בנקודות מוגדרות."
+  },
+  "DOM": {
+   "en": "The DOM is the browser's live tree of page elements, which JavaScript can change while the original HTML remains a file or response.",
+   "he": "ה-DOM הוא עץ הרכיבים הפעיל של הדף בדפדפן, ש-JavaScript יכולה לשנות בעוד שקובץ ה-HTML המקורי נשאר ללא שינוי."
+  },
+  "CSS & responsive layout": {
+   "en": "CSS controls a page's appearance, while responsive layout adapts its arrangement to different screen sizes.",
+   "he": "CSS שולטת במראה של הדף, ופריסה רספונסיבית מתאימה את הסידור שלו לגדלים שונים של מסכים."
+  },
+  "Accessibility (a11y)": {
+   "en": "Accessibility makes interfaces usable with keyboards, screen readers, and low vision through clear labels, controls, contrast, and focus.",
+   "he": "נגישות מאפשרת להשתמש בממשק עם מקלדת, קורא מסך או ראייה חלשה בעזרת תוויות, פקדים, ניגודיות ומיקוד ברורים."
+  },
+  "The main thread": {
+   "en": "The browser's main thread runs JavaScript, handles input, and paints the screen, so long tasks there make the page unresponsive.",
+   "he": "ה-thread הראשי בדפדפן מריץ JavaScript, מטפל בקלט ומצייר את המסך, ולכן משימות ארוכות בו גורמות לדף להגיב באיטיות."
+  },
+  "Component": {
+   "en": "A component packages a reusable part of an interface and its behavior so larger screens can be assembled from smaller pieces.",
+   "he": "Component אורז חלק לשימוש חוזר בממשק יחד עם ההתנהגות שלו, ומאפשר להרכיב מסכים גדולים מחלקים קטנים."
+  },
+  "Framework (React, Vue, Svelte)": {
+   "en": "UI frameworks update the page when data changes, letting developers describe the desired interface instead of manually editing browser elements.",
+   "he": "Frameworks לממשק משתמש מעדכנים את הדף כשהנתונים משתנים, ומאפשרים לתאר את הממשק הרצוי במקום לערוך רכיבי דפדפן ידנית."
+  },
+  "Client state": {
+   "en": "Client state is temporary data held by the page, such as a cart or form draft, and normally disappears when the page refreshes.",
+   "he": "מצב ה-client הוא מידע זמני שהדף מחזיק, כמו סל קניות או טיוטת טופס, ובדרך כלל נעלם ברענון."
+  },
+  "SPA vs SSR vs static": {
+   "en": "Static pages are built ahead of time, SPAs render mainly in the browser, and SSR generates page HTML on the server for each request.",
+   "he": "דפים סטטיים נבנים מראש, SPA מרנדרת בעיקר בדפדפן, ו-SSR מייצר HTML בשרת עבור כל בקשה."
+  },
+  "Bundler & build step": {
+   "en": "A build tool combines and transforms source files and imports into browser-ready JavaScript and CSS assets.",
+   "he": "כלי build מאחד ומעבד קובצי מקור וייבוא ל-JavaScript ול-CSS שהדפדפן יכול לטעון."
+  },
+  "Forms & validation": {
+   "en": "Browser-side validation helps users fix input quickly, but server-side validation must enforce the rules because clients can be bypassed.",
+   "he": "בדיקה בדפדפן עוזרת למשתמשים לתקן קלט מיד, אך השרת חייב לאכוף את הכללים כי אפשר לעקוף את צד הלקוח."
+  },
+  "SEO basics": {
+   "en": "SEO helps search engines understand and rank pages through useful titles, descriptions, readable page content, and crawler guidance.",
+   "he": "SEO עוזר למנועי חיפוש להבין ולדרג דפים בעזרת כותרות ותיאורים מועילים, תוכן קריא והנחיות לסורקים."
+  },
+  "Link previews (Open Graph)": {
+   "en": "Open Graph metadata supplies the title, description, and image that messaging and social apps display when someone shares a link.",
+   "he": "מטא-נתוני Open Graph מספקים את הכותרת, התיאור והתמונה שאפליקציות מסרים ורשתות חברתיות מציגות כשמשתפים קישור."
+  },
+  "Measuring speed (Lighthouse)": {
+   "en": "Lighthouse tests a page under controlled conditions and reports measures that help identify loading and interaction performance problems.",
+   "he": "Lighthouse בודק דף בתנאים מבוקרים ומציג מדדים שעוזרים לזהות בעיות בטעינה ובמהירות התגובה."
+  },
+  "Core Web Vitals": {
+   "en": "Core Web Vitals measure how quickly main content appears, how fast a page responds, and how much its layout shifts.",
+   "he": "Core Web Vitals מודדים כמה מהר התוכן העיקרי מופיע, כמה מהר הדף מגיב ועד כמה הפריסה שלו זזה."
+  },
+  "Request / Response": {
+   "en": "A client sends an HTTP request to a server, which returns one response containing the result.",
+   "he": "ה-client שולח בקשת HTTP לשרת, והשרת מחזיר תשובה אחת שמכילה את התוצאה."
+  },
+  "Endpoint": {
+   "en": "An endpoint is a server address paired with an HTTP method that identifies a specific operation, such as POST /orders.",
+   "he": "Endpoint הוא כתובת בשרת יחד עם שיטת HTTP שמזהות פעולה מסוימת, כמו POST /orders."
+  },
+  "GET": {
+   "en": "GET requests retrieve information and should not change server data, making them safe to repeat.",
+   "he": "GET מבקשת לקבל מידע ואמורה לא לשנות נתונים בשרת, ולכן בטוח לחזור עליה."
+  },
+  "POST / PUT / PATCH / DELETE": {
+   "en": "These HTTP methods describe common changes: POST creates, PUT replaces, PATCH updates selected fields, and DELETE removes.",
+   "he": "שיטות HTTP אלה מתארות שינויים נפוצים: POST יוצרת, PUT מחליפה, PATCH מעדכנת שדות נבחרים ו-DELETE מסירה."
+  },
+  "Status codes": {
+   "en": "HTTP status codes summarize outcomes: 2xx success, 3xx redirect, 4xx request problem, and 5xx server failure.",
+   "he": "קודי HTTP מסכמים את התוצאה: 2xx הצלחה, 3xx הפניה, 4xx בעיה בבקשה ו-5xx כשל בשרת."
+  },
+  "Headers": {
+   "en": "HTTP headers carry metadata about a request or response, such as identity, content format, and accepted formats.",
+   "he": "כותרות HTTP מעבירות מידע נלווה לבקשה או לתשובה, כמו זהות, פורמט התוכן והפורמטים הנתמכים."
+  },
+  "Payload / Body": {
+   "en": "The body carries the actual data in an HTTP message; headers describe that data and how to interpret it.",
+   "he": "ה-body מכיל את הנתונים עצמם בהודעת HTTP; הכותרות מתארות את הנתונים ואת אופן הפענוח שלהם."
+  },
+  "JSON": {
+   "en": "JSON is a readable text format for structured values such as objects, lists, strings, and numbers.",
+   "he": "JSON הוא פורמט טקסט קריא לערכים מובנים כמו אובייקטים, רשימות, מחרוזות ומספרים."
+  },
+  "REST": {
+   "en": "REST organizes an API around resource URLs and standard HTTP methods, with each request carrying what it needs on its own.",
+   "he": "REST מארגן API סביב כתובות של משאבים ושיטות HTTP מקובלות, כך שכל בקשה כוללת את המידע הדרוש לה."
+  },
+  "Webhook": {
+   "en": "A webhook lets a service notify your app by sending an HTTP request to your URL when an event occurs.",
+   "he": "Webhook מאפשר לשירות להודיע לאפליקציה שלך על אירוע באמצעות שליחת בקשת HTTP לכתובת שלה."
+  },
+  "Database": {
+   "en": "A database stores and retrieves application data while managing concurrent access and protecting data through failures.",
+   "he": "מסד נתונים מאחסן ומחזיר נתוני אפליקציה, מנהל גישה מקבילה ומגן על המידע גם בזמן תקלות."
+  },
+  "SQL vs NoSQL": {
+   "en": "SQL databases organize data in structured tables and relationships; NoSQL databases use other models, often with more flexible shapes.",
+   "he": "מסדי נתונים של SQL מארגנים מידע בטבלאות ובקשרים מובנים; מסדי NoSQL משתמשים במודלים אחרים, לרוב גמישים יותר."
+  },
+  "Schema": {
+   "en": "A schema defines a database's structure, including its tables, columns, data types, and which values may be empty.",
+   "he": "Schema מגדירה את מבנה מסד הנתונים, כולל טבלאות, עמודות, טיפוסים ואילו ערכים יכולים להיות ריקים."
+  },
+  "Query": {
+   "en": "A query asks a database to retrieve or change specific data, often using SQL conditions to select the relevant records.",
+   "he": "Query מבקשת ממסד הנתונים לאחזר או לשנות מידע מסוים, לעיתים בעזרת תנאי SQL לבחירת הרשומות המתאימות."
+  },
+  "Index": {
+   "en": "A database index speeds up lookups by keeping an organized path to selected records, at the cost of storage and write work.",
+   "he": "אינדקס במסד נתונים מאיץ חיפושים בעזרת מסלול מסודר לרשומות נבחרות, במחיר של אחסון ועבודת כתיבה נוספת."
+  },
+  "Migration": {
+   "en": "A migration is a versioned change to database structure that can be applied in order across environments.",
+   "he": "Migration היא שינוי ממוספר במבנה מסד הנתונים שאפשר להחיל לפי הסדר בסביבות שונות."
+  },
+  "Transaction": {
+   "en": "A transaction groups database changes so they all succeed together or are rolled back together, avoiding partial results.",
+   "he": "Transaction מקבצת שינויים במסד הנתונים כך שכולם יצליחו יחד או יבוטלו יחד, בלי להשאיר תוצאה חלקית."
+  },
+  "ORM": {
+   "en": "An ORM maps database records to objects in your programming language, reducing repetitive SQL while still relying on the database.",
+   "he": "ORM ממפה רשומות ממסד הנתונים לאובייקטים בשפת התכנות שלך, מצמצם SQL חוזר ועדיין נשען על מסד הנתונים."
+  },
+  "Time, text & money": {
+   "en": "Dates, text encoding, and floating-point currency can produce subtle data bugs, so store and process each with suitable formats.",
+   "he": "תאריכים, קידוד טקסט וכסף בנקודה צפה עלולים ליצור באגים עדינים, לכן חשוב לשמור ולעבד כל אחד בפורמט מתאים."
+  },
+  "Sync vs async work": {
+   "en": "Synchronous work keeps a request waiting; asynchronous work responds first and finishes slower tasks in the background.",
+   "he": "עבודה סינכרונית משאירה את הבקשה בהמתנה; עבודה אסינכרונית מחזירה תשובה וממשיכה משימות איטיות ברקע."
+  },
+  "Background job": {
+   "en": "A background job is queued for a worker to run later, with retries and a record of its outcome.",
+   "he": "משימת רקע נכנסת לתור כדי שתהליך עובד יבצע אותה בהמשך, עם ניסיונות חוזרים ותיעוד של התוצאה."
+  },
+  "Scheduled job (cron)": {
+   "en": "A scheduled job runs at set times, and needs coordination so multiple servers do not run it twice.",
+   "he": "משימה מתוזמנת רצה בזמנים קבועים, ודורשת תיאום כדי שכמה שרתים לא יריצו אותה פעמיים."
+  },
+  "Event & pub/sub": {
+   "en": "Publish an event once, then let independent subscribers react without tying those reactions to the original code.",
+   "he": "מפרסמים אירוע פעם אחת ומאפשרים למנויים עצמאיים להגיב, בלי לקשור את התגובות לקוד המקורי."
+  },
+  "Retry & backoff": {
+   "en": "Retries can recover temporary failures; increasing, randomized delays help prevent repeated attempts from worsening an outage.",
+   "he": "ניסיונות חוזרים עשויים להתגבר על תקלות זמניות; השהיות הולכות וגדלות עם אקראיות מונעות מהניסיונות להחריף השבתה."
+  },
+  "Dead-letter queue": {
+   "en": "A dead-letter queue stores jobs that exhausted their retries so they can be investigated instead of disappearing or looping.",
+   "he": "תור dead-letter שומר משימות שמיצו את הניסיונות החוזרים, כדי שאפשר יהיה לבדוק אותן במקום שייעלמו או ייתקעו בלולאה."
+  },
+  "Eventual consistency": {
+   "en": "Background updates can leave parts of an app briefly out of sync, so show a pending state until they converge.",
+   "he": "עדכוני רקע עלולים להשאיר חלקים מהאפליקציה לא מסונכרנים לזמן קצר, לכן מציגים מצב בהמתנה עד שהנתונים מתעדכנים."
+  },
+  "Real-time (WebSocket / SSE)": {
+   "en": "WebSockets and SSE let servers send updates over open connections; SSE is one-way, while WebSockets support two-way exchange.",
+   "he": "WebSocket ו-SSE מאפשרים לשרת לשלוח עדכונים בחיבור פתוח; SSE הוא חד-כיווני, ו-WebSocket מאפשר תקשורת דו-כיוונית."
+  },
+  "Long-running task & progress": {
+   "en": "For work lasting more than a few seconds, return a task ID and let users follow its recorded progress.",
+   "he": "כשמשימה נמשכת יותר מכמה שניות, מחזירים מזהה ומאפשרים למשתמשים לעקוב אחר ההתקדמות שלה."
+  },
+  "RAM vs disk": {
+   "en": "RAM is fast but cleared on restart; disk keeps data, so save important state outside temporary variables.",
+   "he": "זיכרון RAM מהיר אך נמחק בהפעלה מחדש; הדיסק שומר נתונים, לכן מידע חשוב צריך להישמר מחוץ למשתנים זמניים."
+  },
+  "Stack & heap": {
+   "en": "The stack tracks active function calls and local values, while the heap holds dynamically allocated objects.",
+   "he": "המחסנית עוקבת אחר קריאות פונקציה וערכים מקומיים, בעוד שה-heap מחזיק אובייקטים שמוקצים באופן דינמי."
+  },
+  "Garbage collection": {
+   "en": "Garbage collection frees memory no longer referenced by a program, sometimes causing brief pauses.",
+   "he": "איסוף אשפה מפנה זיכרון שהתוכנית כבר לא מפנה אליו, ולעיתים גורם להשהיות קצרות."
+  },
+  "Memory leak": {
+   "en": "A memory leak occurs when unused objects remain referenced, preventing cleanup and causing memory use to grow.",
+   "he": "דליפת זיכרון מתרחשת כשאובייקטים שכבר אינם נחוצים נשארים בהפניות, לא מתפנים וגורמים לצריכת הזיכרון לגדול."
+  },
+  "Latency vs throughput": {
+   "en": "Latency measures the time for one request; throughput measures requests handled per second, and improving one can affect the other.",
+   "he": "השהיה מודדת כמה זמן נמשכת בקשה אחת; תפוקה מודדת כמה בקשות מטופלות בשנייה, ושיפור באחת עשוי להשפיע על האחרת."
+  },
+  "Data structures": {
+   "en": "Arrays, maps, sets, queues, and trees organize data differently, changing the cost of common operations.",
+   "he": "מערכים, מפות, קבוצות, תורים ועצים מארגנים נתונים בדרכים שונות ומשנים את העלות של פעולות נפוצות."
+  },
+  "Big-O": {
+   "en": "Big-O describes how an algorithm’s work grows with input size, helping reveal code that slows dramatically at scale.",
+   "he": "סימון Big-O מתאר כיצד העבודה של אלגוריתם גדלה עם כמות הקלט, ועוזר לזהות קוד שמאט מאוד בהיקף גדול."
+  },
+  "Blocking vs async": {
+   "en": "Blocking work occupies a thread while waiting; asynchronous work lets it serve other requests before the result arrives.",
+   "he": "עבודה חוסמת תופסת תהליכון בזמן ההמתנה; עבודה אסינכרונית מאפשרת לו לטפל בבקשות אחרות עד שהתוצאה מגיעה."
+  },
+  "Race condition": {
+   "en": "A race condition occurs when concurrent operations produce different results depending on which one acts first.",
+   "he": "תנאי מרוץ מתרחש כשפעולות מקבילות עשויות להפיק תוצאות שונות בהתאם לסדר שבו הן מתבצעות."
+  },
+  "Cache": {
+   "en": "A cache keeps a copy of an expensive result so later requests can retrieve it faster without repeating the work.",
+   "he": "מטמון שומר עותק של תוצאה יקרה לחישוב, כדי שבקשות עתידיות יקבלו אותה מהר בלי לבצע את העבודה שוב."
+  },
+  "Hit / Miss": {
+   "en": "A cache hit finds a saved result; a miss must do the original work, so hit rate shows whether caching helps.",
+   "he": "פגיעה במטמון מוצאת תוצאה שמורה; החטאה מחייבת לבצע את העבודה מחדש, ולכן שיעור הפגיעות מראה אם המטמון מועיל."
+  },
+  "TTL": {
+   "en": "Time to live sets how long a cached value remains valid, balancing faster responses against fresh data.",
+   "he": "זמן חיים (TTL) קובע כמה זמן ערך במטמון נשאר תקף, ומאזן בין תגובה מהירה לנתונים עדכניים."
+  },
+  "Invalidation": {
+   "en": "Cache invalidation removes a saved result after its source changes, preventing outdated data from being served.",
+   "he": "ביטול מטמון מסיר תוצאה שמורה לאחר שמקור הנתונים השתנה, וכך מונע הצגת מידע מיושן."
+  },
+  "Browser cache": {
+   "en": "The browser cache reuses downloaded files such as scripts, styles, and images instead of fetching them again.",
+   "he": "מטמון הדפדפן משתמש שוב בקבצים שכבר הורדו, כמו סקריפטים, סגנונות ותמונות, במקום להוריד אותם מחדש."
+  },
+  "CDN": {
+   "en": "A CDN serves copies of static files from servers near users, reducing load time and absorbing traffic spikes.",
+   "he": "רשת CDN מגישה עותקים של קבצים סטטיים משרתים קרובים למשתמשים, מקצרת טעינה וסופגת קפיצות בתעבורה."
+  },
+  "Redis / in-memory store": {
+   "en": "Redis is a shared, fast key-value store in memory, unlike a local variable that only one server can see.",
+   "he": "Redis הוא מאגר מהיר ומשותף של מפתח-ערך בזיכרון, בניגוד למשתנה מקומי ששרת יחיד בלבד יכול לראות."
+  },
+  "REST vs GraphQL": {
+   "en": "REST uses endpoints with predefined response shapes; GraphQL lets a client request specific fields through one endpoint.",
+   "he": "ב-REST נקודות קצה מחזירות מבנים מוגדרים מראש; ב-GraphQL הלקוח בוחר אילו שדות לקבל דרך נקודת קצה אחת."
+  },
+  "API spec (OpenAPI)": {
+   "en": "An OpenAPI spec describes endpoint inputs and outputs so documentation, validation, and client code can be generated consistently.",
+   "he": "מפרט OpenAPI מתאר את הקלט והפלט של נקודות קצה, ומאפשר ליצור תיעוד, אימות וקוד לקוח באופן עקבי."
+  },
+  "API key vs OAuth app": {
+   "en": "An API key identifies your app to a provider; OAuth lets users grant your app access to their provider account.",
+   "he": "מפתח API מזהה את האפליקציה שלכם מול ספק; OAuth מאפשר למשתמשים להעניק לה גישה לחשבון שלהם אצל הספק."
+  },
+  "Pagination": {
+   "en": "Pagination returns a large result set in manageable pages, avoiding oversized responses as data grows.",
+   "he": "חלוקה לעמודים מחזירה אוסף גדול בחלקים נוחים, ומונעת תגובות ענק ככל שכמות הנתונים גדלה."
+  },
+  "API versioning": {
+   "en": "API versions let old clients keep using a stable contract while newer clients adopt breaking changes separately.",
+   "he": "גרסאות API מאפשרות ללקוחות ישנים להמשיך להשתמש בממשק יציב, בזמן שלקוחות חדשים עוברים בנפרד לשינויים שוברים."
+  },
+  "Timeouts & retries": {
+   "en": "Timeouts cap how long an API call can wait; cautious retries can recover failures when repeating the operation is safe.",
+   "he": "פסק זמן מגביל את ההמתנה לקריאת API; ניסיונות חוזרים וזהירים עשויים לתקן כשל כשהפעולה בטוחה לחזרה."
+  },
+  "SDK vs raw HTTP": {
+   "en": "A provider SDK wraps its API in language-specific tools, while raw HTTP gives direct control over requests and responses.",
+   "he": "ערכת SDK של ספק עוטפת את ה-API בכלים לשפת התכנות שלכם, בעוד ש-HTTP ישיר נותן שליטה בבקשות ובתגובות."
+  },
+  "Sandbox vs live keys": {
+   "en": "Sandbox keys use a test environment with simulated transactions; live keys affect real customers and money.",
+   "he": "מפתחות sandbox פועלים בסביבת בדיקה עם עסקאות מדומות; מפתחות live משפיעים על לקוחות וכסף אמיתיים."
+  },
+  "Polling vs push": {
+   "en": "Polling repeatedly asks for updates; push sends them when events happen, trading simpler setup for less repeated traffic.",
+   "he": "Polling בודק שוב ושוב אם יש עדכונים; push שולח אותם כשאירועים מתרחשים, וחוסך תעבורה במחיר של הקמה מורכבת יותר."
+  },
+  "Test-first (TDD)": {
+   "en": "Test-first development defines the desired behavior in a failing test, then changes the code until it passes.",
+   "he": "פיתוח בגישת test-first מגדיר את ההתנהגות הרצויה בבדיקה שנכשלת, ואז משנים את הקוד עד שהיא עוברת."
+  },
+  "Unit / Integration / E2E": {
+   "en": "Unit tests isolate a function, integration tests check connected parts, and end-to-end tests exercise the app like a user.",
+   "he": "בדיקות יחידה מבודדות פונקציה, בדיקות אינטגרציה בודקות רכיבים מחוברים, ובדיקות מקצה לקצה מפעילות את האפליקציה כמו משתמש."
+  },
+  "Mock / Fixture": {
+   "en": "Mocks replace external collaborators with controlled stand-ins; fixtures provide predictable starting data for a test.",
+   "he": "Mock מחליף שירות חיצוני בתחליף נשלט; fixture מספק נתוני פתיחה צפויים לבדיקה."
+  },
+  "Regression": {
+   "en": "A regression is a previously working behavior that broke; a regression test guards against that bug returning.",
+   "he": "רגרסיה היא התנהגות שעבדה בעבר ונשברה; בדיקת רגרסיה מוודאת שהבאג לא יחזור."
+  },
+  "Coverage": {
+   "en": "Test coverage reports which code ran during tests, but does not show whether those tests checked the right behavior.",
+   "he": "כיסוי בדיקות מציין איזה קוד רץ במהלך הבדיקות, אך לא מראה אם נבדקה ההתנהגות הנכונה."
+  },
+  "Flaky test": {
+   "en": "A flaky test passes and fails on unchanged code, often because of timing, ordering, or shared state.",
+   "he": "בדיקה לא יציבה מצליחה ונכשלת לסירוגין מול אותו קוד, לרוב בגלל תזמון, סדר או מצב משותף."
+  },
+  "Authentication vs Authorization": {
+   "en": "Authentication verifies identity; authorization decides what that identity is allowed to do.",
+   "he": "אימות זהות בודק מי המשתמש; הרשאה קובעת מה מותר לזהות הזאת לעשות."
+  },
+  "Session & cookie": {
+   "en": "A session stores login state on the server, while a browser cookie carries a reference to that session.",
+   "he": "סשן שומר את מצב ההתחברות בשרת, בעוד שעוגיית דפדפן נושאת הפניה לאותו סשן."
+  },
+  "Token / JWT": {
+   "en": "A JWT carries signed identity claims that a server can verify, but its contents are readable and should not hold secrets.",
+   "he": "JWT נושא הצהרות זהות חתומות שהשרת יכול לאמת, אך תוכנו קריא ולכן לא מכניסים אליו סודות."
+  },
+  "OAuth": {
+   "en": "OAuth lets another service confirm a user or grant access without your app collecting that user’s password.",
+   "he": "OAuth מאפשר לשירות אחר לאמת משתמש או להעניק גישה, בלי שהאפליקציה שלכם תאסוף את הסיסמה שלו."
+  },
+  "Hashing vs encryption": {
+   "en": "Hashing is one-way and suits password storage; encryption is reversible with a key and protects data that must be recovered.",
+   "he": "גיבוב הוא חד-כיווני ומתאים לשמירת סיסמאות; הצפנה הפיכה בעזרת מפתח ומגינה על מידע שצריך לשחזר."
+  },
+  "HTTPS / TLS": {
+   "en": "HTTPS uses TLS to encrypt traffic between a browser and server, protecting it from reading or tampering in transit.",
+   "he": "HTTPS משתמש ב-TLS כדי להצפין תעבורה בין הדפדפן לשרת ולהגן עליה מקריאה או משינוי בדרך."
+  },
+  "Environment variables / secrets": {
+   "en": "Environment variables provide runtime configuration and secrets without embedding credentials in source code.",
+   "he": "משתני סביבה מספקים הגדרות וסודות בזמן הריצה, בלי להטמיע פרטי גישה בקוד המקור."
+  },
+  "CORS": {
+   "en": "CORS is a browser-enforced rule that lets a server specify which other origins may read its responses.",
+   "he": "CORS הוא כלל שהדפדפן אוכף, ומאפשר לשרת לקבוע מאילו מקורות אחרים מותר לקרוא את התגובות שלו."
+  },
+  "Injection & validation": {
+   "en": "Prevent injection by parameterizing queries and validating input on the server; client-side checks mainly improve the user experience.",
+   "he": "מונעים הזרקה באמצעות פרמטרים בשאילתות ואימות קלט בשרת; בדיקות בצד הלקוח משפרות בעיקר את חוויית המשתמש."
+  },
+  "XSS & CSRF": {
+   "en": "XSS runs attacker-controlled scripts in a page; CSRF tricks a logged-in browser into making an unwanted request.",
+   "he": "XSS מריץ בדף סקריפט בשליטת תוקף; CSRF מטעה דפדפן מחובר לשלוח בקשה שהמשתמש לא התכוון אליה."
+  },
+  "Threat model": {
+   "en": "A threat model identifies valuable assets, likely attackers, and possible attack paths to focus security effort.",
+   "he": "מודל איומים מזהה נכסים חשובים, תוקפים סבירים ודרכי תקיפה אפשריות, כדי למקד את מאמצי האבטחה."
+  },
+  "OWASP Top 10": {
+   "en": "The OWASP Top 10 highlights common web application security risks, including broken access control, to guide reviews.",
+   "he": "רשימת OWASP Top 10 מדגישה סיכוני אבטחה נפוצים באפליקציות ווב, כולל בקרת גישה לקויה, ומכוונת בדיקות אבטחה."
+  },
+  "Least privilege": {
+   "en": "Least privilege gives each user, service, and key only the permissions needed for its specific job.",
+   "he": "עקרון ההרשאה המזערית מעניק לכל משתמש, שירות ומפתח רק את ההרשאות הדרושות למשימה שלו."
+  },
+  "Secrets in git history": {
+   "en": "Removing a secret from the latest file leaves it in earlier commits, so revoke and rotate leaked credentials.",
+   "he": "הסרת סוד מהקובץ הנוכחי לא מוחקת אותו מהיסטוריית הקומיטים, לכן יש לבטל ולהחליף פרטי גישה שנחשפו."
+  },
+  "Supply chain (dependencies)": {
+   "en": "Dependencies bring external code into your app, so check that packages are real, maintained, and trustworthy before installing.",
+   "he": "תלויות מכניסות לאפליקציה קוד חיצוני, לכן בדקו שחבילות קיימות, מתוחזקות ואמינות לפני ההתקנה."
+  },
+  "CVE & patching": {
+   "en": "A CVE identifies a known software vulnerability; patching updates affected dependencies to versions that fix it.",
+   "he": "CVE מזהה חולשת תוכנה ידועה; תיקון פירושו עדכון התלויות שנפגעו לגרסאות שסוגרות אותה."
+  },
+  "Security headers & CSP": {
+   "en": "Security headers tell browsers which behaviors to block; CSP can restrict which scripts a page is allowed to run.",
+   "he": "כותרות אבטחה מורות לדפדפנים אילו פעולות לחסום; CSP יכול להגביל אילו סקריפטים מותר לדף להריץ."
+  },
+  "Encryption at rest / in transit": {
+   "en": "Encryption in transit protects data moving across networks; encryption at rest protects stored files, databases, and backups.",
+   "he": "הצפנה בתעבורה מגינה על נתונים שעוברים ברשת; הצפנה במנוחה מגינה על קבצים, מסדי נתונים וגיבויים שמורים."
+  },
+  "Backups & recovery": {
+   "en": "Reliable backups are automated, stored separately, and tested by restoring them so data can actually be recovered.",
+   "he": "גיבויים אמינים נוצרים אוטומטית, נשמרים בנפרד ונבדקים בשחזור, כדי לוודא שאפשר באמת להציל את הנתונים."
+  },
+  "Audit log": {
+   "en": "An audit log preserves who changed or accessed important records and when, helping explain events after an incident.",
+   "he": "יומן ביקורת מתעד מי שינה או ניגש לרשומות חשובות ומתי, ועוזר להבין מה קרה אחרי אירוע."
+  },
+  "Hosted checkout": {
+   "en": "The provider collects card details on its own page, keeping sensitive payment data away from your app and reducing compliance work.",
+   "he": "ספק התשלומים אוסף את פרטי הכרטיס בדף שלו, כך שהמידע הרגיש לא עובר באפליקציה ומצטמצמת חובת הציות."
+  },
+  "Merchant of record": {
+   "en": "A merchant of record sells on your behalf and handles tax, invoices, refunds, and fraud in exchange for higher fees.",
+   "he": "חברת רישום כמוכרת מוכרת בשמך ומטפלת במסים, בחשבוניות, בהחזרים ובהונאות, תמורת עמלות גבוהות יותר."
+  },
+  "Trust the webhook, not the redirect": {
+   "en": "A return page cannot prove payment; grant access only after your server verifies the provider’s payment notification.",
+   "he": "דף החזרה לא מוכיח שהתשלום הושלם; פתחו גישה רק אחרי שהשרת מאמת את הודעת הספק."
+  },
+  "Webhook signature": {
+   "en": "The provider’s signature lets your server verify that a webhook came from the provider and was not altered.",
+   "he": "חתימת הספק מאפשרת לשרת לוודא שה-webhook הגיע ממנו ולא שונה בדרך."
+  },
+  "Entitlement": {
+   "en": "An entitlement records in your database which user owns which product, and whether that access remains active.",
+   "he": "רשומת זכאות במסד הנתונים מתעדת איזה משתמש מחזיק באיזה מוצר והאם הגישה עדיין פעילה."
+  },
+  "One-time vs subscription": {
+   "en": "One-time purchases grant lasting ownership; subscriptions require handling renewals, failed payments, cancellations, and changing access over time.",
+   "he": "רכישה חד-פעמית מעניקה בעלות מתמשכת; מנוי מחייב טיפול בחידושים, בתשלומים שנכשלו, בביטולים ובשינויי גישה לאורך זמן."
+  },
+  "Refunds & chargebacks": {
+   "en": "Refunds return money voluntarily; chargebacks are bank disputes with extra costs, and both should update the buyer’s access.",
+   "he": "החזר מחזיר כסף מרצון; הכחשת עסקה היא מחלוקת דרך הבנק שעולה יותר, ובשני המקרים יש לעדכן את הגישה."
+  },
+  "Test cards & declined payments": {
+   "en": "Sandbox test cards let you rehearse successful, declined, and challenged payments before real customers encounter checkout.",
+   "he": "כרטיסי בדיקה ב-sandbox מאפשרים לתרגל תשלומים מוצלחים, דחויים ומאומתים לפני שלקוחות אמיתיים מגיעים לקופה."
+  },
+  "Domain & registrar": {
+   "en": "A registrar rents your domain and manages its ownership; keep the account secure and renew the name before it expires.",
+   "he": "רשם הדומיינים משכיר את שם המתחם ומנהל את הבעלות עליו; אבטחו את החשבון וחדשו את הדומיין לפני שפג תוקפו."
+  },
+  "DNS records (A, CNAME, TXT)": {
+   "en": "DNS records connect names to servers or store verification details, and cached answers can delay visible changes.",
+   "he": "רשומות DNS מחברות שמות לשרתים או שומרות פרטי אימות, ומטמון עלול לעכב את הופעת השינויים."
+  },
+  "Public vs private IP": {
+   "en": "Public IPs are reachable across the internet; private IPs work inside a network, whose router shares public access.",
+   "he": "כתובת IP ציבורית נגישה דרך האינטרנט; כתובת פרטית פועלת בתוך רשת, שהנתב שלה משתף גישה ציבורית."
+  },
+  "TLS certificate": {
+   "en": "A TLS certificate helps browsers confirm a site’s identity and encrypt traffic; expiration can block visitors with security warnings.",
+   "he": "תעודת TLS עוזרת לדפדפן לאמת את זהות האתר ולהצפין תעבורה; פקיעתה עלולה להציג למבקרים אזהרות אבטחה."
+  },
+  "Reverse proxy": {
+   "en": "A reverse proxy sits before your app to handle HTTPS and route requests, so proxy settings can cause production failures.",
+   "he": "פרוקסי הפוך נמצא לפני האפליקציה, מטפל ב-HTTPS ומנתב בקשות; לכן תצורתו עלולה לגרום לתקלות בפרודקשן."
+  },
+  "Firewall / security group": {
+   "en": "Firewall rules define which sources can reach which ports; expose only what the service needs, especially database ports.",
+   "he": "כללי חומת אש קובעים מי יכול להגיע לאילו פורטים; פתחו רק את הדרוש, במיוחד כשמדובר במסד נתונים."
+  },
+  "VPC / private network": {
+   "en": "A VPC separates public entry points from private app and data services, reducing their exposure to internet attacks.",
+   "he": "רשת VPC מפרידה בין נקודות הכניסה הציבוריות לבין שירותי האפליקציה והנתונים הפרטיים, וכך מצמצמת חשיפה להתקפות."
+  },
+  "Is it me or them?": {
+   "en": "Troubleshoot from your connection through DNS, network, TLS, proxy, and app logs to find the lowest failing layer.",
+   "he": "בדקו את התקלה מהחיבור שלכם דרך DNS, הרשת, TLS והפרוקסי ועד לוגי האפליקציה, כדי למצוא את השכבה הראשונה שנכשלה."
+  },
+  "The cloud": {
+   "en": "Cloud services rent computing, storage, and networking on demand, so costs continue for resources left running.",
+   "he": "שירותי ענן משכירים מחשוב, אחסון ורשת לפי דרישה, ולכן משאבים שנשארים פעילים ממשיכים לעלות כסף."
+  },
+  "AWS / Azure / GCP": {
+   "en": "AWS, Azure, and Google Cloud provide similar infrastructure building blocks, but differ in names, pricing, and operations.",
+   "he": "AWS,‏ Azure ו-Google Cloud מספקות אבני בניין דומות לתשתיות, אך נבדלות בשמות, במחירים ובתפעול."
+  },
+  "S3 / object storage": {
+   "en": "Object storage keeps files such as uploads and backups in durable buckets, separate from your app’s database and server disk.",
+   "he": "אחסון אובייקטים שומר קבצים כמו העלאות וגיבויים בדליים עמידים, בנפרד ממסד הנתונים ומדיסק השרת."
+  },
+  "EC2 / VM vs Lambda / serverless": {
+   "en": "A virtual machine runs continuously, while serverless functions run on demand; their costs and startup behavior differ.",
+   "he": "מכונה וירטואלית פועלת ברציפות, ואילו פונקציות serverless מופעלות לפי דרישה; העלויות וזמני ההתחלה שלהן שונים."
+  },
+  "Container / Docker": {
+   "en": "Docker packages an app with its dependencies and system libraries, helping it behave consistently across environments.",
+   "he": "Docker אורז אפליקציה עם התלויות וספריות המערכת שלה, ועוזר לה לפעול באופן עקבי בסביבות שונות."
+  },
+  "Deploy": {
+   "en": "Deploying makes a new version available to users; smaller, frequent releases make problems easier to isolate and fix.",
+   "he": "פריסה מעמידה גרסה חדשה לרשות המשתמשים; שחרורים קטנים ותכופים מקלים לבודד ולתקן בעיות."
+  },
+  "CI/CD": {
+   "en": "CI/CD automatically builds and tests changes, then deploys them when checks pass, catching problems before release.",
+   "he": "CI/CD בונה ובודק שינויים אוטומטית, ואז פורס אותם כשהבדיקות עוברות וכך תופס בעיות לפני השחרור."
+  },
+  "Logs & monitoring": {
+   "en": "Logs record events, metrics show system behavior over time, and monitoring alerts you when something needs attention.",
+   "he": "לוגים מתעדים אירועים, מדדים מציגים את התנהגות המערכת לאורך זמן, וניטור מתריע כשנדרשת תשומת לב."
+  },
+  "Environments (dev / staging / prod)": {
+   "en": "Development is for changes, staging rehearses the release with production-like settings, and production serves real users.",
+   "he": "סביבת פיתוח מיועדת לשינויים, staging מתרגלת את הגרסה בתנאים דומים לפרודקשן, ופרודקשן משרתת משתמשים אמיתיים."
+  },
+  "Config per environment": {
+   "en": "Keep application code consistent across environments and provide environment-specific settings through configuration at startup.",
+   "he": "שמרו על קוד אפליקציה אחיד בין הסביבות וספקו לכל סביבה הגדרות מתאימות בעת ההפעלה."
+  },
+  "Secrets manager": {
+   "en": "A secrets manager stores credentials securely and supplies them at runtime, keeping keys out of source code and build logs.",
+   "he": "מנהל סודות שומר פרטי גישה באופן מאובטח ומספק אותם בזמן ריצה, בלי לחשוף מפתחות בקוד או בלוגים של הבנייה."
+  },
+  "Build artifact & image tag": {
+   "en": "Build once, identify the artifact with an immutable commit tag, then promote those same bytes through staging and production.",
+   "he": "בנו פעם אחת, זהו את התוצר באמצעות תג commit בלתי משתנה, וקידמו את אותם קבצים דרך staging לפרודקשן."
+  },
+  "Preview deployment": {
+   "en": "A preview deployment gives each proposed change a temporary live URL for review before it is merged or released.",
+   "he": "פריסת preview מספקת לכל שינוי מוצע כתובת זמנית לבדיקה לפני מיזוגו או שחרורו."
+  },
+  "Zero-downtime deploy": {
+   "en": "Health checks and gradual traffic switching let a new version replace the old while the app keeps serving users.",
+   "he": "בדיקות תקינות והעברת תעבורה הדרגתית מאפשרות לגרסה חדשה להחליף את הישנה כשהאפליקציה ממשיכה לשרת משתמשים."
+  },
+  "Rollback": {
+   "en": "A rollback restores a previously tested build quickly, but database changes must remain compatible with the older code.",
+   "he": "Rollback מחזיר במהירות גרסה שנבדקה בעבר, אך שינויים במסד הנתונים חייבים להישאר תואמים לקוד הישן."
+  },
+  "Feature flag": {
+   "en": "A feature flag enables or disables shipped functionality through configuration, allowing gradual rollout or a quick off switch.",
+   "he": "דגל תכונה מפעיל או מכבה יכולת שכבר נפרסה דרך הגדרות, ומאפשר השקה הדרגתית או כיבוי מהיר."
+  },
+  "Infrastructure as Code": {
+   "en": "Infrastructure as Code describes cloud resources in reviewed files, making environments repeatable and changes visible before they apply.",
+   "he": "Infrastructure as Code מתארת משאבי ענן בקבצים שעוברים סקירה, כדי שאפשר יהיה לשחזר סביבות ולבחון שינויים לפני החלתם."
+  },
+  "Expand / contract migration": {
+   "en": "Expand-contract migrations change a database in compatible stages, so old and new application versions can run during rollout.",
+   "he": "מיגרציות expand-contract משנות את מסד הנתונים בשלבים תואמים, כך שגרסאות ישנות וחדשות יכולות לפעול במקביל בזמן ההשקה."
+  },
+  "Structured logs": {
+   "en": "Structured logs store events as searchable fields, making it easier to filter and connect related activity across requests.",
+   "he": "לוגים מובנים שומרים אירועים כשדות שאפשר לחפש, וכך קל יותר לסנן ולקשר פעילות בין בקשות."
+  },
+  "Metrics": {
+   "en": "Metrics track numeric behavior over time, revealing trends in traffic, errors, latency, and resource pressure.",
+   "he": "מדדים עוקבים לאורך זמן אחר נתונים מספריים וחושפים מגמות בתעבורה, בשגיאות, בזמן תגובה ובעומס על משאבים."
+  },
+  "Tracing & correlation id": {
+   "en": "A shared correlation ID links logs across services, while a trace shows how long each step of one request took.",
+   "he": "מזהה מתאם משותף מקשר לוגים בין שירותים, ו-trace מציג כמה זמן ארך כל שלב בבקשה אחת."
+  },
+  "Alert": {
+   "en": "An alert notifies someone when a user-relevant metric crosses a threshold long enough to require action.",
+   "he": "התראה מודיעה למישהו כשמדד שחשוב למשתמשים חוצה סף למשך זמן שמצריך פעולה."
+  },
+  "Error tracking": {
+   "en": "Error tracking groups application exceptions and adds context such as stack traces, affected users, and the release involved.",
+   "he": "מעקב שגיאות מקבץ חריגות באפליקציה ומוסיף הקשר כמו stack trace, משתמשים שנפגעו והגרסה המעורבת."
+  },
+  "Dashboard": {
+   "en": "A dashboard brings a few operational signals together so you can quickly tell whether the service is healthy now.",
+   "he": "לוח מחוונים מרכז כמה מדדים תפעוליים כדי שתוכלו להבין במהירות אם השירות תקין כרגע."
+  },
+  "SLO & error budget": {
+   "en": "An SLO sets a measurable reliability target, and its error budget shows how much failure the service can still tolerate.",
+   "he": "SLO מגדיר יעד אמינות מדיד, ותקציב השגיאות מראה כמה כשלים השירות עדיין יכול לספוג."
+  },
+  "Health check & uptime monitor": {
+   "en": "A health check reports whether an app can serve requests; an external uptime monitor checks reachability independently.",
+   "he": "בדיקת תקינות מדווחת אם האפליקציה מסוגלת לשרת בקשות; ניטור חיצוני בודק זמינות באופן עצמאי."
+  },
+  "Postmortem": {
+   "en": "A postmortem reconstructs an incident and records system changes that can prevent its causes from recurring, without blaming people.",
+   "he": "תחקיר אירוע משחזר מה קרה ומתעד שינויים במערכת שימנעו מהגורמים לחזור, בלי להאשים אנשים."
+  },
+  "Pageview vs event": {
+   "en": "A pageview counts a screen load; an event records a specific action, such as saving, searching, or creating something.",
+   "he": "צפייה בדף סופרת טעינת מסך; אירוע מתעד פעולה מסוימת, כמו שמירה, חיפוש או יצירת פריט."
+  },
+  "Funnel & drop-off": {
+   "en": "A funnel tracks how many people reach each step in a journey, revealing where users most often stop.",
+   "he": "משפך עוקב אחרי מספר האנשים שמגיעים לכל שלב במסע, וחושף היכן משתמשים נושרים בתדירות הגבוהה ביותר."
+  },
+  "Retention & cohort": {
+   "en": "Cohorts group users by when they joined, letting retention show how many return over time instead of just counting sign-ups.",
+   "he": "קבוצות משתמשים מאגדות אנשים לפי מועד ההצטרפות, ומדד השימור מראה כמה מהם חוזרים לאורך זמן במקום רק לספור הרשמות."
+  },
+  "Tracking without PII": {
+   "en": "Track useful behavior and context without collecting names, emails, or other personal data that analytics does not need.",
+   "he": "עקבו אחר התנהגות והקשר שימושיים בלי לאסוף שמות, כתובות מייל או מידע אישי אחר שאינו נחוץ לניתוח."
+  },
+  "Scaling up vs out": {
+   "en": "Scaling up adds capacity to one machine; scaling out adds machines, increasing capacity while requiring shared or external state.",
+   "he": "הגדלה אנכית מוסיפה יכולת למכונה אחת; הגדלה אופקית מוסיפה מכונות ומחייבת לנהל מצב משותף או חיצוני."
+  },
+  "Load balancer": {
+   "en": "A load balancer distributes incoming requests across servers and can avoid sending traffic to unhealthy instances.",
+   "he": "מאזן עומסים מפזר בקשות נכנסות בין שרתים ויכול להימנע משליחת תעבורה למכונות שאינן תקינות."
+  },
+  "Stateless": {
+   "en": "A stateless server keeps no user session between requests, so any healthy instance can handle the next request.",
+   "he": "שרת stateless אינו שומר מצב משתמש בין בקשות, ולכן כל מכונה תקינה יכולה לטפל בבקשה הבאה."
+  },
+  "Queue / worker": {
+   "en": "A queue lets workers process slow tasks asynchronously, so users need not wait for work like email or report generation.",
+   "he": "תור מאפשר ל-workers לבצע משימות איטיות ברקע, כך שמשתמשים לא יצטרכו להמתין לשליחת מייל או ליצירת דוח."
+  },
+  "Idempotency": {
+   "en": "An idempotent operation has the same result when retried, preventing duplicate effects such as charging a customer twice.",
+   "he": "פעולה אידמפוטנטית מניבה אותה תוצאה גם כשמנסים שוב, וכך מונעת השפעות כפולות כמו חיוב לקוח פעמיים."
+  },
+  "Monolith vs microservices": {
+   "en": "A monolith ships as one application; microservices split it into networked services, adding operational and communication complexity.",
+   "he": "מונולית נפרס כאפליקציה אחת; מיקרו-שירותים מפצלים אותה לשירותים ברשת ומוסיפים מורכבות תפעול ותקשורת."
+  },
+  "Rate limiting": {
+   "en": "Rate limiting caps requests per client over time, helping protect services from abuse, runaway code, and unexpected costs.",
+   "he": "הגבלת קצב קובעת מכסה לבקשות של כל לקוח לאורך זמן ומגינה משימוש לרעה, מקוד שיצא משליטה ומעלויות מפתיעות."
+  },
+  "Single point of failure": {
+   "en": "A single point of failure is one component whose outage can take down the whole system.",
+   "he": "נקודת כשל יחידה היא רכיב אחד שהשבתתו עלולה להפיל את המערכת כולה."
+  },
+  "Technical debt": {
+   "en": "Technical debt is the future cost of shortcuts that make changes harder; it is manageable when understood and deliberately repaid.",
+   "he": "חוב טכני הוא המחיר העתידי של קיצורי דרך שמקשים על שינויים; אפשר לנהל אותו כשמבינים אותו ומצמצמים אותו במכוון."
+  },
+  "Ticket / issue": {
+   "en": "A ticket describes a unit of work, why it matters, and clear conditions for deciding when it is complete.",
+   "he": "כרטיס עבודה מתאר משימה, למה היא חשובה ומהם התנאים הברורים להשלמתה."
+  },
+  "Backlog & sprint": {
+   "en": "The backlog prioritizes future work; a sprint commits the team to a small, bounded set of tasks for a short period.",
+   "he": "ה-backlog מדרג עבודה עתידית; sprint מחייב את הצוות לקבוצה קטנה ומוגדרת של משימות לפרק זמן קצר."
+  },
+  "MVP & scope": {
+   "en": "An MVP is the smallest product that tests demand; scope defines what is included and helps prevent feature creep.",
+   "he": "MVP הוא המוצר הקטן ביותר שבודק ביקוש; היקף העבודה מגדיר מה כלול ועוזר למנוע התרחבות בלתי מבוקרת."
+  },
+  "Definition of done": {
+   "en": "A definition of done lists the checks required to finish work, beyond merely getting the code to run locally.",
+   "he": "הגדרת השלמה מפרטת את הבדיקות הנדרשות לסיום העבודה, מעבר לכך שהקוד רץ במחשב המקומי."
+  },
+  "Refactoring": {
+   "en": "Refactoring reorganizes code without changing behavior; tests help confirm the cleanup did not alter what the app does.",
+   "he": "Refactoring מארגן מחדש קוד בלי לשנות את התנהגותו; בדיקות עוזרות לוודא שהניקוי לא שינה את פעולת האפליקציה."
+  },
+  "README & docs": {
+   "en": "A README explains how to understand, run, and deploy a project; other documentation preserves details people and agents need later.",
+   "he": "README מסביר איך להבין, להריץ ולפרוס פרויקט; תיעוד נוסף שומר מידע שאנשים וסוכנים יצטרכו בהמשך."
+  },
+  "Decision record (ADR)": {
+   "en": "An ADR records the context, options, choice, and trade-offs behind a significant technical decision for future readers.",
+   "he": "ADR מתעד את ההקשר, האפשרויות, הבחירה והפשרות של החלטה טכנית משמעותית עבור מי שיקרא בעתיד."
+  },
+  "Estimates": {
+   "en": "Estimates express uncertainty about effort before work begins; ranges or relative sizes are usually more honest than exact dates.",
+   "he": "הערכות מבטאות אי-ודאות לגבי היקף העבודה לפני תחילתה; טווחים או גדלים יחסיים לרוב אמינים יותר מתאריך מדויק."
+  },
+  "Trunk-based vs long branches": {
+   "en": "Trunk-based development merges small changes often; long-lived branches collect work and make integration and review harder.",
+   "he": "פיתוח trunk-based ממזג שינויים קטנים לעיתים קרובות; ענפים ממושכים צוברים עבודה ומקשים על שילוב וסקירה."
+  },
+  "Changelog & release notes": {
+   "en": "A changelog records version changes in user-friendly language, helping explain what shipped and when behavior changed.",
+   "he": "יומן שינויים מתעד בשפה ברורה מה השתנה בכל גרסה, ועוזר להבין מה שוחרר ומתי השתנתה ההתנהגות."
+  },
+  "Bus factor": {
+   "en": "Bus factor measures how many people can be lost before a project becomes unmaintainable; clear docs and automation reduce dependence.",
+   "he": "מדד bus factor סופר כמה אנשים יכולים לעזוב לפני שהפרויקט נעשה בלתי ניתן לתחזוקה; תיעוד ואוטומציה מצמצמים תלות."
+  },
+  "Context window": {
+   "en": "The context window is the limited information a model can consider at once, including your prompt and available conversation or files.",
+   "he": "חלון ההקשר הוא כמות המידע המוגבלת שהמודל יכול לעבד בבת אחת, כולל הפרומפט, השיחה והקבצים הזמינים."
+  },
+  "AGENTS.md": {
+   "en": "AGENTS.md gives coding assistants durable project guidance, such as setup, conventions, commands, and files they must avoid.",
+   "he": "AGENTS.md מספק לעוזרי קוד הנחיות קבועות לפרויקט, כמו התקנה, מוסכמות, פקודות וקבצים שאסור לשנות."
+  },
+  "Specificity beats politeness": {
+   "en": "Concrete constraints, examples, and locations make requests actionable; polite phrasing alone does not resolve ambiguity.",
+   "he": "מגבלות, דוגמאות ומיקומים מדויקים הופכים בקשות למעשיות; ניסוח מנומס לבדו אינו פותר עמימות."
+  },
+  "State the shape of the answer": {
+   "en": "Specify whether you want a diff, list, table, or another format so the response fits the task.",
+   "he": "ציינו אם אתם רוצים diff, רשימה, טבלה או פורמט אחר, כדי שהתשובה תתאים למשימה."
+  },
+  "Ask for the trade-off first": {
+   "en": "Compare a few approaches and their costs before asking the model to implement one, so the choice is deliberate.",
+   "he": "השוו כמה גישות ואת המחירים שלהן לפני שתבקשו מהמודל לממש אחת, כדי שהבחירה תהיה מודעת."
+  },
+  "Constrain the blast radius": {
+   "en": "Name the files and boundaries for a change to keep an assistant from modifying unrelated parts of the project.",
+   "he": "ציינו אילו קבצים וגבולות חלים על השינוי, כדי למנוע מהעוזר לערוך חלקים לא קשורים בפרויקט."
+  },
+  "Small steps over one big ask": {
+   "en": "Break large work into small reviewable changes, making mistakes easier to spot and correct before they spread.",
+   "he": "חלקו עבודה גדולה לשינויים קטנים שאפשר לסקור, וכך יהיה קל יותר לזהות ולתקן טעויות לפני שיתפשטו."
+  },
+  "Make it verify itself": {
+   "en": "Ask for a test or command that demonstrates the result, so claims about a fix can be checked directly.",
+   "he": "בקשו בדיקה או פקודה שמדגימה את התוצאה, כדי שאפשר יהיה לאמת ישירות טענות על תיקון."
+  },
+  "Read the diff": {
+   "en": "Review the actual changes before accepting AI-generated work; a summary cannot show every unintended edit.",
+   "he": "בדקו את השינויים עצמם לפני קבלת עבודה שנוצרה ב-AI; סיכום אינו חושף כל עריכה לא מכוונת."
+  },
+  "Hallucination": {
+   "en": "A hallucination is confident but incorrect output; verify names, versions, APIs, and configuration against reliable sources.",
+   "he": "הזיה היא תשובה שגויה שנמסרת בביטחון; אמתו שמות, גרסאות, APIs והגדרות מול מקורות אמינים."
+  },
+  "Package hallucination": {
+   "en": "A package hallucination invents a library or version, so verify that a dependency exists before installing it.",
+   "he": "הזיית חבילה ממציאה ספרייה או גרסה, לכן ודאו שהתלות קיימת לפני התקנתה."
+  },
+  "Endless fix loop": {
+   "en": "When repeated patches do not resolve a bug, stop and restate the problem with evidence instead of adding more guesses.",
+   "he": "כשעוד ועוד תיקונים לא פותרים באג, עצרו ונסחו מחדש את הבעיה עם ראיות במקום להוסיף ניחושים."
+  },
+  "Kill the thread": {
+   "en": "Start a fresh conversation with a concise state summary when a chat becomes confused or keeps defending a bad approach.",
+   "he": "פתחו שיחה חדשה עם סיכום מצב תמציתי כשהשיחה מתבלבלת או ממשיכה להגן על גישה שגויה."
+  },
+  "Prompt injection": {
+   "en": "Prompt injection is untrusted content that tries to direct an AI; treat text from files and websites as data, not authority.",
+   "he": "הזרקת פרומפט היא תוכן לא מהימן שמנסה לכוון AI; התייחסו לטקסט מקבצים ומאתרים כאל נתונים, לא כהוראות."
+  },
+  "Vibe coding vs vibe engineering": {
+   "en": "Vibe coding accepts unreviewed output; vibe engineering means reviewing, testing, and understanding the code before shipping it.",
+   "he": "Vibe coding מקבל תוצר בלי סקירה; vibe engineering בודק, מריץ ומבין את הקוד לפני שמשחררים אותו."
+  },
+  "Demo vs production": {
+   "en": "A successful demo proves a happy path, while production readiness also requires real data, permissions, and failure cases to work.",
+   "he": "דמו מוצלח מוכיח מסלול תקין אחד, אך מוכנות לפרודקשן מחייבת גם טיפול בנתונים אמיתיים, בהרשאות ובמצבי כשל."
+  }
+ },
  "EXAMPLES": {
   "Terminal / CLI": {
    "cap": {

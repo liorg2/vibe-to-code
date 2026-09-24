@@ -13,6 +13,7 @@ import {
   DETAIL,
   EXAMPLES,
   SIMPLE,
+  TLDR,
   UI,
   getModule,
   lessonNo,
@@ -64,6 +65,7 @@ export default async function SlidePage({
 
   const simple = SIMPLE[tm.t.en];
   const det = DETAIL[tm.t.en];
+  const short = TLDR[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
   const scene = SCENES[tm.k];
   const coursePath = pathForModule(m.id, course);
@@ -96,6 +98,11 @@ export default async function SlidePage({
           <p className="xnote"><span className="xbadge">{t("expert")}</span> {t("expertNote")}</p>
         ) : null}
         <div className="lede">{tm.d[lang]}</div>
+        {short ? (
+          <div className="tldr-only body">
+            {para(short[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
+          </div>
+        ) : null}
         <div className="cal"><b>{t("why")}</b><p>{tm.w[lang]}</p></div>
         <div className="full-only">
         {tm.t.en === "App lifecycle" ? (

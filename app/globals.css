@@ -500,7 +500,8 @@ pre.code{max-width:100%}
 .mode-switch button:hover{color:var(--tx)}
 .mode-switch button.on{background:var(--acc);color:#fff}
 .slide-mode>.mode-switch{margin:0 0 14px}
-.slide-mode.tldr .full-only{display:none}
+.slide-mode.tldr .full-only,.slide-mode:not(.tldr) .tldr-only{display:none}
+.slide .tldr-only{margin-top:22px;max-width:72ch}
 .lvl-chips{display:flex;flex-wrap:wrap;gap:6px;margin:-8px 0 18px}
 .lvl-chips button{padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--tx2);font:inherit;font-size:var(--fs-xs);cursor:pointer}
 .lvl-chips button[aria-pressed=true]{background:var(--acc);border-color:transparent;color:#fff;font-weight:600}

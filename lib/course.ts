@@ -91,7 +91,7 @@ export function findTerm(nameEn: string): { m: Module; i: number; tm: Term } | n
   return null;
 }
 
-export const { UI, MODULES, SIMPLE, DETAIL, EXAMPLES, QUIZ, CHECKLIST, ARCHITECTURES, PATHS } =
+export const { UI, MODULES, SIMPLE, DETAIL, TLDR, EXAMPLES, QUIZ, CHECKLIST, ARCHITECTURES, PATHS } =
   course;
 
 /** Locate a term by its stable slug, in whichever lesson it lives. */

@@ -74,6 +74,8 @@ export type Course = {
   MODULES: Module[];
   SIMPLE: Record<string, Simple>;
   DETAIL: Record<string, L10n>;
+  /** the short version of a slide: the whole topic in a few sentences, keyed by English title */
+  TLDR: Record<string, L10n>;
   EXAMPLES: Record<string, Example>;
   QUIZ: Record<string, QuizQ[]>;
   CHECKLIST: {
