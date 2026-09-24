@@ -14,7 +14,6 @@ export default defineConfig({
   use: {
     baseURL: process.env.E2E_BASE_URL ?? "https://vibe-to-code-git-stg-lior-goldembergs-projects.vercel.app",
     channel: "chrome",
-    headless: !process.env.HEADED,
     // the office network resolves googleapis to a private IP, so Chrome's Local Network Access
     // check blocks Firebase sign-up from a fresh profile
     launchOptions: { args: ["--disable-features=LocalNetworkAccessChecks,BlockInsecurePrivateNetworkRequests"] },
