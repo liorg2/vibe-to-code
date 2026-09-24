@@ -39,6 +39,24 @@ test("login refuses an off-site redirect, a wrong password and a duplicate sign-
   await expect(page.locator(".login-error")).toHaveText("That email already has an account — sign in instead.");
 });
 
+test("a new account gets the welcome email, and Resend delivers it", async ({ page }) => {
+  // a full-access key: stg's sending-only key can't list emails
+  const key = process.env.RESEND_API_KEY;
+  expect(key, "set RESEND_API_KEY (full access) in .env.e2e").toBeTruthy();
+  await passVercelGate(page);
+  const { email } = await register(page);
+
+  type Sent = { to: string[]; subject: string; last_event: string };
+  await expect
+    .poll(async () => {
+      const res = await fetch("https://api.resend.com/emails", { headers: { Authorization: `Bearer ${key}` } });
+      const { data } = (await res.json()) as { data: Sent[] };
+      const mail = data.find((m) => m.to.includes(email));
+      return mail && `${mail.subject} · ${mail.last_event}`;
+    }, { message: "no welcome email: are RESEND_API_KEY and EMAIL_FROM set on Preview?", timeout: 60_000 })
+    .toBe("Welcome to Vibe → Code · delivered");
+});
+
 test("the billing API turns away a visitor with no session", async ({ page }) => {
   await passVercelGate(page);
   for (const path of ["/api/billing/checkout", "/api/billing/upgrade"]) {
