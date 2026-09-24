@@ -75,8 +75,11 @@ export async function claimTransaction(txn: string, uid: string): Promise<Course
   if (!res.ok) return null;
   const { data } = (await res.json()) as { data?: Txn };
   const course = asTier(data?.custom_data?.tier);
-  // paid by someone else, or not paid yet — either way this account bought nothing
-  if (!course || data?.status !== "completed" || data?.custom_data?.uid !== uid) return null;
+  // paid by someone else, or not paid yet — either way this account bought nothing.
+  // `paid` counts: money is captured, and Paddle.js fires checkout.completed seconds before
+  // the status flips to `completed`, so the return page would otherwise always lose the race.
+  const captured = data?.status === "paid" || data?.status === "completed";
+  if (!course || !captured || data?.custom_data?.uid !== uid) return null;
   await grantCourse(uid, course, txn);
   return course;
 }

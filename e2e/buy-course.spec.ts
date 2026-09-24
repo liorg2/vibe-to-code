@@ -36,24 +36,20 @@ test("a new user registers and buys the Basic course with the sandbox card", asy
   await expect(buy, "no Buy button: is BILLING_ENABLED=1 on Preview?").toBeEnabled();
   await buy.click();
 
-  // Paddle checkout: overlay iframe on our page, or a redirect to Paddle's hosted page
-  await page.waitForLoadState("domcontentloaded");
-  const paddle = page.frameLocator("iframe[name*=paddle], iframe.paddle-frame, iframe[src*=paddle]").first();
-  const scope = page.url().includes("paddle.com") ? page.locator("body") : paddle.locator("body");
+  // Paddle redirects to our default payment link (?_ptxn=…) and Paddle.js opens its overlay there
+  await page.waitForURL((u) => u.searchParams.has("_ptxn"));
+  const paddle = page.frameLocator("iframe[name=paddle_frame]");
+  await expect(paddle.getByText("Test Mode"), "live checkout: stg must be on the Paddle sandbox").toBeVisible();
 
-  const emailBox = scope.getByLabel(/email/i).first();
-  if (await emailBox.isVisible({ timeout: 30_000 }).catch(() => false)) {
-    await emailBox.fill(email);
-    const postcode = scope.getByLabel(/zip|postcode|postal/i).first();
-    if (await postcode.isVisible().catch(() => false)) await postcode.fill("10001");
-    await scope.getByRole("button", { name: /continue/i }).first().click();
-  }
+  await paddle.getByTestId("authenticationEmailInput").fill(email);
+  await paddle.getByTestId("countriesSelect").selectOption("IL");
+  await paddle.getByTestId("combinedAuthenticationLocationFormSubmitButton").click();
 
-  await scope.getByLabel(/card number/i).first().fill(CARD.number);
-  await scope.getByLabel(/name on card|cardholder/i).first().fill(CARD.name);
-  await scope.getByLabel(/expir/i).first().fill(CARD.expiry);
-  await scope.getByLabel(/security code|cvv|cvc/i).first().fill(CARD.cvc);
-  await scope.getByRole("button", { name: /pay|subscribe|buy/i }).first().click();
+  await paddle.getByTestId("cardNumberInput").fill(CARD.number);
+  await paddle.getByTestId("cardholderNameInput").fill(CARD.name);
+  await paddle.getByTestId("expiryDateField").fill(CARD.expiry);
+  await paddle.getByTestId("cardVerificationValueInput").fill(CARD.cvc);
+  await paddle.getByTestId("cardPaymentFormSubmitButton").click();
 
   // back on our return URL; the page asks Paddle about the txn itself, so no webhook is needed
   await page.waitForURL((u) => u.pathname.endsWith("/courses") && u.searchParams.has("paid"), { timeout: 90_000 });
