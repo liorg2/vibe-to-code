@@ -38,7 +38,11 @@ export function LessonCards({ ids, locked, courseId }: { ids: string[]; locked: 
                 </div>
               </div>
               <p>{m.blurb[lang]}</p>
-              {!gated && (
+              {gated ? (
+                <ul className="topics-preview">
+                  {m.terms.filter((tm) => tm.lvl !== "E").map((tm) => <li key={tm.k}>{tm.t[lang]}</li>)}
+                </ul>
+              ) : (
                 <>
                   <Progress value={(d / m.terms.length) * 100} className={cn(miniBar)} />
                   <span className="cnt">{d}/{m.terms.length} {t("terms")}</span>

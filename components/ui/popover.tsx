@@ -15,7 +15,7 @@ function PopoverContent({
   Pick<React.ComponentProps<typeof PopoverPrimitive.Positioner>, "align" | "sideOffset">) {
   return (
     <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Positioner align={align} sideOffset={sideOffset}>
+      <PopoverPrimitive.Positioner align={align} sideOffset={sideOffset} className="z-[60]">
         <PopoverPrimitive.Popup
           data-slot="popover-content"
           className={cn(

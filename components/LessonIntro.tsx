@@ -3,7 +3,7 @@ import { LessonSubNav } from "./LessonSubNav";
 import { Breadcrumb, lessonMenu } from "./Breadcrumb";
 import { UI, lessonNo, neighbors, pathForModule } from "@/lib/course";
 import { ownsModule } from "@/lib/entitlement";
-import { para } from "@/lib/utils";
+import { cn, para } from "@/lib/utils";
 import type { Lang, Module } from "@/lib/types";
 
 /**
@@ -55,19 +55,22 @@ export async function LessonIntro({
           {t("lesson")} {lessonNo(m.id)} · {t(kind)}
         </div>
         <h2>{m.title[lang]}</h2>
-        <div className="lede">{m.blurb[lang]}</div>
+        <div className="lede">
+          {m.blurb[lang]} · {m.terms.length} {t("terms")}
+        </div>
         <div className="plain">
           {para(m[kind][lang]).map((p, idx) => <p key={idx}>{p}</p>)}
           <h3>{t(kind === "overview" ? "inLesson" : "recap")}</h3>
         </div>
         <ol className="ov-list">
           {m.terms.map((tm, j) => (
-            <li key={tm.k}>
+            <li key={tm.k} className={cn(!owns && "locked")}>
               <span className="n">{j + 1}</span>
               <div>
                 <b>{tm.t[lang]}</b>
                 {tm.lvl === "E" ? <span className="xbadge ms-2">{t("expert")}</span> : null}
-                {owns ? <p>{tm.d[lang]}</p> : <p className="lock">🔒 {t("locked")}</p>}
+                {!owns ? <span className="lockglyph" aria-hidden>🔒</span> : null}
+                <p>{tm.d[lang]}</p>
               </div>
             </li>
           ))}

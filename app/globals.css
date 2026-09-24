@@ -608,6 +608,8 @@ pre.code{max-width:100%}
 .course .mini{height:5px;border-radius:99px;background:var(--line);overflow:hidden}
 .course .mini i{display:block;height:100%;background:var(--grad);transition:width .4s}
 .course .cnt{font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-xs);color:var(--tx3);margin-top:5px;display:block}
+.mcard .topics-preview{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 0;padding:0;list-style:none}
+.mcard .topics-preview li{padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--tx3);font-size:var(--fs-2xs);white-space:nowrap}
 .course .price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:auto;
   padding-top:12px;border-top:1px solid var(--line)}
 .course .price b{font-size:var(--fs-2xl);font-weight:700;letter-spacing:-.02em}
@@ -628,6 +630,9 @@ pre.code{max-width:100%}
 .ov-list li b{color:var(--tx);font-weight:700}
 .ov-list li p{color:var(--tx2);font-size:var(--fs-sm);margin:2px 0 0}
 .ov-list li p.lock{color:var(--tx3);font-size:var(--fs-xs)}
+.ov-list li.locked b{color:var(--tx2)}
+.ov-list li.locked p{color:var(--tx3)}
+.ov-list li .lockglyph{margin-inline-start:6px;font-size:var(--fs-xs);color:var(--tx3)}
 
 @theme inline {
   --font-heading:var(--font-sans);

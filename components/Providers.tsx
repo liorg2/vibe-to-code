@@ -150,9 +150,13 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     if (!firebaseReady) return;
     const auth = getClientAuth();
     return onAuthStateChanged(auth, (u) => {
+      const wasSignedIn = uidRef.current !== null;
       setUser(u);
       uidRef.current = u?.uid ?? null;
       if (u) void syncCloud();
+      // ponytail: uidRef is already null here, so resetProgress's persist() skips the POST —
+      // it only clears local state/storage, never wipes the account's server copy.
+      else if (wasSignedIn) resetProgress();
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 

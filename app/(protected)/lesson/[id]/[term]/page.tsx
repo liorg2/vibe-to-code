@@ -42,27 +42,32 @@ export default async function SlidePage({
   const m = getModule(id);
   const mi = moduleIndex(id);
   if (!m || mi < 0) notFound();
-  // the two bookends share this route so the lesson's sub-nav reads as one sequence
-  if (termStr === "overview" || termStr === "summary") {
-    return (
-      <AppShell>
-        <LessonIntro m={m} mi={mi} kind={termStr} lang={lang} course={course} />
-      </AppShell>
-    );
-  }
-  const i = Number(termStr);
-  if (!Number.isInteger(i) || i < 0 || i >= m.terms.length) notFound();
+  const isBookend = termStr === "overview" || termStr === "summary";
+  const i = isBookend ? -1 : Number(termStr);
+  if (!isBookend && (!Number.isInteger(i) || i < 0 || i >= m.terms.length)) notFound();
 
-  const tm = m.terms[i];
-  // the URL is the whole attack surface here — own the module, own every term in it
+  // the URL is the whole attack surface here — own the module, own every term in it.
+  // Unowned: every route in the lesson (overview/summary/any term) shows the same
+  // locked overview + upsell, one code path regardless of which URL got them here.
   if (!(await ownsModule(m.id))) {
     return (
       <AppShell>
-        <Upsell title={tm.t[lang]} />
+        <LessonIntro m={m} mi={mi} kind={termStr === "summary" ? "summary" : "overview"} lang={lang} course={course} />
+        <Upsell title={m.title[lang]} />
       </AppShell>
     );
   }
 
+  // the two bookends share this route so the lesson's sub-nav reads as one sequence
+  if (isBookend) {
+    return (
+      <AppShell>
+        <LessonIntro m={m} mi={mi} kind={termStr as "overview" | "summary"} lang={lang} course={course} />
+      </AppShell>
+    );
+  }
+
+  const tm = m.terms[i];
   const simple = SIMPLE[tm.t.en];
   const det = DETAIL[tm.t.en];
   const short = TLDR[tm.t.en];
