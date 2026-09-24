@@ -17,8 +17,8 @@ export const INTRO = {
     reading: { en: "of reading and building, about 45 minutes per build step. Faster or slower with your agent's pace", he: "של קריאה ובנייה, בערך 45 דקות לכל שלב בנייה. מהר יותר או לאט יותר לפי הקצב של הסוכן שלכם" },
   },
   app: {
-    en: "Pocket CRM: a small contact manager for a freelancer, with contacts, notes and follow-up reminders. It is small enough to understand end to end, and real enough to run into every problem a real app runs into. You start from an empty folder. Every lesson adds one step to the same app, so by the end you have built it, tested it and shipped it yourself.",
-    he: "Pocket CRM: מנהל אנשי קשר קטן לפרילנסרים, עם אנשי קשר, הערות ותזכורות למעקב. הוא קטן מספיק כדי להבין אותו מקצה לקצה, ואמיתי מספיק כדי להיתקל בכל בעיה שאפליקציה אמיתית נתקלת בה. מתחילים מתיקייה ריקה. כל שיעור מוסיף שלב אחד לאותה אפליקציה, כך שבסוף אתם בניתם אותה, בדקתם אותה ושחררתם אותה בעצמכם.",
+    en: "Pocket CRM: a small contact manager for a freelancer, with contacts, notes and follow-up reminders. It is small enough to understand end to end, while introducing some of the challenges real apps face. You start from an empty folder. Each lesson adds a feature to the same app, so by the end you have built it, tested it and shipped it yourself.",
+    he: "Pocket CRM: מנהל אנשי קשר קטן לפרילנסרים, עם אנשי קשר, הערות ותזכורות למעקב. הוא קטן מספיק כדי להבין אותו מקצה לקצה, ובמהלך הבנייה תפגשו כמה מהאתגרים שאפליקציות אמיתיות מציבות. מתחילים מתיקייה ריקה. כל שיעור מוסיף פיצ'ר לאותה אפליקציה, כך שבסוף בניתם אותה, בדקתם אותה והעליתם אותה לאוויר בעצמכם.",
   },
   end: {
     basic: {
@@ -35,8 +35,8 @@ export const INTRO = {
       icon: "🧠",
       t: { en: "No coding background", he: "בלי רקע בתכנות" },
       d: {
-        en: "If you can copy, paste, and read an error message out loud, you are ready. You never type code; you read what the AI wrote and check it works.",
-        he: "אם אתם יודעים להעתיק, להדביק ולקרוא הודעת שגיאה בקול, אתם מוכנים. אתם לא מקלידים קוד, אלא קוראים מה ה-AI כתב ובודקים שזה עובד.",
+        en: "No coding experience is needed. You will install a few tools, copy prompts and commands, read the AI's changes and error messages, and check that the app works.",
+        he: "אין צורך בניסיון קודם בתכנות. תתקינו כמה כלים, תעתיקו פרומפטים ופקודות, תקראו את השינויים שה-AI יצר ואת הודעות השגיאה, ותבדקו שהאפליקציה עובדת.",
       },
     },
     {
@@ -65,14 +65,14 @@ export const INTRO = {
     },
   ] as Item[],
   accounts: {
-    t: { en: "Free accounts, when a step asks", he: "חשבונות חינמיים, כשהשלב מבקש" },
+    t: { en: "Accounts you'll need, when a step asks", he: "חשבונות שתצטרכו, לפי שלבי הקורס" },
     basic: {
-      en: "GitHub and Vercel in step 2, Neon in step 7. All have a free tier; you open each one when you get there.",
-      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7. לכולם יש מסלול חינמי, ופותחים כל אחד כשמגיעים אליו.",
+      en: "GitHub and Vercel in step 2, Neon in step 7. Plans can change, so check each service's current pricing when you create an account.",
+      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7. התוכניות והמחירים עשויים להשתנות, לכן בדקו את המחיר העדכני של כל שירות בעת פתיחת החשבון.",
     },
     advanced: {
-      en: "GitHub and Vercel in step 2, Neon in step 7, Resend in step 11, a payment provider's sandbox (Stripe test mode or Paddle) in step 15, Sentry in step 19: all have a free tier. In step 22, an AI provider key (Anthropic or OpenAI): pay per use, a few cents for the whole step, so set a spending limit first. You open each one when you get there.",
-      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7, Resend בשלב 11, sandbox של ספק תשלומים (Stripe במצב בדיקה או Paddle) בשלב 15, Sentry בשלב 19: לכולם יש מסלול חינמי. בשלב 22, מפתח של ספק AI (Anthropic או OpenAI): משלמים לפי שימוש, כמה סנטים לכל השלב, אז הגדירו קודם מגבלת הוצאה. פותחים כל אחד כשמגיעים אליו.",
+      en: "GitHub and Vercel in step 2, Neon in step 7, Resend in step 11, a payment provider's sandbox (Stripe test mode or Paddle) in step 15, and Sentry in step 19. Check current pricing and limits when you sign up; plans can change. Step 22 uses an AI provider key (Anthropic or OpenAI) and is billed by usage. Set a spending limit first, then check the provider's current rates. You create each account when you reach that step.",
+      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7, Resend בשלב 11, סביבת הבדיקות של ספק תשלומים (Stripe במצב בדיקה או Paddle) בשלב 15, ו-Sentry בשלב 19. בדקו את המחירים והמגבלות העדכניים בעת ההרשמה, כי התוכניות עשויות להשתנות. שלב 22 משתמש במפתח של ספק AI (Anthropic או OpenAI) ומחויב לפי שימוש. הגדירו מגבלת הוצאה ובדקו את התעריפים העדכניים של הספק. פותחים כל חשבון כשמגיעים לשלב שלו.",
     },
   },
   flow: [
