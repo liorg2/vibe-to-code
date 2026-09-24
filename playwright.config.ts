@@ -4,10 +4,14 @@ import { defineConfig } from "@playwright/test";
 // VERCEL_AUTOMATION_BYPASS_SECRET, and FIREBASE_SERVICE_ACCOUNT_JSON for cleanup — git-ignored via .env*
 if (existsSync(".env.e2e")) process.loadEnvFile(".env.e2e");
 
+// Pause before every browser action so a person can follow along. E2E_STEP_MS=0 runs at full speed.
+const stepMs = Number(process.env.E2E_STEP_MS ?? 5000);
+
 // ponytail: one project, the installed Chrome — no browser download, and stg is the only target
 export default defineConfig({
   testDir: "e2e",
-  timeout: 180_000, // Paddle's checkout iframe is slow to boot
+  // Paddle's checkout iframe is slow to boot; paused runs get no limit, a step count is not fixed
+  timeout: stepMs ? 0 : 180_000,
   expect: { timeout: 30_000 },
   retries: 0,
   reporter: [["list"], ["html", { open: "never" }]],
@@ -16,7 +20,10 @@ export default defineConfig({
     channel: "chrome",
     // the office network resolves googleapis to a private IP, so Chrome's Local Network Access
     // check blocks Firebase sign-up from a fresh profile
-    launchOptions: { args: ["--disable-features=LocalNetworkAccessChecks,BlockInsecurePrivateNetworkRequests"] },
+    launchOptions: {
+      args: ["--disable-features=LocalNetworkAccessChecks,BlockInsecurePrivateNetworkRequests"],
+      slowMo: stepMs,
+    },
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
