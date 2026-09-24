@@ -42,7 +42,8 @@ export async function createCheckout(
       // but what it holds is a course id.
       custom_data: { uid, tier: course },
       // ponytail: no checkout.url — Paddle rejects any domain it hasn't approved, so each account's
-      // default payment link (sandbox → stg, live → vibetodev.com, both /en/courses) is used.
+      // default payment link is used: sandbox → stg, live → vibetodev.com, both at `/courses` with no
+      // locale, so the middleware sends each buyer back in their own language.
       // Paddle appends `?_ptxn=txn_…`; PaddleCheckout opens the overlay and adds `paid=1` once paid.
     }),
   });

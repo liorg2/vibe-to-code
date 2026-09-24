@@ -10,6 +10,8 @@ const paused = Number(process.env.E2E_STEP_MS ?? 3000) > 0 || Number(process.env
 // ponytail: one project, the installed Chrome — no browser download, and stg is the only target
 export default defineConfig({
   testDir: "e2e",
+  // prod.spec.ts touches the live site and live Paddle — only when asked for by name
+  testIgnore: process.env.E2E_PROD ? [] : ["prod.spec.ts"],
   // Paddle's checkout iframe is slow to boot; paused runs get no limit, a step count is not fixed
   timeout: paused ? 0 : 180_000,
   expect: { timeout: 30_000 },
