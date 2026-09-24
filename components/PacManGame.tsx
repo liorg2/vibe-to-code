@@ -29,14 +29,16 @@ function spotsFor(root: HTMLElement): Spot[] {
   if (!board) return [];
   const b = root.getBoundingClientRect();
   const cards = [...board.querySelectorAll<HTMLElement>(".course")];
+  // ponytail: words must not sit on copy either; hero text and section headings are the visible ones
+  const avoid = [...cards, ...document.querySelectorAll<HTMLElement>(".hero h1, .hero p, .hero .pill, .hero .cta, main h2, main h3, main > p")];
   const raw: Spot[] = [];
   const push = (x: number, y: number) => {
     if (x < 0 || y < 0 || x > b.width - 70 || y > b.height - 14) return;
-    for (const c of cards) {
+    for (const c of avoid) {
       const r = c.getBoundingClientRect();
       const left = r.left - b.left;
       const top = r.top - b.top;
-      if (x > left + 6 && x < left + r.width - 64 && y > top + 4 && y < top + r.height - 10) return;
+      if (x > left - 60 && x < left + r.width + 6 && y > top - 14 && y < top + r.height + 4) return;
     }
     raw.push({ x, y });
   };
