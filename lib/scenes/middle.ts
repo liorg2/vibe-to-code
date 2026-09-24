@@ -3,12 +3,12 @@ import type { Scene } from "./types";
 const browser = { id: "b", icon: "🧑‍💻", label: { en: "Browser", he: "דפדפן" } };
 const server = { id: "s", icon: "🖥️", label: { en: "Server", he: "שרת" } };
 const db = { id: "d", icon: "🗄️", label: { en: "Database", he: "מסד נתונים" } };
-const cache = { id: "c", icon: "⚡", label: { en: "Cache", he: "קאש" } };
+const cache = { id: "c", icon: "⚡", label: { en: "Cache", he: "Cache" } };
 const queue = { id: "q", icon: "📥", label: { en: "Queue", he: "תור" } };
 const worker = { id: "w", icon: "⚙️", label: { en: "Worker", he: "וורקר" } };
 const emailApi = { id: "p", icon: "✉️", label: { en: "Email service", he: "שירות המיילים" } };
 const laptop = { id: "l", icon: "💻", label: { en: "Laptop", he: "לפטופ" } };
-const prod = { id: "o", icon: "☁️", label: { en: "Production", he: "פרודקשן" } };
+const prod = { id: "o", icon: "☁️", label: { en: "Production", he: "Production" } };
 const inbox = { id: "i", icon: "📬", label: { en: "Inboxes", he: "תיבות דואר" } };
 
 export const MIDDLE_SCENES: Record<string, Scene> = {
@@ -109,7 +109,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       },
       {
         from: "s", to: "s", label: "💥 deploy restarts the server", tone: "err",
-        say: { en: "A deploy restarts the server before step two, deleting copy 7. This really happens, at times you don't choose.", he: "דיפלוי מפעיל מחדש את השרת לפני הצעד השני, מחיקת עותק 7. זה באמת קורה, בזמנים שאתם לא בוחרים." },
+        say: { en: "A deploy restarts the server before step two, deleting copy 7. This really happens, at times you don't choose.", he: "deploy מפעיל מחדש את השרת לפני הצעד השני, מחיקת עותק 7. זה באמת קורה, בזמנים שאתם לא בוחרים." },
       },
       {
         from: "b", to: "s", label: "GET /contacts?q=dana",
@@ -140,7 +140,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       },
       {
         from: "s", to: "b", label: "200 OK · 1 Dana, 3 notes", status: 200,
-        say: { en: "One Dana, three notes. Ask your AI: which saves in this feature must never stop half-way?", he: "דנה אחת, שלוש הערות. שאלו את ה-AI: אילו שמירות בפיצ'ר הזה אסור שייעצרו באמצע?" },
+        say: { en: "One Dana, three notes. Ask your AI: which saves in this feature must never stop half-way?", he: "דנה אחת, שלוש הערות. שאלו את ה-AI: אילו שמירות ב-feature הזה אסור שייעצרו באמצע?" },
       },
     ],
   },
@@ -151,7 +151,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       laptop,
       { id: "r", icon: "📁", label: { en: "Repo", he: "ריפו" } },
       prod,
-      { id: "d", icon: "🗄️", label: { en: "Production database", he: "מסד הנתונים בפרודקשן" } },
+      { id: "d", icon: "🗄️", label: { en: "Production database", he: "מסד הנתונים ב-production" } },
     ],
     beats: [
       {
@@ -164,15 +164,15 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       },
       {
         from: "r", to: "o", label: "deploy main",
-        say: { en: "Vercel deploys main to production.", he: "Vercel עושה דיפלוי של main לפרודקשן." },
+        say: { en: "Vercel deploys main to production.", he: "Vercel עושה deploy של main ל-production." },
       },
       {
         from: "o", to: "d", label: "read follow-up dates",
-        say: { en: "Production asks its database for the new field.", he: "הפרודקשן מבקש ממסד הנתונים שלו את השדה החדש." },
+        say: { en: "Production asks its database for the new field.", he: "ה-production מבקש ממסד הנתונים שלו את השדה החדש." },
       },
       {
         from: "d", to: "o", label: "error: no such field", tone: "err",
-        say: { en: "Production's database never got the change. Every contacts page now shows an error (500).", he: "מסד הנתונים בפרודקשן אף פעם לא קיבל את השינוי. כל עמוד של אנשי קשר מציג עכשיו שגיאה (500)." },
+        say: { en: "Production's database never got the change. Every contacts page now shows an error (500).", he: "מסד הנתונים ב-production אף פעם לא קיבל את השינוי. כל עמוד של אנשי קשר מציג עכשיו שגיאה (500)." },
       },
       {
         from: "l", to: "r", label: "migration file #8",
@@ -182,17 +182,17 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       {
         from: "r", to: "d", label: "run new migrations",
         body: ["#1–#7  already done · skip", "#8     apply ✓"],
-        say: { en: "On every deploy, the recipes run in order. The database remembers which ran, so each runs exactly once.", he: "בכל דיפלוי המתכונים רצים לפי הסדר. מסד הנתונים זוכר אילו כבר רצו, אז כל אחד רץ פעם אחת בדיוק." },
+        say: { en: "On every deploy, the recipes run in order. The database remembers which ran, so each runs exactly once.", he: "בכל deploy המתכונים רצים לפי הסדר. מסד הנתונים זוכר אילו כבר רצו, אז כל אחד רץ פעם אחת בדיוק." },
       },
       {
         from: "d", to: "o", label: "20 contacts · with follow-up", tone: "ok",
-        say: { en: "Laptop, staging and production now match. The next change is a new file #9, never an edit to #8.", he: "הלפטופ, הסטייג'ינג והפרודקשן עכשיו זהים. השינוי הבא הוא קובץ חדש, #9, אף פעם לא עריכה של #8." },
+        say: { en: "Laptop, staging and production now match. The next change is a new file #9, never an edit to #8.", he: "הלפטופ, ה-staging וה-production עכשיו זהים. השינוי הבא הוא קובץ חדש, #9, אף פעם לא עריכה של #8." },
       },
     ],
   },
 
   "background-job": {
-    cap: { en: "Noa imports 5,000 contacts. A deploy mid-import should delay the work, not lose it", he: "נועה מייבאת 5,000 אנשי קשר. דיפלוי באמצע צריך לעכב את העבודה, לא לאבד אותה" },
+    cap: { en: "Noa imports 5,000 contacts. A deploy mid-import should delay the work, not lose it", he: "נועה מייבאת 5,000 אנשי קשר. deploy באמצע צריך לעכב את העבודה, לא לאבד אותה" },
     actors: [browser, server, queue, worker],
     beats: [
       {
@@ -205,7 +205,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       },
       {
         from: "s", to: "s", label: "💥 deploy restarts · row 1,840", tone: "err",
-        say: { en: "A deploy restarts the server mid-import. The work lived only in memory, so it's gone. No error, no trace.", he: "דיפלוי מפעיל מחדש את השרת באמצע הייבוא. העבודה הייתה רק בזיכרון, אז היא נעלמה. בלי שגיאה, בלי עקבות." },
+        say: { en: "A deploy restarts the server mid-import. The work lived only in memory, so it's gone. No error, no trace.", he: "deploy מפעיל מחדש את השרת באמצע הייבוא. העבודה הייתה רק בזיכרון, אז היא נעלמה. בלי שגיאה, בלי עקבות." },
       },
       {
         from: "s", to: "q", label: "add to queue: import #31", body: ["task: import file f_91", "for: Noa"],
@@ -221,7 +221,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       },
       {
         from: "w", to: "w", label: "💥 worker restarts · row 1,840", tone: "err",
-        say: { en: "Another deploy stops the worker mid-job. This time the job is still written down in the queue.", he: "דיפלוי נוסף עוצר את הוורקר באמצע. הפעם העבודה עדיין רשומה בתור." },
+        say: { en: "Another deploy stops the worker mid-job. This time the job is still written down in the queue.", he: "deploy נוסף עוצר את הוורקר באמצע. הפעם העבודה עדיין רשומה בתור." },
       },
       {
         from: "q", to: "w", label: "no 'done' → job #31 again", tone: "warn",
@@ -414,12 +414,12 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
   },
 
   "hit-miss": {
-    cap: { en: "Omer's dashboard checks the cache first. A badly named entry means it never finds anything", he: "הדשבורד של עומר בודק קודם בקאש. שם גרוע לרשומה אומר שהוא אף פעם לא מוצא כלום" },
+    cap: { en: "Omer's dashboard checks the cache first. A badly named entry means it never finds anything", he: "הדשבורד של עומר בודק קודם ב-cache. שם גרוע לרשומה אומר שהוא אף פעם לא מוצא כלום" },
     actors: [server, cache, db],
     beats: [
       {
         from: "s", to: "c", label: "find 'Omer counts 10:07:14'",
-        say: { en: "The dashboard asks the cache, a quick-access memory, for Omer's counts. Someone put the current time in the name 'to keep it fresh'.", he: "הדשבורד מבקש מהקאש, זיכרון לגישה מהירה, את הספירות של עומר. מישהו הכניס את השעה הנוכחית לשם 'כדי שיהיה טרי'." },
+        say: { en: "The dashboard asks the cache, a quick-access memory, for Omer's counts. Someone put the current time in the name 'to keep it fresh'.", he: "הדשבורד מבקש מה-cache, זיכרון לגישה מהירה, את הספירות של עומר. מישהו הכניס את השעה הנוכחית לשם 'כדי שיהיה טרי'." },
       },
       {
         from: "c", to: "s", label: "MISS", tone: "warn",
@@ -447,7 +447,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       },
       {
         from: "s", to: "s", label: "found 4% → 91% of the time", tone: "ok",
-        say: { en: "Measure it: a broken cache and a working one look the same in code. And keep Omer in the name, or he'd see Noa's numbers.", he: "מודדים: קאש שבור וקאש שעובד נראים אותו דבר בקוד. והשם של עומר נשאר בפנים, אחרת הוא יראה את המספרים של נועה." },
+        say: { en: "Measure it: a broken cache and a working one look the same in code. And keep Omer in the name, or he'd see Noa's numbers.", he: "מודדים: cache שבור ו-cache שעובד נראים אותו דבר בקוד. והשם של עומר נשאר בפנים, אחרת הוא יראה את המספרים של נועה." },
       },
     ],
   },
@@ -493,9 +493,9 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
   },
 
   "browser-cache": {
-    cap: { en: "You shipped the fix. Dana's browser is still running yesterday's copy", he: "עשיתם דיפלוי לתיקון. הדפדפן של דנה עדיין מריץ את העותק של אתמול" },
+    cap: { en: "You shipped the fix. Dana's browser is still running yesterday's copy", he: "עשיתם deploy לתיקון. הדפדפן של דנה עדיין מריץ את העותק של אתמול" },
     actors: [
-      { id: "k", icon: "💾", label: { en: "Browser cache", he: "קאש הדפדפן" } },
+      { id: "k", icon: "💾", label: { en: "Browser cache", he: "ה-cache של הדפדפן" } },
       browser,
       server,
     ],
@@ -511,7 +511,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       },
       {
         from: "s", to: "s", label: "deploy · fix in app.js", tone: "ok",
-        say: { en: "You fix a bug in app.js and deploy. After a hard refresh, it looks fine on your computer.", he: "אתם מתקנים באג ב-app.js ועושים דיפלוי. אצלכם, אחרי hard refresh, הכול נראה תקין." },
+        say: { en: "You fix a bug in app.js and deploy. After a hard refresh, it looks fine on your computer.", he: "אתם מתקנים באג ב-app.js ועושים deploy. אצלכם, אחרי hard refresh, הכול נראה תקין." },
       },
       {
         from: "b", to: "k", label: "GET /contacts · saved copy", tone: "warn",
@@ -733,7 +733,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       {
         from: "l", to: "p", label: "POST /emails",
         body: ["key: test_4f…", "to: dana@acme.io"],
-        say: { en: "On Omer's laptop, reminders use the test key. Same code, same address as production.", he: "בלפטופ של עומר, התזכורות משתמשות במפתח הבדיקות. אותו קוד, אותה כתובת כמו בפרודקשן." },
+        say: { en: "On Omer's laptop, reminders use the test key. Same code, same address as production.", he: "בלפטופ של עומר, התזכורות משתמשות במפתח הבדיקות. אותו קוד, אותה כתובת כמו ב-production." },
       },
       {
         from: "p", to: "l", label: "200 OK · test mode", status: 200, body: ["accepted · not delivered"],
@@ -755,11 +755,11 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       {
         from: "o", to: "p", label: "POST /emails",
         body: ["key: live_9a…", "(from production's secrets)"],
-        say: { en: "The fix is where the key lives: the live key exists only in production's secret settings. Laptops and the repo only have the test key.", he: "התיקון הוא איפה המפתח נמצא: המפתח החי קיים רק בהגדרות הסודיות של הפרודקשן. בלפטופים ובריפו יש רק את מפתח הבדיקות." },
+        say: { en: "The fix is where the key lives: the live key exists only in production's secret settings. Laptops and the repo only have the test key.", he: "התיקון הוא איפה המפתח נמצא: המפתח החי קיים רק בהגדרות הסודיות של ה-production. בלפטופים ובריפו יש רק את מפתח הבדיקות." },
       },
       {
         from: "p", to: "i", label: "deliver · 1 reminder to Dana", tone: "ok",
-        say: { en: "In production, Dana gets her one real reminder.", he: "בפרודקשן, דנה מקבלת את התזכורת האמיתית האחת שלה." },
+        say: { en: "In production, Dana gets her one real reminder.", he: "ב-production, דנה מקבלת את התזכורת האמיתית האחת שלה." },
       },
       {
         from: "l", to: "l", label: "search: no live key found", tone: "ok",

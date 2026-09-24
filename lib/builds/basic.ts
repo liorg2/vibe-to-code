@@ -56,7 +56,7 @@ Report back in plain words: a short list of what you checked, each marked pass o
     title: { en: "Git, GitHub and a live URL", he: "Git, GitHub וכתובת חיה באוויר" },
     goal: {
       en: "The project's full history is saved on GitHub, and Vercel shows it at a public web address, with a separate preview address for every branch.",
-      he: "כל ההיסטוריה של הפרויקט שמורה ב-GitHub, ו-Vercel מציג אותו בכתובת אינטרנט ציבורית, עם כתובת preview נפרדת לכל ברנץ'.",
+      he: "כל ההיסטוריה של הפרויקט שמורה ב-GitHub, ו-Vercel מציג אותו בכתובת אינטרנט ציבורית, עם כתובת preview נפרדת לכל branch.",
     },
     why: {
       en: "Once every change is a commit you can read and undo, letting an AI edit thirty files stops being scary.",
@@ -274,7 +274,7 @@ If all is green: add the line "5 frontend: a contacts page that works by keyboar
     },
     why: {
       en: "From here on, every feature is a request and a response. Get the actions and status codes right now, and every future bug report gets short.",
-      he: "מכאן והלאה, כל פיצ'ר הוא בקשה ותשובה. אם הפעולות וקודי הסטטוס נכונים עכשיו, כל דיווח באג בעתיד יהיה קצר.",
+      he: "מכאן והלאה, כל feature הוא בקשה ותשובה. אם הפעולות וקודי הסטטוס נכונים עכשיו, כל דיווח באג בעתיד יהיה קצר.",
     },
     uses: ["request-response", "rest", "endpoint", "post-put-patch-delete", "status-codes", "json"],
     build: `Read AGENTS.md and STEPS.md first. This is step 6. Start a new branch for it.
@@ -317,10 +317,10 @@ If all is green: add the line "6 http: contacts behind a real API" to STEPS.md a
   },
 
   data: {
-    title: { en: "A real database — and it's live", he: "מסד נתונים אמיתי — והכול באוויר" },
+    title: { en: "A real database — and it's live", he: "מסד נתונים אמיתי, והכול באוויר" },
     goal: {
       en: "Contacts, companies and notes are saved in a real database, survive restarts and redeploys, and the live CRM reads and writes them.",
-      he: "אנשי קשר, חברות והערות נשמרים במסד נתונים אמיתי, שורדים הפעלה מחדש ודיפלוי, וה-CRM החי קורא וכותב אותם.",
+      he: "אנשי קשר, חברות והערות נשמרים במסד נתונים אמיתי, שורדים הפעלה מחדש ו-deploy, וה-CRM החי קורא וכותב אותם.",
     },
     why: {
       en: "Data has to live somewhere that survives a restart. A clear structure and saved migrations give you that without losing data or guessing.",
@@ -355,7 +355,7 @@ Close with a short "what I shipped" note: live address, tools, how many tests pa
     done: [
       {
         en: "I added a contact on the live site and it was still there after a redeploy",
-        he: "הוספתם איש קשר באתר החי והוא עדיין היה שם אחרי דיפלוי מחדש",
+        he: "הוספתם איש קשר באתר החי והוא עדיין היה שם אחרי deploy מחדש",
       },
       {
         en: "I saw the contacts, companies and notes in the Neon dashboard, not only in the AI's summary",

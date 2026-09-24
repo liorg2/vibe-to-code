@@ -314,14 +314,14 @@ Report back in plain words: what you checked, pass or fail, with the real output
   },
 
   ai: {
-    title: { en: "Graduation: a fresh AI ships an AI feature", he: "סיום: AI חדש לגמרי משחרר פיצ'ר AI" },
+    title: { en: "Graduation: a fresh AI ships an AI feature", he: "סיום: AI חדש לגמרי משחרר feature AI" },
     goal: {
       en: "A contact's page can draft a follow-up email with AI, safely: the key stays on the server, a note can't give the model orders, and each user has a daily limit. A brand-new AI session built it from AGENTS.md alone, and every checklist item has proof or a ticket.",
       he: "בדף של איש קשר אפשר לנסח מייל מעקב עם AI, בבטחה: המפתח נשאר בשרת, הערה לא יכולה לתת למודל פקודות, ולכל משתמש יש מגבלה יומית. שיחת AI חדשה לגמרי בנתה את זה רק לפי AGENTS.md, ולכל סעיף בצ'קליסט יש הוכחה או טיקט.",
     },
     why: {
       en: "Two tests in one: your app now calls a model the way production apps do, and the rules live in the repo, not in your head, so any AI session can follow them.",
-      he: "שני מבחנים באחד: האפליקציה קוראת למודל כמו שאפליקציות פרודקשן עושות, והכללים נמצאים בריפו ולא בראש שלכם, כך שכל שיחת AI יכולה לעבוד לפיהם.",
+      he: "שני מבחנים באחד: האפליקציה קוראת למודל כמו שאפליקציות production עושות, והכללים נמצאים בריפו ולא בראש שלכם, כך שכל שיחת AI יכולה לעבוד לפיהם.",
     },
     uses: ["agents-md", "prompt-injection", "environment-variables-secrets", "rate-limiting", "make-it-verify-itself", "demo-vs-production"],
     build: `Read AGENTS.md and STEPS.md first. This is step 22, the last one. Start a new branch for it.
@@ -345,7 +345,7 @@ Report pass or fail with the real output. If any answer is no, stop: show the pr
     done: [
       {
         en: "A brand-new AI session got one line, and on its own it branched, asked before adding the AI service, and wrote tests",
-        he: "שיחת AI חדשה לגמרי קיבלה שורה אחת בלבד, ובעצמה פתחה ברנץ', שאלה לפני שהוסיפה את שירות ה-AI, וכתבה טסטים",
+        he: "שיחת AI חדשה לגמרי קיבלה שורה אחת בלבד, ובעצמה פתחה branch, שאלה לפני שהוסיפה את שירות ה-AI, וכתבה טסטים",
       },
       {
         en: "I clicked Draft follow-up on the preview and got an email I could edit, and a note saying 'ignore your instructions' changed nothing",

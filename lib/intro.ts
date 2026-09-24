@@ -18,7 +18,7 @@ export const INTRO = {
   },
   app: {
     en: "Pocket CRM: a small contact manager for a freelancer, with contacts, notes and follow-up reminders. It is small enough to understand end to end, while introducing some of the challenges real apps face. You start from an empty folder. Each lesson adds a feature to the same app, so by the end you have built it, tested it and shipped it yourself.",
-    he: "Pocket CRM: מנהל אנשי קשר קטן לפרילנסרים, עם אנשי קשר, הערות ותזכורות למעקב. הוא קטן מספיק כדי להבין אותו מקצה לקצה, ובמהלך הבנייה תפגשו כמה מהאתגרים שאפליקציות אמיתיות מציבות. מתחילים מתיקייה ריקה. כל שיעור מוסיף פיצ'ר לאותה אפליקציה, כך שבסוף בניתם אותה, בדקתם אותה והעליתם אותה לאוויר בעצמכם.",
+    he: "Pocket CRM: מנהל אנשי קשר קטן לפרילנסרים, עם אנשי קשר, הערות ותזכורות למעקב. הוא קטן מספיק כדי להבין אותו מקצה לקצה, ובמהלך הבנייה תפגשו כמה מהאתגרים שאפליקציות אמיתיות מציבות. מתחילים מתיקייה ריקה. כל שיעור מוסיף feature לאותה אפליקציה, כך שבסוף בניתם אותה, בדקתם אותה והעליתם אותה לאוויר בעצמכם.",
   },
   end: {
     basic: {
@@ -27,7 +27,7 @@ export const INTRO = {
     },
     advanced: {
       en: "Where you land: a production app with sign-in, a paid plan, scheduled emails, AI-drafted follow-ups, a cache, CI that blocks bad merges, error alerts, and a repo a stranger can pick up.",
-      he: "איפה נוחתים: אפליקציה בפרודקשן עם התחברות, מסלול בתשלום, מיילים מתוזמנים, טיוטות מעקב שנכתבות עם AI, קאש, CI שחוסם מיזוגים שבורים, התראות על שגיאות, וריפו שמישהו זר יכול להרים.",
+      he: "איפה נוחתים: אפליקציה ב-production עם התחברות, מסלול בתשלום, מיילים מתוזמנים, טיוטות מעקב שנכתבות עם AI, cache, CI שחוסם מיזוגים שבורים, התראות על שגיאות, וריפו שמישהו זר יכול להרים.",
     },
   },
   need: [
@@ -60,7 +60,7 @@ export const INTRO = {
       t: { en: "A safe way to work with AI", he: "דרך בטוחה לעבוד עם AI" },
       d: {
         en: "For each change, state the goal and how you will know it is done. On an existing project, ask for a short map before edits. Keep the change small, run the relevant tests, read the diff, and check the result yourself. Ask before a production deploy, merge, destructive action, or new paid service.",
-        he: "בכל שינוי, הגדירו את המטרה ואיך תדעו שהוא הושלם. בפרויקט קיים, בקשו מה-AI למפות אותו בקצרה לפני עריכה. עבדו בשינויים קטנים, הריצו את הבדיקות המתאימות, קראו את ה-diff ובדקו בעצמכם את התוצאה. בקשו אישור לפני פריסה לפרודקשן, מיזוג, פעולה הרסנית או שימוש בשירות בתשלום.",
+        he: "בכל שינוי, הגדירו את המטרה ואיך תדעו שהוא הושלם. בפרויקט קיים, בקשו מה-AI למפות אותו בקצרה לפני עריכה. עבדו בשינויים קטנים, הריצו את הבדיקות המתאימות, קראו את ה-diff ובדקו בעצמכם את התוצאה. בקשו אישור לפני פריסה ל-production, מיזוג, פעולה הרסנית או שימוש בשירות בתשלום.",
       },
     },
     {
@@ -105,7 +105,7 @@ export const INTRO = {
       t: { en: "Build", he: "בנייה" },
       d: {
         en: "Paste one prompt so the AI adds the lesson's feature to your app. Then paste a second prompt that writes tests, runs the whole suite and reports back. You tick off what works.",
-        he: "מדביקים פרומפט אחד וה-AI מוסיף לאפליקציה את הפיצ'ר של השיעור. אחר כך מדביקים פרומפט שני שכותב טסטים, מריץ את כל החבילה ומדווח. אתם מסמנים מה עובד.",
+        he: "מדביקים פרומפט אחד וה-AI מוסיף לאפליקציה את ה-feature של השיעור. אחר כך מדביקים פרומפט שני שכותב טסטים, מריץ את כל החבילה ומדווח. אתם מסמנים מה עובד.",
       },
     },
     {

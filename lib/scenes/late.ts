@@ -17,12 +17,12 @@ const worker = { id: "w", icon: "⚙️", label: { en: "Background worker", he: 
 
 export const LATE_SCENES: Record<string, Scene> = {
   "preview-deployment": {
-    cap: { en: "Every branch gets its own test copy of the site. First make sure it isn't using the real data", he: "כל ברנץ' מקבל עותק ניסיון משלו של האתר. קודם תוודאו שהוא לא משתמש בנתונים האמיתיים" },
+    cap: { en: "Every branch gets its own test copy of the site. First make sure it isn't using the real data", he: "כל branch מקבל עותק ניסיון משלו של האתר. קודם תוודאו שהוא לא משתמש בנתונים האמיתיים" },
     actors: [you, github, vercel, db],
     beats: [
       {
         from: "you", to: "gh", label: "git push · step-17-deal-value",
-        say: { en: "Step 18 goes up on its own branch. The live site stays exactly as it is.", he: "שלב 18 עולה על ברנץ' משלו. האתר החי נשאר בדיוק כמו שהוא." },
+        say: { en: "Step 18 goes up on its own branch. The live site stays exactly as it is.", he: "שלב 18 עולה על branch משלו. האתר החי נשאר בדיוק כמו שהוא." },
       },
       {
         from: "gh", to: "v", label: "new push · step-17 branch",
@@ -49,7 +49,7 @@ export const LATE_SCENES: Record<string, Scene> = {
       },
       {
         from: "you", to: "v", label: "GET /contacts/42 (preview)",
-        say: { en: "Open the link before reading the code. Use the feature, on a phone-sized screen too.", he: "תפתחו את הקישור לפני שאתם קוראים את הקוד. תשתמשו בפיצ'ר, גם במסך בגודל של טלפון." },
+        say: { en: "Open the link before reading the code. Use the feature, on a phone-sized screen too.", he: "תפתחו את הקישור לפני שאתם קוראים את הקוד. תשתמשו ב-feature, גם במסך בגודל של טלפון." },
       },
       {
         from: "v", to: "you", label: "200 OK · Deal value field", status: 200,
@@ -65,7 +65,7 @@ export const LATE_SCENES: Record<string, Scene> = {
       {
         from: "v", to: "v", label: "10:00 · v2 is live",
         body: ["database change:", "rename \"value\" to \"deal_value\""],
-        say: { en: "Version 2 goes live and renames a field in the database in one go. The deploy works.", he: "גרסה 2 עולה ומשנה שם של שדה במסד הנתונים בבת אחת. הדיפלוי מצליח." },
+        say: { en: "Version 2 goes live and renames a field in the database in one go. The deploy works.", he: "גרסה 2 עולה ומשנה שם של שדה במסד הנתונים בבת אחת. ה-deploy מצליח." },
       },
       {
         from: "v", to: "you", label: "10:26 · wrong total on Pro plan", tone: "err",
@@ -98,7 +98,7 @@ export const LATE_SCENES: Record<string, Scene> = {
       },
       {
         from: "v", to: "you", label: "200 OK · v1 live", status: 200,
-        say: { en: "Now going back is safe. Before every deploy, ask: if we undo this in ten minutes, does the old version still work?", he: "עכשיו החזרה בטוחה. לפני כל דיפלוי תשאלו: אם נחזיר אחורה בעוד עשר דקות, הגרסה הישנה עדיין תעבוד?" },
+        say: { en: "Now going back is safe. Before every deploy, ask: if we undo this in ten minutes, does the old version still work?", he: "עכשיו החזרה בטוחה. לפני כל deploy תשאלו: אם נחזיר אחורה בעוד עשר דקות, הגרסה הישנה עדיין תעבוד?" },
       },
     ],
   },
@@ -512,7 +512,7 @@ export const LATE_SCENES: Record<string, Scene> = {
     cap: { en: "Deal value goes live hidden on Monday, and gets switched off in 40 seconds on Thursday", he: "שדה ה-Deal value עולה מוסתר ביום שני, ונכבה תוך 40 שניות ביום חמישי" },
     actors: [
       you,
-      { id: "f", icon: "🎚️", label: { en: "Feature switch", he: "מתג הפיצ'ר" } },
+      { id: "f", icon: "🎚️", label: { en: "Feature switch", he: "מתג ה-feature" } },
       app,
       users,
     ],
@@ -575,7 +575,7 @@ export const LATE_SCENES: Record<string, Scene> = {
       },
       {
         from: "u", to: "lb", label: "GET /contacts",
-        say: { en: "Real visitors keep arriving during the deploy.", he: "מבקרים אמיתיים ממשיכים להגיע בזמן הדיפלוי." },
+        say: { en: "Real visitors keep arriving during the deploy.", he: "מבקרים אמיתיים ממשיכים להגיע בזמן ה-deploy." },
       },
       {
         from: "lb", to: "v2", label: "GET /contacts",
@@ -583,12 +583,12 @@ export const LATE_SCENES: Record<string, Scene> = {
       },
       {
         from: "v2", to: "lb", label: "500 · database not ready", status: 500,
-        say: { en: "Every request that lands there fails. The dashboard still says the deploy succeeded.", he: "כל בקשה שנוחתת שם נכשלת. הדשבורד עדיין אומר שהדיפלוי הצליח." },
+        say: { en: "Every request that lands there fails. The dashboard still says the deploy succeeded.", he: "כל בקשה שנוחתת שם נכשלת. הדשבורד עדיין אומר שה-deploy הצליח." },
       },
       {
         from: "v2", to: "lb", label: "503 · not ready yet", status: 503,
         body: ["database: connecting…"],
-        say: { en: "Replay with a better check: v2 says \"not yet\" until it can really reach the database.", he: "אותו דיפלוי עם בדיקה טובה יותר: v2 עונה \"עוד לא\" עד שהוא באמת מגיע למסד הנתונים." },
+        say: { en: "Replay with a better check: v2 says \"not yet\" until it can really reach the database.", he: "אותו deploy עם בדיקה טובה יותר: v2 עונה \"עוד לא\" עד שהוא באמת מגיע למסד הנתונים." },
       },
       {
         from: "lb", to: "v1", label: "GET /contacts",
@@ -783,7 +783,7 @@ export const LATE_SCENES: Record<string, Scene> = {
       },
       {
         from: "ai", to: "t", label: "fix: refresh the list on save",
-        say: { en: "One small change aimed at the real cause: the list was kept in a cache (a saved copy) that never refreshed after a save.", he: "שינוי קטן אחד שמכוון לסיבה האמיתית: הרשימה נשמרה בקאש (עותק שמור) שאף פעם לא התרענן אחרי שמירה." },
+        say: { en: "One small change aimed at the real cause: the list was kept in a cache (a saved copy) that never refreshed after a save.", he: "שינוי קטן אחד שמכוון לסיבה האמיתית: הרשימה נשמרה ב-cache (עותק שמור) שאף פעם לא התרענן אחרי שמירה." },
       },
       {
         from: "t", to: "ai", label: "✓ 23 browser tests passed", tone: "ok",

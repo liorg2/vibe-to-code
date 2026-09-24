@@ -122,11 +122,11 @@ Report back in plain words: a short list of what you checked, each pass or fail,
     },
     goal: {
       en: "The home page shows how many contacts are in each stage. The numbers are kept ready in a cache and refresh the moment a contact changes.",
-      he: "דף הבית מציג כמה אנשי קשר יש בכל שלב. המספרים שמורים מוכנים בקאש ומתעדכנים ברגע שאיש קשר משתנה.",
+      he: "דף הבית מציג כמה אנשי קשר יש בכל שלב. המספרים שמורים מוכנים ב-cache ומתעדכנים ברגע שאיש קשר משתנה.",
     },
     why: {
       en: "A cache is only useful if you also know when to throw it away. This step does both, and shows what goes stale without the second half.",
-      he: "קאש שווה משהו רק אם יודעים גם מתי לזרוק אותו. הצעד הזה עושה את שניהם, ומראה מה מתיישן כשהחצי השני חסר.",
+      he: "cache שווה משהו רק אם יודעים גם מתי לזרוק אותו. הצעד הזה עושה את שניהם, ומראה מה מתיישן כשהחצי השני חסר.",
     },
     uses: ["cache", "hit-miss", "ttl", "invalidation", "browser-cache", "cdn"],
     build: `Read AGENTS.md and STEPS.md first. This is step 10: a dashboard with a cache. Start a new branch for it.

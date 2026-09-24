@@ -96,30 +96,30 @@ export const EARLY_SCENES: Record<string, Scene> = {
   },
 
   "commit-branch-merge": {
-    cap: { en: "Let the AI try things on a branch. If it goes wrong, you just throw the branch away", he: "תנו ל-AI לנסות דברים על ברנץ'. אם משהו משתבש, פשוט זורקים את הברנץ'" },
+    cap: { en: "Let the AI try things on a branch. If it goes wrong, you just throw the branch away", he: "תנו ל-AI לנסות דברים על branch. אם משהו משתבש, פשוט זורקים את ה-branch" },
     actors: [
       { id: "m", icon: "🏠", label: { en: "main", he: "main" } },
-      { id: "r", icon: "🌿", label: { en: "Branch", he: "ברנץ'" } },
+      { id: "r", icon: "🌿", label: { en: "Branch", he: "Branch" } },
       agent,
     ],
     beats: [
       {
         from: "m", to: "r", label: "new branch: step-09-import",
-        say: { en: "Before the AI touches anything, make a branch: a safe side copy of main, the app that works.", he: "לפני שה-AI נוגע במשהו, פותחים ברנץ': עותק צדדי ובטוח של main, האפליקציה שעובדת." },
+        say: { en: "Before the AI touches anything, make a branch: a safe side copy of main, the app that works.", he: "לפני שה-AI נוגע במשהו, פותחים branch: עותק צדדי ובטוח של main, האפליקציה שעובדת." },
       },
       {
         from: "a", to: "r", label: "commit: import from CSV",
         body: ["import contacts from a file", "22 files changed"],
-        say: { en: "The AI works and saves commits on the branch. main hasn't changed at all.", he: "ה-AI עובד ושומר commits על הברנץ'. ב-main שום דבר לא השתנה." },
+        say: { en: "The AI works and saves commits on the branch. main hasn't changed at all.", he: "ה-AI עובד ושומר commits על ה-branch. ב-main שום דבר לא השתנה." },
       },
       {
         from: "r", to: "r", label: "npm run check · 1 failed", tone: "err",
         body: ["export test:", "expected 20 rows, got 0"],
-        say: { en: "Export broke: the AI changed a piece other features share. On main, that's an evening of untangling.", he: "הייצוא נשבר: ה-AI שינה חלק שגם פיצ'רים אחרים משתמשים בו. על main זה היה ערב שלם של פירוק." },
+        say: { en: "Export broke: the AI changed a piece other features share. On main, that's an evening of untangling.", he: "הייצוא נשבר: ה-AI שינה חלק שגם features אחרים משתמשים בו. על main זה היה ערב שלם של פירוק." },
       },
       {
         from: "r", to: "m", label: "back to main, delete branch", tone: "warn",
-        say: { en: "Here it's two commands: go back to main, delete the branch. The app is exactly as it was at 14:00.", he: "כאן זה שתי פקודות: חוזרים ל-main, מוחקים את הברנץ'. האפליקציה בדיוק כמו שהייתה ב-14:00." },
+        say: { en: "Here it's two commands: go back to main, delete the branch. The app is exactly as it was at 14:00.", he: "כאן זה שתי פקודות: חוזרים ל-main, מוחקים את ה-branch. האפליקציה בדיוק כמו שהייתה ב-14:00." },
       },
       {
         from: "m", to: "r", label: "new branch: step-09-import",
@@ -132,12 +132,12 @@ export const EARLY_SCENES: Record<string, Scene> = {
       },
       {
         from: "r", to: "r", label: "npm run check · 48 passed", tone: "ok",
-        say: { en: "All tests green on the branch. Now it has earned its place in main.", he: "כל הטסטים ירוקים על הברנץ'. עכשיו הוא הרוויח את המקום שלו ב-main." },
+        say: { en: "All tests green on the branch. Now it has earned its place in main.", he: "כל הטסטים ירוקים על ה-branch. עכשיו הוא הרוויח את המקום שלו ב-main." },
       },
       {
         from: "r", to: "m", label: "git merge", tone: "ok",
         body: ["9 files changed"],
-        say: { en: "Merge brings the branch's work into main. Only the version that works ever lands there.", he: "merge מכניס את העבודה מהברנץ' אל main. רק הגרסה שעובדת מגיעה לשם." },
+        say: { en: "Merge brings the branch's work into main. Only the version that works ever lands there.", he: "merge מכניס את העבודה מה-branch אל main. רק הגרסה שעובדת מגיעה לשם." },
       },
     ],
   },
@@ -158,7 +158,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
       {
         from: "m", to: "y", label: "git merge main",
         body: ["stages: lead, qualified,", "  won, lost, on_hold"],
-        say: { en: "On your branch you changed that same line, adding 'on_hold'. Now you bring main's changes in.", he: "בברנץ' שלכם שיניתם את אותה שורה והוספתם 'on_hold'. עכשיו אתם מכניסים את השינויים מ-main." },
+        say: { en: "On your branch you changed that same line, adding 'on_hold'. Now you bring main's changes in.", he: "ב-branch שלכם שיניתם את אותה שורה והוספתם 'on_hold'. עכשיו אתם מכניסים את השינויים מ-main." },
       },
       {
         from: "y", to: "y", label: "6 files combined on their own", tone: "ok",
@@ -195,7 +195,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
     beats: [
       {
         from: "y", to: "g", label: "git push step-13-auth",
-        say: { en: "The branch goes up to GitHub. It's online now, but not part of main yet.", he: "הברנץ' עולה ל-GitHub. הוא באוויר עכשיו, אבל עוד לא חלק מ-main." },
+        say: { en: "The branch goes up to GitHub. It's online now, but not part of main yet.", he: "ה-branch עולה ל-GitHub. הוא באוויר עכשיו, אבל עוד לא חלק מ-main." },
       },
       {
         from: "g", to: "g", label: "PR #14 · 41 files · +912 −37", tone: "warn",
@@ -253,7 +253,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
       },
       {
         from: "r", to: "b", label: "203.0.113.10",
-        say: { en: "The browser connects. The lookup service keeps the answer in its cache, its short-term memory.", he: "הדפדפן מתחבר. שירות החיפוש שומר את התשובה בקאש, הזיכרון הקצר שלו." },
+        say: { en: "The browser connects. The lookup service keeps the answer in its cache, its short-term memory.", he: "הדפדפן מתחבר. שירות החיפוש שומר את התשובה ב-cache, הזיכרון הקצר שלו." },
       },
       {
         from: "n", to: "n", label: "new address: 198.51.100.7", tone: "warn",
@@ -448,7 +448,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
       {
         from: "v", to: "v", label: "can't reach the database", tone: "err",
         body: ["database address: localhost"],
-        say: { en: "After deploying, the same setting breaks. On the server, localhost means the server itself, and there's no database there.", he: "אחרי דיפלוי, אותה הגדרה נשברת. בשרת, localhost זה השרת עצמו, ואין שם מסד נתונים." },
+        say: { en: "After deploying, the same setting breaks. On the server, localhost means the server itself, and there's no database there.", he: "אחרי deploy, אותה הגדרה נשברת. בשרת, localhost זה השרת עצמו, ואין שם מסד נתונים." },
       },
       {
         from: "v", to: "v", label: "database address from settings", tone: "ok",
@@ -551,7 +551,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
   },
 
   "memory-leak": {
-    cap: { en: "A cache that only ever grows, until the app runs out of memory and crashes", he: "קאש שרק גדל, עד שלאפליקציה נגמר הזיכרון והיא קורסת" },
+    cap: { en: "A cache that only ever grows, until the app runs out of memory and crashes", he: "cache שרק גדל, עד שלאפליקציה נגמר הזיכרון והיא קורסת" },
     actors: [
       { id: "q", icon: "🌐", label: { en: "Requests", he: "בקשות" } },
       code,
@@ -561,7 +561,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
     beats: [
       {
         from: "q", to: "c", label: "GET /api/contacts?q=dan",
-        say: { en: "Each search runs, and the code keeps the result 'to be faster next time'. That's a cache.", he: "כל חיפוש רץ, והקוד שומר את התוצאה 'כדי שבפעם הבאה יהיה מהיר יותר'. זה קאש." },
+        say: { en: "Each search runs, and the code keeps the result 'to be faster next time'. That's a cache.", he: "כל חיפוש רץ, והקוד שומר את התוצאה 'כדי שבפעם הבאה יהיה מהיר יותר'. זה cache." },
       },
       {
         from: "c", to: "m", label: "remember results for 'dan'",
@@ -571,7 +571,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
       {
         from: "g", to: "m", label: "cleanup round",
         body: ["finished requests: cleared", "saved results: still kept"],
-        say: { en: "The memory cleaner throws out what nothing uses. The cache still holds every result, so they all stay.", he: "מנקה הזיכרון זורק את מה ששום דבר לא משתמש בו. הקאש עדיין מחזיק כל תוצאה, אז כולן נשארות." },
+        say: { en: "The memory cleaner throws out what nothing uses. The cache still holds every result, so they all stay.", he: "מנקה הזיכרון זורק את מה ששום דבר לא משתמש בו. ה-cache עדיין מחזיק כל תוצאה, אז כולן נשארות." },
       },
       {
         from: "q", to: "c", label: "day 3 · 180,000 searches",

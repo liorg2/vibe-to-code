@@ -20,7 +20,7 @@ const THEMES: { t: L; mods: string[] }[] = [
   { t: { en: "How code works: files, git, client and server, languages", he: "איך קוד עובד: קבצים, git, לקוח ושרת, שפות" }, mods: ["ground", "vcs", "sides", "langs"] },
   { t: { en: "The web: browser, HTTP, databases", he: "הווב: דפדפן, HTTP, מסדי נתונים" }, mods: ["frontend", "http", "data"] },
   { t: { en: "Integrations and background jobs", he: "אינטגרציות ועבודות רקע" }, mods: ["apis", "async"] },
-  { t: { en: "Speed: memory, caching, scale", he: "מהירות: זיכרון, קאש, סקייל" }, mods: ["memory", "cache", "scale"] },
+  { t: { en: "Speed: memory, caching, scale", he: "מהירות: זיכרון, cache, scale" }, mods: ["memory", "cache", "scale"] },
   { t: { en: "Quality and safety: tests, sign-in, security", he: "איכות ובטיחות: טסטים, התחברות, אבטחה" }, mods: ["testing", "auth", "security"] },
   { t: { en: "Getting paid: payments and subscriptions", he: "לקבל תשלום: תשלומים ומנויים" }, mods: ["pay"] },
   { t: { en: "Shipping: domains, cloud, deploys, monitoring", he: "שחרור: דומיינים, ענן, פריסות, ניטור" }, mods: ["net", "cloud", "devops", "observe"] },
@@ -31,7 +31,7 @@ const X = {
   title: { en: "Basic or Advanced?", he: "בסיס או מתקדם?" },
   lede: {
     en: "Advanced includes every Basic lesson, so you never need both. Start with Basic to learn the ground floor and ship a first app; take Advanced to take that app all the way to production.",
-    he: "המתקדם כולל את כל שיעורי הבסיס, כך שאף פעם לא צריך את שניהם. התחילו בבסיס כדי ללמוד את היסודות ולשחרר אפליקציה ראשונה; קחו את המתקדם כדי להביא את האפליקציה עד לפרודקשן.",
+    he: "המתקדם כולל את כל שיעורי הבסיס, כך שאף פעם לא צריך את שניהם. התחילו בבסיס כדי ללמוד את היסודות ולשחרר אפליקציה ראשונה; קחו את המתקדם כדי להביא את האפליקציה עד ל-production.",
   },
   lessons: { en: "Lessons", he: "שיעורים" },
   topics: { en: "Topics", he: "נושאים" },

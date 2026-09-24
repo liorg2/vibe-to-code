@@ -70,7 +70,7 @@ export const HTTP_SCENES: Record<string, Scene> = {
       },
       {
         from: "s", to: "b", label: "200 OK", status: 200, body: ["12 contacts", "ok to keep for 30 seconds"],
-        say: { en: "Here is the list. Since reading changes nothing, the browser may keep a copy for a bit (a cache).", he: "הנה הרשימה. כיוון שקריאה לא משנה כלום, הדפדפן רשאי לשמור עותק לזמן קצר (קאש)." },
+        say: { en: "Here is the list. Since reading changes nothing, the browser may keep a copy for a bit (a cache).", he: "הנה הרשימה. כיוון שקריאה לא משנה כלום, הדפדפן רשאי לשמור עותק לזמן קצר (cache)." },
       },
       {
         from: "b", to: "s", label: "GET /contacts?stage=lead",

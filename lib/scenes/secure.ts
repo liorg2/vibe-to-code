@@ -268,7 +268,7 @@ export const SECURE_SCENES: Record<string, Scene> = {
       },
       {
         from: "p", to: "b", label: "413 Request Entity Too Large", status: 413,
-        say: { en: "In production the proxy stands in front, with a 1 MB limit by default. Rejected before your app runs, so its log is empty.", he: "בפרודקשן הפרוקסי עומד מקדימה, עם מגבלה של 1 MB כברירת מחדל. נדחה לפני שהאפליקציה רצה, אז הלוג שלה ריק." },
+        say: { en: "In production the proxy stands in front, with a 1 MB limit by default. Rejected before your app runs, so its log is empty.", he: "ב-production הפרוקסי עומד מקדימה, עם מגבלה של 1 MB כברירת מחדל. נדחה לפני שהאפליקציה רצה, אז הלוג שלה ריק." },
       },
       {
         from: "p", to: "p", label: "raise the size limit to 10 MB", tone: "info",
@@ -340,7 +340,7 @@ export const SECURE_SCENES: Record<string, Scene> = {
       },
       {
         from: "g", to: "h", label: "deploy main", tone: "ok",
-        say: { en: "Main goes live in production. Nobody had to remember to run the tests.", he: "main עולה לפרודקשן. אף אחד לא היה צריך לזכור להריץ את הטסטים." },
+        say: { en: "Main goes live in production. Nobody had to remember to run the tests.", he: "main עולה ל-production. אף אחד לא היה צריך לזכור להריץ את הטסטים." },
       },
     ],
   },
