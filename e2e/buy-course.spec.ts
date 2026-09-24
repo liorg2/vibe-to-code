@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 import { MODULES, PATHS } from "../lib/course";
 import { getAdminAuth } from "../lib/firebase/admin";
 
@@ -12,6 +12,15 @@ const CARD = { number: "4242 4242 4242 4242", expiry: "12/30", cvc: "100", name:
 // lessons that are not free previews (lib/protected.ts PREVIEW): one in Basic, one only in Advanced
 const BASIC_LESSON = "vcs";
 const ADVANCED_LESSON = "async";
+
+// Pauses so a person can follow along (0 = full speed): before each click or page load, and
+// before each form field. Set in .env.e2e or by scripts/run-e2e.ps1 -StepMs / -FillMs.
+const STEP_MS = Number(process.env.E2E_STEP_MS ?? 3000);
+const FILL_MS = Number(process.env.E2E_FILL_MS ?? 2000);
+const pause = (ms: number) => new Promise((r) => setTimeout(r, ms));
+const go = async (page: Page, url: string) => (await pause(STEP_MS), page.goto(url));
+const press = async (target: Locator) => (await pause(STEP_MS), target.click());
+const type = async (field: Locator, value: string) => (await pause(FILL_MS), field.fill(value));
 
 const emails: string[] = [];
 
@@ -29,18 +38,18 @@ test.afterAll(async () => {
 async function passVercelGate(page: Page) {
   const secret = process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
   expect(secret, "set VERCEL_AUTOMATION_BYPASS_SECRET in .env.e2e").toBeTruthy();
-  await page.goto(`/en?x-vercel-protection-bypass=${secret}&x-vercel-set-bypass-cookie=true`);
+  await go(page, `/en?x-vercel-protection-bypass=${secret}&x-vercel-set-bypass-cookie=true`);
 }
 
 /** A fresh account each run, landing on /courses. Resend's test inbox takes the welcome email. */
 async function register(page: Page): Promise<string> {
   const email = `delivered+e2e-${Date.now()}@resend.dev`;
   emails.push(email);
-  await page.goto("/en/login?next=/courses");
-  await page.getByRole("button", { name: "Create an account" }).click();
-  await page.getByPlaceholder("you@example.com").fill(email);
-  await page.getByPlaceholder("Password").fill(`E2e-${crypto.randomUUID()}`);
-  await page.getByRole("button", { name: "Create account" }).click();
+  await go(page, "/en/login?next=/courses");
+  await press(page.getByRole("button", { name: "Create an account" }));
+  await type(page.getByPlaceholder("you@example.com"), email);
+  await type(page.getByPlaceholder("Password"), `E2e-${crypto.randomUUID()}`);
+  await press(page.getByRole("button", { name: "Create account" }));
   await page.waitForURL((u) => u.pathname.endsWith("/courses")); // not /login?next=/courses
   return email;
 }
@@ -48,7 +57,7 @@ async function register(page: Page): Promise<string> {
 /** Clicks a buy button, pays in Paddle's overlay, and waits for the confirmed return page. */
 async function payWith(page: Page, button: ReturnType<Page["getByRole"]>, email: string) {
   await expect(button, "no buy button: is BILLING_ENABLED=1 on Preview?").toBeEnabled();
-  await button.click();
+  await press(button);
 
   // Paddle redirects to our default payment link (?_ptxn=…) and Paddle.js opens its overlay there
   await page.waitForURL((u) => u.searchParams.has("_ptxn"));
@@ -60,16 +69,17 @@ async function payWith(page: Page, button: ReturnType<Page["getByRole"]>, email:
   const cardBox = paddle.getByTestId("cardNumberInput");
   await expect(emailBox.or(cardBox)).toBeVisible();
   if (await emailBox.isVisible()) {
-    await emailBox.fill(email);
+    await type(emailBox, email);
+    await pause(FILL_MS);
     await paddle.getByTestId("countriesSelect").selectOption("IL");
-    await paddle.getByTestId("combinedAuthenticationLocationFormSubmitButton").click();
+    await press(paddle.getByTestId("combinedAuthenticationLocationFormSubmitButton"));
   }
 
-  await cardBox.fill(CARD.number);
-  await paddle.getByTestId("cardholderNameInput").fill(CARD.name);
-  await paddle.getByTestId("expiryDateField").fill(CARD.expiry);
-  await paddle.getByTestId("cardVerificationValueInput").fill(CARD.cvc);
-  await paddle.getByTestId("cardPaymentFormSubmitButton").click();
+  await type(cardBox, CARD.number);
+  await type(paddle.getByTestId("cardholderNameInput"), CARD.name);
+  await type(paddle.getByTestId("expiryDateField"), CARD.expiry);
+  await type(paddle.getByTestId("cardVerificationValueInput"), CARD.cvc);
+  await press(paddle.getByTestId("cardPaymentFormSubmitButton"));
 
   // back on our return URL; the page asks Paddle about the txn itself, so no webhook is needed
   await page.waitForURL((u) => u.pathname.endsWith("/courses") && u.searchParams.has("paid"), { timeout: 90_000 });
@@ -83,12 +93,12 @@ async function payWith(page: Page, button: ReturnType<Page["getByRole"]>, email:
  */
 async function learnAll(page: Page, lessons: string[]) {
   for (const id of lessons) {
-    await page.goto(`/en/lesson/${id}/0`);
+    await go(page, `/en/lesson/${id}/0`);
     // a click before hydration is a plain <a> navigation and skips the "learned" mark
     await page.waitForLoadState("networkidle");
     while (!new URL(page.url()).pathname.endsWith("/summary")) {
       const from = page.url();
-      await page.locator(".slidebar a").last().click();
+      await press(page.locator(".slidebar a").last());
       await page.waitForURL((u) => u.href !== from);
     }
     await expect
@@ -107,7 +117,7 @@ const card = (page: Page, name: "Basic" | "Advanced") => page.locator(".course")
  * shows the "Locked" upsell instead, so the URL alone proves nothing.
  */
 async function opens(page: Page, lesson: string): Promise<boolean> {
-  await page.goto(`/en/lesson/${lesson}/0`);
+  await go(page, `/en/lesson/${lesson}/0`);
   const slide = page.locator(".slidebar");
   await expect(slide.or(page.getByText("Locked", { exact: true }))).toBeVisible();
   return slide.isVisible();
@@ -119,7 +129,7 @@ test("a new user registers, buys Basic, and finishes every lesson to 100%", asyn
 
   // before login, a paid lesson bounces to /login (`ground` is the free preview, so use the next one)
   const locked = `/en/lesson/${BASIC_LESSON}/overview`;
-  await page.goto(locked);
+  await go(page, locked);
   await expect(page).toHaveURL((u) => u.pathname === "/en/login" && u.searchParams.get("next") === locked);
 
   const email = await register(page);
@@ -132,7 +142,7 @@ test("a new user registers, buys Basic, and finishes every lesson to 100%", asyn
   // every topic of every Basic lesson, through the UI
   await learnAll(page, BASIC_MODS);
 
-  await page.goto("/en/courses");
+  await go(page, "/en/courses");
   await expect(card(page, "Basic").getByText(`${BASIC_TOPICS}/${BASIC_TOPICS} topics`)).toBeVisible();
   await expect(card(page, "Basic").getByRole("link", { name: "Continue learning · 100%" })).toBeVisible();
 });
@@ -147,7 +157,7 @@ test("a Basic owner upgrades to Advanced for the difference", async ({ page }) =
   // Basic alone does not open an Advanced-only lesson
   expect(await opens(page, ADVANCED_LESSON)).toBe(false);
 
-  await page.goto("/en/courses");
+  await go(page, "/en/courses");
   await payWith(page, page.getByRole("button", { name: /^Add the other course · / }), email);
   await expect(card(page, "Basic").getByText("You own this")).toBeVisible();
   await expect(card(page, "Advanced").getByText("You own this")).toBeVisible();
