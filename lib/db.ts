@@ -28,6 +28,11 @@ function ensure() {
       updated timestamptz not null default now(),
       primary key (uid, course)
     )`,
+    db()`
+    create table if not exists welcomed (
+      uid text        primary key,
+      at  timestamptz not null default now()
+    )`,
   ]).then(
     // Backfill from the pre-split `entitlement` table (one tier per uid): each legacy tier grants
     // the course of the SAME name and nothing else — a legacy `advanced` row does not hand out basic.
@@ -98,4 +103,14 @@ export async function grantCourse(uid: string, course: Course, txn: string): Pro
     insert into entitlement_course (uid, course, txn, paid_at, updated)
     values (${uid}, ${course}, ${txn}, now(), now())
     on conflict (uid, course) do nothing`;
+}
+
+/** True exactly once per uid — the first caller claims the welcome email, every later one gets false. */
+export async function claimWelcome(uid: string): Promise<boolean> {
+  await ensure();
+  const rows = await db()`
+    insert into welcomed (uid) values (${uid})
+    on conflict do nothing
+    returning uid`;
+  return (rows as unknown[]).length > 0;
 }
