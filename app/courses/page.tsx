@@ -15,7 +15,14 @@ export default async function CoursesPage({
   const { paid, txn, _ptxn } = await searchParams;
   const claims = await sessionClaims();
   // ponytail: self-healing instead of a cron — a missed webhook is fixed by the buyer landing here
-  if (paid && claims) await claimTransaction(txn || _ptxn || "", claims.uid).catch(() => null);
+  // ponytail: retried for ~5s — Paddle.js fires checkout.completed a beat before its API reports
+  // the transaction paid, so a single check sometimes lost the race
+  if (paid && claims) {
+    for (let i = 0; i < 5; i++) {
+      if (await claimTransaction(txn || _ptxn || "", claims.uid).catch(() => null)) break;
+      await new Promise((r) => setTimeout(r, 1000));
+    }
+  }
 
   return (
     <AppShell showNav={false}>
