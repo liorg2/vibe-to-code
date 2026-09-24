@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { BUILDS } from "./builds";
 import { BUILD_DONE_N } from "./builds/counts";
 import { tipsFor } from "./builds/tips";
-import { DETAIL, EXAMPLES, MODULES, PATHS, SIMPLE } from "./course";
+import { DETAIL, EXAMPLES, MODULES, PATHS, SIMPLE, TLDR } from "./course";
 import { SCENES } from "./scenes";
 
 const slugs = new Set(MODULES.flatMap((m) => m.terms.map((t) => t.k)));
@@ -22,11 +22,15 @@ assert.equal(slugs.size, [...titles].length, "topic slugs or English titles are 
 for (const m of MODULES) {
   m.terms.forEach((t) => assert.ok(["A", "B", "E"].includes(t.lvl), `${m.id}:${t.k}: bad level ${t.lvl}`));
   assert.ok(m.terms.filter((t) => t.lvl !== "E").length >= 3, `${m.id}: fewer than 3 non-expert topics`);
+  const firstE = m.terms.findIndex((t) => t.lvl === "E");
+  assert.ok(firstE < 0 || m.terms.slice(firstE).every((t) => t.lvl === "E"), `${m.id}: expert topics must come last`);
 }
 for (const title of titles) {
   assert.ok(SIMPLE[title], `${title}: missing simple explanation`);
   assert.ok(DETAIL[title], `${title}: missing detail`);
   if (title !== "App lifecycle") assert.ok(EXAMPLES[title], `${title}: missing example`);
+  const tl = TLDR[title];
+  assert.ok(tl && tl.en.length >= 3 && tl.en.length <= 5 && tl.he.length === tl.en.length, `${title}: TLDR needs 3–5 bullets in both languages`);
 }
 for (const [name, keyed] of [["SIMPLE", SIMPLE], ["DETAIL", DETAIL], ["EXAMPLES", EXAMPLES]] as const) {
   for (const title of Object.keys(keyed)) assert.ok(titles.has(title), `${name}: orphan content for ${title}`);

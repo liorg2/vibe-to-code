@@ -99,9 +99,9 @@ export default async function SlidePage({
         ) : null}
         <div className="lede">{tm.d[lang]}</div>
         {short ? (
-          <div className="tldr-only body">
-            {para(short[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
-          </div>
+          <ul className="tldr-only body">
+            {short[lang].map((p, idx) => <li key={idx}>{p}</li>)}
+          </ul>
         ) : null}
         <div className="cal"><b>{t("why")}</b><p>{tm.w[lang]}</p></div>
         <div className="full-only">

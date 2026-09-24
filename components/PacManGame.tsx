@@ -1,13 +1,17 @@
 /**
- * Decorative Pac-Man around the two homepage course cards.
- * Words sit around each course name and around each card. He wanders and eats them.
+ * Decorative Pac-Man roaming the whole screen (fixed board, see .pac-board in globals.css).
+ * Words ring the two course cards and scatter across the rest of the viewport. He wanders and eats them.
  */
 "use client";
 
 import { useEffect, useRef } from "react";
 import { pacmanWords } from "@/lib/pacman-terms";
 
-const DOTS = 10;
+// ponytail: dot count scales with screen area (fewer on phones) instead of a fixed number of spans;
+// unused spans just stay empty and are hidden by `.pac-word:empty` in CSS.
+const MAX_DOTS = 18;
+const MIN_DOTS = 6;
+const AREA_PER_DOT = 26000;
 const SIZE = 32;
 
 type Spot = { x: number; y: number };
@@ -79,6 +83,18 @@ function spotsFor(root: HTMLElement): Spot[] {
     }
   }
 
+  // scatter across the rest of the screen (the board is now the full viewport, not just the card strip),
+  // jittered so it doesn't look like a grid; push() already keeps these off the cards and off-screen edges
+  const cols = Math.max(3, Math.round(b.width / 220));
+  const rows = Math.max(3, Math.round(b.height / 200));
+  for (let r = 0; r < rows; r++) {
+    for (let cI = 0; cI < cols; cI++) {
+      const x = (cI + 0.5) * (b.width / cols) + (Math.random() - 0.5) * 70;
+      const y = (r + 0.5) * (b.height / rows) + (Math.random() - 0.5) * 70;
+      push(x, y);
+    }
+  }
+
   const out: Spot[] = [];
   for (const s of raw) {
     if (out.every((o) => Math.hypot(o.x - s.x, o.y - s.y) > 78)) out.push(s);
@@ -113,7 +129,9 @@ export function PacManLane() {
     const layout = () => {
       state.spots = spotsFor(root);
       if (!state.dots.length) {
-        const chosen = state.spots.slice(0, DOTS);
+        const area = root.getBoundingClientRect().width * root.getBoundingClientRect().height;
+        const want = Math.max(MIN_DOTS, Math.min(MAX_DOTS, Math.round(area / AREA_PER_DOT)));
+        const chosen = state.spots.slice(0, want);
         state.dots = chosen.map((s) => ({ word: pick(pool, used()), x: s.x, y: s.y, eaten: false }));
         state.x = chosen[0]?.x ?? 8;
         state.y = chosen[0]?.y ?? 8;
@@ -131,6 +149,8 @@ export function PacManLane() {
     layout();
     const ro = new ResizeObserver(layout);
     if (root.parentElement) ro.observe(root.parentElement);
+    // the board is the full viewport now, so a window resize (not just the card grid resizing) must relayout too
+    window.addEventListener("resize", layout);
 
     let raf = 0;
     let last = 0;
@@ -215,13 +235,14 @@ export function PacManLane() {
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      window.removeEventListener("resize", layout);
       timers.forEach((id) => window.clearTimeout(id));
     };
   }, []);
 
   return (
     <div className="pac-board" ref={lane} aria-hidden="true">
-      {Array.from({ length: DOTS }, (_, i) => (
+      {Array.from({ length: MAX_DOTS }, (_, i) => (
         <span key={i} className="pac-word" ref={(el) => { dots.current[i] = el; }} />
       ))}
       <div className="pac-man" ref={man}>

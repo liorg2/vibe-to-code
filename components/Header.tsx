@@ -7,16 +7,20 @@ import { useState } from "react";
 import { Progress as ProgressPrimitive } from "@base-ui/react/progress";
 import { ProgressIndicator, ProgressTrack } from "@/components/ui/progress";
 import { useApp } from "./Providers";
-import { AuthButton } from "./AuthButton";
+import { useSignOut } from "./AuthButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { MODULES, totalTerms } from "@/lib/course";
 import { cn } from "@/lib/utils";
 import type { Lang } from "@/lib/types";
+import { CircleUser } from "lucide-react";
+import { firebaseReady } from "@/lib/firebase/client";
 
 export function Header({ showHero, showNav }: { showHero: boolean; showNav: boolean }) {
   const { lang, setLang, toggleTheme, t, progressPct } = useApp();
+  const { user, onClick: onSignOut } = useSignOut();
   const [q, setQ] = useState("");
   const router = useRouter();
   const onSearch = (value: string) => {
@@ -54,30 +58,48 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
             autoComplete="off"
             className="w-[200px]"
           />
-          <ToggleGroup
-            className="seg"
-            variant="outline"
-            spacing={0}
-            value={[lang]}
-            onValueChange={(vals) => vals[0] && setLang(vals[0] as Lang)}
-            aria-label="Language"
-          >
-            {(["en", "he"] as Lang[]).map((l) => (
-              <ToggleGroupItem
-                key={l}
-                value={l}
-                data-lang={l}
-                aria-pressed={lang === l}
-                className="font-semibold text-[var(--tx2)] data-pressed:bg-[var(--acc)] data-pressed:text-white"
+          <Popover>
+            <PopoverTrigger
+              render={
+                <Button variant="outline" size="icon" type="button" aria-label="Account" title="Account" />
+              }
+            >
+              <CircleUser className="size-4" />
+            </PopoverTrigger>
+            <PopoverContent align={lang === "he" ? "start" : "end"} className="flex flex-col gap-1">
+              <span id="who" className="px-2 py-1.5 text-sm text-[var(--tx2)]">
+                {firebaseReady && user ? user.displayName || user.email || "" : "Not signed in"}
+              </span>
+              <ToggleGroup
+                className="seg"
+                variant="outline"
+                spacing={0}
+                value={[lang]}
+                onValueChange={(vals) => vals[0] && setLang(vals[0] as Lang)}
+                aria-label="Language"
               >
-                {l === "en" ? "EN" : "עב"}
-              </ToggleGroupItem>
-            ))}
-          </ToggleGroup>
-          <AuthButton />
-          <Button variant="outline" id="theme" type="button" title="Theme" onClick={toggleTheme}>
-            ◐
-          </Button>
+                {(["en", "he"] as Lang[]).map((l) => (
+                  <ToggleGroupItem
+                    key={l}
+                    value={l}
+                    data-lang={l}
+                    aria-pressed={lang === l}
+                    className="font-semibold text-[var(--tx2)] data-pressed:bg-[var(--acc)] data-pressed:text-white"
+                  >
+                    {l === "en" ? "EN" : "עב"}
+                  </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+              <Button variant="ghost" id="theme" type="button" onClick={toggleTheme} className="justify-start">
+                ◐ Theme
+              </Button>
+              {firebaseReady && (
+                <Button variant="ghost" type="button" onClick={onSignOut} className="justify-start">
+                  {user ? "Sign out" : "Sign in"}
+                </Button>
+              )}
+            </PopoverContent>
+          </Popover>
         </div>
         <ProgressPrimitive.Root value={progressPct} className={cn("progbar", "block h-[3px]")}>
           <ProgressTrack className="h-[3px] rounded-none bg-[var(--line)]">

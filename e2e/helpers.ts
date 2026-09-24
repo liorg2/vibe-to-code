@@ -75,8 +75,9 @@ export async function signIn(page: Page, { email, password }: Creds, next = "/co
 }
 
 export async function signOut(page: Page) {
+  await press(page.getByRole("button", { name: "Account" }));
   await press(page.getByRole("button", { name: "Sign out" }));
-  await expect(page.getByRole("button", { name: "Sign in" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Account" })).toBeVisible();
 }
 
 /** Language-proof: the Advanced card carries `.adv`. */

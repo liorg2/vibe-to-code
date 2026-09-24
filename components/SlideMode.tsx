@@ -17,11 +17,11 @@ export function SlideMode({ initial, children }: { initial: boolean; children: R
   };
   return (
     <div className={tldr ? "slide-mode tldr" : "slide-mode"}>
-      <div className="mode-switch" role="group" aria-label={t("viewMode")}>
-        <button type="button" aria-pressed={!tldr} className={tldr ? "" : "on"} onClick={() => pick(false)}>
+      <div className="mode-tabs" role="tablist" aria-label={t("viewMode")}>
+        <button type="button" role="tab" aria-selected={!tldr} onClick={() => pick(false)}>
           📚 {t("fullCourse")}
         </button>
-        <button type="button" aria-pressed={tldr} className={tldr ? "on" : ""} onClick={() => pick(true)}>
+        <button type="button" role="tab" aria-selected={tldr} onClick={() => pick(true)}>
           ⚡ {t("tldr")}
         </button>
       </div>
