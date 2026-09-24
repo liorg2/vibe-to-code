@@ -42,7 +42,9 @@ export async function createCheckout(
       // The wire field keeps the name `tier` — in-flight Paddle transactions already carry it —
       // but what it holds is a course id.
       custom_data: { uid, tier: course },
-      checkout: { url: `${origin}/courses?paid=1&txn={transaction_id}` },
+      // Paddle appends `?_ptxn=txn_…`; PaddleCheckout opens the overlay there and adds `paid=1`
+      // only once the payment completes
+      checkout: { url: `${origin}/courses` },
     }),
   });
   if (!res.ok) {

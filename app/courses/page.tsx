@@ -1,11 +1,12 @@
 import { AppShell } from "@/components/AppShell";
 import { Courses } from "@/components/Courses";
+import { PaddleCheckout } from "@/components/PaddleCheckout";
 import { claimTransaction } from "@/lib/paddle";
 import { sessionClaims } from "@/lib/verify-session";
 
 export const metadata = { title: "Courses" };
 
-/** Also Paddle's return URL: `?paid=1&txn=…` lands here. */
+/** Also Paddle's payment link (`?_ptxn=…` opens the overlay) and, once paid, `?paid=1&txn=…`. */
 export default async function CoursesPage({
   searchParams,
 }: {
@@ -19,6 +20,7 @@ export default async function CoursesPage({
   return (
     <AppShell showNav={false}>
       <Courses paid={Boolean(paid)} />
+      {_ptxn && !paid ? <PaddleCheckout /> : null}
     </AppShell>
   );
 }

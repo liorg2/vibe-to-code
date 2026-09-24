@@ -11,3 +11,7 @@ out/
 .vercel
 .env*
 *.tsbuildinfo
+
+# playwright
+playwright-report/
+test-results/
