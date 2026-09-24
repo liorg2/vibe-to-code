@@ -511,6 +511,30 @@
   "tldrOpen": {
    "en": "Open the full lesson",
    "he": "לשיעור המלא"
+  },
+  "fullCourse": {
+   "en": "Full course",
+   "he": "הקורס המלא"
+  },
+  "viewMode": {
+   "en": "View",
+   "he": "תצוגה"
+  },
+  "hideExpert": {
+   "en": "Hide expert topics",
+   "he": "הסתרת נושאים למומחים"
+  },
+  "showExpert": {
+   "en": "Show expert topics",
+   "he": "הצגת נושאים למומחים"
+  },
+  "lvlAll": {
+   "en": "All",
+   "he": "הכול"
+  },
+  "lvlCore": {
+   "en": "Core",
+   "he": "ליבה"
   }
  },
  "MODULES": [

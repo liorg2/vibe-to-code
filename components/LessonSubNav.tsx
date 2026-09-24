@@ -17,7 +17,7 @@ export function LessonSubNav({
   quiz?: boolean;
   course?: string;
 }) {
-  const { lang, done, t } = useApp();
+  const { lang, done, t, hideExpert } = useApp();
   const href = (path: string) => (course ? `${path}?course=${course}` : path);
   return (
     <nav className="subnav" aria-label={m.title[lang]}>
@@ -27,19 +27,22 @@ export function LessonSubNav({
       >
         {t("overview")}
       </Link>
-      {m.terms.map((tm, j) => (
-        <Link
-          key={j}
-          href={href(`/lesson/${m.id}/${j}`)}
-          className={cn(
-            !quiz && active === j && "on",
-            done.has(termKey(m, j)) && "done",
-          )}
-        >
-          <span className="sn">{j + 1}</span>
-          {tm.t[lang]}
-        </Link>
-      ))}
+      {m.terms.map((tm, j) =>
+        hideExpert && tm.lvl === "E" && active !== j ? null : (
+          <Link
+            key={j}
+            href={href(`/lesson/${m.id}/${j}`)}
+            className={cn(
+              !quiz && active === j && "on",
+              done.has(termKey(m, j)) && "done",
+            )}
+          >
+            <span className="sn">{j + 1}</span>
+            {tm.t[lang]}
+            {tm.lvl === "E" ? <span className="xbadge">{t("expert")}</span> : null}
+          </Link>
+        ),
+      )}
       <Link
         href={href(`/lesson/${m.id}/summary`)}
         className={cn(active === "summary" && "on")}

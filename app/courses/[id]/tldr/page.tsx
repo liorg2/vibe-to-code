@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { CourseMode } from "@/components/CourseMode";
 import Link from "@/components/Link";
 import { MODULES, PATHS, UI, lessonNo } from "@/lib/course";
 import { coursesOfModule, ownedCourses } from "@/lib/entitlement";
@@ -44,7 +45,8 @@ export default async function TldrPage({ params }: { params: Promise<{ id: strin
           <div><h2>{t("tldr")} · {p.title[lang]}</h2></div>
           <div className="n">~{readMins} {t("min")}</div>
         </div>
-        <p className="mblurb">{t("tldrSub")}</p>
+        <p className="mblurb">{p.blurb[lang]}</p>
+        <CourseMode id={p.id} active="tldr" lang={lang} />
         <ol className="tldr-list">
           {mods.map((m) => {
             const core = m.terms.map((tm, j) => ({ tm, j })).filter(({ tm }) => tm.lvl !== "E");

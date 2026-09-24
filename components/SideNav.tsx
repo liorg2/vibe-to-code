@@ -30,7 +30,7 @@ function asCourse(id: string): "basic" | "advanced" | "" {
 }
 
 export function SideNav() {
-  const { lang, done, ticked, t, user } = useApp();
+  const { lang, done, ticked, t, user, hideExpert, toggleHideExpert } = useApp();
   const pathname = stripLang(usePathname());
   const queryCourse = asCourse(useSearchParams().get("course") ?? "");
 
@@ -120,7 +120,8 @@ export function SideNav() {
   const q = (href: string) => (courseId ? `${href}?course=${courseId}` : href);
   const navLink = (href: string, icon: string, label: string, cnt?: string) => {
     const path = href.split("?")[0];
-    const on = pathname === path || (path !== "/" && pathname.startsWith(path));
+    // course pages match exactly, so the intro isn't lit while you read its TL;DR
+    const on = pathname === path || (path !== "/" && !path.startsWith("/courses/") && pathname.startsWith(path));
     return (
       <Link href={href} className={cn(on && "on")}>
         <span className="ic">{icon}</span>
@@ -150,15 +151,19 @@ export function SideNav() {
           <Link href={q(`/lesson/${m.id}/overview`)} className={cn(here && sub === "overview" && "on")}>
             {t("overview")}
           </Link>
-          {m.terms.map((tm, i) => (
-            <Link
-              key={i}
-              href={q(`/lesson/${m.id}/${i}`)}
-              className={cn(here && activeTerm === i && "on", done.has(termKey(m, i)) && "done")}
-            >
-              {tm.t[lang]}
-            </Link>
-          ))}
+          {m.terms.map((tm, i) =>
+            // the topic you are on always stays, even when expert topics are hidden
+            hideExpert && tm.lvl === "E" && !(here && activeTerm === i) ? null : (
+              <Link
+                key={i}
+                href={q(`/lesson/${m.id}/${i}`)}
+                className={cn(here && activeTerm === i && "on", done.has(termKey(m, i)) && "done")}
+              >
+                {tm.t[lang]}
+                {tm.lvl === "E" ? <span className="xbadge ms-1.5">{t("expert")}</span> : null}
+              </Link>
+            ),
+          )}
           <Link href={q(`/lesson/${m.id}/summary`)} className={cn(here && sub === "summary" && "on")}>
             {t("summary")}
           </Link>
@@ -183,6 +188,7 @@ export function SideNav() {
   const finished = mods.filter((m) => m.id !== activeLesson && m.terms.every((_, i) => done.has(termKey(m, i))));
   const lessons = (hideDone ? mods.filter((m) => !finished.includes(m)) : mods).map(lesson);
   const arches = courseId ? archesFor(courseId) : [];
+  const expertN = mods.reduce((n, m) => n + m.terms.filter((tm) => tm.lvl === "E").length, 0);
 
   return (
     <nav
@@ -228,7 +234,18 @@ export function SideNav() {
             {t(hideDone ? "showDone" : "hideDone")} ({finished.length})
           </button>
         ) : null}
+        {expertN ? (
+          <button type="button" className="nav-hide" aria-pressed={hideExpert}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleHideExpert();
+            }}
+          >
+            {t(hideExpert ? "showExpert" : "hideExpert")} ({expertN})
+          </button>
+        ) : null}
         {courseId ? navLink(`/courses/${courseId}`, "🚩", t("courseIntro")) : null}
+        {courseId ? navLink(`/courses/${courseId}/tldr`, "⚡", t("tldr")) : null}
         {lessons}
         {user && courseId ? (
           <>

@@ -32,6 +32,9 @@ type Ctx = {
   toggleTheme: () => void;
   toggleDone: (k: string) => void;
   toggleTicked: (k: string, on: boolean) => void;
+  /** per-viewer filter: expert topics left out of the menus and lists (they still open by link) */
+  hideExpert: boolean;
+  toggleHideExpert: () => void;
   resetProgress: () => void;
   t: (k: string) => string;
   UI: Record<string, Record<Lang, string>>;
@@ -64,6 +67,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
   const [done, setDone] = useState<Set<string>>(new Set());
   const [ticked, setTicked] = useState<Set<string>>(new Set());
   const [user, setUser] = useState<User | null>(null);
+  const [hideExpert, setHideExpert] = useState(false);
   const cloudTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const uidRef = useRef<string | null>(null);
 
@@ -92,6 +96,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     setTheme((lsGet(KEY + ".theme") as "dark" | "light") || "dark");
     setDone(new Set(JSON.parse(lsGet(KEY + ".done") || "[]")));
     setTicked(new Set(JSON.parse(lsGet(KEY + ".check") || "[]")));
+    setHideExpert(lsGet(KEY + ".hideExpert") === "1");
   }, []);
 
   useEffect(() => {
@@ -177,6 +182,11 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     persist(done, next);
   };
 
+  const toggleHideExpert = () => {
+    lsSet(KEY + ".hideExpert", hideExpert ? "0" : "1");
+    setHideExpert(!hideExpert);
+  };
+
   const resetProgress = () => {
     const empty = new Set<string>();
     setDone(empty);
@@ -199,12 +209,14 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
       toggleTheme,
       toggleDone,
       toggleTicked,
+      hideExpert,
+      toggleHideExpert,
       resetProgress,
       t,
       UI,
       progressPct,
     }),
-    [lang, theme, done, ticked, user, syncCloud, UI, progressPct],
+    [lang, theme, done, ticked, user, hideExpert, syncCloud, UI, progressPct],
   );
 
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;

@@ -24,15 +24,18 @@ function mark(text: string, q: string) {
 export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Term }[] }) {
   const { lang, done, t } = useApp();
   const [raw, setRaw] = useState("");
+  const [lvl, setLvl] = useState<"all" | "core" | "E">("all");
   const q = raw.trim().toLowerCase();
 
   // the definition is searched too, so "makes pages load faster" finds Cache
   const hits = useMemo(
     () =>
       items.filter(
-        ({ tm }) => !q || (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(q),
+        ({ tm }) =>
+          (lvl === "all" || (lvl === "E") === (tm.lvl === "E")) &&
+          (!q || (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(q)),
       ),
-    [items, q, lang],
+    [items, q, lang, lvl],
   );
 
   const groups: Record<string, typeof items> = {};
@@ -54,6 +57,13 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
         />
         <span>{hits.length}/{items.length}</span>
       </div>
+      <div className="lvl-chips" role="group" aria-label={t("filterLvl")}>
+        {(["all", "core", "E"] as const).map((v) => (
+          <button key={v} type="button" aria-pressed={lvl === v} onClick={() => setLvl(v)}>
+            {t(v === "all" ? "lvlAll" : v === "core" ? "lvlCore" : "expert")}
+          </button>
+        ))}
+      </div>
       {hits.length ? (
         <div className="gloss">
           {Object.keys(groups).map((k) => (
@@ -65,7 +75,10 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
                   href={`/lesson/${m.id}/${i}`}
                   className={done.has(termKey(m, i)) ? "done" : ""}
                 >
-                  <span>{mark(tm.t[lang], q)}</span>
+                  <span>
+                    {mark(tm.t[lang], q)}
+                    {tm.lvl === "E" ? <span className="xbadge ms-1.5">{t("expert")}</span> : null}
+                  </span>
                   <i>{m.title[lang]}</i>
                 </Link>
               ))}
