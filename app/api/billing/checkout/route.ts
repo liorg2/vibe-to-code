@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   const price = priceId(course);
   if (!price) return NextResponse.json({ error: "billing not configured" }, { status: 503 });
 
-  const url = await createCheckout(price, uid, course, new URL(req.url).origin);
+  const url = await createCheckout(price, uid, course);
   if (!url) return NextResponse.json({ error: "checkout unavailable" }, { status: 502 });
   return NextResponse.json({ url });
 }

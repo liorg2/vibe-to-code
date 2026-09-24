@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   if (!price) return NextResponse.json({ error: "billing not configured" }, { status: 503 });
 
   // the transaction is tagged with the target course: paying it is what grants that course
-  const url = await createCheckout(price, uid, target, new URL(req.url).origin);
+  const url = await createCheckout(price, uid, target);
   if (!url) return NextResponse.json({ error: "checkout unavailable" }, { status: 502 });
   return NextResponse.json({ url });
 }

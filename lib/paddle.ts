@@ -30,7 +30,6 @@ export async function createCheckout(
   price: string,
   uid: string,
   course: Course,
-  origin: string,
 ): Promise<string | null> {
   const p = api();
   if (!p) return null;
@@ -42,9 +41,9 @@ export async function createCheckout(
       // The wire field keeps the name `tier` — in-flight Paddle transactions already carry it —
       // but what it holds is a course id.
       custom_data: { uid, tier: course },
-      // Paddle appends `?_ptxn=txn_…`; PaddleCheckout opens the overlay there and adds `paid=1`
-      // only once the payment completes
-      checkout: { url: `${origin}/courses` },
+      // ponytail: no checkout.url — Paddle rejects any domain it hasn't approved, so each account's
+      // default payment link (sandbox → stg, live → vibetodev.com, both /en/courses) is used.
+      // Paddle appends `?_ptxn=txn_…`; PaddleCheckout opens the overlay and adds `paid=1` once paid.
     }),
   });
   if (!res.ok) {
