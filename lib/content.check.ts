@@ -18,6 +18,11 @@ const titles = new Set(MODULES.flatMap((m) => m.terms.map((t) => t.t.en)));
 assert.deepEqual(MODULES.map((m) => m.id), advanced.mods, "MODULES and Advanced path order drifted");
 assert.deepEqual(basic.mods, advanced.mods.slice(0, basic.mods.length), "Basic must remain an Advanced prefix");
 assert.equal(slugs.size, [...titles].length, "topic slugs or English titles are not unique");
+// levels: A/B/E only; every lesson keeps a core the TL;DR can show (expert topics are left out of it)
+for (const m of MODULES) {
+  m.terms.forEach((t) => assert.ok(["A", "B", "E"].includes(t.lvl), `${m.id}:${t.k}: bad level ${t.lvl}`));
+  assert.ok(m.terms.filter((t) => t.lvl !== "E").length >= 3, `${m.id}: fewer than 3 non-expert topics`);
+}
 for (const title of titles) {
   assert.ok(SIMPLE[title], `${title}: missing simple explanation`);
   assert.ok(DETAIL[title], `${title}: missing detail`);

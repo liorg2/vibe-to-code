@@ -66,6 +66,7 @@ export async function LessonIntro({
               <span className="n">{j + 1}</span>
               <div>
                 <Link href={q(`/lesson/${m.id}/${j}`)}>{tm.t[lang]}</Link>
+                {tm.lvl === "E" ? <span className="xbadge ms-2">{t("expert")}</span> : null}
                 {owns ? <p>{tm.d[lang]}</p> : <p className="lock">🔒 {t("locked")}</p>}
               </div>
             </li>

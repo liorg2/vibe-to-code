@@ -88,6 +88,9 @@ export default async function SlidePage({
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
         </div>
         <h2>{tm.t[lang]}</h2>
+        {tm.lvl === "E" ? (
+          <p className="xnote"><span className="xbadge">{t("expert")}</span> {t("expertNote")}</p>
+        ) : null}
         <div className="lede">{tm.d[lang]}</div>
         {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />

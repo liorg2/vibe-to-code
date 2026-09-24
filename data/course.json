@@ -441,8 +441,8 @@
    "he": "אפליקציה אחת, מתיקייה ריקה ועד פרודקשן. כל שיעור מוסיף שלב אחד: מדביקים לסוכן ה-AI פרומפט בנייה, ואז פרומפט בדיקה שמוסיף טסטים, מריץ את כולם ומדווח. אתם לא כותבים קוד. אתם קוראים, מוודאים ומשחררים."
   },
   "buildTrackWarn": {
-   "en": "Everything here fits free tiers: Vercel Hobby, Neon Postgres, Sentry, a sandbox email key. The only optional cost is your own domain in step 15, about $10–15 a year. Never put real customer data in it.",
-   "he": "הכול כאן נכנס בחבילות החינמיות: Vercel Hobby,‏ Neon Postgres,‏ Sentry ומפתח מייל של sandbox. העלות האופציונלית היחידה היא דומיין משלכם בשלב 15, בערך 10–15 דולר לשנה. אל תכניסו לשם נתוני לקוחות אמיתיים."
+   "en": "Everything here fits free tiers: Vercel Hobby, Neon Postgres, Sentry, a sandbox email key. The only optional cost is your own domain in step 16, about $10–15 a year. Never put real customer data in it.",
+   "he": "הכול כאן נכנס בחבילות החינמיות: Vercel Hobby,‏ Neon Postgres,‏ Sentry ומפתח מייל של sandbox. העלות האופציונלית היחידה היא דומיין משלכם בשלב 16, בערך 10–15 דולר לשנה. אל תכניסו לשם נתוני לקוחות אמיתיים."
   },
   "buildHow": {
    "en": "Open your AI coding agent (Claude Code, Cursor, Copilot) in the project folder. Paste prompt 1, read what it did, then paste prompt 2. Move on only when its table is all green.",
@@ -479,6 +479,38 @@
   "showDone": {
    "en": "Show completed",
    "he": "הצגת שיעורים שהושלמו"
+  },
+  "expert": {
+   "en": "Expert",
+   "he": "למומחים"
+  },
+  "expertNote": {
+   "en": "Expert topic: good to know, safe to skip on a first pass.",
+   "he": "נושא למומחים: טוב לדעת, אפשר לדלג עליו בקריאה ראשונה."
+  },
+  "tldr": {
+   "en": "TL;DR",
+   "he": "TL;DR"
+  },
+  "tldrCta": {
+   "en": "In a hurry? The whole course on one page: the main idea of every lesson.",
+   "he": "ממהרים? כל הקורס בעמוד אחד: הרעיון המרכזי של כל שיעור."
+  },
+  "tldrSub": {
+   "en": "The main idea of every lesson, then its core topics in one line each. Expert topics are left out; they wait in the full lessons.",
+   "he": "הרעיון המרכזי של כל שיעור, ואחריו נושאי הליבה שלו, שורה אחת לכל נושא. נושאים למומחים לא נכללים; הם מחכים בשיעורים המלאים."
+  },
+  "tldrTopics": {
+   "en": "Core topics",
+   "he": "נושאי ליבה"
+  },
+  "tldrExpert": {
+   "en": "expert topics in the full lesson",
+   "he": "נושאים למומחים בשיעור המלא"
+  },
+  "tldrOpen": {
+   "en": "Open the full lesson",
+   "he": "לשיעור המלא"
   }
  },
  "MODULES": [
@@ -1010,7 +1042,7 @@
     },
     {
      "k": "go-rust-java-c",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Go / Rust / Java / C#",
       "he": "Go / Rust / Java / C#"
@@ -1268,6 +1300,70 @@
      "w": {
       "en": "Anyone can skip your frontend and POST directly. Client validation is UX; server validation is security.",
       "he": "כל אחד יכול לדלג על הפרונט שלך ולשלוח POST ישירות. אימות בלקוח הוא חוויית משתמש; אימות בשרת הוא אבטחה."
+     }
+    },
+    {
+     "k": "seo-basics",
+     "lvl": "B",
+     "t": {
+      "en": "SEO basics",
+      "he": "SEO basics"
+     },
+     "d": {
+      "en": "How search engines find, read and rank your pages: a clear title and description, real text in the HTML, and files that tell crawlers what exists.",
+      "he": "איך מנועי חיפוש מוצאים, קוראים ומדרגים את הדפים שלך: כותרת ותיאור ברורים, טקסט אמיתי ב-HTML, וקבצים שאומרים לסורקים מה קיים."
+     },
+     "w": {
+      "en": "An AI-built site often ships with the same title on every page and an empty shell for Google to read. Nobody finds a page Google cannot read.",
+      "he": "אתר שנבנה עם AI יוצא הרבה פעמים עם אותה כותרת בכל הדפים ומעטפת ריקה ש-Google צריך לקרוא. אף אחד לא ימצא דף ש-Google לא מצליח לקרוא."
+     }
+    },
+    {
+     "k": "link-previews-open-graph",
+     "lvl": "B",
+     "t": {
+      "en": "Link previews (Open Graph)",
+      "he": "Link previews (Open Graph)"
+     },
+     "d": {
+      "en": "The meta tags (og:title, og:description, og:image) that WhatsApp, Slack, LinkedIn and X read to draw the card that appears when someone shares your link.",
+      "he": "תגיות ה-meta (og:title, og:description, og:image) ש-WhatsApp, Slack, LinkedIn ו-X קוראים כדי לצייר את הכרטיס שמופיע כשמישהו משתף את הקישור שלך."
+     },
+     "w": {
+      "en": "Your launch link will be shared more than it is searched. A blank grey card, or a preview of your login page, looks broken before anyone clicks.",
+      "he": "את קישור ההשקה שלך ישתפו יותר משיחפשו אותו. כרטיס אפור וריק, או תצוגה מקדימה של דף ההתחברות, נראים שבורים עוד לפני שמישהו לחץ."
+     }
+    },
+    {
+     "k": "lighthouse-and-pagespeed",
+     "lvl": "B",
+     "t": {
+      "en": "Measuring speed (Lighthouse)",
+      "he": "Measuring speed (Lighthouse)"
+     },
+     "d": {
+      "en": "Lighthouse (in Chrome DevTools) and PageSpeed Insights load your page under controlled conditions and give numbers for how fast it appears and responds.",
+      "he": "Lighthouse (בכלי המפתחים של Chrome) ו-PageSpeed Insights טוענים את הדף בתנאים מבוקרים ונותנים מספרים לכמה מהר הוא מופיע ומגיב."
+     },
+     "w": {
+      "en": "\"Feels fast\" on your laptop on office wifi says nothing about a mid-range phone on 4G. Without a number, you cannot tell whether the AI's fix helped.",
+      "he": "״מרגיש מהיר״ על הלפטופ שלך בוויי-פיי של המשרד לא אומר כלום על טלפון בינוני ב-4G. בלי מספר, אתה לא יכול לדעת אם התיקון של ה-AI עזר."
+     }
+    },
+    {
+     "k": "core-web-vitals",
+     "lvl": "B",
+     "t": {
+      "en": "Core Web Vitals",
+      "he": "Core Web Vitals"
+     },
+     "d": {
+      "en": "Google's three user-experience measurements: LCP (how fast the main content appears), INP (how fast the page responds to a tap) and CLS (how much the layout jumps).",
+      "he": "שלושת המדדים של Google לחוויית משתמש: LCP (כמה מהר התוכן הראשי מופיע), INP (כמה מהר הדף מגיב להקשה) ו-CLS (כמה הפריסה קופצת)."
+     },
+     "w": {
+      "en": "They nudge your Google ranking a little and your users a lot. A vibe-coded site usually fails them for boring reasons: a 4 MB hero image, a chat widget, images without sizes.",
+      "he": "הם מזיזים קצת את הדירוג שלך בגוגל, ואת המשתמשים שלך הרבה. אתר שנבנה ב-vibe coding נכשל בהם בדרך כלל מסיבות משעממות: תמונת hero של 4 מגה, וידג'ט צ'אט, תמונות בלי מידות."
      }
     }
    ],
@@ -1690,7 +1786,7 @@
     },
     {
      "k": "event-and-pub-sub",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Event & pub/sub",
       "he": "אירוע ו-pub/sub"
@@ -1722,7 +1818,7 @@
     },
     {
      "k": "dead-letter-queue",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Dead-letter queue",
       "he": "תור אותיות מתות (DLQ)"
@@ -1738,7 +1834,7 @@
     },
     {
      "k": "eventual-consistency",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Eventual consistency",
       "he": "עקביות בסופו של דבר"
@@ -1824,7 +1920,7 @@
     },
     {
      "k": "stack-and-heap",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Stack & heap",
       "he": "סטאק והיפ (Stack & heap)"
@@ -1840,7 +1936,7 @@
     },
     {
      "k": "garbage-collection",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Garbage collection",
       "he": "גרבג׳ קולקשן (GC)"
@@ -1888,7 +1984,7 @@
     },
     {
      "k": "data-structures",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Data structures",
       "he": "מבני נתונים"
@@ -1904,7 +2000,7 @@
     },
     {
      "k": "big-o",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Big-O",
       "he": "Big-O"
@@ -2070,7 +2166,7 @@
     },
     {
      "k": "redis-in-memory-store",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Redis / in-memory store",
       "he": "Redis / אחסון בזיכרון"
@@ -2108,7 +2204,7 @@
    "terms": [
     {
      "k": "rest-vs-graphql",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "REST vs GraphQL",
       "he": "REST מול GraphQL"
@@ -2124,7 +2220,7 @@
     },
     {
      "k": "api-spec-openapi",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "API spec (OpenAPI)",
       "he": "מפרט API (OpenAPI)"
@@ -2172,7 +2268,7 @@
     },
     {
      "k": "api-versioning",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "API versioning",
       "he": "גרסאות API"
@@ -2775,6 +2871,156 @@
    }
   },
   {
+   "id": "pay",
+   "icon": "¤",
+   "title": {
+    "en": "Getting Paid",
+    "he": "לקבל תשלום"
+   },
+   "blurb": {
+    "en": "How to take money in a small app without touching card numbers, trusting a redirect, or losing track of who paid for what.",
+    "he": "איך לגבות כסף באפליקציה קטנה בלי לגעת במספרי כרטיסים, בלי לסמוך על הפניה, ובלי לאבד את הקשר בין תשלום למי ששילם."
+   },
+   "overview": {
+    "en": "The day your app starts charging, every bug gets a price tag. This lesson takes what you already know, webhooks, idempotency, sandbox keys and secrets, and applies it to money: who legally sells, where the card is typed, which signal means \"paid\", what your database remembers, and what happens at renewals, refunds and disputes. The examples use Stripe, Paddle and Lemon Squeezy, but the rules hold for any provider. Read it before you ask the AI for a \"Buy\" button.",
+    "he": "ביום שהאפליקציה שלכם מתחילה לגבות כסף, לכל באג יש תג מחיר. השיעור הזה לוקח את מה שאתם כבר מכירים, webhooks, אידמפוטנטיות, מפתחות sandbox וסודות, ומחיל אותו על כסף: מי המוכר מבחינה חוקית, איפה מקלידים את הכרטיס, איזה אות באמת אומר \"שולם\", מה מסד הנתונים שלכם זוכר, ומה קורה בחידושים, בהחזרים ובהכחשות עסקה. הדוגמאות משתמשות ב-Stripe, Paddle ו-Lemon Squeezy, אבל הכללים תקפים לכל ספק. לקרוא אותו לפני שאתם מבקשים מה-AI כפתור \"קנה\"."
+   },
+   "summary": {
+    "en": "Let the provider take the card, and pick a merchant of record if you don't want to handle tax. Grant access only when a verified webhook says paid, record it as an entitlement row in your database, revoke it on refunds and disputes, and rehearse every failure in sandbox first.",
+    "he": "תנו לספק לקבל את הכרטיס, ובחרו merchant of record אם אתם לא רוצים לטפל במס בעצמכם. תנו גישה רק כש-webhook מאומת אומר ששולם, רשמו אותה כשורת זכאות במסד הנתונים שלכם, בטלו אותה בהחזר ובהכחשה, ותרגלו כל כישלון ב-sandbox לפני שעוברים ל-live."
+   },
+   "terms": [
+    {
+     "k": "hosted-checkout",
+     "lvl": "B",
+     "t": {
+      "en": "Hosted checkout",
+      "he": "צ׳קאאוט אצל הספק (Hosted checkout)"
+     },
+     "d": {
+      "en": "A payment page or overlay run by the provider, where the buyer types their card. Your app only learns the result, never the card number.",
+      "he": "דף תשלום או חלון צף שהספק מפעיל, שבו הקונה מקליד את הכרטיס. האפליקציה שלך לומדת רק את התוצאה, אף פעם לא את מספר הכרטיס."
+     },
+     "w": {
+      "en": "A card number that never reaches your server can't leak from it. Hosted checkout keeps you out of most PCI compliance work for free.",
+      "he": "מספר כרטיס שלא מגיע לשרת שלך לא יכול לדלוף ממנו. צ׳קאאוט אצל הספק משאיר אותך מחוץ לרוב עבודת התאימות של PCI, בחינם."
+     }
+    },
+    {
+     "k": "merchant-of-record",
+     "lvl": "B",
+     "t": {
+      "en": "Merchant of record",
+      "he": "המוכר הרשמי (Merchant of record)"
+     },
+     "d": {
+      "en": "The company that legally sells to your buyer: it charges the card, collects and pays VAT or sales tax, issues invoices, and handles refunds and fraud.",
+      "he": "החברה שמוכרת לקונה שלך מבחינה חוקית: היא מחייבת את הכרטיס, גובה ומעבירה מע\"מ או מס מכירה, מנפיקה חשבוניות ומטפלת בהחזרים ובהונאות."
+     },
+     "w": {
+      "en": "Sell to buyers in thirty countries and you may owe tax in thirty countries. A merchant of record takes that on for a bigger fee; a plain processor leaves it with you.",
+      "he": "תמכור לקונים בשלושים מדינות ואתה עלול לחוב מס בשלושים מדינות. Merchant of record לוקח את זה על עצמו תמורת עמלה גבוהה יותר; מעבד תשלומים רגיל משאיר את זה אצלך."
+     }
+    },
+    {
+     "k": "trust-the-webhook",
+     "lvl": "B",
+     "t": {
+      "en": "Trust the webhook, not the redirect",
+      "he": "לסמוך על ה-webhook, לא על ההפניה"
+     },
+     "d": {
+      "en": "The page a buyer lands on after paying is only a hint. Access is granted when the provider confirms the payment, server to server.",
+      "he": "הדף שהקונה נוחת בו אחרי התשלום הוא רק רמז. גישה ניתנת כשהספק מאשר את התשלום, משרת לשרת."
+     },
+     "w": {
+      "en": "Anyone can type /success?paid=1 into the address bar. If that URL unlocks the product, your product is free.",
+      "he": "כל אחד יכול להקליד /success?paid=1 בשורת הכתובת. אם הכתובת הזאת פותחת את המוצר, המוצר שלך בחינם."
+     }
+    },
+    {
+     "k": "webhook-signature",
+     "lvl": "B",
+     "t": {
+      "en": "Webhook signature",
+      "he": "חתימת webhook"
+     },
+     "d": {
+      "en": "A code the provider computes from the exact request body and a secret you share, so your server can prove the webhook is genuine and unaltered.",
+      "he": "קוד שהספק מחשב מגוף הבקשה המדויק ומסוד ששניכם חולקים, כדי שהשרת שלך יוכל להוכיח שה-webhook אמיתי ולא שונה בדרך."
+     },
+     "w": {
+      "en": "Your webhook URL is public. Without the signature check, anyone who finds it can POST \"payment succeeded\" and give themselves the product.",
+      "he": "הכתובת של ה-webhook שלך ציבורית. בלי בדיקת חתימה, כל מי שמוצא אותה יכול לשלוח POST של \"התשלום הצליח\" ולתת לעצמו את המוצר."
+     }
+    },
+    {
+     "k": "entitlement",
+     "lvl": "B",
+     "t": {
+      "en": "Entitlement",
+      "he": "זכאות (Entitlement)"
+     },
+     "d": {
+      "en": "A row in your own database recording what a user owns: who, which product, its status, the provider's transaction id and the dates.",
+      "he": "שורה במסד הנתונים שלך שרושמת מה משתמש מחזיק: מי, איזה מוצר, מה הסטטוס, מזהה העסקה אצל הספק והתאריכים."
+     },
+     "w": {
+      "en": "Every paid page needs one fast, honest answer to \"has this user paid?\". Asking the provider on every page view is slow; trusting the browser makes it free for everyone.",
+      "he": "כל דף בתשלום צריך תשובה אחת, מהירה וכנה, ל\"האם המשתמש הזה שילם?\". לשאול את הספק בכל צפייה זה איטי; לסמוך על הדפדפן הופך את המוצר לחינם לכולם."
+     }
+    },
+    {
+     "k": "one-time-vs-subscription",
+     "lvl": "B",
+     "t": {
+      "en": "One-time vs subscription",
+      "he": "חד-פעמי מול מנוי"
+     },
+     "d": {
+      "en": "A one-time purchase is paid once and owned for good. A subscription renews every period and moves through states like trialing, active, past_due and canceled.",
+      "he": "רכישה חד-פעמית משולמת פעם אחת ושייכת לקונה לתמיד. מנוי מתחדש בכל תקופה ועובר בין מצבים כמו trialing, active, past_due ו-canceled."
+     },
+     "w": {
+      "en": "A subscription isn't one event but a story that keeps going. Code that only handles \"paid\" keeps giving access to people who stopped paying, or cuts off people who didn't.",
+      "he": "מנוי הוא לא אירוע אחד אלא סיפור שממשיך. קוד שמטפל רק ב\"שולם\" ממשיך לתת גישה למי שהפסיק לשלם, או מנתק את מי שלא הפסיק."
+     }
+    },
+    {
+     "k": "refunds-and-chargebacks",
+     "lvl": "B",
+     "t": {
+      "en": "Refunds & chargebacks",
+      "he": "החזרים והכחשות עסקה (Chargebacks)"
+     },
+     "d": {
+      "en": "A refund is you giving the money back. A chargeback, or dispute, is the buyer's bank taking it back, usually plus a fee.",
+      "he": "החזר הוא אתה שמחזיר את הכסף. הכחשת עסקה (chargeback או dispute) היא הבנק של הקונה שלוקח אותו בחזרה, בדרך כלל עם עמלה נוספת."
+     },
+     "w": {
+      "en": "Both should remove access, and only one is cheap. Every dispute costs a fee and counts against you; too many, and the provider can restrict your account.",
+      "he": "שניהם צריכים להסיר גישה, ורק אחד מהם זול. כל הכחשה עולה עמלה ונספרת נגדך; יותר מדי מהן, והספק יכול להגביל את החשבון שלך."
+     }
+    },
+    {
+     "k": "test-cards-and-declines",
+     "lvl": "B",
+     "t": {
+      "en": "Test cards & declined payments",
+      "he": "כרטיסי בדיקה ותשלומים שנדחו"
+     },
+     "d": {
+      "en": "Card numbers the provider's sandbox accepts to simulate outcomes, such as success, a decline, insufficient funds or a 3-D Secure challenge, without real money moving.",
+      "he": "מספרי כרטיסים שה-sandbox של הספק מקבל כדי לדמות תוצאות, כמו הצלחה, דחייה, חוסר כיסוי או אימות 3-D Secure, בלי שכסף אמיתי זז."
+     },
+     "w": {
+      "en": "Your first real customer shouldn't be the first person to see your decline screen. Rehearse every failure in sandbox before switching to live keys.",
+      "he": "הלקוח האמיתי הראשון שלך לא צריך להיות הראשון שרואה את מסך הדחייה. תתרגל כל כישלון ב-sandbox לפני שאתה עובר למפתחות live."
+     }
+    }
+   ]
+  },
+  {
    "id": "net",
    "icon": "⌾",
    "title": {
@@ -2820,7 +3066,7 @@
     },
     {
      "k": "public-vs-private-ip",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Public vs private IP",
       "he": "IP ציבורי מול פרטי"
@@ -2852,7 +3098,7 @@
     },
     {
      "k": "reverse-proxy",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Reverse proxy",
       "he": "Reverse proxy"
@@ -2868,7 +3114,7 @@
     },
     {
      "k": "firewall-security-group",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Firewall / security group",
       "he": "חומת אש / security group"
@@ -2884,7 +3130,7 @@
     },
     {
      "k": "vpc-private-network",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "VPC / private network",
       "he": "VPC / רשת פרטית"
@@ -2986,7 +3232,7 @@
     },
     {
      "k": "ec2-vm-vs-lambda-serverless",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "EC2 / VM vs Lambda / serverless",
       "he": "EC2 / מכונה וירטואלית מול Lambda / סרברלס"
@@ -3136,7 +3382,7 @@
     },
     {
      "k": "build-artifact-and-image-tag",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Build artifact & image tag",
       "he": "ארטיפקט בנייה ותג אימג׳"
@@ -3168,7 +3414,7 @@
     },
     {
      "k": "zero-downtime-deploy",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Zero-downtime deploy",
       "he": "דיפלוי בלי השבתה (zero-downtime)"
@@ -3216,7 +3462,7 @@
     },
     {
      "k": "infrastructure-as-code",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Infrastructure as Code",
       "he": "תשתית כקוד (IaC)"
@@ -3232,7 +3478,7 @@
     },
     {
      "k": "expand-contract-migration",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Expand / contract migration",
       "he": "מיגרציית expand / contract"
@@ -3302,7 +3548,7 @@
     },
     {
      "k": "tracing-and-correlation-id",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Tracing & correlation id",
       "he": "טרייסינג ומזהה קורלציה"
@@ -3366,7 +3612,7 @@
     },
     {
      "k": "slo-and-error-budget",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "SLO & error budget",
       "he": "SLO ותקציב שגיאות"
@@ -3446,7 +3692,7 @@
     },
     {
      "k": "retention-and-cohort",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Retention & cohort",
       "he": "שימור וקוהורטה"
@@ -3516,7 +3762,7 @@
     },
     {
      "k": "load-balancer",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Load balancer",
       "he": "מאזן עומסים"
@@ -3580,7 +3826,7 @@
     },
     {
      "k": "monolith-vs-microservices",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Monolith vs microservices",
       "he": "מונוליט מול מיקרו-סרוויסים"
@@ -3682,7 +3928,7 @@
     },
     {
      "k": "backlog-and-sprint",
-     "lvl": "A",
+     "lvl": "E",
      "t": {
       "en": "Backlog & sprint",
       "he": "בקלוג וספרינט"
@@ -3778,7 +4024,7 @@
     },
     {
      "k": "estimates",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Estimates",
       "he": "הערכות זמן"
@@ -3794,7 +4040,7 @@
     },
     {
      "k": "trunk-based-vs-long-branches",
-     "lvl": "B",
+     "lvl": "E",
      "t": {
       "en": "Trunk-based vs long branches",
       "he": "Trunk-based מול ענפים ארוכים"
@@ -4925,6 +5171,54 @@
   "Tracking without PII": {
    "en": "An analytics event should describe what happened, not who it happened to. search_performed with {result_count: 0, filter: \"stage\"} is useful forever. search_performed with {query: \"john@acme.com\"} has just copied a customer's email address into a third party's database, and it will sit in their logs, their backups and their support tooling long after you delete the event. The rule that survives contact with a real codebase: properties are counts, enums, booleans and durations - never free text the user typed, never names, emails, phone numbers, note bodies or file names. If you need to tie events to a person, send your own opaque user id and nothing else; the vendor does not need the email to build a funnel.\n\nThere are three more obligations that people discover late. Consent: in the EU and UK, non-essential analytics needs consent before the script loads - not a banner that appears while it is already reporting. Blocking: a large share of users run an ad blocker or a browser that kills third-party trackers, so your numbers are a sample, not a census, and more importantly your page must render and your saves must succeed with the script never loading at all. Wrap the tracker so a failure inside it can never throw into your UI. Third, retention of the data itself: analytics is the one place a small project quietly accumulates years of personal data with no policy, so set a deletion window when you set it up.\n\nThe safest architectures put distance between your users and the vendor: first-party or server-side event collection, a self-hosted option like Plausible or Umami, or Vercel's own analytics which is cookie-less by design. Whatever you pick, write down the complete list of properties you send, and review it the day someone adds an event in a hurry.",
    "he": "אירוע אנליטיקס צריך לתאר מה קרה, לא למי זה קרה. search_performed עם {result_count: 0, filter: \"stage\"} שימושי לנצח. search_performed עם {query: \"john@acme.com\"} בדיוק העתיק כתובת אימייל של לקוח למסד נתונים של צד שלישי, והיא תשב אצלו בלוגים, בגיבויים ובכלי התמיכה הרבה אחרי שתמחק את האירוע. הכלל ששורד מפגש עם קוד אמיתי: מאפיינים הם ספירות, ערכים מתוך רשימה סגורה, בוליאנים ומשכי זמן - אף פעם לא טקסט חופשי שהמשתמש הקליד, אף פעם לא שמות, אימיילים, טלפונים, גוף הערות או שמות קבצים. אם אתה חייב לקשור אירועים לאדם, שלח מזהה משתמש אטום משלך ותו לא; הספק לא צריך את האימייל כדי לבנות משפך.\n\nיש עוד שלוש חובות שאנשים מגלים מאוחר. הסכמה: באיחוד האירופי ובבריטניה אנליטיקס לא-חיוני דורש הסכמה לפני שהסקריפט נטען - לא באנר שמופיע בזמן שהוא כבר מדווח. חסימה: חלק גדול מהמשתמשים מריצים חוסם פרסומות או דפדפן שהורג מעקב צד שלישי, כך שהמספרים שלך הם מדגם ולא מפקד, וחשוב מזה - העמוד חייב להיטען והשמירות חייבות להצליח גם כשהסקריפט לא נטען כלל. עטוף את הטראקר כך שכשל בתוכו לעולם לא ייזרק ל-UI. שלישית, שמירת הנתונים עצמם: אנליטיקס הוא המקום היחיד שבו פרויקט קטן צובר בשקט שנים של מידע אישי בלי שום מדיניות, אז קבע חלון מחיקה כבר בהתקנה.\n\nהארכיטקטורות הבטוחות ביותר שמות מרחק בין המשתמשים שלך לספק: איסוף אירועים מצד ראשון או מהשרת, אפשרות באחסון עצמי כמו Plausible או Umami, או האנליטיקס של Vercel שהוא חסר עוגיות בתכנון. מה שתבחר, תכתוב את הרשימה המלאה של המאפיינים שאתה שולח, ותעבור עליה ביום שמישהו מוסיף אירוע בחיפזון."
+  },
+  "SEO basics": {
+   "en": "Imagine Noa's pottery shop: a pretty single-page app with forty product pages, launched with a post on Instagram. A month later, searching Google for the shop's name brings up a business directory and nothing of hers. The site works in every browser, so nothing looks broken. The problem is only visible from where Google stands: every page has the title \"Noa Pottery\", the HTML the server sends is an empty <div id=\"root\"> plus a script, and the robots.txt, copied from the preview copy she tested on, says Disallow: /.\n\nSearch works in three steps. Crawling: a bot fetches URLs it learns about from links and from your sitemap.xml, if robots.txt allows it. Indexing: it reads the title tag, meta description, headings and text, decides what the page is about and which URL is the main one (the canonical, which matters when the same page lives at several addresses, like ?ref=ig or with and without www). Ranking: it matches pages to searches. Google can run JavaScript, but rendering is queued and can lag behind crawling, and many other crawlers do not run it at all, so content that only appears after JavaScript is a gamble. Two different switches can shut you out: robots.txt stops the crawl, a noindex tag stops the index. For a site in Hebrew and English, hreflang links on each page tell Google which version to show to which searcher, and both versions must point at each other.\n\nCorrect looks like this: every page has its own title (around 50 to 60 characters, important words first) and its own description, one h1 that says what the page is, its main text present in the HTML the server sends (static or SSR, not filled in later), a canonical pointing at itself, hreflang pairs plus x-default, a sitemap.xml listing only real public pages, and a production robots.txt that allows crawling and points at the sitemap. Verify it yourself: open view-source and search for your main heading, open /robots.txt on the live domain, then in Search Console submit the sitemap and run URL Inspection on a few pages to see the rendered HTML and whether each is indexed. For a new site, expect days to weeks, not hours.",
+   "he": "תדמיין את חנות הקרמיקה של נועה: אפליקציית SPA יפה עם ארבעים דפי מוצר, שעלתה לאוויר עם פוסט באינסטגרם. חודש אחרי, חיפוש של שם החנות בגוגל מעלה אינדקס עסקים כלשהו ושום דבר שלה. האתר עובד בכל דפדפן, אז שום דבר לא נראה שבור. הבעיה נראית רק מהמקום ש-Google עומד בו: לכל הדפים יש את ה-title \"Noa Pottery\", ה-HTML שהשרת שולח הוא <div id=\"root\"> ריק וסקריפט, וה-robots.txt, שהועתק מעותק ה-preview שעליו היא בדקה, אומר Disallow: /.\n\nחיפוש עובד בשלושה שלבים. סריקה: בוט מביא כתובות שהוא לומד עליהן מקישורים ומה-sitemap.xml שלך, אם robots.txt מרשה לו. אינדוקס: הוא קורא את ה-title, ה-meta description, הכותרות והטקסט, ומחליט על מה הדף ומהי הכתובת הראשית שלו (ה-canonical, שחשוב כשאותו דף חי בכמה כתובות, כמו ?ref=ig או עם ובלי www). דירוג: הוא מתאים דפים לחיפושים. Google יודע להריץ JavaScript, אבל הרינדור נכנס לתור ויכול לפגר אחרי הסריקה, והרבה סורקים אחרים לא מריצים אותו בכלל, אז תוכן שמופיע רק אחרי JavaScript הוא הימור. שני מתגים שונים יכולים לחסום אותך: robots.txt עוצר את הסריקה, ותגית noindex עוצרת את האינדוקס. באתר בעברית ובאנגלית, קישורי hreflang בכל דף אומרים ל-Google איזו גרסה להציג לאיזה מחפש, ושתי הגרסאות חייבות להצביע אחת על השנייה.\n\nככה נראה נכון: לכל דף title משלו (בערך 50 עד 60 תווים, המילים החשובות בהתחלה) ו-description משלו, h1 אחד שאומר מה הדף, הטקסט העיקרי נמצא ב-HTML שהשרת שולח (סטטי או SSR, לא ממולא אחר כך), canonical שמצביע על הדף עצמו, זוגות hreflang ועוד x-default, sitemap.xml שמפרט רק דפים ציבוריים אמיתיים, ו-robots.txt של פרודקשן שמרשה סריקה ומצביע על ה-sitemap. תבדוק בעצמך: תפתח view-source ותחפש את הכותרת הראשית, תפתח את /robots.txt בדומיין החי, ואז ב-Search Console תגיש את ה-sitemap ותריץ URL Inspection על כמה דפים כדי לראות את ה-HTML המרונדר ואם כל אחד מהם מאונדקס. לאתר חדש זה לוקח ימים עד שבועות, לא שעות."
+  },
+  "Link previews (Open Graph)": {
+   "en": "Picture Daniel launching a habit-tracker app. He tested everything on the preview deployment, then pasted the production link into three WhatsApp groups and a LinkedIn post. Every one of them showed a grey box with the bare domain, because the Open Graph tags lived inside a React component that ran in the browser. He fixed the component that evening, and the next day's shares still showed the grey box: the platforms had cached the first, empty result.\n\nWhen you paste a URL, the platform's server (not your friend's phone) fetches it with a bot such as facebookexternalhit, Slackbot or LinkedInBot. The bot downloads the HTML, reads the <meta property=\"og:...\"> tags in the <head>, fetches the og:image, and stores the resulting card. It does not execute JavaScript, does not log in, and gives up on slow pages, so anything added client-side, anything behind auth or a Vercel preview gate, and relative image paths like /og.png are all invisible to it. X reads its own twitter:card tag and falls back to og:title, og:description and og:image for the rest. The stored card is reused for days or weeks, which is why a fix does not show up by itself.\n\nCorrect is per-page tags rendered on the server: og:title, og:description, og:url, og:type, and og:image as an absolute https URL to a 1200×630 JPG or PNG (keep important text away from the edges, since some apps crop it to a square), plus twitter:card set to summary_large_image. In Next.js, metadata.openGraph or an opengraph-image file does this for you, as long as metadataBase is set so the URLs come out absolute. Verify before the launch, not after: curl the page and grep for og:image to confirm it is in the raw HTML, then paste the URL into Facebook's Sharing Debugger and press Scrape Again, and into LinkedIn's Post Inspector. WhatsApp has no refresh button; adding a harmless query string such as ?v=2 makes it treat the link as new.",
+   "he": "תדמיין את דניאל משיק אפליקציה למעקב הרגלים. הוא בדק הכול על ה-preview, ואז הדביק את קישור הפרודקשן בשלוש קבוצות וואטסאפ ובפוסט בלינקדאין. בכולם הופיעה קופסה אפורה עם הדומיין בלבד, כי תגיות ה-Open Graph ישבו בתוך קומפוננטת React שרצה בדפדפן. הוא תיקן את הקומפוננטה באותו ערב, ולמחרת השיתופים עדיין הראו את הקופסה האפורה: הפלטפורמות שמרו במטמון את התוצאה הראשונה, הריקה.\n\nכשאתה מדביק כתובת, השרת של הפלטפורמה (לא הטלפון של החבר שלך) מביא אותה עם בוט כמו facebookexternalhit, Slackbot או LinkedInBot. הבוט מוריד את ה-HTML, קורא את תגיות <meta property=\"og:...\"> ב-<head>, מביא את ה-og:image, ושומר את הכרטיס שיצא. הוא לא מריץ JavaScript, לא מתחבר, ומוותר על דפים איטיים, אז כל מה שנוסף בצד הלקוח, כל מה שמאחורי התחברות או מאחורי שער ההגנה של preview ב-Vercel, ונתיבי תמונה יחסיים כמו /og.png, פשוט לא קיימים מבחינתו. X קורא את התגית twitter:card שלו, ולשאר נופל חזרה ל-og:title, og:description ו-og:image. הכרטיס השמור ממשיך לשמש ימים ואפילו שבועות, ולכן תיקון לא מופיע מעצמו.\n\nנכון זה תגיות לכל דף שמרונדרות בשרת: og:title, og:description, og:url, og:type, ו-og:image ככתובת https מלאה לתמונת JPG או PNG בגודל 1200×630 (טקסט חשוב רחוק מהשוליים, כי יש אפליקציות שחותכות לריבוע), ועוד twitter:card עם הערך summary_large_image. ב-Next.js, metadata.openGraph או קובץ opengraph-image עושים את זה בשבילך, בתנאי ש-metadataBase מוגדר כדי שהכתובות ייצאו מלאות. תבדוק לפני ההשקה, לא אחריה: תריץ curl על הדף ותחפש og:image כדי לוודא שהיא ב-HTML הגולמי, ואז תדביק את הכתובת ב-Sharing Debugger של Facebook ותלחץ Scrape Again, וב-Post Inspector של LinkedIn. ל-WhatsApp אין כפתור רענון; פרמטר תמים כמו ?v=2 גורם לו להתייחס לקישור כחדש."
+  },
+  "Measuring speed (Lighthouse)": {
+   "en": "Take Maya, who asks her AI agent to \"make the landing page faster\". It swaps a library, adds caching headers, lazy-loads a few components and reports success. The page feels the same on her MacBook, as it always did, because her MacBook was never the problem. She has no idea whether anything improved, whether one of the changes made it worse, or which change to keep. What she was missing was a number to start from.\n\nThere are two kinds of speed data. Lab data is one controlled load: Lighthouse, in the DevTools Lighthouse panel or on PageSpeed Insights, loads the page as a simulated mid-range phone on a throttled mobile connection, and reports timings such as First Contentful Paint, Largest Contentful Paint, Total Blocking Time and Cumulative Layout Shift, weighted into a 0 to 100 score (90 and up is green). It is repeatable enough to compare before and after, but it moves a few points from run to run, and extensions, other tabs and a warm cache in your normal window all distort it. Field data is what real visitors experienced: PageSpeed Insights shows it from the Chrome UX Report over the last 28 days, but only once the page or site gets enough Chrome traffic, and Search Console shows the same data grouped by URL. Lab tells you why; field tells you whether it matters.\n\nThe working loop: incognito window, Lighthouse, Mobile, Navigation mode, three runs, note the median score and LCP. Read the list below the score (Opportunities and Diagnostics in older versions, Insights in newer ones), which names the exact files and the estimated savings, and hand the top two or three to the AI together with the numbers. Rerun and compare, and keep a change only if the number moved. Once in a while, load the site on an actual mid-range Android phone over mobile data, or set DevTools network throttling to Slow 4G, because the lab is a simulation and your users are not.",
+   "he": "קח את מאיה, שמבקשת מסוכן ה-AI שלה \"לעשות את דף הנחיתה מהיר יותר\". הוא מחליף ספרייה, מוסיף כותרות מטמון, טוען כמה קומפוננטות בעצלות ומדווח על הצלחה. הדף מרגיש אותו דבר על ה-MacBook שלה, כמו תמיד, כי ה-MacBook שלה אף פעם לא היה הבעיה. אין לה מושג אם משהו השתפר, אם אחד השינויים דווקא החמיר, או איזה שינוי לשמור. מה שחסר לה היה מספר להתחיל ממנו.\n\nיש שני סוגים של נתוני מהירות. נתוני מעבדה הם טעינה מבוקרת אחת: Lighthouse, בפאנל Lighthouse של DevTools או ב-PageSpeed Insights, טוען את הדף כמו טלפון בינוני מדומה על חיבור סלולרי מואט, ומדווח זמנים כמו First Contentful Paint, Largest Contentful Paint, Total Blocking Time ו-Cumulative Layout Shift, שמשוקללים לציון בין 0 ל-100 (מ-90 ומעלה זה ירוק). זה עקבי מספיק כדי להשוות לפני ואחרי, אבל זה זז בכמה נקודות בין ריצה לריצה, ותוספים, לשוניות אחרות ומטמון חם בחלון הרגיל שלך מעוותים את התוצאה. נתוני שטח הם מה שמבקרים אמיתיים חוו: PageSpeed Insights מציג אותם מתוך Chrome UX Report על פני 28 הימים האחרונים, אבל רק כשלדף או לאתר יש מספיק תנועה מ-Chrome, ו-Search Console מציג את אותם נתונים לפי קבוצות של כתובות. המעבדה אומרת לך למה; השטח אומר לך אם זה משנה.\n\nהלולאה שעובדת: חלון גלישה בסתר, Lighthouse, מצב Mobile ו-Navigation, שלוש ריצות, לרשום את הציון החציוני ואת ה-LCP. לקרוא את הרשימה שמתחת לציון (Opportunities ו-Diagnostics בגרסאות ישנות, Insights בחדשות), שמציינת את הקבצים המדויקים ואת החיסכון המשוער, ולתת ל-AI את שניים או שלושה הראשונים יחד עם המספרים. להריץ שוב ולהשוות, ולשמור שינוי רק אם המספר זז. ומדי פעם לטעון את האתר על טלפון אנדרואיד בינוני אמיתי בגלישה סלולרית, או לכוון את ה-network throttling של DevTools ל-Slow 4G, כי המעבדה היא סימולציה, והמשתמשים שלך לא."
+  },
+  "Core Web Vitals": {
+   "en": "Imagine Omer's recipe blog. The home page opens with a gorgeous 4 MB photo of shakshuka, straight from his camera, displayed 800 pixels wide. On a phone over 4G it takes seconds to arrive, and the headline below it keeps sliding down as the photo, a newsletter banner and a web font land one after another. A cookie banner, a chat widget and two analytics scripts load on top. On his laptop it looks instant. In Search Console, the Core Web Vitals report lists most of his mobile URLs as \"Poor\".\n\nEach vital measures one kind of pain, and Google grades it at the 75th percentile of real visits, so the slowest quarter of your visitors decides the grade. LCP is the time until the largest image or text block in the viewport is painted; good is at most 2.5 seconds, poor is over 4. It is usually an image problem: too many bytes, discovered late, or lazy-loaded by mistake. INP, which replaced First Input Delay as a Core Web Vital in March 2024, is the delay between a tap, click or keypress and the next frame the browser paints, taken from close to the worst interaction of the visit; good is at most 200 ms, poor is over 500. It is a main-thread problem: big JavaScript bundles and third-party scripts keep the thread busy, so your click waits in line. CLS adds up unexpected layout shifts; good is at most 0.1, poor is over 0.25. It comes from anything that arrives without reserved space: images and iframes with no width and height, ads, banners pushed in at the top, fonts that swap and reflow the text. Page experience is one ranking signal among many and relevance still wins, but a visitor who waits four seconds on a phone often leaves before seeing the relevant content.\n\nFor Omer the fixes are mostly boring. Export the hero as WebP or AVIF at the size it is displayed, with srcset for phones, so 4 MB becomes a couple of hundred kilobytes; in Next.js, next/image does the resizing and the format for you. Give the hero high fetch priority and never lazy-load it, while lazy-loading the photos further down. Put width and height on every image and reserve space for banners. Load fonts through next/font, which preloads them and sizes the fallback font to match, so the text barely moves when the real font arrives. Load the chat widget and trackers after the page is interactive, and ask the AI which dependencies make the bundle heavy. Then verify with numbers: Lighthouse for LCP and CLS in the lab (it cannot measure INP, so it shows Total Blocking Time instead), and PageSpeed Insights or Search Console for real-user values, which update over a rolling 28-day window, so give it a few weeks.",
+   "he": "תדמיין את בלוג המתכונים של עומר. דף הבית נפתח בתמונה מהממת של שקשוקה, 4 מגה-בייט ישר מהמצלמה, שמוצגת ברוחב 800 פיקסלים. בטלפון על 4G לוקח לה כמה שניות להגיע, והכותרת שמתחתיה ממשיכה לגלוש למטה כשהתמונה, באנר הניוזלטר ופונט הווב נוחתים אחד אחרי השני. באנר עוגיות, וידג'ט צ'אט ושני סקריפטים של אנליטיקס נטענים מעל. על הלפטופ שלו זה נראה מיידי. ב-Search Console, דוח Core Web Vitals מסמן את רוב הכתובות שלו במובייל כ-\"Poor\".\n\nכל מדד מודד סוג אחד של כאב, ו-Google נותן ציון לפי האחוזון ה-75 של ביקורים אמיתיים, כך שהרבע האיטי ביותר של המבקרים שלך קובע את הציון. LCP הוא הזמן עד שהתמונה או בלוק הטקסט הגדול ביותר במסך מצויר; טוב זה עד 2.5 שניות, גרוע זה מעל 4. זו בדרך כלל בעיה של תמונה: יותר מדי בייטים, מתגלה מאוחר, או נטענת בעצלות בטעות. INP, שהחליף את First Input Delay כ-Core Web Vital במרץ 2024, הוא העיכוב בין הקשה, לחיצה או הקלדה לבין הפריים הבא שהדפדפן מצייר, ונלקח מהאינטראקציה שקרובה לגרועה ביותר בביקור; טוב זה עד 200 מילישניות, גרוע זה מעל 500. זו בעיה של התהליכון הראשי: קבצי JavaScript גדולים וסקריפטים של צד שלישי מעסיקים אותו, והלחיצה שלך מחכה בתור. CLS מסכם תזוזות פריסה לא צפויות; טוב זה עד 0.1, גרוע זה מעל 0.25. הוא נובע מכל דבר שמגיע בלי מקום שמור מראש: תמונות ו-iframes בלי width ו-height, פרסומות, באנרים שנדחפים לראש הדף, פונטים שמתחלפים ומזיזים את הטקסט. חוויית הדף היא אות דירוג אחד מתוך הרבה, והרלוונטיות עדיין מנצחת, אבל מבקר שמחכה ארבע שניות בטלפון הרבה פעמים עוזב לפני שהוא רואה את התוכן הרלוונטי.\n\nאצל עומר התיקונים ברובם משעממים. לייצא את ה-hero כ-WebP או AVIF בגודל שבו הוא מוצג, עם srcset לטלפונים, כך ש-4 מגה הופכים לכמה מאות קילובייט; ב-Next.js, next/image עושה את שינוי הגודל והפורמט בשבילך. לתת ל-hero עדיפות טעינה גבוהה ואף פעם לא לטעון אותו בעצלות, ובמקביל לטעון בעצלות את התמונות שלמטה. לשים width ו-height על כל תמונה ולשמור מקום לבאנרים. לטעון פונטים דרך next/font, שטוען אותם מראש ומתאים את גודל הפונט החלופי, כך שהטקסט כמעט לא זז כשהפונט האמיתי מגיע. לטעון את וידג'ט הצ'אט וכלי המעקב אחרי שהדף אינטראקטיבי, ולשאול את ה-AI אילו תלויות מנפחות את ה-bundle. ואז לאמת עם מספרים: Lighthouse בשביל LCP ו-CLS במעבדה (הוא לא יכול למדוד INP, אז הוא מציג Total Blocking Time במקומו), ו-PageSpeed Insights או Search Console בשביל הערכים של משתמשים אמיתיים, שמתעדכנים בחלון מתגלגל של 28 יום, אז תן לזה כמה שבועות."
+  },
+  "Hosted checkout": {
+   "en": "Dana sells a ₪49 pack of Notion templates. She asks her AI agent for a checkout, and it builds a neat form on her own site: card number, expiry, CVC, and a Pay button that posts to /api/pay, which calls the provider's API with the raw card. The demo is flawless. Three weeks later she adds error logging, and the logger dutifully records the full request body of every failed payment. Nothing has been stolen yet, but her logging service now holds card numbers, and so does anyone who can read it.\n\nThe rules for card data, PCI DSS, get heavier the closer the card gets to you. If the number is typed into a page the provider serves, through a redirect, a pop-up overlay or an iframe they control, your servers never see it and your compliance work shrinks to a short self-assessment. If your own page's inputs read the card, or your server receives it, you inherit the full weight: storage rules, scans, and responsibility for every system the number passes through, logs and backups included. Hosted checkouts also bring things you would otherwise build badly: 3-D Secure challenges, saved cards, local payment methods and translated error messages.\n\nCorrect looks like this: your server creates a checkout session with the price and the signed-in user's id, gets back a URL or a session id, and the browser goes there. The provider takes the card and later tells your server what happened. To verify, run one test payment with DevTools open. The card should travel to the provider's domain only, your /api should never receive anything shaped like a card number, and searching your repository for \"cvc\" should find nothing you wrote.",
+   "he": "דנה מוכרת חבילת תבניות Notion ב-₪49. היא מבקשת מהסוכן שלה צ׳קאאוט, והוא בונה טופס מסודר באתר שלה: מספר כרטיס, תוקף, CVC, וכפתור \"שלם\" ששולח ל-/api/pay, שקורא ל-API של הספק עם הכרטיס הגולמי. הדמו מושלם. שלושה שבועות אחר כך היא מוסיפה תיעוד שגיאות, והלוגר רושם בנאמנות את גוף הבקשה המלא של כל תשלום שנכשל. עוד לא נגנב כלום, אבל שירות הלוגים שלה מחזיק עכשיו מספרי כרטיסים, וכך גם כל מי שיכול לקרוא אותו.\n\nהכללים לטיפול בנתוני כרטיסים, PCI DSS, מחמירים ככל שהכרטיס מתקרב אליך. אם המספר מוקלד בדף שהספק מגיש, בהפניה, בחלון צף או ב-iframe שבשליטתו, השרתים שלך לא רואים אותו לעולם ועבודת התאימות מצטמצמת לשאלון הערכה עצמית קצר. אם שדות בדף שלך קוראים את הכרטיס, או שהשרת שלך מקבל אותו, אתה יורש את כל המשקל: כללי אחסון, סריקות, ואחריות על כל מערכת שהמספר עובר בה, כולל לוגים וגיבויים. צ׳קאאוט אצל הספק גם מביא איתו דברים שאחרת היית בונה גרוע: אימות 3-D Secure, כרטיסים שמורים, אמצעי תשלום מקומיים והודעות שגיאה מתורגמות.\n\nככה נראה נכון: השרת שלך יוצר checkout session עם המחיר והמזהה של המשתמש המחובר, מקבל בחזרה כתובת או מזהה session, והדפדפן עובר לשם. הספק מקבל את הכרטיס ומאוחר יותר מספר לשרת שלך מה קרה. כדי לאמת, תריץ תשלום בדיקה אחד עם DevTools פתוח. הכרטיס צריך לעבור רק לדומיין של הספק, ה-/api שלך לא אמור לקבל שום דבר שנראה כמו מספר כרטיס, וחיפוש \"cvc\" בריפו לא אמור למצוא שום דבר שאתה כתבת."
+  },
+  "Merchant of record": {
+   "en": "Yossi, a solo developer in Haifa, builds a ₪79-a-month habit tracker and gets his first hundred customers from twelve countries. With a plain processor, each of those sales would come with questions: does he owe VAT in the EU on this one, does that US state tax digital subscriptions, what invoice does a German company need to reclaim its VAT? He picked a merchant of record instead, and the buyer's receipt names that company as the seller. Yossi still reports his payouts as income in Israel, but the foreign tax questions are theirs.\n\nThe seller of record is whoever the law treats as selling to the buyer. A processor such as Stripe moves money for you, but you remain the seller: you register for tax where required, calculate it on each sale, file returns, and answer the buyer's bank when something goes wrong. Tools exist to help, but the obligation stays yours. A merchant of record buys the product from you and resells it, so tax, invoices, refunds, chargebacks and fraud screening move to them. The price is a higher fee, often around 5% plus a fixed amount per transaction against a lower percentage at a processor, less freedom over the checkout, and a review of your product before they accept you.\n\nFor a one-person product selling digital goods across borders, a merchant of record is usually the calmer choice, and in countries a processor doesn't serve it may be the only one. A processor starts to pay off when volume makes the fee difference large and you have an accountant who knows cross-border tax. Either way, check three things on the provider's own site before you write code: that they accept businesses from your country, what they charge in total, and what the receipt tells the buyer about who sold it.",
+   "he": "יוסי, מפתח עצמאי מחיפה, בונה אפליקציה למעקב הרגלים ב-₪79 לחודש ומקבל את מאה הלקוחות הראשונים שלו משתים-עשרה מדינות. עם מעבד תשלומים רגיל, כל מכירה כזאת הייתה מגיעה עם שאלות: האם הוא חייב מע\"מ באיחוד האירופי על המכירה הזאת, האם המדינה הזאת בארה\"ב ממסה מנויים דיגיטליים, איזו חשבונית צריכה חברה גרמנית כדי לקבל החזר מע\"מ? במקום זה הוא בחר ב-merchant of record, והקבלה של הקונה מציגה את החברה ההיא כמוכרת. יוסי עדיין מדווח בישראל על מה שהוא מקבל כהכנסה, אבל שאלות המס בחו\"ל הן שלהם.\n\nהמוכר הרשמי הוא מי שהחוק רואה כמי שמוכר לקונה. מעבד כמו Stripe מעביר בשבילך כסף, אבל אתה נשאר המוכר: אתה נרשם למס איפה שצריך, מחשב אותו בכל מכירה, מגיש דוחות, ועונה לבנק של הקונה כשמשהו משתבש. יש כלים שעוזרים, אבל החובה נשארת שלך. Merchant of record קונה ממך את המוצר ומוכר אותו הלאה, אז המס, החשבוניות, ההחזרים, הכחשות העסקה וסינון ההונאות עוברים אליו. המחיר הוא עמלה גבוהה יותר, לרוב בסביבות 5% ועוד סכום קבוע לעסקה מול אחוז נמוך יותר אצל מעבד, פחות חופש בעיצוב הצ׳קאאוט, ובדיקה של המוצר שלך לפני שמקבלים אותך.\n\nלמוצר של אדם אחד שמוכר מוצרים דיגיטליים מעבר לגבולות, merchant of record הוא בדרך כלל הבחירה הרגועה יותר, ובמדינות שמעבד לא משרת הוא עשוי להיות האפשרות היחידה. מעבד מתחיל להשתלם כשהנפח הופך את הפרש העמלות לגדול, ויש לך רואה חשבון שמכיר מיסוי בין-לאומי. בכל מקרה, תבדוק שלושה דברים באתר של הספק עצמו לפני שאתה כותב קוד: שהוא מקבל עסקים מהמדינה שלך, כמה הוא גובה בסך הכל, ומה הקבלה אומרת לקונה על מי מכר לו."
+  },
+  "Trust the webhook, not the redirect": {
+   "en": "Noa sells a ₪120 video course. Her success page is /thanks?paid=true, and when the page sees that flag it writes \"paid\" to the user's row. A buyer shares the link in a WhatsApp group to show off the course, and over the next week a stream of accounts that never saw a checkout unlock it. The provider's dashboard shows twelve sales; her database shows forty paying users. Nobody hacked anything. The URL simply did what it was told.\n\nThe redirect is a message from the buyer's browser, and the browser belongs to the buyer. Whatever sits in the URL can be typed, edited, bookmarked or forwarded. The webhook is different: it goes from the provider's servers to yours, signed, and it describes a real transaction. The catch is timing. The browser is usually faster than the webhook, so the buyer can land on your page before your server has heard anything. A return page that checks once will wrongly say \"not paid\"; one that waits for the webhook with no limit will spin forever on the day a webhook fails.\n\nCorrect looks like this. The webhook handler, and only it, creates the access. The return page receives at most a transaction or session id, asks your server \"is this paid, for this signed-in user?\", and your server either finds the record the webhook wrote or looks the id up at the provider with the secret key. While the answer is no, the page shows \"Confirming your payment…\" and retries for a few seconds, then shows a calm message with a support link. To verify, open the success URL in a private window without paying: nothing should unlock.",
+   "he": "נועה מוכרת קורס וידאו ב-₪120. דף ההצלחה שלה הוא /thanks?paid=true, וכשהדף רואה את הדגל הוא כותב \"שולם\" בשורה של המשתמש. קונה אחד משתף את הקישור בקבוצת וואטסאפ כדי להשוויץ בקורס, ובשבוע שאחרי שורה של חשבונות שמעולם לא ראו צ׳קאאוט פותחים אותו. בדשבורד של הספק יש שתים-עשרה מכירות; במסד הנתונים שלה יש ארבעים משתמשים ששילמו. אף אחד לא פרץ. הכתובת פשוט עשתה מה שאמרו לה.\n\nההפניה היא הודעה מהדפדפן של הקונה, והדפדפן שייך לקונה. כל מה שיושב בכתובת אפשר להקליד, לערוך, לשמור במועדפים או להעביר הלאה. ה-webhook שונה: הוא עובר מהשרתים של הספק לשלך, חתום, והוא מתאר עסקה אמיתית. המלכוד הוא התזמון. הדפדפן בדרך כלל מהיר יותר מה-webhook, אז הקונה יכול לנחות בדף שלך לפני שהשרת שלך שמע משהו. דף חזרה שבודק פעם אחת יגיד בטעות \"לא שולם\"; דף שמחכה ל-webhook בלי הגבלה יסתובב לנצח ביום שה-webhook נכשל.\n\nככה נראה נכון. ה-handler של ה-webhook, והוא בלבד, יוצר את הגישה. דף החזרה מקבל לכל היותר מזהה עסקה או session, שואל את השרת שלך \"האם זה שולם, עבור המשתמש המחובר הזה?\", והשרת שלך או מוצא את הרשומה שה-webhook כתב, או מחפש את המזהה אצל הספק עם המפתח הסודי. כל עוד התשובה היא לא, הדף מציג \"מאשרים את התשלום שלך…\" ומנסה שוב במשך כמה שניות, ואז מציג הודעה רגועה עם קישור לתמיכה. כדי לאמת, תפתח את כתובת ההצלחה בחלון פרטי בלי לשלם: שום דבר לא אמור להיפתח."
+  },
+  "Webhook signature": {
+   "en": "Omer's webhook handler has a comment: \"TODO verify signature\". A curious user guesses the path, /api/webhook, on the first try, and sends it a hand-written JSON body saying his transaction completed. The handler reads the user id from the body, creates the purchase and sends a receipt email. Omer only finds out when he reconciles the month and one paying user has no matching payment at the provider.\n\nThe provider and your server share a secret. For every delivery, the provider computes an HMAC, a keyed fingerprint, over the timestamp and the raw body, and puts both in a header. Your server recomputes it from the bytes it received and the same secret. Change one character of the body, or use the wrong secret, and the fingerprints no longer match. That is also why parsing first breaks it: turning JSON into an object and back does not reproduce the same bytes. The timestamp closes the last gap. Without it, a genuine request captured once could be sent again and again; with it, you refuse anything older than a few minutes.\n\nCorrect looks like this: the route reads the body as raw text, verifies it with the provider's SDK helper or a constant-time comparison, checks the timestamp, returns 400 on any failure without doing any work, and only then parses and moves on to the dedupe step you already know. The secret comes from an environment variable, one for sandbox and one for live, never shared. To verify, send the endpoint a copy of a real event with one field changed; it must be rejected. Then resend the unchanged event fifteen minutes later and confirm the replay is refused too.",
+   "he": "ב-handler של ה-webhook של עומר יש הערה: \"TODO לאמת חתימה\". משתמש סקרן מנחש את הנתיב, /api/webhook, כבר בניסיון הראשון, ושולח אליו גוף JSON שכתב בעצמו, שאומר שהעסקה שלו הושלמה. ה-handler קורא את מזהה המשתמש מהגוף, יוצר את הרכישה ושולח מייל קבלה. עומר מגלה את זה רק כשהוא מתאים את החשבונות של החודש, ומשתמש אחד ששילם כביכול לא מופיע אצל הספק בכלל.\n\nלספק ולשרת שלך יש סוד משותף. בכל שליחה, הספק מחשב HMAC, מעין טביעת אצבע עם מפתח, על חותמת הזמן ועל הגוף הגולמי, ושם את שניהם בכותרת. השרת שלך מחשב אותו מחדש מהבייטים שקיבל ומאותו סוד. תשנה תו אחד בגוף, או תשתמש בסוד הלא נכון, וטביעות האצבע כבר לא מתאימות. זו גם הסיבה שפענוח קודם שובר את זה: להפוך JSON לאובייקט ובחזרה לא משחזר את אותם בייטים. חותמת הזמן סוגרת את הפרצה האחרונה. בלעדיה, בקשה אמיתית שנתפסה פעם אחת אפשר לשלוח שוב ושוב; איתה, אתה מסרב לכל דבר ישן מכמה דקות.\n\nככה נראה נכון: הנתיב קורא את הגוף כטקסט גולמי, מאמת אותו עם פונקציית העזר של ה-SDK של הספק או עם השוואה בזמן קבוע, בודק את חותמת הזמן, מחזיר 400 בכל כישלון בלי לעשות שום עבודה, ורק אז מפענח וממשיך לשלב ניכוי הכפילויות שאתה כבר מכיר. הסוד מגיע ממשתנה סביבה, אחד ל-sandbox ואחד ל-live, ולעולם לא משותף. כדי לאמת, תשלח לנקודת הקצה עותק של אירוע אמיתי עם שדה אחד ששונה; הוא חייב להידחות. אחר כך תשלח את האירוע בלי שינוי אחרי רבע שעה, ותוודא שגם השליחה החוזרת נדחית."
+  },
+  "Entitlement": {
+   "en": "Tamar sells a ₪199 design course. Her first version checks \"paid\" by searching the provider's API for the user's email on every page load. It works until a buyer pays with his work email and signs in with his personal one, and until a busy evening makes every lesson page wait a second for the provider. Her second version keeps its own record, and most support questions become a single database lookup.\n\nAn entitlement separates two questions. \"Did money move?\" belongs to the provider, and it answers by webhook. \"May this user open this page?\" belongs to you, and it has to be answered on every request, quickly, even when the provider is slow. So the webhook writes a row: user id, product, status, the provider's transaction id, the purchase date and, for subscriptions, when the current period ends. The user id comes from the custom data you attached when creating the checkout, which ties the money to the account that was signed in, not to whatever email the buyer typed. The transaction id is UNIQUE, so a retried webhook is harmless: idempotency, from the Scale lesson, applied to money.\n\nCorrect looks like this: one function, such as hasAccess(userId, product), called on the server by every paid page and every paid API route, reading only that table. Paid content is never sent to the browser and hidden with CSS. When the story changes, to refunded, charged back, canceled or expired, the row is updated, not deleted, so you can always see what happened. To verify, sign in as a user with no row and request a paid page and a paid API route directly; both must refuse. Then refund a sandbox purchase and watch the status change.",
+   "he": "תמר מוכרת קורס עיצוב ב-₪199. הגרסה הראשונה שלה בודקת \"שולם\" על ידי חיפוש המייל של המשתמש ב-API של הספק בכל טעינת דף. זה עובד עד שקונה משלם עם מייל העבודה שלו ומתחבר עם המייל הפרטי, ועד שערב עמוס גורם לכל דף שיעור לחכות שנייה לספק. הגרסה השנייה שלה מחזיקה רשומה משלה, ורוב שאלות התמיכה הופכות לחיפוש אחד במסד הנתונים.\n\nזכאות מפרידה בין שתי שאלות. \"האם כסף עבר?\" שייכת לספק, והוא עונה עליה ב-webhook. \"האם המשתמש הזה רשאי לפתוח את הדף?\" שייכת לך, וצריך לענות עליה בכל בקשה, מהר, גם כשהספק איטי. אז ה-webhook כותב שורה: מזהה משתמש, מוצר, סטטוס, מזהה העסקה אצל הספק, תאריך הרכישה, ובמנוי גם מתי התקופה הנוכחית נגמרת. מזהה המשתמש מגיע מה-custom data שצירפת כשיצרת את הצ׳קאאוט, וזה מה שקושר את הכסף לחשבון שהיה מחובר, ולא לכל מייל שהקונה הקליד. מזהה העסקה הוא UNIQUE, אז webhook שחוזר לא מזיק: אידמפוטנטיות, מהשיעור על סקייל, מיושמת על כסף.\n\nככה נראה נכון: פונקציה אחת, למשל hasAccess(userId, product), שכל דף בתשלום וכל נתיב API בתשלום קוראים לה בשרת, והיא קוראת רק מהטבלה הזאת. תוכן בתשלום לעולם לא נשלח לדפדפן ומוסתר ב-CSS. כשהסיפור משתנה, להוחזר, הוכחש, בוטל או פג תוקף, השורה מתעדכנת ולא נמחקת, כדי שתמיד תוכל לראות מה קרה. כדי לאמת, תתחבר כמשתמש בלי שורה ותבקש ישירות דף בתשלום ונתיב API בתשלום; שניהם חייבים לסרב. ואז תחזיר רכישה ב-sandbox ותראה את הסטטוס משתנה."
+  },
+  "One-time vs subscription": {
+   "en": "Eli runs a ₪29-a-month recipe planner. His code handles one event, \"subscription created\", and sets paid=true. A year in, he compares his user table with the provider's dashboard and finds dozens of \"paying\" users whose subscriptions ended months ago: expired cards, cancellations, a few refunds. The first fix he reaches for, cutting access on any failed payment, locks out a loyal customer whose card had simply expired.\n\nA one-time purchase is simple: one event, and after that only a refund or a dispute can change it. A subscription is a state machine the provider runs for you. Names vary by provider, but the shape is similar: trialing, then active; at renewal the charge either succeeds and the period extends, or fails and the subscription goes past due while the provider retries and emails the customer. If the retries run out, it ends. A customer who cancels usually keeps access until the end of the period already paid for, so \"canceled\" and \"access ends\" are two different moments. Every change arrives as a webhook, and events can arrive out of order, so the handler should store the provider's current status and period end rather than try to count events.\n\nCorrect looks like this: the entitlement row stores the status and current period end, updated from every subscription webhook. Access is on while the status is active or trialing, and stays on during past due for a grace period, with a banner asking for a new card. After a cancellation it ends at the period end, not at the click. Users cancel and change cards in the provider's customer portal, which also handles invoices. To verify in sandbox, create a subscription, cancel it and check that access lasts until the period end; then use a card that fails at renewal and watch past due appear. Some providers let you move a test clock forward or simulate a renewal; use that rather than waiting a month.",
+   "he": "אלי מפעיל מתכנן מתכונים ב-₪29 לחודש. הקוד שלו מטפל באירוע אחד, \"מנוי נוצר\", ומסמן paid=true. אחרי שנה הוא משווה את טבלת המשתמשים לדשבורד של הספק ומוצא עשרות משתמשים \"משלמים\" שהמנוי שלהם נגמר לפני חודשים: כרטיסים שפג תוקפם, ביטולים, כמה החזרים. התיקון הראשון שהוא חושב עליו, לנתק גישה בכל תשלום שנכשל, נועל בחוץ לקוחה נאמנה שהכרטיס שלה פשוט פג תוקף.\n\nרכישה חד-פעמית פשוטה: אירוע אחד, ואחריו רק החזר או הכחשת עסקה יכולים לשנות אותה. מנוי הוא מכונת מצבים שהספק מפעיל בשבילך. השמות משתנים בין ספקים, אבל הצורה דומה: trialing, ואז active; בחידוש, החיוב מצליח והתקופה מתארכת, או נכשל והמנוי עובר ל-past due בזמן שהספק מנסה שוב ושולח ללקוח מיילים. אם הניסיונות נגמרים, המנוי מסתיים. לקוח שמבטל בדרך כלל שומר גישה עד סוף התקופה שכבר שילם עליה, אז \"בוטל\" ו\"הגישה נגמרת\" הם שני רגעים שונים. כל שינוי מגיע כ-webhook, ואירועים יכולים להגיע שלא לפי הסדר, אז ה-handler צריך לשמור את הסטטוס הנוכחי אצל הספק ואת סוף התקופה, ולא לנסות לספור אירועים.\n\nככה נראה נכון: שורת הזכאות שומרת סטטוס וסוף תקופה נוכחית, ומתעדכנת מכל webhook של מנוי. הגישה פתוחה כשהסטטוס active או trialing, ונשארת פתוחה גם ב-past due לתקופת חסד, עם באנר שמבקש כרטיס חדש. אחרי ביטול היא נגמרת בסוף התקופה, לא ברגע הלחיצה. משתמשים מבטלים ומחליפים כרטיס בפורטל הלקוחות של הספק, שמטפל גם בחשבוניות. כדי לאמת ב-sandbox, תיצור מנוי, תבטל אותו ותבדוק שהגישה נמשכת עד סוף התקופה; ואז תשתמש בכרטיס שנכשל בחידוש ותראה את ה-past due מופיע. יש ספקים שמאפשרים להזיז שעון בדיקה קדימה או לדמות חידוש; תשתמש בזה במקום לחכות חודש."
+  },
+  "Refunds & chargebacks": {
+   "en": "Dana, the templates seller, gets a dispute notice: a buyer's bank has reversed a ₪49 sale and added a fee. The buyer isn't a thief. His card statement showed the provider's name, not \"Dana Templates\", he didn't recognize it, and he couldn't find a contact link on her site. Had he found a refund button, Dana would have lost ₪49. Instead she lost the ₪49, the fee and an evening gathering evidence, and he still has the templates, because her code never listened for the dispute.\n\nA refund starts with you or your support flow; the provider returns the money and sends a refund event. A chargeback starts at the buyer's bank. The money is pulled back right away, a dispute fee is added, and you get a limited window to submit evidence: the receipt, the terms, logs showing the account used the product. The bank decides. Processors watch your dispute rate, and a high one can bring extra fees, part of your payouts held back, or a closed account. With a merchant of record, they run the dispute process for you, but check their terms for who bears the cost.\n\nCorrect looks like this: the refund and dispute webhooks both update the entitlement, to refunded or charged back, and access stops; a dispute you later win can restore it. The site shows the price and what it includes before checkout, sends a receipt with a way to reach you, uses a recognizable name on card statements where the provider allows it, and puts \"Cancel\" and \"Request a refund\" on the account page. Keep what you would need as evidence, sign-in and usage logs per user. To verify in sandbox, refund a test purchase and confirm the paid page locks; many providers can also simulate a dispute.",
+   "he": "דנה, זו עם התבניות, מקבלת הודעה על הכחשת עסקה: הבנק של קונה ביטל מכירה של ₪49 והוסיף עמלה. הקונה לא גנב. בפירוט האשראי שלו הופיע השם של הספק ולא \"Dana Templates\", הוא לא זיהה אותו, והוא לא מצא באתר שלה קישור ליצירת קשר. אם הוא היה מוצא כפתור החזר, דנה הייתה מפסידה ₪49. במקום זה היא הפסידה את ה-₪49, את העמלה וערב שלם של איסוף ראיות, והוא עדיין מחזיק בתבניות, כי הקוד שלה אף פעם לא הקשיב להכחשה.\n\nהחזר מתחיל אצלך או בתהליך התמיכה שלך; הספק מחזיר את הכסף ושולח אירוע החזר. הכחשת עסקה מתחילה בבנק של הקונה. הכסף נמשך מיד, מתווספת עמלת מחלוקת, ויש לך חלון זמן מוגבל להגיש ראיות: הקבלה, התנאים, לוגים שמראים שהחשבון השתמש במוצר. הבנק מחליט. מעבדי תשלומים עוקבים אחרי שיעור ההכחשות שלך, ושיעור גבוה יכול להביא עמלות נוספות, עיכוב של חלק מהכסף שמגיע לך או סגירת החשבון. עם merchant of record, הוא מנהל את תהליך המחלוקת בשבילך, אבל תבדוק בתנאים שלו מי נושא בעלות.\n\nככה נראה נכון: ה-webhooks של החזר ושל הכחשה מעדכנים שניהם את הזכאות, ל-refunded או ל-charged back, והגישה נעצרת; הכחשה שניצחת בה אחר כך יכולה להחזיר אותה. האתר מציג את המחיר ומה הוא כולל לפני הצ׳קאאוט, שולח קבלה עם דרך ליצור קשר, מציג שם מוכר מזוהה בפירוט האשראי כשהספק מאפשר, ושם \"לבטל\" ו\"לבקש החזר\" בדף החשבון. תשמור את מה שתצטרך כראיה: לוגים של התחברות ושימוש לכל משתמש. כדי לאמת ב-sandbox, תחזיר רכישת בדיקה ותוודא שהדף בתשלום ננעל; ספקים רבים יכולים גם לדמות הכחשה."
+  },
+  "Test cards & declined payments": {
+   "en": "Roni launches a ₪59 ebook on a Friday after one successful sandbox purchase. On Saturday a buyer's card is declined and the app shows a blank white page, so he assumes the site is broken and leaves. Another buyer, on a slow phone, taps \"Buy\" twice and ends up with two checkouts open. Neither case is exotic. Both were available as test cases in the sandbox, and neither was tried.\n\nA sandbox is a full copy of the provider with fake money, and its test cards trigger specific outcomes on purpose. On Stripe, 4242 4242 4242 4242 succeeds, 4000 0000 0000 0002 is a generic decline, and other documented numbers simulate insufficient funds, a 3-D Secure challenge or a later dispute; Paddle and Lemon Squeezy document their own. Most failures in a payment flow aren't at the provider, they're in your app's reaction: what the page says, what the database holds, and whether a retry or a second click creates a duplicate. The sandbox also sends real webhooks to your staging URL, so you can watch a retry happen or resend an event from the dashboard.\n\nCorrect looks like a written list you run on staging before every change to the payment flow: one success, one decline, insufficient funds, 3-D Secure both completed and abandoned, the checkout closed halfway, a double click on \"Buy\", the webhook resent twice, the webhook arriving after the return page, and a refund. After each one, check the entitlement row, not just the screen. Then switch the live keys and the live webhook secret together, in production only. Never test with your own card on live: it creates real charges and fees, and proves nothing the sandbox couldn't.",
+   "he": "רוני משיקה ספר דיגיטלי ב-₪59 ביום שישי, אחרי רכישה מוצלחת אחת ב-sandbox. בשבת, הכרטיס של קונה נדחה והאפליקציה מציגה דף לבן וריק, אז הוא מניח שהאתר שבור ועוזב. קונה אחרת, בטלפון איטי, לוחצת פעמיים על \"קנה\" ומקבלת שני צ׳קאאוטים פתוחים. אף אחד מהמקרים לא נדיר. שניהם היו זמינים כמקרי בדיקה ב-sandbox, ואף אחד לא ניסה אותם.\n\nSandbox הוא עותק מלא של הספק עם כסף מזויף, וכרטיסי הבדיקה שלו מפעילים תוצאות מסוימות בכוונה. ב-Stripe, הכרטיס 4242 4242 4242 4242 מצליח, הכרטיס 4000 0000 0000 0002 הוא דחייה כללית, ומספרים מתועדים אחרים מדמים חוסר כיסוי, אימות 3-D Secure או הכחשת עסקה מאוחרת; Paddle ו-Lemon Squeezy מתעדים כרטיסים משלהם. רוב הכישלונות בתהליך תשלום הם לא אצל הספק, אלא בתגובה של האפליקציה שלך: מה הדף אומר, מה מסד הנתונים מחזיק, והאם ניסיון חוזר או לחיצה שנייה יוצרים כפילות. ה-sandbox גם שולח webhooks אמיתיים לכתובת ה-staging שלך, אז אפשר לראות ניסיון חוזר קורה, או לשלוח שוב אירוע מהדשבורד.\n\nככה נראה נכון: רשימה כתובה שאתה מריץ על staging לפני כל שינוי בתהליך התשלום: הצלחה אחת, דחייה אחת, חוסר כיסוי, 3-D Secure שהושלם ושננטש, צ׳קאאוט שנסגר באמצע, לחיצה כפולה על \"קנה\", webhook שנשלח שוב פעמיים, webhook שמגיע אחרי דף החזרה, והחזר. אחרי כל אחד, תבדוק את שורת הזכאות, לא רק את המסך. ואז תעבור למפתחות live ולסוד ה-webhook של live יחד, בפרודקשן בלבד. לעולם אל תבדוק עם הכרטיס שלך ב-live: זה יוצר חיובים ועמלות אמיתיים, ולא מוכיח שום דבר שה-sandbox לא היה מוכיח."
   }
  },
  "EXAMPLES": {
@@ -6313,6 +6607,90 @@
     "he": "מה יוצא מהדפדפן"
    },
    "code": "// NO - this is a customer's data now living in a vendor's backups\ntrack(\"search_performed\", { query: \"john@acme.com\" })\ntrack(\"note_added\", { text: note.body, contact: contact.email })\n\n// YES - same questions answerable, nothing personal leaves\ntrack(\"search_performed\", { result_count: 0, filter: \"stage\", q_len: 14 })\ntrack(\"note_added\", { length_bucket: \"short\", contact_stage: \"meeting\" })\n\n// and the wrapper, so a blocked script can never break a page\nexport function track(name, props) {\n  try { window.va?.track(name, props) } catch { /* blocked or offline */ }\n}\n\n# assume ~25% of users never load it at all: your numbers are a sample\n# consent before load in the EU - not a banner over a script already reporting"
+  },
+  "SEO basics": {
+   "cap": {
+    "en": "One page's metadata, done right (Next.js)",
+    "he": "המטא-דאטה של דף אחד, כמו שצריך (Next.js)"
+   },
+   "code": "// courses page, Next.js App Router\nexport const metadata = {\n  metadataBase: new URL(\"https://noapottery.example\"),\n  title: \"Wheel-throwing classes in Haifa | Noa Pottery\",   // unique per page\n  description: \"Beginner pottery classes, small groups, clay and kiln included.\",\n  alternates: {\n    canonical: \"/en/courses\",\n    languages: { en: \"/en/courses\", he: \"/he/courses\", \"x-default\": \"/en/courses\" },\n  },\n};\n\n# robots.txt on PRODUCTION (staging's \"Disallow: /\" must never ship)\nUser-agent: *\nAllow: /\nSitemap: https://noapottery.example/sitemap.xml\n# check: view-source shows your <h1> text? Search Console -> URL Inspection"
+  },
+  "Link previews (Open Graph)": {
+   "cap": {
+    "en": "The tags a share bot reads, in the server HTML",
+    "he": "התגיות שבוט השיתוף קורא, ב-HTML שמגיע מהשרת"
+   },
+   "code": "<!-- in <head>, in the HTML the server sends. Not added by JavaScript later. -->\n<meta property=\"og:title\"       content=\"Habitly: tiny habits, tracked\">\n<meta property=\"og:description\" content=\"A 30-second daily check-in.\">\n<meta property=\"og:url\"         content=\"https://habitly.example/\">\n<meta property=\"og:type\"        content=\"website\">\n<meta property=\"og:image\"       content=\"https://habitly.example/og.png\">  <!-- absolute, 1200x630 -->\n<meta name=\"twitter:card\"       content=\"summary_large_image\">\n\n# check the raw HTML, the way the bot gets it\ncurl -s https://habitly.example/ | grep og:image\n\n# refresh cached previews\nFacebook Sharing Debugger -> Scrape Again\nLinkedIn Post Inspector   -> Inspect\nWhatsApp: no refresh button, share https://habitly.example/?v=2"
+  },
+  "Measuring speed (Lighthouse)": {
+   "cap": {
+    "en": "A number before, a number after",
+    "he": "מספר לפני, מספר אחרי"
+   },
+   "code": "# DevTools -> Lighthouse -> Mobile, Navigation, incognito. 3 runs, keep the median.\n\nBEFORE  Performance 41\n  Largest Contentful Paint  7.8 s    # red: over 4 s\n  Total Blocking Time       890 ms\n  Cumulative Layout Shift   0.27\n  Top insight: Improve image delivery, est. savings 3,900 KiB\n\n# prompt: \"Lighthouse mobile: LCP 7.8 s, the hero image is 4 MB.\n#          Fix image delivery only. I will re-run and compare.\"\n\nAFTER   Performance 78\n  Largest Contentful Paint  2.4 s    # green: 2.5 s or less\n  Total Blocking Time       870 ms   # unchanged: the next target\n\n# real users, last 28 days: pagespeed.web.dev, once the site has enough Chrome traffic"
+  },
+  "Core Web Vitals": {
+   "cap": {
+    "en": "An image that loads fast and does not push the page",
+    "he": "תמונה שנטענת מהר ולא דוחפת את הדף"
+   },
+   "code": "<!-- before: 4 MB JPG, no size, lazy on the hero -> slow LCP, CLS jump -->\n<img src=\"/shakshuka.jpg\" loading=\"lazy\">\n\n<!-- after, the hero (the LCP element): right size, modern format, space reserved, fetched first -->\n<img src=\"/shakshuka-800.avif\"\n     srcset=\"/shakshuka-400.avif 400w, /shakshuka-800.avif 800w\"\n     sizes=\"(max-width: 600px) 100vw, 800px\"\n     width=\"800\" height=\"533\" alt=\"Shakshuka in a cast-iron pan\"\n     fetchpriority=\"high\">\n\n<!-- below the fold: lazy is right here -->\n<img src=\"/step-2.webp\" width=\"600\" height=\"400\" alt=\"Chopping peppers\" loading=\"lazy\">\n\n# good: LCP <= 2.5 s   INP <= 200 ms   CLS <= 0.1   (75th percentile of real visits)\n# chat widget, trackers: load after the page, e.g. next/script strategy=\"lazyOnload\""
+  },
+  "Hosted checkout": {
+   "cap": {
+    "en": "The card goes to them, not to you",
+    "he": "הכרטיס הולך אליהם, לא אליך"
+   },
+   "code": "# WRONG: your API sees the card\nPOST /api/pay\n{\"card\":\"4242424242424242\",\"exp\":\"12/28\",\"cvc\":\"123\"}   # now it's in your logs\n\n# RIGHT: your server asks the provider for a checkout\nPOST /api/checkout                      # browser -> your server\n{\"product\":\"templates-pack\"}            # price looked up on the server\n\n# your server -> provider (secret key, server side only)\ncreate checkout: price=pri_templates, custom_data={user_id:\"u_812\"}\n<- {\"url\":\"https://checkout.provider.example/c/abc123\"}\n\n# the browser goes to that URL (or opens the overlay).\n# the card is typed there. your server hears the result by webhook."
+  },
+  "Merchant of record": {
+   "cap": {
+    "en": "Who does what, side by side",
+    "he": "מי עושה מה, זה לצד זה"
+   },
+   "code": "                        PROCESSOR (Stripe)      MERCHANT OF RECORD (Paddle, Lemon Squeezy)\nlegal seller            you                     them\ncharging the card       them                    them\nVAT / sales tax         you (tools help)        them\ninvoices & receipts     you                     them\nrefunds & disputes      you, with their tools   them, per their terms\nfraud screening         shared                  them\ntypical fee             lower %, varies         ~5% + a fixed fee per sale\nyour country accepted?  check their list        check their list\n\n# decide BEFORE the first line of payment code:\n# checkout, webhook events and tax fields all differ per provider."
+  },
+  "Trust the webhook, not the redirect": {
+   "cap": {
+    "en": "The redirect asks, the webhook decides",
+    "he": "ההפניה שואלת, ה-webhook מחליט"
+   },
+   "code": "# 1. browser returns from checkout (fast, and untrusted)\nGET /thanks?txn=txn_01j9                 # never ?paid=1\n\n# 2. the page asks YOUR server, which checks the signed-in user\nGET /api/purchase-status?txn=txn_01j9\n<- {\"status\":\"pending\"}                  # webhook not here yet\n\n# 3. provider -> your server, signed (usually a moment later)\nPOST /api/billing/webhook  {\"type\":\"transaction.completed\",\"id\":\"txn_01j9\"}\n# -> verify, then insert the entitlement for the user in custom_data\n\n# 4. the page asks again\n<- {\"status\":\"paid\"}                     # now unlock\n\n# still pending after ~10s? look txn_01j9 up at the provider\n# with the secret key, or show \"we'll email you when it's confirmed\"."
+  },
+  "Webhook signature": {
+   "cap": {
+    "en": "Verify the raw bytes, then parse",
+    "he": "לאמת את הבייטים הגולמיים, ואז לפענח"
+   },
+   "code": "POST /api/billing/webhook\nPaddle-Signature: ts=1758380580;h1=9f2c41e0...    # Stripe: Stripe-Signature: t=...,v1=...\n\nraw = await request.text()                  # NOT request.json()\n[ts, h1] = parse(header)\nif now() - ts > 5 minutes        -> 400     # an old request, replayed\nexpected = HMAC_SHA256(WEBHOOK_SECRET, ts + \":\" + raw)\nif !timingSafeEqual(expected, h1) -> 400    # forged or altered\nevent = JSON.parse(raw)                     # only now\n\n# WEBHOOK_SECRET is different in sandbox and live.\n# the provider's SDK does all of the above in one call: use it."
+  },
+  "Entitlement": {
+   "cap": {
+    "en": "One row answers \"has this user paid?\"",
+    "he": "שורה אחת עונה על \"האם המשתמש הזה שילם?\""
+   },
+   "code": "CREATE TABLE entitlements (\n  user_id      text NOT NULL,          -- from custom_data, not the checkout email\n  product      text NOT NULL,          -- 'course-basic'\n  status       text NOT NULL,          -- active | refunded | charged_back | canceled\n  provider_txn text NOT NULL UNIQUE,   -- a retried webhook can't add a second row\n  granted_at   timestamptz NOT NULL DEFAULT now(),\n  ends_at      timestamptz             -- NULL = lifetime; set for subscriptions\n);\n\n-- every paid page and paid API route, on the server:\nSELECT 1 FROM entitlements\n WHERE user_id = $1 AND product = $2 AND status = 'active'\n   AND (ends_at IS NULL OR ends_at > now());\n\n-- refund webhook: UPDATE ... SET status = 'refunded'   (never DELETE)"
+  },
+  "One-time vs subscription": {
+   "cap": {
+    "en": "What each subscription state does to access",
+    "he": "מה כל מצב של מנוי עושה לגישה"
+   },
+   "code": "# state (names vary by provider)   access   what the user sees\ntrialing                           yes      \"Trial ends 3 Oct\"\nactive                             yes      nothing\npast_due  (renewal failed)         yes*     \"Update your card\" banner\ncanceled, period not over yet      yes      \"Ends 31 Oct. Resume?\"\nended / period over                no       \"Resubscribe\" button\n\n# * a grace period while the provider retries and emails (dunning)\n\n# on every subscription webhook, store the provider's current view:\nUPDATE entitlements\n   SET status = $status, ends_at = $current_period_end\n WHERE provider_sub = $subscription_id;\n\n# \"Cancel\" and \"Change card\" link to the provider's customer portal"
+  },
+  "Refunds & chargebacks": {
+   "cap": {
+    "en": "When the money goes back, access goes with it",
+    "he": "כשהכסף חוזר, הגישה הולכת איתו"
+   },
+   "code": "# events that mean \"the money went back\" (check your provider's docs)\nStripe:          charge.refunded, charge.dispute.created\nPaddle:          adjustment.created / .updated   (refund or chargeback)\nLemon Squeezy:   order_refunded\n\n# handler, after verify + dedupe:\nUPDATE entitlements SET status = 'refunded'      -- or 'charged_back'\n WHERE provider_txn = $txn_id;\n# the next paid page view is refused. no cron, no manual step.\n\n# prevention checklist\n[ ] the price and what's included, shown before checkout\n[ ] a receipt email with a reply-to that reaches you\n[ ] a recognizable name on the card statement\n[ ] \"Cancel\" and \"Request a refund\" on the account page"
+  },
+  "Test cards & declined payments": {
+   "cap": {
+    "en": "The drill before go-live",
+    "he": "התרגיל לפני העלייה לאוויר"
+   },
+   "code": "# sandbox only. Stripe test cards, any future expiry and CVC (others publish their own)\n4242 4242 4242 4242   success\n4000 0000 0000 0002   generic decline\n4000 0000 0000 9995   insufficient funds\n4000 0027 6000 3184   3-D Secure challenge\n\n[ ] success                  -> entitlement active, receipt sent\n[ ] decline                  -> clear message, \"try another card\", no row\n[ ] 3-D Secure abandoned     -> no row, the user can retry\n[ ] checkout closed halfway  -> nothing half-created\n[ ] double click on \"Buy\"    -> one checkout, one row\n[ ] webhook resent / late    -> still one row, the return page recovers\n[ ] refund                   -> status refunded, paid page locked\n\n# all green? switch live keys + live webhook secret, in production only"
   }
  },
  "QUIZ": {
@@ -10040,6 +10418,182 @@
      "he": "קוראים את כל ה-diff. קבצים מסוכנים לא קשורים ב-'תיקון מהיר' אחד הם איך סודות והיסטוריית סכמה מתים."
     }
    }
+  ],
+  "pay": [
+   {
+    "q": {
+     "en": "The AI built card fields on your own page that post to /api/charge. What do you ask for instead?",
+     "he": "ה-AI בנה שדות כרטיס אשראי בדף שלך ששולחים ל-/api/charge. מה אתה מבקש במקום?"
+    },
+    "a": [
+     {
+      "en": "Encrypt the card number in the browser first",
+      "he": "להצפין את מספר הכרטיס בדפדפן קודם"
+     },
+     {
+      "en": "Log the card only when a payment fails",
+      "he": "לתעד את הכרטיס רק כשתשלום נכשל"
+     },
+     {
+      "en": "The provider's hosted checkout or overlay, so the card never reaches your server",
+      "he": "את הצ׳קאאוט או החלון הצף של הספק, כדי שהכרטיס לא יגיע לשרת שלך לעולם"
+     },
+     {
+      "en": "Save cards in your database so repeat buyers pay faster",
+      "he": "לשמור כרטיסים במסד הנתונים כדי שקונים חוזרים ישלמו מהר יותר"
+     }
+    ],
+    "c": 2,
+    "why": {
+     "en": "A card that passes through your server puts you inside the PCI rules, and into your logs. Let the provider's page take it and tell you the result.",
+     "he": "כרטיס שעובר דרך השרת שלך מכניס אותך לכללי PCI, ולתוך הלוגים שלך. תן לדף של הספק לקבל אותו ולספר לך את התוצאה."
+    }
+   },
+   {
+    "q": {
+     "en": "You're in Israel, selling a digital product worldwide, and you don't want to register for VAT in other countries. What fits best?",
+     "he": "אתה בישראל, מוכר מוצר דיגיטלי לכל העולם, ולא רוצה להירשם למע\"מ במדינות אחרות. מה מתאים הכי טוב?"
+    },
+    "a": [
+     {
+      "en": "Build your own card processing",
+      "he": "לבנות עיבוד כרטיסים משלך"
+     },
+     {
+      "en": "A merchant of record such as Paddle or Lemon Squeezy, which is the legal seller and handles the tax",
+      "he": "Merchant of record כמו Paddle או Lemon Squeezy, שהוא המוכר החוקי ומטפל במס"
+     },
+     {
+      "en": "Any processor, since tax only applies to physical goods",
+      "he": "כל מעבד תשלומים, כי מס חל רק על מוצרים פיזיים"
+     },
+     {
+      "en": "Accept bank transfers and email invoices by hand",
+      "he": "לקבל העברות בנקאיות ולשלוח חשבוניות במייל ידנית"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "A merchant of record resells your product and handles VAT, sales tax and invoices for a higher fee. Stripe isn't available in every country, Israel included, so check the supported list.",
+     "he": "Merchant of record מוכר את המוצר שלך הלאה ומטפל במע\"מ, במס מכירה ובחשבוניות תמורת עמלה גבוהה יותר. Stripe לא זמין בכל מדינה, כולל ישראל, אז תבדוק את רשימת המדינות הנתמכות."
+    }
+   },
+   {
+    "q": {
+     "en": "After checkout, buyers return to /welcome?paid=true, and that page unlocks the course. What's wrong?",
+     "he": "אחרי הצ׳קאאוט, קונים חוזרים ל-/welcome?paid=true, והדף הזה פותח את הקורס. מה הבעיה?"
+    },
+    "a": [
+     {
+      "en": "Nothing, the provider controls that redirect",
+      "he": "כלום, הספק שולט בהפניה הזאת"
+     },
+     {
+      "en": "It should be a POST so nobody can type it",
+      "he": "זה צריך להיות POST כדי שאף אחד לא יוכל להקליד את זה"
+     },
+     {
+      "en": "The flag should be base64-encoded",
+      "he": "צריך לקודד את הדגל ב-base64"
+     },
+     {
+      "en": "Anyone can open that URL; access must come from a verified webhook or a server-side lookup",
+      "he": "כל אחד יכול לפתוח את הכתובת הזאת; הגישה חייבת להגיע מ-webhook מאומת או מבדיקה בצד השרת"
+     }
+    ],
+    "c": 3,
+    "why": {
+     "en": "The redirect runs in the buyer's browser and proves nothing. Grant access from the signed webhook, or by your server looking the transaction up at the provider.",
+     "he": "ההפניה רצה בדפדפן של הקונה ולא מוכיחה כלום. תן גישה מה-webhook החתום, או מבדיקה של השרת שלך מול הספק לפי מזהה העסקה."
+    }
+   },
+   {
+    "q": {
+     "en": "Your webhook signature check fails on every real event, and the AI suggests turning it off. What's the likely cause?",
+     "he": "בדיקת החתימה של ה-webhook שלך נכשלת בכל אירוע אמיתי, וה-AI מציע לכבות אותה. מה הסיבה הסבירה?"
+    },
+    "a": [
+     {
+      "en": "The body was parsed as JSON before verifying, so the raw bytes changed",
+      "he": "הגוף פוענח כ-JSON לפני האימות, אז הבייטים הגולמיים השתנו"
+     },
+     {
+      "en": "The provider's secret expires every day",
+      "he": "הסוד של הספק פג תוקף כל יום"
+     },
+     {
+      "en": "Serverless functions can't verify signatures",
+      "he": "פונקציות serverless לא יכולות לאמת חתימות"
+     },
+     {
+      "en": "Your server's clock is five seconds off",
+      "he": "השעון של השרת שלך סוטה בחמש שניות"
+     }
+    ],
+    "c": 0,
+    "why": {
+     "en": "The signature covers the exact raw body. Read it as raw text, verify, then parse. Turning the check off lets anyone POST \"paid\".",
+     "he": "החתימה מכסה את הגוף הגולמי המדויק. תקרא אותו כטקסט גולמי, תאמת, ורק אז תפענח. לכבות את הבדיקה מאפשר לכל אחד לשלוח POST של \"שולם\"."
+    }
+   },
+   {
+    "q": {
+     "en": "A buyer was refunded last week and can still open every paid lesson. What's missing?",
+     "he": "קונה קיבל החזר בשבוע שעבר ועדיין יכול לפתוח כל שיעור בתשלום. מה חסר?"
+    },
+    "a": [
+     {
+      "en": "Refunds take 30 days to reach your database",
+      "he": "להחזרים לוקח 30 יום להגיע למסד הנתונים"
+     },
+     {
+      "en": "The buyer has to log out first",
+      "he": "הקונה צריך להתנתק קודם"
+     },
+     {
+      "en": "The refund webhook never updates the entitlement's status",
+      "he": "ה-webhook של ההחזר אף פעם לא מעדכן את הסטטוס של הזכאות"
+     },
+     {
+      "en": "Nothing, refunded buyers keep access",
+      "he": "כלום, קונים שקיבלו החזר שומרים על הגישה"
+     }
+    ],
+    "c": 2,
+    "why": {
+     "en": "When the money goes back, access should too. Listen for the provider's refund and dispute events and set the entitlement to refunded or charged back.",
+     "he": "כשהכסף חוזר, גם הגישה צריכה להיסגר. תקשיב לאירועי ההחזר וההכחשה של הספק ותעדכן את הזכאות ל-refunded או ל-charged back."
+    }
+   },
+   {
+    "q": {
+     "en": "A sandbox purchase with 4242 4242 4242 4242 worked once. What comes before switching to live keys?",
+     "he": "רכישה ב-sandbox עם 4242 4242 4242 4242 עבדה פעם אחת. מה בא לפני המעבר למפתחות live?"
+    },
+    "a": [
+     {
+      "en": "Buy the product with your own card on live, to be sure",
+      "he": "לקנות את המוצר עם הכרטיס שלך ב-live, ליתר ביטחון"
+     },
+     {
+      "en": "Run declines, 3-D Secure, a cancelled checkout, a double click and a resent webhook in sandbox, checking the database each time",
+      "he": "להריץ ב-sandbox דחיות, 3-D Secure, צ׳קאאוט שבוטל, לחיצה כפולה ו-webhook שנשלח שוב, ולבדוק את מסד הנתונים בכל פעם"
+     },
+     {
+      "en": "Nothing, the provider handles failures",
+      "he": "כלום, הספק מטפל בכישלונות"
+     },
+     {
+      "en": "Switch to live keys but keep the sandbox webhook secret",
+      "he": "לעבור למפתחות live אבל להשאיר את סוד ה-webhook של ה-sandbox"
+     }
+    ],
+    "c": 1,
+    "why": {
+     "en": "One success proves the happy path. The bugs live in declines, retries and duplicates, and the sandbox can simulate all of them for free. Your own card on live only adds real fees.",
+     "he": "הצלחה אחת מוכיחה את המסלול השמח. הבאגים חיים בדחיות, בניסיונות חוזרים ובכפילויות, וה-sandbox יכול לדמות את כולם בחינם. הכרטיס שלך ב-live רק מוסיף עמלות אמיתיות."
+    }
+   }
   ]
  },
  "CHECKLIST": {
@@ -10877,8 +11431,8 @@
    "id": "basic",
    "icon": "🌱",
    "title": {
-    "en": "Dev Concepts for Vibe Coders: Basic",
-    "he": "מושגי פיתוח ל-Vibe Coders: בסיסי"
+    "en": "Basic: Understand What You're Building",
+    "he": "בסיסי: להבין מה אתם בונים"
    },
    "blurb": {
     "en": "How software actually works — from an empty folder to a page talking to a database. No prior knowledge.",
@@ -10903,8 +11457,8 @@
    "id": "advanced",
    "icon": "⚡",
    "title": {
-    "en": "Dev Concepts for Vibe Coders: Advanced",
-    "he": "מושגי פיתוח ל-Vibe Coders: מתקדם"
+    "en": "Advanced: From Vibe Coder to Engineer",
+    "he": "מתקדם: מ-Vibe Coder למהנדס"
    },
    "blurb": {
     "en": "Every Basic lesson, then integrations, performance, auth, security, deploys, scale, and how a team actually ships.",
@@ -10925,6 +11479,7 @@
     "testing",
     "auth",
     "security",
+    "pay",
     "net",
     "cloud",
     "devops",
@@ -12930,6 +13485,126 @@
    "s": {
     "en": "A restaurant menu lists what you may ask for and what will come back. You do not need to know how the kitchen works; you only need to order something the menu promises.\n\nAn API is that menu for software. It is a contract listing the requests one program accepts, the data each request needs and the response it returns. Your frontend uses an API to ask your backend for data; your backend uses other APIs to send email or charge a card.\n\nWhen an AI connects a service, give it the provider's current API documentation. If either side guesses the contract, the integration may look correct and still fail.",
     "he": "תפריט במסעדה מפרט מה אפשר לבקש ומה תקבלו בחזרה. לא צריך לדעת איך המטבח עובד; צריך רק להזמין משהו שהתפריט מבטיח.\n\nAPI הוא התפריט הזה לתוכנות. זה חוזה שמפרט אילו בקשות תוכנה מקבלת, אילו נתונים כל בקשה צריכה ואיזו תשובה חוזרת. הפרונט משתמש ב-API כדי לבקש נתונים מהבק-אנד; הבק-אנד משתמש ב-API-ים אחרים כדי לשלוח מייל או לחייב כרטיס.\n\nכש-AI מחבר שירות, תנו לו את תיעוד ה-API העדכני של הספק. אם אחד הצדדים מנחש את החוזה, האינטגרציה יכולה להיראות נכונה ועדיין להיכשל."
+   }
+  },
+  "SEO basics": {
+   "q": {
+    "en": "I launched my site weeks ago. Why can't I find it on Google?",
+    "he": "העליתי את האתר לפני כמה שבועות. למה אני לא מוצא אותו בגוגל?"
+   },
+   "s": {
+    "en": "Think of a library. A book gets found because of its spine and its catalogue card: a title, a short blurb, a subject. A book with a blank spine and a card that just says \"Book\" stays on the shelf forever, however good it is inside.\n\nGoogle's crawler is the librarian. On every page it reads the title tag (the blue link in the results), the meta description (the grey text under it), one main h1 heading and the actual text in the HTML. The common vibe-coded failures: every page titled \"My App\"; a single-page app whose HTML is an empty <div> until JavaScript runs, so Google indexes it late or badly; a robots.txt copied from staging that tells every crawler \"Disallow: /\"; or a noindex tag left on from testing. Any one of these can keep a good site invisible.\n\nAsk your AI assistant for a unique title and description per page, real content in the HTML the server sends, a sitemap.xml and a robots.txt, a canonical URL on every page, and hreflang links if you have Hebrew and English versions. Then add the site to Google Search Console and use URL Inspection to see the page the way Google sees it.",
+    "he": "תחשבו על ספרייה. ספר נמצא בזכות השדרה וכרטיס הקטלוג שלו: כותרת, תקציר קצר, נושא. ספר עם שדרה ריקה וכרטיס שכתוב עליו רק \"ספר\" יישאר על המדף לנצח, לא משנה כמה הוא טוב.\n\nהסורק של Google הוא הספרן. בכל דף הוא קורא את תגית ה-title (הקישור הכחול בתוצאות), את ה-meta description (הטקסט האפור מתחתיו), כותרת h1 ראשית אחת, ואת הטקסט עצמו שב-HTML. הכשלים הנפוצים באתרים שנבנו עם AI: לכל הדפים קוראים \"My App\"; אפליקציית SPA שה-HTML שלה הוא <div> ריק עד ש-JavaScript רץ, כך ש-Google מאנדקס אותה באיחור או חלקית; קובץ robots.txt שהועתק מסביבת staging ואומר לכל סורק \"Disallow: /\"; או תגית noindex שנשארה מהבדיקות. כל אחד מאלה לבד יכול להשאיר אתר טוב בלתי נראה.\n\nבקשו מעוזר ה-AI title ו-description ייחודיים לכל דף, תוכן אמיתי ב-HTML שמגיע מהשרת, sitemap.xml ו-robots.txt, כתובת canonical בכל דף, וקישורי hreflang אם יש לכם גרסה בעברית ובאנגלית. אחר כך הוסיפו את האתר ל-Google Search Console והשתמשו ב-URL Inspection כדי לראות את הדף כמו ש-Google רואה אותו."
+   }
+  },
+  "Link previews (Open Graph)": {
+   "q": {
+    "en": "Why does my link show up as a bare URL, or with the wrong picture, when I paste it into WhatsApp?",
+    "he": "למה כשאני מדביק את הקישור שלי בוואטסאפ הוא מופיע ככתובת חשופה, או עם תמונה לא נכונה?"
+   },
+   "s": {
+    "en": "A link preview is the cover of a paperback in a shop window: a picture, a title, one line of blurb. People decide whether to pick it up from the cover. Without one, your link is a plain string of text in a busy chat.\n\nThe cover comes from a few tags in your page's <head>: og:title, og:description, og:image (a 1200×630 picture, as a full https:// address) and twitter:card for X. The catch that trips vibe coders: the bots from WhatsApp, Slack, LinkedIn and Facebook fetch your page once and do not run JavaScript. If your tags are added by React after the page loads, or the page sits behind a login or a password-protected preview, the bot sees nothing, or sees the login screen. And the platforms cache what they saw, so fixing the tags does not fix a preview that was already shared.\n\nAsk your assistant to put the Open Graph tags in the HTML the server sends, for every page, with an absolute image URL. Before you post the launch link, paste it into Facebook's Sharing Debugger and LinkedIn's Post Inspector. They show what the bot sees and let you refresh the cached copy.",
+    "he": "תצוגה מקדימה של קישור היא כמו כריכה של ספר בחלון ראווה: תמונה, כותרת, שורה אחת של תקציר. אנשים מחליטים אם להרים את הספר לפי הכריכה. בלי כריכה, הקישור שלכם הוא סתם שורת טקסט בצ'אט עמוס.\n\nהכריכה מגיעה מכמה תגיות ב-<head> של הדף: og:title, og:description, og:image (תמונה בגודל 1200×630, בכתובת מלאה שמתחילה ב-https://) ו-twitter:card בשביל X. המלכודת שתופסת vibe coders: הבוטים של WhatsApp, Slack, LinkedIn ו-Facebook מביאים את הדף פעם אחת ולא מריצים JavaScript. אם התגיות מתווספות על ידי React אחרי שהדף נטען, או שהדף יושב מאחורי התחברות או מאחורי preview מוגן בסיסמה, הבוט לא רואה כלום, או רואה את מסך ההתחברות. והפלטפורמות שומרות במטמון את מה שהן ראו, אז תיקון התגיות לא מתקן תצוגה שכבר שותפה.\n\nבקשו מהעוזר לשים את תגיות ה-Open Graph ב-HTML שהשרת שולח, לכל דף, עם כתובת תמונה מלאה. לפני שאתם מפרסמים את קישור ההשקה, הדביקו אותו ב-Sharing Debugger של Facebook וב-Post Inspector של LinkedIn. הם מראים מה הבוט רואה ומאפשרים לרענן את העותק השמור."
+   }
+  },
+  "Measuring speed (Lighthouse)": {
+   "q": {
+    "en": "My site feels fast to me. How do I know if it's actually fast for my users?",
+    "he": "האתר מרגיש לי מהיר. איך אני יודע אם הוא באמת מהיר למשתמשים שלי?"
+   },
+   "s": {
+    "en": "You would not judge a car's fuel use by how the ride felt. You would look at the gauge. Page speed is the same: your laptop, on fast wifi, with the site already cached, is the most flattering test there is. Your users are on a three-year-old phone on a train.\n\nLighthouse is the gauge built into Chrome. Open developer tools, choose the Lighthouse tab, pick Mobile, and run it in an incognito window so your extensions do not skew it. It slows the network and the processor on purpose and gives a score plus timings like LCP. PageSpeed Insights (pagespeed.web.dev) runs the same test from Google's servers and, when your site has enough visitors, also shows real-user data from Chrome for the last 28 days. The classic mistake is telling the AI \"make it faster\". It will change things, and neither of you will know if they helped.\n\nRun Lighthouse three times and write down the middle result. Give that number to your assistant, ask it to fix the top items in the suggestions list, and run it again. Every now and then, open the site on a real mid-range phone on mobile data.",
+    "he": "לא הייתם שופטים צריכת דלק של רכב לפי איך שהנסיעה הרגישה. הייתם מסתכלים על המד. מהירות של דף זה אותו דבר: הלפטופ שלכם, בוויי-פיי מהיר, כשהאתר כבר שמור במטמון, זו הבדיקה הכי מחמיאה שיש. המשתמשים שלכם נמצאים על טלפון בן שלוש ברכבת.\n\nLighthouse הוא המד שמובנה ב-Chrome. פותחים את כלי המפתחים, בוחרים בלשונית Lighthouse, מסמנים Mobile, ומריצים בחלון גלישה בסתר כדי שהתוספים שלכם לא ישבשו את התוצאה. הוא מאט בכוונה את הרשת ואת המעבד, ונותן ציון ועוד זמנים כמו LCP. PageSpeed Insights (pagespeed.web.dev) מריץ את אותה בדיקה מהשרתים של Google, וכשיש לאתר מספיק מבקרים, מראה גם נתונים של משתמשים אמיתיים מ-Chrome ב-28 הימים האחרונים. הטעות הקלאסית היא להגיד ל-AI \"תעשה את זה מהיר יותר\". הוא ישנה דברים, ואף אחד מכם לא יידע אם זה עזר.\n\nהריצו Lighthouse שלוש פעמים ורשמו את התוצאה האמצעית. תנו את המספר הזה לעוזר, בקשו ממנו לתקן את הפריטים הראשונים ברשימת ההצעות, והריצו שוב. ומדי פעם, פתחו את האתר על טלפון בינוני אמיתי עם גלישה סלולרית."
+   }
+  },
+  "Core Web Vitals": {
+   "q": {
+    "en": "What are LCP, INP and CLS, and why does Google keep telling me mine are poor?",
+    "he": "מה זה LCP, INP ו-CLS, ולמה Google כל הזמן אומר לי שאצלי הם גרועים?"
+   },
+   "s": {
+    "en": "Walk into a restaurant. Three things decide whether it felt good: how long until food is on the table, how quickly the waiter reacts when you wave, and whether someone keeps moving your plate while you eat. Core Web Vitals are those three, for a web page.\n\nLCP, Largest Contentful Paint, is when the biggest thing on screen, usually the hero image or the headline, becomes visible; good is 2.5 seconds or less. INP, Interaction to Next Paint, is how long the page takes to visibly react after a tap or click; good is 200 milliseconds or less. CLS, Cumulative Layout Shift, measures content jumping around while the page loads, like the button that moves just as you tap it; good is 0.1 or less. The usual culprits on an AI-built site: a 4 MB photo as the hero, images and ads with no width and height so the text jumps when they arrive, custom fonts that swap in late, a huge JavaScript bundle, and third-party scripts like chat widgets and trackers.\n\nAsk your assistant to serve the hero as a compressed WebP or AVIF at the size it is shown, give every image a width and height, lazy-load images below the fold but never the hero, and load third-party scripts after the page. Then check the result in PageSpeed Insights.",
+    "he": "נכנסים למסעדה. שלושה דברים קובעים אם היה נעים: כמה זמן עד שהאוכל על השולחן, כמה מהר המלצר מגיב כשמנופפים לו, והאם מישהו כל הזמן מזיז לכם את הצלחת באמצע הארוחה. Core Web Vitals הם שלושת אלה, בשביל דף אינטרנט.\n\nLCP, או Largest Contentful Paint, הוא הרגע שבו הדבר הכי גדול על המסך, בדרך כלל תמונת ה-hero או הכותרת, נהיה נראה; טוב זה 2.5 שניות או פחות. INP, או Interaction to Next Paint, הוא כמה זמן לוקח לדף להגיב באופן נראה אחרי הקשה או לחיצה; טוב זה 200 מילישניות או פחות. CLS, או Cumulative Layout Shift, מודד כמה תוכן קופץ בזמן שהדף נטען, כמו הכפתור שזז בדיוק כשלוחצים עליו; טוב זה 0.1 או פחות. החשודים הרגילים באתר שנבנה עם AI: תמונה של 4 מגה בתור hero, תמונות ופרסומות בלי width ו-height כך שהטקסט קופץ כשהן מגיעות, פונטים מותאמים שמתחלפים מאוחר, קובץ JavaScript ענק, וסקריפטים של צד שלישי כמו וידג'טים של צ'אט וכלי מעקב.\n\nבקשו מהעוזר להגיש את ה-hero כ-WebP או AVIF דחוס בגודל שבו הוא מוצג, לתת לכל תמונה width ו-height, לטעון בעצלות תמונות שמתחת לקו הגלילה אבל אף פעם לא את ה-hero, ולטעון סקריפטים של צד שלישי אחרי הדף. אחר כך בדקו את התוצאה ב-PageSpeed Insights."
+   }
+  },
+  "Hosted checkout": {
+   "q": {
+    "en": "Should I build my own card form, or send people to the payment company's page?",
+    "he": "לבנות טופס כרטיס אשראי משלי, או לשלוח אנשים לדף של חברת התשלומים?"
+   },
+   "s": {
+    "en": "When you pay at a restaurant, the waiter doesn't copy your card onto a napkin and carry it to the kitchen. They bring the card terminal to the table, you tap, and the restaurant only sees \"approved\". Hosted checkout is that terminal: the provider's page or overlay collects the card, and your app is told the result.\n\nAsk an AI for \"a checkout page\" and it may happily build a pretty card form that posts the number, expiry and CVC to your own API, which forwards them to the provider. It works in the demo. It also means card numbers pass through your server, your logs and maybe your error tracker, and you are now inside the rules for handling card data (PCI DSS), with their questionnaires and audits. One overly detailed log line, and every card typed that week sits there in plain text.\n\nAsk for the provider's hosted checkout, overlay or embedded fields. Then check: search the code for \"cvc\" or \"card_number\", open the Network tab during a test payment, and confirm the card goes to the provider's domain, not to /api.",
+    "he": "כשמשלמים במסעדה, המלצר לא מעתיק את הכרטיס על מפית ולוקח אותו למטבח. הוא מביא את המסופון לשולחן, אתם מצמידים, והמסעדה רואה רק \"אושר\". צ׳קאאוט אצל הספק הוא המסופון הזה: הדף או החלון הצף של הספק אוסף את הכרטיס, והאפליקציה שלכם מקבלת רק את התוצאה.\n\nתבקשו מ-AI \"דף תשלום\" והוא עלול לבנות בשמחה טופס כרטיס יפה ששולח את המספר, התוקף וה-CVC ל-API שלכם, שמעביר אותם הלאה לספק. בדמו זה עובד. זה גם אומר שמספרי כרטיסים עוברים דרך השרת שלכם, הלוגים שלכם ואולי כלי ניטור השגיאות, ושאתם עכשיו בתוך הכללים לטיפול בנתוני כרטיסים (PCI DSS), עם השאלונים והביקורות שלהם. שורת לוג אחת מפורטת מדי, וכל כרטיס שהוקלד באותו שבוע יושב שם בטקסט גלוי.\n\nתבקשו את ה-checkout המתארח של הספק, את החלון הצף שלו או את השדות המוטמעים שלו. ואז תבדקו: חפשו בקוד \"cvc\" או \"card_number\", פתחו את לשונית Network בזמן תשלום בדיקה, ותוודאו שהכרטיס נשלח לדומיין של הספק ולא ל-/api."
+   }
+  },
+  "Merchant of record": {
+   "q": {
+    "en": "Stripe, Paddle or Lemon Squeezy: which one should I use, and does it even matter?",
+    "he": "Stripe, Paddle או Lemon Squeezy: במה להשתמש, וזה בכלל משנה?"
+   },
+   "s": {
+    "en": "You can sell handmade mugs in your own shop, or put them in a department store. In your own shop you keep more of the price, but you run the register, file the taxes and deal with every returned mug. In the department store, they are the seller: they take a bigger cut and handle the rest. A payment processor like Stripe is your own shop. A merchant of record like Paddle or Lemon Squeezy is the department store.\n\nThe difference shows up in tax. Digital products are often taxed where the buyer lives, so a sale to Germany, the UK or a US state can carry its own VAT or sales tax rules. With a processor, that paperwork is yours. With a merchant of record, it's theirs, for roughly 5% plus a small fixed fee per sale. One more thing: Stripe isn't available in every country, Israel included, so check the supported list. That is why many Israeli builders go straight to a merchant of record.\n\nBefore the AI writes any payment code, decide who the seller is. Ask it to compare current fees and country support for your case, and read the provider's own pages rather than trusting its memory.",
+    "he": "אפשר למכור ספלים בעבודת יד בחנות שלכם, או להכניס אותם לכלבו. בחנות שלכם נשאר לכם יותר מהמחיר, אבל אתם מפעילים את הקופה, מגישים את הדוחות למס ומטפלים בכל ספל שחוזר. בכלבו, הם המוכרים: הם לוקחים נתח גדול יותר ומטפלים בשאר. מעבד תשלומים כמו Stripe הוא החנות שלכם. Merchant of record כמו Paddle או Lemon Squeezy הוא הכלבו.\n\nההבדל מתגלה במס. מוצרים דיגיטליים ממוסים לרוב לפי המקום שבו הקונה גר, אז מכירה לגרמניה, לבריטניה או למדינה בארה\"ב יכולה לשאת כללי מע\"מ או מס מכירה משלה. עם מעבד, הניירת הזאת שלכם. עם merchant of record, היא שלהם, תמורת בערך 5% ועוד עמלה קבועה קטנה לכל מכירה. ועוד דבר: Stripe לא זמין בכל מדינה, כולל ישראל, אז בדקו את רשימת המדינות הנתמכות. זו הסיבה שהרבה בונים ישראלים הולכים ישר ל-merchant of record.\n\nלפני שה-AI כותב קוד תשלומים כלשהו, תחליטו מי המוכר. בקשו ממנו להשוות עמלות ותמיכה במדינות למקרה שלכם, ותקראו את הדפים של הספק עצמו במקום לסמוך על הזיכרון שלו."
+   }
+  },
+  "Trust the webhook, not the redirect": {
+   "q": {
+    "en": "After paying, the buyer lands on my thank-you page. Can I unlock the product there?",
+    "he": "אחרי התשלום הקונה נוחת בדף התודה שלי. אפשר לפתוח לו את המוצר שם?"
+   },
+   "s": {
+    "en": "A customer walks out of a shop with a bag and says \"I paid\". The guard doesn't take their word for it; the proof comes from the till. The thank-you page is the customer saying \"I paid\". The webhook you met in the HTTP lesson is the till: the provider telling your server, directly, that money moved.\n\nThe common mistake is an AI-built success page that reads ?paid=1 or ?session=abc from the address and marks the user as paid. Anyone can type that URL, share it, or refresh it forever. The opposite mistake hurts too: the redirect often arrives a second or two before the webhook, so a page that checks the database once tells someone who just paid \"not paid\", and they pay again or write to support.\n\nAsk for access to be granted only by the verified webhook, or by your server looking the transaction up at the provider by its id. On the return page, show \"Confirming your payment…\" and check again every second or two for a short while before offering help.",
+    "he": "לקוח יוצא מחנות עם שקית ואומר \"שילמתי\". המאבטח לא סומך על המילה שלו; ההוכחה מגיעה מהקופה. דף התודה הוא הלקוח שאומר \"שילמתי\". ה-webhook שפגשתם בשיעור על HTTP הוא הקופה: הספק מודיע לשרת שלכם, ישירות, שכסף עבר.\n\nהטעות הנפוצה היא דף הצלחה שה-AI בנה, שקורא ?paid=1 או ?session=abc מהכתובת ומסמן את המשתמש כמי ששילם. כל אחד יכול להקליד את הכתובת הזאת, לשתף אותה, או לרענן אותה לנצח. גם הטעות ההפוכה כואבת: ההפניה מגיעה הרבה פעמים שנייה או שתיים לפני ה-webhook, אז דף שבודק את מסד הנתונים פעם אחת אומר \"לא שולם\" למי ששילם הרגע, והוא משלם שוב או כותב לתמיכה.\n\nבקשו שהגישה תינתן רק על ידי webhook מאומת, או על ידי השרת שלכם שמחפש את העסקה אצל הספק לפי המזהה שלה. בדף החזרה, הציגו \"מאשרים את התשלום שלך…\" ובדקו שוב כל שנייה-שתיים לזמן קצר לפני שמציעים עזרה."
+   }
+  },
+  "Webhook signature": {
+   "q": {
+    "en": "My webhook works. Why does the AI keep going on about verifying signatures?",
+    "he": "ה-webhook שלי עובד. למה ה-AI ממשיך להתעקש על אימות חתימות?"
+   },
+   "s": {
+    "en": "Old letters were sealed with wax pressed by the sender's ring. If the seal was intact and the pattern was right, the letter came from them and nobody had opened it. A webhook signature is that seal: the provider mixes the exact message with a secret only the two of you know, and sends the result in a header. Your server does the same math, and if the results match, the message is real.\n\nTwo mistakes are common. The AI skips verification \"for now\" to get the demo working, and \"for now\" ships. Or it verifies after the framework has already parsed the JSON, which changes spacing and key order, so the check fails, and the \"fix\" is to switch it off. The signature covers the raw bytes exactly as they arrived, so it must be checked before anything parses them. It usually includes a timestamp too, so a request captured today can't be replayed next month.\n\nAsk for this: read the raw body, verify with the provider's SDK or a constant-time comparison, reject anything older than a few minutes, then parse. Use separate secrets for sandbox and live. And test it: send the endpoint a fake request and confirm it gets a 400.",
+    "he": "פעם אטמו מכתבים בשעווה שהוטבעה בטבעת של השולח. אם החותם שלם והדוגמה נכונה, המכתב הגיע ממנו ואף אחד לא פתח אותו. חתימת webhook היא החותם הזה: הספק מערבב את ההודעה המדויקת עם סוד שרק שניכם יודעים, ושולח את התוצאה בכותרת. השרת שלכם עושה את אותו חישוב, ואם התוצאות זהות, ההודעה אמיתית.\n\nשתי טעויות נפוצות. ה-AI מדלג על האימות \"בינתיים\" כדי שהדמו יעבוד, וה\"בינתיים\" עולה לאוויר. או שהוא מאמת אחרי שה-framework כבר פענח את ה-JSON, מה שמשנה רווחים וסדר מפתחות, אז הבדיקה נכשלת, וה\"תיקון\" הוא לכבות אותה. החתימה מחושבת על הבייטים הגולמיים בדיוק כפי שהגיעו, אז צריך לבדוק אותה לפני שמשהו מפענח אותם. בדרך כלל יש בה גם חותמת זמן, כדי שבקשה שנתפסה היום לא תוכל להישלח שוב בחודש הבא.\n\nבקשו את זה: לקרוא את הגוף הגולמי, לאמת עם ה-SDK של הספק או עם השוואה בזמן קבוע, לדחות כל דבר ישן מכמה דקות, ורק אז לפענח. השתמשו בסודות נפרדים ל-sandbox ול-live. ותבדקו את זה: שלחו לנקודת הקצה בקשה מזויפת ותוודאו שהיא מקבלת 400."
+   }
+  },
+  "Entitlement": {
+   "q": {
+    "en": "Where does my app remember who bought what?",
+    "he": "איפה האפליקציה שלי זוכרת מי קנה מה?"
+   },
+   "s": {
+    "en": "A gym gives you a membership card when you pay. At the door they don't phone your bank; they scan the card and their own system says active, expired or frozen. An entitlement is that membership record in your database: this user owns this product, since this date, because of this transaction.\n\nTwo mistakes are common. The AI stores \"paid\" in the browser, in localStorage or a cookie, and the page checks it there, so anyone can flip it. Or it ties the purchase to the email typed at checkout, and a buyer who signs in with a different email, or made a typo, can't find what they paid for. Pass the signed-in user's id into the checkout as custom data, and write the row for that id when the webhook arrives.\n\nAsk for an entitlements table with the provider's transaction id marked UNIQUE, so a repeated webhook can't create two rows. Then check that every paid page and every paid API route reads it on the server, and that refunds and cancellations change its status.",
+    "he": "חדר כושר נותן לכם כרטיס מנוי כשאתם משלמים. בכניסה הם לא מתקשרים לבנק שלכם; הם סורקים את הכרטיס והמערכת שלהם אומרת פעיל, פג תוקף או מוקפא. זכאות היא רשומת המנוי הזאת במסד הנתונים שלכם: המשתמש הזה מחזיק במוצר הזה, מהתאריך הזה, בגלל העסקה הזאת.\n\nשתי טעויות נפוצות. ה-AI שומר \"שולם\" בדפדפן, ב-localStorage או בעוגייה, והדף בודק את זה שם, אז כל אחד יכול להפוך את הדגל. או שהוא קושר את הרכישה למייל שהוקלד בצ׳קאאוט, וקונה שמתחבר עם מייל אחר, או שעשה שגיאת הקלדה, לא מוצא את מה ששילם עליו. העבירו את המזהה של המשתמש המחובר לצ׳קאאוט כ-custom data, וכתבו את השורה עבור המזהה הזה כשה-webhook מגיע.\n\nבקשו טבלת entitlements שבה מזהה העסקה של הספק מסומן UNIQUE, כדי ש-webhook שחוזר לא יוכל ליצור שתי שורות. ואז תבדקו שכל דף בתשלום וכל נתיב API בתשלום קורא אותה בשרת, ושהחזרים וביטולים משנים את הסטטוס שלה."
+   }
+  },
+  "One-time vs subscription": {
+   "q": {
+    "en": "Should I charge once or monthly, and what changes in my code if I pick monthly?",
+    "he": "לגבות פעם אחת או כל חודש, ומה משתנה בקוד שלי אם אני בוחר כל חודש?"
+   },
+   "s": {
+    "en": "Buying a book and subscribing to a magazine are different relationships. The book is yours the moment you pay. The magazine keeps arriving as long as the payments keep working, and the publisher has to cope with expired cards, pauses, and people who cancel but already paid for this month.\n\nThe usual AI mistake is to treat a subscription like a book: one \"paid\" event grants access forever. Then a card expires, renewals fail, and the user keeps everything. The opposite mistake is cutting access the second a renewal fails, although most failures are an expired card the customer would gladly update. Providers retry failed renewals for a while and email the customer, which is called dunning; during that time your app should keep the user in a \"past due\" state with a gentle banner.\n\nAsk the AI to list every subscription event it handles and what each one does to access, including renewal, payment failed, canceled at period end and ended. And let users cancel and update their card themselves, through the provider's customer portal, instead of emailing you.",
+    "he": "לקנות ספר ולהירשם למגזין הם שני סוגי קשר שונים. הספר שלכם ברגע ששילמתם. המגזין ממשיך להגיע כל עוד התשלומים ממשיכים לעבוד, והמוציא לאור צריך להתמודד עם כרטיסים שפג תוקפם, הקפאות, ואנשים שמבטלים אבל כבר שילמו על החודש הזה.\n\nהטעות הרגילה של AI היא להתייחס למנוי כמו לספר: אירוע \"שולם\" אחד נותן גישה לתמיד. ואז כרטיס פג תוקף, החידושים נכשלים, והמשתמש שומר הכל. הטעות ההפוכה היא לנתק גישה ברגע שחידוש נכשל, למרות שרוב הכישלונות הם כרטיס שפג תוקפו, והלקוח ישמח לעדכן אותו. ספקים מנסים שוב חידושים שנכשלו לאורך זמן מה ושולחים ללקוח מיילים, מה שנקרא dunning; בזמן הזה האפליקציה שלכם צריכה להשאיר את המשתמש במצב \"past due\" עם באנר עדין.\n\nבקשו מה-AI לפרט כל אירוע מנוי שהוא מטפל בו ומה כל אחד עושה לגישה, כולל חידוש, תשלום שנכשל, ביטול בסוף התקופה וסיום. ותנו למשתמשים לבטל ולעדכן כרטיס בעצמם, דרך פורטל הלקוחות של הספק, במקום לשלוח לכם מייל."
+   }
+  },
+  "Refunds & chargebacks": {
+   "q": {
+    "en": "What happens when someone wants their money back, and what if they go to their bank instead?",
+    "he": "מה קורה כשמישהו רוצה את הכסף בחזרה, ומה אם הוא הולך ישר לבנק שלו?"
+   },
+   "s": {
+    "en": "Returning a sweater to the shop is a refund: you bring it back, they hand you the money, everyone moves on. Calling your credit card company to say \"I never bought this sweater\" is a chargeback: the bank pulls the money from the shop, charges the shop a fee, and asks it to prove the sale was real.\n\nThe AI usually builds only the happy path, so a refund sends the money back while the buyer keeps the course. Make sure the refund and dispute webhooks change the entitlement's status. The bigger lesson is that most disputes aren't fraud. They are buyers who didn't recognize the name on their card statement, couldn't find how to cancel, or couldn't reach you. Clear pricing, a receipt email, a recognizable name on the statement and an easy way to ask for a refund prevent most of them.\n\nAsk the AI which events mean \"the money went back\" for your provider, and have them revoke access. Put \"Request a refund\" and \"Cancel\" where users can find them, and answer refund requests fast. A ₪49 refund is always cheaper than a ₪49 dispute.",
+    "he": "להחזיר סוודר לחנות זה החזר: מביאים אותו, מקבלים את הכסף, וכולם ממשיכים הלאה. להתקשר לחברת האשראי ולהגיד \"אף פעם לא קניתי את הסוודר הזה\" זו הכחשת עסקה: הבנק מושך את הכסף מהחנות, גובה ממנה עמלה, ומבקש ממנה להוכיח שהמכירה הייתה אמיתית.\n\nה-AI בדרך כלל בונה רק את המסלול השמח, אז החזר מחזיר את הכסף בזמן שהקונה שומר על הקורס. תוודאו שה-webhooks של החזר ושל הכחשה משנים את הסטטוס של הזכאות. הלקח הגדול יותר הוא שרוב ההכחשות הן לא הונאה. אלה קונים שלא זיהו את השם בפירוט האשראי, לא מצאו איך לבטל, או לא הצליחו להשיג אתכם. תמחור ברור, מייל קבלה, שם מוכר שמזהים בפירוט האשראי ודרך קלה לבקש החזר מונעים את רובן.\n\nשאלו את ה-AI אילו אירועים אצל הספק שלכם אומרים \"הכסף חזר\", ודאגו שהם יבטלו גישה. שימו \"לבקש החזר\" ו\"לבטל\" במקום שמשתמשים מוצאים, וענו לבקשות החזר מהר. החזר של ₪49 תמיד זול יותר מהכחשה של ₪49."
+   }
+  },
+  "Test cards & declined payments": {
+   "q": {
+    "en": "I paid once in sandbox and it worked. Am I ready to go live?",
+    "he": "שילמתי פעם אחת ב-sandbox וזה עבד. אני מוכן לעלות ל-live?"
+   },
+   "s": {
+    "en": "A fire drill isn't one person walking calmly out of the front door. It's checking the side exits, the alarm, and what happens when the stairwell is blocked. You met sandbox keys in the APIs lesson; test cards are how you run the drill there. On Stripe, 4242 4242 4242 4242 always succeeds and 4000 0000 0000 0002 is always declined, and other numbers simulate insufficient funds or 3-D Secure. Other providers publish their own lists.\n\nThe usual mistake is testing only 4242. Then the first real decline shows a blank page, a buyer who closes the checkout leaves a half-created order behind, or a double click on \"Buy\" opens two checkouts. And some people \"test\" on live with their own card, which leaves real charges, real fees and a messy refund, and still never shows a decline.\n\nAsk the AI for a test plan and run it in sandbox: success, decline, insufficient funds, 3-D Secure, a cancelled checkout, a double click on \"Buy\", and the webhook arriving twice or late. Check the database after each one. Only then switch to live keys.",
+    "he": "תרגיל כיבוי אש הוא לא אדם אחד שיוצא ברוגע מהדלת הראשית. זה לבדוק את היציאות הצדדיות, את האזעקה, ומה קורה כשחדר המדרגות חסום. את מפתחות ה-sandbox פגשתם בשיעור על APIs; כרטיסי בדיקה הם הדרך להריץ שם את התרגיל. ב-Stripe, הכרטיס 4242 4242 4242 4242 תמיד מצליח והכרטיס 4000 0000 0000 0002 תמיד נדחה, ומספרים אחרים מדמים חוסר כיסוי או 3-D Secure. ספקים אחרים מפרסמים רשימות משלהם.\n\nהטעות הרגילה היא לבדוק רק את 4242. ואז הדחייה האמיתית הראשונה מציגה דף ריק, קונה שסוגר את הצ׳קאאוט משאיר אחריו הזמנה חצי-פתוחה, או לחיצה כפולה על \"קנה\" פותחת שני צ׳קאאוטים. ויש מי ש\"בודקים\" ב-live עם הכרטיס שלהם, מה שמשאיר חיובים אמיתיים, עמלות אמיתיות והחזר מבולגן, ועדיין לא מראה אף דחייה.\n\nבקשו מה-AI תוכנית בדיקות והריצו אותה ב-sandbox: הצלחה, דחייה, חוסר כיסוי, 3-D Secure, צ׳קאאוט שבוטל, לחיצה כפולה על \"קנה\", ו-webhook שמגיע פעמיים או באיחור. בדקו את מסד הנתונים אחרי כל אחד. רק אז עברו למפתחות live."
    }
   }
  }

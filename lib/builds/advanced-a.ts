@@ -1,6 +1,6 @@
 import type { BuildStep } from "./types";
 
-/** Build track, steps 08–14 (Advanced course, first half). */
+/** Build track, steps 08–15 (Advanced course, first half). */
 export const BUILDS_ADV_A: Record<string, BuildStep> = {
   async: {
     title: {
@@ -406,6 +406,73 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       {
         en: "The leak scan found nothing, or the leaked key was replaced",
         he: "הסריקה לדליפות לא מצאה כלום, או שהמפתח שדלף הוחלף",
+      },
+    ],
+  },
+  pay: {
+    title: {
+      en: "A Pro plan that takes (test) money",
+      he: "מסלול Pro שמקבל כסף (של בדיקה)",
+    },
+    goal: {
+      en: "Free accounts keep up to 50 contacts, and one test-mode payment unlocks Pro. Only a signed webhook grants it, a refund takes it away, and paying twice never buys it twice.",
+      he: "חשבון חינמי שומר עד 50 אנשי קשר, ותשלום אחד במצב בדיקה פותח את Pro. רק webhook חתום נותן אותו, החזר כספי לוקח אותו, ותשלום כפול אף פעם לא קונה אותו פעמיים.",
+    },
+    why: {
+      en: "Money is where a shortcut costs the most: a trusted redirect gives the product away, and a missing check charges or grants twice.",
+      he: "כסף הוא המקום שבו קיצור דרך עולה הכי הרבה: דף חזרה שסומכים עליו מחלק את המוצר בחינם, ובדיקה חסרה מחייבת או נותנת פעמיים.",
+    },
+    uses: [
+      "hosted-checkout",
+      "trust-the-webhook",
+      "webhook-signature",
+      "entitlement",
+      "refunds-and-chargebacks",
+      "test-cards-and-declines",
+      "idempotency",
+      "sandbox-vs-live-keys",
+    ],
+    build: `Read AGENTS.md and STEPS.md first. This is step 15: a paid Pro plan. Start a new branch for it.
+
+Free accounts keep up to 50 contacts; a one-time Pro purchase removes the limit. I will open a sandbox (test) account with a payment provider that supports my country, such as Stripe test mode or Paddle sandbox. Ask me which one before you start.
+
+Must-haves:
+- The provider's hosted checkout takes the card. No card field ever appears in our app.
+- The checkout carries the signed-in user's id, so the purchase belongs to that account whatever email is typed.
+- Only the provider's webhook grants Pro, after checking its signature on the raw body. The return page proves nothing: it says "confirming your payment" and checks again for a few seconds.
+- One purchase row per provider transaction id (unique), so a repeated webhook or a double click changes nothing.
+- A refund webhook takes Pro away.
+- Sandbox keys and the webhook secret are secrets, set per environment.
+
+Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words how to buy Pro with a test card.`,
+    check: `Check step 15: the Pro plan. Don't add features; never use live keys or a real card.
+
+Add tests, with the provider faked where needed, that prove:
+- a webhook with a missing or wrong signature is refused and grants nothing;
+- the same paid webhook sent twice creates one purchase;
+- opening the return page without paying grants nothing;
+- a refund webhook removes Pro, and the 51st contact is refused again;
+- nobody can see or change another user's purchase.
+
+Run all the tests with npm run check and npm run e2e. Then buy Pro once in the sandbox with the success test card and once with a declined test card, and show me both results and the purchase row. In two sentences: what happens if the webhook arrives a minute late?
+
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "15 pay: Pro plan in sandbox, signed webhook, one purchase per payment, refund removes Pro".`,
+    done: [
+      {
+        en: "A success test card bought Pro, and the 50-contact limit disappeared",
+        he: "כרטיס בדיקה מוצלח קנה Pro, ומגבלת 50 אנשי הקשר נעלמה",
+      },
+      {
+        en: "A declined test card left the account on the free plan, with a clear message",
+        he: "כרטיס בדיקה שנדחה השאיר את החשבון במסלול החינמי, עם הודעה ברורה",
+      },
+      {
+        en: "A fake webhook, and opening the return page without paying, granted nothing",
+        he: "webhook מזויף, ופתיחת דף החזרה בלי לשלם, לא נתנו כלום",
+      },
+      {
+        en: "A refund in the provider's dashboard took Pro away",
+        he: "החזר כספי בלוח הבקרה של הספק לקח את Pro בחזרה",
       },
     ],
   },

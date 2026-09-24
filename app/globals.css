@@ -494,6 +494,27 @@ pre.code{max-width:100%}
 .intro-card{padding:16px 18px;border-radius:var(--r);border:1px solid var(--line);background:var(--card)}
 .intro-card b{display:flex;align-items:center;gap:8px;font-size:var(--fs-md)}
 .intro-card .ic{font-size:1.2em}
+/* TL;DR: the course-page entry and the one-page view */
+.tldr-cta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 16px;padding:12px 16px;border-radius:var(--r);
+  border:1px solid color-mix(in srgb,var(--acc2) 45%,var(--line));background:var(--card);color:var(--tx);text-decoration:none;font-size:var(--fs-sm)}
+.tldr-cta:hover{border-color:var(--acc2)}
+.tldr-cta b{color:var(--acc2)}
+.tldr-cta span:first-of-type{flex:1 1 220px;color:var(--tx2)}
+.tldr-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.tldr-list>li{max-width:80ch}
+.tldr-list .num{font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-xs);color:var(--tx3)}
+.tldr-list h3{font-size:var(--fs-lg);font-weight:700;margin:2px 0 4px}
+.tldr-list details{margin-top:10px}
+.tldr-list summary{cursor:pointer;font-size:var(--fs-sm);font-weight:600;color:var(--tx)}
+.tldr-list ul{margin:8px 0 0;padding-inline-start:18px;display:grid;gap:6px;font-size:var(--fs-sm);color:var(--tx2)}
+.tldr-list ul a{color:var(--tx);text-decoration:none}
+.tldr-list ul a:hover{color:var(--acc2)}
+.tldr-list .intro-card b,.tldr-list ul b{display:inline}
+.tldr-list .more{font-size:var(--fs-xs);color:var(--tx3)}
+.tldr-list .go{display:inline-block;margin-top:10px;font-size:var(--fs-xs);font-weight:700;color:var(--acc2);text-decoration:none}
+.xbadge{display:inline-block;padding:1px 8px;border-radius:99px;border:1px solid color-mix(in srgb,var(--warn) 60%,transparent);
+  color:var(--warn);font-size:var(--fs-2xs);font-weight:700;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
+.slide .xnote{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 10px;font-size:var(--fs-sm);color:var(--tx3)}
 .intro-card p{margin-top:6px;color:var(--tx2);font-size:var(--fs-sm);text-wrap:pretty}
 .intro-flow .intro-card b::before{counter-increment:flow;content:counter(flow);font-family:var(--font-mono),ui-monospace,monospace;
   font-size:var(--fs-xs);color:var(--tx3)}

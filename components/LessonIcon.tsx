@@ -1,5 +1,5 @@
 import {
-  Activity, AppWindow, Bot, Boxes, Braces, Cloud, Database, FileCode, FlaskConical, GitBranch, Globe, Hourglass,
+  Activity, AppWindow, Bot, Boxes, Braces, Cloud, CreditCard, Database, FileCode, FlaskConical, GitBranch, Globe, Hourglass,
   KeyRound, MemoryStick, MessagesSquare, MonitorSmartphone, Plug, Rocket, ShieldCheck, Users, Zap, type LucideIcon,
 } from "lucide-react";
 import type { Module } from "@/lib/types";
@@ -20,6 +20,7 @@ const ICONS: Record<string, LucideIcon> = {
   async: Hourglass,
   auth: KeyRound,
   security: ShieldCheck,
+  pay: CreditCard,
   net: Globe,
   cloud: Cloud,
   devops: Rocket,

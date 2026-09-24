@@ -48,6 +48,7 @@ const BY_STEP: Record<string, (keyof typeof TIP)[]> = {
   testing: ["cheap", "long"],
   auth: ["strong", "save"],
   security: ["strong", "read"],
+  pay: ["strong", "save"],
   net: ["cheap"],
   cloud: ["save", "usage"],
   devops: ["strong", "save"],

@@ -22,7 +22,7 @@ export const LATE_SCENES: Record<string, Scene> = {
     beats: [
       {
         from: "you", to: "gh", label: "git push · step-17-deal-value",
-        say: { en: "Step 17 goes up on its own branch. The live site stays exactly as it is.", he: "שלב 17 עולה על ברנץ' משלו. האתר החי נשאר בדיוק כמו שהוא." },
+        say: { en: "Step 18 goes up on its own branch. The live site stays exactly as it is.", he: "שלב 18 עולה על ברנץ' משלו. האתר החי נשאר בדיוק כמו שהוא." },
       },
       {
         from: "gh", to: "v", label: "new push · step-17 branch",
