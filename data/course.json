@@ -272,14 +272,6 @@
    "en": "Response",
    "he": "רספונס"
   },
-  "deeper": {
-   "en": "Go deeper",
-   "he": "צללו לעומק"
-  },
-  "deeperSub": {
-   "en": "The full picture, with a real example. Optional.",
-   "he": "התמונה המלאה, עם דוגמה אמיתית. לא חובה."
-  },
   "lifeCap": {
    "en": "Every website you have ever used went through this loop. The names change; the order does not.",
    "he": "כל אתר שהשתמשת בו עבר את הלולאה הזאת. השמות משתנים, הסדר לא."
@@ -492,29 +484,9 @@
    "en": "TL;DR",
    "he": "TL;DR"
   },
-  "tldrCta": {
-   "en": "In a hurry? The whole course on one page: the main idea of every lesson.",
-   "he": "ממהרים? כל הקורס בעמוד אחד: הרעיון המרכזי של כל שיעור."
-  },
-  "tldrSub": {
-   "en": "The main idea of every lesson, then its core topics in one line each. Expert topics are left out; they wait in the full lessons.",
-   "he": "הרעיון המרכזי של כל שיעור, ואחריו נושאי הליבה שלו, שורה אחת לכל נושא. נושאים למומחים לא נכללים; הם מחכים בשיעורים המלאים."
-  },
-  "tldrTopics": {
-   "en": "Core topics",
-   "he": "נושאי ליבה"
-  },
-  "tldrExpert": {
-   "en": "expert topics in the full lesson",
-   "he": "נושאים למומחים בשיעור המלא"
-  },
-  "tldrOpen": {
-   "en": "Open the full lesson",
-   "he": "לשיעור המלא"
-  },
   "fullCourse": {
-   "en": "Full course",
-   "he": "הקורס המלא"
+   "en": "Full lesson",
+   "he": "השיעור המלא"
   },
   "viewMode": {
    "en": "View",

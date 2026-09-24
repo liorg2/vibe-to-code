@@ -6,7 +6,7 @@ export type Level = "A" | "B" | "E";
 export type Term = {
   /** stable slug — progress is stored against this, so the title stays editable */
   k: string;
-  /** A foundations, B everything past them, E expert: good to know, safe to skip, left out of the TL;DR */
+  /** A foundations, B everything past them, E expert: good to know, safe to skip */
   lvl: Level;
   t: L10n;
   d: L10n;

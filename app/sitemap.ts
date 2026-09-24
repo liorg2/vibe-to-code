@@ -4,7 +4,7 @@ import { LANGS } from "@/lib/lang";
 import { abs } from "@/lib/site";
 
 /** ponytail: only the pages a signed-out visitor can actually reach. */
-const ROUTES = ["/", "/courses", "/pricing", "/compare", "/terms", "/privacy", ...PATHS.flatMap((p) => [`/courses/${p.id}`, `/courses/${p.id}/tldr`])];
+const ROUTES = ["/", "/courses", "/pricing", "/compare", "/terms", "/privacy", ...PATHS.map((p) => `/courses/${p.id}`)];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return LANGS.flatMap((lang) =>

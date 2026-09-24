@@ -120,7 +120,7 @@ export function SideNav() {
   const q = (href: string) => (courseId ? `${href}?course=${courseId}` : href);
   const navLink = (href: string, icon: string, label: string, cnt?: string) => {
     const path = href.split("?")[0];
-    // course pages match exactly, so the intro isn't lit while you read its TL;DR
+    // course pages match exactly, so the intro isn't lit on the other course pages
     const on = pathname === path || (path !== "/" && !path.startsWith("/courses/") && pathname.startsWith(path));
     return (
       <Link href={href} className={cn(on && "on")}>
@@ -245,7 +245,6 @@ export function SideNav() {
           </button>
         ) : null}
         {courseId ? navLink(`/courses/${courseId}`, "🚩", t("courseIntro")) : null}
-        {courseId ? navLink(`/courses/${courseId}/tldr`, "⚡", t("tldr")) : null}
         {lessons}
         {user && courseId ? (
           <>

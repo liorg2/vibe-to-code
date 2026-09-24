@@ -6,6 +6,7 @@ import { LessonIntro } from "@/components/LessonIntro";
 import { LessonSubNav } from "@/components/LessonSubNav";
 import Link from "@/components/Link";
 import { Scene } from "@/components/Scene";
+import { SlideMode } from "@/components/SlideMode";
 import { SlideActions } from "@/components/SlideActions";
 import { Upsell } from "@/components/Upsell";
 import {
@@ -22,6 +23,7 @@ import { LIFECYCLE } from "@/lib/diagrams";
 import { SCENES } from "@/lib/scenes";
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
+import { cookies } from "next/headers";
 import { para } from "@/lib/utils";
 
 export default async function SlidePage({
@@ -66,6 +68,7 @@ export default async function SlidePage({
   const scene = SCENES[tm.k];
   const coursePath = pathForModule(m.id, course);
   const q = (href: string) => (course ? `${href}?course=${course}` : href);
+  const tldr = (await cookies()).get("vibe.tldr")?.value === "1";
 
   const prevHref = q(i > 0 ? `/lesson/${m.id}/${i - 1}` : `/lesson/${m.id}/overview`);
   const nextHref = q(i < m.terms.length - 1 ? `/lesson/${m.id}/${i + 1}` : `/lesson/${m.id}/summary`);
@@ -83,6 +86,7 @@ export default async function SlidePage({
         ]}
       />
       <LessonSubNav m={m} active={i} course={course} />
+      <SlideMode initial={tldr}>
       <article className="slide">
         <div className="kicker">
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
@@ -92,6 +96,8 @@ export default async function SlidePage({
           <p className="xnote"><span className="xbadge">{t("expert")}</span> {t("expertNote")}</p>
         ) : null}
         <div className="lede">{tm.d[lang]}</div>
+        <div className="cal"><b>{t("why")}</b><p>{tm.w[lang]}</p></div>
+        <div className="full-only">
         {tm.t.en === "App lifecycle" ? (
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />
         ) : null}
@@ -102,23 +108,18 @@ export default async function SlidePage({
             {para(simple.s[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
           </div>
         ) : null}
-        <div className="cal"><b>{t("why")}</b><p>{tm.w[lang]}</p></div>
-        {det || ex ? (
-          <details className="deeper" open={!simple}>
-            <summary>{t("deeper")}<span className="sub">{t("deeperSub")}</span></summary>
-            {det ? (
-              <div className="body">
-                {para(det[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
-              </div>
-            ) : null}
-            {ex ? (
-              <div className="ex">
-                <div className="cap">{ex.cap[lang]}</div>
-                <pre className="code">{ex.code}</pre>
-              </div>
-            ) : null}
-          </details>
+        {det ? (
+          <div className="body">
+            {para(det[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
+          </div>
         ) : null}
+        {ex ? (
+          <div className="ex">
+            <div className="cap">{ex.cap[lang]}</div>
+            <pre className="code">{ex.code}</pre>
+          </div>
+        ) : null}
+        </div>
         <SlideActions
           m={m}
           i={i}
@@ -128,6 +129,7 @@ export default async function SlidePage({
           nextLabel={nextLabel}
         />
       </article>
+      </SlideMode>
     </AppShell>
   );
 }

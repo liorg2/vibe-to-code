@@ -3,7 +3,6 @@ import { AppShell } from "@/components/AppShell";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CourseStart } from "@/components/CourseStart";
 import { LessonCards } from "@/components/LessonCards";
-import { CourseMode } from "@/components/CourseMode";
 import { buildsFor } from "@/lib/builds";
 import { MODULES, PATHS, UI, courseHours, lessonNo } from "@/lib/course";
 import { INTRO } from "@/lib/intro";
@@ -40,7 +39,6 @@ export default async function CoursePage({ params }: { params: Promise<{ id: str
           <div className="n">{p.mods.length} {t("lessonsN")}{price ? ` · ${price}` : ""}</div>
         </div>
         <p className="mblurb">{p.blurb[lang]}</p>
-        <CourseMode id={p.id} active="full" lang={lang} />
         <CourseStart course={course} ids={p.mods} locked={locked} />
 
         <h3 className="intro-h">🎒 {H.need[lang]}</h3>
