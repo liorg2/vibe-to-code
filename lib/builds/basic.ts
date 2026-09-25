@@ -1,6 +1,6 @@
 import type { BuildStep } from "./types";
 
-/** Build track, Basic course: lessons 1–7, from an empty folder to a live CRM on Postgres. */
+/** Build track, Basic course: lessons 1–8, from an empty folder to a live CRM on Postgres. */
 export const BUILDS_BASIC: Record<string, BuildStep> = {
   ground: {
     title: { en: "From an empty folder to a running app", he: "מתיקייה ריקה לאפליקציה שרצה" },
@@ -266,6 +266,51 @@ If all is green: add the line "5 frontend: a contacts page that works by keyboar
     ],
   },
 
+  mobile: {
+    title: { en: "Pocket CRM on your phone", he: "Pocket CRM בטלפון שלכם" },
+    goal: {
+      en: "The contacts page is comfortable to use with a thumb on a real phone, and it installs to the home screen with its own icon.",
+      he: "דף אנשי הקשר נוח לשימוש עם אגודל בטלפון אמיתי, ואפשר להתקין אותו במסך הבית עם אייקון משלו.",
+    },
+    why: {
+      en: "Most people will open your app on a phone. This step makes the web app you have good there before anyone reaches for an app store.",
+      he: "רוב האנשים יפתחו את האפליקציה שלכם בטלפון. השלב הזה הופך את ה-web app שכבר יש לכם לטוב שם, לפני שמישהו מושיט יד לחנות אפליקציות.",
+    },
+    uses: ["mobile-first-design", "touch-targets-and-gestures", "pwa-installable-web-app", "web-app-vs-native-app"],
+    build: `Read AGENTS.md and STEPS.md first. This is step 6. Start a new branch for it.
+
+Make Pocket CRM good to use on a phone. It stays a web app: no app store, no second project.
+- Design the home and Contacts pages for a 375 pixel wide screen first, then widen. Text is readable without zooming, and fields use at least 16 pixel text so iPhones don't zoom in.
+- Every button, link and field has a tap area of at least 44 by 44 pixels, with space between them.
+- The email field brings up the phone's email keyboard.
+- Add a web app manifest (the file that lets a phone install a site like an app) with the name, a start page, a colour and a simple icon in the sizes phones ask for, so Add to Home Screen opens it full screen with its own icon.
+- No offline mode and no new tools.
+
+Then start the app with npm run dev and tell me in plain words what to open or click to see it working. STEPS.md gets its line after the check.`,
+    check: `Check step 6. Don't add features.
+
+- Add browser tests at phone size (375 by 667): no sideways scroll on any page; every button, link and field is at least 44 by 44 pixels, naming any that aren't; the email field asks for the email keyboard; the manifest loads and all its icons exist. Save a Contacts page screenshot.
+- Run all the tests with npm run check, then npm run e2e.
+
+Report back in plain words: a list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't change a test just to make it pass.
+
+If all is green: add the line "6 mobile: the contacts page works on a phone and installs to the home screen" to STEPS.md and save it as a commit on this branch. Show me the preview URL and walk me through opening it on my phone (Vercel may ask me to log in there too), adding a contact, and adding it to the home screen. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
+    done: [
+      {
+        en: "I opened the preview on my own phone and added a contact with my thumb",
+        he: "פתחתם את ה-preview בטלפון שלכם והוספתם איש קשר עם האגודל",
+      },
+      {
+        en: "The app sits on my home screen with its own icon and opens without the browser bar",
+        he: "האפליקציה יושבת במסך הבית שלכם עם אייקון משלה ונפתחת בלי שורת הדפדפן",
+      },
+      {
+        en: "The tests found no tap target under 44 pixels",
+        he: "הטסטים לא מצאו אף שטח לחיצה מתחת ל-44 פיקסלים",
+      },
+    ],
+  },
+
   http: {
     title: { en: "A real REST API", he: "REST API אמיתי" },
     goal: {
@@ -277,7 +322,7 @@ If all is green: add the line "5 frontend: a contacts page that works by keyboar
       he: "מכאן והלאה, כל feature הוא בקשה ותשובה. אם הפעולות וקודי הסטטוס נכונים עכשיו, כל דיווח באג בעתיד יהיה קצר.",
     },
     uses: ["request-response", "rest", "endpoint", "post-put-patch-delete", "status-codes", "json"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 6. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 7. Start a new branch for it.
 
 Move the contacts from the browser to the server, behind an API (the door the page knocks on to read or change data).
 
@@ -285,12 +330,12 @@ Before any code, show me the API as a simple table: action | address | answer wh
 
 - The API can list contacts, add one, show one, change one and delete one.
 - Every answer is honest: 201 when something was created, 400 for bad input (saying which field is wrong), 404 when the contact doesn't exist, 204 after a delete, 405 for an action the address doesn't support. Every answer, errors too, is JSON.
-- For now keep contacts in the server's memory; they vanish on restart until the database arrives in step 7.
+- For now keep contacts in the server's memory; they vanish on restart until the database arrives in step 8.
 - The Contacts page now uses the API, and shows the server's errors under the right fields. Keyboard use and labels keep working.
 - No new tools.
 
 Then start the app with npm run dev and tell me in plain words what to open or click to see it working. STEPS.md gets its line after the check.`,
-    check: `Check step 6. Don't add features.
+    check: `Check step 7. Don't add features.
 
 - Add tests proving each answer: list 200; a good contact 201 plus its new address; a bad one 400 naming the name and email problems; broken input 400; an unknown contact 404; a change 200, or 400 if invalid; delete 204, then 404 when asked again; an unsupported action 405.
 - Run all the tests with npm run check, then npm run e2e. The step 5 browser tests must still pass, now through the API.
@@ -299,7 +344,7 @@ Then start the app with npm run dev and tell me in plain words what to open or c
 
 Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add the line "6 http: contacts behind a real API" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
+If all is green: add the line "7 http: contacts behind a real API" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
     done: [
       {
         en: "I read the round trip: 201, 200, 200, 204, then 404",
@@ -327,7 +372,7 @@ If all is green: add the line "6 http: contacts behind a real API" to STEPS.md a
       he: "הנתונים צריכים לחיות במקום ששורד הפעלה מחדש. מבנה ברור ומיגרציות שמורות נותנים את זה בלי לאבד נתונים ובלי לנחש.",
     },
     uses: ["database", "schema", "migration", "index", "orm", "time-text-and-money"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 7. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 8. Start a new branch for it.
 
 This touches the database, so first tell me your plan in a few plain bullets and wait for my OK.
 
@@ -339,7 +384,7 @@ Contacts must survive restarts and deploys.
 - Pick the tools, note them in AGENTS.md, and explain them in 2–3 plain sentences. Tell me how to give Vercel the connection details, and wait.
 
 Then tell me in plain words what to open or click to see it working.`,
-    check: `Check step 7. Don't add features.
+    check: `Check step 8. Don't add features.
 
 - On the test database only, wipe it, rebuild it from the migrations alone, and show what it contains.
 - Add tests proving: they refuse to run against the real database; a saved contact reads back the same; a duplicate email gets 409; the stage "maybe" gets 400; times come back in UTC; deleting a contact deletes its notes.
@@ -349,7 +394,7 @@ Then tell me in plain words what to open or click to see it working.`,
 
 Report in plain words: what you checked, pass or fail, with the real output below. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add "7 data: contacts live in a real database" to STEPS.md and commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, show the sample contacts on the live site, ask me before adding a demo contact or redeploying, and show that the contact survived.
+If all is green: add "8 data: contacts live in a real database" to STEPS.md and commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, show the sample contacts on the live site, ask me before adding a demo contact or redeploying, and show that the contact survived.
 
 Close with a short "what I shipped" note: live address, tools, how many tests pass, and STEPS.md.`,
     done: [

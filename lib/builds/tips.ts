@@ -39,6 +39,7 @@ const BY_STEP: Record<string, (keyof typeof TIP)[]> = {
   sides: ["cheap"],
   langs: ["cheap", "read"],
   frontend: ["cheap"],
+  mobile: ["cheap", "fresh"],
   http: ["cheap", "read"],
   data: ["strong", "save"],
   async: ["fresh", "usage"],
@@ -55,6 +56,7 @@ const BY_STEP: Record<string, (keyof typeof TIP)[]> = {
   observe: ["long", "usage"],
   scale: ["strong", "read"],
   team: ["cheap", "fresh"],
+  llm: ["strong", "usage"],
   ai: ["fresh", "usage"],
 };
 

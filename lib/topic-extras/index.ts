@@ -6,6 +6,10 @@ import { extras as trust } from "./trust";
 import { extras as ship } from "./ship";
 import { extras as observe } from "./observe";
 import { extras as people } from "./people";
+import { extras as mobile } from "./mobile";
+import { extras as llm } from "./llm";
+import { extras as styling } from "./styling";
+import { extras as tooling } from "./tooling";
 
 export const TOPIC_EXTRAS: Record<string, TopicExtra> = {
   ...foundations,
@@ -15,4 +19,8 @@ export const TOPIC_EXTRAS: Record<string, TopicExtra> = {
   ...ship,
   ...observe,
   ...people,
+  ...mobile,
+  ...llm,
+  ...styling,
+  ...tooling,
 };

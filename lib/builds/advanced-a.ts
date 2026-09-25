@@ -1,6 +1,6 @@
 import type { BuildStep } from "./types";
 
-/** Build track, steps 08–15 (Advanced course, first half). */
+/** Build track, steps 09–16 (Advanced course, first half). */
 export const BUILDS_ADV_A: Record<string, BuildStep> = {
   async: {
     title: {
@@ -23,7 +23,7 @@ export const BUILDS_ADV_A: Record<string, BuildStep> = {
       "idempotency",
       "environment-variables-secrets",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 8: follow-up reminders. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 9: follow-up reminders. Start a new branch for it.
 
 Each contact gets an optional "follow up on" date. Once a day the app checks on its own who is due and creates a reminder for each of them. This is a cron job: work that runs in the background on a timetable, with nobody waiting for it.
 
@@ -31,10 +31,10 @@ Must-haves:
 - Each due contact gets exactly one reminder per day, even if the job runs twice or two runs overlap. The database itself guarantees it.
 - Only our scheduler can start the job. It needs a secret; anyone else gets a 401 and nothing happens. The secret lives in the environment settings, never in the code.
 - It works on Vercel's free plan.
-- No emails yet (that is step 11), and no new tools.
+- No emails yet (that is step 12), and no new tools.
 
 This changes the database, so first tell me your plan in a few plain bullets and wait for my OK. Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
-    check: `Check step 8: follow-up reminders. Don't add features.
+    check: `Check step 9: follow-up reminders. Don't add features.
 
 Add tests, against the test database and never the real one, that prove:
 - a contact due today gets exactly one reminder, even when the job runs twice, or twice at the same moment;
@@ -43,7 +43,7 @@ Add tests, against the test database and never the real one, that prove:
 
 Run all the tests with npm run check and npm run e2e. Then run the job twice yourself and once with a wrong secret, and show me how many reminders each contact has.
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "08 async: daily follow-up reminders, one per contact per day".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "09 async: daily follow-up reminders, one per contact per day".`,
     done: [
       {
         en: "The job ran twice and each due contact still had one reminder, not two",
@@ -78,7 +78,7 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       he: "קבצים גדולים הם המקום שבו זיכרון ומהירות מפסיקים להיות תיאוריה: קריאה של קצת בכל פעם שומרת על הזיכרון יציב, ובקשה אחת למסד הנתונים במקום בקשה לכל שורה שומרת על הדף מהיר.",
     },
     uses: ["ram-vs-disk", "big-o", "latency-vs-throughput", "memory-leak", "pagination", "transaction"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 9: importing lots of contacts. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 10: importing lots of contacts. Start a new branch for it.
 
 On the contacts page I can upload a CSV file (a spreadsheet saved as plain text) and all its contacts get added.
 
@@ -89,7 +89,7 @@ Must-haves:
 - Give me a way to make a test file of fake contacts, with a few bad rows in it.
 
 Pick the tools yourself, write the choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
-    check: `Check step 9: importing lots of contacts. Don't add features.
+    check: `Check step 10: importing lots of contacts. Don't add features.
 
 Add tests, against the test database and never the real one, that prove:
 - a 20-row file with 3 bad rows imports 17 and lists those 3 with their line numbers;
@@ -98,7 +98,7 @@ Add tests, against the test database and never the real one, that prove:
 
 Run all the tests with npm run check and npm run e2e. Then import a 5,000-row test file and tell me how long it took and the most memory the app used. Would that memory grow with a 50,000-row file? One sentence.
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "09 memory: big CSV import in small batches, list loads 50 at a time".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "10 memory: big CSV import in small batches, list loads 50 at a time".`,
     done: [
       {
         en: "I imported 5,000 contacts and saw how long it took and how much memory it used",
@@ -129,7 +129,7 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       he: "cache שווה משהו רק אם יודעים גם מתי לזרוק אותו. הצעד הזה עושה את שניהם, ומראה מה מתיישן כשהחצי השני חסר.",
     },
     uses: ["cache", "hit-miss", "ttl", "invalidation", "browser-cache", "cdn"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 10: a dashboard with a cache. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 11: a dashboard with a cache. Start a new branch for it.
 
 The home page becomes a small dashboard: how many contacts are in each stage (lead, qualified, won, lost) and the total. Counting on every visit is wasted work, so keep the numbers in a cache: a saved copy of an answer, so we don't work it out again each time.
 
@@ -140,7 +140,7 @@ Must-haves:
 - Use what Next.js already offers. No new tools.
 
 Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working, and how to tell a fresh count from a cached one.`,
-    check: `Check step 10: a dashboard with a cache. Don't add features.
+    check: `Check step 11: a dashboard with a cache. Don't add features.
 
 Add tests that prove:
 - the counts are right for a known set of contacts in the test database;
@@ -149,7 +149,7 @@ Add tests that prove:
 
 Run all the tests with npm run check and npm run e2e. Then, on a production build, show me that the first visit counts and the next ones use the cache, and how long each took. Show what the browser is told to keep for a fixed file and for the contacts API. Last, switch off the throwing away for a moment, show me the dashboard going stale, then put it back exactly as it was.
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "10 cache: stage counts cached, refreshed on every change".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "11 cache: stage counts cached, refreshed on every change".`,
     done: [
       {
         en: "I added a contact and the dashboard count went up on the next load",
@@ -191,9 +191,9 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       "webhook",
       "retry-and-backoff",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 11: reminder emails. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 12: reminder emails. Start a new branch for it.
 
-The reminders from step 8 now go out as real emails through Resend. I will create a free Resend account. While we test, emails only go to my own address, from Resend's test sender.
+The reminders from step 9 now go out as real emails through Resend. I will create a free Resend account. While we test, emails only go to my own address, from Resend's test sender.
 
 Must-haves:
 - The Resend API key is a secret: it lives in the environment settings on my machine and on Vercel, never in the code.
@@ -202,7 +202,7 @@ Must-haves:
 - Resend calls us back (a webhook) to say an email was delivered or bounced. We only trust calls really signed by Resend, and save the result on the reminder.
 
 Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
-    check: `Check step 11: reminder emails. Don't add features; never use a live key.
+    check: `Check step 12: reminder emails. Don't add features; never use a live key.
 
 Add tests, with Resend faked so nothing is really sent, that prove:
 - when Resend never answers, the app tries 3 times, then marks the reminder failed with the reason;
@@ -213,7 +213,7 @@ Add tests, with Resend faked so nothing is really sent, that prove:
 
 Run all the tests with npm run check and npm run e2e. Then send one real test reminder to my inbox, show me its status, and confirm the API key is nowhere in the code or its history. In two sentences: what if Resend is down all day?
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "11 apis: reminder emails via Resend, safe retries, signed webhook".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "12 apis: reminder emails via Resend, safe retries, signed webhook".`,
     done: [
       {
         en: "A real reminder email arrived in my inbox from Resend's test sender",
@@ -248,7 +248,7 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       he: "אחרי אחד-עשר צעדים של עריכות AI, הטסטים הם הדבר היחיד ששם לב כשכלל ישן נשבר.",
     },
     uses: ["coverage", "regression", "flaky-test", "unit-integration-e2e", "assertion", "test-first-tdd"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 12: tests we can trust. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 13: tests we can trust. Start a new branch for it.
 
 After eleven steps, I want tests that really protect the app.
 
@@ -260,7 +260,7 @@ Must-haves:
 - One command that runs every test and fails if any fails.
 
 Don't change how the app behaves, unless a new test finds a real bug; then tell me. Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working, and the coverage before and after.`,
-    check: `Check step 12: tests we can trust. Don't add features.
+    check: `Check step 13: tests we can trust. Don't add features.
 
 - Pick one more untested rule from the coverage report and add a test for it.
 - Show me the coverage now next to the "before" numbers.
@@ -268,7 +268,7 @@ Don't change how the app behaves, unless a new test finds a real bug; then tell 
 - Plant a bug on purpose: let a contact take any stage. Show me the regression test failing, then undo the bug and show it passing, with nothing else left changed.
 - Tell me in one sentence what made the flaky test flaky.
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "12 testing: coverage, a regression guard, no flaky tests, one command runs them all".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "13 testing: coverage, a regression guard, no flaky tests, one command runs them all".`,
     done: [
       {
         en: "I saw the coverage numbers before and after",
@@ -305,7 +305,7 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       "environment-variables-secrets",
       "owasp-top-10",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 13: sign-in. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 14: sign-in. Start a new branch for it.
 
 People sign up, sign in and sign out with email and password. Each person only ever sees and changes their own data.
 
@@ -319,7 +319,7 @@ Must-haves:
 - Existing contacts go to a first user. The daily reminder job and the Resend webhook still work.
 
 This step is risky: first tell me your plan in a few plain bullets and wait for my OK. Pick the tools yourself, write the choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working, with two users.`,
-    check: `Check step 13: sign-in and owners. Don't add features.
+    check: `Check step 14: sign-in and owners. Don't add features.
 
 Add tests that prove:
 - in the browser, with two people: A adds a contact; B can't open, change or delete it, in the pages or through the API, and A's contact is unchanged;
@@ -329,7 +329,7 @@ Add tests that prove:
 
 Run all the tests with npm run check and npm run e2e. Then show me what is stored for one user's password (it must be a hash, not the password), and show me that the sign-in cookie can't be read by page scripts and is only sent over https in production.
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "13 auth: email sign-in, every contact has an owner, nobody sees anyone else's".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "14 auth: email sign-in, every contact has an owner, nobody sees anyone else's".`,
     done: [
       {
         en: "Signed in as a second person, I couldn't open the first person's contact, in the page or in the API",
@@ -371,7 +371,7 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       "cve-and-patching",
       "injection-and-validation",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 14: security beyond sign-in. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 15: security beyond sign-in. Start a new branch for it.
 
 First, a five-line threat model: what here is worth stealing, who wants it, how they would try. Then your plan in a few plain bullets; wait for my OK.
 
@@ -383,7 +383,7 @@ Must-haves:
 - Check our packages for known security holes; fix the serious ones. Scan the whole project history for leaked keys; a real leak means I replace that key.
 
 Nothing paid. Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words what to open or click to see it working.`,
-    check: `Check step 14: security beyond sign-in. Don't add features. Use my machine and the test database, never real data.
+    check: `Check step 15: security beyond sign-in. Don't add features. Use my machine and the test database, never real data.
 
 Add tests that prove:
 - the 6th sign-in try in a minute for one email gets a 429; another email still gets in;
@@ -392,7 +392,7 @@ Add tests that prove:
 
 Run all the tests with npm run check and npm run e2e, rules switched on; tell me anything they broke. Then play the attacker: type things like ' OR 1=1 -- and <script>alert(1)</script> into every text field and the CSV import. For each: refused or saved as plain text, and did anything run? A crash or a running script is a failure. Show me the leak scan result and the last 5 audit log lines.
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "14 security: browser safety rules, sign-in limit, audit log, packages and history scanned".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "15 security: browser safety rules, sign-in limit, audit log, packages and history scanned".`,
     done: [
       {
         en: "The 6th sign-in try in a minute got a 429",
@@ -435,7 +435,7 @@ Report back in plain words: a short list of what you checked, each pass or fail,
       "idempotency",
       "sandbox-vs-live-keys",
     ],
-    build: `Read AGENTS.md and STEPS.md first. This is step 15: a paid Pro plan. Start a new branch for it.
+    build: `Read AGENTS.md and STEPS.md first. This is step 16: a paid Pro plan. Start a new branch for it.
 
 Free accounts keep up to 50 contacts; a one-time Pro purchase removes the limit. I will open a sandbox (test) account with a payment provider that supports my country, such as Stripe test mode or Paddle sandbox. Ask me which one before you start.
 
@@ -448,7 +448,7 @@ Must-haves:
 - Sandbox keys and the webhook secret are secrets, set per environment.
 
 Write your choices down in AGENTS.md and explain them to me in 2–3 plain sentences. At the end, tell me in plain words how to buy Pro with a test card.`,
-    check: `Check step 15: the Pro plan. Don't add features; never use live keys or a real card.
+    check: `Check step 16: the Pro plan. Don't add features; never use live keys or a real card.
 
 Add tests, with the provider faked where needed, that prove:
 - a webhook with a missing or wrong signature is refused and grants nothing;
@@ -459,7 +459,7 @@ Add tests, with the provider faked where needed, that prove:
 
 Run all the tests with npm run check and npm run e2e. Then buy Pro once in the sandbox with the success test card and once with a declined test card, and show me both results and the purchase row. In two sentences: what happens if the webhook arrives a minute late?
 
-Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "15 pay: Pro plan in sandbox, signed webhook, one purchase per payment, refund removes Pro".`,
+Report back in plain words: a short list of what you checked, each pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it quietly. If all pass, add this line to STEPS.md and save the work (commit): "16 pay: Pro plan in sandbox, signed webhook, one purchase per payment, refund removes Pro".`,
     done: [
       {
         en: "A success test card bought Pro, and the 50-contact limit disappeared",

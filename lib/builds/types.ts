@@ -2,7 +2,7 @@ import type { L10n } from "@/lib/types";
 
 /**
  * One lesson's step on the build track: the same app, from an empty folder in lesson 1 to production
- * in lesson 21. The learner writes no code — they paste `build`, then `check`, and tick `done`.
+ * in the last lesson. The learner writes no code — they paste `build`, then `check`, and tick `done`.
  */
 export type BuildStep = {
   title: L10n;
