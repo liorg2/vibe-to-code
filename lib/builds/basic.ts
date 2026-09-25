@@ -13,25 +13,25 @@ export const BUILDS_BASIC: Record<string, BuildStep> = {
       he: "קוד הוא בסך הכול טקסט, משהו צריך להריץ אותו, והטרמינל הוא המקום שבו רואים את זה קורה. הצעד הזה הופך את שלושתם למשהו מוחשי.",
     },
     uses: ["source-code", "runtime", "terminal-cli", "environment", "bug-stack-trace", "test", "assertion"],
-    build: `I'm not a developer: you run every command yourself. This is step 1 of Pocket CRM, a small app for tracking the people I work with.
+    build: `I'm not a developer: you run every command. This is step 1 of Pocket CRM, a small app for tracking the people I work with.
 
 - Start a new Next.js app in this empty folder, called pocket-crm. The home page shows only the title "Pocket CRM".
 - Add a tiny helper that joins a first and last name into a full name, with one test.
-- Add one command, npm run check, that runs every automatic check.
-- Create AGENTS.md with house rules for every step: read AGENTS.md and STEPS.md before starting; run all the tests before calling a step done and show me the real output; one branch per step once we have Git; small changes, don't touch unrelated files; ask before adding a new tool; never put passwords or keys in the code; never merge to main or deploy to production until I have reviewed the branch preview and explicitly approved it; never run automated tests against production data or use live credentials. Add a short "Stack" section listing the tools you picked.
-- Create STEPS.md with just the heading "Steps". Each finished step adds one line to it.
+- Add one command, npm run check, that runs every check.
+- Create AGENTS.md with house rules for every step: read AGENTS.md and STEPS.md first; run all tests before calling a step done and show the real output; one branch per step once we have Git; small changes, no unrelated files; ask before adding a tool; no passwords or keys in code; never merge to main or deploy to production until I have reviewed the preview and approved; never test against production data or live credentials. Add a short "Stack" section listing your tools.
+- Create STEPS.md with the heading "Steps". Each finished step adds one line.
 
-Explain your tool choices to me in 2–3 plain sentences. Then start the app with npm run dev and tell me in plain words what to open or click to see it working.`,
+Explain your tool choices in 2–3 plain sentences. Then start the app with npm run dev and tell me what to open to see it working.`,
     check: `Check step 1. Don't add features.
 
-- Add tests proving the full-name helper works: first and last name are joined with one space, extra spaces are removed, and a missing last name gives just the first name.
+- Add tests proving the full-name helper works: names joined with one space, extra spaces removed, a missing last name gives just the first name.
 - Run all the tests with npm run check.
-- Break the helper on purpose so a test fails. Show me the error with its full list of lines (the stack trace) and tell me in plain words which line is our own code and which lines belong to the tools. Then undo the break and show the tests pass again.
-- Show me the test's assertion and explain what result it expects and what wrong result would make it fail.
+- Break the helper on purpose so a test fails. Show me the error with its full list of lines (the stack trace) and say which line is our code and which belong to the tools. Then undo the break and show the tests pass again.
+- Show me the test's assertion and explain what result it expects and what would make it fail.
 - Add a short "Runtime" section to AGENTS.md: which version of Node this runs on, and that we work locally at http://localhost:3000.
-- With the app running, confirm the home page really shows "Pocket CRM".
+- With the app running, confirm the home page shows "Pocket CRM".
 
-Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently. If all is green, add one line to STEPS.md: "1 ground: the app runs on my computer". (No Git yet, so nothing to commit; that's step 2.)`,
+Report back in plain words: what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it; don't fix it silently. If all is green, add one line to STEPS.md: "1 ground: the app runs on my computer". (No Git yet, so nothing to commit; that's step 2.)`,
     done: [
       {
         en: "I opened localhost:3000 in my browser and saw Pocket CRM",

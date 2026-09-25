@@ -89,6 +89,21 @@ before("memory", "data-structures", "big-o");
 before("testing", "test-first-tdd", "unit-integration-e2e");
 before("ai", "agents-md", "specificity-beats-politeness");
 
+// A definition or "why" line may not use a word the course only defines later. Beginners read D/W first.
+const FORWARD: [RegExp, string][] = [
+  [/\bdiff\b/i, "diff"],
+  [/\bthreads?\b/i, "the-main-thread"],
+  [/\bruntime\b/i, "runtime"],
+  [/\bdependenc(y|ies)\b/i, "dependency"],
+  [/\bcapstone\b|\bsetTimeout\b/, ""],
+];
+const flat = MODULES.flatMap((m) => m.terms.map((t) => ({ id: `${m.id}:${t.k}`, k: t.k, text: `${t.d.en} ${t.w.en}` })));
+for (const [re, k] of FORWARD) {
+  const at = k ? flat.findIndex((t) => t.k === k) : flat.length;
+  assert.ok(k === "" || at >= 0, `forward-ref guard: no term ${k}`);
+  for (const t of flat.slice(0, at)) assert.ok(!re.test(t.text), `${t.id}: uses ${re.source} before ${k || "anywhere"} defines it`);
+}
+
 // the build track: one step for every lesson, each one a build prompt and a check prompt that runs the suite
 for (const id of advanced.mods) {
   const b = BUILDS[id];

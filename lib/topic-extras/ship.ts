@@ -727,8 +727,14 @@ prod     → real users, real money`,
           en: "Same code, different settings.",
           he: "אותו קוד, הגדרות שונות.",
         },
-        code: `APP_ENV=staging
+        code: `# .env  (this machine only, never committed)
+APP_ENV=staging
 DATABASE_URL=postgres://db-staging/app
+PADDLE_ENV=sandbox
+
+# .env.example  (committed: same keys, no real values)
+APP_ENV=
+DATABASE_URL=
 PADDLE_ENV=sandbox`,
       },
     ],

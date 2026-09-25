@@ -559,6 +559,22 @@
      }
     },
     {
+     "k": "runtime",
+     "lvl": "A",
+     "t": {
+      "en": "Runtime",
+      "he": "סביבת ריצה"
+     },
+     "d": {
+      "en": "The engine that actually executes your code — Node.js for JS on a server, the browser for JS on a page.",
+      "he": "המנוע שבפועל מריץ את הקוד: Node.js ל-JS בשרת, הדפדפן ל-JS בדף."
+     },
+     "w": {
+      "en": "\"Works on my machine\" can point to differences in runtime version, configuration, installed packages, or environment.",
+      "he": "\"אצלי זה עובד\" יכול להצביע על הבדל בגרסת ה-runtime, בקונפיגורציה, בחבילות שמותקנות או בסביבה."
+     }
+    },
+    {
      "k": "compiler-interpreter",
      "lvl": "A",
      "t": {
@@ -572,22 +588,6 @@
      "w": {
       "en": "Explains why some errors appear before you run anything, and others only when a user clicks the button.",
       "he": "מסביר למה חלק מהשגיאות מופיעות עוד לפני שהרצתם משהו, ואחרות רק כשמשתמש לוחץ על הכפתור."
-     }
-    },
-    {
-     "k": "runtime",
-     "lvl": "A",
-     "t": {
-      "en": "Runtime",
-      "he": "סביבת ריצה"
-     },
-     "d": {
-      "en": "The engine that actually executes your code — Node.js for JS on a server, the browser for JS on a page.",
-      "he": "המנוע שבפועל מריץ את הקוד: Node.js ל-JS בשרת, הדפדפן ל-JS בדף."
-     },
-     "w": {
-      "en": "\"Works on my machine\" can point to differences in runtime version, configuration, dependencies, or environment.",
-      "he": "\"אצלי זה עובד\" יכול להצביע על הבדל בגרסת ה-runtime, בקונפיגורציה, ב-dependencies או בסביבה."
      }
     },
     {
@@ -773,6 +773,22 @@
      }
     },
     {
+     "k": "diff",
+     "lvl": "A",
+     "t": {
+      "en": "Diff",
+      "he": "Diff"
+     },
+     "d": {
+      "en": "The list of lines that changed between two versions: removed lines marked with a minus, added lines with a plus, and nothing else.",
+      "he": "רשימת השורות שהשתנו בין שתי גרסאות: שורות שנמחקו מסומנות במינוס, שורות שנוספו בפלוס, וכלום מעבר לזה."
+     },
+     "w": {
+      "en": "Everything the AI did to your code is one diff. Reading it is how you know what changed; skipping it is how a \"small fix\" takes down the login.",
+      "he": "כל מה שה-AI עשה לקוד שלכם הוא diff אחד. לקרוא אותו זו הדרך לדעת מה השתנה. לדלג עליו זו הדרך שבה \"תיקון קטן\" מפיל את ההתחברות."
+     }
+    },
+    {
      "k": "merge-conflict",
      "lvl": "B",
      "t": {
@@ -806,8 +822,8 @@
     }
    ],
    "overview": {
-    "en": "Letting an AI change thirty files at once is only sane if you can see exactly what changed and undo it in one move. That is what source control is for. This lesson explains the idea, then the handful of words you will hear constantly: repo, commit, branch, push, pull. Merge conflicts and pull requests come last: you meet them the first time two changes touch the same lines.",
-    "he": "לתת ל-AI לשנות שלושים קבצים בבת אחת הגיוני רק אם אפשר לראות בדיוק מה השתנה ולבטל את זה במהלך אחד. בשביל זה יש source control. השיעור מסביר את הרעיון, ואז את קומץ המילים שתשמעו כל הזמן: repo, commit, branch, push, pull. merge conflicts ו-pull requests מגיעים בסוף: פוגשים אותם בפעם הראשונה ששני שינויים נוגעים באותן שורות."
+    "en": "Letting an AI change thirty files at once is only sane if you can see exactly what changed and undo it in one move. That is what source control is for. This lesson explains the idea, then the handful of words you will hear constantly: repo, commit, branch, push, pull, diff. Merge conflicts and pull requests come last: you meet them the first time two changes touch the same lines.",
+    "he": "לתת ל-AI לשנות שלושים קבצים בבת אחת הגיוני רק אם אפשר לראות בדיוק מה השתנה ולבטל את זה במהלך אחד. בשביל זה יש source control. השיעור מסביר את הרעיון, ואז את קומץ המילים שתשמעו כל הזמן: repo, commit, branch, push, pull, diff. merge conflicts ו-pull requests מגיעים בסוף: פוגשים אותם בפעם הראשונה ששני שינויים נוגעים באותן שורות."
    },
    "summary": {
     "en": "Commit small, commit often, and read the diff before you do. A branch is a cheap sandbox; a merge is where two sandboxes meet. If you can answer 'what changed since it last worked?', you can recover from almost anything.",
@@ -918,8 +934,8 @@
       "he": "localhost = המחשב הזה. פורט (כמו ‎:3000) הוא דלת ממוספרת בו, כדי שכמה תוכנות יוכלו להאזין במקביל."
      },
      "w": {
-      "en": "\"Port already in use\" means yesterday's server is still running. Kill it.",
-      "he": "\"Port already in use\" אומר שהשרת מאתמול עדיין רץ. הרגו אותו."
+      "en": "\"Port already in use\" means yesterday's server is still running. Kill it: close that terminal window, or ask the AI to \"find and stop whatever is using port 3000\".",
+      "he": "\"Port already in use\" אומר שהשרת מאתמול עדיין רץ. הרגו אותו: סגרו את חלון הטרמינל ההוא, או בקשו מה-AI \"למצוא ולעצור את מה שמשתמש בפורט 3000\"."
      }
     },
     {
@@ -1100,8 +1116,8 @@
       "he": "הכלי שמוריד ומקבע קוד של אחרים: npm, pip, cargo, go mod."
      },
      "w": {
-      "en": "The lock file is the thing that makes your build reproducible. Commit it. Always.",
-      "he": "קובץ ה-lock הוא מה שהופך את ה-build לניתן לשחזור. עושים לו commit. תמיד."
+      "en": "The lock file (the list of exact versions it installed) is what makes your build reproducible. Commit it. Always.",
+      "he": "קובץ ה-lock (הרשימה של הגרסאות המדויקות שהותקנו) הוא מה שהופך את ה-build לניתן לשחזור. עושים לו commit. תמיד."
      }
     },
     {
@@ -1132,8 +1148,8 @@
       "he": "המוסכמה של 1.4.2: major אומר שזה שובר, minor אומר שזה מוסיף, patch אומר שזה מתקן."
      },
      "w": {
-      "en": "The caret in ^1.4.2 permits automatic upgrades. It is why a build that worked yesterday can fail today with no change from you.",
-      "he": "הגגון ב-^1.4.2 מתיר שדרוגים אוטומטיים. בגלל זה build שעבד אתמול יכול להיכשל היום בלי שום שינוי מצדכם."
+      "en": "The caret in ^1.4.2, the way package.json lists a dependency, permits automatic upgrades. It is why a build that worked yesterday can fail today with no change from you.",
+      "he": "הגגון ב-^1.4.2, כמו ש-package.json רושם dependency, מתיר שדרוגים אוטומטיים. בגלל זה build שעבד אתמול יכול להיכשל היום בלי שום שינוי מצדכם."
      }
     },
     {
@@ -1144,8 +1160,8 @@
       "he": "פריימוורק מול ספרייה"
      },
      "d": {
-      "en": "You call a library. A framework calls you — it owns the structure and you fill in the blanks.",
-      "he": "אתם קוראים ל-library. framework קורא לכם: הוא מחזיק את המבנה ואתם ממלאים את החללים."
+      "en": "You call a library: a date formatter you use in one line. A framework calls you: something like Next.js owns the structure, decides when your page code runs, and you fill in the blanks.",
+      "he": "אתם קוראים ל-library: פונקציה לעיצוב תאריכים שמשתמשים בה בשורה אחת. framework קורא לכם: משהו כמו Next.js מחזיק את המבנה, מחליט מתי הקוד של הדף שלכם רץ, ואתם ממלאים את החללים."
      },
      "w": {
       "en": "Frameworks give speed on day one and constraints on day one hundred. Know which you're buying.",
@@ -1234,8 +1250,8 @@
       "he": "להפוך את הדף לשמיש עם מקלדת, קורא מסך וראייה חלשה: כפתורים אמיתיים, שדות עם label, ניגודיות מספקת, focus שרואים."
      },
      "w": {
-      "en": "A div with an onClick is not a button: it cannot be tabbed to or pressed with Enter. It is also a legal requirement in many places.",
-      "he": "div עם onClick הוא לא כפתור: אי אפשר להגיע אליו ב-Tab או ללחוץ עליו ב-Enter. בהרבה מקומות זו גם דרישה חוקית."
+      "en": "A plain box (a div) that only reacts to mouse clicks is not a button: it cannot be tabbed to or pressed with Enter. Accessibility is also a legal requirement in many places.",
+      "he": "קופסה רגילה (div) שמגיבה רק ללחיצות עכבר היא לא כפתור: אי אפשר להגיע אליה ב-Tab או ללחוץ עליה ב-Enter. בהרבה מקומות נגישות היא גם דרישה חוקית."
      }
     },
     {
@@ -1246,8 +1262,8 @@
       "he": "התהליכון הראשי"
      },
      "d": {
-      "en": "The browser has one thread that runs your JavaScript, handles clicks and paints the screen. Anything slow on it freezes all three.",
-      "he": "לדפדפן יש thread אחד שמריץ את ה-JavaScript שלכם, מטפל בלחיצות ומצייר את המסך. כל דבר איטי עליו מקפיא את שלושתם."
+      "en": "The browser has one thread, a single line of work that does one thing at a time, and it runs your JavaScript, handles clicks and paints the screen. Anything slow on it freezes all three.",
+      "he": "לדפדפן יש thread אחד, פס עבודה יחיד שעושה דבר אחד בכל רגע, והוא מריץ את ה-JavaScript שלכם, מטפל בלחיצות ומצייר את המסך. כל דבר איטי עליו מקפיא את שלושתם."
      },
      "w": {
       "en": "A page that \"hangs\" after clicking is usually a loop or a big computation on the main thread. Move it to async or a worker.",
@@ -1330,8 +1346,8 @@
       "he": "כלי (Vite, webpack, esbuild) שהופך את הרבה קבצי המקור שלכם, TypeScript ו-imports, לכמה קבצי JS ו-CSS פשוטים שדפדפן יכול לטעון."
      },
      "w": {
-      "en": "\"Works in dev, blank page in prod\" is nearly always the build: an env var missing at build time, or a path that only existed on your disk.",
-      "he": "\"עובד ב-dev, דף לבן ב-prod\" זה כמעט תמיד ה-build: משתנה סביבה שחסר בזמן ה-build, או נתיב שהיה קיים רק על הדיסק שלכם."
+      "en": "\"Works in dev, blank page in prod\" is nearly always the build: a setting (an environment variable) missing at build time, or a path that only existed on your disk.",
+      "he": "\"עובד ב-dev, דף לבן ב-prod\" זה כמעט תמיד ה-build: הגדרה (משתנה סביבה) שחסרה בזמן ה-build, או נתיב שהיה קיים רק על הדיסק שלכם."
      }
     },
     {
@@ -1576,8 +1592,8 @@
       "he": "מוסכמה: לכל משאב יש URL, methods פועלים עליו, וכל בקשה עומדת בפני עצמה."
      },
      "w": {
-      "en": "Not a law. A shared style so other devs can guess your endpoints correctly.",
-      "he": "לא חוק. סגנון משותף שמאפשר למפתחים אחרים לנחש נכון את ה-endpoints שלכם."
+      "en": "Not a law. A shared style so other devs can guess your endpoints: name URLs after things (/orders/42), and let the verb say what happens to them.",
+      "he": "לא חוק. סגנון משותף שמאפשר למפתחים אחרים לנחש נכון את ה-endpoints שלכם: קוראים ל-URL על שם הדבר (‎/orders/42), וה-method אומר מה קורה לו."
      }
     },
     {
@@ -1812,8 +1828,8 @@
       "he": "יחידת עבודה שנכנסת ל-queue עם הקלטים שלה, worker אוסף אותה אחר כך, מנסים שוב אם נכשלה, ורושמים כשהסתיימה."
      },
      "w": {
-      "en": "The moment you write setTimeout on the server to \"do it later\", you have a job — one that dies with the process. Use a real queue.",
-      "he": "ברגע שכותבים setTimeout בשרת כדי \"לעשות אחר כך\", יש לכם job, כזה שמת יחד עם התהליך. השתמשו ב-queue אמיתי."
+      "en": "The moment you tell the server \"in a minute, not now\" with a timer in the code, you have a job — one that dies with the process. Use a real queue.",
+      "he": "ברגע שאתם אומרים לשרת \"בעוד דקה, לא עכשיו\" עם טיימר בקוד, יש לכם job, כזה שמת יחד עם התהליך. השתמשו ב-queue אמיתי."
      }
     },
     {
@@ -1828,8 +1844,8 @@
       "he": "עבודה שרצה לפי לוח זמנים ולא בתגובה למשתמש: דוחות ליליים, סנכרון כל שעה, ניקוי כל חמש דקות."
      },
      "w": {
-      "en": "With two instances, a naive cron runs twice. Schedulers need a lock or a single dedicated runner — the capstone hits exactly this.",
-      "he": "עם שני instances, cron נאיבי רץ פעמיים. מתזמנים צריכים lock או runner יחיד וייעודי. הפרויקט המסכם נתקל בדיוק בזה."
+      "en": "With two instances, a naive cron runs twice. Schedulers need a lock (a \"busy\" flag the second runner checks first) or a single dedicated runner.",
+      "he": "עם שני instances, cron נאיבי רץ פעמיים. מתזמנים צריכים lock (דגל \"תפוס\" שה-runner השני בודק קודם) או runner יחיד וייעודי."
      }
     },
     {
@@ -1962,8 +1978,8 @@
       "he": "RAM מהיר ושוכח הכל בכל הפעלה מחדש. דיסק איטי פי ~1000, אבל זוכר."
      },
      "w": {
-      "en": "Anything you hold \"in a variable\" vanishes on deploy. State that matters goes to a DB.",
-      "he": "כל מה שאתם מחזיקים \"במשתנה\" נעלם בכל deploy. state שחשוב הולך למסד נתונים."
+      "en": "Anything you hold \"in a variable\" (a named value inside the running program) vanishes on deploy. State that matters goes to a DB.",
+      "he": "כל מה שאתם מחזיקים \"במשתנה\" (ערך עם שם בתוך התוכנית שרצה) נעלם בכל deploy. state שחשוב הולך למסד נתונים."
      }
     },
     {
@@ -2006,8 +2022,8 @@
       "he": "בלוקינג מול אסינכרוני"
      },
      "d": {
-      "en": "Blocking waits and holds the thread. Async starts the work and handles the result later, serving others meanwhile.",
-      "he": "קוד blocking מחכה ותופס את ה-thread. קוד async מתחיל את העבודה ומטפל בתוצאה אחר כך, ובינתיים משרת אחרים."
+      "en": "Blocking waits and holds the thread, the single line of work from The main thread topic. Async starts the work and handles the result later, serving others meanwhile.",
+      "he": "קוד blocking מחכה ותופס את ה-thread, פס העבודה היחיד מהנושא The main thread. קוד async מתחיל את העבודה ומטפל בתוצאה אחר כך, ובינתיים משרת אחרים."
      },
      "w": {
       "en": "One blocking call in a Node server freezes every user, not just the one waiting.",
@@ -2026,8 +2042,8 @@
       "he": "שתי פעולות נוגעות באותם נתונים באותו רגע, והתוצאה תלויה במי שניצח."
      },
      "w": {
-      "en": "Reproduces once a week, never on your laptop. Fix with a transaction or a lock, not with a retry.",
-      "he": "משחזר פעם בשבוע, אף פעם לא על המחשב שלכם. פותרים עם transaction או lock, לא עם retry."
+      "en": "Reproduces once a week, never on your laptop. Fix with a transaction or a lock (one operation marks the data busy and the other waits), not with a retry.",
+      "he": "משחזר פעם בשבוע, אף פעם לא על המחשב שלכם. פותרים עם transaction או lock (פעולה אחת מסמנת את הנתונים כתפוסים והשנייה מחכה), לא עם retry."
      }
     },
     {
@@ -2096,8 +2112,8 @@
     }
    ],
    "overview": {
-    "en": "'It got slow' and 'it crashed after a day' usually have the same root: how the program uses memory and time. This lesson gives you enough of the mental model to ask the AI the right question — not to tune a garbage collector yourself.",
-    "he": "'זה נהיה איטי' ו'זה קרס אחרי יום' באים בדרך כלל מאותו שורש: איך התוכנה משתמשת בזיכרון ובזמן. השיעור נותן מספיק מהמודל המנטלי כדי לשאול את ה-AI את השאלה הנכונה, לא כדי לכוונן garbage collector בעצמכם."
+    "en": "'It got slow' and 'it crashed after a day' usually have the same root: how the program uses memory and time. This lesson gives you enough of the mental model to ask the AI the right question — not to tune a garbage collector yourself. The last four topics are marked expert: reading only the first five is a complete pass through this lesson.",
+    "he": "'זה נהיה איטי' ו'זה קרס אחרי יום' באים בדרך כלל מאותו שורש: איך התוכנה משתמשת בזיכרון ובזמן. השיעור נותן מספיק מהמודל המנטלי כדי לשאול את ה-AI את השאלה הנכונה, לא כדי לכוונן garbage collector בעצמכם. ארבעת הנושאים האחרונים מסומנים expert: לקרוא רק את חמשת הראשונים זה מעבר שלם על השיעור."
    },
    "summary": {
     "en": "RAM is fast and forgetful, disk is slow and permanent. Leaks are memory that is never given back. Latency is one wait, throughput is how many per second. When two things touch the same data at once, you have a race — ask about locks.",
@@ -2326,8 +2342,8 @@
       "he": "ספקים נותנים לכם סביבת בדיקה עם כסף מזויף, מיילים מזויפים ומפתחות משלה. מפתחות live נוגעים בלקוחות אמיתיים ובכרטיסים אמיתיים."
      },
      "w": {
-      "en": "Develop against sandbox. The classic disaster is a live Stripe key in a local .env and a test loop that charges a real card 200 times.",
-      "he": "מפתחים מול sandbox. האסון הקלאסי: מפתח Stripe חי ב-.env מקומי, ולולאת בדיקה שמחייבת כרטיס אמיתי 200 פעמים."
+      "en": "Develop against sandbox. The classic disaster is a live Stripe key in a local .env file (where your keys live on your machine) and a test loop that charges a real card 200 times.",
+      "he": "מפתחים מול sandbox. האסון הקלאסי: מפתח Stripe חי בקובץ .env מקומי (המקום שבו המפתחות יושבים על המחשב שלכם), ולולאת בדיקה שמחייבת כרטיס אמיתי 200 פעמים."
      }
     },
     {
@@ -2690,8 +2706,8 @@
       "he": "XSS: סקריפט של מישהו אחר רץ בדף שלכם. CSRF: אתר אחר גורם לדפדפן המחובר שלכם לפעול בשמכם."
      },
      "w": {
-      "en": "These are the two flaws AI-generated code fails most often in published research. Escape output; use SameSite cookies and CSRF tokens.",
-      "he": "אלה שני הליקויים שקוד שנוצר על ידי AI נכשל בהם הכי הרבה במחקרים שפורסמו. עושים escape לפלט; משתמשים ב-cookies מסוג SameSite וב-CSRF tokens."
+      "en": "These are the two flaws AI-generated code fails most often in published research. Paste this into the AI: \"escape every value that came from a user before rendering it, set cookies SameSite, and add a CSRF token to every form\", then read the diff.",
+      "he": "אלה שני הליקויים שקוד שנוצר על ידי AI נכשל בהם הכי הרבה במחקרים שפורסמו. הדביקו ל-AI: \"עשו escape לכל ערך שהגיע ממשתמש לפני שמציגים אותו, הגדירו cookies כ-SameSite, והוסיפו CSRF token לכל טופס\", ואז קראו את ה-diff."
      }
     }
    ],
@@ -3376,8 +3392,8 @@
       "he": "אותו קוד רץ בכל מקום; רק הקונפיגורציה שונה, והיא נקראת מהסביבה בעלייה. הקוד אף פעם לא שואל באיזו סביבה הוא נמצא. הוא פשוט משתמש בערכים שקיבל."
      },
      "w": {
-      "en": "The AI loves if (NODE_ENV === \"production\") because it is the shortest edit. Every such branch is untested until prod. Turn it into a variable with a default and list it in .env.example.",
-      "he": "ה-AI אוהב if (NODE_ENV === \"production\") כי זו העריכה הכי קצרה. כל הסתעפות כזאת לא נבדקת עד production. תהפכו אותה למשתנה עם ברירת מחדל ותרשמו אותו ב-.env.example."
+      "en": "The AI loves an \"if this is production\" branch in the code (if (NODE_ENV === \"production\")) because it is the shortest edit. Every such branch is untested until prod. Turn it into a variable with a default and list it in .env.example, the committed template of your settings file.",
+      "he": "ה-AI אוהב הסתעפות \"אם זה production\" בקוד (if (NODE_ENV === \"production\")) כי זו העריכה הכי קצרה. כל הסתעפות כזאת לא נבדקת עד production. תהפכו אותה למשתנה עם ברירת מחדל ותרשמו אותו ב-.env.example, התבנית של קובץ ההגדרות שעושים לה commit."
      }
     },
     {
@@ -3788,8 +3804,8 @@
       "he": "כל בקשה נושאת את כל מה שצריך כדי לשרת אותה; השרת לא זוכר כלום בין קריאה לקריאה."
      },
      "w": {
-      "en": "The one property that makes horizontal scaling possible. Push state to the DB or Redis.",
-      "he": "התכונה האחת שמאפשרת scale אופקי. דוחפים את ה-state למסד הנתונים או ל-Redis."
+      "en": "The one property that makes horizontal scaling possible. Login and cart state still exist; they live in the DB or Redis, and each request carries a token that points at them.",
+      "he": "התכונה האחת שמאפשרת scale אופקי. ה-state של ההתחברות והעגלה עדיין קיים: הוא חי במסד הנתונים או ב-Redis, וכל בקשה נושאת token שמצביע עליו."
      }
     },
     {
@@ -5235,6 +5251,10 @@
   "Test cards & declined payments": {
    "en": "Roni launches a ₪59 ebook on a Friday after one successful sandbox purchase. On Saturday a buyer's card is declined and the app shows a blank white page, so he assumes the site is broken and leaves. Another buyer, on a slow phone, taps \"Buy\" twice and ends up with two checkouts open. Neither case is exotic. Both were available as test cases in the sandbox, and neither was tried.\n\nA sandbox is a full copy of the provider with fake money, and its test cards trigger specific outcomes on purpose. On Stripe, 4242 4242 4242 4242 succeeds, 4000 0000 0000 0002 is a generic decline, and other documented numbers simulate insufficient funds, a 3-D Secure challenge or a later dispute; Paddle and Lemon Squeezy document their own. Most failures in a payment flow aren't at the provider, they're in your app's reaction: what the page says, what the database holds, and whether a retry or a second click creates a duplicate. The sandbox also sends real webhooks to your staging URL, so you can watch a retry happen or resend an event from the dashboard.\n\nCorrect looks like a written list you run on staging before every change to the payment flow: one success, one decline, insufficient funds, 3-D Secure both completed and abandoned, the checkout closed halfway, a double click on \"Buy\", the webhook resent twice, the webhook arriving after the return page, and a refund. After each one, check the entitlement row, not just the screen. Then switch the live keys and the live webhook secret together, in production only. Never test with your own card on live: it creates real charges and fees, and proves nothing the sandbox couldn't.",
    "he": "רוני משיקה ספר דיגיטלי ב-₪59 ביום שישי, אחרי רכישה מוצלחת אחת ב-sandbox. בשבת הכרטיס של קונה נדחה והאפליקציה מציגה דף לבן ריק, אז הוא מניח שהאתר שבור ועוזב. קונה אחרת, בטלפון איטי, לוחצת פעמיים על \"קנה\" ונשארת עם שני checkouts פתוחים. אף אחד מהמקרים לא נדיר. שניהם היו זמינים כמקרי בדיקה ב-sandbox, ואף אחד לא ניסה אותם.\n\nSandbox הוא עותק מלא של הספק עם כסף מזויף, וכרטיסי הבדיקה שלו מפעילים תוצאות מסוימות בכוונה. ב-Stripe, הכרטיס 4242 4242 4242 4242 מצליח, הכרטיס 4000 0000 0000 0002 הוא דחייה כללית, ומספרים מתועדים אחרים מדמים חוסר כיסוי, אימות 3-D Secure או הכחשת עסקה מאוחרת. Paddle ו-Lemon Squeezy מתעדים כרטיסים משלהם. רוב הכישלונות בתהליך תשלום הם לא אצל הספק אלא בתגובה של האפליקציה שלכם: מה הדף אומר, מה מסד הנתונים מחזיק, והאם ניסיון חוזר או לחיצה שנייה יוצרים כפילות. ה-sandbox גם שולח webhooks אמיתיים לכתובת ה-staging שלכם, אז אפשר לראות retry קורה, או לשלוח אירוע מחדש מהדשבורד.\n\nככה נראה נכון: רשימה כתובה שמריצים על staging לפני כל שינוי בתהליך התשלום: הצלחה אחת, דחייה אחת, חוסר כיסוי, 3-D Secure שהושלם ושננטש, checkout שנסגר באמצע, לחיצה כפולה על \"קנה\", webhook שנשלח מחדש פעמיים, webhook שמגיע אחרי דף החזרה, והחזר. אחרי כל אחד מהם בדקו את שורת הזכאות, לא רק את המסך. ואז עברו למפתחות live ולסוד ה-webhook של live ביחד, ורק ב-production. אף פעם אל תבדקו עם הכרטיס שלכם ב-live: זה יוצר חיובים ועמלות אמיתיים, ולא מוכיח שום דבר שה-sandbox לא היה מוכיח."
+  },
+  "Diff": {
+   "en": "A diff is computed, not written. Git takes two versions of a file, finds the longest stretches they still share, and prints only what sits between them: lines that exist only in the old version with a minus, lines that exist only in the new one with a plus, and a few unchanged lines of context so a reader can find the spot. A line that changed at all appears twice, once removed and once added, which is why a single edited character still shows as two lines.\n\nDiffs are the unit of review because they are honest. A commit message is written by whoever committed; a pull request description is written by whoever wants it merged; an AI's summary of its own work is written by the thing being checked. The diff is produced by the tool, from the files, and it does not know how to flatter. A reviewer who reads the description and the diff and finds they disagree has learned the single most useful thing about the change.\n\nThe practical habit is to read a diff in a fixed order. Deletions first, because removed code is the part nobody mentions and the part most likely to have been a guard, a check or a default that mattered. Then changed values: a timeout, a limit, a flag flipped from false to true. Then new files and new dependencies, because each is a permanent addition to what you own. Then, last, the added lines that were the point of the change. Reading in that order is slower for the first week and then becomes the only way you can read one.\n\nSize is the other lever. Past a few hundred lines, human attention samples instead of reading, and a diff nobody read is not a review, it is a signature. Ask the AI for changes small enough that the diff fits on a screen or two, and for mechanical edits, a rename, a formatter pass, a moved file, in a commit of their own, so the ten lines that matter are not hidden in a thousand that do not.",
+   "he": "diff לא כותבים, מחשבים אותו. Git לוקח שתי גרסאות של קובץ, מוצא את הקטעים הארוכים ביותר שעדיין משותפים להן, ומדפיס רק את מה שביניהם: שורות שקיימות רק בגרסה הישנה עם מינוס, שורות שקיימות רק בחדשה עם פלוס, וכמה שורות הקשר ללא שינוי כדי שהקורא ימצא את המקום. שורה שהשתנתה בכלל מופיעה פעמיים, פעם כמחיקה ופעם כהוספה. בגלל זה גם תו אחד שנערך מוצג כשתי שורות.\n\ndiff הוא יחידת ה-review כי הוא כן. הודעת commit נכתבת על ידי מי שעשה את ה-commit. תיאור של pull request נכתב על ידי מי שרוצה שימזגו אותו. סיכום של AI לעבודה של עצמו נכתב על ידי הדבר שבודקים. את ה-diff מייצר הכלי, מתוך הקבצים, והוא לא יודע להחמיא. מי שקורא את התיאור ואת ה-diff ומגלה שהם לא מסכימים, למד את הדבר הכי שימושי שיש על השינוי.\n\nההרגל המעשי הוא לקרוא diff בסדר קבוע. קודם מחיקות, כי קוד שנמחק הוא החלק שאף אחד לא מזכיר, והחלק שהכי סביר שהיה guard, בדיקה או ברירת מחדל שהיו חשובים. אחר כך ערכים שהשתנו: timeout, מגבלה, דגל שעבר מ-false ל-true. אחר כך קבצים חדשים ו-dependencies חדשות, כי כל אחד מהם הוא תוספת קבועה למה שאתם אחראים עליו. ורק בסוף, השורות שנוספו שהיו מטרת השינוי. לקרוא בסדר הזה איטי יותר בשבוע הראשון, ואחר כך זו הדרך היחידה שבה תוכלו לקרוא diff.\n\nהגודל הוא המנוף השני. מעבר לכמה מאות שורות, תשומת לב אנושית דוגמת במקום לקרוא, ו-diff שאף אחד לא קרא הוא לא review, הוא חתימה. בקשו מה-AI שינויים קטנים מספיק כדי שה-diff ייכנס במסך או שניים, ועריכות מכניות, שינוי שם, מעבר formatter, קובץ שהוזז, ב-commit משלהן, כדי שעשר השורות שחשובות לא יתחבאו בין אלף שלא."
   }
  },
  "TLDR": {
@@ -8585,15 +8605,29 @@
     "לפני שמשחררים, תבקשו מה-AI לעבור על כל אחד מאלה ולהראות לכם איפה בקוד זה קורה, לא רק להגיד שזה קורה.",
     "מחיאות כפיים הן אבן דרך, לא אישור לשחרור."
    ]
+  },
+  "Diff": {
+   "en": [
+    "A diff is the before-and-after of your files, cut down to the lines that changed: minus for removed, plus for added, nothing else.",
+    "It is the one honest document. The AI's summary is what it meant; the diff is what it did. When they disagree, believe the diff.",
+    "Read deletions first, then changed values, then new files and dependencies, then the additions. Surprises hide in what disappeared.",
+    "Past a few hundred lines nobody reads, they sample. Ask for changes small enough that the diff fits on a screen or two."
+   ],
+   "he": [
+    "diff הוא ה\"לפני ואחרי\" של הקבצים שלכם, מצומצם לשורות שהשתנו: מינוס למה שנמחק, פלוס למה שנוסף, וכלום מעבר לזה.",
+    "זה המסמך הכן היחיד. הסיכום של ה-AI הוא מה שהוא התכוון. ה-diff הוא מה שהוא עשה. כשהם לא מסכימים, מאמינים ל-diff.",
+    "קוראים קודם מחיקות, אחר כך ערכים שהשתנו, אחר כך קבצים ו-dependencies חדשים, ובסוף את התוספות. ההפתעות מתחבאות במה שנעלם.",
+    "מעבר לכמה מאות שורות אף אחד לא קורא, רק דוגם. בקשו שינויים קטנים מספיק כדי שה-diff ייכנס במסך או שניים."
+   ]
   }
  },
  "EXAMPLES": {
   "Terminal / CLI": {
    "cap": {
-    "en": "Output of one command feeding the next",
-    "he": "הפלט של פקודה אחת נכנס לפקודה הבאה"
+    "en": "Where am I, what is here, how to move. Then chaining commands",
+    "he": "איפה אני, מה יש כאן, איך עוברים תיקייה. ואז שרשור פקודות"
    },
-   "code": "git log --oneline | head -5\ncat access.log | grep \" 500 \" | wc -l\n\n# find what is holding port 3000\nlsof -i :3000        # mac/linux\nnetstat -ano | findstr :3000   # windows"
+   "code": "pwd                  # print the folder you are in\nls                   # list what is here\ncd shop              # go into the shop folder\ncd ..                # go back up one level\n\n# later: the output of one command feeds the next (the | is a \"pipe\")\ngit log --oneline | head -5\ncat access.log | grep \" 500 \" | wc -l\n\n# find what is holding port 3000\nlsof -i :3000                   # mac/linux\nnetstat -ano | findstr :3000    # windows"
   },
   "Commit / Branch / Merge": {
    "cap": {
@@ -10057,6 +10091,13 @@
     "he": "התרגול לפני העלייה לאוויר"
    },
    "code": "# sandbox only. Stripe test cards, any future expiry and CVC (others publish their own)\n4242 4242 4242 4242   success\n4000 0000 0000 0002   generic decline\n4000 0000 0000 9995   insufficient funds\n4000 0027 6000 3184   3-D Secure challenge\n\n[ ] success                  -> entitlement active, receipt sent\n[ ] decline                  -> clear message, \"try another card\", no row\n[ ] 3-D Secure abandoned     -> no row, the user can retry\n[ ] checkout closed halfway  -> nothing half-created\n[ ] double click on \"Buy\"    -> one checkout, one row\n[ ] webhook resent / late    -> still one row, the return page recovers\n[ ] refund                   -> status refunded, paid page locked\n\n# all green? switch live keys + live webhook secret, in production only"
+  },
+  "Diff": {
+   "cap": {
+    "en": "What git diff prints, and the order to read it in",
+    "he": "מה git diff מדפיס, ובאיזה סדר קוראים את זה"
+   },
+   "code": "$ git diff\n--- a/checkout.js                # the old version\n+++ b/checkout.js                # the new version\n@@ -12,5 +12,4 @@                 # where in the file\n function sessionDays() {\n-  return 30;\n+  return 7;\n }\n-if (!user.isOwner) return deny();  # a guard was removed. ask why.\n\n# read in this order: minus lines, changed numbers, new files, then plus lines\n$ git diff --stat                  # which files changed, and how much"
   }
  },
  "QUIZ": {
@@ -16971,6 +17012,16 @@
    "s": {
     "en": "A fire drill isn't one person walking calmly out of the front door. It's checking the side exits, the alarm, and what happens when the stairwell is blocked. You met sandbox keys in the APIs lesson; test cards are how you run the drill there. On Stripe, 4242 4242 4242 4242 always succeeds and 4000 0000 0000 0002 is always declined, and other numbers simulate insufficient funds or 3-D Secure. Other providers publish their own lists.\n\nThe usual mistake is testing only 4242. Then the first real decline shows a blank page, a buyer who closes the checkout leaves a half-created order behind, or a double click on \"Buy\" opens two checkouts. And some people \"test\" on live with their own card, which leaves real charges, real fees and a messy refund, and still never shows a decline.\n\nAsk the AI for a test plan and run it in sandbox: success, decline, insufficient funds, 3-D Secure, a cancelled checkout, a double click on \"Buy\", and the webhook arriving twice or late. Check the database after each one. Only then switch to live keys.",
     "he": "תרגיל כיבוי אש הוא לא אדם אחד שיוצא ברוגע מהדלת הראשית. זה לבדוק את היציאות הצדדיות, את האזעקה, ומה קורה כשחדר המדרגות חסום. את מפתחות ה-sandbox פגשתם בשיעור על APIs. כרטיסי בדיקה הם הדרך להריץ שם את התרגיל. ב-Stripe, הכרטיס 4242 4242 4242 4242 תמיד מצליח והכרטיס 4000 0000 0000 0002 תמיד נדחה, ומספרים אחרים מדמים חוסר כיסוי או 3-D Secure. ספקים אחרים מפרסמים רשימות משלהם.\n\nהטעות הרגילה היא לבדוק רק את 4242. ואז הדחייה האמיתית הראשונה מציגה דף ריק, קונה שסוגר את ה-checkout משאיר אחריו הזמנה חצי-פתוחה, או לחיצה כפולה על \"קנה\" פותחת שני checkouts. ויש מי ש\"בודקים\" ב-live עם הכרטיס שלהם, וזה משאיר חיובים אמיתיים, עמלות אמיתיות והחזר מבולגן, ועדיין לא מראה אף דחייה.\n\nבקשו מה-AI תוכנית בדיקות והריצו אותה ב-sandbox: הצלחה, דחייה, חוסר כיסוי, 3-D Secure, checkout שבוטל, לחיצה כפולה על \"קנה\", ו-webhook שמגיע פעמיים או באיחור. בדקו את מסד הנתונים אחרי כל אחד מהם. רק אז עברו למפתחות live."
+   }
+  },
+  "Diff": {
+   "q": {
+    "en": "The AI says it changed \"a couple of things\". How do I see exactly what?",
+    "he": "ה-AI אומר ששינה \"כמה דברים\". איך רואים בדיוק מה?"
+   },
+   "s": {
+    "en": "Ask for the diff. A diff is the before-and-after of your files, shrunk down to only the lines that changed. A line that was removed starts with a minus, a line that was added starts with a plus, and a few unchanged lines around them are shown so you know where you are. Everything else is left out, because it did not change.\n\nThat makes it the one document that cannot spin. A summary says \"improved the checkout\". The diff says: this line was deleted, this number went from 30 to 7, this file is new. When the AI describes its work, the description is what it meant; the diff is what it did. The two disagree more often than you would like.\n\nYou see diffs in three places: when you run git diff before committing, in a pull request before merging, and in your editor's source-control panel, where the changed lines are coloured in the margin. Read the red lines first. Additions are new work and easy to judge. Deletions are what quietly disappeared, and that is where the surprises live.",
+    "he": "בקשו את ה-diff. diff הוא ה\"לפני ואחרי\" של הקבצים שלכם, מצומצם רק לשורות שהשתנו. שורה שנמחקה מתחילה במינוס, שורה שנוספה מתחילה בפלוס, וכמה שורות ללא שינוי מסביב מוצגות כדי שתדעו איפה אתם. כל השאר לא מופיע, כי הוא לא השתנה.\n\nזה מה שהופך אותו למסמך היחיד שאי אפשר לייפות. סיכום אומר \"שיפרתי את ה-checkout\". ה-diff אומר: השורה הזאת נמחקה, המספר הזה עבר מ-30 ל-7, הקובץ הזה חדש. כשה-AI מתאר את העבודה שלו, התיאור הוא מה שהוא התכוון. ה-diff הוא מה שהוא עשה. השניים לא מסכימים יותר ממה שהייתם רוצים.\n\nרואים diff בשלושה מקומות: כשמריצים git diff לפני commit, ב-pull request לפני merge, ובפאנל ה-source control של העורך, שם השורות שהשתנו צבועות בשוליים. קראו קודם את השורות האדומות. תוספות הן עבודה חדשה וקל לשפוט אותן. מחיקות הן מה שנעלם בשקט, ושם גרות ההפתעות."
    }
   }
  }

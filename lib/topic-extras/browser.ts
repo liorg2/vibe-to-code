@@ -56,27 +56,38 @@ button{padding:.5rem 1rem;border:1px solid #cbd5e1;border-radius:6px;background:
         },
         code: `.card {
   background: #2563eb;
+  color: #fff;
   padding: 16px;
   border-radius: 12px;
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
-.box { background: #fff; padding: 12px; flex: 1; }`,
+.card b { width: 100%; }
+.box {
+  background: #fff;
+  color: #111;
+  padding: 12px;
+  border-radius: 8px;
+  flex: 1;
+}`,
         preview: `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>CSS card</title>
 <style>
-body{font-family:system-ui,sans-serif;margin:1.5rem;background:#f1f5f9;color:#0f172a}
-.card{background:#2563eb;padding:16px;border-radius:12px;display:flex;gap:12px}
-.box{background:#fff;padding:12px;flex:1;border-radius:8px}
+body{font-family:system-ui,sans-serif;margin:1.5rem;background:#f1f5f9}
+.card{background:#2563eb;color:#fff;padding:16px;border-radius:12px;display:flex;flex-wrap:wrap;gap:12px}
+.card b{width:100%}
+.box{background:#fff;color:#111;padding:12px;border-radius:8px;flex:1}
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="box">Left</div>
-  <div class="box">Right</div>
+  <b>card</b>
+  <div class="box">box</div>
+  <div class="box">box</div>
 </div>
 </body>
 </html>`,

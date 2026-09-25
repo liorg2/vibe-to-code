@@ -404,6 +404,36 @@ remote: Counting objects: 120, done.`,
     ],
   },
 
+  Diff: {
+    look: [
+      {
+        cap: {
+          en: "Minus is gone, plus is new",
+          he: "מינוס נעלם, פלוס חדש",
+        },
+        code: `-  const maxItems = 10;
++  const maxItems = 100;
+
+-  if (!user) return redirect("/login");
++  // TODO: re-add login check`,
+      },
+    ],
+    prompts: [
+      {
+        en: "Show me the full diff of everything you just changed, file by file, with removed lines first. Do not summarize; I will read it.",
+        he: "הראו לי את ה-diff המלא של כל מה ששיניתם עכשיו, קובץ אחרי קובץ, שורות שנמחקו קודם. בלי סיכום, אני אקרא.",
+      },
+      {
+        en: "Read this diff and list every deleted line and every number or default that changed. Explain in one sentence why each one is safe.",
+        he: "קראו את ה-diff הזה ורשמו כל שורה שנמחקה וכל מספר או ברירת מחדל שהשתנו. הסבירו במשפט אחד למה כל אחד מהם בטוח.",
+      },
+      {
+        en: "This diff is too big to read. Split the change into commits under 150 lines each, with mechanical edits like renames in their own commit.",
+        he: "ה-diff הזה גדול מדי לקריאה. פצלו את השינוי ל-commits של פחות מ-150 שורות כל אחד, כשעריכות מכניות כמו שינוי שם ב-commit משלהן.",
+      },
+    ],
+  },
+
   "Merge conflict": {
     look: [
       {
@@ -635,7 +665,12 @@ listening on :3000`,
 ready on http://localhost:3000
 
 # Open that URL in your browser.
-# "Port 3000 already in use" means another process holds the door.`,
+# "Port 3000 already in use" means another process holds the door.
+# Free it:
+lsof -i :3000                   # mac/linux: shows the PID
+kill <PID>
+netstat -ano | findstr :3000    # windows: last column is the PID
+taskkill /PID <PID> /F`,
       },
     ],
     prompts: [
