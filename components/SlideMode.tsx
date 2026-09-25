@@ -34,10 +34,10 @@ export function SlideMode({
     <div className={on === "full" ? "slide-mode" : `slide-mode ${on}`}>
       <div className="mode-tabs" role="tablist" aria-label={t("viewMode")}>
         <button type="button" role="tab" aria-selected={on === "full"} onClick={() => pick("full")}>
-          📚 {t("fullCourse")}
+          {t("fullCourse")}
         </button>
         <button type="button" role="tab" aria-selected={on === "tldr"} onClick={() => pick("tldr")}>
-          ⚡ {t("tldr")}
+          {t("tldr")}
         </button>
         {hasLook ? (
           <button type="button" role="tab" aria-selected={on === "look"} onClick={() => pick("look")}>
