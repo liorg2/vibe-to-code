@@ -60,18 +60,18 @@ export function SideNav() {
   useEffect(() => {
     const explicit = queryCourse && (homes.length === 0 || homes.includes(queryCourse)) ? queryCourse : fromPath;
     if (explicit) {
-      sessionStorage.setItem(COURSE_KEY, explicit);
+      localStorage.setItem(COURSE_KEY, explicit);
       setRemembered(explicit);
       return;
     }
-    const saved = asCourse(sessionStorage.getItem(COURSE_KEY) ?? "");
+    const saved = asCourse(localStorage.getItem(COURSE_KEY) ?? "");
     if (saved && (homes.length === 0 || homes.includes(saved))) {
       setRemembered(saved);
       return;
     }
     const home = asCourse(homes[0] ?? "");
     if (home) {
-      sessionStorage.setItem(COURSE_KEY, home);
+      localStorage.setItem(COURSE_KEY, home);
       setRemembered(home);
     }
   }, [queryCourse, fromPath, activeLesson]);
@@ -79,7 +79,10 @@ export function SideNav() {
     (queryCourse && (!activeLesson || homes.includes(queryCourse)) ? queryCourse : "") ||
     fromPath ||
     (remembered && (!activeLesson || homes.includes(remembered)) ? remembered : "") ||
-    asCourse(homes[0] ?? "");
+    asCourse(homes[0] ?? "") ||
+    // ponytail: nothing known yet (fresh browser on /glossary, /review, home): Advanced lists every lesson,
+    // the server still gates the ones not owned. Use the owned course here if the client ever learns it.
+    "advanced";
 
   const routeGroup = activeLesson || (archOnRoute ? "architectures" : "");
   const [openId, setOpenId] = useState(routeGroup);
