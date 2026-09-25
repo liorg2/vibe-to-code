@@ -3,7 +3,7 @@
 A bilingual (English / עברית) course that teaches the vocabulary and mental models of
 professional software development to people who build with AI assistants.
 
-**24 lessons · 248 topics · a plain-words explanation (no code) plus an optional deep dive with a worked example on every slide · animated
+**18 lessons · 248 topics · a plain-words explanation (no code) plus an optional deep dive with a worked example on every slide · animated
 request stories · a build track (one app, one step per lesson) · five reference architectures · a pre-ship checklist.**
 
 Live at https://vibe-to-code-4206d.web.app (unindexed on purpose).
@@ -54,7 +54,7 @@ Long term, content authoring should move to TypeScript modules — for now `cour
 
 | | |
 |---|---|
-| Modules | Ground floor, source control, client/server, the browser side, mobile, HTTP, APIs, databases, languages, testing, memory, cache, background work, auth, security, networks, cloud, shipping, production visibility, scale, teamwork, AI inside your product, talking to AI |
+| Modules | Ground floor, source control, client/server, languages, the browser side, mobile, HTTP & databases, APIs & background work, performance (memory & cache), testing & teamwork, auth & security, getting paid, networks & cloud, shipping, production visibility, scale, AI inside your product, talking to AI |
 | Architectures | Static site, classic monolith, serverless, processing pipeline, microservices |
 | Build track | One app from an empty folder to production, one step per lesson (`lib/builds/`): a build prompt, then a check prompt that adds tests and runs the whole suite |
 | Scenes | Topic animations told as request stories — login → 401 → 200 (`lib/scenes/`, keyed by `Term.k`) |

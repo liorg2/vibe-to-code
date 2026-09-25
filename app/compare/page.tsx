@@ -18,13 +18,13 @@ type L = Record<Lang, string>;
  *  from PATHS, so moving a lesson between courses updates the table on its own. */
 const THEMES: { t: L; mods: string[] }[] = [
   { t: { en: "How code works: files, git, client and server, languages", he: "איך קוד עובד: קבצים, git, לקוח ושרת, שפות" }, mods: ["ground", "vcs", "sides", "langs"] },
-  { t: { en: "The web: browser, HTTP, databases", he: "הווב: דפדפן, HTTP, מסדי נתונים" }, mods: ["frontend", "http", "data"] },
-  { t: { en: "Integrations and background jobs", he: "אינטגרציות ועבודות רקע" }, mods: ["apis", "async"] },
-  { t: { en: "Speed: memory, caching, scale", he: "מהירות: זיכרון, cache, scale" }, mods: ["memory", "cache", "scale"] },
-  { t: { en: "Quality and safety: tests, sign-in, security", he: "איכות ובטיחות: טסטים, התחברות, אבטחה" }, mods: ["testing", "auth", "security"] },
+  { t: { en: "The web: browser, phones, HTTP, databases", he: "הווב: דפדפן, טלפונים, HTTP, מסדי נתונים" }, mods: ["frontend", "mobile", "httpdata"] },
+  { t: { en: "Integrations and background jobs", he: "אינטגרציות ועבודות רקע" }, mods: ["integrations"] },
+  { t: { en: "Speed: memory, caching, scale", he: "מהירות: זיכרון, cache, scale" }, mods: ["performance", "scale"] },
+  { t: { en: "Quality and safety: tests, teamwork, security", he: "איכות ובטיחות: טסטים, עבודת צוות, אבטחה" }, mods: ["teamwork", "security"] },
   { t: { en: "Getting paid: payments and subscriptions", he: "לקבל תשלום: תשלומים ומנויים" }, mods: ["pay"] },
-  { t: { en: "Shipping: domains, cloud, deploys, monitoring", he: "שחרור: דומיינים, ענן, פריסות, ניטור" }, mods: ["net", "cloud", "devops", "observe"] },
-  { t: { en: "Working with a team and with AI", he: "עבודה עם צוות ועם AI" }, mods: ["team", "ai"] },
+  { t: { en: "Shipping: domains, cloud, deploys, monitoring", he: "שחרור: דומיינים, ענן, פריסות, ניטור" }, mods: ["netcloud", "devops", "observe"] },
+  { t: { en: "AI: inside your product, and talking to it", he: "AI: בתוך המוצר, ולדבר איתו" }, mods: ["llm", "ai"] },
 ];
 
 const X = {

@@ -116,15 +116,11 @@ export default async function SlidePage({
           <Chart def={LIFECYCLE} caption={t("lifeCap")} />
         ) : null}
         {scene ? <Scene scene={scene} /> : null}
-        {simple ? (
-          <div className="plain">
-            <h3>{simple.q[lang]}</h3>
-            {para(simple.s[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
-          </div>
-        ) : null}
-        {det ? (
+        {simple || det ? (
           <div className="body">
-            {para(det[lang]).map((p, idx) => <p key={idx}>{p}</p>)}
+            {simple ? <h3>{simple.q[lang]}</h3> : null}
+            {simple ? para(simple.s[lang]).map((p, idx) => <p key={idx}>{p}</p>) : null}
+            {det ? para(det[lang]).map((p, idx) => <p key={idx}>{p}</p>) : null}
           </div>
         ) : null}
         {ex ? (

@@ -83,10 +83,10 @@ const before = (moduleId: string, first: string, second: string) => {
 before("vcs", "commit-branch-merge", "clone-push-pull");
 before("sides", "api", "full-stack");
 before("langs", "semantic-versioning", "framework-vs-library");
-before("http", "endpoint", "get");
-before("http", "status-codes", "headers");
-before("memory", "data-structures", "big-o");
-before("testing", "test-first-tdd", "unit-integration-e2e");
+before("httpdata", "endpoint", "get");
+before("httpdata", "status-codes", "headers");
+before("performance", "data-structures", "big-o");
+before("teamwork", "test-first-tdd", "unit-integration-e2e");
 before("ai", "agents-md", "specificity-beats-politeness");
 
 // A definition or "why" line may not use a word the course only defines later. Beginners read D/W first.
