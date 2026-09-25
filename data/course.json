@@ -492,6 +492,26 @@
    "en": "View",
    "he": "תצוגה"
   },
+  "topicExtra": {
+   "en": "Examples",
+   "he": "דוגמאות"
+  },
+  "howItLooks": {
+   "en": "How it looks",
+   "he": "איך זה נראה"
+  },
+  "aiPrompts": {
+   "en": "Useful AI prompts",
+   "he": "פרומפטים שימושיים ל-AI"
+  },
+  "lookCode": {
+   "en": "Code",
+   "he": "קוד"
+  },
+  "lookResult": {
+   "en": "Result",
+   "he": "תוצאה"
+  },
   "hideExpert": {
    "en": "Hide expert topics",
    "he": "הסתרת נושאים למתקדמים"

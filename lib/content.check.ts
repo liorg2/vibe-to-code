@@ -4,6 +4,7 @@ import { BUILDS } from "./builds";
 import { BUILD_DONE_N } from "./builds/counts";
 import { tipsFor } from "./builds/tips";
 import { DETAIL, EXAMPLES, MODULES, PATHS, SIMPLE, TLDR } from "./course";
+import { TOPIC_EXTRAS } from "./topic-extras";
 import { SCENES } from "./scenes";
 
 const slugs = new Set(MODULES.flatMap((m) => m.terms.map((t) => t.k)));
@@ -35,6 +36,45 @@ for (const title of titles) {
 for (const [name, keyed] of [["SIMPLE", SIMPLE], ["DETAIL", DETAIL], ["EXAMPLES", EXAMPLES]] as const) {
   for (const title of Object.keys(keyed)) assert.ok(titles.has(title), `${name}: orphan content for ${title}`);
 }
+
+const PREVIEW = new Set([
+  "Frontend",
+  "DOM",
+  "CSS & responsive layout",
+  "Accessibility (a11y)",
+  "Component",
+  "Forms & validation",
+  "SEO basics",
+  "Link previews (Open Graph)",
+]);
+for (const title of titles) {
+  const x = TOPIC_EXTRAS[title];
+  assert.ok(x, `${title}: missing how-it-looks / prompts`);
+  assert.equal(x.prompts.length, 3, `${title}: need exactly 3 prompts`);
+  x.prompts.forEach((p, i) => {
+    both(p, `${title} prompt ${i + 1}`);
+    const n = words(p.en);
+    assert.ok(n >= 8 && n <= 80, `${title} prompt ${i + 1}: ${n} words`);
+  });
+  if (x.look) {
+    assert.ok(x.look.length >= 1 && x.look.length <= 2, `${title}: 1–2 looks`);
+    x.look.forEach((look, i) => {
+      both(look.cap, `${title} look ${i + 1}`);
+      assert.ok(look.code.trim().length >= 8 && look.code.length <= 1200, `${title} look ${i + 1}: code length`);
+      if (look.preview) {
+        assert.ok(!/<script/i.test(look.preview), `${title} look ${i + 1}: no script`);
+        assert.ok(/<html[\s>]/i.test(look.preview), `${title} look ${i + 1}: preview needs <html>`);
+        assert.ok(look.preview.length <= 4000, `${title} look ${i + 1}: preview too long`);
+      }
+    });
+  }
+  if (PREVIEW.has(title)) assert.ok(x.look?.some((l) => l.preview), `${title}: needs a rendered result`);
+}
+assert.ok(
+  TOPIC_EXTRAS["Commit / Branch / Merge"]?.look?.some((l) => l.code.includes("git commit")),
+  "commit topic must show a git commit",
+);
+for (const title of Object.keys(TOPIC_EXTRAS)) assert.ok(titles.has(title), `topic extra orphan: ${title}`);
 
 const before = (moduleId: string, first: string, second: string) => {
   const keys = MODULES.find((m) => m.id === moduleId)!.terms.map((t) => t.k);

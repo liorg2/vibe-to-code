@@ -25,6 +25,8 @@ import { SCENES } from "@/lib/scenes";
 import { ownsModule } from "@/lib/entitlement";
 import { serverLang } from "@/lib/lang-server";
 import { cookies } from "next/headers";
+import { TOPIC_EXTRAS } from "@/lib/topic-extras";
+import { TopicExtras } from "@/components/TopicExtras";
 import { para } from "@/lib/utils";
 
 export default async function SlidePage({
@@ -131,6 +133,7 @@ export default async function SlidePage({
             <pre className="code">{ex.code}</pre>
           </div>
         ) : null}
+        <TopicExtras extra={TOPIC_EXTRAS[tm.t.en]} />
         </div>
         <SlideActions
           m={m}
