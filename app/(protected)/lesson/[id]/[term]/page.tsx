@@ -95,7 +95,7 @@ export default async function SlidePage({
         ]}
       />
       <LessonSubNav m={m} active={i} course={course} />
-      <SlideMode initial={tldr}>
+      <SlideMode initial={tldr} extra={TOPIC_EXTRAS[tm.t.en]}>
       <article className="slide">
         <div className="kicker">
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
@@ -133,8 +133,8 @@ export default async function SlidePage({
             <pre className="code">{ex.code}</pre>
           </div>
         ) : null}
-        <TopicExtras extra={TOPIC_EXTRAS[tm.t.en]} />
         </div>
+        <TopicExtras extra={TOPIC_EXTRAS[tm.t.en]} />
         <SlideActions
           m={m}
           i={i}

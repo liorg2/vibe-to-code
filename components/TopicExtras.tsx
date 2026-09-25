@@ -5,19 +5,13 @@ import { Button } from "@/components/ui/button";
 import { useApp } from "@/components/Providers";
 import type { TopicExtra } from "@/lib/topic-extras/types";
 
-/** How it looks / useful prompts, under the lesson. The lesson text stays put. */
+/** The two panels for the How it looks / AI prompts tabs. The tabs themselves live in SlideMode. */
 export function TopicExtras({ extra }: { extra?: TopicExtra }) {
   const { lang, t } = useApp();
   const looks = extra?.look ?? [];
   const prompts = extra?.prompts ?? [];
-  const tabs = [
-    ...(looks.length ? (["look"] as const) : []),
-    ...(prompts.length ? (["prompts"] as const) : []),
-  ];
-  const [tab, setTab] = useState(tabs[0]);
   const [mark, setMark] = useState<{ i: number; ok: boolean } | null>(null);
-  if (!extra || tabs.length === 0) return null;
-  const on = tabs.includes(tab) ? tab : tabs[0];
+  if (!looks.length && !prompts.length) return null;
 
   const copy = async (i: number, text: string) => {
     try {
@@ -31,14 +25,7 @@ export function TopicExtras({ extra }: { extra?: TopicExtra }) {
 
   return (
     <div className="topic-extra">
-      <div className="mode-tabs" role="tablist" aria-label={t("topicExtra")}>
-        {tabs.map((id) => (
-          <button key={id} type="button" role="tab" aria-selected={on === id} onClick={() => setTab(id)}>
-            {id === "look" ? t("howItLooks") : t("aiPrompts")}
-          </button>
-        ))}
-      </div>
-      {on === "look" ? (
+      {looks.length ? (
         <div className="looks" role="tabpanel">
           {looks.map((look, i) => (
             <figure key={i} className="look">
@@ -51,19 +38,15 @@ export function TopicExtras({ extra }: { extra?: TopicExtra }) {
                 {look.preview ? (
                   <div>
                     <div className="look-label">{t("lookResult")}</div>
-                    <iframe
-                      className="look-frame"
-                      sandbox=""
-                      title={look.cap[lang]}
-                      srcDoc={look.preview}
-                    />
+                    <iframe className="look-frame" sandbox="" title={look.cap[lang]} srcDoc={look.preview} />
                   </div>
                 ) : null}
               </div>
             </figure>
           ))}
         </div>
-      ) : (
+      ) : null}
+      {prompts.length ? (
         <ul className="prompt-list" role="tabpanel">
           {prompts.map((p, i) => (
             <li key={i} className="prompt-card">
@@ -74,7 +57,7 @@ export function TopicExtras({ extra }: { extra?: TopicExtra }) {
             </li>
           ))}
         </ul>
-      )}
+      ) : null}
     </div>
   );
 }

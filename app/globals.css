@@ -502,8 +502,10 @@ pre.code{max-width:100%}
 .mode-tabs button:hover{color:var(--tx)}
 .mode-tabs button[aria-selected=true]{color:var(--acc);border-bottom-color:var(--acc)}
 .slide-mode.tldr .full-only,.slide-mode:not(.tldr) .tldr-only{display:none}
+.slide-mode.look .lede,.slide-mode.look .cal,.slide-mode.look .full-only,.slide-mode.look .tldr-only,
+.slide-mode.prompts .lede,.slide-mode.prompts .cal,.slide-mode.prompts .full-only,.slide-mode.prompts .tldr-only{display:none}
+.slide-mode:not(.look) .looks,.slide-mode:not(.prompts) .prompt-list{display:none}
 .topic-extra{margin-top:8px}
-.topic-extra .mode-tabs{margin-top:28px}
 .looks{display:flex;flex-direction:column;gap:18px;margin-top:14px}
 .look .cap{font-size:var(--fs-sm);font-weight:650;color:var(--tx);margin-bottom:10px}
 .look-split{display:grid;gap:12px}
