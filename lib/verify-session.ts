@@ -5,6 +5,14 @@ import { serverLang } from "./lang-server";
 import { SESSION_COOKIE } from "./protected";
 
 const DEV_UID = "dev-user";
+/** Shared by everyone holding the reviewer link — see app/api/review/route.ts. */
+export const REVIEWER_UID = "reviewer";
+
+/** ponytail: one shared secret, rotate REVIEW_KEY in Vercel to revoke every link at once */
+export function isReviewKey(key?: string): boolean {
+  const want = process.env.REVIEW_KEY;
+  return Boolean(want && want.length >= 16 && key === want);
+}
 
 type Session = { uid: string; email?: string };
 
@@ -22,6 +30,7 @@ export function isAllowed(email?: string): boolean {
 export async function sessionClaims(): Promise<Session | null> {
   const session = (await cookies()).get(SESSION_COOKIE)?.value;
   if (!session) return null;
+  if (isReviewKey(session)) return { uid: REVIEWER_UID };
 
   if (process.env.NODE_ENV === "development" && process.env.DEV_AUTH_BYPASS === "1" && session === "dev-session") {
     return { uid: DEV_UID, email: process.env.ALLOWED_EMAILS?.split(",")[0]?.trim() };
@@ -42,7 +51,7 @@ export async function sessionClaims(): Promise<Session | null> {
 /** The uid of a signed-in *and* allowed user, or null. Use from API routes. */
 export async function sessionUid(): Promise<string | null> {
   const claims = await sessionClaims();
-  return claims && isAllowed(claims.email) ? claims.uid : null;
+  return claims && (claims.uid === REVIEWER_UID || isAllowed(claims.email)) ? claims.uid : null;
 }
 
 /** Call from server components under protected routes (Node runtime). */
@@ -51,5 +60,5 @@ export async function requireSession() {
   const lang = await serverLang();
   if (!claims) redirect(withLang(lang, "/login"));
   // ponytail: a distinct page, not /login — bouncing an allowed-cookie user back to sign-in loops
-  if (!isAllowed(claims.email)) redirect(withLang(lang, "/no-access"));
+  if (claims.uid !== REVIEWER_UID && !isAllowed(claims.email)) redirect(withLang(lang, "/no-access"));
 }
