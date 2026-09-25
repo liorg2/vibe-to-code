@@ -2,7 +2,7 @@
 
 import Link from "@/components/Link";
 import { useRouter } from "next/navigation";
-import { withLang } from "@/lib/lang";
+import { LANGS, withLang } from "@/lib/lang";
 import { useState } from "react";
 import { Progress as ProgressPrimitive } from "@base-ui/react/progress";
 import { ProgressIndicator, ProgressTrack } from "@/components/ui/progress";
@@ -70,6 +70,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
               <span id="who" className="px-2 py-1.5 text-sm text-[var(--tx2)]">
                 {firebaseReady && user ? user.displayName || user.email || "" : "Not signed in"}
               </span>
+              {LANGS.length > 1 && (
               <ToggleGroup
                 className="seg"
                 variant="outline"
@@ -78,7 +79,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
                 onValueChange={(vals) => vals[0] && setLang(vals[0] as Lang)}
                 aria-label="Language"
               >
-                {(["en", "he"] as Lang[]).map((l) => (
+                {LANGS.map((l) => (
                   <ToggleGroupItem
                     key={l}
                     value={l}
@@ -90,6 +91,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
                   </ToggleGroupItem>
                 ))}
               </ToggleGroup>
+              )}
               <Button variant="ghost" id="theme" type="button" onClick={toggleTheme} className="justify-start">
                 ◐ Theme
               </Button>

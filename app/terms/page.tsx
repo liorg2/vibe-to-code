@@ -3,7 +3,7 @@ import type { Lang } from "@/lib/types";
 
 export const metadata = { title: "Terms" };
 
-const UPDATED = "2026-09-23";
+const UPDATED = "2026-09-25";
 // TODO(owner): confirm support@vibetodev.com receives mail, the 14-day refund window and Tel Aviv jurisdiction.
 
 const TEXT: Record<Lang, LegalText> = {
@@ -50,7 +50,7 @@ const TEXT: Record<Lang, LegalText> = {
         h: "6. Purchases and refunds",
         p: [
           "Payments are processed by Paddle.com, which acts as the merchant of record and handles billing, tax and invoices. Paddle's buyer terms also apply to your purchase.",
-          "A course is a one-time payment for personal access; it's not a subscription. If it isn't right for you, ask for a refund within 14 days of purchase and we'll refund it. We may refuse refunds that look abusive, such as repeated buy-and-refund.",
+          "A course is a one-time payment for personal access; it's not a subscription. If it isn't right for you, ask for a refund within 14 days of purchase and we'll refund it, as long as you have opened less than 10% of the course's topics and lessons. Once 10% or more is opened, the purchase is not refundable. We may refuse refunds that look abusive, such as repeated buy-and-refund.",
         ],
       },
       {
@@ -112,7 +112,7 @@ const TEXT: Record<Lang, LegalText> = {
         h: "6. רכישות והחזרים",
         p: [
           "התשלומים מעובדים על ידי Paddle.com, המשמשת כמוכרת הרשמית (Merchant of Record) ומטפלת בחיוב, במס ובחשבוניות. גם תנאי הקונה של Paddle חלים על הרכישה.",
-          "קורס הוא תשלום חד-פעמי לגישה אישית, לא מנוי. אם הוא לא מתאים לכם, בקשו החזר תוך 14 ימים מהרכישה ונחזיר את הכסף. אנו רשאים לסרב להחזרים שנראים כניצול לרעה, כמו קנייה והחזר חוזרים.",
+          "קורס הוא תשלום חד-פעמי לגישה אישית, לא מנוי. אם הוא לא מתאים לכם, בקשו החזר תוך 14 ימים מהרכישה ונחזיר את הכסף, בתנאי שפתחתם פחות מ-10% מהנושאים והשיעורים בקורס. אם נפתחו 10% או יותר, הרכישה אינה ניתנת להחזר. אנו רשאים לסרב להחזרים שנראים כניצול לרעה, כמו קנייה והחזר חוזרים.",
         ],
       },
       {

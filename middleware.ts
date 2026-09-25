@@ -1,13 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { isLang, stripLang } from "@/lib/lang";
+import { isLang, LANGS, stripLang } from "@/lib/lang";
 import { isProtectedPath, SESSION_COOKIE } from "@/lib/protected";
 import type { Lang } from "@/lib/types";
 
 function pickLang(req: NextRequest): Lang {
   const cookie = req.cookies.get("vibe.lang")?.value;
-  if (isLang(cookie)) return cookie;
+  if (isLang(cookie) && LANGS.includes(cookie)) return cookie;
   const accept = (req.headers.get("accept-language") ?? "").toLowerCase();
-  return accept.includes("he") ? "he" : "en";
+  return accept.includes("he") && LANGS.includes("he") ? "he" : "en";
 }
 
 /** ponytail: files stay unprefixed; the locale lives in the public URL via rewrite */
@@ -21,8 +21,13 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  const lang = first;
   const rest = stripLang(pathname);
+  if (!LANGS.includes(first)) {
+    const url = req.nextUrl.clone();
+    url.pathname = `/en${rest === "/" ? "" : rest}`;
+    return NextResponse.redirect(url);
+  }
+  const lang = first;
   const headers = new Headers(req.headers);
   headers.set("x-vibe-lang", lang);
   // the rewrite hides the locale from the app; metadata needs it back for canonical + hreflang

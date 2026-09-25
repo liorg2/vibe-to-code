@@ -1,6 +1,7 @@
 import type { Lang } from "./types";
 
-export const LANGS = ["en", "he"] as const;
+/** ponytail: Hebrew hidden for now; add "he" back to re-enable (middleware redirects /he → /en while it's off). */
+export const LANGS: readonly Lang[] = ["en"];
 
 export function isLang(v: string | undefined): v is Lang {
   return v === "en" || v === "he";
