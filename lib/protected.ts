@@ -1,4 +1,6 @@
 export const SESSION_COOKIE = "__session";
+/** Client-visible marker set next to a reviewer session. Grants nothing; the server checks the key. */
+export const REVIEWER_COOKIE = "vibe.reviewer";
 
 /** Top-level segments that require a verified Firebase session (server-checked). */
 export const PROTECTED = [

@@ -16,6 +16,7 @@ import { parseLangFromPath, stripLang, withLang } from "@/lib/lang";
 import type { Lang } from "@/lib/types";
 import { firebaseReady, getClientAuth } from "@/lib/firebase/client";
 import { totalTerms } from "@/lib/course";
+import { REVIEWER_COOKIE } from "@/lib/protected";
 
 const KEY = "vibe2code.v2";
 
@@ -151,6 +152,12 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     const auth = getClientAuth();
     return onAuthStateChanged(auth, (u) => {
       const wasSignedIn = uidRef.current !== null;
+      // ponytail: reviewer link has no Firebase user; a stand-in opens the nav, uidRef stays null so
+      // progress stays local instead of being shared by every reviewer
+      if (!u && document.cookie.split("; ").includes(`${REVIEWER_COOKIE}=1`)) {
+        setUser({ uid: "reviewer", displayName: "Reviewer" } as User);
+        return;
+      }
       setUser(u);
       uidRef.current = u?.uid ?? null;
       if (u) void syncCloud();
