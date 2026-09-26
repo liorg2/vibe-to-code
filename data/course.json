@@ -108,6 +108,10 @@
    "en": "Next",
    "he": "הבא"
   },
+  "skipTopic": {
+   "en": "Skip",
+   "he": "דלגו"
+  },
   "toTest": {
    "en": "Take the test",
    "he": "למבחן"

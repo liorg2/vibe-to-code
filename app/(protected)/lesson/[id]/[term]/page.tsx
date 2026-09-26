@@ -9,6 +9,7 @@ import Link from "@/components/Link";
 import { Scene } from "@/components/Scene";
 import { SlideMode } from "@/components/SlideMode";
 import { SlideActions } from "@/components/SlideActions";
+import { SkipButton } from "@/components/SkipButton";
 import { Upsell } from "@/components/Upsell";
 import {
   DETAIL,
@@ -104,6 +105,7 @@ export default async function SlidePage({
         <div className="kicker">
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
           <ListenButton key={`${m.id}/${i}`} next={nextHref} />
+          <SkipButton m={m} i={i} href={nextHref} />
         </div>
         <h2>{tm.t[lang]}</h2>
         {skippable(tm) ? (
