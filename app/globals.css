@@ -225,13 +225,13 @@ section.mod{scroll-margin-top:90px;margin-bottom:40px}
   padding:clamp(24px,4vw,44px);box-shadow:var(--shadow)}
 .slide .kicker{font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-xs);color:var(--acc2);
   letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-.slide .listen-bar{float:right;margin-top:-4px;display:flex;align-items:center;gap:12px}
+.slide .listen-bar{float:right;margin-top:-4px;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .slide .listen-auto{display:flex;align-items:center;gap:6px;font-size:var(--fs-2xs);color:var(--tx2);cursor:pointer}
 .slide .listen-auto input{accent-color:var(--acc);margin:0}
-.slide .listen{padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:none;
+.slide .listen{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:none;
   font:inherit;font-size:var(--fs-2xs);color:var(--tx2);cursor:pointer;letter-spacing:.08em}
 .slide .listen:hover,.slide .listen[aria-pressed=true]{color:var(--acc);border-color:var(--acc)}
-.slide .skip{float:right;margin:-4px 12px 0 0;text-decoration:none}
+.slide .skip{float:right;margin:-4px 12px 0 0;text-decoration:none;text-transform:none}
 .slide h2{font-size:clamp(26px,4vw,40px);line-height:1.15;letter-spacing:-.03em;font-weight:700;text-wrap:balance}
 .slide .lede{font-size:clamp(17px,2.2vw,21px);color:var(--tx);margin-top:16px;
   padding-inline-start:16px;border-inline-start:3px solid var(--acc)}

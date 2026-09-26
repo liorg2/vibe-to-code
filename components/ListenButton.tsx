@@ -1,5 +1,6 @@
 "use client";
 
+import { Square, Volume2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useApp } from "@/components/Providers";
@@ -76,6 +77,9 @@ export function ListenButton({ next }: { next?: string }) {
       const u = new SpeechSynthesisUtterance(text);
       u.lang = voiceLang;
       if (voice) u.voice = voice;
+      // an auto-next hand-off is done once the voice actually starts (not on mount:
+      // Strict Mode mounts twice and the first mount's cleanup cancels the speech)
+      if (i === 0) u.onstart = () => store(() => sessionStorage, GO_KEY, null);
       if (i === blocks.length - 1)
         u.onend = () => {
           if (active !== me) return; // stopped or restarted: don't advance
@@ -92,10 +96,7 @@ export function ListenButton({ next }: { next?: string }) {
 
   useEffect(() => {
     setAuto(store(() => localStorage, AUTO_KEY) === "1");
-    if (store(() => sessionStorage, GO_KEY) === "1") {
-      store(() => sessionStorage, GO_KEY, null);
-      start();
-    }
+    if (store(() => sessionStorage, GO_KEY) === "1") start();
     return () => {
       if (mine.current !== active) return; // a newer slide owns the voice now
       active++;
@@ -106,6 +107,9 @@ export function ListenButton({ next }: { next?: string }) {
 
   return (
     <span className="listen-bar">
+      <button ref={ref} type="button" className="listen" aria-pressed={on} onClick={on ? stop : start}>
+        {on ? <Square size={12} aria-hidden /> : <Volume2 size={14} aria-hidden />} {LABEL[on ? "stop" : "listen"][lang]}
+      </button>
       <label className="listen-auto">
         <input
           type="checkbox"
@@ -117,9 +121,6 @@ export function ListenButton({ next }: { next?: string }) {
         />
         {LABEL.auto[lang]}
       </label>
-      <button ref={ref} type="button" className="listen" aria-pressed={on} onClick={on ? stop : start}>
-        {on ? "■" : "▶"} {LABEL[on ? "stop" : "listen"][lang]}
-      </button>
     </span>
   );
 }
