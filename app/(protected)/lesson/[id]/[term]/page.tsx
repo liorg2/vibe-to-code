@@ -3,6 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import { Breadcrumb, lessonMenu } from "@/components/Breadcrumb";
 import { Chart } from "@/components/Chart";
 import { LessonIntro } from "@/components/LessonIntro";
+import { ListenButton } from "@/components/ListenButton";
 import { LessonSubNav } from "@/components/LessonSubNav";
 import Link from "@/components/Link";
 import { Scene } from "@/components/Scene";
@@ -102,6 +103,7 @@ export default async function SlidePage({
       <article className="slide">
         <div className="kicker">
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
+          <ListenButton />
         </div>
         <h2>{tm.t[lang]}</h2>
         {skippable(tm) ? (
