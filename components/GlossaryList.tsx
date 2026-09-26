@@ -22,15 +22,15 @@ function mark(text: string, q: string) {
 }
 
 // Basic/Advanced are the A/B levels minus anything skippable, so the chips never overlap
-const FILTERS = {
+export const FILTERS = {
   all: () => true,
   basic: (tm: Term) => tm.lvl === "A" && !tm.opt,
   advanced: (tm: Term) => tm.lvl === "B" && !tm.opt,
   optional: (tm: Term) => !!tm.opt,
   expert: (tm: Term) => tm.lvl === "E",
 };
-type Filter = keyof typeof FILTERS;
-const FILTER_LABEL: Record<Filter, string> = {
+export type Filter = keyof typeof FILTERS;
+export const FILTER_LABEL: Record<Filter, string> = {
   all: "lvlAll",
   basic: "lvlBasic",
   advanced: "lvlAdvanced",

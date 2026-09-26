@@ -537,6 +537,9 @@ pre.code{max-width:100%}
 .lvl-chips button{padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--tx2);font:inherit;font-size:var(--fs-xs);cursor:pointer}
 .lvl-chips button[aria-pressed=true]{background:var(--acc);border-color:transparent;color:#fff;font-weight:600}
 .subnav .lvl-chips{flex-basis:100%;margin:0 0 4px}
+.lvl-chips label{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--tx2);font-size:var(--fs-xs);cursor:pointer}
+.lvl-chips label:has(:checked){border-color:var(--acc);color:var(--tx)}
+.lvl-chips input{accent-color:var(--acc);margin:0}
 .xbadge{display:inline-block;padding:1px 8px;border-radius:99px;border:1px solid color-mix(in srgb,var(--warn) 60%,transparent);
   color:var(--warn);font-size:var(--fs-2xs);font-weight:700;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
 .slide .xnote{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 10px;font-size:var(--fs-sm);color:var(--tx3)}
