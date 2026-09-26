@@ -4,7 +4,7 @@ import Link from "@/components/Link";
 import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useApp } from "./Providers";
-import { termKey } from "@/lib/course";
+import { skippable, termKey } from "@/lib/course";
 import type { Module, Term } from "@/lib/types";
 
 /** Split a label on the query so the matching run can be wrapped in <mark>. */
@@ -21,10 +21,27 @@ function mark(text: string, q: string) {
   );
 }
 
+// Basic/Advanced are the A/B levels minus anything skippable, so the chips never overlap
+const FILTERS = {
+  all: () => true,
+  basic: (tm: Term) => tm.lvl === "A" && !tm.opt,
+  advanced: (tm: Term) => tm.lvl === "B" && !tm.opt,
+  optional: (tm: Term) => !!tm.opt,
+  expert: (tm: Term) => tm.lvl === "E",
+};
+type Filter = keyof typeof FILTERS;
+const FILTER_LABEL: Record<Filter, string> = {
+  all: "lvlAll",
+  basic: "lvlBasic",
+  advanced: "lvlAdvanced",
+  optional: "optional",
+  expert: "expert",
+};
+
 export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Term }[] }) {
   const { lang, done, t } = useApp();
   const [raw, setRaw] = useState("");
-  const [lvl, setLvl] = useState<"all" | "core" | "E">("all");
+  const [lvl, setLvl] = useState<Filter>("all");
   const q = raw.trim().toLowerCase();
 
   // the definition is searched too, so "makes pages load faster" finds Cache
@@ -32,7 +49,7 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
     () =>
       items.filter(
         ({ tm }) =>
-          (lvl === "all" || (lvl === "E") === (tm.lvl === "E")) &&
+          FILTERS[lvl](tm) &&
           (!q || (tm.t.en + tm.t.he + tm.d[lang] + tm.w[lang]).toLowerCase().includes(q)),
       ),
     [items, q, lang, lvl],
@@ -58,9 +75,9 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
         <span>{hits.length}/{items.length}</span>
       </div>
       <div className="lvl-chips" role="group" aria-label={t("filterLvl")}>
-        {(["all", "core", "E"] as const).map((v) => (
+        {(Object.keys(FILTERS) as Filter[]).map((v) => (
           <button key={v} type="button" aria-pressed={lvl === v} onClick={() => setLvl(v)}>
-            {t(v === "all" ? "lvlAll" : v === "core" ? "lvlCore" : "expert")}
+            {t(FILTER_LABEL[v])}
           </button>
         ))}
       </div>
@@ -77,7 +94,7 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
                 >
                   <span>
                     {mark(tm.t[lang], q)}
-                    {tm.lvl === "E" ? <span className="xbadge ms-1.5">{t("expert")}</span> : null}
+                    {skippable(tm) ? <span className="xbadge ms-1.5">{t(tm.lvl === "E" ? "expert" : "optional")}</span> : null}
                   </span>
                   <i>{m.title[lang]}</i>
                 </Link>

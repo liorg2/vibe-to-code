@@ -3,7 +3,7 @@
 import Link from "@/components/Link";
 import { cn } from "@/lib/utils";
 import { useApp } from "./Providers";
-import { QUIZ, termKey } from "@/lib/course";
+import { QUIZ, skippable, termKey } from "@/lib/course";
 import type { Module } from "@/lib/types";
 
 export function LessonSubNav({
@@ -28,7 +28,7 @@ export function LessonSubNav({
         {t("overview")}
       </Link>
       {m.terms.map((tm, j) =>
-        hideExpert && tm.lvl === "E" && active !== j ? null : (
+        hideExpert && skippable(tm) && active !== j ? null : (
           <Link
             key={j}
             href={href(`/lesson/${m.id}/${j}`)}
@@ -39,7 +39,7 @@ export function LessonSubNav({
           >
             <span className="sn">{j + 1}</span>
             {tm.t[lang]}
-            {tm.lvl === "E" ? <span className="xbadge">{t("expert")}</span> : null}
+            {skippable(tm) ? <span className="xbadge">{t(tm.lvl === "E" ? "expert" : "optional")}</span> : null}
           </Link>
         ),
       )}

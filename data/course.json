@@ -513,20 +513,32 @@
    "he": "תוצאה"
   },
   "hideExpert": {
-   "en": "Hide expert topics",
-   "he": "הסתרת נושאים למתקדמים"
+   "en": "Hide optional & expert topics",
+   "he": "הסתירו נושאי רשות ו-expert"
   },
   "showExpert": {
-   "en": "Show expert topics",
-   "he": "הצגת נושאים למתקדמים"
+   "en": "Show optional & expert topics",
+   "he": "הציגו נושאי רשות ו-expert"
   },
   "lvlAll": {
    "en": "All",
    "he": "הכול"
   },
-  "lvlCore": {
-   "en": "Core",
-   "he": "ליבה"
+  "lvlBasic": {
+   "en": "Basic",
+   "he": "בסיסי"
+  },
+  "lvlAdvanced": {
+   "en": "Advanced",
+   "he": "מתקדם"
+  },
+  "optional": {
+   "en": "Optional",
+   "he": "רשות"
+  },
+  "optionalNote": {
+   "en": "Optional topic: most vibe coders never need it. Read it if it comes up in your project.",
+   "he": "נושא רשות: רוב ה-vibe coders לא יצטרכו אותו. קראו אותו אם הוא עולה בפרויקט שלכם."
   }
  },
  "MODULES": [
@@ -601,6 +613,7 @@
     {
      "k": "compiler-interpreter",
      "lvl": "A",
+     "opt": true,
      "t": {
       "en": "Compiler / Interpreter",
       "he": "קומפיילר / אינטרפרטר"
@@ -649,6 +662,7 @@
     {
      "k": "file-permissions",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "File permissions",
       "he": "File permissions"
@@ -1083,6 +1097,7 @@
     {
      "k": "semantic-versioning",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Semantic versioning",
       "he": "ניהול גרסאות סמנטי"
@@ -1099,6 +1114,7 @@
     {
      "k": "framework-vs-library",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Framework vs library",
       "he": "פריימוורק מול ספרייה"
@@ -1115,6 +1131,7 @@
     {
      "k": "regex",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Regex",
       "he": "Regex"
@@ -1287,6 +1304,7 @@
     {
      "k": "bundler-and-build-step",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Bundler & build step",
       "he": "באנדלר ושלב הבנייה"
@@ -1319,6 +1337,7 @@
     {
      "k": "the-main-thread",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "The main thread",
       "he": "התהליכון הראשי"
@@ -1437,6 +1456,7 @@
     {
      "k": "app-store-and-play-store-review",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "App Store review & updates",
       "he": "App Store review & updates"
@@ -1453,6 +1473,7 @@
     {
      "k": "push-notifications",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Push notifications & deep links",
       "he": "Push notifications & deep links"
@@ -1571,6 +1592,7 @@
     {
      "k": "rest",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "REST",
       "he": "REST"
@@ -1689,6 +1711,7 @@
     {
      "k": "orm",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "ORM",
       "he": "ORM"
@@ -2467,6 +2490,7 @@
     {
      "k": "latency-vs-throughput",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Latency vs throughput",
       "he": "לייטנסי מול תפוקה (Throughput)"
@@ -2585,6 +2609,7 @@
     {
      "k": "scaling-up-vs-out",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Scaling up vs out",
       "he": "Scaling up vs out"
@@ -2601,6 +2626,7 @@
     {
      "k": "stateless",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Stateless",
       "he": "סטייטלס (Stateless)"
@@ -2617,6 +2643,7 @@
     {
      "k": "single-point-of-failure",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Single point of failure",
       "he": "נקודת כשל יחידה"
@@ -2805,6 +2832,7 @@
     {
      "k": "container-docker",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Container / Docker",
       "he": "Container / Docker"
@@ -3073,6 +3101,7 @@
     {
      "k": "audit-log",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Audit log",
       "he": "יומן ביקורת"
@@ -3191,6 +3220,7 @@
     {
      "k": "bus-factor",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Bus factor",
       "he": "Bus factor"
@@ -3357,6 +3387,7 @@
     {
      "k": "embeddings-and-vector-search",
      "lvl": "B",
+     "opt": true,
      "t": {
       "en": "Embeddings & RAG",
       "he": "Embeddings & RAG"

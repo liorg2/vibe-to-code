@@ -8,6 +8,8 @@ export type Term = {
   k: string;
   /** A foundations, B everything past them, E expert: good to know, safe to skip */
   lvl: Level;
+  /** most non-coders will never use it: flagged skippable like E, but stays in place in the lesson */
+  opt?: true;
   t: L10n;
   d: L10n;
   w: L10n;

@@ -19,6 +19,7 @@ import {
   lessonNo,
   moduleIndex,
   pathForModule,
+  skippable,
 } from "@/lib/course";
 import { LIFECYCLE } from "@/lib/diagrams";
 import { SCENES } from "@/lib/scenes";
@@ -103,8 +104,8 @@ export default async function SlidePage({
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
         </div>
         <h2>{tm.t[lang]}</h2>
-        {tm.lvl === "E" ? (
-          <p className="xnote"><span className="xbadge">{t("expert")}</span> {t("expertNote")}</p>
+        {skippable(tm) ? (
+          <p className="xnote"><span className="xbadge">{t(tm.lvl === "E" ? "expert" : "optional")}</span> {t(tm.lvl === "E" ? "expertNote" : "optionalNote")}</p>
         ) : null}
         <div className="lede">{tm.d[lang]}</div>
         {short ? (

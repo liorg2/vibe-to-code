@@ -15,6 +15,7 @@ import {
   PATHS,
   QUIZ,
   archesFor,
+  skippable,
   termKey,
 } from "@/lib/course";
 import { buildFinished } from "@/lib/builds/counts";
@@ -155,15 +156,15 @@ export function SideNav() {
             {t("overview")}
           </Link>
           {m.terms.map((tm, i) =>
-            // the topic you are on always stays, even when expert topics are hidden
-            hideExpert && tm.lvl === "E" && !(here && activeTerm === i) ? null : (
+            // the topic you are on always stays, even when optional/expert topics are hidden
+            hideExpert && skippable(tm) && !(here && activeTerm === i) ? null : (
               <Link
                 key={i}
                 href={q(`/lesson/${m.id}/${i}`)}
                 className={cn(here && activeTerm === i && "on", done.has(termKey(m, i)) && "done")}
               >
                 {tm.t[lang]}
-                {tm.lvl === "E" ? <span className="xbadge ms-1.5">{t("expert")}</span> : null}
+                {skippable(tm) ? <span className="xbadge ms-1.5">{t(tm.lvl === "E" ? "expert" : "optional")}</span> : null}
               </Link>
             ),
           )}
@@ -191,7 +192,7 @@ export function SideNav() {
   const finished = mods.filter((m) => m.id !== activeLesson && m.terms.every((_, i) => done.has(termKey(m, i))));
   const lessons = (hideDone ? mods.filter((m) => !finished.includes(m)) : mods).map(lesson);
   const arches = courseId ? archesFor(courseId) : [];
-  const expertN = mods.reduce((n, m) => n + m.terms.filter((tm) => tm.lvl === "E").length, 0);
+  const expertN = mods.reduce((n, m) => n + m.terms.filter(skippable).length, 0);
 
   return (
     <nav

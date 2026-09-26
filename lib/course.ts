@@ -49,6 +49,11 @@ export function termKey(mod: Module, i: number): string {
   return `${mod.id}:${mod.terms[i].k}`;
 }
 
+/** Safe to skip: expert, or optional for non-coders. Drives the hide toggle and the Optional filter. */
+export function skippable(tm: Term): boolean {
+  return tm.lvl === "E" || !!tm.opt;
+}
+
 export function totalTerms(): number {
   return course.MODULES.reduce((n, m) => n + m.terms.length, 0);
 }

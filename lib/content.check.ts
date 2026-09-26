@@ -22,6 +22,7 @@ assert.equal(slugs.size, [...titles].length, "topic slugs or English titles are 
 // levels: A/B/E only; every lesson keeps a core of non-expert topics
 for (const m of MODULES) {
   m.terms.forEach((t) => assert.ok(["A", "B", "E"].includes(t.lvl), `${m.id}:${t.k}: bad level ${t.lvl}`));
+  m.terms.forEach((t) => assert.ok(!(t.opt && t.lvl === "E"), `${m.id}:${t.k}: expert is already skippable, drop opt`));
   assert.ok(m.terms.filter((t) => t.lvl !== "E").length >= 3, `${m.id}: fewer than 3 non-expert topics`);
   const firstE = m.terms.findIndex((t) => t.lvl === "E");
   assert.ok(firstE < 0 || m.terms.slice(firstE).every((t) => t.lvl === "E"), `${m.id}: expert topics must come last`);
