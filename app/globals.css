@@ -232,6 +232,7 @@ section.mod{scroll-margin-top:90px;margin-bottom:40px}
   font:inherit;font-size:var(--fs-2xs);color:var(--tx2);cursor:pointer;letter-spacing:.08em}
 .slide .listen:hover,.slide .listen[aria-pressed=true]{color:var(--acc);border-color:var(--acc)}
 .slide .skip{float:right;margin:-4px 12px 0 0;text-decoration:none;text-transform:none}
+.slide .skip svg{color:var(--ok,var(--acc2))}
 .slide h2{font-size:clamp(26px,4vw,40px);line-height:1.15;letter-spacing:-.03em;font-weight:700;text-wrap:balance}
 .slide .lede{font-size:clamp(17px,2.2vw,21px);color:var(--tx);margin-top:16px;
   padding-inline-start:16px;border-inline-start:3px solid var(--acc)}
