@@ -1,7 +1,7 @@
 import Link from "@/components/Link";
 import { LessonSubNav } from "./LessonSubNav";
 import { Breadcrumb, lessonMenu } from "./Breadcrumb";
-import { UI, lessonNo, neighbors, pathForModule, skippable } from "@/lib/course";
+import { UI, lessonNo, neighbors, pathForModule, lvlKey } from "@/lib/course";
 import { ownsModule } from "@/lib/entitlement";
 import { cn, para } from "@/lib/utils";
 import type { Lang, Module } from "@/lib/types";
@@ -68,7 +68,7 @@ export async function LessonIntro({
               <span className="n">{j + 1}</span>
               <div>
                 <b>{tm.t[lang]}</b>
-                {skippable(tm) ? <span className="xbadge ms-2">{t(tm.lvl === "E" ? "expert" : "optional")}</span> : null}
+                <span className={`xbadge ms-2 ${lvlKey(tm)}`}>{t(lvlKey(tm))}</span>
                 {!owns ? <span className="lockglyph" aria-hidden>🔒</span> : null}
                 <p>{tm.d[lang]}</p>
               </div>

@@ -4,7 +4,7 @@ import Link from "@/components/Link";
 import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { useApp } from "./Providers";
-import { skippable, termKey } from "@/lib/course";
+import { FILTERS, FILTER_LABEL, lvlKey, termKey, type Filter } from "@/lib/course";
 import type { Module, Term } from "@/lib/types";
 
 /** Split a label on the query so the matching run can be wrapped in <mark>. */
@@ -20,23 +20,6 @@ function mark(text: string, q: string) {
     </>
   );
 }
-
-// Basic/Advanced are the A/B levels minus anything skippable, so the chips never overlap
-export const FILTERS = {
-  all: () => true,
-  basic: (tm: Term) => tm.lvl === "A" && !tm.opt,
-  advanced: (tm: Term) => tm.lvl === "B" && !tm.opt,
-  optional: (tm: Term) => !!tm.opt,
-  expert: (tm: Term) => tm.lvl === "E",
-};
-export type Filter = keyof typeof FILTERS;
-export const FILTER_LABEL: Record<Filter, string> = {
-  all: "lvlAll",
-  basic: "lvlBasic",
-  advanced: "lvlAdvanced",
-  optional: "optional",
-  expert: "expert",
-};
 
 export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Term }[] }) {
   const { lang, done, t } = useApp();
@@ -94,7 +77,7 @@ export function GlossaryList({ items }: { items: { m: Module; i: number; tm: Ter
                 >
                   <span>
                     {mark(tm.t[lang], q)}
-                    {skippable(tm) ? <span className="xbadge ms-1.5">{t(tm.lvl === "E" ? "expert" : "optional")}</span> : null}
+                    <span className={`xbadge ms-1.5 ${lvlKey(tm)}`}>{t(lvlKey(tm))}</span>
                   </span>
                   <i>{m.title[lang]}</i>
                 </Link>

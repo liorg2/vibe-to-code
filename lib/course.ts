@@ -54,6 +54,32 @@ export function skippable(tm: Term): boolean {
   return tm.lvl === "E" || !!tm.opt;
 }
 
+/** UI string key for a topic's level badge: only Basic/Advanced/Optional are shown; expert counts as optional. */
+export function lvlKey(tm: Term): "optional" | "lvlAdvanced" | "lvlBasic" {
+  return skippable(tm) ? "optional" : tm.lvl === "B" ? "lvlAdvanced" : "lvlBasic";
+}
+
+// Basic/Advanced are the A/B levels minus anything skippable, so the chips never overlap;
+// expert topics fall under Optional (both are safe to skip)
+export const FILTERS = {
+  all: () => true,
+  basic: (tm: Term) => tm.lvl === "A" && !tm.opt,
+  advanced: (tm: Term) => tm.lvl === "B" && !tm.opt,
+  optional: skippable,
+};
+export type Filter = keyof typeof FILTERS;
+export const FILTER_LABEL: Record<Filter, string> = {
+  all: "lvlAll",
+  basic: "lvlBasic",
+  advanced: "lvlAdvanced",
+  optional: "optional",
+};
+
+/** The menus' level filter: ticked levels are OR'ed, none ticked shows every topic. */
+export function lvlShown(tm: Term, lvls: Filter[]): boolean {
+  return !lvls.length || lvls.some((v) => FILTERS[v](tm));
+}
+
 export function totalTerms(): number {
   return course.MODULES.reduce((n, m) => n + m.terms.length, 0);
 }

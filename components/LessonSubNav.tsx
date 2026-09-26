@@ -2,11 +2,9 @@
 
 import Link from "@/components/Link";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 import { useApp } from "./Providers";
-import { FILTERS, FILTER_LABEL, type Filter } from "./GlossaryList";
-import { QUIZ, skippable, termKey } from "@/lib/course";
-import type { Module, Term } from "@/lib/types";
+import { FILTERS, FILTER_LABEL, QUIZ, lvlKey, lvlShown, termKey, type Filter } from "@/lib/course";
+import type { Module } from "@/lib/types";
 
 export function LessonSubNav({
   m,
@@ -19,29 +17,14 @@ export function LessonSubNav({
   quiz?: boolean;
   course?: string;
 }) {
-  const { lang, done, t, hideExpert } = useApp();
+  const { lang, done, t, lvls, toggleLvl } = useApp();
   const href = (path: string) => (course ? `${path}?course=${course}` : path);
-  // ticked levels are OR'ed; none ticked shows every topic.
-  // kept per tab so the filter survives moving between topics (each page remounts this nav)
-  const [lvls, setLvls] = useState<Filter[]>([]);
-  useEffect(() => {
-    try {
-      const v = JSON.parse(sessionStorage.getItem("vibe.subnavLvls") || "[]") as string[];
-      setLvls(v.filter((x): x is Filter => x in FILTERS && x !== "all"));
-    } catch {}
-  }, []);
-  const toggle = (v: Filter) => {
-    const next = lvls.includes(v) ? lvls.filter((x) => x !== v) : [...lvls, v];
-    setLvls(next);
-    try { sessionStorage.setItem("vibe.subnavLvls", JSON.stringify(next)); } catch {}
-  };
-  const shown = (tm: Term) => !lvls.length || lvls.some((v) => FILTERS[v](tm));
   return (
     <nav className="subnav" aria-label={m.title[lang]}>
       <div className="lvl-chips" role="group" aria-label={t("filterLvl")}>
         {(Object.keys(FILTERS) as Filter[]).filter((v) => v !== "all").map((v) => (
           <label key={v}>
-            <input type="checkbox" checked={lvls.includes(v)} onChange={() => toggle(v)} />
+            <input type="checkbox" checked={lvls.includes(v)} onChange={() => toggleLvl(v)} />
             {t(FILTER_LABEL[v])}
           </label>
         ))}
@@ -54,7 +37,7 @@ export function LessonSubNav({
       </Link>
       {m.terms.map((tm, j) =>
         // the topic you are on always stays visible, whatever the filter
-        active !== j && ((hideExpert && skippable(tm)) || !shown(tm)) ? null : (
+        active !== j && !lvlShown(tm, lvls) ? null : (
           <Link
             key={j}
             href={href(`/lesson/${m.id}/${j}`)}
@@ -65,7 +48,7 @@ export function LessonSubNav({
           >
             <span className="sn">{j + 1}</span>
             {tm.t[lang]}
-            {skippable(tm) ? <span className="xbadge">{t(tm.lvl === "E" ? "expert" : "optional")}</span> : null}
+            <span className={`xbadge ${lvlKey(tm)}`}>{t(lvlKey(tm))}</span>
           </Link>
         ),
       )}

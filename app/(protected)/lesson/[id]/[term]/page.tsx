@@ -109,7 +109,7 @@ export default async function SlidePage({
         </div>
         <h2>{tm.t[lang]}</h2>
         {skippable(tm) ? (
-          <p className="xnote"><span className="xbadge">{t(tm.lvl === "E" ? "expert" : "optional")}</span> {t(tm.lvl === "E" ? "expertNote" : "optionalNote")}</p>
+          <p className="xnote"><span className="xbadge">{t("optional")}</span> {t("optionalNote")}</p>
         ) : null}
         <div className="lede">{tm.d[lang]}</div>
         {short ? (

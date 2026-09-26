@@ -15,7 +15,7 @@ import { onAuthStateChanged, type User } from "firebase/auth";
 import { parseLangFromPath, stripLang, withLang } from "@/lib/lang";
 import type { Lang } from "@/lib/types";
 import { firebaseReady, getClientAuth } from "@/lib/firebase/client";
-import { rehome, totalTerms } from "@/lib/course";
+import { FILTERS, rehome, totalTerms, type Filter } from "@/lib/course";
 import { REVIEWER_COOKIE } from "@/lib/protected";
 
 const KEY = "vibe2code.v2";
@@ -33,9 +33,9 @@ type Ctx = {
   toggleTheme: () => void;
   toggleDone: (k: string) => void;
   toggleTicked: (k: string, on: boolean) => void;
-  /** per-viewer filter: expert topics left out of the menus and lists (they still open by link) */
-  hideExpert: boolean;
-  toggleHideExpert: () => void;
+  /** per-viewer level filter for the menus (hidden topics still open by link); empty = all */
+  lvls: Filter[];
+  toggleLvl: (v: Filter) => void;
   resetProgress: () => void;
   t: (k: string) => string;
   UI: Record<string, Record<Lang, string>>;
@@ -68,7 +68,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
   const [done, setDone] = useState<Set<string>>(new Set());
   const [ticked, setTicked] = useState<Set<string>>(new Set());
   const [user, setUser] = useState<User | null>(null);
-  const [hideExpert, setHideExpert] = useState(false);
+  const [lvls, setLvls] = useState<Filter[]>([]);
   const cloudTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const uidRef = useRef<string | null>(null);
 
@@ -97,7 +97,11 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     setTheme((lsGet(KEY + ".theme") as "dark" | "light") || "dark");
     setDone(new Set((JSON.parse(lsGet(KEY + ".done") || "[]") as string[]).map(rehome)));
     setTicked(new Set(JSON.parse(lsGet(KEY + ".check") || "[]")));
-    setHideExpert(lsGet(KEY + ".hideExpert") === "1");
+    try {
+      const saved = JSON.parse(lsGet(KEY + ".lvls") || "null") as string[] | null;
+      // ponytail: carries over the old "hide optional & expert" toggle
+      setLvls(saved ? saved.filter((x): x is Filter => x in FILTERS && x !== "all") : lsGet(KEY + ".hideExpert") === "1" ? ["basic", "advanced"] : []);
+    } catch {}
   }, []);
 
   useEffect(() => {
@@ -193,9 +197,10 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     persist(done, next);
   };
 
-  const toggleHideExpert = () => {
-    lsSet(KEY + ".hideExpert", hideExpert ? "0" : "1");
-    setHideExpert(!hideExpert);
+  const toggleLvl = (v: Filter) => {
+    const next = lvls.includes(v) ? lvls.filter((x) => x !== v) : [...lvls, v];
+    lsSet(KEY + ".lvls", JSON.stringify(next));
+    setLvls(next);
   };
 
   const resetProgress = () => {
@@ -220,14 +225,14 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
       toggleTheme,
       toggleDone,
       toggleTicked,
-      hideExpert,
-      toggleHideExpert,
+      lvls,
+      toggleLvl,
       resetProgress,
       t,
       UI,
       progressPct,
     }),
-    [lang, theme, done, ticked, user, hideExpert, syncCloud, UI, progressPct],
+    [lang, theme, done, ticked, user, lvls, syncCloud, UI, progressPct],
   );
 
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;
