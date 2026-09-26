@@ -10,7 +10,7 @@ export const BUILD_LESSON = "build";
 /** Every key the course can legitimately produce — anything else is dropped on save. */
 const valid = new Map<string, Set<string>>([
   ...MODULES.map((m) => [m.id, new Set(m.terms.map((t) => t.k))] as const),
-  [CHECKLIST_LESSON, new Set(CHECKLIST.do.map((x) => `do:${x.k}`))] as const,
+  [CHECKLIST_LESSON, new Set([...CHECKLIST.do.map((x) => `do:${x.k}`), ...CHECKLIST.live.items.map((x) => `live:${x.k}`)])] as const,
   [BUILD_LESSON, new Set(Object.entries(BUILDS).flatMap(([id, b]) => b.done.map((_, i) => `${id}:${i}`)))] as const,
 ]);
 

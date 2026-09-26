@@ -11953,7 +11953,151 @@
      "he": "NAT gateways, load balancers ומופעי מסד נתונים מחויבים לפי שעה גם באפס תעבורה. הגדירו התראת תקציב כבר ביום הראשון."
     }
    }
-  ]
+  ],
+  "live": {
+   "title": {
+    "en": "Before going live",
+    "he": "לפני שעולים לאוויר"
+   },
+   "sub": {
+    "en": "What a visitor, a regulator or a store reviewer sees first. Mostly pages and settings, not code, and each one is cheap now and expensive after a complaint.",
+    "he": "מה שמבקר, רגולטור או מי שבודק אפליקציה בחנות רואים קודם. בעיקר דפים והגדרות, לא קוד. כל סעיף זול עכשיו ויקר אחרי תלונה."
+   },
+   "items": [
+    {
+     "k": "privacy-policy-matches-the-code",
+     "t": {
+      "en": "A privacy policy that matches what the app really collects",
+      "he": "מדיניות פרטיות שתואמת את מה שהאפליקציה באמת אוספת"
+     },
+     "d": {
+      "en": "List every personal field, where it is stored and which services receive it, then write the policy from that list. A template that promises things your code doesn't do is worse than none.",
+      "he": "תרשמו כל שדה אישי, איפה הוא נשמר ואילו שירותים מקבלים אותו, ואז תכתבו את המדיניות מתוך הרשימה. תבנית שמבטיחה דברים שהקוד לא עושה גרועה יותר מכלום."
+     }
+    },
+    {
+     "k": "trackers-wait-for-consent",
+     "t": {
+      "en": "Cookies and trackers wait for consent",
+      "he": "cookies וכלי מעקב מחכים להסכמה"
+     },
+     "d": {
+      "en": "Open the site in a private window, and before clicking anything look at DevTools: Network and Application → Cookies. Nothing for analytics or ads should load until the visitor agrees, refusing is one click, and a cookie policy lists what remains.",
+      "he": "פתחו את האתר בחלון פרטי, ולפני שלוחצים על משהו תסתכלו ב-DevTools: Network ו-Application ← Cookies. שום דבר של analytics או פרסום לא אמור להיטען לפני שהמבקר מסכים, סירוב הוא לחיצה אחת, ומדיניות cookies מפרטת מה נשאר."
+     }
+    },
+    {
+     "k": "third-party-embeds-are-checked",
+     "t": {
+      "en": "Every third-party embed is checked",
+      "he": "כל הטמעה של צד שלישי נבדקה"
+     },
+     "d": {
+      "en": "YouTube videos, maps, chat widgets and social buttons each set their own cookies and slow the page. Use privacy modes such as youtube-nocookie.com, load them on click, and include them in the consent banner.",
+      "he": "סרטוני YouTube, מפות, widgets של צ'אט וכפתורי רשתות חברתיות שמים cookies משלהם ומאטים את הדף. השתמשו במצבי פרטיות כמו youtube-nocookie.com, טענו אותם רק בלחיצה, וכללו אותם בבאנר ההסכמה."
+     }
+    },
+    {
+     "k": "forms-ask-only-what-they-need",
+     "t": {
+      "en": "Forms ask only for what they need, and consent is unticked",
+      "he": "טפסים מבקשים רק את מה שצריך, ותיבות הסכמה לא מסומנות מראש"
+     },
+     "d": {
+      "en": "Every field has a reason you could say out loud. Marketing consent is its own checkbox, separate from accepting the terms, and never ticked by default.",
+      "he": "לכל שדה יש סיבה שאפשר להגיד בקול. הסכמה לדיוור היא תיבה נפרדת, לא חלק מאישור התנאים, ואף פעם לא מסומנת מראש."
+     }
+    },
+    {
+     "k": "terms-and-real-business-details",
+     "t": {
+      "en": "Terms of use and real business details are published",
+      "he": "תנאי שימוש ופרטי עסק אמיתיים מפורסמים"
+     },
+     "d": {
+      "en": "A terms page, plus who is behind the site: legal name, business number where required, a contact email that someone actually reads. Payment providers and app stores check this before approving you.",
+      "he": "דף תנאי שימוש, וגם מי עומד מאחורי האתר: שם משפטי, מספר עוסק או חברה איפה שנדרש, ואימייל ליצירת קשר שמישהו באמת קורא. ספקי תשלום וחנויות אפליקציות בודקים את זה לפני שהם מאשרים אתכם."
+     }
+    },
+    {
+     "k": "refund-and-shipping-policies",
+     "t": {
+      "en": "If you sell: refund, returns and shipping policies",
+      "he": "אם אתם מוכרים: מדיניות החזרים, ביטולים ומשלוחים"
+     },
+     "d": {
+      "en": "Say how to cancel, how long a refund takes, and for physical goods where you ship, how long it takes and what it costs. Consumer law usually sets a minimum, so check it for your buyers' country.",
+      "he": "כתבו איך מבטלים, כמה זמן לוקח החזר כספי, ובמוצרים פיזיים לאן שולחים, כמה זמן זה לוקח וכמה זה עולה. חוקי הגנת הצרכן בדרך כלל קובעים מינימום, אז תבדקו אותו לפי המדינה של הקונים."
+     }
+    },
+    {
+     "k": "accessibility-basics-pass",
+     "t": {
+      "en": "Accessibility basics pass",
+      "he": "בסיס הנגישות עובר"
+     },
+     "d": {
+      "en": "Every image has alt text, every button and link says what it does, the whole site works with the keyboard alone, and text has enough contrast. Run Lighthouse's accessibility audit and fix everything it lists.",
+      "he": "לכל תמונה יש alt text, כל כפתור וקישור אומר מה הוא עושה, כל האתר עובד רק עם מקלדת, ולטקסט יש מספיק ניגודיות. הריצו את בדיקת הנגישות של Lighthouse ותקנו כל מה שהיא מציגה."
+     }
+    },
+    {
+     "k": "accessibility-statement",
+     "t": {
+      "en": "An accessibility statement page",
+      "he": "דף הצהרת נגישות"
+     },
+     "d": {
+      "en": "In Israel it is a legal requirement for most sites, and the EU now requires accessibility for many online services too. Say what level you meet, what is known not to work yet, and who to contact.",
+      "he": "בישראל זו דרישה חוקית לרוב האתרים, וגם האיחוד האירופי מחייב היום נגישות בהרבה שירותים אונליין. כתבו איזו רמה אתם עומדים בה, מה ידוע שעדיין לא עובד, ולמי פונים."
+     }
+    },
+    {
+     "k": "you-own-every-image-and-text",
+     "t": {
+      "en": "You have the rights to every image and text",
+      "he": "יש לכם זכויות על כל תמונה וטקסט"
+     },
+     "d": {
+      "en": "An image found on Google is not free to use. Use your own, licensed stock, or images you generated under terms that allow commercial use, and keep a note of where each one came from.",
+      "he": "תמונה שמצאתם בגוגל היא לא חינם לשימוש. השתמשו בתמונות שלכם, בתמונות stock ברישיון, או בתמונות שיצרתם בתנאים שמתירים שימוש מסחרי, ותרשמו מאיפה כל אחת הגיעה."
+     }
+    },
+    {
+     "k": "no-fake-reviews",
+     "t": {
+      "en": "No fake reviews, testimonials or numbers",
+      "he": "בלי ביקורות, המלצות או מספרים מזויפים"
+     },
+     "d": {
+      "en": "The AI's placeholder \"Sarah K., 5 stars\" and \"10,000 happy customers\" must go before launch. Invented reviews are illegal in many countries, and visitors can tell.",
+      "he": "ה-placeholder של ה-AI, \"שרה כ., 5 כוכבים\" ו-\"10,000 לקוחות מרוצים\", חייב לרדת לפני ההשקה. ביקורות מומצאות אסורות בחוק בהרבה מדינות, ומבקרים מרגישים את זה."
+     }
+    },
+    {
+     "k": "works-on-a-real-phone",
+     "t": {
+      "en": "It works on a real phone",
+      "he": "זה עובד בטלפון אמיתי"
+     },
+     "d": {
+      "en": "Not only in DevTools device mode: open it on an actual phone, on mobile data. Sign up, pay, fill every form, and check nothing scrolls sideways and every button is big enough for a thumb.",
+      "he": "לא רק ב-device mode של DevTools: פתחו את האתר בטלפון אמיתי, על גלישה סלולרית. תירשמו, תשלמו, תמלאו כל טופס, ותבדקו ששום דבר לא נגלל הצידה ושכל כפתור גדול מספיק לאגודל."
+     }
+    },
+    {
+     "k": "helpful-404-and-error-pages",
+     "t": {
+      "en": "A helpful 404 and error page",
+      "he": "דף 404 ודף שגיאה שעוזרים"
+     },
+     "d": {
+      "en": "A broken link or a crash should land on your own page, in your design, with a way back home, not a blank screen or the hosting provider's default.",
+      "he": "קישור שבור או קריסה צריכים להגיע לדף שלכם, בעיצוב שלכם, עם דרך חזרה לדף הבית, ולא למסך ריק או לדף ברירת המחדל של ספק האחסון."
+     }
+    }
+   ]
+  }
  },
  "ARCHITECTURES": {
   "id": "architectures",

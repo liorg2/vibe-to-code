@@ -26,7 +26,9 @@ export function ChecklistClient() {
     </div>
   );
 
-  const okDone = C.do.filter((x) => ticked.has(`do:${x.k}`)).length;
+  const keys = [...C.do.map((x) => `do:${x.k}`), ...C.live.items.map((x) => `live:${x.k}`)];
+  const okDone = keys.filter((k) => ticked.has(k)).length;
+  const liveDone = C.live.items.filter((x) => ticked.has(`live:${x.k}`)).length;
 
   return (
     <>
@@ -34,7 +36,7 @@ export function ChecklistClient() {
         <div className="mhead">
           <div className="ic">{C.icon}</div>
           <div><h2>{C.title[lang]}</h2></div>
-          <div className="n">{okDone}/{C.do.length}</div>
+          <div className="n">{okDone}/{keys.length}</div>
         </div>
         <p className="mblurb">{C.blurb[lang]}</p>
       </section>
@@ -49,6 +51,11 @@ export function ChecklistClient() {
           <p className="sub">{t("neverSub")}</p>
           {C.dont.map((x) => item(x, `no:${x.k}`, true))}
         </div>
+      </div>
+      <div className="col ok live">
+        <h3>🚀 {C.live.title[lang]} <span className="n">{liveDone}/{C.live.items.length}</span></h3>
+        <p className="sub">{C.live.sub[lang]}</p>
+        {C.live.items.map((x) => item(x, `live:${x.k}`, false))}
       </div>
     </>
   );

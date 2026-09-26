@@ -5,12 +5,12 @@ import { fromRows, toRows } from "./progress";
 
 const m = MODULES[0];
 const done = [`${m.id}:${m.terms[0].k}`, `${m.id}:${m.terms[1].k}`, "ground:nope", "junk"];
-const ticked = [`do:${CHECKLIST.do[0].k}`, "do:nope", "build:ground:0", "build:ground:99", "build:nope:0"];
+const ticked = [`do:${CHECKLIST.do[0].k}`, `live:${CHECKLIST.live.items[0].k}`, "do:nope", "build:ground:0", "build:ground:99", "build:nope:0"];
 
 const rows = toRows(done, ticked);
 // unknown keys never reach the table
 assert.deepStrictEqual(fromRows(rows).done.sort(), done.slice(0, 2).sort());
-assert.deepStrictEqual(fromRows(rows).ticked.sort(), [`do:${CHECKLIST.do[0].k}`, "build:ground:0"].sort());
+assert.deepStrictEqual(fromRows(rows).ticked.sort(), [`do:${CHECKLIST.do[0].k}`, `live:${CHECKLIST.live.items[0].k}`, "build:ground:0"].sort());
 // one roll-up row per lesson, carrying the percentage
 const roll = rows.find((r) => r.lesson === m.id && r.topic === "")!;
 assert.strictEqual(roll.pct, Math.round((2 / m.terms.length) * 100));

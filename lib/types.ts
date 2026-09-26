@@ -85,6 +85,8 @@ export type Course = {
     blurb: L10n;
     do: CheckItem[];
     dont: CheckItem[];
+    /** launch-day basics: legal pages, consent, accessibility; ticked as `live:<k>` */
+    live: { title: L10n; sub: L10n; items: CheckItem[] };
   };
   ARCHITECTURES: {
     id: string;
