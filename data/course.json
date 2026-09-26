@@ -567,6 +567,22 @@
      }
     },
     {
+     "k": "variables-and-functions",
+     "lvl": "A",
+     "t": {
+      "en": "Variables, functions & imports",
+      "he": "Variables, functions & imports"
+     },
+     "d": {
+      "en": "A variable is a named box holding a value. A function is a named, reusable set of steps: values go in as arguments, and one result comes back with return. An import pulls a function in from another file, which is how a project is split into files that use each other.",
+      "he": "variable הוא קופסה עם שם שמחזיקה ערך. function היא רצף צעדים עם שם שאפשר להפעיל שוב ושוב: ערכים נכנסים כ-arguments, ותוצאה אחת חוזרת עם return. import מביא function מקובץ אחר, וככה פרויקט מתחלק לקבצים שמשתמשים זה בזה."
+     },
+     "w": {
+      "en": "Almost every AI change is \"edited this function\" or \"added this variable\", and almost every error message names one. You don't need to write them, only to read a few lines and say what goes in, what comes out, and which file it came from.",
+      "he": "כמעט כל שינוי של AI הוא \"ערכתי את ה-function הזו\" או \"הוספתי variable\", וכמעט כל הודעת שגיאה מזכירה אחד מהם. לא צריך לכתוב אותם. צריך לקרוא כמה שורות ולהגיד מה נכנס, מה יוצא, ומאיזה קובץ זה הגיע."
+     }
+    },
+    {
      "k": "runtime",
      "lvl": "A",
      "t": {
@@ -618,16 +634,16 @@
      "k": "process-and-port-in-use",
      "lvl": "B",
      "t": {
-      "en": "Process & port already in use",
-      "he": "Process & port already in use"
+      "en": "Process (a running program)",
+      "he": "Process (a running program)"
      },
      "d": {
-      "en": "A process is one running program. A port is a numbered door it listens on, and only one process can hold each door.",
-      "he": "process הוא תוכנה אחת שרצה. port הוא דלת ממוספרת שהיא מאזינה בה, ורק process אחד יכול להחזיק כל דלת."
+      "en": "A process is one running program, with its own number, a PID, until it stops. A dev server is a process that keeps running and holds a port, a numbered door the browser knocks on. Only one process can hold each door.",
+      "he": "process הוא תוכנה אחת שרצה, עם מספר משלה, PID, עד שהיא נעצרת. dev server הוא process שממשיך לרוץ ומחזיק port, דלת ממוספרת שהדפדפן דופק עליה. רק process אחד יכול להחזיק כל דלת."
      },
      "w": {
-      "en": "\"Port 3000 already in use\" usually means your own app is still running in another window. Find it and stop it, don't just pick a new port.",
-      "he": "\"port 3000 already in use\" בדרך כלל אומר שהאפליקציה שלכם עדיין רצה בחלון אחר. תמצאו אותה ותעצרו אותה, במקום לבחור port חדש."
+      "en": "Ctrl+C stops the one in front of you; closing the window often doesn't. That is why \"port 3000 already in use\" usually means an old copy of your own app is still running. Find it and stop it, don't just pick a new port.",
+      "he": "Ctrl+C עוצר את מה שרץ מולכם. סגירת החלון הרבה פעמים לא עוצרת. בגלל זה \"port 3000 already in use\" בדרך כלל אומר שעותק ישן של האפליקציה שלכם עדיין רץ. תמצאו אותו ותעצרו אותו, במקום לבחור port חדש."
      }
     },
     {
@@ -958,8 +974,8 @@
       "he": "localhost תמיד אומר המחשב הזה. פורט הוא דלת ממוספרת עליו. DNS הוא ספר הטלפונים של האינטרנט, שהופך שם כמו example.com לכתובת שעליה יושב הפורט."
      },
      "w": {
-      "en": "\"Port already in use\" means yesterday's server never died; a localhost URL breaks the moment you deploy, since localhost on a server means the server itself. Keep the base URL in one config value, and give a DNS change hours to settle before you trust it.",
-      "he": "\"port already in use\" אומר שהשרת מאתמול לא באמת מת. כתובת localhost נשברת ברגע שאתם עושים deploy, כי localhost בשרת אומר את השרת עצמו. שמרו את כתובת הבסיס בערך קונפיגורציה אחד, ותנו לשינוי DNS כמה שעות להתייצב לפני שסומכים עליו."
+      "en": "A localhost URL breaks the moment you deploy, since localhost on a server means the server itself. Keep the base URL in one config value, and give a DNS change hours to settle before you trust it.",
+      "he": "כתובת localhost נשברת ברגע שאתם עושים deploy, כי localhost בשרת אומר את השרת עצמו. שמרו את כתובת הבסיס בערך קונפיגורציה אחד, ותנו לשינוי DNS כמה שעות להתייצב לפני שסומכים עליו."
      }
     },
     {
@@ -1014,6 +1030,22 @@
      "w": {
       "en": "TypeScript over JavaScript catches a whole class of AI-generated mistakes before a user does; it's really a question of when your mistakes get caught, at build time or at 3am, not which language is \"better\".",
       "he": "TypeScript במקום JavaScript תופס משפחה שלמה של טעויות שה-AI מייצר, לפני שמשתמש תופס אותן. זו בעצם שאלה של מתי הטעויות שלכם נתפסות, בזמן build או בשלוש בלילה, לא איזו שפה \"טובה יותר\"."
+     }
+    },
+    {
+     "k": "errors-and-null",
+     "lvl": "A",
+     "t": {
+      "en": "Errors, exceptions & null",
+      "he": "Errors, exceptions & null"
+     },
+     "d": {
+      "en": "An exception is a program saying \"I can't continue\": it stops the current work and jumps to the nearest try/catch that handles it, or the app crashes. null and undefined mean \"no value here\", and using one as if it were a real value is the most common crash there is.",
+      "he": "exception היא הדרך של תוכנה להגיד \"אני לא יכולה להמשיך\": היא עוצרת את העבודה הנוכחית וקופצת ל-try/catch הקרוב שמטפל בה, או שהאפליקציה קורסת. null ו-undefined אומרים \"אין כאן ערך\", ולהשתמש באחד מהם כאילו הוא ערך אמיתי זו הקריסה הכי נפוצה שיש."
+     },
+     "w": {
+      "en": "\"Cannot read properties of undefined\" is that crash: the code expected a user or an answer and got nothing. AI code either skips the case where something is missing, or wraps everything in a catch that silently swallows the error. Ask what happens when each value is missing, and never accept an empty catch.",
+      "he": "\"Cannot read properties of undefined\" היא הקריסה הזו: הקוד ציפה למשתמש או לתשובה וקיבל כלום. קוד של AI או מדלג על המקרה שבו משהו חסר, או עוטף הכול ב-catch שבולע את השגיאה בשקט. שאלו מה קורה כשכל ערך חסר, ואל תקבלו אף פעם catch ריק."
      }
     },
     {
@@ -1773,6 +1805,22 @@
      }
     },
     {
+     "k": "linter-and-formatter",
+     "lvl": "B",
+     "t": {
+      "en": "Linter, formatter & type check",
+      "he": "Linter, formatter & type check"
+     },
+     "d": {
+      "en": "Automatic checks that read your code without running it. A formatter (Prettier) rewrites spacing and quotes into one house style; a linter (ESLint, Ruff) flags suspicious patterns like an unused variable or a missing await; a type check (tsc) proves every value is used as its declared type.",
+      "he": "בדיקות אוטומטיות שקוראות את הקוד בלי להריץ אותו. formatter (Prettier) משכתב רווחים ומירכאות לסגנון אחד של הבית. linter (ESLint, Ruff) מסמן דפוסים חשודים, כמו variable שלא בשימוש או await חסר. type check (tsc) מוכיח שכל ערך משמש לפי ה-type שהוגדר לו."
+     },
+     "w": {
+      "en": "They take seconds and catch a whole class of AI slips before any test runs. Run all three on every push and before every commit, keep formatting changes in a commit of their own, and never let an agent silence a warning just to make it go away.",
+      "he": "הן לוקחות שניות ותופסות סוג שלם של פספוסי AI עוד לפני שבדיקה כלשהי רצה. הריצו את שלושתן בכל push ולפני כל commit, שמרו שינויי formatting ב-commit נפרד, ואל תתנו אף פעם ל-agent להשתיק אזהרה רק כדי שתיעלם."
+     }
+    },
+    {
      "k": "refactoring",
      "lvl": "A",
      "t": {
@@ -1956,8 +2004,8 @@
       "he": "אף פעם לא מערבבים קלט של משתמש לתוך query או מחרוזת פקודה. משתמשים בפרמטרים ומאמתים בשרת."
      },
      "w": {
-      "en": "Client-side validation is UX. Server-side validation is security. You need both, and only one is optional.",
-      "he": "validation בצד הלקוח הוא UX. validation בשרת הוא אבטחה. צריך את שניהם, ורק אחד מהם אופציונלי."
+      "en": "A search box whose text is pasted into SQL lets anyone read or delete your whole database with one crafted string. Ask the AI for parameterized queries everywhere, and to show you any query or shell command it builds by joining strings.",
+      "he": "תיבת חיפוש שהטקסט שלה מודבק לתוך SQL מאפשרת לכל אחד לקרוא או למחוק את כל מסד הנתונים עם מחרוזת אחת מתוכננת. בקשו מה-AI parameterized queries בכל מקום, ושיראה לכם כל query או פקודת shell שהוא בונה מחיבור מחרוזות."
      }
     },
     {
@@ -2006,6 +2054,22 @@
      "w": {
       "en": "AI happily invents package names that don't exist, and attackers register exactly those names; AI also doesn't know about an advisory published last week. Check any suggested package exists and is maintained, then turn on npm audit or Dependabot and actually merge its boring update PRs.",
       "he": "AI ממציא בשמחה שמות חבילות שלא קיימות, ותוקפים רושמים בדיוק את השמות האלה; ה-AI גם לא מכיר אזהרה שפורסמה בשבוע שעבר. בדקו שכל חבילה מוצעת קיימת ומתוחזקת, ואז הפעילו npm audit או Dependabot ותעשו merge ל-PRs המשעממים שלו."
+     }
+    },
+    {
+     "k": "personal-data-and-privacy",
+     "lvl": "B",
+     "t": {
+      "en": "Personal data & privacy (GDPR)",
+      "he": "Personal data & privacy (GDPR)"
+     },
+     "d": {
+      "en": "Personal data is anything that points to a real person: a name, an email, an IP address, a location, a photo. Privacy laws such as GDPR say you may collect only what you need, must tell people what you do with it, and must let them see or delete it.",
+      "he": "מידע אישי הוא כל דבר שמצביע על אדם אמיתי: שם, אימייל, כתובת IP, מיקום, תמונה. חוקי פרטיות כמו GDPR אומרים שמותר לאסוף רק את מה שצריך, שחייבים להגיד לאנשים מה עושים עם זה, ושחייבים לתת להם לראות את זה או למחוק את זה."
+     },
+     "w": {
+      "en": "Your first real user can ask \"what do you store about me?\" or \"delete my account\", and in Europe, California and many other places you are legally required to answer. AI scaffolds collect and log far more than they need. Keep a list of every place personal data lives, logs and third-party tools included, and build account deletion early.",
+      "he": "המשתמש האמיתי הראשון שלכם יכול לשאול \"מה אתם שומרים עליי?\" או \"תמחקו לי את החשבון\", ובאירופה, בקליפורניה ובעוד הרבה מקומות אתם מחויבים בחוק לענות. תבניות של AI אוספות ורושמות ב-logs הרבה יותר ממה שצריך. החזיקו רשימה של כל מקום שבו יש מידע אישי, כולל logs וכלים של צד שלישי, ובנו מחיקת חשבון מוקדם."
      }
     }
    ]
@@ -3792,10 +3856,6 @@
    "en": "A diff is computed, not written. Git takes two versions of a file, finds the longest stretches they still share, and prints only what sits between them: lines that exist only in the old version with a minus, lines that exist only in the new one with a plus, and a few unchanged lines of context so a reader can find the spot. A line that changed at all appears twice, once removed and once added, which is why a single edited character still shows as two lines.\n\nDiffs are the unit of review because they are honest. A commit message is written by whoever committed; a pull request description is written by whoever wants it merged; an AI's summary of its own work is written by the thing being checked. The diff is produced by the tool, from the files, and it does not know how to flatter. A reviewer who reads the description and the diff and finds they disagree has learned the single most useful thing about the change.\n\nThe practical habit is to read a diff in a fixed order. Deletions first, because removed code is the part nobody mentions and the part most likely to have been a guard, a check or a default that mattered. Then changed values: a timeout, a limit, a flag flipped from false to true. Then new files and new dependencies, because each is a permanent addition to what you own. Then, last, the added lines that were the point of the change. Reading in that order is slower for the first week and then becomes the only way you can read one.\n\nSize is the other lever. Past a few hundred lines, human attention samples instead of reading, and a diff nobody read is not a review, it is a signature. Ask the AI for changes small enough that the diff fits on a screen or two, and for mechanical edits, a rename, a formatter pass, a moved file, in a commit of their own, so the ten lines that matter are not hidden in a thousand that do not.",
    "he": "diff לא כותבים, מחשבים אותו. Git לוקח שתי גרסאות של קובץ, מוצא את הקטעים הארוכים ביותר שעדיין משותפים להן, ומדפיס רק את מה שביניהם: שורות שקיימות רק בגרסה הישנה עם מינוס, שורות שקיימות רק בחדשה עם פלוס, וכמה שורות הקשר ללא שינוי כדי שהקורא ימצא את המקום. שורה שהשתנתה בכלל מופיעה פעמיים, פעם כמחיקה ופעם כהוספה. בגלל זה גם תו אחד שנערך מוצג כשתי שורות.\n\ndiff הוא יחידת ה-review כי הוא כן. הודעת commit נכתבת על ידי מי שעשה את ה-commit. תיאור של pull request נכתב על ידי מי שרוצה שימזגו אותו. סיכום של AI לעבודה של עצמו נכתב על ידי הדבר שבודקים. את ה-diff מייצר הכלי, מתוך הקבצים, והוא לא יודע להחמיא. מי שקורא את התיאור ואת ה-diff ומגלה שהם לא מסכימים, למד את הדבר הכי שימושי שיש על השינוי.\n\nההרגל המעשי הוא לקרוא diff בסדר קבוע. קודם מחיקות, כי קוד שנמחק הוא החלק שאף אחד לא מזכיר, והחלק שהכי סביר שהיה guard, בדיקה או ברירת מחדל שהיו חשובים. אחר כך ערכים שהשתנו: timeout, מגבלה, דגל שעבר מ-false ל-true. אחר כך קבצים חדשים ו-dependencies חדשות, כי כל אחד מהם הוא תוספת קבועה למה שאתם אחראים עליו. ורק בסוף, השורות שנוספו שהיו מטרת השינוי. לקרוא בסדר הזה איטי יותר בשבוע הראשון, ואחר כך זו הדרך היחידה שבה תוכלו לקרוא diff.\n\nהגודל הוא המנוף השני. מעבר לכמה מאות שורות, תשומת לב אנושית דוגמת במקום לקרוא, ו-diff שאף אחד לא קרא הוא לא review, הוא חתימה. בקשו מה-AI שינויים קטנים מספיק כדי שה-diff ייכנס במסך או שניים, ועריכות מכניות, שינוי שם, מעבר formatter, קובץ שהוזז, ב-commit משלהן, כדי שעשר השורות שחשובות לא יתחבאו בין אלף שלא."
   },
-  "Process & port already in use": {
-   "en": "Every program you start becomes a process, and the operating system gives it a number, the PID, until it exits. A process can outlive the window you think owns it: a terminal closed with the X, an editor that crashed, a dev server an AI agent started in the background. Ports are how network programs are found on one machine. A server asks the system for a port number and, if it is free, keeps it for as long as it runs. If another process already holds it, the request fails straight away with \"address already in use\". So the error is a question about processes, not about your code: what is still running, and should it be?\n\nA founder asks her assistant to start the app, and it runs npm run dev in a terminal she never looks at. Two days later, in a new chat, a second agent gets \"port 3000 already in use\" and, instead of asking, starts the app on 3001. Her bookmark still says localhost:3000, and after sign-in the site sends her back to 3000, which is the old copy, started from an older folder of the project. Her changes seem to vanish every time she logs in. One command, lsof -i :3000, shows a node process with PID 48121, started on Monday. Stopping it with kill 48121 and starting the app once, on 3000, ends a morning of confusion. The same check finds four more leftover node processes, holding 1.2 GB of memory between them.\n\nWhen an agent hits a busy port, ask it to stop and report before it changes anything. Which process holds the port (lsof -i :3000 on Mac and Linux, netstat -ano | findstr :3000 on Windows), what is its PID, and when did it start? Is it your app, or something else, like another project or a database? Stopping your own old copy is safe. Stopping a process you don't recognise is not, so ask first. And be wary of the quick fix of changing the port in the config: sign-in redirects, API addresses and bookmarks usually still point at the old number.",
-   "he": "כל תוכנה שמפעילים הופכת ל-process, ומערכת ההפעלה נותנת לה מספר, PID, עד שהיא נסגרת. process יכול להמשיך לחיות אחרי החלון שנראה לכם שהוא שייך אליו: טרמינל שנסגר ב-X, עורך קוד שקרס, dev server שסוכן AI הפעיל ברקע. ports הם הדרך שבה מוצאים תוכנות רשת על אותו מחשב. שרת מבקש מהמערכת מספר port, ואם הוא פנוי, מחזיק בו כל עוד הוא רץ. אם process אחר כבר מחזיק בו, הבקשה נכשלת מיד עם \"address already in use\". כלומר השגיאה היא שאלה על processes, לא על הקוד שלכם: מה עדיין רץ, והאם הוא אמור לרוץ?\n\nמייסדת מבקשת מהעוזר להפעיל את האפליקציה, והוא מריץ npm run dev בטרמינל שהיא אף פעם לא מסתכלת עליו. יומיים אחר כך, בצ'אט חדש, סוכן שני מקבל \"port 3000 already in use\" ובמקום לשאול, מפעיל את האפליקציה על 3001. ה-bookmark שלה עדיין על localhost:3000, ואחרי התחברות האתר מחזיר אותה ל-3000, שם רץ העותק הישן, מתיקייה ישנה של הפרויקט. השינויים שלה נראים כאילו הם נעלמים בכל פעם שהיא מתחברת. פקודה אחת, lsof -i :3000, מראה process של node עם PID 48121, שהופעל ביום שני. עצירה שלו עם kill 48121 והפעלה אחת של האפליקציה, על 3000, מסיימות בוקר של בלבול. אותה בדיקה מוצאת עוד ארבעה processes של node שנשכחו, שמחזיקים ביחד 1.2 GB זיכרון.\n\nכשסוכן נתקל ב-port תפוס, תבקשו ממנו לעצור ולדווח לפני שהוא משנה משהו. איזה process מחזיק את ה-port (lsof -i :3000 ב-Mac וב-Linux, netstat -ano | findstr :3000 ב-Windows), מה ה-PID שלו, ומתי הוא הופעל? זו האפליקציה שלכם, או משהו אחר, כמו פרויקט אחר או מסד נתונים? לעצור עותק ישן שלכם זה בטוח. לעצור process שאתם לא מזהים זה לא, אז תשאלו קודם. ותיזהרו מהתיקון המהיר של שינוי ה-port בהגדרות: הפניות אחרי התחברות, כתובות API ו-bookmarks בדרך כלל עדיין מצביעים על המספר הישן."
-  },
   "File permissions": {
    "en": "Every file on Mac and Linux carries an owner, a group, and three sets of three switches: read, write and execute, for the owner, for the group, and for everyone else. ls -l prints them as a string like -rwxr-xr--. The first three letters after the dash are the owner's, the next three the group's, the last three everyone's, and a dash means off. Execute is the one that surprises people: a script is just text until it is marked runnable, which is why ./deploy.sh can fail with \"permission denied\" while bash deploy.sh works. Windows has the same idea under a different name, access lists you see in a file's Security tab. sudo is not a permission. It runs one command as the administrator, who skips most of these checks.\n\nA student follows an AI's steps to install a command-line tool for the whole machine. The install fails with \"EACCES: permission denied\" on a system folder. The assistant suggests sudo npm install -g, and it works. A week later, a normal npm install in her project fails with the same error: the sudo install ran as the administrator and left files in her own home folder that she no longer owns. The next suggestion is chmod -R 777, which would make those files writable by any program on the machine. Instead, ls -l shows the owner is root. One command gives the files back to her, sudo chown -R maya ~/.npm, and setting npm up to install into her own folder means it never needs sudo again.\n\nWhen an AI hits \"permission denied\", ask which file and which switch: read, write or execute. Ask who owns it (ls -l) and who is running the command (whoami). Then look for the smallest fix: chmod +x on one script you wrote, or giving back files that should have been yours. Say no to chmod 777, and to sudo in front of package installs, by default. Be most careful when an agent proposes sudo together with rm, or with a path outside your project. A permission error on a system folder usually means the tool should be installed a different way, not forced.",
    "he": "כל קובץ ב-Mac וב-Linux נושא בעלים, קבוצה, ושלוש קבוצות של שלושה מתגים: קריאה, כתיבה והרצה, לבעלים, לקבוצה ולכל השאר. ls -l מדפיס אותם כמחרוזת כמו -rwxr-xr--. שלוש האותיות הראשונות אחרי המקף שייכות לבעלים, השלוש הבאות לקבוצה, השלוש האחרונות לכולם, ומקף אומר כבוי. הרצה היא זו שמפתיעה: script הוא סתם טקסט עד שמסמנים אותו כקובץ שאפשר להריץ, ולכן ./deploy.sh יכול להיכשל עם \"permission denied\" בזמן ש-bash deploy.sh עובד. ב-Windows יש אותו רעיון בשם אחר, רשימות גישה שרואים בלשונית Security של קובץ. sudo הוא לא הרשאה. הוא מריץ פקודה אחת כמנהל המערכת, שמדלג על רוב הבדיקות האלה.\n\nסטודנטית עוקבת אחרי הוראות של AI כדי להתקין כלי שורת פקודה לכל המחשב. ההתקנה נכשלת עם \"EACCES: permission denied\" על תיקיית מערכת. העוזר מציע sudo npm install -g, וזה עובד. שבוע אחר כך, npm install רגיל בפרויקט שלה נכשל באותה שגיאה: ההתקנה עם sudo רצה כמנהל המערכת והשאירה בתיקיית הבית שלה קבצים שכבר לא שייכים לה. ההצעה הבאה היא chmod -R 777, שהייתה הופכת את הקבצים האלה לפתוחים לכתיבה לכל תוכנה על המחשב. במקום זה, ls -l מראה שהבעלים הוא root. פקודה אחת מחזירה לה את הקבצים, sudo chown -R maya ~/.npm, והגדרה של npm להתקין לתיקייה שלה אומרת שהוא לא יצטרך sudo שוב.\n\nכש-AI נתקל ב-\"permission denied\", תשאלו איזה קובץ ואיזה מתג: קריאה, כתיבה או הרצה. תשאלו למי הקובץ שייך (ls -l) ומי מריץ את הפקודה (whoami). ואז תחפשו את התיקון הכי קטן: chmod +x על script אחד שכתבתם, או החזרה של קבצים שהיו אמורים להיות שלכם. כברירת מחדל, תגידו לא ל-chmod 777 ול-sudo לפני התקנת חבילות. הכי חשוב להיזהר כשסוכן מציע sudo יחד עם rm, או עם נתיב מחוץ לפרויקט. שגיאת הרשאה על תיקיית מערכת בדרך כלל אומרת שצריך להתקין את הכלי בדרך אחרת, לא בכוח."
@@ -4139,6 +4199,26 @@
   "Demo vs production": {
    "en": "On 18 August 2026 two teams at the same company shipped a referrals feature. Team A vibe-coded it in 90 minutes, one prompt, 11 files, merged straight from the chat summary. That evening a self-referral loop paid ₪200 to the same account 140 times, ₪28,000, before anyone noticed the wallet table climbing. Team B spent 3 hours: the trade-off first, then a unique constraint on referrer and referee, then the credit job, each with a test. They shipped the next morning, and the loop couldn't land because the constraint rejected it. Same agent, same model, different ritual, finance clawed back Team A's credits over four days and 60 tickets, and Team B's code is still running.\n\nThat unique constraint is exactly the kind of thing a happy-path demo never exercises, because a demo doesn't try to refer itself, doesn't send an empty payload, and doesn't run under load. Before you call something production-ready, ask the agent to point at the exact line that checks ownership on the server, the exact place secrets are kept out of the client bundle, and the exact alert that fires on a real failure. If it can't point at a line, that item isn't done, no matter how the demo went.",
    "he": "ב-18 באוגוסט 2026 שני צוותים באותה חברה שחררו feature של הפניות. צוות A עשה vibe-code ב-90 דקות, prompt אחד, 11 קבצים, merge ישר מסיכום הצ'אט. באותו ערב לולאה של הפניה עצמית שילמה ₪200 לאותו חשבון 140 פעמים, ₪28,000, לפני שמישהו שם לב שטבלת הארנק מטפסת. צוות B השקיע 3 שעות: קודם ה-trade-off, אחר כך unique constraint על המפנה והמופנה, אחר כך job הזיכוי, כל אחד עם test. הם שחררו למחרת בבוקר, והלולאה לא יכלה לנחות כי ה-constraint דחה אותה. אותו סוכן, אותו מודל, טקס אחר, הכספים גבו בחזרה את הזיכויים של צוות A לאורך ארבעה ימים ו-60 פניות, והקוד של צוות B עדיין רץ.\n\nה-unique constraint הזה הוא בדיוק הסוג של דבר שדמו של happy path אף פעם לא מפעיל, כי דמו לא מנסה להפנות את עצמו, לא שולח payload ריק, ולא רץ תחת עומס. לפני שאתם קוראים למשהו מוכן ל-production, בקשו מהסוכן להצביע על השורה המדויקת שבודקת בעלות בצד השרת, המקום המדויק שבו סודות נשמרים מחוץ ל-client bundle, וההתראה המדויקת שיורה על כשל אמיתי. אם הוא לא יכול להצביע על שורה, הסעיף הזה לא גמור, לא משנה איך היה הדמו."
+  },
+  "Process (a running program)": {
+   "en": "Every program you start becomes a process, and the operating system gives it a number, the PID, until it exits. A process can outlive the window you think owns it: a terminal closed with the X, an editor that crashed, a dev server an AI agent started in the background. Ports are how network programs are found on one machine. A server asks the system for a port number and, if it is free, keeps it for as long as it runs. If another process already holds it, the request fails straight away with \"address already in use\". So the error is a question about processes, not about your code: what is still running, and should it be?\n\nA founder asks her assistant to start the app, and it runs npm run dev in a terminal she never looks at. Two days later, in a new chat, a second agent gets \"port 3000 already in use\" and, instead of asking, starts the app on 3001. Her bookmark still says localhost:3000, and after sign-in the site sends her back to 3000, which is the old copy, started from an older folder of the project. Her changes seem to vanish every time she logs in. One command, lsof -i :3000, shows a node process with PID 48121, started on Monday. Stopping it with kill 48121 and starting the app once, on 3000, ends a morning of confusion. The same check finds four more leftover node processes, holding 1.2 GB of memory between them.\n\nWhen an agent hits a busy port, ask it to stop and report before it changes anything. Which process holds the port (lsof -i :3000 on Mac and Linux, netstat -ano | findstr :3000 on Windows), what is its PID, and when did it start? Is it your app, or something else, like another project or a database? Stopping your own old copy is safe. Stopping a process you don't recognise is not, so ask first. And be wary of the quick fix of changing the port in the config: sign-in redirects, API addresses and bookmarks usually still point at the old number.",
+   "he": "כל תוכנה שמפעילים הופכת ל-process, ומערכת ההפעלה נותנת לה מספר, PID, עד שהיא נסגרת. process יכול להמשיך לחיות אחרי החלון שנראה לכם שהוא שייך אליו: טרמינל שנסגר ב-X, עורך קוד שקרס, dev server שסוכן AI הפעיל ברקע. ports הם הדרך שבה מוצאים תוכנות רשת על אותו מחשב. שרת מבקש מהמערכת מספר port, ואם הוא פנוי, מחזיק בו כל עוד הוא רץ. אם process אחר כבר מחזיק בו, הבקשה נכשלת מיד עם \"address already in use\". כלומר השגיאה היא שאלה על processes, לא על הקוד שלכם: מה עדיין רץ, והאם הוא אמור לרוץ?\n\nמייסדת מבקשת מהעוזר להפעיל את האפליקציה, והוא מריץ npm run dev בטרמינל שהיא אף פעם לא מסתכלת עליו. יומיים אחר כך, בצ'אט חדש, סוכן שני מקבל \"port 3000 already in use\" ובמקום לשאול, מפעיל את האפליקציה על 3001. ה-bookmark שלה עדיין על localhost:3000, ואחרי התחברות האתר מחזיר אותה ל-3000, שם רץ העותק הישן, מתיקייה ישנה של הפרויקט. השינויים שלה נראים כאילו הם נעלמים בכל פעם שהיא מתחברת. פקודה אחת, lsof -i :3000, מראה process של node עם PID 48121, שהופעל ביום שני. עצירה שלו עם kill 48121 והפעלה אחת של האפליקציה, על 3000, מסיימות בוקר של בלבול. אותה בדיקה מוצאת עוד ארבעה processes של node שנשכחו, שמחזיקים ביחד 1.2 GB זיכרון.\n\nכשסוכן נתקל ב-port תפוס, תבקשו ממנו לעצור ולדווח לפני שהוא משנה משהו. איזה process מחזיק את ה-port (lsof -i :3000 ב-Mac וב-Linux, netstat -ano | findstr :3000 ב-Windows), מה ה-PID שלו, ומתי הוא הופעל? זו האפליקציה שלכם, או משהו אחר, כמו פרויקט אחר או מסד נתונים? לעצור עותק ישן שלכם זה בטוח. לעצור process שאתם לא מזהים זה לא, אז תשאלו קודם. ותיזהרו מהתיקון המהיר של שינוי ה-port בהגדרות: הפניות אחרי התחברות, כתובות API ו-bookmarks בדרך כלל עדיין מצביעים על המספר הישן."
+  },
+  "Variables, functions & imports": {
+   "en": "A program is mostly four things, repeated: values with names, decisions, repetition, and named blocks of steps. A variable binds a name to a value, const price = 30, so the rest of the code can say price instead of 30, and changing it in one place changes it everywhere it is used. Values come in a few basic kinds: numbers, text (called strings, written in quotes), true or false (booleans), lists (arrays, in square brackets) and objects, which group named fields in curly braces, like { name: \"Maya\", plan: \"pro\" }. Underneath, nearly every bug report is a variable holding a value nobody expected.\n\nA function is a named block with inputs and one output. function total(items) { ... return sum } takes a list and gives back a number. Calling it, total(cart), runs those steps on that list. Functions are how code avoids repeating itself, and they are the unit the rest of this course keeps talking about: a stack trace lists which functions called which, a unit test checks one function, a review asks what a function now returns. When you read one, read its first line and its return lines before anything in between. They tell you the contract; the middle is how it keeps it.\n\nif and loops shape the path through a function. An if with no else is a door that only opens one way, and the missing else is where an AI-written check most often leaks: the error case silently falls through and carries on. A loop over a list, sitting inside another loop over a list, is the most expensive shape in everyday code, cheap on ten rows and ruinous on ten thousand.\n\nImports tie the files together. The top of most files is a list of import lines, each naming a function or component and the file, or installed package, it comes from. Read those lines first and you know what a file leans on before you read what it does. When the AI adds a new one, it is telling you what the change now relies on.",
+   "he": "תוכנה היא בעיקר ארבעה דברים שחוזרים על עצמם: ערכים עם שמות, החלטות, חזרות, ובלוקים של צעדים עם שם. variable קושר שם לערך, const price = 30, כך ששאר הקוד יכול לכתוב price במקום 30, ושינוי במקום אחד משנה אותו בכל מקום שמשתמשים בו. לערכים יש כמה סוגים בסיסיים: מספרים, טקסט (שנקרא string ונכתב במירכאות), אמת או שקר (boolean), רשימות (array, בסוגריים מרובעים) ו-objects, שמקבצים שדות עם שמות בסוגריים מסולסלים, כמו { name: \"Maya\", plan: \"pro\" }. מתחת לפני השטח, כמעט כל דיווח על bug הוא variable שמחזיק ערך שאף אחד לא ציפה לו.\n\nfunction היא בלוק עם שם, קלטים ופלט אחד. function total(items) { ... return sum } מקבלת רשימה ומחזירה מספר. כשקוראים לה, total(cart), הצעדים האלה רצים על הרשימה הזו. functions הן הדרך של קוד לא לחזור על עצמו, והן היחידה ששאר הקורס מדבר עליה כל הזמן: stack trace מראה איזו function קראה לאיזו, unit test בודק function אחת, ו-review שואל מה function מחזירה עכשיו. כשאתם קוראים אחת, קראו קודם את השורה הראשונה ואת שורות ה-return, ורק אחר כך את מה שביניהן. הן אומרות לכם מה החוזה. האמצע הוא איך מקיימים אותו.\n\nif ו-loops קובעים את המסלול בתוך function. if בלי else הוא דלת שנפתחת רק לכיוון אחד, וה-else החסר הוא המקום שבו בדיקה שכתב AI הכי הרבה דולפת: מקרה השגיאה פשוט נופל הלאה וממשיך כרגיל. loop על רשימה, בתוך loop אחר על רשימה, הוא הצורה הכי יקרה בקוד יומיומי. זול על עשר שורות, והרסני על עשרת אלפים.\n\nimports מחברים את הקבצים. בראש רוב הקבצים יש רשימת שורות import, כל אחת מציינת function או component ואת הקובץ, או ה-package המותקן, שממנו הם מגיעים. קראו את השורות האלה קודם, ותדעו על מה הקובץ נשען לפני שתקראו מה הוא עושה. כשה-AI מוסיף import חדש, הוא בעצם אומר לכם על מה השינוי נשען עכשיו."
+  },
+  "Errors, exceptions & null": {
+   "en": "Every value a program receives from outside, a request, a database row, an API response, a form field, can be missing. Languages spell that differently: JavaScript has both null (deliberately empty) and undefined (never set), Python has None, SQL has NULL. The trouble is always the same line: code that reaches into the value, user.email or order.items.length, assuming it is there. On the happy path it always is, which is why the crash shows up only for the one user with no profile photo, or the order created before a column existed.\n\nExceptions are the other half. When a function hits something it cannot handle, a file that isn't there, JSON that doesn't parse, a payment provider that timed out, it throws. The exception unwinds the call chain, function by function, until something catches it, and that path is exactly what a stack trace prints. Where you catch matters. Catch where you can actually do something useful: retry, show the user a clear message, record what happened. Let everything else rise to one place near the top that logs it and returns a proper error.\n\nTwo patterns show up constantly in generated code. The first is the missing check: a network call whose failure is never handled, a find() that can return nothing, used as though it always finds. The second is the swallow: try { ... } catch (e) {}, or a catch that only prints to a console nobody reads. The first crashes loudly, which is at least honest. The second hides the failure and lets bad data carry on into the database, and it is the one to hunt for in review.\n\nTypeScript helps with the first. With strict mode on, it refuses to let you use a value that might be undefined until you have checked it. Optional chaining, user?.name, is the short way to say \"or nothing, if there is no user\". It is useful when nothing is a fine answer, and dangerous when it hides that the user should never have been missing.",
+   "he": "כל ערך שתוכנה מקבלת מבחוץ, request, שורה ממסד הנתונים, תשובה מ-API, שדה בטופס, יכול לחסור. כל שפה כותבת את זה אחרת: ב-JavaScript יש גם null (ריק בכוונה) וגם undefined (אף פעם לא הוגדר), ב-Python יש None, וב-SQL יש NULL. הבעיה היא תמיד אותה שורה: קוד שנכנס לתוך הערך, user.email או order.items.length, בהנחה שהוא קיים. במסלול הרגיל הוא תמיד קיים, ובגלל זה הקריסה מופיעה רק אצל המשתמש היחיד בלי תמונת פרופיל, או בהזמנה שנוצרה לפני שעמודה מסוימת נוספה.\n\nexceptions הן החצי השני. כש-function נתקלת במשהו שהיא לא יודעת לטפל בו, קובץ שלא קיים, JSON שלא מתפרסר, ספק תשלומים שלא ענה בזמן, היא זורקת. ה-exception מטפסת במעלה שרשרת הקריאות, function אחרי function, עד שמשהו תופס אותה, והמסלול הזה הוא בדיוק מה ש-stack trace מדפיס. איפה תופסים זה חשוב. תפסו במקום שבו אפשר באמת לעשות משהו מועיל: לנסות שוב, להציג למשתמש הודעה ברורה, לתעד מה קרה. את כל השאר תנו לטפס למקום אחד קרוב לראש, שרושם ב-log ומחזיר שגיאה מסודרת.\n\nשני דפוסים מופיעים כל הזמן בקוד שנוצר. הראשון הוא הבדיקה החסרה: קריאת רשת שאף אחד לא מטפל בכישלון שלה, find() שיכול להחזיר כלום ומשתמשים בו כאילו הוא תמיד מוצא. השני הוא הבליעה: try { ... } catch (e) {}, או catch שרק מדפיס ל-console שאף אחד לא קורא. הראשון קורס בקול רם, וזה לפחות כן. השני מסתיר את הכישלון ונותן לנתונים שגויים להמשיך למסד הנתונים, ואותו צריך לחפש ב-review.\n\nTypeScript עוזר עם הראשון. כש-strict mode פעיל, הוא לא נותן להשתמש בערך שאולי undefined עד שבדקתם אותו. optional chaining, user?.name, היא הדרך הקצרה להגיד \"או כלום, אם אין משתמש\". זה שימושי כשכלום הוא תשובה סבירה, ומסוכן כשזה מסתיר שהמשתמש בכלל לא היה אמור לחסור."
+  },
+  "Linter, formatter & type check": {
+   "en": "All three tools work on the text of your code, not on it running, which is why they are fast enough to run on every save. A formatter such as Prettier or Black has almost no opinions you can argue with: it parses the code and prints it back in its one style. That sounds cosmetic and matters more than it looks. Once every file is formatted the same way, a real change shows up as a few lines, instead of hiding inside a file where every line moved.\n\nA linter such as ESLint for JavaScript or Ruff for Python runs a list of rules over the code. Some are taste: prefer const, sort the imports. Others catch bugs tests often miss: a variable used before it is assigned, an async call with no await so its error is never seen, a React hook called inside an if, an import that doesn't exist. The type checker, tsc for TypeScript or mypy for Python, is the strictest of the three. It follows every value through the program and refuses to pass if one is ever used as something it isn't.\n\nWith AI, the failure is rarely that the tools are missing; most scaffolds include them. It is that they are never run, or that the agent treats a red check as an obstacle rather than as information. The tells are easy to search for: eslint-disable comments, @ts-ignore, casts to any, and a lint step quietly removed from the CI file. Each one is a place where a warning was switched off instead of answered.\n\nThe practical setup is three scripts in package.json, run in CI on every push, plus ideally a pre-commit hook that formats the changed files. Then ask the AI to run all three itself before it says a change is done, and to paste the output rather than a summary of it.",
+   "he": "שלושת הכלים עובדים על הטקסט של הקוד, לא על הרצה שלו, ובגלל זה הם מהירים מספיק כדי לרוץ בכל שמירה. ל-formatter כמו Prettier או Black כמעט אין דעות שאפשר להתווכח איתן: הוא מפרק את הקוד ומדפיס אותו מחדש בסגנון היחיד שלו. זה נשמע קוסמטי, וזה חשוב יותר ממה שנראה. ברגע שכל הקבצים מעוצבים באותה צורה, שינוי אמיתי מופיע ככמה שורות, במקום להתחבא בתוך קובץ שבו כל שורה זזה.\n\nlinter כמו ESLint ל-JavaScript או Ruff ל-Python מריץ רשימת כללים על הקוד. חלקם עניין של טעם: להעדיף const, למיין את ה-imports. אחרים תופסים bugs שבדיקות הרבה פעמים מפספסות: variable שמשתמשים בו לפני שקיבל ערך, קריאה async בלי await כך שהשגיאה שלה אף פעם לא נראית, React hook שנקרא בתוך if, import של משהו שלא קיים. ה-type checker, tsc ל-TypeScript או mypy ל-Python, הוא המחמיר מהשלושה. הוא עוקב אחרי כל ערך לאורך התוכנה ולא מאשר אם ערך כלשהו משמש כמשהו שהוא לא.\n\nעם AI, הבעיה היא לרוב לא שהכלים חסרים. רוב התבניות כוללות אותם. הבעיה היא שאף אחד לא מריץ אותם, או שה-agent מתייחס לבדיקה אדומה כמכשול ולא כמידע. הסימנים קלים לחיפוש: הערות eslint-disable, @ts-ignore, המרות ל-any, ושלב lint שנמחק בשקט מקובץ ה-CI. כל אחד מהם הוא מקום שבו אזהרה כובתה במקום שיענו לה.\n\nההגדרה המעשית היא שלושה scripts ב-package.json, שרצים ב-CI בכל push, ועדיף גם pre-commit hook שמעצב את הקבצים שהשתנו. אחר כך בקשו מה-AI להריץ את שלושתם בעצמו לפני שהוא אומר ששינוי מוכן, ולהדביק את הפלט עצמו ולא סיכום שלו."
+  },
+  "Personal data & privacy (GDPR)": {
+   "en": "Start with an inventory, because you can't protect or delete what you can't find. For every piece of personal data, write down where it enters, where it is stored, and who else receives it. The obvious place is your users table. The places people forget are the ones that matter in a breach or a deletion request: application logs that print whole requests, backups, the error tracker that captured a form's contents along with a stack trace, the analytics tool, the email provider, the AI API a support bot forwards messages to. Each of those third parties is a processor you chose and are responsible for.\n\nMinimise at the point of collection. If you only need to know a user is over 18, store a yes, not a birth date. If an email is enough to sign in, don't ask for a phone number just because the form template had one. Keep the sensitive categories, health, finances, precise location, government IDs, out entirely unless the product truly needs them, because both the rules and the damage from a leak are much heavier.\n\nRights are features you have to build. \"Show me my data\" is an export. \"Delete my account\" has to remove or anonymise the person across your database and ask your processors to do the same, while keeping what the law requires you to keep, such as invoices. Retention is the same idea on a timer: logs and inactive accounts older than a set period are deleted by a scheduled job, not by good intentions.\n\nIn Europe, cookies and trackers carry a rule of their own: anything not strictly needed for the site to work, analytics and advertising cookies especially, needs consent before it is set, and saying no has to be as easy as saying yes. A plain privacy page that matches what the code really does, reviewed whenever you add a new tool, is what turns all of this into something you can show a user who asks.",
+   "he": "מתחילים ממלאי, כי אי אפשר להגן על מה שלא מוצאים או למחוק אותו. לכל פריט של מידע אישי, כתבו איפה הוא נכנס, איפה הוא נשמר, ומי עוד מקבל אותו. המקום הברור הוא טבלת המשתמשים. המקומות ששוכחים הם אלה שחשובים בדליפה או בבקשת מחיקה: logs של האפליקציה שמדפיסים בקשות שלמות, גיבויים, כלי ה-error tracking שתפס את התוכן של טופס יחד עם stack trace, כלי ה-analytics, ספק האימייל, וה-API של ה-AI שבוט התמיכה מעביר אליו הודעות. כל צד שלישי כזה הוא processor שאתם בחרתם ואתם אחראים עליו.\n\nמצמצמים כבר בנקודת האיסוף. אם צריך לדעת רק שמשתמש מעל גיל 18, שומרים כן, לא תאריך לידה. אם אימייל מספיק כדי להתחבר, לא מבקשים מספר טלפון רק כי היה שדה כזה בתבנית של הטופס. את הקטגוריות הרגישות, בריאות, כספים, מיקום מדויק, מסמכים מזהים, השאירו בחוץ לגמרי אלא אם המוצר באמת צריך אותן, כי גם הכללים וגם הנזק מדליפה כבדים בהרבה.\n\nזכויות הן features שצריך לבנות. \"תראו לי את המידע שלי\" זה ייצוא. \"תמחקו לי את החשבון\" צריך להסיר או להפוך לאנונימי את האדם בכל מסד הנתונים, ולבקש מה-processors לעשות אותו דבר, ובמקביל לשמור את מה שהחוק מחייב לשמור, כמו חשבוניות. מדיניות שמירה היא אותו רעיון עם טיימר: logs וחשבונות לא פעילים ישנים מתקופה מוגדרת נמחקים על ידי scheduled job, לא על ידי כוונות טובות.\n\nבאירופה, ל-cookies ולכלי מעקב יש כלל משלהם: כל מה שלא הכרחי כדי שהאתר יעבוד, במיוחד cookies של analytics ופרסום, צריך הסכמה לפני שהוא נשמר, ולסרב צריך להיות קל בדיוק כמו להסכים. דף פרטיות פשוט שתואם את מה שהקוד באמת עושה, ושבודקים מחדש בכל פעם שמוסיפים כלי חדש, הוא מה שהופך את כל זה למשהו שאפשר להראות למשתמש ששואל."
   }
  },
  "TLDR": {
@@ -4944,20 +5024,6 @@
     "diff מראה רק שורות שהשתנו: מינוס למה שנמחק, פלוס למה שנוסף.",
     "כשהסיכום של ה-AI וה-diff לא מסכימים, האמינו ל-diff.",
     "קראו קודם את המחיקות. הפתעות מסתתרות במה שנעלם."
-   ]
-  },
-  "Process & port already in use": {
-   "en": [
-    "A process is a running program with a number, its PID.",
-    "A port is a door on your machine, and only one process can hold each one.",
-    "\"Already in use\" usually means an old copy of your own app is still running.",
-    "Find and stop that process instead of moving to the next port."
-   ],
-   "he": [
-    "process הוא תוכנה שרצה, עם מספר משלה: PID.",
-    "port הוא דלת במחשב, ורק process אחד יכול להחזיק כל דלת.",
-    "\"already in use\" בדרך כלל אומר שעותק ישן של האפליקציה שלכם עדיין רץ.",
-    "תמצאו ותעצרו את ה-process הזה, במקום לעבור ל-port הבא."
    ]
   },
   "File permissions": {
@@ -6199,6 +6265,76 @@
     "הבדיקות: branch, test שנכשל, קריאת diff, בדיקת בעלות בצד השרת.",
     "מחיאות כפיים הן אבן דרך, לא שער שיגור; בקשו איפה כל בדיקה יושבת בקוד."
    ]
+  },
+  "Process (a running program)": {
+   "en": [
+    "A process is a running program with a number, its PID.",
+    "A port is a door on your machine, and only one process can hold each one.",
+    "\"Already in use\" usually means an old copy of your own app is still running.",
+    "Find and stop that process instead of moving to the next port."
+   ],
+   "he": [
+    "process הוא תוכנה שרצה, עם מספר משלה: PID.",
+    "port הוא דלת במחשב, ורק process אחד יכול להחזיק כל דלת.",
+    "\"already in use\" בדרך כלל אומר שעותק ישן של האפליקציה שלכם עדיין רץ.",
+    "תמצאו ותעצרו את ה-process הזה, במקום לעבור ל-port הבא."
+   ]
+  },
+  "Variables, functions & imports": {
+   "en": [
+    "A variable is a named value; a function is named steps with inputs and one output.",
+    "if decides, a loop repeats, an import borrows from another file.",
+    "Read a function's first line and its return lines first.",
+    "A missing else is where errors quietly fall through."
+   ],
+   "he": [
+    "variable הוא ערך עם שם. function היא צעדים עם שם, קלטים ופלט אחד.",
+    "if מחליט, loop חוזר, import שואל מקובץ אחר.",
+    "קראו קודם את השורה הראשונה של ה-function ואת שורות ה-return.",
+    "else חסר הוא המקום שבו שגיאות נופלות הלאה בשקט."
+   ]
+  },
+  "Errors, exceptions & null": {
+   "en": [
+    "null and undefined mean \"no value here\".",
+    "Using nothing as if it were something is the most common crash.",
+    "An exception climbs up until a try/catch handles it, or the app crashes.",
+    "An empty catch hides the error; hunt for it in review."
+   ],
+   "he": [
+    "null ו-undefined אומרים \"אין כאן ערך\".",
+    "להשתמש בכלום כאילו הוא משהו זו הקריסה הכי נפוצה.",
+    "exception מטפסת למעלה עד ש-try/catch מטפל בה, או שהאפליקציה קורסת.",
+    "catch ריק מסתיר את השגיאה. חפשו אותו ב-review."
+   ]
+  },
+  "Linter, formatter & type check": {
+   "en": [
+    "A formatter fixes style, a linter flags suspicious code, a type check proves types.",
+    "All three read code without running it, in seconds.",
+    "Fix the code, not the check: no eslint-disable, no any.",
+    "Run them on every push, and before the AI says it's done."
+   ],
+   "he": [
+    "formatter מתקן סגנון, linter מסמן קוד חשוד, type check מוכיח types.",
+    "שלושתם קוראים קוד בלי להריץ אותו, תוך שניות.",
+    "מתקנים את הקוד, לא את הבדיקה: בלי eslint-disable, בלי any.",
+    "הריצו אותם בכל push, ולפני שה-AI אומר שסיים."
+   ]
+  },
+  "Personal data & privacy (GDPR)": {
+   "en": [
+    "Personal data is anything that points to a real person.",
+    "Privacy laws follow where your users live, not how big you are.",
+    "Collect only what you need, and know every place it ends up.",
+    "\"Delete my account\" must really delete, logs and tools included."
+   ],
+   "he": [
+    "מידע אישי הוא כל דבר שמצביע על אדם אמיתי.",
+    "חוקי פרטיות הולכים לפי המקום שבו המשתמשים גרים, לא לפי הגודל שלכם.",
+    "אוספים רק את מה שצריך, ויודעים לאן כל פריט מגיע.",
+    "\"תמחקו לי את החשבון\" חייב באמת למחוק, כולל logs וכלים חיצוניים."
+   ]
   }
  },
  "EXAMPLES": {
@@ -6663,13 +6799,6 @@
     "he": "מה git diff מדפיס, ובאיזה סדר קוראים את זה"
    },
    "code": "$ git diff\n--- a/checkout.js                # the old version\n+++ b/checkout.js                # the new version\n@@ -12,5 +12,4 @@                 # where in the file\n function sessionDays() {\n-  return 30;\n+  return 7;\n }\n-if (!user.isOwner) return deny();  # a guard was removed. ask why.\n\n# read in this order: minus lines, changed numbers, new files, then plus lines\n$ git diff --stat                  # which files changed, and how much"
-  },
-  "Process & port already in use": {
-   "cap": {
-    "en": "Who is holding port 3000, and how to stop it",
-    "he": "מי מחזיק את port 3000, ואיך עוצרים אותו"
-   },
-   "code": "$ npm run dev\nError: listen EADDRINUSE: address already in use :::3000\n\n$ lsof -i :3000                  # mac / linux: who holds the door?\nCOMMAND   PID  USER  ...  NAME\nnode    48121  maya  ...  *:3000 (LISTEN)\n\n$ kill 48121                     # ask that process to stop\n$ npm run dev                    # starts on 3000 again\n\n# windows\n> netstat -ano | findstr :3000   # the last column is the PID\n> taskkill /PID 48121"
   },
   "File permissions": {
    "cap": {
@@ -7272,6 +7401,41 @@
     "he": "אותה בקשה, שני טקסים, וצ'קליסט שהוא לא שער שיגור"
    },
    "code": "REQUEST: \"let customers cancel an order within 30 minutes\"\n\n  vibe coding                      vibe engineering\n  -----------                      ----------------\n  [x] prompt the model             [x] prompt the model\n                                  + [x] git switch -c feat/cancel-window\n                                  + [x] failing test: cancel at 31 min -> 409\n                                  + [x] git diff, read every line\n  [x] accept                       [x] accept\n  [x] deploy                       [x] deploy behind a flag + rollback plan\n\n# Referrals, 18 Aug 2026: Team A vibe-coded in 90 min, ₪28,000 self-referral\n# loop that evening. Team B added one unique constraint + a test, shipped\n# next morning, loop rejected at the DB.\n\n# a demo checklist is not a ship gate:\n# [ ] other user cannot read my contacts (server-side check)\n# [ ] no secrets in client bundle\n# [ ] alert on 5xx"
+  },
+  "Process (a running program)": {
+   "cap": {
+    "en": "Who is holding port 3000, and how to stop it",
+    "he": "מי מחזיק את port 3000, ואיך עוצרים אותו"
+   },
+   "code": "$ npm run dev\nError: listen EADDRINUSE: address already in use :::3000\n\n$ lsof -i :3000                  # mac / linux: who holds the door?\nCOMMAND   PID  USER  ...  NAME\nnode    48121  maya  ...  *:3000 (LISTEN)\n\n$ kill 48121                     # ask that process to stop\n$ npm run dev                    # starts on 3000 again\n\n# windows\n> netstat -ano | findstr :3000   # the last column is the PID\n> taskkill /PID 48121"
+  },
+  "Variables, functions & imports": {
+   "cap": {
+    "en": "One small function, read line by line",
+    "he": "function קטנה אחת, שורה אחרי שורה"
+   },
+   "code": "import { priceOf } from \"./prices\";   // borrow a function from another file\n\nfunction cartTotal(items) {           // the name, and what goes in\n  let total = 0;                      // a variable, starting at 0\n  for (const item of items) {         // loop: once per item\n    if (item.free) continue;          // if: skip free items\n    total = total + priceOf(item);    // call the borrowed function\n  }\n  return total;                       // the one thing that comes out\n}\n\ncartTotal([{ id: 1 }, { id: 2, free: true }])   // → the price of item 1"
+  },
+  "Errors, exceptions & null": {
+   "cap": {
+    "en": "The crash, the swallow, and the fix",
+    "he": "הקריסה, הבליעה, והתיקון"
+   },
+   "code": "const user = await findUser(id);    // may find nobody → undefined\nconsole.log(user.name);\n// TypeError: Cannot read properties of undefined (reading 'name')\n\ntry { await chargeCard(order); }\ncatch (e) { }                       // ✗ swallowed: the failure just vanishes\n\n// the fix: decide what \"missing\" and \"failed\" should do\nif (!user) return res.status(404).json({ error: \"No such user\" });\ntry {\n  await chargeCard(order);\n} catch (e) {\n  logger.error(\"charge failed\", { orderId: order.id, e });\n  return res.status(502).json({ error: \"Payment failed, please try again\" });\n}"
+  },
+  "Linter, formatter & type check": {
+   "cap": {
+    "en": "Three checks, and what each one caught",
+    "he": "שלוש בדיקות, ומה כל אחת תפסה"
+   },
+   "code": "$ npx prettier --check .\n[warn] src/cart.ts              # style only: prettier --write fixes it\n\n$ npx eslint .\nsrc/cart.ts\n  12:9  error  'discount' is assigned a value but never used   no-unused-vars\n  18:3  error  Promises must be awaited                        no-floating-promises\n\n$ npx tsc --noEmit\nsrc/cart.ts:24:18 - error TS2345: Argument of type 'string'\n  is not assignable to parameter of type 'number'.\n\n# the tells of a silenced check:\n// eslint-disable-next-line\n// @ts-ignore\nconst total = input as any;"
+  },
+  "Personal data & privacy (GDPR)": {
+   "cap": {
+    "en": "A data inventory, one row per place it lives",
+    "he": "מלאי מידע אישי, שורה לכל מקום שבו הוא נמצא"
+   },
+   "code": "# personal-data.md  (keep it next to the README)\ndata        lives in           sent to            kept for      deleted by\nemail       users table        payments, email    account life  delete-account job\nname        users table        -                  account life  delete-account job\nIP address  request logs       log provider       30 days       log retention\nmessages    support table      LLM API            1 year        nightly cleanup\ncard        never stored       payments only      -             -\n\n# red flags to search the code for:\nlogger.info(req.body)              // logs whole forms, emails included\nanalytics.track(\"signup\", { email }) // personal data sent to a tracker"
   }
  },
  "QUIZ": {
@@ -13075,16 +13239,6 @@
     "he": "בקשו את ה-diff. diff הוא ה\"לפני ואחרי\" של הקבצים שלכם, מצומצם רק לשורות שהשתנו. שורה שנמחקה מתחילה במינוס, שורה שנוספה מתחילה בפלוס, וכמה שורות ללא שינוי מסביב מוצגות כדי שתדעו איפה אתם. כל השאר לא מופיע, כי הוא לא השתנה.\n\nזה מה שהופך אותו למסמך היחיד שאי אפשר לייפות. סיכום אומר \"שיפרתי את ה-checkout\". ה-diff אומר: השורה הזאת נמחקה, המספר הזה עבר מ-30 ל-7, הקובץ הזה חדש. כשה-AI מתאר את העבודה שלו, התיאור הוא מה שהוא התכוון. ה-diff הוא מה שהוא עשה. השניים לא מסכימים יותר ממה שהייתם רוצים.\n\nרואים diff בשלושה מקומות: כשמריצים git diff לפני commit, ב-pull request לפני merge, ובפאנל ה-source control של העורך, שם השורות שהשתנו צבועות בשוליים. קראו קודם את השורות האדומות. תוספות הן עבודה חדשה וקל לשפוט אותן. מחיקות הן מה שנעלם בשקט, ושם גרות ההפתעות."
    }
   },
-  "Process & port already in use": {
-   "q": {
-    "en": "It says \"port 3000 is already in use\", but I only have one project open. What is using it?",
-    "he": "כתוב \"port 3000 is already in use\", אבל יש לי רק פרויקט אחד פתוח. מה תופס אותו?"
-   },
-   "s": {
-    "en": "A small restaurant has one phone line. If a call is already on it, the next caller hears a busy tone. Nothing is broken. The line is simply taken, often by someone who forgot to hang up.\n\nWhen you start an app on your computer, it becomes a process: one running program with its own number, called a PID. A web app then claims a port, a numbered door like 3000, and waits there for the browser to knock. Only one process can hold a door at a time. \"Already in use\" (the error often says EADDRINUSE) almost always means an earlier copy of your own app is still running, in a terminal tab you forgot, or left behind when a window closed without stopping it. Pressing Ctrl+C in the terminal where it runs is the normal way to stop it.\n\nAI assistants tend to fix this by moving your app to port 3001, then 3002. Now several copies are running, the old one may be showing old code, and the sign-in page still sends you back to 3000. Ask it to show which process holds the port and what it is, then stop that one.",
-    "he": "למסעדה קטנה יש קו טלפון אחד. אם כבר יש שיחה על הקו, המתקשר הבא שומע צליל תפוס. שום דבר לא שבור. הקו פשוט תפוס, הרבה פעמים על ידי מישהו ששכח לנתק.\n\nכשמפעילים אפליקציה על המחשב, היא הופכת ל-process: תוכנה אחת שרצה, עם מספר משלה שנקרא PID. אפליקציית web תופסת אז port, דלת ממוספרת כמו 3000, ומחכה שם שהדפדפן ידפוק. רק process אחד יכול להחזיק דלת בכל רגע. \"already in use\" (השגיאה כותבת הרבה פעמים EADDRINUSE) כמעט תמיד אומר שעותק קודם של האפליקציה שלכם עדיין רץ, בלשונית טרמינל ששכחתם, או שנשאר אחרי שחלון נסגר בלי לעצור אותו. הדרך הרגילה לעצור אותו היא Ctrl+C בטרמינל שבו הוא רץ.\n\nעוזרי AI נוטים לפתור את זה בהעברת האפליקציה ל-port 3001, ואחר כך 3002. עכשיו רצים כמה עותקים, הישן אולי מציג קוד ישן, ודף ההתחברות עדיין מחזיר אתכם ל-3000. תבקשו ממנו להראות איזה process מחזיק את ה-port ומה הוא, ורק אז לעצור אותו."
-   }
-  },
   "File permissions": {
    "q": {
     "en": "It says \"permission denied\". It is my own computer, so why am I not allowed?",
@@ -13943,6 +14097,56 @@
    "s": {
     "en": "Two people hire the same brilliant, lightning-fast builder. The first says 'make me a house' and moves in the day it's finished. The second uses the same builder at the same speed, but checks the plans, walks the site each evening, and gets the electrics inspected. Only one of them is fine on the first stormy night, and the difference was never the builder's speed.\n\nA dress rehearsal with friendly actors is not opening night with a paying crowd, and a demo that nails the happy path is not proof the app survives real users, empty data, or a login nobody expected. Applause is a milestone, not a ship gate.\n\nIf you can't name the specific check that would have caught a failure, you were vibe coding. Vibe engineering is the same prompt with a branch, a boundary, a failing test, a read of the diff, and a check that ownership and secrets are handled server-side, not left to the client.",
     "he": "שני אנשים שוכרים את אותו בנאי מבריק ומהיר כברק. הראשון אומר \"תבנה לי בית\" ונכנס לגור ביום שהעבודה נגמרת. השני משתמש באותו בנאי באותה מהירות, אבל בודק את התוכניות, עובר באתר כל ערב, ומביא בודק חשמל. רק אחד מהם יהיה בסדר בלילה הסוער הראשון, וההבדל אף פעם לא היה מהירות הבנאי.\n\nחזרה גנרלית עם שחקנים ידידותיים היא לא ערב בכורה מול קהל משלם, ודמו שמצליח ב-happy path הוא לא הוכחה שהאפליקציה שורדת משתמשים אמיתיים, נתונים ריקים, או login שאף אחד לא ציפה לו. מחיאות כפיים הן אבן דרך, לא שער שיגור.\n\nאם אתם לא יכולים לנקוב בבדיקה הספציפית שהייתה תופסת כשל, עשיתם vibe coding. Vibe engineering הוא אותו prompt עם branch, גבול, test שנכשל, קריאה של ה-diff, ובדיקה שהבעלות והסודות מטופלים בצד השרת, לא מושארים ל-client."
+   }
+  },
+  "Process (a running program)": {
+   "q": {
+    "en": "It says \"port 3000 is already in use\", but I only have one project open. What is using it?",
+    "he": "כתוב \"port 3000 is already in use\", אבל יש לי רק פרויקט אחד פתוח. מה תופס אותו?"
+   },
+   "s": {
+    "en": "A small restaurant has one phone line. If a call is already on it, the next caller hears a busy tone. Nothing is broken. The line is simply taken, often by someone who forgot to hang up.\n\nWhen you start an app on your computer, it becomes a process: one running program with its own number, called a PID. A web app then claims a port, a numbered door like 3000, and waits there for the browser to knock. Only one process can hold a door at a time. \"Already in use\" (the error often says EADDRINUSE) almost always means an earlier copy of your own app is still running, in a terminal tab you forgot, or left behind when a window closed without stopping it. Pressing Ctrl+C in the terminal where it runs is the normal way to stop it.\n\nAI assistants tend to fix this by moving your app to port 3001, then 3002. Now several copies are running, the old one may be showing old code, and the sign-in page still sends you back to 3000. Ask it to show which process holds the port and what it is, then stop that one.",
+    "he": "למסעדה קטנה יש קו טלפון אחד. אם כבר יש שיחה על הקו, המתקשר הבא שומע צליל תפוס. שום דבר לא שבור. הקו פשוט תפוס, הרבה פעמים על ידי מישהו ששכח לנתק.\n\nכשמפעילים אפליקציה על המחשב, היא הופכת ל-process: תוכנה אחת שרצה, עם מספר משלה שנקרא PID. אפליקציית web תופסת אז port, דלת ממוספרת כמו 3000, ומחכה שם שהדפדפן ידפוק. רק process אחד יכול להחזיק דלת בכל רגע. \"already in use\" (השגיאה כותבת הרבה פעמים EADDRINUSE) כמעט תמיד אומר שעותק קודם של האפליקציה שלכם עדיין רץ, בלשונית טרמינל ששכחתם, או שנשאר אחרי שחלון נסגר בלי לעצור אותו. הדרך הרגילה לעצור אותו היא Ctrl+C בטרמינל שבו הוא רץ.\n\nעוזרי AI נוטים לפתור את זה בהעברת האפליקציה ל-port 3001, ואחר כך 3002. עכשיו רצים כמה עותקים, הישן אולי מציג קוד ישן, ודף ההתחברות עדיין מחזיר אתכם ל-3000. תבקשו ממנו להראות איזה process מחזיק את ה-port ומה הוא, ורק אז לעצור אותו."
+   }
+  },
+  "Variables, functions & imports": {
+   "q": {
+    "en": "Every explanation says \"function\" and \"variable\". What are they, in plain words?",
+    "he": "כל הסבר אומר \"function\" ו-\"variable\". מה זה, במילים פשוטות?"
+   },
+   "s": {
+    "en": "Think of a kitchen. A variable is a labelled jar: the label says total, and inside is 42. The code refers to the label, and what is inside can change. A function is a recipe card with a name, like makeSalad. It lists the ingredients it needs (its arguments), the steps, and the one dish it hands back at the end (its return value). Writing makeSalad(tomatoes) means: follow that card, with these tomatoes.\n\nTwo more shapes appear in almost every file. if chooses: if the user is signed in, show the page, otherwise send them to sign-in. A loop repeats: for every item in the cart, add its price. And an import at the top of a file says: this file uses a recipe card kept in another file. That is how a project of a hundred files hangs together.\n\nYou don't need to write any of this. You need to read five lines and answer three questions: what goes in, what comes out, and what decides between the branches. When the AI says it \"changed the checkout function\", you can now open that one card and look.",
+    "he": "חשבו על מטבח. variable הוא צנצנת עם תווית: על התווית כתוב total, ובפנים יש 42. הקוד פונה לתווית, ומה שבפנים יכול להשתנות. function היא כרטיס מתכון עם שם, כמו makeSalad. כתוב בו אילו מצרכים הוא צריך (ה-arguments), מה השלבים, ואיזו מנה אחת הוא מחזיר בסוף (ה-return value). לכתוב makeSalad(tomatoes) פירושו: לעבוד לפי הכרטיס הזה, עם העגבניות האלה.\n\nעוד שתי צורות מופיעות כמעט בכל קובץ. if בוחר: אם המשתמש מחובר, מציגים את הדף, ואם לא, שולחים אותו להתחברות. loop חוזר על עצמו: לכל פריט בעגלה, מוסיפים את המחיר שלו. ו-import בראש הקובץ אומר: הקובץ הזה משתמש בכרטיס מתכון שנמצא בקובץ אחר. ככה פרויקט של מאה קבצים מחזיק ביחד.\n\nלא צריך לכתוב שום דבר מזה. צריך לקרוא חמש שורות ולענות על שלוש שאלות: מה נכנס, מה יוצא, ומה מחליט בין הענפים. כשה-AI אומר ש\"שינה את ה-function של ה-checkout\", אתם יכולים לפתוח את הכרטיס הזה ולהסתכל."
+   }
+  },
+  "Errors, exceptions & null": {
+   "q": {
+    "en": "The app says \"Cannot read properties of undefined\". What was undefined, and why did it crash?",
+    "he": "האפליקציה כותבת \"Cannot read properties of undefined\". מה היה undefined, ולמה היא קרסה?"
+   },
+   "s": {
+    "en": "Picture a waiter told to bring table 7's order to the kitchen. Table 7 is empty. A sensible waiter comes back and says so. A program just stops mid-step, holding nothing, and that is the crash.\n\nIn code, null and undefined are the \"nothing here\" values. A visitor who isn't signed in, a search with no results, a field the form never sent: each can turn up as nothing. The code then asks that nothing for something, user.name, and the program stops with \"Cannot read properties of undefined (reading 'name')\". The message is precise: whatever came right before .name was empty.\n\nWhen something goes wrong on purpose, code throws an exception: a signal that climbs back up through the functions until a try/catch block handles it. If nothing catches it, the page or the server crashes. The opposite mistake is just as common in AI code: a catch that catches everything and does nothing, so the error vanishes and the app carries on with wrong data. Good code decides, for each missing value, what should happen: show a message, use a default, or stop loudly.",
+    "he": "דמיינו מלצר שהתבקש להביא למטבח את ההזמנה של שולחן 7. שולחן 7 ריק. מלצר הגיוני חוזר ואומר את זה. תוכנה פשוט נעצרת באמצע הצעד, עם כלום ביד, וזו הקריסה.\n\nבקוד, null ו-undefined הם הערכים של \"אין כאן כלום\". מבקר שלא מחובר, חיפוש בלי תוצאות, שדה שהטופס לא שלח: כל אחד מהם יכול להגיע ככלום. אז הקוד מבקש מהכלום הזה משהו, user.name, והתוכנה נעצרת עם \"Cannot read properties of undefined (reading 'name')\". ההודעה מדויקת: מה שבא ממש לפני .name היה ריק.\n\nכשמשהו משתבש, הקוד זורק exception: אות שמטפס חזרה דרך ה-functions עד שבלוק try/catch מטפל בו. אם שום דבר לא תופס אותו, הדף או השרת קורסים. הטעות ההפוכה נפוצה באותה מידה בקוד של AI: catch שתופס הכול ולא עושה כלום, כך שהשגיאה נעלמת והאפליקציה ממשיכה עם נתונים שגויים. קוד טוב מחליט, לכל ערך שיכול לחסור, מה צריך לקרות: להציג הודעה, להשתמש בברירת מחדל, או לעצור בקול רם."
+   }
+  },
+  "Linter, formatter & type check": {
+   "q": {
+    "en": "The AI keeps mentioning \"lint errors\" and \"prettier\". Are these real bugs?",
+    "he": "ה-AI כל הזמן מזכיר \"lint errors\" ו-\"prettier\". אלה bugs אמיתיים?"
+   },
+   "s": {
+    "en": "Think of the spell-checker and the auto-layout in a word processor. Auto-layout makes every page look the same, whoever typed it. The spell-checker underlines words that are probably wrong, but it can't tell you whether your argument makes sense.\n\nA formatter is the auto-layout for code: it rewrites spacing, line breaks and quotes into one consistent style, so nobody argues about it and real changes are easy to spot. A linter is the spell-checker: it reads your code without running it and flags patterns that are usually mistakes, a variable that's never used, a task nobody waits for, a comparison that is always true. A type check, in TypeScript, goes further and proves that a number is never passed where text is expected.\n\nSome lint warnings are style. Some are real bugs, caught for free in seconds, before any test runs. The habit that matters: when a check complains, fix the code, not the check. Under pressure, AI assistants love to add a comment like eslint-disable, or change a type to any, so the warning disappears. That fixes nothing. It just switches off the alarm.",
+    "he": "חשבו על בודק האיות ועל העימוד האוטומטי במעבד תמלילים. העימוד גורם לכל עמוד להיראות אותו דבר, לא משנה מי הקליד. בודק האיות מסמן מילים שכנראה שגויות, אבל הוא לא יכול להגיד לכם אם הטיעון שלכם הגיוני.\n\nformatter הוא העימוד האוטומטי של קוד: הוא משכתב רווחים, שבירות שורה ומירכאות לסגנון אחד עקבי, כך שאף אחד לא מתווכח על זה ושינויים אמיתיים קל לראות. linter הוא בודק האיות: הוא קורא את הקוד בלי להריץ אותו ומסמן דפוסים שבדרך כלל הם טעות, variable שאף פעם לא בשימוש, משימה שאף אחד לא מחכה לה, השוואה שתמיד יוצאת אמת. type check, ב-TypeScript, הולך רחוק יותר ומוכיח שאף פעם לא מעבירים מספר במקום שבו מצפים לטקסט.\n\nחלק מאזהרות ה-lint הן סגנון. חלק הן bugs אמיתיים, שנתפסים בחינם תוך שניות, לפני שבדיקה כלשהי רצה. ההרגל שחשוב: כשבדיקה מתלוננת, מתקנים את הקוד, לא את הבדיקה. תחת לחץ, עוזרי AI אוהבים להוסיף הערה כמו eslint-disable, או לשנות type ל-any, כדי שהאזהרה תיעלם. זה לא מתקן כלום. זה רק מכבה את האזעקה."
+   }
+  },
+  "Personal data & privacy (GDPR)": {
+   "q": {
+    "en": "I'm a tiny app. Do privacy rules like GDPR really apply to me?",
+    "he": "אני אפליקציה קטנטנה. חוקי פרטיות כמו GDPR באמת חלים עליי?"
+   },
+   "s": {
+    "en": "Imagine a shop that photocopies every customer's ID card \"just in case\" and keeps the copies in a box by the door. Nobody needed those copies, and now the shop is responsible for every one of them.\n\nPersonal data is anything that can point to a real person: a name, an email, a phone number, an address, an IP address, a photo, even a combination like \"the only user in this town with this job\". Privacy laws such as GDPR in Europe, and similar ones in California and elsewhere, apply according to where your users live, not how big you are. Their core asks are simple: collect only what you actually need, say plainly in a privacy policy what you do with it, keep it safe, and let people see, export or delete it.\n\nAI-built apps tend to break the first rule quietly. They log whole requests, emails included, send user details to analytics and error-tracking tools, and keep everything forever because nobody wrote a delete. None of it feels like a decision, and that is exactly the problem. Decide what you store, write it down, and make sure \"delete my account\" actually deletes.",
+    "he": "דמיינו חנות שמצלמת את תעודת הזהות של כל לקוח \"ליתר ביטחון\" ושומרת את הצילומים בקופסה ליד הדלת. אף אחד לא היה צריך את הצילומים האלה, ועכשיו החנות אחראית על כל אחד מהם.\n\nמידע אישי הוא כל דבר שיכול להצביע על אדם אמיתי: שם, אימייל, מספר טלפון, כתובת, כתובת IP, תמונה, ואפילו צירוף כמו \"המשתמש היחיד בעיר הזו עם המקצוע הזה\". חוקי פרטיות כמו GDPR באירופה, וחוקים דומים בקליפורניה ובמקומות אחרים, חלים לפי המקום שבו המשתמשים שלכם גרים, לא לפי הגודל שלכם. הדרישות המרכזיות פשוטות: לאסוף רק את מה שבאמת צריך, להגיד בפשטות במדיניות פרטיות מה עושים עם זה, לשמור על זה, ולתת לאנשים לראות, לייצא או למחוק את זה.\n\nאפליקציות שנבנו עם AI נוטות לשבור את הכלל הראשון בשקט. הן רושמות ב-log בקשות שלמות, כולל אימיילים, שולחות פרטי משתמשים לכלי analytics ו-error tracking, ושומרות הכול לנצח כי אף אחד לא כתב מחיקה. שום דבר מזה לא מרגיש כמו החלטה, וזו בדיוק הבעיה. תחליטו מה אתם שומרים, תכתבו את זה, ותוודאו ש\"תמחקו לי את החשבון\" באמת מוחק."
    }
   }
  }

@@ -1,7 +1,7 @@
 import type { TopicExtra } from "./types";
 
 export const extras: Record<string, TopicExtra> = {
-  "Process & port already in use": {
+  "Process (a running program)": {
     "look": [
       {
         "cap": {
@@ -98,6 +98,88 @@ export const extras: Record<string, TopicExtra> = {
       {
         "en": "Is there a built-in or well-known library function that does this check better than a regex? If yes, replace the regex and explain why.",
         "he": "יש פונקציה מובנית או פונקציה מספרייה מוכרת שעושה את הבדיקה הזו טוב יותר מ-regex? אם כן, תחליפו את ה-regex ותסבירו למה."
+      }
+    ]
+  },
+  "Variables, functions & imports": {
+    "look": [
+      {
+        "cap": {
+          "en": "Values come in a few shapes",
+          "he": "לערכים יש כמה צורות"
+        },
+        "code": "const count = 3;                            // a number\nconst name = \"Maya\";                        // text, called a string\nconst isPaid = false;                       // true or false, a boolean\nconst tags = [\"new\", \"sale\"];               // a list, called an array\nconst user = { name: \"Maya\", plan: \"pro\" };  // an object: named fields\n\nuser.plan   // → \"pro\"\ntags[0]     // → \"new\"   (lists count from 0)"
+      }
+    ],
+    "prompts": [
+      {
+        "en": "Explain this function in plain words: what goes in, what comes out, and every if that changes the path. Do not rewrite anything.",
+        "he": "תסבירו את ה-function הזו במילים פשוטות: מה נכנס, מה יוצא, וכל if שמשנה את המסלול. אל תשכתבו כלום."
+      },
+      {
+        "en": "List the imports at the top of this file. For each one, say which file or package it comes from and what this file uses it for.",
+        "he": "תרשמו את ה-imports בראש הקובץ הזה. לכל אחד, תגידו מאיזה קובץ או package הוא מגיע ולמה הקובץ הזה משתמש בו."
+      },
+      {
+        "en": "Before you change any function, tell me its current inputs and return value and whether your change alters either. If it does, list every place that calls it.",
+        "he": "לפני שאתם משנים function כלשהי, תגידו לי מה הקלטים וה-return value שלה עכשיו, והאם השינוי שלכם משנה אחד מהם. אם כן, תרשמו כל מקום שקורא לה."
+      }
+    ]
+  },
+  "Errors, exceptions & null": {
+    "look": [
+      {
+        "cap": {
+          "en": "Say what \"nothing\" should mean",
+          "he": "תגידו מה \"כלום\" אמור להיות"
+        },
+        "code": "user?.name ?? \"Guest\"      // no user → \"Guest\", not a crash\nitems?.length ?? 0         // no list → 0\n\n// fine when nothing is a normal answer.\n// wrong when the user should never be missing:\nif (!user) throw new Error(\"order \" + order.id + \" has no user\");"
+      }
+    ],
+    "prompts": [
+      {
+        "en": "Go through this function and list every value that could be null or undefined, and what the code currently does when it is. Do not fix anything yet.",
+        "he": "תעברו על ה-function הזו ותרשמו כל ערך שיכול להיות null או undefined, ומה הקוד עושה היום כשהוא כזה. אל תתקנו עדיין כלום."
+      },
+      {
+        "en": "Find every catch block in this project that is empty, only logs to the console, or hides the error. Show each one with its file and line.",
+        "he": "תמצאו כל בלוק catch בפרויקט שהוא ריק, שרק כותב ל-console, או שמסתיר את השגיאה. תראו כל אחד עם הקובץ והשורה."
+      },
+      {
+        "en": "For this error message, tell me exactly which value was undefined, where it came from, and the smallest check that handles that case properly.",
+        "he": "להודעת השגיאה הזו, תגידו לי בדיוק איזה ערך היה undefined, מאיפה הוא הגיע, ומה הבדיקה הכי קטנה שמטפלת במקרה הזה כמו שצריך."
+      }
+    ]
+  },
+  "Linter, formatter & type check": {
+    "prompts": [
+      {
+        "en": "Run the formatter, the linter and the type check for this project and paste the raw output. Then fix the errors one by one without disabling any rule.",
+        "he": "תריצו את ה-formatter, ה-linter וה-type check של הפרויקט ותדביקו את הפלט כמו שהוא. אחר כך תתקנו את השגיאות אחת אחת, בלי לכבות אף כלל."
+      },
+      {
+        "en": "Search the codebase for eslint-disable, @ts-ignore, @ts-expect-error and casts to any. List each with its file, and say which warning it is hiding.",
+        "he": "תחפשו בקוד eslint-disable, @ts-ignore, @ts-expect-error והמרות ל-any. תרשמו כל אחד עם הקובץ שלו, ותגידו איזו אזהרה הוא מסתיר."
+      },
+      {
+        "en": "Add format, lint and typecheck scripts to package.json if they are missing, and make the CI workflow run all three and fail on any error.",
+        "he": "תוסיפו ל-package.json scripts של format, lint ו-typecheck אם הם חסרים, ותגרמו ל-CI להריץ את שלושתם ולהיכשל על כל שגיאה."
+      }
+    ]
+  },
+  "Personal data & privacy (GDPR)": {
+    "prompts": [
+      {
+        "en": "List every piece of personal data this app collects, where it is stored, which logs contain it, and which third-party services receive it. Put it in a table.",
+        "he": "תרשמו כל פריט של מידע אישי שהאפליקציה אוספת, איפה הוא נשמר, באילו logs הוא מופיע, ואילו שירותים חיצוניים מקבלים אותו. בטבלה."
+      },
+      {
+        "en": "Build a delete-account flow that removes or anonymises this user in every table, clears their uploaded files, and tells me what must be kept for invoices.",
+        "he": "תבנו תהליך מחיקת חשבון שמסיר או הופך לאנונימי את המשתמש בכל טבלה, מוחק את הקבצים שהעלה, ואומר לי מה חייבים לשמור בשביל חשבוניות."
+      },
+      {
+        "en": "Find every place this code logs or sends a whole request body, an email or other personal fields to logs, analytics or error tracking, and replace them with ids.",
+        "he": "תמצאו כל מקום שבו הקוד רושם ב-log או שולח request body שלם, אימייל או שדות אישיים אחרים ל-logs, ל-analytics או ל-error tracking, ותחליפו אותם ב-ids."
       }
     ]
   }
