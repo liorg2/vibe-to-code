@@ -9,6 +9,18 @@ const LABEL = { listen: { en: "Listen", he: "האזנה" }, stop: { en: "Stop", 
 // what gets read: headings and prose, never code, buttons or prompt boxes
 const READ = "h2, h3, .lede, .cal b, .cal p, .body p, .body li";
 
+// The browser's default voice is usually the robotic one (Windows: "Microsoft David").
+// Prefer the neural ones: Edge "…Online (Natural)", Chrome "Google …", Apple "Premium"/"Enhanced".
+const GOOD = [/natural/i, /google/i, /premium|enhanced/i];
+function bestVoice(lang: string) {
+  const mine = window.speechSynthesis.getVoices().filter((v) => v.lang.startsWith(lang));
+  for (const re of GOOD) {
+    const v = mine.find((x) => re.test(x.name));
+    if (v) return v;
+  }
+  return mine[0];
+}
+
 /**
  * Reads the visible slide aloud with the browser's own voice. It reads what's on screen,
  * so the Full / TL;DR tab decides what you hear. One utterance per block: Chrome cuts
@@ -38,9 +50,11 @@ export function ListenButton() {
       .filter(Boolean);
     if (!blocks.length) return;
     const voiceLang = lang === "he" ? "he-IL" : "en-US";
+    const voice = bestVoice(voiceLang);
     blocks.forEach((text, i) => {
       const u = new SpeechSynthesisUtterance(text);
       u.lang = voiceLang;
+      if (voice) u.voice = voice;
       if (i === blocks.length - 1) u.onend = () => setOn(false);
       synth.speak(u);
     });
