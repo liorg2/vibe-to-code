@@ -551,7 +551,8 @@ pre.code{max-width:100%}
 .lvl-chips input{accent-color:var(--acc);margin:0}
 .xbadge{display:inline-block;padding:1px 8px;border-radius:99px;border:1px solid color-mix(in srgb,var(--warn) 60%,transparent);
   color:var(--warn);font-size:var(--fs-2xs);font-weight:700;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
-.xbadge.lvlBasic{border-color:var(--line);color:var(--tx3);font-weight:600}
+/* ponytail: Basic is the default level, so it carries no badge */
+.xbadge.lvlBasic{display:none}
 .xbadge.lvlAdvanced{border-color:color-mix(in srgb,var(--acc) 60%,transparent);color:var(--acc)}
 .subnav a.on .xbadge{color:#fff;border-color:rgb(255 255 255 / .6)}
 .slide .xnote{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 10px;font-size:var(--fs-sm);color:var(--tx3)}
