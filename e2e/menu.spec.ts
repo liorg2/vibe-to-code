@@ -1,7 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import { MODULES, PATHS } from "../lib/course";
 import { PREVIEW_MODULES } from "../lib/protected";
-import { deleteUsers, go, passVercelGate, register } from "./helpers";
+import { deleteUsers, go, passVercelGate, register, ui } from "./helpers";
 
 // The side menu must follow the course data: every lesson of the course, in order, with its own topics.
 // ponytail: one account for the whole file, so the tests share it and run in order
@@ -10,8 +10,8 @@ test.afterAll(deleteUsers);
 
 const mods = (course: string) =>
   PATHS.find((p) => p.id === course)!.mods.map((id) => MODULES.find((m) => m.id === id)!);
-const titles = (page: Page) => page.locator("nav.side .nav-lesson-h span:nth-child(2)");
-const counts = (page: Page) => page.locator("nav.side .nav-lesson-h .cnt");
+const titles = (page: Page) => page.locator("nav.side a.nav-lesson-h[href*=\"/lesson/\"] span:nth-child(2)");
+const counts = (page: Page) => page.locator("nav.side a.nav-lesson-h[href*=\"/lesson/\"] .cnt");
 
 test("signed out: only the free preview lessons, then the unlock button", async ({ page }) => {
   await passVercelGate(page);
@@ -19,7 +19,7 @@ test("signed out: only the free preview lessons, then the unlock button", async 
     await go(page, `/en/lesson/ground/overview?course=${course}`);
     const preview = mods(course).filter((m) => (PREVIEW_MODULES as readonly string[]).includes(m.id));
     await expect(titles(page)).toHaveText(preview.map((m) => m.title.en));
-    await expect(page.locator("nav.side").getByRole("button", { name: "Unlock" })).toBeVisible();
+    await expect(page.locator("nav.side a", { hasText: ui("unlock") })).toBeAttached(); // the nav folds away under 900px
   }
 });
 
