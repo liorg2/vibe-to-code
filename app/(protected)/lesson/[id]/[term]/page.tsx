@@ -27,6 +27,7 @@ import { serverLang } from "@/lib/lang-server";
 import { cookies } from "next/headers";
 import { TOPIC_EXTRAS } from "@/lib/topic-extras";
 import { TopicExtras } from "@/components/TopicExtras";
+import { VIDEOS } from "@/lib/videos";
 import { para } from "@/lib/utils";
 
 export default async function SlidePage({
@@ -75,6 +76,7 @@ export default async function SlidePage({
   const short = TLDR[tm.t.en];
   const ex = EXAMPLES[tm.t.en];
   const scene = SCENES[tm.k];
+  const video = VIDEOS[tm.k];
   const coursePath = pathForModule(m.id, course);
   const q = (href: string) => (course ? `${href}?course=${course}` : href);
   const tldr = (await cookies()).get("vibe.tldr")?.value === "1";
@@ -95,7 +97,7 @@ export default async function SlidePage({
         ]}
       />
       <LessonSubNav m={m} active={i} course={course} />
-      <SlideMode initial={tldr} extra={TOPIC_EXTRAS[tm.t.en]}>
+      <SlideMode initial={tldr} extra={TOPIC_EXTRAS[tm.t.en]} hasVideo={!!video}>
       <article className="slide">
         <div className="kicker">
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
@@ -109,6 +111,13 @@ export default async function SlidePage({
           <ul className="tldr-only body">
             {short[lang].map((p, idx) => <li key={idx}>{p}</li>)}
           </ul>
+        ) : null}
+        {video ? (
+          <div className="video-tab">
+            <video controls playsInline preload="none" poster={video.poster}>
+              <source src={video.src} type="video/mp4" />
+            </video>
+          </div>
         ) : null}
         <div className="cal"><b>{t("why")}</b><p>{tm.w[lang]}</p></div>
         <div className="full-only">

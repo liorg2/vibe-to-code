@@ -15,3 +15,7 @@ out/
 # playwright
 playwright-report/
 test-results/
+
+# remotion (own package.json, kept out of the main install)
+video/node_modules/
+video/out/

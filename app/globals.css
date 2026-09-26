@@ -506,8 +506,11 @@ pre.code{max-width:100%}
 @media (max-width:600px){.mode-tabs{gap:0}.mode-tabs button{flex:1 1 0;min-width:0;padding:8px 4px;white-space:normal;text-align:center;font-size:var(--fs-xs)}}
 .slide-mode.tldr .full-only,.slide-mode:not(.tldr) .tldr-only{display:none}
 .slide-mode.look .lede,.slide-mode.look .cal,.slide-mode.look .full-only,.slide-mode.look .tldr-only,
-.slide-mode.prompts .lede,.slide-mode.prompts .cal,.slide-mode.prompts .full-only,.slide-mode.prompts .tldr-only{display:none}
-.slide-mode:not(.look) .looks,.slide-mode:not(.prompts) .prompt-list{display:none}
+.slide-mode.prompts .lede,.slide-mode.prompts .cal,.slide-mode.prompts .full-only,.slide-mode.prompts .tldr-only,
+.slide-mode.video .lede,.slide-mode.video .cal,.slide-mode.video .full-only,.slide-mode.video .tldr-only{display:none}
+.slide-mode:not(.look) .looks,.slide-mode:not(.prompts) .prompt-list,.slide-mode:not(.video) .video-tab{display:none}
+.video-tab{margin-top:22px}
+.video-tab video{display:block;width:100%;border-radius:var(--r);border:1px solid var(--line);background:#000}
 .topic-extra{margin-top:8px}
 .looks{display:flex;flex-direction:column;gap:18px;margin-top:14px}
 .look{margin:0;min-width:0}
