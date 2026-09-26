@@ -83,49 +83,6 @@ export const HTTP_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "post-put-patch-delete": {
-    cap: { en: "Four ways to change data, and the reply tells you if it worked", he: "ארבע דרכים לשנות מידע, והתשובה אומרת אם זה עבד" },
-    actors: [browser, server, db],
-    beats: [
-      {
-        from: "b", to: "s", label: "POST /contacts", body: ["name: (empty)"],
-        say: { en: "Add a new contact, but the name was left empty.", he: "מוסיפים איש קשר חדש, אבל השם נשאר ריק." },
-      },
-      {
-        from: "s", to: "b", label: "400 Bad Request", status: 400, body: ["name is required"],
-        say: { en: "The server says no before saving anything. 400 means: what you sent is wrong.", he: "השרת מסרב עוד לפני שהוא שומר משהו. 400 אומר: מה ששלחתם שגוי." },
-      },
-      {
-        from: "b", to: "s", label: "POST /contacts", body: ["name: Noa Levi"],
-        say: { en: "Fixed and sent again.", he: "תיקנו ושלחו שוב." },
-      },
-      {
-        from: "s", to: "d", label: "save the new contact",
-        say: { en: "Now it's saved in the database.", he: "עכשיו זה נשמר במסד הנתונים." },
-      },
-      {
-        from: "s", to: "b", label: "201 Created", status: 201, body: ["find it at /contacts/42"],
-        say: { en: "201 means created, and it says where the new contact lives.", he: "201 אומר שנוצר, והתשובה אומרת איפה איש הקשר החדש נמצא." },
-      },
-      {
-        from: "b", to: "s", label: "PATCH /contacts/42", body: ["stage: won"],
-        say: { en: "PATCH changes one detail. PUT would replace the whole contact.", he: "PATCH משנה פרט אחד. PUT היה מחליף את כל איש הקשר." },
-      },
-      {
-        from: "s", to: "b", label: "200 OK", status: 200,
-        say: { en: "Done, it's changed.", he: "בוצע, זה השתנה." },
-      },
-      {
-        from: "b", to: "s", label: "DELETE /contacts/99",
-        say: { en: "Delete a contact that doesn't exist.", he: "מוחקים איש קשר שלא קיים." },
-      },
-      {
-        from: "s", to: "b", label: "404 Not Found", status: 404,
-        say: { en: "404: nothing there. A good app says so instead of pretending it worked.", he: "404: אין שם כלום. אפליקציה טובה אומרת את זה במקום להעמיד פנים שזה עבד." },
-      },
-    ],
-  },
-
   "status-codes": {
     cap: { en: "One page, five replies, and the first digit tells you whose fault it is", he: "אותו עמוד, חמש תשובות, והספרה הראשונה אומרת של מי האשמה" },
     actors: [browser, server],

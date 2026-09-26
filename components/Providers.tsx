@@ -15,7 +15,7 @@ import { onAuthStateChanged, type User } from "firebase/auth";
 import { parseLangFromPath, stripLang, withLang } from "@/lib/lang";
 import type { Lang } from "@/lib/types";
 import { firebaseReady, getClientAuth } from "@/lib/firebase/client";
-import { totalTerms } from "@/lib/course";
+import { rehome, totalTerms } from "@/lib/course";
 import { REVIEWER_COOKIE } from "@/lib/protected";
 
 const KEY = "vibe2code.v2";
@@ -95,7 +95,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
 
   useEffect(() => {
     setTheme((lsGet(KEY + ".theme") as "dark" | "light") || "dark");
-    setDone(new Set(JSON.parse(lsGet(KEY + ".done") || "[]")));
+    setDone(new Set((JSON.parse(lsGet(KEY + ".done") || "[]") as string[]).map(rehome)));
     setTicked(new Set(JSON.parse(lsGet(KEY + ".check") || "[]")));
     setHideExpert(lsGet(KEY + ".hideExpert") === "1");
   }, []);
@@ -123,7 +123,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
         return [];
       }
     };
-    const mergedDone = new Set([...(cloud.done || []), ...local(".done")]);
+    const mergedDone = new Set([...(cloud.done || []), ...local(".done")].map(rehome));
     const mergedTicked = new Set([...(cloud.ticked || []), ...local(".check")]);
     setDone(mergedDone);
     setTicked(mergedTicked);

@@ -231,50 +231,6 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
   },
 
-  dns: {
-    cap: { en: "A website name gets turned into an address, and the answer is remembered for as long as you allowed", he: "שם של אתר מתורגם לכתובת, והתשובה נזכרת כמה זמן שהרשיתם" },
-    actors: [
-      browser,
-      { id: "r", icon: "🔎", label: { en: "Lookup service", he: "שירות החיפוש" } },
-      { id: "n", icon: "📒", label: { en: "Name server", he: "שרת השמות" } },
-    ],
-    beats: [
-      {
-        from: "b", to: "r", label: "where is pocketcrm.app?",
-        say: { en: "Dana types pocketcrm.app. Computers connect to number addresses, like phone numbers, so the browser asks for it.", he: "דנה מקלידה pocketcrm.app. מחשבים מתחברים לכתובות של מספרים, כמו מספרי טלפון, אז הדפדפן שואל מה המספר." },
-      },
-      {
-        from: "r", to: "n", label: "where is pocketcrm.app?",
-        say: { en: "The lookup service asks around until it reaches the domain's name server, which holds the real answer.", he: "שירות החיפוש שואל עד שהוא מגיע לשרת השמות של הדומיין, שמחזיק את התשובה האמיתית." },
-      },
-      {
-        from: "n", to: "r", label: "203.0.113.10 · keep for 1 day",
-        say: { en: "The answer comes with a TTL, a 'keep until' time: you may remember this for a full day.", he: "התשובה מגיעה עם TTL, זמן תפוגה: מותר לזכור אותה יום שלם." },
-      },
-      {
-        from: "r", to: "b", label: "203.0.113.10",
-        say: { en: "The browser connects. The lookup service keeps the answer in its cache, its short-term memory.", he: "הדפדפן מתחבר. שירות החיפוש שומר את התשובה ב-cache, הזיכרון הקצר שלו." },
-      },
-      {
-        from: "n", to: "n", label: "new address: 198.51.100.7", tone: "warn",
-        say: { en: "That evening you move to a new host and update the address. The name server changes right away.", he: "באותו ערב אתם עוברים לאחסון חדש ומעדכנים את הכתובת. שרת השמות משתנה מיד." },
-      },
-      {
-        from: "b", to: "r", label: "where is pocketcrm.app?",
-        body: ["(Omer, 2 hours later)"],
-        say: { en: "Two hours later, Omer asks through the same lookup service.", he: "שעתיים אחר כך, עומר שואל דרך אותו שירות חיפוש." },
-      },
-      {
-        from: "r", to: "b", label: "203.0.113.10 (remembered)", tone: "err",
-        say: { en: "He gets the old address from memory and sees the old site. Nobody asked the name server again.", he: "הוא מקבל את הכתובת הישנה מהזיכרון ורואה את האתר הישן. אף אחד לא שאל שוב את שרת השמות." },
-      },
-      {
-        from: "n", to: "n", label: "keep for 5 min (a day before)", tone: "info",
-        say: { en: "The only fix is done in advance: a day before moving, lower the TTL to 5 minutes, so everyone forgets fast.", he: "התיקון היחיד נעשה מראש: יום לפני המעבר מורידים את ה-TTL ל-5 דקות, כך שכולם שוכחים מהר." },
-      },
-    ],
-  },
-
   "package-manager": {
     cap: { en: "package.json is the shopping list. The lock file is the receipt of exactly what you got", he: "package.json הוא רשימת הקניות. קובץ הנעילה הוא הקבלה על מה שקיבלתם בדיוק" },
     actors: [
@@ -458,7 +414,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "the-network-tab": {
+  "devtools": {
     cap: { en: "\"Something went wrong\" turns into a clear answer in one minute", he: "\"משהו השתבש\" הופך לתשובה ברורה תוך דקה" },
     actors: [
       browser,
@@ -505,7 +461,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "race-condition": {
+  "blocking-vs-async": {
     cap: { en: "Two saves, a split second apart, both sure there's room for one more", he: "שתי שמירות, בהפרש של שבריר שנייה, ושתיהן בטוחות שיש מקום לעוד אחד" },
     actors: [
       { id: "a", icon: "👩", label: { en: "Dana's tab", he: "הלשונית של דנה" } },
@@ -550,7 +506,7 @@ export const EARLY_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "memory-leak": {
+  "ram-vs-disk": {
     cap: { en: "A cache that only ever grows, until the app runs out of memory and crashes", he: "cache שרק גדל, עד שלאפליקציה נגמר הזיכרון והיא קורסת" },
     actors: [
       { id: "q", icon: "🌐", label: { en: "Requests", he: "בקשות" } },

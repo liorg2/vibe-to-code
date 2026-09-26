@@ -1,6 +1,6 @@
 import type { BuildStep } from "./types";
 
-/** Build track, Basic course: lessons 1–8, from an empty folder to a live CRM on Postgres. */
+/** Build track, Basic course: lessons 1–9, from an empty folder to a fast, database-backed CRM. */
 export const BUILDS_BASIC: Record<string, BuildStep> = {
   ground: {
     title: { en: "From an empty folder to a running app", he: "מתיקייה ריקה לאפליקציה שרצה" },
@@ -12,7 +12,7 @@ export const BUILDS_BASIC: Record<string, BuildStep> = {
       en: "Code is just text, something has to run it, and the terminal is where you watch that happen. This step makes all three real.",
       he: "קוד הוא בסך הכול טקסט, משהו צריך להריץ אותו, והטרמינל הוא המקום שבו רואים את זה קורה. הצעד הזה הופך את שלושתם למשהו מוחשי.",
     },
-    uses: ["source-code", "runtime", "terminal-cli", "environment", "bug-stack-trace", "test", "assertion"],
+    uses: ["source-code", "runtime", "terminal-cli", "environment", "bug-stack-trace", "test"],
     build: `I'm not a developer: you run every command. This is step 1 of Pocket CRM, a small app for tracking the people I work with.
 
 - Start a new Next.js app in this empty folder, called pocket-crm. The home page shows only the title "Pocket CRM".
@@ -115,7 +115,7 @@ If all is green: add the line "2 vcs: on GitHub, live on Vercel, branch previews
       en: "One note lands in the terminal and the other in the browser console. It's the fastest way to learn which side a piece of code runs on.",
       he: "הודעה אחת מופיעה בטרמינל והשנייה ב-console של הדפדפן. זו הדרך המהירה ביותר ללמוד באיזה צד רץ כל חלק בקוד.",
     },
-    uses: ["client", "server", "api", "localhost-and-port", "devtools", "the-network-tab", "console-and-breakpoints"],
+    uses: ["client", "api", "localhost-and-port", "devtools"],
     build: `Read AGENTS.md and STEPS.md first. This is step 3. Start a new branch for it.
 
 I want to see the browser and the server talk to each other.
@@ -169,7 +169,7 @@ If all is green: add the line "3 sides: the browser talks to our server" to STEP
       en: "TypeScript catches a bad value while the code is written; a runtime check catches it when real data arrives. You need both, and it costs one small tool.",
       he: "TypeScript תופס ערך שגוי כבר כשכותבים את הקוד, ובדיקה בזמן ריצה תופסת אותו כשמגיעים נתונים אמיתיים. צריך את שניהם, וזה עולה כלי קטן אחד.",
     },
-    uses: ["typed-vs-untyped", "javascript-typescript", "package-manager", "dependency", "semantic-versioning"],
+    uses: ["typed-vs-untyped", "javascript-typescript", "package-manager", "semantic-versioning"],
     build: `Read AGENTS.md and STEPS.md first. This is step 4. Start a new branch for it.
 
 Define, in one place, what a valid contact is:
@@ -266,6 +266,59 @@ If all is green: add the line "5 frontend: a contacts page that works by keyboar
     ],
   },
 
+  web: {
+    title: { en: "Fast, findable pages", he: "דפים מהירים וקל למצוא" },
+    goal: {
+      en: "The home and Contacts pages have a proper title and description, a link preview image when shared, a Lighthouse score you've measured and improved, and you've seen the browser cache and CDN at work in DevTools.",
+      he: "לדף הבית ולדף אנשי הקשר יש כותרת ותיאור אמיתיים, תמונת תצוגה מקדימה כשמשתפים קישור, ציון Lighthouse שמדדתם ושיפרתם, וראיתם את ה-cache של הדפדפן וה-CDN בפעולה ב-DevTools.",
+    },
+    why: {
+      en: "A slow or invisible page loses users before they see your CRM. This step makes the pages you already built fast and easy to find, before the backend gives them real data next.",
+      he: "דף איטי או בלתי נראה מאבד משתמשים עוד לפני שהם רואים את ה-CRM שלכם. השלב הזה הופך את הדפים שכבר בניתם למהירים וקלים למציאה, לפני שהשרת ייתן להם נתונים אמיתיים בשלב הבא.",
+    },
+    uses: ["spa-vs-ssr-vs-static", "bundler-and-build-step", "browser-cache", "the-main-thread", "lighthouse-and-pagespeed", "seo-basics"],
+    build: `Read AGENTS.md and STEPS.md first. This is step 6. Start a new branch for it.
+
+Make Pocket CRM's pages fast and easy to find, without changing what they do.
+
+- Give the home page and the Contacts page a real <title> and a one-line meta description each.
+- Add an Open Graph image and tags, so pasting the link into Slack or WhatsApp shows a real preview, not a bare URL.
+- Run Lighthouse or PageSpeed on both pages, show me the scores, then fix the single worst thing it flags.
+- Pick, for each page, whether it should render on the server or stay static, and explain your choice in one plain sentence per page.
+- Nothing else changes: no new features, no new tools beyond what Next.js already gives you.
+
+Then start the app with npm run dev and tell me in plain words what to open or click to see it working, plus the before/after Lighthouse numbers. STEPS.md gets its line after the check.`,
+    check: `Check step 6. Don't add features.
+
+- Add tests proving: the home and Contacts pages each render a non-empty <title> and a meta description; the Open Graph tags are present and point at a real image.
+- Run all the tests with npm run check.
+- With the app running, open DevTools' Network tab, hard-refresh once and then reload normally, and show me which files came from the browser's cache the second time versus which came from the CDN.
+- Re-run Lighthouse on both pages and show me the new score next to the one from the build step.
+- Paste the live URL into a tool that previews link cards (or explain what would show) and describe the preview in one line.
+
+Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
+
+If all is green: add the line "6 web: fast, findable pages with real previews" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
+    done: [
+      {
+        en: "I saw the Lighthouse score before and after, and the worst item was fixed",
+        he: "ראיתם את ציון ה-Lighthouse לפני ואחרי, והפריט הכי גרוע תוקן",
+      },
+      {
+        en: "Pasting the live link into a chat app showed a real title, description and image",
+        he: "הדבקת הקישור החי בצ'אט הציגה כותרת, תיאור ותמונה אמיתיים",
+      },
+      {
+        en: "In DevTools I saw a file served from cache on the second load",
+        he: "ב-DevTools ראיתם קובץ שנטען מה-cache בטעינה השנייה",
+      },
+      {
+        en: "Both pages have a real title and description, not the default Next.js one",
+        he: "לשני הדפים יש כותרת ותיאור אמיתיים, לא ברירת המחדל של Next.js",
+      },
+    ],
+  },
+
   mobile: {
     title: { en: "Pocket CRM on your phone", he: "Pocket CRM בטלפון שלכם" },
     goal: {
@@ -276,8 +329,8 @@ If all is green: add the line "5 frontend: a contacts page that works by keyboar
       en: "Most people will open your app on a phone. This step makes the web app you have good there before anyone reaches for an app store.",
       he: "רוב האנשים יפתחו את האפליקציה שלכם בטלפון. השלב הזה הופך את ה-web app שכבר יש לכם לטוב שם, לפני שמישהו מושיט יד לחנות אפליקציות.",
     },
-    uses: ["mobile-first-design", "touch-targets-and-gestures", "pwa-installable-web-app", "web-app-vs-native-app"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 6. Start a new branch for it.
+    uses: ["mobile-first-design", "pwa-installable-web-app", "web-app-vs-native-app"],
+    build: `Read AGENTS.md and STEPS.md first. This is step 7. Start a new branch for it.
 
 Make Pocket CRM good to use on a phone. It stays a web app: no app store, no second project.
 - Design the home and Contacts pages for a 375 pixel wide screen first, then widen. Text is readable without zooming, and fields use at least 16 pixel text so iPhones don't zoom in.
@@ -287,14 +340,14 @@ Make Pocket CRM good to use on a phone. It stays a web app: no app store, no sec
 - No offline mode and no new tools.
 
 Then start the app with npm run dev and tell me in plain words what to open or click to see it working. STEPS.md gets its line after the check.`,
-    check: `Check step 6. Don't add features.
+    check: `Check step 7. Don't add features.
 
 - Add browser tests at phone size (375 by 667): no sideways scroll on any page; every button, link and field is at least 44 by 44 pixels, naming any that aren't; the email field asks for the email keyboard; the manifest loads and all its icons exist. Save a Contacts page screenshot.
 - Run all the tests with npm run check, then npm run e2e.
 
 Report back in plain words: a list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't change a test just to make it pass.
 
-If all is green: add the line "6 mobile: the contacts page works on a phone and installs to the home screen" to STEPS.md and save it as a commit on this branch. Show me the preview URL and walk me through opening it on my phone (Vercel may ask me to log in there too), adding a contact, and adding it to the home screen. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
+If all is green: add the line "7 mobile: the contacts page works on a phone and installs to the home screen" to STEPS.md and save it as a commit on this branch. Show me the preview URL and walk me through opening it on my phone (Vercel may ask me to log in there too), adding a contact, and adding it to the home screen. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
     done: [
       {
         en: "I opened the preview on my own phone and added a contact with my thumb",
@@ -311,50 +364,104 @@ If all is green: add the line "6 mobile: the contacts page works on a phone and 
     ],
   },
 
-  httpdata: {
-    title: { en: "A real API over a real database", he: "API אמיתי מעל מסד נתונים אמיתי" },
+  http: {
+    title: { en: "A real REST API", he: "REST API אמיתי" },
     goal: {
-      en: "Contacts live on the server behind an API with honest status codes, saved in a real database that survives restarts and redeploys.",
-      he: "אנשי הקשר חיים בשרת מאחורי API עם קודי סטטוס כנים, שמורים במסד נתונים אמיתי ששורד הפעלה מחדש ו-deploy.",
+      en: "Contacts now live on the server behind an API that answers with honest status codes, and the page talks to it.",
+      he: "אנשי הקשר יושבים עכשיו בשרת מאחורי API שעונה עם קודי סטטוס כנים, והדף מדבר איתו.",
     },
     why: {
-      en: "From here on, every feature is a request and a response — and data has to live somewhere that survives a restart. This step sets up both at once.",
-      he: "מכאן והלאה כל feature הוא בקשה ותשובה, והנתונים צריכים לחיות במקום ששורד הפעלה מחדש. הצעד הזה מקים את שניהם ביחד.",
+      en: "From here on, every feature is a request and a response. Get the actions and status codes right now, and every future bug report gets short.",
+      he: "מכאן והלאה, כל feature הוא בקשה ותשובה. אם הפעולות וקודי הסטטוס נכונים עכשיו, כל דיווח באג בעתיד יהיה קצר.",
     },
-    uses: ["request-response", "rest", "endpoint", "status-codes", "json", "database", "schema", "migration", "index"],
-    build: `Read AGENTS.md and STEPS.md first. This is step 7. Start a new branch for it.
+    uses: ["request-response", "rest", "get", "status-codes", "headers"],
+    build: `Read AGENTS.md and STEPS.md first. This is step 8. Start a new branch for it.
 
-Contacts move from the browser to the server: a real API in front, a real database behind it.
+Move the contacts from the browser to the server, behind an API (the door the page knocks on to read or change data).
 
-Before any code, show me the API as a table: action | address | answer when it works | answer when it fails. Every answer is JSON and honest: 201 when something was created, 400 naming the bad field, 404 for an unknown contact, 409 for a duplicate email, 204 after a delete, 405 for an unsupported action.
+Before any code, show me the API as a simple table: action | address | answer when it works | answer when it fails.
 
-This touches the database, so first tell me your plan in a few plain bullets and wait for my OK. Walk me through a free Neon account with two databases: the real one, and one only for tests. Store contacts, companies and notes; deleting a contact deletes its notes. Every structure change is a migration, a saved step so any database rebuilds identically. Times in UTC, and filtering by stage is fast with an index. Add sample data that is safe to load twice.
+- The API can list contacts, add one, show one, change one and delete one.
+- Every answer is honest: 201 when something was created, 400 for bad input (saying which field is wrong), 404 when the contact doesn't exist, 204 after a delete, 405 for an action the address doesn't support. Every answer, errors too, is JSON.
+- For now keep contacts in the server's memory; they vanish on restart until the database arrives in step 9.
+- The Contacts page now uses the API, and shows the server's errors under the right fields. Keyboard use and labels keep working.
+- No new tools.
 
-The Contacts page uses the API now and shows the server's errors under the right fields. Pick the tools, note them in AGENTS.md, explain them in 2–3 plain sentences, and tell me how to give Vercel the connection details. Then tell me in plain words what to open or click to see it working.`,
-    check: `Check step 7. Don't add features.
+Then start the app with npm run dev and tell me in plain words what to open or click to see it working. STEPS.md gets its line after the check.`,
+    check: `Check step 8. Don't add features.
 
-- Add tests proving each API answer: list 200; a good contact 201 plus its address; a bad one 400 naming the name and email problems; a duplicate email 409; an unknown contact 404; delete 204, then 404 when asked again; an unsupported action 405. Database tests run on the test database only and refuse the real one.
-- On the test database, wipe it, rebuild it from the migrations alone, and show what it contains.
+- Add tests proving each answer: list 200; a good contact 201 plus its new address; a bad one 400 naming the name and email problems; broken input 400; an unknown contact 404; a change 200, or 400 if invalid; delete 204, then 404 when asked again; an unsupported action 405.
 - Run all the tests with npm run check, then npm run e2e. The step 5 browser tests must still pass, now through the API.
-- Add a contact, restart the server, and show it is still there. Confirm no passwords or connection details are in the code.
+- With the app running, do one real round trip: add a contact, read it, change its stage to qualified, delete it, read it again. Show me the status code of each.
+- Restart the server, show the list is now empty, and explain in one line why.
 
 Report back in plain words: a short list of what you checked, each marked pass or fail, with the real output below it. If something fails, stop and explain it simply; don't fix it silently.
 
-If all is green: add "7 httpdata: contacts behind a real API, live in a real database" to STEPS.md and commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, show the sample contacts on the live site, and that a new contact survives a redeploy.
-
-Close with a short "what I shipped" note: live address, tools, how many tests pass, and STEPS.md.`,
+If all is green: add the line "8 http: contacts behind a real API" to STEPS.md and save it as a commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, merge it into main and send it to GitHub.`,
     done: [
       {
-        en: "I read the round trip: 201, 200, 201, 204, then 404",
-        he: "קראתם את הסבב המלא: 201, 200, 201, 204 ואז 404",
+        en: "I read the round trip: 201, 200, 200, 204, then 404",
+        he: "קראתם את הסבב המלא: 201, 200, 200, 204 ואז 404",
       },
       {
         en: "Adding a bad contact on the page showed the server's error under the field",
         he: "הוספה של איש קשר לא תקין בדף הציגה את השגיאה מהשרת מתחת לשדה",
       },
       {
-        en: "I added a contact and it was still there after a restart and a redeploy",
-        he: "הוספתם איש קשר והוא עדיין היה שם אחרי הפעלה מחדש ו-deploy",
+        en: "After a server restart the list was empty, and I know why",
+        he: "אחרי הפעלה מחדש של השרת הרשימה הייתה ריקה, ואתם יודעים למה",
+      },
+    ],
+  },
+
+  data: {
+    title: { en: "A real database — and it's live", he: "מסד נתונים אמיתי, והכול באוויר" },
+    goal: {
+      en: "Contacts, companies and notes are saved in a real database, survive restarts and redeploys, and the live CRM reads and writes them.",
+      he: "אנשי קשר, חברות והערות נשמרים במסד נתונים אמיתי, שורדים הפעלה מחדש ו-deploy, וה-CRM החי קורא וכותב אותם.",
+    },
+    why: {
+      en: "Data has to live somewhere that survives a restart. A clear structure and saved migrations give you that without losing data or guessing.",
+      he: "הנתונים צריכים לחיות במקום ששורד הפעלה מחדש. מבנה ברור ומיגרציות שמורות נותנים את זה בלי לאבד נתונים ובלי לנחש.",
+    },
+    uses: ["database", "schema", "query", "orm", "time-text-and-money"],
+    build: `Read AGENTS.md and STEPS.md first. This is step 9. Start a new branch for it.
+
+This touches the database, so first tell me your plan in a few plain bullets and wait for my OK.
+
+Contacts must survive restarts and deploys.
+- Walk me through a free Neon account with two databases: the real one, and a separate one only for tests. I'll paste the connection details into the secret file, never the code.
+- Store contacts, companies and notes. A contact may have a company; a note belongs to a contact. Deleting a contact deletes its notes; deleting a company keeps its contacts. A duplicate email gets 409. Times are saved in UTC. Filtering by stage is fast (add an index).
+- Every change to the database's structure is a migration: a saved step in the repo, so any database can be rebuilt identically.
+- Add some sample data that is safe to load twice.
+- Pick the tools, note them in AGENTS.md, and explain them in 2–3 plain sentences. Tell me how to give Vercel the connection details, and wait.
+
+Then tell me in plain words what to open or click to see it working.`,
+    check: `Check step 9. Don't add features.
+
+- On the test database only, wipe it, rebuild it from the migrations alone, and show what it contains.
+- Add tests proving: they refuse to run against the real database; a saved contact reads back the same; a duplicate email gets 409; the stage "maybe" gets 400; times come back in UTC; deleting a contact deletes its notes.
+- Run all the tests with npm run check and npm run e2e, including the database tests.
+- Add a contact, restart the server, and show it is still there.
+- Confirm no passwords or connection details are in the code.
+
+Report in plain words: what you checked, pass or fail, with the real output below. If something fails, stop and explain it simply; don't fix it silently.
+
+If all is green: add "9 data: contacts live in a real database" to STEPS.md and commit on this branch. Show me the preview URL and wait for me to inspect it. Ask for my explicit approval before merging into main or deploying to production; do not merge or deploy until I approve. After approval, show the sample contacts on the live site, ask me before adding a demo contact or redeploying, and show that the contact survived.
+
+Close with a short "what I shipped" note: live address, tools, how many tests pass, and STEPS.md.`,
+    done: [
+      {
+        en: "I added a contact on the live site and it was still there after a redeploy",
+        he: "הוספתם איש קשר באתר החי והוא עדיין היה שם אחרי deploy מחדש",
+      },
+      {
+        en: "I saw the contacts, companies and notes in the Neon dashboard, not only in the AI's summary",
+        he: "ראיתם את אנשי הקשר, החברות וההערות בלוח הבקרה של Neon, לא רק בסיכום של ה-AI",
+      },
+      {
+        en: "Adding a second contact with the same email was refused with 409",
+        he: "הוספה של איש קשר שני עם אותו אימייל נדחתה עם 409",
       },
       {
         en: "I read the \"what I shipped\" note: a live CRM on a real database, with tests",

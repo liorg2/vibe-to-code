@@ -1,6 +1,6 @@
 import {
-  Activity, AppWindow, Bot, Boxes, Braces, Cloud, CreditCard, Database, FileCode, FlaskConical, GitBranch, Globe, Hourglass,
-  KeyRound, MemoryStick, MessagesSquare, MonitorSmartphone, Plug, Rocket, ShieldCheck, Users, Zap, type LucideIcon,
+  Activity, AppWindow, Bot, Boxes, Braces, Cloud, CreditCard, Database, FileCode, FlaskConical, Gauge, GitBranch, Globe, Hourglass,
+  KeyRound, MemoryStick, MessagesSquare, MonitorSmartphone, Plug, Rocket, ShieldCheck, Smartphone, Sparkles, Users, type LucideIcon,
 } from "lucide-react";
 import type { Module } from "@/lib/types";
 
@@ -11,22 +11,24 @@ const ICONS: Record<string, LucideIcon> = {
   sides: MonitorSmartphone,
   langs: Braces,
   frontend: AppWindow,
+  web: Gauge,
+  mobile: Smartphone,
   http: MessagesSquare,
-  apis: Plug,
   data: Database,
-  memory: MemoryStick,
-  cache: Zap,
   testing: FlaskConical,
-  async: Hourglass,
   auth: KeyRound,
   security: ShieldCheck,
+  apis: Plug,
+  async: Hourglass,
   pay: CreditCard,
+  memory: MemoryStick,
+  scale: Boxes,
   net: Globe,
   cloud: Cloud,
   devops: Rocket,
   observe: Activity,
-  scale: Boxes,
   team: Users,
+  llm: Sparkles,
   ai: Bot,
 };
 

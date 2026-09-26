@@ -38,14 +38,13 @@ for (const [name, keyed] of [["SIMPLE", SIMPLE], ["DETAIL", DETAIL], ["EXAMPLES"
 }
 
 const PREVIEW = new Set([
-  "Frontend",
+  "Frontend, backend & full stack",
   "DOM",
   "CSS & responsive layout",
   "Accessibility (a11y)",
   "Component",
   "Forms & validation",
-  "SEO basics",
-  "Link previews (Open Graph)",
+  "SEO & link previews",
 ]);
 for (const title of titles) {
   const x = TOPIC_EXTRAS[title];
@@ -81,12 +80,11 @@ const before = (moduleId: string, first: string, second: string) => {
   assert.ok(keys.indexOf(first) < keys.indexOf(second), `${moduleId}: ${first} must precede ${second}`);
 };
 before("vcs", "commit-branch-merge", "clone-push-pull");
-before("sides", "api", "full-stack");
+before("sides", "frontend", "api");
 before("langs", "semantic-versioning", "framework-vs-library");
-before("httpdata", "endpoint", "get");
-before("httpdata", "status-codes", "headers");
-before("performance", "data-structures", "big-o");
-before("teamwork", "test-first-tdd", "unit-integration-e2e");
+before("http", "request-response", "get");
+before("http", "status-codes", "headers");
+before("testing", "test-first-tdd", "unit-integration-e2e");
 before("ai", "agents-md", "specificity-beats-politeness");
 
 // A definition or "why" line may not use a word the course only defines later. Beginners read D/W first.
@@ -94,7 +92,7 @@ const FORWARD: [RegExp, string][] = [
   [/\bdiff\b/i, "diff"],
   [/\bthreads?\b/i, "the-main-thread"],
   [/\bruntime\b/i, "runtime"],
-  [/\bdependenc(y|ies)\b/i, "dependency"],
+  [/\bdependenc(y|ies)\b/i, "package-manager"],
   [/\bcapstone\b|\bsetTimeout\b/, ""],
 ];
 const flat = MODULES.flatMap((m) => m.terms.map((t) => ({ id: `${m.id}:${t.k}`, k: t.k, text: `${t.d.en} ${t.w.en}` })));

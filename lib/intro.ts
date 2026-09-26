@@ -75,12 +75,12 @@ export const INTRO = {
   accounts: {
     t: { en: "Accounts you'll need, when a step asks", he: "חשבונות שתצטרכו, לפי שלבי הקורס" },
     basic: {
-      en: "GitHub and Vercel in step 2, Neon in step 7. Plans can change, so check each service's current pricing when you create an account.",
-      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7. התוכניות והמחירים עשויים להשתנות, לכן בדקו את המחיר העדכני של כל שירות בעת פתיחת החשבון.",
+      en: "GitHub and Vercel in step 2, Neon in step 9. Plans can change, so check each service's current pricing when you create an account.",
+      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 9. התוכניות והמחירים עשויים להשתנות, לכן בדקו את המחיר העדכני של כל שירות בעת פתיחת החשבון.",
     },
     advanced: {
-      en: "GitHub and Vercel in step 2, Neon in step 7, Resend in step 8, a payment provider's sandbox (Stripe test mode or Paddle) in step 12, and Sentry in step 15. Check current pricing and limits when you sign up; plans can change. Step 17 uses an AI provider key (Anthropic or OpenAI) and is billed by usage. Set a spending limit first, then check the provider's current rates. You create each account when you reach that step.",
-      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 7, Resend בשלב 8, סביבת הבדיקות של ספק תשלומים (Stripe במצב בדיקה או Paddle) בשלב 12, ו-Sentry בשלב 15. בדקו את המחירים והמגבלות העדכניים בעת ההרשמה, כי התוכניות עשויות להשתנות. שלב 17 משתמש במפתח של ספק AI (Anthropic או OpenAI) ומחויב לפי שימוש. הגדירו מגבלת הוצאה ובדקו את התעריפים העדכניים של הספק. פותחים כל חשבון כשמגיעים לשלב שלו.",
+      en: "GitHub and Vercel in step 2, Neon in step 9, Resend in step 13, a payment provider's sandbox (Stripe test mode or Paddle) in step 15, and Sentry in step 21. Check current pricing and limits when you sign up; plans can change. Step 23 uses an AI provider key (Anthropic or OpenAI) and is billed by usage. Set a spending limit first, then check the provider's current rates. You create each account when you reach that step.",
+      he: "GitHub ו-Vercel בשלב 2, Neon בשלב 9, Resend בשלב 13, סביבת הבדיקות של ספק תשלומים (Stripe במצב בדיקה או Paddle) בשלב 15, ו-Sentry בשלב 21. בדקו את המחירים והמגבלות העדכניים בעת ההרשמה, כי התוכניות עשויות להשתנות. שלב 23 משתמש במפתח של ספק AI (Anthropic או OpenAI) ומחויב לפי שימוש. הגדירו מגבלת הוצאה ובדקו את התעריפים העדכניים של הספק. פותחים כל חשבון כשמגיעים לשלב שלו.",
     },
   },
   flow: [

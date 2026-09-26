@@ -10,6 +10,7 @@ import { extras as mobile } from "./mobile";
 import { extras as llm } from "./llm";
 import { extras as styling } from "./styling";
 import { extras as tooling } from "./tooling";
+import { extras as merged } from "./merged";
 
 export const TOPIC_EXTRAS: Record<string, TopicExtra> = {
   ...foundations,
@@ -23,4 +24,5 @@ export const TOPIC_EXTRAS: Record<string, TopicExtra> = {
   ...llm,
   ...styling,
   ...tooling,
+  ...merged,
 };

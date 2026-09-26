@@ -12,13 +12,13 @@ assert.ok(isPreviewPath(`/lesson/${PREVIEW.advanced}/build`));
 
 assert.ok(isPreviewPath("/lesson/ground"));
 assert.ok(isPreviewPath("/lesson/ground/3"));
-assert.ok(!isPreviewPath("/lesson/integrations/quiz"));
+assert.ok(!isPreviewPath("/lesson/async/quiz"));
 assert.ok(!isPreviewPath("/lesson/groundx/1")); // prefix must not leak
-assert.ok(!isPreviewPath("/lesson/httpdata/3"));
+assert.ok(!isPreviewPath("/lesson/http/3"));
 assert.ok(!isPreviewPath("/lesson"));
 
 assert.ok(!isProtectedPath("/lesson/ground/3"));
-assert.ok(isProtectedPath("/lesson/httpdata/3"));
+assert.ok(isProtectedPath("/lesson/http/3"));
 assert.ok(isProtectedPath("/lesson/groundx/1"));
 assert.ok(isProtectedPath("/lesson"));
 assert.ok(isProtectedPath("/glossary"));

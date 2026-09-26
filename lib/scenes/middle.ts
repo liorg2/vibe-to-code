@@ -57,47 +57,6 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  index: {
-    cap: { en: "Noa's newest leads load instantly once the database keeps a ready-sorted list", he: "הלידים החדשים של נועה נטענים מיד, ברגע שמסד הנתונים מחזיק רשימה ממוינת מראש" },
-    actors: [browser, server, db],
-    beats: [
-      {
-        from: "b", to: "s", label: "GET /contacts?stage=lead",
-        say: { en: "Noa opens her leads, newest first. There are 100,000 contacts in total.", he: "נועה פותחת את הלידים שלה, מהחדש לישן. יש בסך הכול 100,000 אנשי קשר." },
-      },
-      {
-        from: "s", to: "d", label: "leads, newest first, top 50",
-        body: ["stage: lead", "newest first", "first 50 only"],
-        say: { en: "The server asks for one kind of contact, sorted by date.", he: "השרת מבקש סוג אחד של אנשי קשר, ממוינים לפי תאריך." },
-      },
-      {
-        from: "d", to: "d", label: "read all 100,000, then sort", tone: "err",
-        say: { en: "No index, so the database reads every contact, keeps the leads, then sorts them. Like a book with no index at the back.", he: "אין אינדקס, אז מסד הנתונים קורא כל איש קשר, משאיר את הלידים ואז ממיין. כמו ספר בלי אינדקס בסוף." },
-      },
-      {
-        from: "d", to: "s", label: "50 leads · 340 ms", tone: "warn",
-        say: { en: "A third of a second on every visit, and it gets slower as the contact list grows.", he: "שליש שנייה בכל כניסה, וזה נהיה איטי יותר ככל שרשימת אנשי הקשר גדלה." },
-      },
-      {
-        from: "s", to: "d", label: "add index: stage, then date",
-        body: ["grouped by stage,", "newest first in each group"],
-        say: { en: "The index keeps a ready-made list: grouped by stage, newest first in each group. Exactly what this page asks for.", he: "האינדקס מחזיק רשימה מוכנה: לפי שלב, ובתוך כל שלב מהחדש לישן. בדיוק מה שהעמוד הזה מבקש." },
-      },
-      {
-        from: "d", to: "s", label: "50 leads · 2 ms", tone: "ok",
-        say: { en: "The database jumps to the leads and reads the first 50 in order. Nothing is left to sort.", he: "מסד הנתונים קופץ ללידים וקורא את 50 הראשונים לפי הסדר. לא נשאר מה למיין." },
-      },
-      {
-        from: "s", to: "d", label: "save 5,000 new contacts",
-        say: { en: "The cost shows up when saving. Noa imports 5,000 contacts from a spreadsheet file.", he: "המחיר מגיע בשמירה. נועה מייבאת 5,000 אנשי קשר מקובץ גיליון." },
-      },
-      {
-        from: "d", to: "d", label: "each save updates 3 indexes", tone: "warn",
-        say: { en: "Every index is updated on every save. Add indexes for the pages people really use, not for everything.", he: "כל אינדקס מתעדכן בכל שמירה. מוסיפים אינדקסים לעמודים שאנשים באמת משתמשים בהם, לא לכל דבר." },
-      },
-    ],
-  },
-
   transaction: {
     cap: { en: "Merging two copies of Dana takes two steps. A crash must never leave it half done", he: "מיזוג שני עותקים של דנה לוקח שני צעדים. קריסה אסור שתשאיר אותו חצי גמור" },
     actors: [browser, server, db],
@@ -145,7 +104,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  migration: {
+  "schema": {
     cap: { en: "A database change made by hand lives on one laptop. A migration file takes it everywhere", he: "שינוי במסד הנתונים שנעשה ידנית חי בלפטופ אחד. קובץ מיגרציה לוקח אותו לכל מקום" },
     actors: [
       laptop,
@@ -322,53 +281,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "dead-letter-queue": {
-    cap: { en: "One job fails every retry. It's set aside for a person to look at, not lost and not stuck in a loop", he: "עבודה אחת נכשלת בכל הניסיונות. היא מועברת הצידה כדי שמישהו יבדוק, לא הולכת לאיבוד ולא נתקעת בלופ" },
-    actors: [
-      queue,
-      worker,
-      { id: "x", icon: "🗃️", label: { en: "Dead-letter queue", he: "תור העבודות שנכשלו" } },
-      { id: "y", icon: "👩‍💻", label: { en: "You", he: "אתם" } },
-    ],
-    beats: [
-      {
-        from: "q", to: "w", label: "job #77 · send reminder", body: ["contact #318"],
-        say: { en: "A reminder job for contact 318, who was imported from a spreadsheet last week.", he: "עבודת תזכורת לאיש קשר 318, שיובא מגיליון בשבוע שעבר." },
-      },
-      {
-        from: "w", to: "w", label: "crash · try 1 of 5", tone: "err",
-        body: ["error: this contact has no name"],
-        say: { en: "The email starts with the contact's first name. This contact has no name at all, so the code crashes.", he: "המייל מתחיל בשם הפרטי של איש הקשר. לאיש הקשר הזה אין שם בכלל, אז הקוד קורס." },
-      },
-      {
-        from: "w", to: "q", label: "retry in 2s, 4s, 8s, 16s", tone: "warn",
-        say: { en: "It retries, waiting longer each time. That can't help: the same input fails the same way every time.", he: "יש ניסיונות חוזרים, עם המתנה ארוכה יותר בכל פעם. זה לא יכול לעזור: אותו קלט נכשל באותה דרך בכל פעם." },
-      },
-      {
-        from: "w", to: "x", label: "job #77 → set aside after 5",
-        body: ["contact: #318", "error: no name", "tries: 5 · Sep 21, 09:14"],
-        say: { en: "Out of tries. The job isn't thrown away or looped forever. It's set aside with its input, the error and the time.", he: "הניסיונות נגמרו. העבודה לא נזרקת ולא מסתובבת לנצח. היא מועברת הצידה עם הקלט, השגיאה והזמן." },
-      },
-      {
-        from: "x", to: "y", label: "🔔 14 jobs set aside", tone: "warn",
-        say: { en: "An alert fires because the pile isn't empty: 14 jobs, all with the same error. A short list you can actually read.", he: "התראה קופצת כי הערימה לא ריקה: 14 עבודות, כולן עם אותה שגיאה. רשימה קצרה שאפשר באמת לקרוא." },
-      },
-      {
-        from: "y", to: "y", label: "fix: no name → 'Hi there'", tone: "ok",
-        say: { en: "You read why they failed and make a tiny fix: a contact with no name gets 'Hi there'.", he: "אתם קוראים למה הן נכשלו ועושים תיקון קטן: איש קשר בלי שם מקבל 'Hi there'." },
-      },
-      {
-        from: "x", to: "q", label: "run the 14 jobs again",
-        say: { en: "Run them again. Safe here, since none of these emails went out. Jobs that charge money would need a check first.", he: "מריצים אותן שוב. כאן זה בטוח, כי אף אחד מהמיילים האלה לא יצא. עבודות שגובות כסף היו דורשות בדיקה קודם." },
-      },
-      {
-        from: "q", to: "w", label: "job #77 → sent ✓", tone: "ok",
-        say: { en: "Contact 318 gets the reminder. Nothing got lost quietly, and nothing was sent twice.", he: "איש קשר 318 מקבל את התזכורת. שום דבר לא אבד בשקט, ושום דבר לא נשלח פעמיים." },
-      },
-    ],
-  },
-
-  "real-time-websocket-sse": {
+  "long-running-task-and-progress": {
     cap: { en: "Noa watches her import live. With two servers, the 'done' message must reach the right one", he: "נועה עוקבת אחרי הייבוא בזמן אמת. עם שני שרתים, ההודעה 'הסתיים' צריכה להגיע לשרת הנכון" },
     actors: [
       browser,
@@ -413,7 +326,7 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "hit-miss": {
+  "cache": {
     cap: { en: "Omer's dashboard checks the cache first. A badly named entry means it never finds anything", he: "הדשבורד של עומר בודק קודם ב-cache. שם גרוע לרשומה אומר שהוא אף פעם לא מוצא כלום" },
     actors: [server, cache, db],
     beats: [
@@ -538,55 +451,6 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
         from: "s", to: "b", label: "200 OK", status: 200,
         body: ["keep this file for a year"],
         say: { en: "Kept for a year, because that name will never mean anything else. Next visit: a quick check for the page, the script from disk.", he: "נשמר לשנה, כי השם הזה לעולם לא יתייחס לקובץ אחר. בביקור הבא: בדיקה מהירה לעמוד, והסקריפט מהדיסק." },
-      },
-    ],
-  },
-
-  cdn: {
-    cap: { en: "Visitors in Tel Aviv, a server in Virginia. A CDN keeps copies around the corner", he: "גולשים בתל אביב, שרת בווירג'יניה. CDN שומר עותקים ממש קרוב אליהם" },
-    actors: [
-      { id: "b", icon: "🧑‍💻", label: { en: "Visitors", he: "גולשים" } },
-      { id: "e", icon: "🌍", label: { en: "CDN · Tel Aviv", he: "CDN בתל אביב" } },
-      { id: "o", icon: "🏛️", label: { en: "Main server · US", he: "שרת ראשי בארה\"ב" } },
-    ],
-    beats: [
-      {
-        from: "b", to: "e", label: "GET /app.9f3c.js",
-        say: { en: "Dana in Tel Aviv asks for the app's script. She reaches a nearby CDN server, not your server in Virginia.", he: "דנה בתל אביב מבקשת את הסקריפט של האפליקציה. היא מגיעה לשרת CDN קרוב, לא לשרת שלכם בווירג'יניה." },
-      },
-      {
-        from: "e", to: "o", label: "no copy yet → ask main server", tone: "warn",
-        say: { en: "This nearby server has no copy yet (a miss), so it asks your main server, far away.", he: "לשרת הקרוב עוד אין עותק (miss), אז הוא שואל את השרת הראשי שלכם, שרחוק מאוד." },
-      },
-      {
-        from: "o", to: "e", label: "200 OK", status: 200,
-        body: ["same for everyone:", "keep for a year"],
-        say: { en: "The file is the same for everyone, and the server says so. The nearby server keeps a copy.", he: "הקובץ זהה לכולם, והשרת אומר את זה. השרת הקרוב שומר עותק." },
-      },
-      {
-        from: "e", to: "b", label: "200 OK · 190 ms", status: 200,
-        say: { en: "Dana waits for the full trip, once.", he: "דנה מחכה לכל הדרך, פעם אחת." },
-      },
-      {
-        from: "b", to: "e", label: "GET /app.9f3c.js",
-        say: { en: "Noa, also in Tel Aviv, asks for the same file.", he: "נועה, גם היא בתל אביב, מבקשת את אותו קובץ." },
-      },
-      {
-        from: "e", to: "b", label: "200 OK · 15 ms", status: 200, body: ["served from the nearby copy"],
-        say: { en: "Served from nearby in 15 ms. Your main server never hears of it, so even a launch-day crowd doesn't reach it.", he: "מוגש מקרוב ב-15ms. השרת הראשי לא שומע על זה, וגם עומס של יום השקה לא מגיע אליו." },
-      },
-      {
-        from: "o", to: "e", label: "200 OK · /account", status: 200, tone: "err",
-        body: ["Hello Dana · 3 deals won", "marked: same for everyone ✗"],
-        say: { en: "The trap: one blanket rule also marks Dana's personal /account page as 'same for everyone'. The nearby server keeps it.", he: "המלכודת: כלל גורף אחד מסמן גם את עמוד /account האישי של דנה כ'זהה לכולם'. השרת הקרוב שומר אותו." },
-      },
-      {
-        from: "e", to: "b", label: "saved /account · Hello Dana", tone: "err",
-        say: { en: "The next visitor sees Dana's name and deals. Anything personal, or tied to a sign-in cookie, must never be kept there.", he: "הגולש הבא רואה את השם והעסקאות של דנה. כל מה שאישי, או קשור ל-cookie של התחברות, אסור שיישמר שם." },
-      },
-      {
-        from: "o", to: "e", label: "200 OK · /account", status: 200, body: ["personal: never keep a copy"],
-        say: { en: "Fixed: it passes through and nothing is kept. Ask of every rule: could two people ever get the same saved page?", he: "תוקן: העמוד עובר הלאה ושום דבר לא נשמר. שאלו על כל כלל: האם שני אנשים יכולים לקבל אותו עמוד שמור?" },
       },
     ],
   },
@@ -722,48 +586,6 @@ export const MIDDLE_SCENES: Record<string, Scene> = {
       {
         from: "s", to: "g", label: "add event to Noa's calendar", body: ["token: Noa's"],
         say: { en: "One token per person, kept on the server, and Noa can cancel it anytime. Sending email: a key. 'Connect your calendar': OAuth.", he: "טוקן אחד לכל אדם, שמור בשרת, ונועה יכולה לבטל אותו מתי שתרצה. שליחת מייל: מפתח. 'חיבור היומן': OAuth." },
-      },
-    ],
-  },
-
-  "sandbox-vs-live-keys": {
-    cap: { en: "Test and live keys look alike in code. One sends nothing, the other reaches real people", he: "מפתח בדיקות ומפתח חי נראים אותו דבר בקוד. אחד לא שולח כלום, השני מגיע לאנשים אמיתיים" },
-    actors: [laptop, prod, emailApi, inbox],
-    beats: [
-      {
-        from: "l", to: "p", label: "POST /emails",
-        body: ["key: test_4f…", "to: dana@acme.io"],
-        say: { en: "On Omer's laptop, reminders use the test key. Same code, same address as production.", he: "בלפטופ של עומר, התזכורות משתמשות במפתח הבדיקות. אותו קוד, אותה כתובת כמו ב-production." },
-      },
-      {
-        from: "p", to: "l", label: "200 OK · test mode", status: 200, body: ["accepted · not delivered"],
-        say: { en: "The service accepts it and delivers nothing. Run it 200 times and nobody gets a thing.", he: "השירות מקבל את זה ולא שולח כלום. אפשר להריץ 200 פעם ואף אחד לא יקבל כלום." },
-      },
-      {
-        from: "l", to: "l", label: "live key pasted on laptop", tone: "err",
-        say: { en: "Someone pastes the live key into the laptop's settings file 'to try one real email'. The code doesn't change at all.", he: "מישהו מדביק את המפתח החי לקובץ ההגדרות בלפטופ 'כדי לנסות מייל אמיתי אחד'. הקוד לא משתנה בכלל." },
-      },
-      {
-        from: "l", to: "p", label: "POST /emails × 200 · tests", tone: "err",
-        body: ["key: live_9a…"],
-        say: { en: "Later the automated tests run, as they do many times a day. Same code, one different key.", he: "אחר כך רצים הטסטים האוטומטיים, כמו כמה פעמים ביום. אותו קוד, מפתח אחד שונה." },
-      },
-      {
-        from: "p", to: "i", label: "deliver × 200", tone: "err",
-        say: { en: "200 reminders go out for real, to every address in the test data. Some belong to real people.", he: "200 תזכורות יוצאות באמת, לכל הכתובות שבנתוני הבדיקה. חלק מהן שייכות לאנשים אמיתיים." },
-      },
-      {
-        from: "o", to: "p", label: "POST /emails",
-        body: ["key: live_9a…", "(from production's secrets)"],
-        say: { en: "The fix is where the key lives: the live key exists only in production's secret settings. Laptops and the repo only have the test key.", he: "התיקון הוא איפה המפתח נמצא: המפתח החי קיים רק בהגדרות הסודיות של ה-production. בלפטופים ובריפו יש רק את מפתח הבדיקות." },
-      },
-      {
-        from: "p", to: "i", label: "deliver · 1 reminder to Dana", tone: "ok",
-        say: { en: "In production, Dana gets her one real reminder.", he: "ב-production, דנה מקבלת את התזכורת האמיתית האחת שלה." },
-      },
-      {
-        from: "l", to: "l", label: "search: no live key found", tone: "ok",
-        say: { en: "Check it: no live key in the repo or on any laptop. Then turn on every limit the service offers for the live key.", he: "בודקים: אין מפתח חי בריפו או באף לפטופ. ואז מפעילים על המפתח החי כל הגבלה שהשירות מציע." },
       },
     ],
   },

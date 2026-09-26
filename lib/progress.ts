@@ -1,5 +1,5 @@
 import { BUILDS } from "./builds";
-import { CHECKLIST, MODULES } from "./course";
+import { CHECKLIST, MODULES, rehome } from "./course";
 import type { Row } from "./db";
 
 /** The checklist is stored like a lesson, so one table covers everything a user ticks. */
@@ -25,7 +25,7 @@ const known = (lesson: string, topic: string) => valid.get(lesson)?.has(topic) ?
 export function toRows(done: string[], ticked: string[]): Row[] {
   const byLesson = new Map<string, Set<string>>();
   const tick = (k: string) => (k.startsWith(`${BUILD_LESSON}:`) ? k : `${CHECKLIST_LESSON}:${k}`);
-  for (const key of [...done, ...ticked.map(tick)]) {
+  for (const key of [...done.map(rehome), ...ticked.map(tick)]) {
     const parts = split(key);
     if (!parts || !known(parts[0], parts[1])) continue;
     (byLesson.get(parts[0]) ?? byLesson.set(parts[0], new Set()).get(parts[0])!).add(parts[1]);
@@ -44,7 +44,10 @@ export function toRows(done: string[], ticked: string[]): Row[] {
 export function fromRows(rows: Row[]): { done: string[]; ticked: string[] } {
   const done: string[] = [];
   const ticked: string[] = [];
-  for (const r of rows) {
+  for (const row of rows) {
+    // rows saved before a topic moved lessons still carry the old lesson
+    const own = row.lesson === CHECKLIST_LESSON || row.lesson === BUILD_LESSON;
+    const r = own ? row : { ...row, lesson: split(rehome(`${row.lesson}:${row.topic}`))![0] };
     if (!r.topic || r.pct < 100 || !known(r.lesson, r.topic)) continue;
     if (r.lesson === CHECKLIST_LESSON) ticked.push(r.topic);
     else if (r.lesson === BUILD_LESSON) ticked.push(`${BUILD_LESSON}:${r.topic}`);

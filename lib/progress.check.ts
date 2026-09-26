@@ -15,4 +15,8 @@ assert.deepStrictEqual(fromRows(rows).ticked.sort(), [`do:${CHECKLIST.do[0].k}`,
 const roll = rows.find((r) => r.lesson === m.id && r.topic === "")!;
 assert.strictEqual(roll.pct, Math.round((2 / m.terms.length) * 100));
 assert.strictEqual(rows.filter((r) => !r.topic).length, 3); // lesson + checklist + build
+// a topic ticked under the lesson it used to live in keeps its tick, under its lesson now
+const moved = MODULES[1].terms[0];
+assert.deepStrictEqual(fromRows(toRows([`${m.id}:${moved.k}`], [])).done, [`${MODULES[1].id}:${moved.k}`]);
+assert.deepStrictEqual(fromRows([{ lesson: m.id, topic: moved.k, pct: 100 }]).done, [`${MODULES[1].id}:${moved.k}`]);
 console.log("progress keys ok:", rows.length, "rows");

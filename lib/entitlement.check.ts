@@ -6,8 +6,8 @@ import { courseOfModule, coursesOfModule } from "./entitlement";
 import { verifySignature } from "./paddle";
 
 // shared lessons are listed in both; the home course is the earlier one
-assert.strictEqual(courseOfModule("httpdata"), "basic");
-assert.deepStrictEqual(coursesOfModule("httpdata"), ["basic", "advanced"]);
+assert.strictEqual(courseOfModule("http"), "basic");
+assert.deepStrictEqual(coursesOfModule("http"), ["basic", "advanced"]);
 assert.strictEqual(courseOfModule("security"), "advanced");
 assert.deepStrictEqual(coursesOfModule("security"), ["advanced"]);
 assert.strictEqual(courseOfModule("nope"), undefined);

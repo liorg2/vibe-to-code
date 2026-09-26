@@ -55,51 +55,6 @@ export const SECURE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "token-jwt": {
-    cap: { en: "Omer's JWT sign-in token: anyone can read it, nobody can fake it, and it's hard to take back", he: "טוקן ה-JWT של עומר: כל אחד יכול לקרוא אותו, אף אחד לא יכול לזייף אותו, וקשה לבטל אותו" },
-    actors: [eve, browser, server, db],
-    beats: [
-      {
-        from: "s", to: "b", label: "200 OK", status: 200,
-        body: ["user: Omer · role: user", "expires in: 15 min", "+ the server's signature"],
-        say: { en: "Omer signs in and gets a JWT: a token with his details written on it. Anyone can read it, so nothing secret goes in.", he: "עומר מתחבר ומקבל JWT: טוקן שהפרטים שלו כתובים עליו. כל אחד יכול לקרוא אותו, אז לא שמים בו שום סוד." },
-      },
-      {
-        from: "e", to: "s", label: "GET /admin/users",
-        body: ["token: Eve's own", "edited: role → admin", "signature: the old one"],
-        say: { en: "Eve takes her own token, changes her role to admin, and keeps the old signature.", he: "איב לוקחת את הטוקן שלה, משנה את התפקיד שלה ל-admin ומשאירה את החתימה הישנה." },
-      },
-      {
-        from: "s", to: "s", label: "check signature → fake", tone: "err",
-        say: { en: "The server signs the token again with its secret key. No match. Had it only read the token, Eve would be admin.", he: "השרת חותם שוב על הטוקן עם המפתח הסודי שלו. אין התאמה. אם הוא רק היה קורא את הטוקן, איב הייתה admin." },
-      },
-      {
-        from: "s", to: "e", label: "401 Unauthorized", status: 401,
-        say: { en: "Signed, not locked: anyone can read it, nobody can change it without getting caught.", he: "חתום, לא נעול: כל אחד יכול לקרוא, אף אחד לא יכול לשנות בלי שיתפסו אותו." },
-      },
-      {
-        from: "b", to: "s", label: "GET /contacts", body: ["token: Omer's real one"],
-        say: { en: "Omer's real token goes along with his next request.", he: "הטוקן האמיתי של עומר נשלח עם הבקשה הבאה שלו." },
-      },
-      {
-        from: "s", to: "b", label: "200 OK", status: 200,
-        say: { en: "The signature checks out, with no trip to the database. That's the appeal, and also the catch.", he: "החתימה תקינה, בלי לפנות למסד הנתונים. זה היתרון, וגם המלכודת." },
-      },
-      {
-        from: "b", to: "s", label: "POST /auth/refresh", body: ["refresh token: rt_5d2…"],
-        say: { en: "10:01, Omer is removed from the team. His token dies within 15 minutes, then the app must ask for a new one.", he: "10:01, עומר מוסר מהצוות. הטוקן שלו פג תוך 15 דקות, ואז האפליקציה צריכה לבקש חדש." },
-      },
-      {
-        from: "s", to: "d", label: "was this token cancelled?",
-        say: { en: "The refresh token, used to get a new token, is checked in the database. Omer's was cancelled at 10:01.", he: "את ה-refresh token, שבעזרתו מקבלים טוקן חדש, בודקים במסד. של עומר בוטל ב-10:01." },
-      },
-      {
-        from: "s", to: "b", label: "401 Unauthorized", status: 401,
-        say: { en: "Omer loses access within minutes. A token good for 7 days would work all week, because nobody checks the database.", he: "עומר מאבד גישה תוך דקות. טוקן שתקף לשבעה ימים היה עובד כל השבוע, כי אף אחד לא בודק במסד." },
-      },
-    ],
-  },
-
   oauth: {
     cap: { en: "Noa signs in with Google. Pocket CRM never sees her password", he: "נועה מתחברת עם Google. Pocket CRM אף פעם לא רואה את הסיסמה שלה" },
     actors: [
@@ -151,57 +106,6 @@ export const SECURE_SCENES: Record<string, Scene> = {
         from: "g", to: "s", label: "200 OK", status: 200,
         body: ["token: ya29…", "allowed: her email"],
         say: { en: "The token allows only what Noa approved. The app never held her password, so it can never leak it.", he: "הטוקן מאפשר רק את מה שנועה אישרה. לאפליקציה אף פעם לא הייתה הסיסמה שלה, אז היא גם לא יכולה להדליף אותה." },
-      },
-    ],
-  },
-
-  cors: {
-    cap: { en: "The server answers. The browser decides whether the page may read it", he: "השרת עונה. הדפדפן מחליט אם העמוד רשאי לקרוא את התשובה" },
-    actors: [
-      { id: "p", icon: "📄", label: { en: "Web page", he: "העמוד" } },
-      browser,
-      { id: "a", icon: "🖥️", label: { en: "API", he: "API" } },
-    ],
-    beats: [
-      {
-        from: "p", to: "b", label: "ask the API for contacts",
-        say: { en: "A page on app.pocketcrm.app asks the API at api.pocketcrm.app. A different address counts as a different site.", he: "עמוד ב-app.pocketcrm.app פונה ל-API ב-api.pocketcrm.app. כתובת אחרת נחשבת לאתר אחר." },
-      },
-      {
-        from: "b", to: "a", label: "GET /contacts", body: ["from: app.pocketcrm.app"],
-        say: { en: "The browser notes which site is asking and sends it on. The request really does reach the server.", he: "הדפדפן מציין איזה אתר שואל ושולח הלאה. הבקשה באמת מגיעה לשרת." },
-      },
-      {
-        from: "a", to: "b", label: "200 OK", status: 200, body: ["(no 'this site may read it')"],
-        say: { en: "The API answers, and its log looks fine. But it never said that site may read the answer.", he: "ה-API עונה, והלוג שלו נראה תקין. אבל הוא לא אמר שהאתר הזה רשאי לקרוא את התשובה." },
-      },
-      {
-        from: "b", to: "p", label: "blocked by CORS", tone: "err",
-        say: { en: "So the browser keeps the answer from the page. CORS is this browser rule. The server blocked nothing.", he: "אז הדפדפן לא מוסר את התשובה לעמוד. CORS הוא הכלל הזה של הדפדפן. השרת לא חסם כלום." },
-      },
-      {
-        from: "b", to: "a", label: "OPTIONS /contacts",
-        body: ["from: app.pocketcrm.app", "wants to: POST with JSON"],
-        say: { en: "After the API is fixed, the page wants to add a contact. First the browser asks: may this site send that here?", he: "אחרי שתיקנו את ה-API, העמוד רוצה להוסיף איש קשר. קודם הדפדפן שואל: מותר לאתר הזה לשלוח את זה לכאן?" },
-      },
-      {
-        from: "a", to: "b", label: "204 No Content", status: 204,
-        body: ["allowed site: app.pocketcrm.app", "allowed: POST with JSON"],
-        say: { en: "The API names the one site it allows, not everyone. If it ignored this question, the real request would never go out.", he: "ה-API מציין את האתר היחיד שמותר, לא את כולם. אם הוא היה מתעלם מהשאלה, הבקשה האמיתית לא הייתה יוצאת." },
-      },
-      {
-        from: "b", to: "a", label: "POST /contacts",
-        body: ["from: app.pocketcrm.app", "name: Noa Levi"],
-        say: { en: "The check passed, so the real request goes out.", he: "הבדיקה עברה, אז הבקשה האמיתית יוצאת." },
-      },
-      {
-        from: "a", to: "b", label: "201 Created", status: 201,
-        body: ["allowed site: app.pocketcrm.app"],
-        say: { en: "The answer says again that this site may read it.", he: "גם התשובה אומרת שוב שהאתר הזה רשאי לקרוא אותה." },
-      },
-      {
-        from: "b", to: "p", label: "page gets the data", tone: "ok",
-        say: { en: "Allowed, so the page gets its data. CORS is fixed in one place: the API's answers.", he: "מותר, אז העמוד מקבל את הנתונים. מתקנים CORS במקום אחד: בתשובות של ה-API." },
       },
     ],
   },
@@ -295,52 +199,6 @@ export const SECURE_SCENES: Record<string, Scene> = {
         from: "p", to: "b", label: "200 OK", status: 200,
         body: ["compressed", "encrypted again"],
         say: { en: "The proxy compresses it, encrypts it again and hands it over. Ask your agent: what sits in front of our app?", he: "הפרוקסי דוחס, מצפין מחדש ומוסר. תשאלו את הסוכן שלכם: מה עומד לפני האפליקציה שלנו?" },
-      },
-    ],
-  },
-
-  "ci-cd": {
-    cap: { en: "The agent's PR looks fine. CI runs the tests on it, and red blocks the merge", he: "ה-PR של הסוכן נראה תקין. ה-CI מריץ עליו את הטסטים, ואדום חוסם את ה-merge" },
-    actors: [you, github, { id: "c", icon: "⚙️", label: { en: "CI", he: "CI" } }, vercel],
-    beats: [
-      {
-        from: "y", to: "g", label: "push · PR #23",
-        body: ["adds: a deal value field", "3 files changed"],
-        say: { en: "Your agent opens PR #23, a request to add its change: a deal value field. Looks confident, and nobody has run it.", he: "הסוכן שלכם פותח את PR #23, בקשה להכניס את השינוי שלו: שדה של שווי עסקה. נראה בטוח בעצמו, ואף אחד לא הריץ אותו." },
-      },
-      {
-        from: "g", to: "c", label: "start the checks",
-        say: { en: "The new PR wakes up CI, a robot that runs the checks on every PR, not only on main.", he: "ה-PR החדש מעיר את ה-CI, רובוט שמריץ את הבדיקות על כל PR, לא רק על main." },
-      },
-      {
-        from: "c", to: "c", label: "npm run check", tone: "err",
-        body: ["✓ types  ✓ code style", "✗ a 'won' deal needs a value", "  but it was saved without one"],
-        say: { en: "Same steps, every time, for everyone. One test fails: a deal marked 'won' gets saved with no value.", he: "אותם צעדים, בכל פעם, לכל אחד. טסט אחד נכשל: עסקה שמסומנת 'won' נשמרת בלי שווי." },
-      },
-      {
-        from: "c", to: "g", label: "check: failed", tone: "err",
-        say: { en: "The result shows up on the PR.", he: "התוצאה מופיעה על ה-PR." },
-      },
-      {
-        from: "g", to: "y", label: "Merge blocked", tone: "err", body: ["required check failed ✗"],
-        say: { en: "The repo is set so the check is required. Red means no merge, even at midnight.", he: "הריפו מוגדר כך שהבדיקה היא חובה. אדום אומר שאין merge, גם בחצות." },
-      },
-      {
-        from: "y", to: "g", label: "push · fix", body: ["fix: a 'won' deal needs a value"],
-        say: { en: "The agent fixes the rule and pushes again.", he: "הסוכן מתקן את הכלל ועושה push שוב." },
-      },
-      {
-        from: "c", to: "c", label: "tests · build · browser tests", tone: "ok",
-        body: ["✓ 148 tests  ✓ build 41s", "✓ 12 browser tests passed"],
-        say: { en: "CI runs again on the fix, including browser tests on a preview copy of the site. All green.", he: "ה-CI רץ שוב על התיקון, כולל טסטים בדפדפן מול עותק preview של האתר. הכל ירוק." },
-      },
-      {
-        from: "y", to: "g", label: "Merge PR #23 → main",
-        say: { en: "Now the merge button works.", he: "עכשיו כפתור ה-merge עובד." },
-      },
-      {
-        from: "g", to: "h", label: "deploy main", tone: "ok",
-        say: { en: "Main goes live in production. Nobody had to remember to run the tests.", he: "main עולה ל-production. אף אחד לא היה צריך לזכור להריץ את הטסטים." },
       },
     ],
   },
@@ -551,7 +409,7 @@ export const SECURE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "secrets-in-git-history": {
+  "environment-variables-secrets": {
     cap: { en: "Deleting the key made the file clean. The history still has it", he: "מחיקת המפתח ניקתה את הקובץ. ההיסטוריה עדיין מחזיקה אותו" },
     actors: [
       you,
@@ -604,7 +462,7 @@ export const SECURE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "dns-records-a-cname-txt": {
+  "domain-and-registrar": {
     cap: { en: "You changed the address at 09:15. A customer's office keeps the old one for a day", he: "שיניתם את הכתובת ב-09:15. המשרד של לקוח ממשיך עם הישנה יום שלם" },
     actors: [
       browser,
@@ -649,7 +507,7 @@ export const SECURE_SCENES: Record<string, Scene> = {
     ],
   },
 
-  "firewall-security-group": {
+  "public-vs-private-ip": {
     cap: { en: "Every door is closed unless a rule opens it. One rule opened the database to everyone", he: "כל דלת סגורה אלא אם כלל פותח אותה. כלל אחד פתח את מסד הנתונים לכולם" },
     actors: [
       { id: "x", icon: "🌐", label: { en: "Internet", he: "האינטרנט" } },

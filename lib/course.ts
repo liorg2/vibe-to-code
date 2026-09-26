@@ -102,3 +102,11 @@ export function findTermK(k: string): { m: Module; i: number; tm: Term } | null 
   }
   return null;
 }
+
+/** `lesson:topic` progress key moved to the lesson the topic lives in now. Topic slugs are unique across
+ *  the course, so ticks survive regrouping lessons; unknown topics come back unchanged (and get dropped). */
+export function rehome(key: string): string {
+  const k = key.slice(key.indexOf(":") + 1);
+  const hit = findTermK(k);
+  return hit ? `${hit.m.id}:${k}` : key;
+}

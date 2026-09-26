@@ -3,7 +3,7 @@
 A bilingual (English / עברית) course that teaches the vocabulary and mental models of
 professional software development to people who build with AI assistants.
 
-**18 lessons · 248 topics · a plain-words explanation (no code) plus an optional deep dive with a worked example on every slide · animated
+**24 lessons · 248 topics · a plain-words explanation (no code) plus an optional deep dive with a worked example on every slide · animated
 request stories · a build track (one app, one step per lesson) · five reference architectures · a pre-ship checklist.**
 
 Live at https://vibe-to-code-4206d.web.app (unindexed on purpose).
