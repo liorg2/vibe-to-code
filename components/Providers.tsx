@@ -37,6 +37,7 @@ type Ctx = {
   lvls: Filter[];
   toggleLvl: (v: Filter) => void;
   resetProgress: () => void;
+  endSession: () => void;
   t: (k: string) => string;
   UI: Record<string, Record<Lang, string>>;
   progressPct: number;
@@ -154,13 +155,29 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
   useEffect(() => {
     if (!firebaseReady) return;
     const auth = getClientAuth();
-    return onAuthStateChanged(auth, (u) => {
+    return onAuthStateChanged(auth, async (u) => {
       const wasSignedIn = uidRef.current !== null;
       // ponytail: reviewer link has no Firebase user; a stand-in opens the nav, uidRef stays null so
       // progress stays local instead of being shared by every reviewer
       if (!u && document.cookie.split("; ").includes(`${REVIEWER_COOKIE}=1`)) {
         setUser({ uid: "reviewer", displayName: "Reviewer" } as User);
         return;
+      }
+      // Firebase keeps its login per origin, the session cookie is per host (every localhost port
+      // shares it) — when they drift, the server cookie is what actually gates the pages, so trust it
+      if (!u) {
+        const res = await fetch("/api/auth/session").catch(() => null);
+        const s = res?.ok ? ((await res.json()) as { uid: string; email?: string }) : null;
+        if (s?.uid === "reviewer") {
+          setUser({ uid: "reviewer", displayName: "Reviewer" } as User); // stays local, as above
+          return;
+        }
+        if (s) {
+          setUser({ uid: s.uid, email: s.email ?? null, displayName: null } as User);
+          uidRef.current = s.uid;
+          void syncCloud();
+          return;
+        }
       }
       setUser(u);
       uidRef.current = u?.uid ?? null;
@@ -210,6 +227,14 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
     persist(empty, empty);
   };
 
+  /** Sign-out's local half: a server-backed stand-in has no Firebase user whose sign-out would clear it. */
+  const endSession = () => {
+    if (uidRef.current === null) return;
+    uidRef.current = null; // before the reset, so its persist() never PUTs the empty sets
+    setUser(null);
+    resetProgress();
+  };
+
   const t = (k: string) => UI[k]?.[lang] ?? k;
   const progressPct = (done.size / totalTerms()) * 100;
 
@@ -228,6 +253,7 @@ export function Providers({ UI, children }: { UI: Record<string, Record<Lang, st
       lvls,
       toggleLvl,
       resetProgress,
+      endSession,
       t,
       UI,
       progressPct,

@@ -68,7 +68,7 @@ export function Header({ showHero, showNav }: { showHero: boolean; showNav: bool
             </PopoverTrigger>
             <PopoverContent align={lang === "he" ? "start" : "end"} className="flex flex-col gap-1">
               <span id="who" className="px-2 py-1.5 text-sm text-[var(--tx2)]">
-                {firebaseReady && user ? user.displayName || user.email || "" : "Not signed in"}
+                {firebaseReady && user ? user.displayName || user.email || "Signed in" : "Not signed in"}
               </span>
               {LANGS.length > 1 && (
               <ToggleGroup

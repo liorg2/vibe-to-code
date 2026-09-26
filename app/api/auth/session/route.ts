@@ -4,8 +4,16 @@ import { getAdminAuth } from "@/lib/firebase/admin";
 import { claimWelcome } from "@/lib/db";
 import { emailEnabled, sendWelcome } from "@/lib/email";
 import { serverLang } from "@/lib/lang-server";
+import { sessionClaims } from "@/lib/verify-session";
 
 const MAX_AGE = 60 * 60 * 24 * 5; // 5 days
+
+/** Who the session cookie says you are; the header asks when Firebase's own login is empty. */
+export async function GET() {
+  const claims = await sessionClaims();
+  if (!claims) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  return NextResponse.json(claims);
+}
 
 export async function POST(req: Request) {
   const { idToken } = (await req.json()) as { idToken?: string };

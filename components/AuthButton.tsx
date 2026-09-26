@@ -9,12 +9,13 @@ import { firebaseReady, getClientAuth } from "@/lib/firebase/client";
 
 /** Shared sign-out/sign-in action, reused by AuthButton and the header account menu. */
 export function useSignOut() {
-  const { user, lang } = useApp();
+  const { user, lang, endSession } = useApp();
   const router = useRouter();
 
   const signOutAll = async () => {
     await fetch("/api/auth/logout", { method: "POST" });
     await signOut(getClientAuth());
+    endSession();
     router.push(withLang(lang, "/"));
     router.refresh();
   };
