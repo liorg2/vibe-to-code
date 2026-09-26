@@ -225,7 +225,10 @@ section.mod{scroll-margin-top:90px;margin-bottom:40px}
   padding:clamp(24px,4vw,44px);box-shadow:var(--shadow)}
 .slide .kicker{font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--fs-xs);color:var(--acc2);
   letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-.slide .listen{float:right;margin-top:-4px;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:none;
+.slide .listen-bar{float:right;margin-top:-4px;display:flex;align-items:center;gap:12px}
+.slide .listen-auto{display:flex;align-items:center;gap:6px;font-size:var(--fs-2xs);color:var(--tx2);cursor:pointer}
+.slide .listen-auto input{accent-color:var(--acc);margin:0}
+.slide .listen{padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:none;
   font:inherit;font-size:var(--fs-2xs);color:var(--tx2);cursor:pointer;letter-spacing:.08em}
 .slide .listen:hover,.slide .listen[aria-pressed=true]{color:var(--acc);border-color:var(--acc)}
 .slide h2{font-size:clamp(26px,4vw,40px);line-height:1.15;letter-spacing:-.03em;font-weight:700;text-wrap:balance}
@@ -533,6 +536,7 @@ pre.code{max-width:100%}
 .lvl-chips{display:flex;flex-wrap:wrap;gap:6px;margin:-8px 0 18px}
 .lvl-chips button{padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--tx2);font:inherit;font-size:var(--fs-xs);cursor:pointer}
 .lvl-chips button[aria-pressed=true]{background:var(--acc);border-color:transparent;color:#fff;font-weight:600}
+.subnav .lvl-chips{flex-basis:100%;margin:0 0 4px}
 .xbadge{display:inline-block;padding:1px 8px;border-radius:99px;border:1px solid color-mix(in srgb,var(--warn) 60%,transparent);
   color:var(--warn);font-size:var(--fs-2xs);font-weight:700;letter-spacing:.02em;vertical-align:middle;white-space:nowrap}
 .slide .xnote{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 10px;font-size:var(--fs-sm);color:var(--tx3)}

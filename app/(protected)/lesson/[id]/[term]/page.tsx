@@ -103,7 +103,7 @@ export default async function SlidePage({
       <article className="slide">
         <div className="kicker">
           {lessonNo(id)} {m.title[lang]} · {i + 1}/{m.terms.length}
-          <ListenButton />
+          <ListenButton key={`${m.id}/${i}`} next={nextHref} />
         </div>
         <h2>{tm.t[lang]}</h2>
         {skippable(tm) ? (
